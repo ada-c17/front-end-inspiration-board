@@ -1,7 +1,13 @@
 import "./App.css";
+import NewBoardForm from "./components/NewBoardForm";
 
 function App() {
-  return <div className="App"></div>;
+  return (
+    <main className="App">
+      <h1>Inspiration Board</h1>
+      <NewBoardForm />
+    </main>
+  );
 }
 
 export default App;
