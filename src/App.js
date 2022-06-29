@@ -36,20 +36,16 @@ const App = () => {
 
   //Gets one board. Called dynamically when Board is rendered.
   const getOneBoard = (id) => {
-    // console.log(id);
     axios
       .get(`${URL}/${id}/cards`)
       .then((response) => {
-        // console.log("response body: ", response.data);
-        // console.log(response.data.cards);
         const newBoard = {
           boardId: response.data.id,
           title: response.data.title,
           owner: response.data.owner,
-          cards: [response.data.cards],
+          cards: response.data.cards,
         };
         setBoardData(newBoard);
-        console.log(boardData);
       })
       .catch((err) => {
         console.log(err);

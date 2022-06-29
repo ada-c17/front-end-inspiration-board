@@ -2,15 +2,15 @@ import React from "react";
 import Cards from "./Cards";
 import { Row } from "react-bootstrap";
 
-const CardsList = ({ cardData, boardCards, likeHeart }) => {
+const CardsList = ({ cardData, likeHeart }) => {
+  // console.log("card data: ", cardData);
   const createCard = (card) => {
-    console.log(`boardCards: ${boardCards}`);
     // console.log(`cardID: ${card.card_id}`);
     return (
       <div>
+        {/* {card.message} */}
         <Cards
-          key={card.card_id}
-          cardId={card.card_id}
+          cardId={card.id}
           message={card.message}
           likesCount={card.likes_count}
           likeHeart={likeHeart}

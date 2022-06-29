@@ -11,7 +11,7 @@ const Board = ({ boardData, getOneBoard, likeHeart }) => {
     getOneBoard(boardId);
   }, []);
 
-  console.log("board cards: ", boardData.cards);
+  // console.log("board cards: ", boardData.cards);
 
   return (
     <div>
@@ -27,7 +27,7 @@ const Board = ({ boardData, getOneBoard, likeHeart }) => {
         Welcome to {boardData.owner}'s <em>{boardData.title}</em> Board!
       </h1>
       <li>
-        {/* <CardsList cardData={boardData.cards} likeHeart={likeHeart} /> */}
+        <CardsList cardData={boardData.cards} likeHeart={likeHeart} />
       </li>
     </div>
   );
