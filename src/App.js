@@ -14,6 +14,11 @@ const boardData = [
     title: "Cook Pasta",
     owner: "Ada",
   },
+  {
+    board_id: 3,
+    title: "Eat Pasta",
+    owner: "Jeannie"
+  }
 ];
 
 const cardData = [
@@ -31,9 +36,12 @@ const cardData = [
 
 const App = () => {
   return (
-    <div className="App">
-      <BoardList boardData={boardData} cardData={cardData} />
-    </div>
+
+    <main className="App">
+      <h1>Inspiration Board</h1>
+      <BoardList boardData={boardData}
+        cardData={cardData} />
+    </main>
   );
 };
 
