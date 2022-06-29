@@ -20,3 +20,4 @@ const BoardList = ({ boards }) => {
 
 
 export default BoardList;
+
