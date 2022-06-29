@@ -1,16 +1,18 @@
 import React from "react";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Card } from "react-bootstrap";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faTrashCan } from "@fortawesome/free-regular-svg-icons";
 
-const Cards = ({ cardId, message, likesCount }) => {
+const Cards = ({ cardId, message, likesCount, likeHeart }) => {
   return (
     <div>
-      <h1> Hello</h1>
       <Card style={{ width: "18rem" }}>
-        <Card.Title>Board 1</Card.Title>
-        <Card.Body>{message}</Card.Body>
+        <Card.Body>
+          <FontAwesomeIcon icon={faTrashCan} />
+          {message}
+        </Card.Body>
         <Card.Footer>
-          <FontAwesomeIcon icon="fa-regular fa-heart" /> {likesCount}
+          <FontAwesomeIcon icon={likeHeart} /> {likesCount}
         </Card.Footer>
       </Card>
     </div>
