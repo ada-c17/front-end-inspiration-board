@@ -1,3 +1,5 @@
+import "./cardform.css";
+
 function CardForm() {
   return <div></div>;
 }
