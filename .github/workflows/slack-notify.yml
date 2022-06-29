@@ -1,5 +1,5 @@
 on: push
-name: Slack Notification Demo
+name: INSPO FRONT END REPO
 jobs:
   slackNotification:
     name: Slack Notification
