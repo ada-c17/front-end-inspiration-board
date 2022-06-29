@@ -11,40 +11,62 @@ import axios from "axios";
 const URL = "https://back-end-inspiration-board.herokuapp.com/boards";
 
 const App = () => {
+  const [allBoards, setAllBoards] = useState([]);
   const [boardData, setBoardData] = useState([]);
 
+  //Get all boards data
   useEffect(() => {
     axios
       .get(URL)
       .then((response) => {
-        console.log(response.data);
-        const newBoardData = response.data.map((board) => {
+        // console.log(`response body: ${response.data}`);
+        const newBoards = response.data.map((board) => {
           return {
-            boardId: board.board_id,
+            boardId: board.id,
             title: board.title,
             owner: board.owner,
-            cards: board.cards,
           };
         });
-        setBoardData(newBoardData);
-        console.log(boardData);
+        setAllBoards(newBoards);
       })
       .catch((err) => {
         console.log(err);
       });
   }, []);
 
+  //Gets one board. Called dynamically when Board is rendered.
+  const getOneBoard = (id) => {
+    // console.log(id);
+    axios
+      .get(`${URL}/${id}/cards`)
+      .then((response) => {
+        // console.log("response body: ", response.data);
+        // console.log(response.data.cards);
+        const newBoard = {
+          boardId: response.data.id,
+          title: response.data.title,
+          owner: response.data.owner,
+          cards: [response.data.cards],
+        };
+        setBoardData(newBoard);
+        console.log(boardData);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
+
   // console.log(boardData);
   return (
     <Router>
       <Routes>
-        <Route path="/" element={<BoardList boardData={boardData} />} />
+        <Route path="/" element={<BoardList boardData={allBoards} />} />
         <Route
           path="/boards/:boardId"
           element={
             <Board
               boardData={boardData}
-              // cardData={cardData}
+              getOneBoard={getOneBoard}
               likeHeart={faHeart}
             />
           }

@@ -1,15 +1,18 @@
 import React from "react";
-import Board from "./Board";
+import { useNavigate } from "react-router-dom";
 
 const BoardList = ({ boardData, cardData, likeHeart }) => {
+  let navigate = useNavigate();
+
   const createBoard = (board) => {
+    // console.log(board);
     return (
       <li>
         <a
           href="#"
-          // onClick={() => {
-          //   getBoards(board);
-          // }}
+          onClick={() => {
+            navigate(`boards/${board.boardId}`);
+          }}
         >
           {board.title}
         </a>
