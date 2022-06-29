@@ -8,58 +8,33 @@ import Error from "./components/Error";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import axios from "axios";
 
-// const boardData = [
-//   {
-//     board_id: 1,
-//     title: "Mow the lawn",
-//     owner: "Ada",
-//     cards: [1, 3],
-//   },
-//   {
-//     board_id: 2,
-//     title: "Cook Pasta",
-//     owner: "Ada",
-//     cards: [2],
-//   },
-// ];
-
-// const cardData = [
-//   {
-//     card_id: 1,
-//     message: "Eat Your Dinner",
-//     likes_count: 0,
-//   },
-//   {
-//     card_id: 2,
-//     message: "Go To Bed Early",
-//     likes_count: 1,
-//   },
-// ];
-
 const URL = "https://back-end-inspiration-board.herokuapp.com/boards";
 
 const App = () => {
-  const [boardData, setBoardData] = useState();
+  const [boardData, setBoardData] = useState([]);
 
   useEffect(() => {
     axios
       .get(URL)
-      .then((res) => {
-        const newTasks = res.data.map((task) => {
+      .then((response) => {
+        console.log(response.data);
+        const newBoardData = response.data.map((board) => {
           return {
-            id: task.id,
-            title: task.title,
-            isComplete: task.is_complete,
+            boardId: board.board_id,
+            title: board.title,
+            owner: board.owner,
+            cards: board.cards,
           };
         });
-        setStatus("Loaded");
-        setTasks(newTasks);
+        setBoardData(newBoardData);
+        console.log(boardData);
       })
       .catch((err) => {
         console.log(err);
       });
   }, []);
 
+  // console.log(boardData);
   return (
     <Router>
       <Routes>
@@ -69,7 +44,7 @@ const App = () => {
           element={
             <Board
               boardData={boardData}
-              cardData={cardData}
+              // cardData={cardData}
               likeHeart={faHeart}
             />
           }
