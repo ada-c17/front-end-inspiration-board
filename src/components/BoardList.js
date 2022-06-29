@@ -4,12 +4,12 @@ import PropTypes from "prop-types";
 const BoardList = (props) => {
   // map function to return bullet list item with title of each board
   const boardTitles = props.boards.map((board) => {
-    return <ul>{board.title}</ul>;
+    return <li>{board.title}</li>;
   });
 
   return (
     <section>
-      <li>{boardTitles}</li>
+      <ul>{boardTitles}</ul>
     </section>
   );
 };
