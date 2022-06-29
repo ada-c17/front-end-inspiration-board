@@ -1,11 +1,10 @@
-import logo from './logo.svg';
-import {useState,useEffect} from 'react';
-import './App.css';
-import BoardsView from './components/BoardsView';
-import CardsView from './components/CardsView';
+import axios from "axios";
+import { useState, useEffect } from "react";
+import "./App.css";
+import BoardsView from "./components/BoardsView";
+import CardsView from "./components/CardsView";
 
 function App() {
-
   const defaultBoards = [];
   const defaultCards = [];
 
@@ -15,115 +14,116 @@ function App() {
   const [cards, setCards] = useState(defaultCards);
   // useState to keep track of what board we're currently looking at (user's choice)
   const [chosenBoard, setChosenBoard] = useState(null);
-  
+
   // useEffect upon dom load
   useEffect(() => {
     // axios call, after promise is completed or rejected:
-    axios.get('')
-    .then((response) => {
-      const updatedBoards = [...defaultBoards];
-      // iterate through each board and append to defaultBoards
-      response.data.map((board) => {
-        updatedBoards.append(board);
+    axios
+      .get("")
+      .then((response) => {
+        const updatedBoards = [...defaultBoards];
+        // iterate through each board and append to defaultBoards
+        response.data.map((board) => {
+          updatedBoards.append(board);
+        });
+        setBoards(updatedBoards);
       })
-      setBoards(updatedBoards);
-    })
-    .catch((e) => {
-      console.log(e);
-    })
+      .catch((e) => {
+        console.log(e);
+      });
   }, []);
 
   // BoardView -> BoardList, NewBoardButton, NewBoardForm (visible/invisible depending on NewBoardButton toggle): siblings easier ^^ -> all state at BoardView level to control NewBoardForm visibility
 
   // get all cards from user chosen board -> pass down to boardlist
   const getCardsFromOneBoard = (boardId) => {
-    axios.get(`/${boardId}`)
-    .then((response) => {
-      const updatedCards = [...defaultCards];
-      // iterate through each card and append to defaultCards
-      response.data.map((card) => {
-        updatedCards.append(card);
+    axios
+      .get(`/${boardId}`)
+      .then((response) => {
+        const updatedCards = [...defaultCards];
+        // iterate through each card and append to defaultCards
+        response.data.map((card) => {
+          updatedCards.append(card);
+        });
+        setCards(updatedCards);
+        setChosenBoard(boardId);
       })
-      setCards(updatedCards);
-      setChosenBoard(boardId);
-    })
-    .catch((e) => {
-      console.log(e);
-    })
-  }
+      .catch((e) => {
+        console.log(e);
+      });
+  };
 
   // delete board
   const deleteBoard = (boardId) => {
-    axios.delete(`/${boardId}`)
-    .then(() => {
-      const updatedBoards = boards.filter((board) => board.board_id != boardId);
-      setBoards(updatedBoards);
-    })
-    .catch((e) => {
-      console.log(e);
-    })
-  }
+    axios
+      .delete(`/${boardId}`)
+      .then(() => {
+        const updatedBoards = boards.filter(
+          (board) => board.board_id != boardId
+        );
+        setBoards(updatedBoards);
+      })
+      .catch((e) => {
+        console.log(e);
+      });
+  };
 
   // delete card
   const deleteCard = (boardId, cardId) => {
-    axios.delete(`/${boardId}/${cardId}`) // ???
-    .then(() => {
-      const updatedCards = cards.filter((card) => card.card_id != cardId);
-      setCards(updatedCards);
-    })
-    .catch((e) => {
-      console.log(e);
-    })
-  }
-  
+    axios
+      .delete(`/${boardId}/${cardId}`) // ???
+      .then(() => {
+        const updatedCards = cards.filter((card) => card.card_id != cardId);
+        setCards(updatedCards);
+      })
+      .catch((e) => {
+        console.log(e);
+      });
+  };
+
   // onformsubmitboard
   const onFormSubmitBoard = (requestBody) => {
-    axios.post('',requestBody)
-    .then((response) => {
-      newBoard = {
-        "board_id" : response.id,
-        "title" : requestBody.title,
-        "owner": requestBody.owner
-      };
-      setBoards([...boards, newBoard]);
-    })
-    .catch((e) => {
-      console.log(e);
-    })
-  }
+    axios
+      .post("", requestBody)
+      .then((response) => {
+        newBoard = {
+          board_id: response.id,
+          title: requestBody.title,
+          owner: requestBody.owner,
+        };
+        setBoards([...boards, newBoard]);
+      })
+      .catch((e) => {
+        console.log(e);
+      });
+  };
 
   // on formsubmitcard
   const onFormSubmitCard = (requestBody) => {
-    axios.post('',requestBody)
-    .then((response) => {
-      newCard = {
-        "card_id" : response.id,
-        "message" : requestBody.message,
-        "like_count": requestBody.like_count
-      };
-      setCards([...cards, newCard]);
-    })
-    .catch((e) => {
-      console.log(e);
-    })
-  }
+    axios
+      .post("", requestBody)
+      .then((response) => {
+        newCard = {
+          card_id: response.id,
+          message: requestBody.message,
+          like_count: requestBody.like_count,
+        };
+        setCards([...cards, newCard]);
+      })
+      .catch((e) => {
+        console.log(e);
+      });
+  };
 
   // default landing page
   if (chosenBoard === null) {
-    return (
-      <BoardsView></BoardsView>
-    );
+    return <BoardsView></BoardsView>;
   }
   // render cardsview when user choose certain board
-  // need to add logic to set chosenBoard state back to null when user clicked 'x' button in cardsview 
+  // need to add logic to set chosenBoard state back to null when user clicked 'x' button in cardsview
   else {
-    return (
-      <CardsView></CardsView>
-    );
+    return <CardsView></CardsView>;
   }
-
 }
 
 export default App;
-
-
