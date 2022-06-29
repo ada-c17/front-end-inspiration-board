@@ -6,8 +6,10 @@ import BoardForm from "./components/BoardForm";
 import BoardList from "./components/BoardList";
 import CardForm from "./components/CardForm";
 import CardList from "./components/CardList";
+import axios from "axios";
 
 function App() {
+<<<<<<< Updated upstream
   const [boards, setBoards] = useState([]);
   const URL = 'https://peaceful-shelf-16152.herokuapp.com/';
 
@@ -24,13 +26,24 @@ function App() {
         });
         setBoards(newBoards);
       })
+=======
+  const addBoard = (boardData) => {
+    axios
+      .post("localhost:5000/boards", boardData)
+      .then
+      //fetch boards
+      ()
+>>>>>>> Stashed changes
       .catch((err) => {
         console.log(err);
       });
   };
 
+<<<<<<< Updated upstream
   useEffect(getBoards, []);
   
+=======
+>>>>>>> Stashed changes
   return (
     <div className="App">
       <header className="App-header"></header>
@@ -44,7 +57,7 @@ function App() {
         <h2>Cards for Pick-Me-Up Quotes</h2>
         <CardList />
         <h2>Create a New Board</h2>
-        <BoardForm />
+        <BoardForm addBoardCallback={addBoard} />
         <h2>Create a New Card</h2>
         <CardForm />
       </main>
