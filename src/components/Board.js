@@ -6,7 +6,7 @@ const Board = (props) => {
     const newBoard = props.entries.map((entry) => {
         return (
             <NewBoardForm 
-            board_id={entry.id}
+            board_Id={entry.id}
             owner={entry.owner}
             title={entry.title}
             />
@@ -20,7 +20,7 @@ const Board = (props) => {
 
 
 Board.propTypes = {
-    board_id: PropTypes.number.isRequired,
+    board_Id: PropTypes.number.isRequired,
     owner: PropTypes.string.isRequired,
     title: PropTypes.string.isRequired
 };

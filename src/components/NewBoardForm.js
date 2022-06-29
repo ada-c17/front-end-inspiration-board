@@ -3,10 +3,10 @@ import './Board.js';
 import PropTypes from 'prop-types';
 
 
-const NewBoardForm = ({board_id, owner, title}) => {
+const NewBoardForm = ({board_Id, owner, title}) => {
     const handleBoard = () => {
     const updatedEntry = {
-        board_id: board_id, owner:owner, title:title
+        board_id: board_Id, owner:owner, title:title
     };
 
     let x = document.getElementsByClassName("board");
@@ -31,17 +31,8 @@ const NewBoardForm = ({board_id, owner, title}) => {
 };
 
 
-
-
-
-
-
-
-
-
-
 NewBoardForm.propTypes = {
-    board_id: PropTypes.number.isRequired,
+    board_Id: PropTypes.number.isRequired,
     owner: PropTypes.string.isRequired,
     title: PropTypes.string.isRequired
 };
