@@ -1,14 +1,11 @@
 import React from "react";
+import "./Board.css";
 
 const Board = (props) => {
   return (
-    <div>
-      <ul>
-        <li>
-          {props.title} Owner: {props.owner}
-        </li>
-      </ul>
-    </div>
+    <li className="boards__item">
+      {props.title} By: {props.owner}
+    </li>
   );
 };
 

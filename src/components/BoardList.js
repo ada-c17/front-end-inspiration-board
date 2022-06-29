@@ -1,5 +1,6 @@
 import React from "react";
 import Board from "./Board";
+import "./BoardList.css";
 
 const BoardList = (props) => {
   const boardComponents = props.boards.map((board) => {
@@ -7,7 +8,7 @@ const BoardList = (props) => {
   });
   return (
     <div>
-      <h1>Boards</h1>
+      <h1 className="Boards-title">BOARDS</h1>
       {boardComponents}
     </div>
   );

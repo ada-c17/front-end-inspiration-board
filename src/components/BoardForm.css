@@ -1,0 +1,10 @@
+.New-board-form {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.New-board-form input {
+    text-align: center;
+    margin: 2px 0px;
+}

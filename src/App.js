@@ -10,12 +10,18 @@ function App() {
   ];
   return (
     <div className="App">
-      <header className="App-header">Inspiration Board</header>
-      <main>
-        <div>
-          <BoardList boards={boards} /> <BoardForm />
-        </div>
-      </main>
+      <div className="App-wrapper">
+        <header className="App-header">Inspiration Board</header>
+        <main className="Main">
+          <div className="Boards">
+            <BoardList boards={boards} />
+            <section className="Board-form">
+              <BoardForm />
+            </section>
+          </div>
+          <div className="Board-display"></div>
+        </main>
+      </div>
     </div>
   );
 }
