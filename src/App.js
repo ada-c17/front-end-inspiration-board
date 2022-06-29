@@ -5,7 +5,6 @@ import Board from "./components/Board";
 import BoardForm from "./components/BoardForm";
 import BoardList from "./components/BoardList";
 import CardForm from "./components/CardForm";
-import BoardList from "./components/BoardList";
 import CardList from "./components/CardList";
 
 function App() {
