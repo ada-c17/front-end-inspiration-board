@@ -1,22 +1,34 @@
-import logo from './logo.svg';
-import './App.css';
+import "./App.css";
+import React, { useEffect, useState } from "react";
+import axios from "axios";
+import Board from "./components/Board";
 
 function App() {
+  const URL = "https://gramtaschie.herokuapp.com/boards";
+  const [boards, setBoards] = useState([]);
+
+  const fetchBoards = () => {
+    axios
+      .get(URL)
+      .then((response) => {
+        console.log("fetchBoard request");
+        console.log(response.data);
+        const updatedBoards = response.data;
+        console.log(updatedBoards);
+        setBoards(updatedBoards);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
+
+  useEffect(() => fetchBoards, []);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
+    <div>
+      <header>
+        <h1>Inspiration Board</h1>
+        <Board boards={boards} fetchBoardsCallback={fetchBoards}></Board>
       </header>
     </div>
   );
