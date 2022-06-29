@@ -1,30 +1,19 @@
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
 .App {
     text-align: center;
 }
 
-.App-logo {
-    height: 40vmin;
-    pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-    .App-logo {
-        animation: App-logo-spin infinite 20s linear;
-    }
-}
-
 .App-header {
-    background-color: #282c34;
-    min-height: 100vh;
+    background-color: #f6f8fa;
     display: flex;
     flex-direction: column;
-    align-items: center;
+    align-items: start;
     justify-content: center;
     font-size: calc(10px + 2vmin);
-    color: white;
+    color: rgb(5, 5, 5);
 }
 
-body {
+.body {
     color: white;
 }
 

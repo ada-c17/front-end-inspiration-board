@@ -8,13 +8,17 @@ function App() {
         
       </header>
       <body>
-        <div>
+        <div class="board">
           <h2>Boards</h2>
+          <ol>
+            <li>vida</li>
+            <li>Nish</li>
+          </ol>
         </div>
-        <div>
+        <div class="selected-board">
           <h2>Selected Boards</h2>
         </div>
-        <div>
+        <div class="New-board">
           <h2>Create a New Board</h2>
         </div>
 
