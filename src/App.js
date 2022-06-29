@@ -1,11 +1,10 @@
 import "./App.css";
-import Home from "./components/Home.js";
 
 function App() {
   return (
     <div className="App">
       <main>
-        <Home />
+        <h1>Inspiration from the OtterSpace</h1>
       </main>
       <footer>
         &copy; 2022 Ada Developers Academy ✨ by Coders from the OtterSpace ✨
