@@ -1,14 +1,11 @@
 import React from "react";
 
-const Board = () => {
-  const board = { board_id: 1, title: "pick-me-up", owner: "Ada," };
-
+const Board = (props) => {
   return (
     <div>
-      <h2>BOARDS</h2>
       <ul>
         <li>
-          {board.title} Owner: {board.owner}
+          {props.title} Owner: {props.owner}
         </li>
       </ul>
     </div>
