@@ -25,6 +25,5 @@ function App() {
     </div>
   );
 }
-import CardForm from "./components/CardForm";
 
 export default App;
