@@ -1,5 +1,6 @@
 import "./App.css";
 import Board from "./components/Board";
+import BoardForm from "./components/BoardForm";
 
 function App() {
   return (
@@ -7,7 +8,7 @@ function App() {
       <header className="App-header">Inspiration Board</header>
       <main>
         <div>
-          <Board />
+          <Board /> <BoardForm />
         </div>
       </main>
     </div>
