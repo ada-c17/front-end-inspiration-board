@@ -1,6 +1,7 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import "./App.css";
 import "bootstrap/dist/css/bootstrap.min.css";
+import { faHeart } from "@fortawesome/free-regular-svg-icons";
 import BoardList from "./components/BoardList";
 
 const boardData = [
@@ -8,11 +9,13 @@ const boardData = [
     board_id: 1,
     title: "Mow the lawn",
     owner: "Ada",
+    cards: [1, 3],
   },
   {
     board_id: 2,
     title: "Cook Pasta",
     owner: "Ada",
+    cards: [2],
   },
 ];
 
@@ -32,7 +35,11 @@ const cardData = [
 const App = () => {
   return (
     <div className="App">
-      <BoardList boardData={boardData} cardData={cardData} />
+      <BoardList
+        boardData={boardData}
+        cardData={cardData}
+        likeHeart={faHeart}
+      />
     </div>
   );
 };

@@ -1,11 +1,12 @@
 import React from "react";
 import CardsList from "./CardsList";
+import "./stylesheet/Board.css";
 
-const Board = ({ cardData }) => {
+const Board = ({ likeHeart, cards, cardData }) => {
   return (
-    <div>
-      <CardsList cardData={cardData} />
-    </div>
+    <li>
+      <CardsList cardData={cardData} boardCards={cards} likeHeart={likeHeart} />
+    </li>
   );
 };
 
