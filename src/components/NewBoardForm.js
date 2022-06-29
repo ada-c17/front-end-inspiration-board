@@ -8,28 +8,13 @@ const kDefaultFormState = {
 const NewBoardForm = () => {
   const [formFields, setFormFields] = useState(kDefaultFormState);
 
-  const onTitleChange = (event) => {
-    console.log(event);
-    setFormFields({
-      ...formFields,
-      title: event.target.value,
-    });
-  };
+  const handleChange = (event) => {
+    const fieldName = event.target.name;
+    const fieldValue = event.target.value;
 
-  const onCreatorChange = (event) => {
-    setFormFields({
-      ...formFields,
-      creator: event.target.value,
-    });
+    const newFormFields = { ...formFields, [fieldName]: fieldValue };
+    setFormFields(newFormFields);
   };
-  // this was setting state one at a time in seemingly separate objects
-  // const handleChange = (event) => {
-  //   const fieldName = event.target.name;
-  //   const fieldValue = event.target.value;
-
-  //   const newFormFields = { ...FormData, [fieldName]: fieldValue };
-  //   setFormFields(newFormFields);
-  // };
 
   return (
     <div className="NewBoardForm">
@@ -41,7 +26,7 @@ const NewBoardForm = () => {
             type="text"
             name="title"
             value={formFields.title}
-            onChange={onTitleChange}
+            onChange={handleChange}
           ></input>
         </div>
         <div>
@@ -50,7 +35,7 @@ const NewBoardForm = () => {
             type="text"
             name="creator"
             value={formFields.creator}
-            onChange={onCreatorChange}
+            onChange={handleChange}
           ></input>
         </div>
         <div>
