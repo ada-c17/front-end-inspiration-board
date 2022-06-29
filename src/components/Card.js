@@ -6,7 +6,7 @@ const Card = (props) => {
     <div className="NewCard">
       <section className="message">
         <p>{props.message}</p>
-        <p> props.likes</p>
+        <p> props.likeCount</p>
         <button>+1</button>
         <button>Delete</button>
       </section>
@@ -19,7 +19,7 @@ Card.propTypes = {
   board: PropTypes.string.isRequired,
   message: PropTypes.string.isRequired,
   cardId: PropTypes.number.isRequired,
-  likes: PropTypes.number.isRequired,
+  likeCount: PropTypes.number.isRequired,
 };
 
 export default Card;

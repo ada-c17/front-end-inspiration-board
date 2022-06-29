@@ -23,14 +23,36 @@ html{
 
 .create-board{
   background-color: #f3f3f3;
-  padding: .75em;
-  border-radius: 10px;
+  padding: .9em;
+  border-radius: 15px;
   font-family: 'Courier New';
 }
 
 .choose-board{
   background-color: #f3f3f3;
+  padding: .9em;
+  border-radius: 15px;
+  font-family: 'Courier New';
+}
+
+.InspoContainers{
+  display: flex;
+  justify-content: space-evenly;
+}
+
+
+.newBoardForm{
+  background-color: #f3f3f3;
   padding: .75em;
   border-radius: 10px;
-  font-family: 'Courier New';
+  width: 300px;
+  height: 450px;
+
+}
+.inspoList{
+  background-color: #f3f3f3;
+  padding: .75em;
+  border-radius: 10px;
+  width: 300px;
+  height: 450px;
 }

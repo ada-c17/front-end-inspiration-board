@@ -1,4 +1,5 @@
 import "./App.css";
+// import { BrowserRouter as Router, Routes } from "react-router-dom";
 
 function App() {
   return (
@@ -11,7 +12,16 @@ function App() {
           <p className="choose-board">Choose an inspiration board</p>
         </section>
       </header>
-      <main></main>
+      <main>
+        <div className="InspoContainers">
+          <section className="newBoardForm">
+            <p>hi</p>
+          </section>
+          <section className="inspoList">
+            <p>Bye</p>
+          </section>
+        </div>
+      </main>
     </div>
   );
 }
