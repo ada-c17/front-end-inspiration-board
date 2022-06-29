@@ -1,6 +1,6 @@
 import logo from "./logo.svg";
 import "./App.css";
-// This is a commment for Jodi to force a push
+
 function App() {
   return (
     <div className="App">
