@@ -1,7 +1,14 @@
 import "./board.css";
+import React from 'react';
 
-function Board() {
-  return <div></div>;
-}
+const Board = (props) => {
+
+  return (
+
+    <li>{props.title}</li>
+  );
+};
+
+
 
 export default Board;

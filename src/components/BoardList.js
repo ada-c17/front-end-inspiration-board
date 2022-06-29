@@ -1,27 +1,23 @@
-import React from "react";
-import Board from "./Board";
-import PropTypes from "prop-types";
-import "./boardlist.css";
+import React from 'react';
+import Board from './Board';
+import PropTypes from 'prop-types';
 
-const BoardList = (props) => {
-  const boardComponents = props.boards.map((board) => {
-    return (
-      <section>
+const BoardList = ({ boards }) => {
+  const getBoardListJSX = (boards) => {
+    return boards.map((board) => {
+      return (
         <Board
+          key={board.id}
           id={board.id}
-          owner={board.owner}
           title={board.title}
-          onUpdate={props.onUpdateBoard}
-        ></Board>
-      </section>
-    );
-  });
-  return (
-    <section>
-      <ul className="">{boardComponents}</ul>
-    </section>
-  );
+          owner={board.owner}
+        />
+      );
+    });
+  };
+  return <ul>{getBoardListJSX(boards)}</ul>;
 };
+
 
 BoardList.propTypes = {
   boards: PropTypes.arrayOf(
@@ -31,5 +27,9 @@ BoardList.propTypes = {
       title: PropTypes.string.isRequired,
     })
   ),
-  onUpdateBoard: PropTypes.func.isRequired,
+  // onUpdateBoard: PropTypes.func.isRequired,
 };
+
+
+
+export default BoardList;
