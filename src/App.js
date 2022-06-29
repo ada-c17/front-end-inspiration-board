@@ -7,40 +7,31 @@ import Board from './components/Board.js';
 
 function App() {
   const [boardsData, setBoardsData] = useState([]);
-  const URL = 'http://localhost:3000/boardsData';
-  // const [selectedBoard, setSelectedBoard] = useState({
-  //   title: '',
-  //   owner: '',
-  //   board_id: null
-  // });
+  const URL = 'http://localhost:5000/boards';
+  // when we first load 
+  const [selectedBoard, setSelectedBoard] = useState({
+    title: '',
+    owner: '',
+    board_id: null
+  });
   useEffect(() => {
     axios.get(URL)
     .then((res) => {
-      const newBoards = res.data.map((board) => {
-        return {
-          title: board.title,
-          owner: board.owner,
-          board_id: null
-        };
+      setBoardsData(res.data);
       });
-      setBoardsData(newBoards);
-    })
-    .catch((err) => {
-      console.log(err);
-    });
   }, []);
 
-  // const selectBoard = (board) => { setSelectedBoard(board) };
+  const selectBoard = (board) => { setSelectedBoard(board) };
 
-  // const boardsElements = boardsData.map((board) => {
-  //   return (<li>
-  //     <Board board={board} onBoardSelect={selectBoard}></Board>
-  //   </li>)
-  // });
+  const boardsElements = boardsData.map((board) => {
+    return (<li>
+      <Board board={board} onBoardSelect={selectBoard}></Board>
+    </li>)
+  });
 
-  const createNewBoard = () => {
+  const createNewBoard = (newBoard) => {
     axios
-    .get(URL)
+    .post(`${URL}`, newBoard)
     .then((res) => {
       console.log('response', res.data.board);
       const boards = [...boardsData];
@@ -51,24 +42,8 @@ function App() {
     });
   }
 
-  // const [isBoardFormVisible, setIsBoardFormVisible] = useState(true);
-  // const toggleNewBoardForm = () => {setIsBoardFormVisible(!isBoardFormVisible)}
-
-  // const deleteAll = () => {
-  //     axios.delete(URL)
-  //     .then((response) => {
-  //       console.log('response', response.data  );
-  //       setBoardsData([response.data.default_board]);
-  //       setSelectedBoard({
-  //         title: '',
-  //         owner: '',
-  //         board_id: null
-  //       });
-  //     }).catch((error) => {
-  //       console.log('Error:', error);
-  //       alert('Something went wrong! :(');
-  //     });
-  // }
+  const [isBoardFormVisible, setIsBoardFormVisible] = useState(true);
+  const toggleNewBoardForm = () => {setIsBoardFormVisible(!isBoardFormVisible)}
 
   return (
     <div>
@@ -76,18 +51,18 @@ function App() {
           <section>
             <h2>Boards</h2>
             <ol className="board_list">
-              {/* {boardsElements} */}
+              {boardsElements}
             </ol>
           </section>
           <section>
             <h2>Selected Board</h2>
-            {/* <p>{selectedBoard.board.id}</p> */}
+            <p>{selectedBoard.board_id ? `${selectedBoard.title} - ${selectedBoard.owner}` : 'Select a Board from the Board List!'}</p>
           </section>
           <section>
             <h2>Create a New Board</h2>
-            <NewBoardForm />
+            {isBoardFormVisible ? <NewBoardForm createNewBoard={createNewBoard}></NewBoardForm> : ''}
+            <span onClick={toggleNewBoardForm} className='hideForm__button'>{isBoardFormVisible ? 'Hide New Board Form' : 'Show New Board Form'}</span>
           </section>
-          
     </div>
   );
 }
