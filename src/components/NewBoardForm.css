@@ -1,0 +1,13 @@
+
+[type=form]{
+	margin: 5px !important;
+  }
+
+.btn#submit{
+	background-color: rgb(78, 169, 78);
+	min-width: 100% !important;
+  }
+
+form{
+	margin: 5px;
+}
