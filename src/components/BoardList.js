@@ -33,6 +33,8 @@ const BoardList = (props) => {
 // (these board objects should reflect boards in database)
 BoardList.propTypes = {
   boards: PropTypes.array.isRequired,
+  // function that will execute when user selects a board (should display board)
+  selectBoard: PropTypes.func.isRequired,
 };
 
 export default BoardList;
