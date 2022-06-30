@@ -8,6 +8,7 @@ function App() {
   const defaultBoards = [];
   const defaultCards = [];
 
+  const url = "https://powerful-lake-89201.herokuapp.com";
   // useState for Board
   const [boards, setBoards] = useState(defaultBoards);
   // useState for Card
@@ -19,12 +20,11 @@ function App() {
   useEffect(() => {
     // axios call, after promise is completed or rejected:
     axios
-      .get("")
+      .get(`${url}/boards`)
       .then((response) => {
-        const updatedBoards = [...defaultBoards];
         // iterate through each board and append to defaultBoards
-        response.data.map((board) => {
-          updatedBoards.append(board);
+        const updatedBoards = response.data.map((board) => {
+          return [...defaultBoards, board];
         });
         setBoards(updatedBoards);
       })
@@ -38,12 +38,11 @@ function App() {
   // get all cards from user chosen board -> pass down to boardlist
   const getCardsFromOneBoard = (boardId) => {
     axios
-      .get(`/${boardId}`)
+      .get(`${url}/boards/${boardId}/cards`)
       .then((response) => {
-        const updatedCards = [...defaultCards];
         // iterate through each card and append to defaultCards
-        response.data.map((card) => {
-          updatedCards.append(card);
+        const updatedCards = response.data.map((card) => {
+          return [...defaultCards, card];
         });
         setCards(updatedCards);
         setChosenBoard(boardId);
@@ -53,13 +52,13 @@ function App() {
       });
   };
 
-  // delete board
+  // delete board (need to add endpoints)
   const deleteBoard = (boardId) => {
     axios
-      .delete(`/${boardId}`)
+      .delete(`${url}/boards/${boardId}`)
       .then(() => {
         const updatedBoards = boards.filter(
-          (board) => board.board_id != boardId
+          (board) => board.board_id !== boardId
         );
         setBoards(updatedBoards);
       })
@@ -71,9 +70,9 @@ function App() {
   // delete card
   const deleteCard = (boardId, cardId) => {
     axios
-      .delete(`/${boardId}/${cardId}`) // ???
+      .delete(`${url}/cards/${cardId}`)
       .then(() => {
-        const updatedCards = cards.filter((card) => card.card_id != cardId);
+        const updatedCards = cards.filter((card) => card.card_id !== cardId);
         setCards(updatedCards);
       })
       .catch((e) => {
@@ -84,9 +83,9 @@ function App() {
   // onformsubmitboard
   const onFormSubmitBoard = (requestBody) => {
     axios
-      .post("", requestBody)
+      .post(`${url}/boards`, requestBody)
       .then((response) => {
-        newBoard = {
+        const newBoard = {
           board_id: response.id,
           title: requestBody.title,
           owner: requestBody.owner,
@@ -99,11 +98,11 @@ function App() {
   };
 
   // on formsubmitcard
-  const onFormSubmitCard = (requestBody) => {
+  const onFormSubmitCard = (boardId, requestBody) => {
     axios
-      .post("", requestBody)
+      .post(`${url}/boards/${boardId}/card`, requestBody)
       .then((response) => {
-        newCard = {
+        const newCard = {
           card_id: response.id,
           message: requestBody.message,
           like_count: requestBody.like_count,
@@ -136,7 +135,14 @@ function App() {
 
   // default landing page
   if (chosenBoard === null) {
-    return <BoardsView></BoardsView>;
+    return (
+      <BoardsView
+        boardData={boards}
+        selectoBoardCallback={getCardsFromOneBoard}
+        deleteBoardCallback={deleteBoard}
+        makeBoardCallback={onFormSubmitBoard}
+      ></BoardsView>
+    );
   }
   // render cardsview when user choose certain board
   // need to add logic to set chosenBoard state back to null when user clicked 'x' button in cardsview
