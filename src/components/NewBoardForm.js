@@ -1,41 +1,57 @@
 import React from "react";
+import { useState } from "react";
 import "./Board.js";
 import PropTypes from "prop-types";
 
-const NewBoardForm = ({ boardId, owner, title }) => {
-  const handleBoard = () => {
-    const updatedEntry = {
-      boardId: boardId,
-      owner: owner,
-      title: title,
-    };
+//change CSS
 
-    let x = document.getElementsByClassName("board");
-    if (x.style.display === "none") {
-      x.style.display = "block";
-    } else {
-      x.style.display = "none";
-    }
-    handleBoard(updatedEntry);
+const NewBoardForm = ({ addBoardCallback }) => {
+  const [boardData, setBoardData] = useState({
+    title: "",
+    owner: "",
+  });
+
+  const submitBoardData = (e) => {
+    e.preventDefault();
+
+    addBoardCallback(boardData);
+    setBoardData({ title: "", owner: "" });
+  };
+
+  const handleChange = (e) => {
+    setBoardData({ ...boardData, [e.target.name]: e.target.value });
   };
 
   return (
-    <div className="new-entry local">
-      <button className="board" onClick={handleBoard}>
-        Show/Hide Board
-      </button>
-      <h2 className="entry-name">{owner}</h2>
-      <section className="entry-bubble">
-        <p>{title}</p>
+    <form onSubmit={submitBoardData} className="new-board__form">
+      <section>
+        <h2>Add a Form</h2>
+        <div className="new-board__fields">
+          <label htmlFor="name">Title</label>
+          <input
+            name="title"
+            id="title"
+            value={boardData.title}
+            onChange={handleChange}
+          />
+          <label htmlFor="name">Owner</label>
+          <input
+            name="owner"
+            id="owner"
+            value={boardData.owner}
+            onChange={handleChange}
+          />
+          <button className="button new-board__submit" type="submit">
+            Add Board
+          </button>
+        </div>
       </section>
-    </div>
+    </form>
   );
 };
 
 NewBoardForm.propTypes = {
-  boardId: PropTypes.number.isRequired,
-  owner: PropTypes.string.isRequired,
-  title: PropTypes.string.isRequired,
+  addBoardCallback: PropTypes.func.isRequired,
 };
 
 export default NewBoardForm;
