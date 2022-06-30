@@ -2,11 +2,35 @@
     {
     "board_id": 1,
     "title": "my dream farm",
-    "owner" : "philomena"
+    "owner" : "philomena",
+    "cards" : [
+      {
+      "card_id": 1,
+      "message": "i love chickens",
+      "likesCount" : 0
+      },
+      {
+        "card_id": 2,
+        "message": "i also love ducks",
+        "likesCount": 0
+      }
+    ]
     },
     {
       "board_id": 2,
       "title": "my dream outfit",
-      "owner": "sujin"
+      "owner": "sujin",
+      "cards" : [
+        {
+        "card_id": 1,
+        "message": "i love dresses",
+        "likesCount" : 0
+        },
+        {
+          "card_id": 2,
+          "message": "i also love skirts",
+          "likesCount": 0
+        }
+      ]
     }
   ]
