@@ -6,8 +6,8 @@ const BoardList = ({ boards }) => {
   const boardComponents = boards.map((board) => {
     return (
       <Board
-        key={board.board_id}
-        id={board.board_id}
+        key={board.boardId}
+        boardId={board.boardId}
         title={board.title}
         owner={board.owner}
       />
@@ -18,8 +18,7 @@ const BoardList = ({ boards }) => {
 };
 
 BoardList.propTypes = {
-  cards: PropTypes.arrayOf(PropTypes.object),
-  onUpdate: PropTypes.func,
+  boards: PropTypes.arrayOf(PropTypes.object),
 };
 
 export default BoardList;

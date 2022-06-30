@@ -2,15 +2,15 @@ import React from "react";
 import PropTypes from "prop-types";
 import Card from "./Card";
 
-const CardList = ({ cards }) => {
+const CardList = ({ cards, onUpdateLikes }) => {
   const cardComponents = cards.map((card) => {
     return (
       <Card
         key={card.card_id}
-        id={card.card_id}
+        card_id={card.card_id}
         message={card.message}
         likes_count={card.likes_count}
-        onUpdate={cards.onUpdate}
+        onUpdate={onUpdateLikes}
       />
     );
   });
@@ -26,7 +26,7 @@ CardList.propTypes = {
       likes_count: PropTypes.number.isRequired,
     })
   ),
-  onUpdate: PropTypes.func.isRequired,
+  onUpdateLikes: PropTypes.func.isRequired,
 };
 
 export default CardList;

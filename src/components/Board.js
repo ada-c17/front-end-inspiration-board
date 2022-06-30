@@ -1,11 +1,10 @@
 import React from "react";
 import PropTypes from "prop-types";
 
-const Board = ({ board_id, owner, title }) => {
+const Board = ({ boardId, owner, title }) => {
   return (
     <section>
       <ul>
-        {board_id}
         {title} by {owner}
       </ul>
     </section>
@@ -13,7 +12,7 @@ const Board = ({ board_id, owner, title }) => {
 };
 
 Board.propTypes = {
-  board_id: PropTypes.number.isRequired,
+  boardId: PropTypes.number.isRequired,
   title: PropTypes.string.isRequired,
   owner: PropTypes.string.isRequired,
 };
