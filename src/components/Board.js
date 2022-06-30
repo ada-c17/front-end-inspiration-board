@@ -18,4 +18,9 @@ const Board = ({ id, title, owner, cards }) => {
   );
 };
 
+// Board.propTypes = {
+//   id:
+//   title:
+// };
+
 export default Board;
