@@ -3,7 +3,6 @@
   }
 
 .btn#submit{
-	background-color: rgb(33, 52, 144);
 	min-width: 100% !important;
   }
 
@@ -31,7 +30,6 @@ Form.Check {
 	width: 80%;
 	margin-left: 12%;
 	/* background-color: bisque; */
-	background-image: linear-gradient(to right, rgb(155, 216, 57) , yellow);
 	box-shadow: 5px 10px rgb(9, 81, 9);
 }
 
@@ -63,7 +61,6 @@ input {
 	border-radius: 8px;
 	width: 30%;
 	height: 20vh;
-	background-image: linear-gradient(to top, rgb(155, 216, 57) , yellow);
 }
 
 form {
@@ -80,12 +77,4 @@ form {
 
 .blue {
 	color: cornflowerblue;
-}
-
-form {
-	background-image: linear-gradient(to right, rgb(155, 216, 57) , yellow);
-}
-
-.input {
-	background-color: bisque;
 }

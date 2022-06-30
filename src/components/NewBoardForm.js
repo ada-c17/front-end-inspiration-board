@@ -1,6 +1,6 @@
 import {React, useState} from 'react';
 import PropTypes from 'prop-types';
-import {DropdownButton, Form, Button, Row, Col} from 'react-bootstrap';
+import {DropdownButton, Form, Button} from 'react-bootstrap';
 import './NewBoardForm.css'
 
 
