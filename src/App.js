@@ -4,6 +4,9 @@ import axios from "axios";
 import NewBoardForm from "./components/NewBoardForm";
 import BoardsList from "./components/BoardsList";
 import HideForm from "./components/HideForm";
+import NewCardForm from "./components/NewCardForm";
+
+
 
 function App() {
   const selectedBoardData = {
@@ -18,6 +21,7 @@ function App() {
   const [displayForm, setDisplayForm] = useState(true);
   // keeping tracking on selected board state
   const [boardSelected, setBoardSelected] = useState(selectedBoardData);
+  const [cardsData, setCardsData] = useState([]);
   const URL = "https://get-inspired-c17.herokuapp.com/boards";
 
   // get all boards from DB
@@ -76,6 +80,19 @@ function App() {
     setBoardSelected(chosenBoard);
   };
 
+  const postNewCard = (message) => {
+    axios
+    .post(`${URL}${boards.id}/cards`,{message})
+    .then((response) => {
+        const cards = [...cardsData];
+        cards.push(response.data.card);
+        setCardsData(cards);
+    })
+    .catch((error) => {
+        console.log('Error:', error);
+        alert('Couldn\'t create a new card.');
+    });
+};
   return (
     <div className="App">
       <header className="App-header">
@@ -111,6 +128,12 @@ function App() {
           ) : (
             <HideForm flipFormCallBack={flipDisplayForm} />
           )}
+        </div>
+        <div>
+          <h2>Card list</h2>
+        </div>
+        <div>
+          <NewCardForm postNewCard={postNewCard}></NewCardForm>
         </div>
         </section>
       </div>
