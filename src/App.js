@@ -1,7 +1,8 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import axios from "axios";
 import "./App.css";
-import Board from "../src/components/Board";
+import Board from "./components/Board";
+import BoardDropdown from "./components/BoardDropdown";
 
 const kBaseUrl = "https://mission-inspirational-2.herokuapp.com";
 
@@ -22,10 +23,46 @@ const increaseLike = async (id) => {
 };
 
 function App() {
-  // Should we store board data here?
+  // Functions and variables for the dropdown functionality
+  const [boards, setBoards] = useState([]); // list of all the board dicts
+  const [boardOption, setBoardOption] = useState("Choose a Board");
+
+  const showChosenBoard = (boardTitle) => {
+    setBoardOption(boardTitle);
+  };
+
+  const getBoardOptions = () => {
+    axios
+      .get(`${kBaseUrl}/boards`)
+      .then((response) => {
+        setBoards(response.data);
+      })
+      .catch((error) => {
+        console.log(error);
+        throw new Error("Unable to get board options");
+      });
+  };
+
+  useEffect(() => {
+    getBoardOptions();
+  }, []);
+
+  // Just a way to double check the state has updated; can delete later
+  useEffect(() => {
+    console.log(boardOption);
+  }, [boardOption]);
+
+  // End functions for dropdown functionality
+
   return (
     <div className="App">
-      <header></header>
+      <header>
+        <BoardDropdown
+          boards={boards}
+          boardOption={boardOption}
+          onDropdownChange={showChosenBoard}
+        />
+      </header>
       <main>
         <Board cardLike={increaseLike} />
       </main>
