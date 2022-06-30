@@ -1,21 +1,47 @@
 import React from "react";
-import Board from "./Board";
+import { useNavigate } from "react-router-dom";
 
-const BoardList = ({ boardData, cardData }) => {
-  const getBoardList = (boardData) => {
-    return boardData.map((board) => {
-      return (
-        <Board key={board.board_id} title={board.title} owner={board.owner} />
-      );
-    });
+const BoardList = ({ boardData, cardData, likeHeart }) => {
+  let navigate = useNavigate();
+
+  const createBoard = (board) => {
+    // console.log(board);
+    return (
+      <li>
+        <a
+          href="#"
+          onClick={() => {
+            navigate(`boards/${board.boardId}`);
+          }}
+        >
+          {board.title}
+        </a>
+      </li>
+      /* <Board
+        key={board.board_id}
+        title={board.title}
+        owner={board.owner}
+        cards={board.cards}
+        cardData={cardData}
+        likeHeart={likeHeart}
+      /> */
+    );
   };
 
-  console.log(boardData);
-  return (
-    <div>
-      <ul>{getBoardList}</ul>
-    </div>
-  );
+  // const getBoards = (e, board) => {
+  //   console.log(e);
+  //   return (
+  //     <Board
+  //       key={board.board_id}
+  //       title={board.title}
+  //       owner={board.owner}
+  //       cards={board.cards}
+  //       cardData={cardData}
+  //       likeHeart={likeHeart}
+  //     />
+  //   );
+  // };
+  return <ul>{boardData.map(createBoard)}</ul>;
 };
 
 export default BoardList;
