@@ -1,7 +1,7 @@
 import "./App.css";
 import { Link } from "react-router-dom";
 import React, { useEffect, useState } from "react";
-import axios from 'axios';
+import axios from "axios";
 
 function App() {
   // const [data] = useState([
@@ -23,11 +23,15 @@ function App() {
   }, []);
 
   const getBoardsFromAPI = () => {
-    axios.get("http://127.0.0.1:5000/boards")
-         .then((response) => {setBoards(response.data)})
-         .catch((error) => {console.log("Oh no!!!")});
-
-  }
+    axios
+      .get("http://127.0.0.1:5000/boards")
+      .then((response) => {
+        setBoards(response.data);
+      })
+      .catch((error) => {
+        console.log("Oh no!!!");
+      });
+  };
 
   return (
     <div className="App">
@@ -35,7 +39,7 @@ function App() {
       <ul className="list">
         {boards.map((item) => (
           <li key={item.id} className="list-item">
-            <Link to={item.id}>{item.title}</Link>
+            <Link to="${item.id}">{item.title}</Link>
           </li>
         ))}
       </ul>
