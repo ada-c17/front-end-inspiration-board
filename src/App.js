@@ -33,6 +33,15 @@ function App() {
       });
   };
 
+  // const addCard = (cardData) => {
+  //   axios
+  //     .post(`${URL}/cards`, cardData)
+  //     .then(getCards())
+  //     .catch((err) => {
+  //       console.log(err);
+  //     });
+  // };
+
   useEffect(getBoards, []);
 
   return (

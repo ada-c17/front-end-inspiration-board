@@ -1,7 +1,41 @@
 import "./cardform.css";
+import { useState } from "react";
 
-function CardForm() {
-  return <div></div>;
+function CardForm(props) {
+  const defaultCard = {
+    message: "",
+  };
+
+  const [formData, setFormData] = useState(defaultCard);
+
+  const onFormChange = (event) => {
+    const stateName = event.target.name;
+    const inputValue = event.target.value;
+    const newFormData = { ...formData };
+    newFormData[stateName] = inputValue;
+    setFormData(newFormData);
+  };
+
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    props.addCardCallback(formData);
+  };
+
+  return (
+    <form onSubmit={handleSubmit}>
+      <input
+        type="text"
+        name="message"
+        value={formData.message}
+        onChange={onFormChange}
+      ></input>
+      <input type="submit" value="Add Card"></input>
+    </form>
+  );
 }
+
+CardForm.propTypes = {
+  addCardCallback: PropTypes.func.isRequired,
+};
 
 export default CardForm;
