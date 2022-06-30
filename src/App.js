@@ -2,16 +2,37 @@ import "./App.css";
 import Board from "./components/Board";
 import BoardForm from "./components/BoardForm";
 import BoardList from "./components/BoardList";
-import { useState } from "react";
+import {useState, useEffect} from "react";
+import axios from "axios";
 
 function App() {
-  const [boards, setBoards] = useState([
-    { board_id: 1, title: "pick-me-up", owner: "Ada" },
-    { board_id: 2, title: "notes to code to", owner: "Ada" },
-  ]);
+  const [boards, setBoards] = useState([])
+    
+  const URL = "https://inspiration-board-eota.herokuapp.com/boards";
+
+    const fetchBoards = () => {
+      axios
+      .get(URL)
+      .then((res) => {
+        const newBoards = res.data.map((board) => {
+          return {
+            board_id: board.board_id,
+            title: board.title,
+            owner: board.owner,
+          }
+        })
+        setBoards(newBoards);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+    };
+
+  useEffect(fetchBoards, []);
+  
 
   const deleteBoard = (id) => {
-    console.log("hello");
+    console.log("hello")
     const newBoards = [];
     for (const board of boards) {
       if (board.board_id !== id) {
@@ -19,15 +40,7 @@ function App() {
       }
     }
     setBoards(newBoards);
-  };
-
-  const addBoard = (boardInfo) => {
-    console.log("hellooo");
-    const newBoards = [];
-    newBoards.push({ boardInfo });
-    setBoards(newBoards);
-  };
-
+  }
   return (
     <div className="App">
       <div className="App-wrapper">
@@ -36,7 +49,7 @@ function App() {
           <div className="Boards">
             <BoardList boards={boards} deleteBoard={deleteBoard} />
             <section className="Board-form">
-              <BoardForm addBoard={addBoard} />
+              <BoardForm />
             </section>
           </div>
           <div className="Board-display"></div>
