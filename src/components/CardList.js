@@ -14,10 +14,6 @@ const CardList = (props) => {
                 </Card>
             </li>
         )
-        // [
-        // <li><Card message={cardData.map} likes="like value goes here"></Card></li>,
-        // <li><Card message="text goes here" likes="like value goes here"></Card></li>
-    // ];
     });
 
     return (
