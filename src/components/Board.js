@@ -24,7 +24,9 @@ function Board() {
   });
   return (
     <div className="card">
-      <Link to="/">Return to the Home Page</Link>
+      <Link to="/" className="HomeLink">
+        Return Home
+      </Link>
       <ul className="list">
         {board_example.cards.map((item) => (
           <li key={item.id} className="list-item">
