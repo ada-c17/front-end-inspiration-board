@@ -1,8 +1,8 @@
-import React from 'react';
-import Board from './Board';
-import PropTypes from 'prop-types';
+import React from "react";
+import Board from "./Board";
+import PropTypes from "prop-types";
 
-const BoardList = ({ boards }) => {
+const BoardList = ({ boards, selectBoardCallback }) => {
   const getBoardListJSX = (boards) => {
     return boards.map((board) => {
       return (
@@ -11,13 +11,13 @@ const BoardList = ({ boards }) => {
           id={board.id}
           title={board.title}
           owner={board.owner}
+          selectBoardCallback={selectBoardCallback}
         />
       );
     });
   };
   return <ul>{getBoardListJSX(boards)}</ul>;
 };
-
 
 BoardList.propTypes = {
   boards: PropTypes.arrayOf(
@@ -29,7 +29,5 @@ BoardList.propTypes = {
   ),
   // onUpdateBoard: PropTypes.func.isRequired,
 };
-
-
 
 export default BoardList;

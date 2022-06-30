@@ -11,6 +11,22 @@ function App() {
   const [boards, setBoards] = useState([]);
   const URL = "https://peaceful-shelf-16152.herokuapp.com/";
 
+  const defaultBoard = {
+    title: "",
+    owner: "",
+    id: 0,
+  };
+  const [selectedBoard, setSelectedBoard] = useState(defaultBoard);
+
+  const selectBoard = (id) => {
+    for (const board of boards) {
+      if (board.id === id) {
+        setSelectedBoard(board);
+      }
+    }
+    // print title and owner on page
+  };
+
   const getBoards = () => {
     axios.get(`${URL}/boards`).then((res) => {
       const newBoards = res.data.map((board) => {
@@ -41,10 +57,12 @@ function App() {
       <main>
         <div>
           <h2>Boards</h2>
-          <BoardList boards={boards} />
+          <BoardList boards={boards} selectBoardCallback={selectBoard} />
         </div>
         <h2>Selected Board</h2>
-        <Board />
+        <p>
+          {selectedBoard.title} - {selectedBoard.owner}
+        </p>
         <h2>Cards for Pick-Me-Up Quotes</h2>
         <CardList />
         <h2>Create a New Board</h2>
