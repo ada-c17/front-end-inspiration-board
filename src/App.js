@@ -25,6 +25,7 @@ function App() {
         setSelectedBoard(board);
       }
     }
+    getCards();
   };
 
   const getBoards = () => {
@@ -50,9 +51,11 @@ function App() {
   };
 
   const getCards = () => {
-    const board_id_body = { board_id: selectedBoard.id };
-    console.log(selectedBoard.id);
-    axios.get(`${URL}/cards`, board_id_body).then((res) => {
+    axios.get(`${URL}/cards`, {
+      params: {
+        board_id: selectedBoard.id
+      }
+    }).then((res) => {
       const newCards = res.data.map((card) => {
         return {
           message: card.message,
