@@ -12,19 +12,12 @@ function App() {
 
   const URL = 'http://localhost:5000/boards';
   // when we first load 
-  // const [selectedBoard, setSelectedBoard] = useState({
-  //   title: '',
-  //   owner: '',
-  //   board_id: null
-  // });
-  // // Initial render when component is first mounted
-  // useEffect(() => {
-  //   axios.get(URL)
-  //   .then((res) => {
-  //     setBoardsData(res.data);
-  //     });
-  // }, []);
-
+  const [selectedBoard, setSelectedBoard] = useState({
+    title: '',
+    owner: '',
+    board_id: null
+  });
+  
   const fetchBoards = () => {
     axios
       .get(URL)
@@ -53,18 +46,19 @@ function App() {
     </li>)
   });
 
-  const createNewBoard = (newBoard) => {
+  const createNewBoard = (boardInfo) => {
     axios
-    .post(`${URL}`, newBoard)
-    .then((res) => {
-      console.log('response', res.data.board);
-      const boards = [...boardsData];
-      boards.push(res.data.board);
-      setBoardsData(boards);
-    }).catch((error) => {
-      console.log('Error:', error);
-    });
-  }
+      .post(URL, boardInfo)
+      .then((response) => {
+        if (boardInfo.title && boardInfo.owner) {
+          console.log(response);
+          fetchBoards();
+        }
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
 
   const [isBoardFormVisible, setIsBoardFormVisible] = useState(true);
   const toggleNewBoardForm = () => {setIsBoardFormVisible(!isBoardFormVisible)}
