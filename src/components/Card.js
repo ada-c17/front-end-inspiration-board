@@ -5,6 +5,7 @@ const Card = ({ cardId, message, likesCount, onUpdate }) => {
   const onPlusOneClick = () => {
     const updatedCard = {
       cardId: cardId,
+      message: message,
       likesCount: (likesCount += 1),
     };
 

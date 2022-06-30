@@ -3,7 +3,7 @@ import "./App.css";
 import axios from "axios";
 import BoardList from "./components/BoardList";
 import CardList from "./components/CardList";
-import boardData from "./data/boards.json";
+// import boardData from "./data/boards.json";
 import cardData from "./data/cards.json";
 
 const kBaseUrl = "https://ssh-back-end-inspiration-board.herokuapp.com/boards";
@@ -24,7 +24,7 @@ const getBoardData = () => {
     });
 };
 const App = () => {
-  const [cardData, setLikedData] = useState([]);
+  const [newCards, setLikedData] = useState(cardData);
   const [boardData, setBoardData] = useState([]);
 
   const loadBoards = () => {
@@ -33,29 +33,27 @@ const App = () => {
     });
   };
 
-  const loadCards = () => {
-    getCardData().then((cards) => {
-      setCardData(cards);
-    });
-  };
+  // const loadCards = () => {
+  //   getCardData().then((cards) => {
+  //     setCardData(cards);
+  //   });
+  // };
 
   useEffect(() => {
     loadBoards();
-    loadCards();
+    // loadCards();
   }, []);
 
   const increaseLikeCount = (updatedCard) => {
-    console.log("+1 clicked");
-    cardData.map((card) => {
-      if (card.card_id === updatedCard.card_id) {
-        console.log(`Likes: ${updatedCard.likes_count}`);
+    const updatedLikes = cardData.map((card) => {
+      if (card.cardId === updatedCard.cardId) {
         return updatedCard;
       } else {
         return card;
       }
     });
 
-    setLikedData(newCards);
+    setLikedData(updatedLikes);
   };
 
   return (
@@ -65,7 +63,7 @@ const App = () => {
       </header>
       <main>
         <BoardList boards={boardData} />
-        <CardList cards={cardData} onUpdateLikes={increaseLikeCount} />
+        <CardList cards={newCards} onUpdateLikes={increaseLikeCount} />
       </main>
     </div>
   );
