@@ -22,11 +22,12 @@ const increaseLike = async (id) => {
 };
 
 function App() {
+  // Should we store board data here?
   return (
     <div className="App">
       <header></header>
       <main>
-        <Board likeFx={increaseLike} />
+        <Board cardLike={increaseLike} />
       </main>
       <footer></footer>
     </div>
