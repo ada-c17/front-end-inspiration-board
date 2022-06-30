@@ -8,7 +8,7 @@ const Card = (props) => {
             <li>Card Number: {props.card_id}</li>
             <li>Message: {props.message}</li>
             <li>Likes: {props.likesCount}</li>
-            <button onClick={increaseLikes}>Increase Likes</button>
+            {/* <button onClick={increaseLikes}>Increase Likes</button> */}
         </ul>
     )
 };

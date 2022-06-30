@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 import { useState } from "react";
 
 const NewCardForm = (props) => {
@@ -27,5 +26,3 @@ const NewCardForm = (props) => {
 };
 
 export default NewCardForm;
-=======
->>>>>>> 276d6652902bdc4f9358e77d1a1ad19fc77488d2
