@@ -3,37 +3,32 @@ import {DropdownButton, Form, Button, Row, Col} from 'react-bootstrap';
 import './NewCardForm.css'
 import PropTypes from 'prop-types';
 
-const NewCardForm = ({onAddCard}) => {
+const NewCardForm = ({onAddCard, sBoardId}) => {
 
-  const [cardMessage, setCardMessage] = useState({
+  const [newCardData, setNewCardData] = useState({
     message: '',
   });
 
-  const [isVisible, setIsVisible] = useState(false);
+  const [isInvalidInput, setIsInvalidInput] = useState(
+    {message: false});
+
+  const handleChange = (event) => {setNewCardData({...newCardData, [event.target.name]: event.target.value})};
+
+  const handleClick = (e) => {
+    setIsInvalidInput({
+      message: newCardData.message !== '' ? false : true
+    })
+  }
 
   const addNewCard = (e) => {
     e.preventDefault();
-    onAddCard(cardMessage);
-    setCardMessage('');
+    if (!isInvalidInput.message) {
+      onAddCard(newCardData, sBoardId)
+      setNewCardData({message: ''})
+    } else{
+      console.log('Please input valid data')
+    }
   };
-
-  const handleMessage = (e) => {setCardMessage(e.target.value)};
-
-  // return (
-  //   <section className='container'>
-  //     <h2 class='new-card'>Add a new card</h2>
-  //     <form onSubmit={addNewCard}>
-  //       <label>Message</label>
-  //       <input type='text'
-  //             className={cardMessage.length === 0 || cardMessage.length > 5 ? "input_more_40" : ""}
-  //             value={cardMessage.message}
-  //             onChange={handleMessage}>
-  //       </input>
-  //       <input type='Submit' class='submit'></input>
-  //     </form>
-  //   </section>
-  // )
-
 
 
   return (
@@ -42,11 +37,12 @@ const NewCardForm = ({onAddCard}) => {
         <Form onSubmit={addNewCard}>
           <Form.Group className="mb-3" controlId="formBasicEmail">
             <Form.Label>Message</Form.Label>
-            <Form.Control placeholder="Enter message" className='input'/>
-            <Form.Text onChange={handleMessage}
-                    className={cardMessage.length === 0 || cardMessage.length > 5 ? "input_more_40" : "text-muted"}
-                    value={cardMessage}
-                    type="text">   
+            <Form.Control placeholder="Enter message"
+                          className={newCardData.message.length === 0 || newCardData.message.length > 5 ? "input input_more_40" : "input text-muted"}
+                          onChange={handleChange}
+                          value={newCardData.message}/>
+
+            <Form.Text>   
             {/* className="text-muted" */}
               Please enter a card message!
             </Form.Text>
@@ -82,7 +78,7 @@ const NewCardForm = ({onAddCard}) => {
             </Col>
           </Form.Group>
           </fieldset>
-          <Button variant="success" type="submit" id="submit">
+          <Button variant="success" type="submit" id="submit" onClick={handleClick}>
             Add
           </Button>
 

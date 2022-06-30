@@ -9,7 +9,7 @@ import './App.css';
 function App() {
   // STATE(boardsData: ListOfObjects, selectedBoard: id) 
   const [boardsData, setBoardsData] = useState([]);
-  const [selectedBoard, setSelectedBoard] = useState(null);
+  const [selectedBoard, setSelectedBoard] = useState({});
 
   const URL = 'https://inspo-board-server.herokuapp.com'
 
@@ -46,13 +46,25 @@ function App() {
       console.log(error);
     });
   }
+
+  const addCard = (newCard, boardId) => {
+    axios
+    .post(URL + '/boards/' + {boardId} + '/cards', newCard)
+    .then((response) => {oldBoard => {...oldBoard, cards: [...oldBoard.cards, cards: response.data]}})
+    .catch((error) => {console.log(error)});
+  }
+
+
+  // setSelectedBoard(oldBoard => {{...selectedBoard, cards: [...selectedBoards.cards, newCard]}})
+  //       console.log(response);
+  //       console.log(selectedBoard)
   
   return (
     <main className="App">
       <nav>
       <h1>Inspiration Boards</h1>
       <NewBoardForm onAddBoard = {addBoard}/>
-      <NewCardForm />
+      <NewCardForm onAddCard = {addCard} sBoardId={selectedBoard.boardId}/>
       </nav>
       <BoardList boardsData={boardsData}/>
       <CardList selectedBoard={selectedBoard} boardsData={boardsData}/>
