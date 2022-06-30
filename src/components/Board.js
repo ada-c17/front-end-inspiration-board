@@ -1,8 +1,8 @@
 import React from "react";
 import PropTypes from "prop-types";
-import Card from "./Card";
+// import Card from "./Card";
 
-const Board = ({ board_id, title, owner, cards, onUpdate }) => {
+const Board = (boards) => {
   const cardComponents = cards.map((card) => {
     return (
       <Card
@@ -10,20 +10,23 @@ const Board = ({ board_id, title, owner, cards, onUpdate }) => {
         card_id={card.card_id}
         message={card.message}
         likes_count={card.likes_count}
-        onUpdate={onUpdate}
+        onUpdate={boards.onUpdate}
       />
     );
   });
+
   return (
     <section>
-      <h2>{title}</h2>
+      <h2>
+        {boards.title} by {boards.owner}
+      </h2>
       <ul>{cardComponents}</ul>
     </section>
   );
 };
 
 Board.propTypes = {
-  cards: PropTypes.arrayOf(PropTypes.object).isRequired,
+  cards: PropTypes.arrayOf(PropTypes.object),
   board_id: PropTypes.number.isRequired,
   title: PropTypes.string.isRequired,
   owner: PropTypes.string.isRequired,
