@@ -8,7 +8,9 @@ import NewCardForm from './components/NewCardForm';
 import CardList from './components/CardList';
 
 function App() {
+
   const [boardsData, setBoardsData] = useState([]);
+
   const URL = 'http://localhost:5000/boards';
   // when we first load 
   const [selectedBoard, setSelectedBoard] = useState({
@@ -48,6 +50,25 @@ function App() {
   const [isBoardFormVisible, setIsBoardFormVisible] = useState(true);
   const toggleNewBoardForm = () => {setIsBoardFormVisible(!isBoardFormVisible)}
 
+
+  const cardData = [
+    {
+        card_id: 0,
+        messageData: 'hi',
+        likesData: 5
+    },
+    {
+        card_id: 1,
+        messageData: 'bye',
+        likesData: 10
+    },
+    {
+      card_id: 2,
+      messageData: 'bye bye',
+      likesData: 15
+  }
+];
+
   return (
     <div>
       <h1>Inspiration Board</h1>
@@ -75,7 +96,7 @@ function App() {
           </section>
 
           <section>
-            <CardList></CardList>
+            <CardList cards={cardData}></CardList>
           </section>
     </div>
   );

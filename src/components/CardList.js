@@ -1,22 +1,19 @@
 import Card from './Card';
+import PropTypes from 'prop-types';
 
-const CardList = () => {
+const CardList = (props) => {
 
-    const cardData = [
-        {
-            messageData: 'hi',
-            likesData: 5
-        },
-        {
-            messageData: 'bye',
-            likesData: 10
-        }
-    ];
-
-    const cardComponents = cardData.map(card => {
+    const cardComponents = props.cards.map(card => {
         return (
-            <li><Card message={card.messageData} likes={card.likesData}></Card></li>
-        );
+            <li>
+                <Card 
+                    key={card.card_id}
+                    card_id={card.card_id}
+                    message={card.messageData} 
+                    likes={card.likesData}>
+                </Card>
+            </li>
+        )
         // [
         // <li><Card message={cardData.map} likes="like value goes here"></Card></li>,
         // <li><Card message="text goes here" likes="like value goes here"></Card></li>
@@ -31,6 +28,10 @@ const CardList = () => {
             </ul>
         </section>
     );
+};
+
+CardList.propTypes = {
+    cards: PropTypes.array.isRequired
 };
 
 export default CardList;
