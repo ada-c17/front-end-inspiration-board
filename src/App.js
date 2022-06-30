@@ -53,11 +53,41 @@ const App = () => {
       });
   };
 
+  const deleteRequest = (id) => {
+    return axios
+      .delete(`${URL}/${id}`)
+      .then((response) => {
+        console.log(response.data);
+      })
+      .catch((error) => {
+        console.log(error);
+
+        throw new Error(`error deleting board ${id}`);
+      });
+  };
+
+  const deleteBoard = (id) => {
+    return deleteRequest(id)
+      .then(() => {
+        setAllBoards((oldBoards) => {
+          return oldBoards.filter((board) => board.boardId !== id);
+        });
+      })
+      .catch((error) => {
+        console.log(error.message);
+      });
+  };
+
   // console.log(boardData);
   return (
     <Router>
       <Routes>
-        <Route path="/" element={<BoardList boardData={allBoards} />} />
+        <Route
+          path="/"
+          element={
+            <BoardList boardData={allBoards} deleteBoard={deleteBoard} />
+          }
+        />
         <Route
           path="/boards/:boardId"
           element={

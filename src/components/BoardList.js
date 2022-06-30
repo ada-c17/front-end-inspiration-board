@@ -1,7 +1,7 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
 
-const BoardList = ({ boardData, setCurrentBoardId }) => {
+const BoardList = ({ boardData, setCurrentBoardId, deleteBoard }) => {
   let navigate = useNavigate();
 
   const createBoard = (board) => {
@@ -16,6 +16,13 @@ const BoardList = ({ boardData, setCurrentBoardId }) => {
         >
           {board.title}
         </a>
+        <button
+          onClick={() => {
+            deleteBoard(board.boardId);
+          }}
+        >
+          Delete Board
+        </button>
       </li>
       /* <Board
         key={board.board_id}
