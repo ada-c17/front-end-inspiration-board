@@ -116,7 +116,13 @@ function App() {
 
   // default landing page
   if (chosenBoard === null) {
-    return <BoardsView></BoardsView>;
+    return (
+      <BoardsView
+        selectoBoardCallback={getCardsFromOneBoard}
+        deleteBoardCallback={deleteBoard}
+        makeBoardCallback={onFormSubmitBoard}
+      ></BoardsView>
+    );
   }
   // render cardsview when user choose certain board
   // need to add logic to set chosenBoard state back to null when user clicked 'x' button in cardsview
