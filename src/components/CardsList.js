@@ -2,7 +2,7 @@ import React from "react";
 import Cards from "./Cards";
 import { Row } from "react-bootstrap";
 
-const CardsList = ({ cardData, likeHeart }) => {
+const CardsList = ({ cardData, likeHeart, deleteCard }) => {
   // console.log("card data: ", cardData);
   const createCard = (card) => {
     // console.log(`cardID: ${card.card_id}`);
@@ -13,6 +13,7 @@ const CardsList = ({ cardData, likeHeart }) => {
           message={card.message}
           likesCount={card.likes_count}
           likeHeart={likeHeart}
+          deleteCard={deleteCard}
         />
       </div>
     );

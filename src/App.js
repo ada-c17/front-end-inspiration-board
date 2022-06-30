@@ -53,7 +53,7 @@ const App = () => {
       });
   };
 
-  const deleteRequest = (id) => {
+  const deleteBoardRequest = (id) => {
     return axios
       .delete(`${URL}/${id}`)
       .then((response) => {
@@ -67,7 +67,7 @@ const App = () => {
   };
 
   const deleteBoard = (id) => {
-    return deleteRequest(id)
+    return deleteBoardRequest(id)
       .then(() => {
         setAllBoards((oldBoards) => {
           return oldBoards.filter((board) => board.boardId !== id);
@@ -76,6 +76,30 @@ const App = () => {
       .catch((error) => {
         console.log(error.message);
       });
+  };
+
+  const deleteCardRequest = (cardID) => {
+    return axios
+      .delete(
+        `https://back-end-inspiration-board.herokuapp.com/cards/${cardID}`
+      )
+      .then((response) => {
+        console.log(response.data);
+      })
+      .catch((error) => {
+        console.log(error);
+        throw new Error(`error deleting card ${cardID}`);
+      });
+  };
+
+  const deleteCard = (cardID) => {
+    return deleteCardRequest(cardID).then(() => {
+      const updatedCards = { ...boardData };
+      updatedCards.cards = updatedCards.cards.filter(
+        (card) => card.id !== cardID
+      );
+      setBoardData(updatedCards);
+    });
   };
 
   // console.log(boardData);
@@ -95,6 +119,7 @@ const App = () => {
               boardData={boardData}
               getOneBoard={getOneBoard}
               likeHeart={faHeart}
+              deleteCard={deleteCard}
             />
           }
         />
