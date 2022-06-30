@@ -15,8 +15,8 @@ const Board = ({ board_id }) => {
       .get(`http://localhost:5000/boards/${board_id}`)
       .then((response) => {
         console.log(response.data);
-        setTitle(response.data.Board.title);
-        setOwner(response.data.Board.owner);
+        setTitle(response.data.title);
+        setOwner(response.data.owner);
       })
       .catch((error) => console.log("Didnt get board data", error));
   };
