@@ -8,19 +8,20 @@ const defaultBoard = {
 const NewBoardForm = (props) => {
   const [formData, setFormData] = useState(defaultBoard);
 
+  // function for update form when user input title and owner
   const formUpdate = (event) => {
     const stateName = event.target.name;
     const inputValue = event.target.value;
-
     const newFormData = { ...formData };
     newFormData[stateName] = inputValue;
-    console.log(newFormData);
     setFormData(newFormData);
   };
-  // need to create addBoard func with axios post call to App for proper functionality
+
+  // function to add new board when user click on submit form
   const handleSubmit = (event) => {
     event.preventDefault();
     props.addBoardCallBack(formData);
+    setFormData(defaultBoard);
   };
 
   return (

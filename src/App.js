@@ -4,18 +4,20 @@ import axios from "axios";
 import NewBoardForm from "./components/NewBoardForm";
 import BoardsList from "./components/BoardsList";
 import HideForm from "./components/HideForm";
-import SelectedBoard from "./components/SelectedBoard";
-
-const selectedBoardData = {
-  id: "",
-  title: "",
-  owner: "",
-};
 
 function App() {
+  const selectedBoardData = {
+    id: null,
+    title: "",
+    owner: "",
+  };
+
+  // keeping stracking on board state
   const [boards, setBoards] = useState([]);
+  // keeping tracking on showing or hiding form state
   const [displayForm, setDisplayForm] = useState(true);
-  const [boarSelected, setBoardSelected] = useState(selectedBoardData);
+  // keeping tracking on selected board state
+  const [boardSelected, setBoardSelected] = useState(selectedBoardData);
   const URL = "https://get-inspired-c17.herokuapp.com/boards";
 
   // get all boards from DB
@@ -36,6 +38,8 @@ function App() {
         alert("Oop! Could not access the boards!");
       });
   };
+
+  // rendering and showing data once
   useEffect(fetchBoards, []);
 
   // adding board
@@ -43,21 +47,30 @@ function App() {
     axios
       .post(URL, boardInfo)
       .then((res) => {
-        fetchBoards();
+        if (boardInfo.title && boardInfo.owner) {
+          fetchBoards();
+        } else {
+          alert("Oop! Missing title or owner!");
+        }
       })
       .catch((err) => {
         alert("Oop! Could not add the board!");
       });
   };
 
+  // function to show or hide the form by click
   const flipDisplayForm = () => {
     setDisplayForm(!displayForm);
   };
 
+  // showing selected board
   const selectedBoard = (id) => {
     const newBoards = [...boards];
-    const newSelectedBoard = newBoards.filter((board) => board.id === id);
-    setBoardSelected(newSelectedBoard);
+    for (const board of newBoards) {
+      if (board.id === id) {
+        setBoardSelected(board);
+      }
+    }
   };
 
   return (
@@ -68,7 +81,7 @@ function App() {
       <div>
         <div className="board">
           <h2>Boards</h2>
-          <div>
+          <div className="boards-list">
             <BoardsList
               boardsList={boards}
               selectedBoardCallBack={selectedBoard}
@@ -77,14 +90,14 @@ function App() {
         </div>
         <div className="selected-board">
           <h2>Selected Boards</h2>
-          <SelectedBoard
-            title={boarSelected.title}
-            owner={boarSelected.owner}
-          />
+          <div>
+            {boardSelected.id
+              ? `${boardSelected.title} - ${boardSelected.owner}`
+              : "Select a Board from the Board List!"}
+          </div>
         </div>
         <div className="New-board">
           <h2>Create a New Board</h2>
-
           {displayForm ? (
             <NewBoardForm
               addBoardCallBack={addBoard}

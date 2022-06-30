@@ -1,8 +1,8 @@
 import React from "react";
 
 const Board = (props) => {
+  // function to show selected board when user click on each board
   const showBoard = () => {
-    console.log("show board");
     props.selectedBoardCallBack(props.id);
   };
   return (
@@ -13,5 +13,7 @@ const Board = (props) => {
     </div>
   );
 };
+
+// props type??
 
 export default Board;
