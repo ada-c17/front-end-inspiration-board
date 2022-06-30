@@ -1,13 +1,13 @@
 
-[type=form]{
-	margin: 5px !important;
-  }
 
 .btn#submit{
 	background-color: rgb(78, 169, 78);
 	min-width: 100% !important;
   }
+.btn#dropdown-menu-align-end{
+	width: 12rem !important;
+}
 
 form{
-	margin: 5px;
+	margin: 7px;
 }
