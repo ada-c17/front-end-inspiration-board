@@ -3,13 +3,14 @@ import Card from "./Card.css";
 import { React } from "react";
 
 const CardList = (props) => {
-  const cardListArray = props.newCard.map((cardEntry) => {
+  const cardListArray = props.cards.map((cardEntry) => {
     return (
       <Card
         message={cardEntry.message}
-        id={cardEntry.id}
-        key={cardEntry.id}
-        liked={cardEntry.liked}
+        cardId={cardEntry.cardId}
+        key={cardEntry.cardId}
+        liked={cardEntry.likesCount}
+        boardId={cardEntry.boardId}
       />
     );
   });
