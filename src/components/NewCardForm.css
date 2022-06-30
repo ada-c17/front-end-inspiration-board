@@ -1,0 +1,91 @@
+[type=form]{
+	margin: 5px !important;
+  }
+
+.btn#submit{
+	background-color: rgb(33, 52, 144);
+	min-width: 100% !important;
+  }
+
+form{
+	margin: 5px;
+}
+
+Form.Check {
+	background-color: green;
+}
+
+.input_more_40 {
+	border: 3px solid red;
+	color: red;
+	box-shadow: 0 0 8px red;
+}
+
+.new-card {
+	color: rgb(44, 37, 23);
+	font-family: "Chalkduster", "fantasy", "Lucida Sans", "Verdana";
+	margin-top: 3%;
+	/* font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif; */
+	border: 2px solid black;
+	border-radius: 10px;
+	width: 80%;
+	margin-left: 12%;
+	/* background-color: bisque; */
+	background-image: linear-gradient(to right, rgb(155, 216, 57) , yellow);
+	box-shadow: 5px 10px rgb(9, 81, 9);
+}
+
+label {
+	font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+	font-style: italic;
+	font-weight: bold;
+	margin-right: 1%;
+}
+
+input {
+	margin-right: 1%;
+}
+
+.submit {
+	font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+	font-style: italic;
+	font-weight: bold;
+	background-color: blanchedalmond;
+	border: 1px solid black;
+	border-radius: 3%;
+}
+
+.container {
+	/* display: flex;
+	flex-direction: column;
+	justify-content: center; */
+	border: 2px solid black;
+	border-radius: 8px;
+	width: 30%;
+	height: 20vh;
+	background-image: linear-gradient(to top, rgb(155, 216, 57) , yellow);
+}
+
+form {
+	margin-top: 5%;
+}
+
+.green {
+	color: green;
+}
+
+.orange {
+	color: orange;
+}
+
+.blue {
+	color: cornflowerblue;
+}
+
+form {
+	background-image: linear-gradient(to right, rgb(155, 216, 57) , yellow);
+}
+
+.input {
+	background-color: bisque;
+}

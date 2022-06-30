@@ -1,53 +1,100 @@
 import React, {useState} from 'react';
+import {DropdownButton, Form, Button, Row, Col} from 'react-bootstrap';
+import './NewCardForm.css'
 import PropTypes from 'prop-types';
 
 const NewCardForm = ({onAddCard}) => {
 
-  const [cardData, setCardData] = useState({
+  const [cardMessage, setCardMessage] = useState({
     message: '',
   });
 
-  const [isVisible, setIsVisible] = useState(false)
+  const [isVisible, setIsVisible] = useState(false);
 
-  const submitCardData = (e) => {
+  const addNewCard = (e) => {
     e.preventDefault();
-
-    onAddCard({...cardData});
-    setCardData({message:''});
+    onAddCard(cardMessage);
+    setCardMessage('');
   };
 
-  const handleChange = (e) => {
-    setCardData({...cardData, [e.target.name]: e.target.value});
-  };
+  const handleMessage = (e) => {setCardMessage(e.target.value)};
 
-  const handleVisibility = (e) => {
-    setIsVisible({isVisible: !isVisible});
+  // return (
+  //   <section className='container'>
+  //     <h2 class='new-card'>Add a new card</h2>
+  //     <form onSubmit={addNewCard}>
+  //       <label>Message</label>
+  //       <input type='text'
+  //             className={cardMessage.length === 0 || cardMessage.length > 5 ? "input_more_40" : ""}
+  //             value={cardMessage.message}
+  //             onChange={handleMessage}>
+  //       </input>
+  //       <input type='Submit' class='submit'></input>
+  //     </form>
+  //   </section>
+  // )
 
-  }
+
 
   return (
-  <div class='btn-group'>
-    <button type='button' class='btn btn-secondary dropdown-toggle' data-toggle='dropdown' aria-haspopup='true' aria-expanded='false' onClick={handleVisibility}>
-      New Card
-    </button>
-    <div class='dropdown-menu dropdown-menu-right'>
-      <form class='dropdown-item' type='form' onSubmit={submitCardData}>
-        <label htmlFor='message'>Message</label>
-        <input name='message' id='message' value={cardData.message} onChange={handleChange}></input>
-        <label htmlFor='bgrColor'>Background color</label>
-        <select class='custom-select' name='bgrColor' id='bgrColor'>
-          <option selected>Select Background Color</option>
-          <option value='1'>Red</option>
-          <option value='2'>Orange</option>
-          <option value='3'>Blue</option>
-        </select>
-        <button type='button'>Create</button>
-        <button type='button'>Cancel</button>
-      </form>
-    </div>
-  </div>
+    <>
+    <DropdownButton align="end" title="New Card" id="dropdown-menu-align-end" variant="secondary">
+        <Form onSubmit={addNewCard}>
+          <Form.Group className="mb-3" controlId="formBasicEmail">
+            <Form.Label>Message</Form.Label>
+            <Form.Control placeholder="Enter message" className='input'/>
+            <Form.Text onChange={handleMessage}
+                    className={cardMessage.length === 0 || cardMessage.length > 5 ? "input_more_40" : "text-muted"}
+                    value={cardMessage}
+                    type="text">   
+            {/* className="text-muted" */}
+              Please enter a card message!
+            </Form.Text>
+          </Form.Group>
+
+          <fieldset>
+          <Form.Group as={Row} className="mb-3">
+            <Form.Label as="legend" column sm={100}>
+              Select Card Color
+            </Form.Label>
+            <Col sm={100}>
+              <Form.Check
+                type="radio"
+                label="green"
+                name="formHorizontalRadios"
+                id="formHorizontalRadios1"
+                className="green"
+              />
+              <Form.Check
+                type="radio"
+                label="orange"
+                name="formHorizontalRadios"
+                id="formHorizontalRadios2"
+                className='orange'
+              />
+              <Form.Check
+                type="radio"
+                label="blue"
+                name="formHorizontalRadios"
+                id="formHorizontalRadios1"
+                className="blue"
+              />
+            </Col>
+          </Form.Group>
+          </fieldset>
+          <Button variant="success" type="submit" id="submit">
+            Add
+          </Button>
+
+    </Form>
+    </DropdownButton>
+  </>
   )
 
 }
+
+NewCardForm.propTypes = {
+  onAddCard: PropTypes.func.isRequired,
+};
 
 export default NewCardForm;
