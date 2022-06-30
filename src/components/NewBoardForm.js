@@ -4,7 +4,7 @@ const NewBoardForm = () => {
   return (
     <>
       <Link to="/" className="HomeLink">
-        Return Home
+        Home is here
       </Link>
       <h1>Add New Board</h1>
     </>
