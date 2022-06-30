@@ -118,6 +118,7 @@ function App() {
   if (chosenBoard === null) {
     return (
       <BoardsView
+        boardData={boards}
         selectoBoardCallback={getCardsFromOneBoard}
         deleteBoardCallback={deleteBoard}
         makeBoardCallback={onFormSubmitBoard}

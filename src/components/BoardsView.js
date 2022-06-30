@@ -8,6 +8,7 @@ const BoardsView = (props) => {
     <div>
       <h1>Inspiration Board!</h1>
       <BoardList
+        boardData={props.boardData}
         selectoBoardCallback={props.selectoBoardCallback}
         deleteBoardCallback={props.deleteBoardCallback}
       />
@@ -17,6 +18,7 @@ const BoardsView = (props) => {
 };
 
 BoardsView.propTypes = {
+  boardData: propTypes.list.isRequired,
   selectoBoardCallback: PropTypes.func.isRequired,
   deleteBoardCallback: PropTypes.func.isRequired,
   makeBoardCallback: PropTypes.func.isRequired,

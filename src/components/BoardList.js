@@ -3,11 +3,11 @@ import "./BoardList.css";
 import Board from "./Board";
 
 const BoardList = (props) => {
-  return (
-    <div>
-      <Board title={props.title} owner={props.owner} />
-    </div>
-  );
+  const boardComponents = props.boardData.map((board) => {
+    <Board title={board.title} owner={board.owner} />;
+  });
+
+  return <div>{boardComponents}</div>;
 };
 
 BoardList.propTypes = {};
