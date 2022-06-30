@@ -1,8 +1,19 @@
 import React, { useState } from "react";
 import PropTypes from "prop-types";
 
-const Card = () => {
-  const [likeCount, setLikeCount] = useState(0);
+const Card = (props) => {
+  // const [likeCount, setLikeCount] = useState(0);
+
+  const updateLikes = () => {
+    props.onAddLike(props.id);
+  };
+
+  return (
+    <section>
+      <p>{props.message}</p>
+      <button onClick={updateLikes}>{props.likeCount}💛</button>
+    </section>
+  );
 };
 
 Card.propTypes = {
