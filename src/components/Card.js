@@ -1,6 +1,5 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import Card from './Card';
 import './Card.css';
 
 const Card = ({
@@ -8,8 +7,9 @@ const Card = ({
     message,
     likes_count,
     board_id,
-    
-    }) => {
+    onLikeCallback,
+    onDeleteCallback,
+}) => {
 
     return (
         <div className="card__item">
@@ -32,7 +32,7 @@ const Card = ({
     );
 };
 
-    Card.propTypes = {
+Card.propTypes = {
     card_id: PropTypes.number.isRequired,
     board_id: PropTypes.number.isRequired,
     message: PropTypes.string.isRequired,
