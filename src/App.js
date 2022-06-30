@@ -22,10 +22,9 @@ function App() {
     axios
       .get(`${url}/boards`)
       .then((response) => {
-        const updatedBoards = [...defaultBoards];
         // iterate through each board and append to defaultBoards
-        response.data.map((board) => {
-          updatedBoards.append(board);
+        const updatedBoards = response.data.map((board) => {
+          return [...defaultBoards, board];
         });
         setBoards(updatedBoards);
       })
