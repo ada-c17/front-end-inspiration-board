@@ -21,14 +21,20 @@ const postBoardAsync = (catData) => {
     });
 };
 
+// API call (patch) to update likeCount for a single card
+const likeCardAsync = (cardId) => {};
+
+// API call (delete) to delete card by id
+const deleteCardAsync = (cardId) => {};
+
 function App() {
   const [boardData, setBoardData] = useState([]);
   // sample boards data to test BoardList
-  const boardSet = [
-    { title: "Memes", creator: "Michael Scott" },
-    { title: "Inspirational Quotes", creator: "Dwight Schrute" },
-    { title: "Romance Advice", creator: "Kelly Kapoor" },
-  ];
+  // const boardSet = [
+  //   { title: "Memes", creator: "Michael Scott" },
+  //   { title: "Inspirational Quotes", creator: "Dwight Schrute" },
+  //   { title: "Romance Advice", creator: "Kelly Kapoor" },
+  // ];
 
   const postBoard = (boardData) => {
     postBoardAsync(boardData)
