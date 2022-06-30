@@ -1,0 +1,22 @@
+[
+   {
+       "board_id": 1,
+       "owner": "SSH",
+       "title": "Our First Dream"       
+   },
+   {
+       "board_id": 2,
+       "owner": "SSH",
+       "title": "Our Second Board"
+   },
+   {
+       "board_id": 3,
+       "owner": "SSH",
+       "title": "Our Third Board"
+   },
+   {
+       "board_id": 4,
+       "owner": "SSH",
+       "title": "Our Fourth Board"
+   }
+]

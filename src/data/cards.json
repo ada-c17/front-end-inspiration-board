@@ -1,0 +1,22 @@
+[
+    {
+        "card_id": 18,
+        "likes_count": 0,
+        "message": "Here's an inspiring wish"
+    },
+    {
+        "card_id": 19,
+        "likes_count": 0,
+        "message": "Here's another wish"
+    },
+    {
+        "card_id": 20,
+        "likes_count": 0,
+        "message": "Here's a different wish"
+    },
+    {
+        "card_id": 23,
+        "likes_count": 5,
+        "message": "Here's a unique wish"
+    }
+]
