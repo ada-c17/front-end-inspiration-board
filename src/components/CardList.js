@@ -2,7 +2,7 @@ import React from "react";
 import PropTypes from "prop-types";
 import Card from "./Card";
 
-const CardList = ({ cards, onUpdateLikes }) => {
+const CardList = ({ cards, onUpdateLikes, onDelete }) => {
   const cardComponents = cards.map((card) => {
     return (
       <Card
@@ -11,6 +11,7 @@ const CardList = ({ cards, onUpdateLikes }) => {
         message={card.message}
         likesCount={card.likesCount}
         onUpdate={onUpdateLikes}
+        onDelete={onDelete}
       />
     );
   });
@@ -27,6 +28,7 @@ CardList.propTypes = {
     })
   ),
   onUpdateLikes: PropTypes.func.isRequired,
+  onDelete: PropTypes.func.isRequired,
 };
 
 export default CardList;

@@ -3,7 +3,6 @@ import "./App.css";
 import axios from "axios";
 import BoardList from "./components/BoardList";
 import CardList from "./components/CardList";
-// import boardData from "./data/boards.json";
 import cardData from "./data/cards.json";
 
 const kBaseUrl = "https://ssh-back-end-inspiration-board.herokuapp.com/boards";
@@ -24,7 +23,7 @@ const getBoardData = () => {
     });
 };
 const App = () => {
-  const [newCards, setLikedData] = useState(cardData);
+  const [newCards, setCardData] = useState(cardData);
   const [boardData, setBoardData] = useState([]);
 
   const loadBoards = () => {
@@ -53,7 +52,14 @@ const App = () => {
       }
     });
 
-    setLikedData(updatedLikes);
+    setCardData(updatedLikes);
+  };
+
+  const onCardDelete = (cardId) => {
+    const currentCards = cardData.filter((card) => {
+      return card.cardId !== cardId;
+    });
+    setCardData(currentCards);
   };
 
   return (
@@ -63,7 +69,11 @@ const App = () => {
       </header>
       <main>
         <BoardList boards={boardData} />
-        <CardList cards={newCards} onUpdateLikes={increaseLikeCount} />
+        <CardList
+          cards={newCards}
+          onUpdateLikes={increaseLikeCount}
+          onDelete={onCardDelete}
+        />
       </main>
     </div>
   );
