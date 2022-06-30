@@ -1,14 +1,21 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
-import { BrowserRouter } from "react-router-dom";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 import "./index.css";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
+import Board from "./components/Board.js";
+
+import NewBoardForm from "./components/NewBoardForm.js";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <BrowserRouter>
-    <App />
+    <Routes>
+      <Route path="new" element={<NewBoardForm />} />
+      <Route path="/" element={<App />} />
+      <Route path="/:id" element={<Board />} />
+    </Routes>
   </BrowserRouter>
 );
 
