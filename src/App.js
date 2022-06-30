@@ -9,7 +9,7 @@ import "./App.css";
 function App() {
   // STATE(boardsData: ListOfObjects, selectedBoard: id)
   const [boardsData, setBoardsData] = useState([]);
-  const [selectedBoard, setSelectedBoard] = useState(null);
+  const [selectedBoard, setSelectedBoard] = useState(); // Pass in board
 
   const URL = "https://inspo-board-server.herokuapp.com";
 
@@ -53,6 +53,14 @@ function App() {
       });
   };
 
+  const getCurrentBoard = (boardId) => {
+    const currentBoard = boardsData.filter(
+      (board) => board.boardId === boardId
+    );
+    console.log(currentBoard);
+    setSelectedBoard(currentBoard);
+  };
+
   return (
     <main className="App">
       <nav>
@@ -60,7 +68,7 @@ function App() {
         <NewBoardForm onAddBoard={addBoard} />
         <NewCardForm />
       </nav>
-      <BoardList boardsData={boardsData} />
+      <BoardList boards={boardsData} onSelectBoard={getCurrentBoard} />
       <CardList selectedBoard={selectedBoard} boardsData={boardsData} />
     </main>
   );

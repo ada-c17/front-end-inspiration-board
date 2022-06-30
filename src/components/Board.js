@@ -1,26 +1,30 @@
 import React from "react";
 import PropTypes from "prop-types";
-import CardList from "./CardList";
+import "./Board.css";
 
-const Board = ({ id, title, owner, cards }) => {
-  // const cardsList = cards.map((card, index) => {
-  //   return <li key={index}>{card}</li>;
-  // });
+const Board = ({ boardId, title, owner, cards, onSelectBoard }) => {
+  const onBoardClick = () => {
+    onSelectBoard(boardId);
+  };
 
   return (
     <>
-      <h2>{title}</h2>
-      <h2>{owner}</h2>
-      <ul>
-        <CardList cards={cards} />
-      </ul>
+      <section className="board-bubble">
+        <button onClick={onBoardClick}>
+          <h2>Title: {title}</h2>
+          <h3>Owner: {owner} </h3>
+        </button>
+      </section>
     </>
   );
 };
 
-// Board.propTypes = {
-//   id:
-//   title:
-// };
+Board.propTypes = {
+  boardId: PropTypes.number.isRequired,
+  title: PropTypes.string.isRequired,
+  owner: PropTypes.string.isRequired,
+  cards: PropTypes.array,
+  onSelectBoard: PropTypes.func,
+};
 
 export default Board;
