@@ -4,7 +4,7 @@
 }
 
 .App-header {
-    height: 10vh;
+    height: 20vh;
     background-color: #f6f8fa;
     display: flex;
     flex-direction: row;
@@ -12,30 +12,34 @@
     justify-content: space-evenly;
     font-size: calc(10px + 2vmin);
     color: rgb(5, 5, 5);
-    top:2px;
+    top: 2px;
 }
 
 .App-header h1 {
     font-size: 50px;
-    position:absolute;
-    left:0px;
-    top:5px;
+    position: absolute;
+    left: 0px;
+    top: 5px;
     transform: rotate(-10deg);
     background-color: yellow;
     padding: 10px;
-    
 }
 
 h2 {
     display: inline-block;
     font-size: 20px;
     background-color: white;
-    box-sizing:content-box;
-    box-shadow: -15px 10px  black;
+    box-sizing: content-box;
+    box-shadow: -15px 10px black;
     border: 2px solid black;
     width: 150px;
     height: 35px;
     padding: 50px;
+}
+
+.box-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
 }
 
 .body {
@@ -44,13 +48,4 @@ h2 {
 
 .App-link {
     color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-    from {
-        transform: rotate(0deg);
-    }
-    to {
-        transform: rotate(360deg);
-    }
 }
