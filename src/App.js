@@ -3,6 +3,8 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import Board from "./components/Board";
 import CardList from "./components/CardList";
+import NewBoardForm from "./components/NewBoardForm";
+import NewCardForm from "./components/NewCardForm";
 
 function App() {
   const URL = "https://gramtaschie.herokuapp.com";
@@ -48,6 +50,8 @@ function App() {
       <header>
         <h1>Inspiration Board</h1>
         <Board boards={boards} fetchBoardsCallback={fetchBoards}></Board>
+        <NewBoardForm></NewBoardForm>
+        <NewCardForm></NewCardForm>
         <CardList cards={cards} fetchCardsCallback={fetchCards}></CardList>
       </header>
     </div>

@@ -1,7 +1,4 @@
 import React from "react";
-// import CardList from "./CardList";
-import NewBoardForm from "./NewBoardForm";
-import NewCardForm from "./NewCardForm";
 import PropTypes from "prop-types";
 
 const Board = (props) => {
@@ -17,9 +14,6 @@ const Board = (props) => {
     <div>
       Hello I am Boards
       <ul>{boardComponents}</ul>
-      {/* <CardList></CardList> */}
-      <NewBoardForm></NewBoardForm>
-      <NewCardForm></NewCardForm>
     </div>
   );
 };
