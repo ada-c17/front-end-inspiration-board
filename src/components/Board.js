@@ -12,7 +12,7 @@ const Board = ({ board_id }) => {
   const [title, setTitle] = useState("Default Title");
   const getBoardData = (board_id) => {
     axios
-      .get(`http://localhost:5000/boards/${board_id}`)
+      .get(`https://inspotters.herokuapp.com/boards/${board_id}`)
       .then((response) => {
         console.log(response.data);
         setTitle(response.data.title);
@@ -30,3 +30,7 @@ const Board = ({ board_id }) => {
 };
 
 export default Board;
+
+Board.propTypes = {
+  board_id: PropTypes.string.isRequired,
+};
