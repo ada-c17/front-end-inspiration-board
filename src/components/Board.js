@@ -1,25 +1,24 @@
 import React from "react";
 import PropTypes from "prop-types";
-// import Card from "./Card";
+import CardList from "./CardList";
 
-const Board = (boards) => {
-  const cardComponents = cards.map((card) => {
+
+const Board = (props) => {
+  const cardComponents = props.cards.map((card) => {
     return (
-      <Card
+      <CardList
         key={card.card_id}
         card_id={card.card_id}
         message={card.message}
         likes_count={card.likes_count}
-        onUpdate={boards.onUpdate}
+        onUpdate={props.onUpdate}
       />
     );
   });
 
   return (
     <section>
-      <h2>
-        {boards.title} by {boards.owner}
-      </h2>
+
       <ul>{cardComponents}</ul>
     </section>
   );

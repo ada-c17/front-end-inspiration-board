@@ -1,9 +1,10 @@
 import React /* , {useState} */ from "react";
 import "./App.css";
-import Board from "./components/Board";
+import BoardList from "./components/BoardList";
 import boardandcardData from "./data/boardsandcards.json";
 
 const App = () => {
+  console.log(boardandcardData);
   // const [boardData, setUpdateBoard] = useState(boardandcardData);
   // let [likedNum, setLikedNum] = useState(0);
 
@@ -29,8 +30,10 @@ const App = () => {
         <h2>Board id: {boardandcardData.board_id}</h2>
       </header>
       <main>
-        <Board
-          boards={boardandcardData} /* onUpdateLiked={increaseLikeCount} */
+        <h2> {boardandcardData.title} by: {boardandcardData.owner}</h2>
+        <BoardList
+          boards={boardandcardData}
+          // onUpdateLiked={increaseLikeCount} 
         />
       </main>
     </div>
