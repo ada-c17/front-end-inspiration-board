@@ -1,11 +1,12 @@
 import React, { useState } from "react";
+import PropTypes from "prop-types";
 
 const kDefaultFormState = {
   title: "",
   creator: "",
 };
 
-const NewBoardForm = () => {
+const NewBoardForm = ({ onBoardSubmit }) => {
   const [formFields, setFormFields] = useState(kDefaultFormState);
 
   const handleChange = (event) => {
@@ -16,9 +17,18 @@ const NewBoardForm = () => {
     setFormFields(newFormFields);
   };
 
+  const handleSubmit = (event) => {
+    event.preventDefault();
+
+    onBoardSubmit(formFields);
+
+    // reset the form back to its default values
+    setFormFields(kDefaultFormState);
+  };
+
   return (
     <div className="NewBoardForm">
-      <form>
+      <form onSubmit={handleSubmit}>
         <h2>Create a New Board</h2>
         <div>
           <label htmlFor="title">Title</label>
@@ -44,6 +54,10 @@ const NewBoardForm = () => {
       </form>
     </div>
   );
+};
+
+NewBoardForm.propTypes = {
+  onBoardSubmit: PropTypes.func.isRequired,
 };
 
 export default NewBoardForm;
