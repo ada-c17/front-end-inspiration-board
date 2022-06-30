@@ -1,9 +1,8 @@
-<<<<<<< HEAD
 import React from "react";
 
 const Board = (props) => {
+  // function to show selected board when user click on each board
   const showBoard = () => {
-    console.log("show board");
     props.selectedBoardCallBack(props.id);
   };
   return (
@@ -15,16 +14,6 @@ const Board = (props) => {
   );
 };
 
-export default Board;
-=======
-const Board = (props) => {
-    return (
-    <div onClick={() => 
-        props.onBoardSelect(props.board)}>{props.board.title}
-    </div>
-    );
-};
+// props type??
 
 export default Board;
-
->>>>>>> e4940a4d50115b9274f3b489b260ea867f71e5d7
