@@ -11,7 +11,7 @@ const Board = ({ boardData, getOneBoard, likeHeart }) => {
     getOneBoard(boardId);
   }, []);
 
-  // console.log("board cards: ", boardData.cards);
+  console.log("board cards: ", boardData.cards);
 
   return (
     <div>

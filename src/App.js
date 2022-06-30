@@ -37,7 +37,7 @@ const App = () => {
   //Gets one board. Called dynamically when Board is rendered.
   const getOneBoard = (id) => {
     axios
-      .get(`${URL}/${id}/cards`)
+      .get(`${URL}/${id}`)
       .then((response) => {
         const newBoard = {
           boardId: response.data.id,
