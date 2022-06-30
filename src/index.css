@@ -6,6 +6,22 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
+.HomeLink {
+  float:right;
+  padding: 20px;
+  font-size: 2rem;
+  text-decoration: none;
+  text-align: center;
+  margin-right: 100px;
+  margin-top: 20px;
+  background-image: url("./data/Earth.png");
+  background-size: cover;
+  color:white;
+  height:170px;
+  width:170px;
+  z-index: 2;
+
+}
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
