@@ -12,24 +12,12 @@ function App() {
   const fetchBoards = () => {
     axios.get(URL)
       .then((res) => { 
-        const newBoards = res.data.map((board) => {
-          // const board_object = {
-          //   id: board.id,
-          //   title: board.title,
-          //   owner: board.owner,
-          //   cards: board.cards,
-          // };
-          // if (board_object['cards'].length > 0){
-          //   let cardsList = []
-          //   for (const card of board_object['cards']){
-          //     cardsList.push(card)
-          //   }
-          // }        
+        const newBoards = res.data.map((board) => {       
           return {
             id: board.id,
             title: board.title,
             owner: board.owner,
-            // cards: board.cards,
+            cards: board.cards,
           };
         });
         setBoards(newBoards);
