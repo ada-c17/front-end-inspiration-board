@@ -8,10 +8,15 @@ const Card = (props) => {
     props.onAddLike(props.id);
   };
 
+  const removeCard = () => {
+    props.onDeleteCard(props.id);
+  };
+
   return (
     <section>
       <p>{props.message}</p>
-      <button onClick={updateLikes}>{props.likeCount}💛</button>
+      <button onClick={updateLikes}>{props.likeCount} 💛</button>
+      <button onClick={removeCard}>🗑</button>
     </section>
   );
 };
@@ -21,6 +26,7 @@ Card.propTypes = {
   message: PropTypes.string.isRequired,
   likeCount: PropTypes.number.isRequired,
   onAddLike: PropTypes.func.isRequired,
+  onDeleteCard: PropTypes.func.isRequired,
 };
 
 export default Card;
