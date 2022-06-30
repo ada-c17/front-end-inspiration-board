@@ -66,8 +66,8 @@ function App() {
       card_id: 2,
       messageData: 'bye bye',
       likesData: 15
-  }
-];
+    }
+  ];
 
   return (
     <div>
