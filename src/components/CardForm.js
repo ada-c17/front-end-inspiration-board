@@ -4,6 +4,7 @@ import { useState } from "react";
 function CardForm(props) {
   const defaultCard = {
     message: "",
+    board_id: 0,
   };
 
   const [formData, setFormData] = useState(defaultCard);
@@ -13,6 +14,7 @@ function CardForm(props) {
     const inputValue = event.target.value;
     const newFormData = { ...formData };
     newFormData[stateName] = inputValue;
+    newFormData["board_id"] = props.board_id;
     setFormData(newFormData);
   };
 

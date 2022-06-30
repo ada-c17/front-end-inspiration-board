@@ -72,6 +72,7 @@ function App() {
   };
 
   useEffect(getBoards, []);
+  useEffect(getCards, []);
 
   return (
     <div className="App">
@@ -90,7 +91,7 @@ function App() {
         <h2>Create a New Board</h2>
         <BoardForm addBoardCallback={addBoard} />
         <h2>Create a New Card</h2>
-        <CardForm addCardCallback={addCard} />
+        <CardForm addCardCallback={addCard} board_id={selectedBoard.id} />
       </main>
     </div>
   );
