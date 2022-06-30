@@ -11,6 +11,7 @@ const BoardList = ({ boardData, setCurrentBoardId }) => {
     // console.log(board);
     return (
       <li>
+
         <a
           href="#"
           onClick={() => {
@@ -30,6 +31,8 @@ const BoardList = ({ boardData, setCurrentBoardId }) => {
   return (
 
     <section>
+      <h1>Inspiration Board</h1>
+
       <ul>{boardData.map(createBoard)}</ul>
       <Button onClick={handleShow} type="button" class="btn btn-primary">Add New Board </Button>
 

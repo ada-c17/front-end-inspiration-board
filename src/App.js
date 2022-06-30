@@ -60,9 +60,17 @@ const App = () => {
   };
 
   // console.log(boardData);
+
+  //Post New Board
+  //Create function to handleSubmit
+  //Pass function down to BoardList 
+  //Submit will change state 
+  //Pass it back to app 
+  const [title, setTitle] = useState("");
+  const [owner, setOwner] = useState("");
+
   return (
     <section>
-      <h1>Inspiration Board</h1>
       <Router>
         <Routes>
           <Route path="/" element={<BoardList boardData={allBoards} />} />
