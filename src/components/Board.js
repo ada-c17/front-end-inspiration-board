@@ -4,19 +4,29 @@ import PropTypes from "prop-types";
 import Card from "./Card.js";
 import axios from "axios";
 
-const Board = (id) => {
-  const [board, setBoard] = useState(0);
-
-  const getBoardData = (id) => {
+const Board = ({ board_id }) => {
+  useEffect(() => {
+    getBoardData(board_id);
+  }, []);
+  const [owner, setOwner] = useState("Default Owner");
+  const [title, setTitle] = useState("Default Title");
+  const getBoardData = (board_id) => {
     axios
-      .get("http://localhost:5000/boards/1")
+      .get(`http://localhost:5000/boards/${board_id}`)
       .then((response) => {
-        setBoard(response.data);
+        console.log(response.data);
+        setTitle(response.data.Board.title);
+        setOwner(response.data.Board.owner);
       })
       .catch((error) => console.log("Didnt get board data", error));
   };
 
-  return <ul className="Board">{getBoardData(1)}</ul>;
+  return (
+    <div className="Board">
+      <h1>{title}</h1>
+      <h2>{owner}</h2>
+    </div>
+  );
 };
 
 export default Board;

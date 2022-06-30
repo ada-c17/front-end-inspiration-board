@@ -9,6 +9,7 @@ function App() {
       </header>
       <main>
         <p>Put your components here</p>
+        <Board board_id="1" />
       </main>
       <footer>©2022 C17</footer>
     </div>
