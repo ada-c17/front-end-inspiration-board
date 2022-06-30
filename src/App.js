@@ -46,6 +46,7 @@ const App = () => {
           cards: response.data.cards,
         };
         setBoardData(newBoard);
+        console.log("in axios: ", response.data);
       })
       .catch((err) => {
         console.log(err);

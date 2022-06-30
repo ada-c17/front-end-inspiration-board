@@ -9,9 +9,14 @@ const Board = ({ boardData, getOneBoard, likeHeart }) => {
 
   useEffect(() => {
     getOneBoard(boardId);
+    console.log("I ran!");
   }, []);
 
   console.log("board cards: ", boardData.cards);
+
+  if (boardData.cards === undefined || boardData === []) {
+    return <h1> </h1>;
+  }
 
   return (
     <div>
