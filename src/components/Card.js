@@ -8,6 +8,8 @@ const Card = () => {
 Card.propTypes = {
   id: PropTypes.number.isRequired,
   message: PropTypes.string.isRequired,
+  likeCount: PropTypes.number.isRequired,
+  onAddLike: PropTypes.func.isRequired,
 };
 
 export default Card;
