@@ -1,0 +1,17 @@
+/* .container{
+    background-color: bisque;
+} */
+
+ul{
+    /* border: 3px solid purple; */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    margin-right: 20px;
+
+}
+
+li {
+ margin: 10px;
+ text-align: center;
+}
