@@ -4,9 +4,13 @@ import { useEffect, useState} from 'react';
 import './App.css';
 import NewBoardForm from './components/NewBoardForm.js';
 import Board from './components/Board.js';
+import NewCardForm from './components/NewCardForm';
+import CardList from './components/CardList';
 
 function App() {
+
   const [boardsData, setBoardsData] = useState([]);
+
   const URL = 'http://localhost:5000/boards';
   // when we first load 
   const [selectedBoard, setSelectedBoard] = useState({
@@ -14,6 +18,7 @@ function App() {
     owner: '',
     board_id: null
   });
+  // Initial render when component is first mounted
   useEffect(() => {
     axios.get(URL)
     .then((res) => {
@@ -45,6 +50,25 @@ function App() {
   const [isBoardFormVisible, setIsBoardFormVisible] = useState(true);
   const toggleNewBoardForm = () => {setIsBoardFormVisible(!isBoardFormVisible)}
 
+
+  const cardData = [
+    {
+        card_id: 0,
+        messageData: 'hi',
+        likesData: 5
+    },
+    {
+        card_id: 1,
+        messageData: 'bye',
+        likesData: 10
+    },
+    {
+      card_id: 2,
+      messageData: 'bye bye',
+      likesData: 15
+    }
+  ];
+
   return (
     <div>
       <h1>Inspiration Board</h1>
@@ -54,17 +78,28 @@ function App() {
               {boardsElements}
             </ol>
           </section>
+
           <section>
             <h2>Selected Board</h2>
             <p>{selectedBoard.board_id ? `${selectedBoard.title} - ${selectedBoard.owner}` : 'Select a Board from the Board List!'}</p>
           </section>
+
           <section>
             <h2>Create a New Board</h2>
             {isBoardFormVisible ? <NewBoardForm createNewBoard={createNewBoard}></NewBoardForm> : ''}
             <span onClick={toggleNewBoardForm} className='hideForm__button'>{isBoardFormVisible ? 'Hide New Board Form' : 'Show New Board Form'}</span>
           </section>
+
+          <section>
+            <h2>Create a New Card</h2>
+            <NewCardForm></NewCardForm>
+          </section>
+
+          <section>
+            <CardList cards={cardData}></CardList>
+          </section>
     </div>
   );
-}
+};
 
 export default App;
