@@ -33,11 +33,33 @@ function App() {
       });
   }, []);
 
+  const addBoard = (newBoard) => {
+    axios
+      .post(URL + "/boards", newBoard)
+      .then((response) => {
+        setBoardsData((oldBoards) => [
+          ...oldBoards,
+          {
+            ...newBoard,
+            boardId: response.data.board_id,
+            cards: response.data.cards,
+          },
+        ]);
+        console.log(response);
+        console.log(boardsData);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
+
   return (
     <main className="App">
-      <h1>Inspiration Boards</h1>
-      <NewBoardForm />
-      <NewCardForm />
+      <nav>
+        <h1>Inspiration Boards</h1>
+        <NewBoardForm onAddBoard={addBoard} />
+        <NewCardForm />
+      </nav>
       <BoardList boardsData={boardsData} />
       <CardList selectedBoard={selectedBoard} boardsData={boardsData} />
     </main>

@@ -12,7 +12,7 @@ const Board = ({ id, title, owner, cards }) => {
       <h2>{title}</h2>
       <h2>{owner}</h2>
       <ul>
-        <CardList cardData={cards} />
+        <CardList cards={cards} />
       </ul>
     </>
   );
