@@ -17,8 +17,13 @@ function App() {
             Choose an inspiration board
           </Link>
         </nav>
-        <Outlet />
+        <section className="choose-board">
+          <ol>
+            <li>Board List place holder</li>
+          </ol>
+        </section>
       </header>
+      <Outlet />
     </div>
   );
 }
