@@ -3,11 +3,16 @@ import Board from "./Board.js";
 
 const BoardsList = (props) => {
   const boardComponent = props.boards.map((board) => {
-    return <Board title={board.title} owner={board.owner} />;
+    return <Board 
+              key={board.id}
+              id={board.id}
+              title={board.title} 
+              owner={board.owner}
+              cards={board.cards} />;
   });
   return (
     <div>
-      <h1> Boards</h1>
+      <h1>Boards</h1>
       {boardComponent}
     </div>
   );

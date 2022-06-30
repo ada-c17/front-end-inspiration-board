@@ -7,6 +7,7 @@ const Board = (props) => {
       <ul>
         <li>Title: {props.title} </li>
         <li>Owner :{props.owner}</li> 
+        <li>Cards:{props.cards}</li>
       </ul>
     </div>
   );
