@@ -115,6 +115,25 @@ function App() {
       });
   };
 
+  const updateLikeCts = (cardId) => {
+    const cardObj = cards.filter((card) => card.card_id == cardId);
+    axios
+      .put(`https://powerful-lake-89201.herokuapp.com/cards/${cardId}`, {
+        like_count: cardObj[like_count] + 1,
+      })
+      .then(() => {
+        const updatedCards = cards.map((card) => {
+          if (card.card_id === cardId) {
+            card.like_count++;
+          }
+          return card;
+        });
+      })
+      .catch((e) => {
+        console.log(e);
+      });
+  };
+
   // default landing page
   if (chosenBoard === null) {
     return <BoardsView></BoardsView>;
@@ -122,7 +141,14 @@ function App() {
   // render cardsview when user choose certain board
   // need to add logic to set chosenBoard state back to null when user clicked 'x' button in cardsview
   else {
-    return <CardsView></CardsView>;
+    return (
+      <CardsView
+        cards={cards}
+        updateLikes={updateLikeCts}
+        deleteCard={deleteCard}
+        submitCard={onFormSubmitCard}
+      ></CardsView>
+    );
   }
 }
 
