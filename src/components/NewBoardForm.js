@@ -8,21 +8,21 @@ const defaultBoard = {
 };
 
 const NewBoardForm = (props) => {
-  const [boardData, setBoardData] = useState(defaultBoard);
+  const [boardForm, setBoardForm] = useState(defaultBoard);
 
   const onFormChange = (event) => {
     const stateName = event.target.name;
     const inputValue = event.target.value;
 
-    const newBoardData = { ...boardData };
-    newBoardData[stateName] = inputValue;
+    const newBoardForm = { ...boardForm };
+    newBoardForm[stateName] = inputValue;
 
-    setBoardData(newBoardData);
+    setBoardForm(newBoardForm);
   };
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    props.addBoardCallback(boardData); // NJ: we don't have this function yet~
+    props.addBoardCallback(boardForm);
   };
 
   return (
@@ -31,14 +31,14 @@ const NewBoardForm = (props) => {
       <input
         type="text"
         name="title"
-        value={boardData.title}
+        value={boardForm.title}
         onChange={onFormChange}
       />
       <label htmlFor="owner">Owner's Name</label>
       <input
         type="text"
         name="owner"
-        value={boardData.owner}
+        value={boardForm.owner}
         onChange={onFormChange}
       />
       <input type="submit" value="Submit Query"></input>
@@ -47,7 +47,7 @@ const NewBoardForm = (props) => {
 };
 
 NewBoardForm.propTypes = {
-  addBoardCallback: PropTypes.func,
+  addBoardCallback: PropTypes.func.isRequired,
 };
 
 export default NewBoardForm;

@@ -17,7 +17,6 @@ function App() {
       .get(`${URL}/boards`)
       .then((response) => {
         console.log("fetchBoard request");
-        console.log(response.data);
         const updatedBoards = response.data;
         console.log(updatedBoards);
         setBoards(updatedBoards);
@@ -32,7 +31,6 @@ function App() {
       .get(`${URL}/cards`)
       .then((response) => {
         console.log("fetchCard request");
-        console.log(response.data);
         const updatedCards = response.data;
         console.log(updatedCards);
         setCards(updatedCards);
@@ -45,12 +43,23 @@ function App() {
   useEffect(() => fetchBoards, []);
   useEffect(() => fetchCards, []);
 
+  const createNewBoard = (boardForm) => {
+    axios
+      .post(`${URL}/boards`, boardForm)
+      .then((response) => {
+        fetchBoards();
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
+
   return (
     <div>
       <header>
         <h1>Inspiration Board</h1>
         <Board boards={boards} fetchBoardsCallback={fetchBoards}></Board>
-        <NewBoardForm></NewBoardForm>
+        <NewBoardForm addBoardCallback={createNewBoard}></NewBoardForm>
         <NewCardForm></NewCardForm>
         <CardList cards={cards} fetchCardsCallback={fetchCards}></CardList>
       </header>
