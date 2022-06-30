@@ -7,6 +7,9 @@ const Board = (props) => {
   return <div></div>;
 };
 
-Board.propTypes = {};
+Board.propTypes = {
+  title: PropTypes.string.isRequired,
+  owner: PropTypes.string.isRequired,
+};
 
 export default Board;

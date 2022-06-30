@@ -10,6 +10,10 @@ const BoardList = (props) => {
   return <div>{boardComponents}</div>;
 };
 
-BoardList.propTypes = {};
+BoardList.propTypes = {
+  boardData: PropTypes.array.isRequired,
+  selectoBoardCallback: PropTypes.func.isRequired,
+  deleteBoardCallback: PropTypes.func.isRequired,
+};
 
 export default BoardList;

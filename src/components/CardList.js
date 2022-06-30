@@ -19,7 +19,7 @@ const CardList = ({ cards, deleteCard }) => {
   return <div className="cardlist">{cardComponents}</div>;
 };
 
-CardsList.propTypes = {
+CardList.propTypes = {
   cards: PropTypes.arrayOf(
     PropTypes.shape({
       card_id: PropTypes.number.isRequired,

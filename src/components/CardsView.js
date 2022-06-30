@@ -7,7 +7,7 @@ import NewCardForm from "./components/NewCardForm";
 import PropTypes from "prop-types";
 
 const CardsView = ({ cards, deleteCard, submitCard }) => {
-  const [button, setButton] = useState(False);
+  const [button, setButton] = useState(false);
   const toggleButton = () => {
     setButton(!button);
   };

@@ -18,7 +18,7 @@ const BoardsView = (props) => {
 };
 
 BoardsView.propTypes = {
-  boardData: propTypes.list.isRequired,
+  boardData: PropTypes.array.isRequired,
   selectoBoardCallback: PropTypes.func.isRequired,
   deleteBoardCallback: PropTypes.func.isRequired,
   makeBoardCallback: PropTypes.func.isRequired,
