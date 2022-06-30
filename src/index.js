@@ -5,7 +5,6 @@ import "./index.css";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 import Board from "./components/Board.js";
-import BoardList from "./components/Board.js";
 
 import NewBoardForm from "./components/NewBoardForm.js";
 
@@ -14,9 +13,8 @@ root.render(
   <BrowserRouter>
     <Routes>
       <Route path="new" element={<NewBoardForm />} />
-      <Route path="/" element={<App />}>
-        <Route path=":id" element={<Board />} />
-      </Route>
+      <Route path="/" element={<App />} />
+      <Route path="/:id" element={<Board />} />
     </Routes>
   </BrowserRouter>
 );

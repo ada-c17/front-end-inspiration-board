@@ -17,28 +17,26 @@ function Board() {
       },
       {
         id: "2",
-        message: "card and another message",
+        message: "card two and another message",
         likes_count: "3",
       },
     ],
   });
   return (
-    <div className="container">
-      <div className="card">
-        <ul className="list">
-          {board_example.cards.map((item) => (
-            <li key={item.id} className="list-item">
-              <Link to={item.id}>
-                {item.message} and likes:{item.likes_count}
-              </Link>
-            </li>
-          ))}
-        </ul>
+    <div className="card">
+      <Link to="/">Return to the Home Page</Link>
+      <ul className="list">
+        {board_example.cards.map((item) => (
+          <li key={item.id} className="list-item">
+            <div>{item.message}</div>
+            <br></br>
+            <button to={item.id}>{item.likes_count} add likes +</button>
+          </li>
+        ))}
+      </ul>
 
-        <h1>{board_example.message}</h1>
-        <h3>id of the board for the reference: {params.id}</h3>
-        <Link to="/">Return to the Home Page</Link>
-      </div>
+      <h1>{board_example.message}</h1>
+      <h3>id of the board for the reference: {params.id}</h3>
     </div>
   );
 }
