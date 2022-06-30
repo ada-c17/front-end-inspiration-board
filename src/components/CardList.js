@@ -1,7 +1,3 @@
-<<<<<<< HEAD
-
-
-=======
 import Card from './Card';
 import PropTypes from 'prop-types';
 
@@ -39,4 +35,3 @@ CardList.propTypes = {
 };
 
 export default CardList;
->>>>>>> eee3cf33eac89c23b37064401398d8d681eaf36c
