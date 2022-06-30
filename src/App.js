@@ -37,6 +37,49 @@ const cardData = [
 ];
 
 const App = () => {
+  const [allBoards, setAllBoards] = useState([]);
+  const [boardData, setBoardData] = useState([]);
+
+  //Get all boards data
+  useEffect(() => {
+    axios
+      .get(URL)
+      .then((response) => {
+        // console.log(`response body: ${response.data}`);
+        const newBoards = response.data.map((board) => {
+          return {
+            boardId: board.id,
+            title: board.title,
+            owner: board.owner,
+          };
+        });
+        setAllBoards(newBoards);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }, []);
+
+  //Gets one board. Called dynamically when Board is rendered.
+  const getOneBoard = (id) => {
+    axios
+      .get(`${URL}/${id}`)
+      .then((response) => {
+        const newBoard = {
+          boardId: response.data.id,
+          title: response.data.title,
+          owner: response.data.owner,
+          cards: response.data.cards,
+        };
+        setBoardData(newBoard);
+        console.log("in axios: ", response.data);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
+
+  // console.log(boardData);
   return (
     //Router component 
     //Routes - Determine where in your router system do you want to have routes 
