@@ -17,6 +17,7 @@ function App() {
     id: 0,
   };
   const [selectedBoard, setSelectedBoard] = useState(defaultBoard);
+  const [cards, setCards] = useState([]);
 
   const selectBoard = (id) => {
     for (const board of boards) {
@@ -49,14 +50,26 @@ function App() {
       });
   };
 
-  // const addCard = (cardData) => {
-  //   axios
-  //     .post(`${URL}/cards`, cardData)
-  //     .then(getCards())
-  //     .catch((err) => {
-  //       console.log(err);
-  //     });
-  // };
+  const getCards = () => {
+    const board_id_body = { board_id: selectedBoard.id };
+    axios.get(`${URL}/cards`, board_id_body).then((res) => {
+      const newCards = res.data.map((card) => {
+        return {
+          message: card.message,
+        };
+      });
+      setCards(newCards);
+    });
+  };
+
+  const addCard = (cardData) => {
+    axios
+      .post(`${URL}/cards`, cardData)
+      .then(getCards())
+      .catch((err) => {
+        console.log(err);
+      });
+  };
 
   useEffect(getBoards, []);
 
@@ -77,7 +90,7 @@ function App() {
         <h2>Create a New Board</h2>
         <BoardForm addBoardCallback={addBoard} />
         <h2>Create a New Card</h2>
-        <CardForm />
+        <CardForm addCardCallback={addCard} />
       </main>
     </div>
   );

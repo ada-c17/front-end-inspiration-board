@@ -41,8 +41,8 @@ function BoardForm(props) {
   );
 }
 
-BoardForm.propTypes = {
-  addBoardCallback: PropTypes.func.isRequired,
-};
+// BoardForm.propTypes = {
+//   addBoardCallback: PropTypes.func.isRequired,
+// };
 
 export default BoardForm;

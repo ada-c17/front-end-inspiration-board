@@ -34,8 +34,8 @@ function CardForm(props) {
   );
 }
 
-CardForm.propTypes = {
-  addCardCallback: PropTypes.func.isRequired,
-};
+// CardForm.propTypes = {
+//   addCardCallback: PropTypes.func.isRequired,
+// };
 
 export default CardForm;
