@@ -51,23 +51,33 @@ function App() {
   const toggleNewBoardForm = () => {setIsBoardFormVisible(!isBoardFormVisible)}
 
 
-  const cardData = [
+  const [cardData, setCardData] = useState([
     {
         card_id: 0,
         messageData: 'hi',
-        likesData: 5
+        likesData: null,
+        board_id: null
     },
     {
         card_id: 1,
         messageData: 'bye',
-        likesData: 10
+        likesData: null,
+        board_id: null
     },
     {
       card_id: 2,
       messageData: 'bye bye',
-      likesData: 15
+      likesData: null,
+      board_id: null
     }
-  ];
+  ]);
+
+  // const [likesCount, setLikesCount] = useState(0);
+
+  // const increaseLikes = () => {
+  //     console.log(`Inside increaseLikes!`);
+  //     setLikesCount(likesCount + 1);
+  // };
 
   return (
     <div>
