@@ -1,7 +1,7 @@
 import "./card.css";
 
-function Card() {
-  return <div></div>;
+function Card(props) {
+  return <li >{props.message}</li>;;
 }
 
 export default Card;

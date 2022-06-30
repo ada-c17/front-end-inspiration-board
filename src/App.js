@@ -25,7 +25,6 @@ function App() {
         setSelectedBoard(board);
       }
     }
-    // print title and owner on page
   };
 
   const getBoards = () => {
@@ -52,6 +51,7 @@ function App() {
 
   const getCards = () => {
     const board_id_body = { board_id: selectedBoard.id };
+    console.log(selectedBoard.id);
     axios.get(`${URL}/cards`, board_id_body).then((res) => {
       const newCards = res.data.map((card) => {
         return {
@@ -72,7 +72,7 @@ function App() {
   };
 
   useEffect(getBoards, []);
-  useEffect(getCards, []);
+  useEffect(getCards, [selectedBoard]);
 
   return (
     <div className="App">
@@ -87,7 +87,7 @@ function App() {
           {selectedBoard.title} - {selectedBoard.owner}
         </p>
         <h2>Cards for Pick-Me-Up Quotes</h2>
-        <CardList />
+        <CardList cards={cards}/>
         <h2>Create a New Board</h2>
         <BoardForm addBoardCallback={addBoard} />
         <h2>Create a New Card</h2>
