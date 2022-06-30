@@ -2,14 +2,17 @@ import "./App.css";
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import Board from "./components/Board";
+import CardList from "./components/CardList";
 
 function App() {
-  const URL = "https://gramtaschie.herokuapp.com/boards";
+  const URL = "https://gramtaschie.herokuapp.com";
+
   const [boards, setBoards] = useState([]);
+  const [cards, setCards] = useState([]);
 
   const fetchBoards = () => {
     axios
-      .get(URL)
+      .get(`${URL}/boards`)
       .then((response) => {
         console.log("fetchBoard request");
         console.log(response.data);
@@ -22,13 +25,30 @@ function App() {
       });
   };
 
+  const fetchCards = () => {
+    axios
+      .get(`${URL}/cards`)
+      .then((response) => {
+        console.log("fetchCard request");
+        console.log(response.data);
+        const updatedCards = response.data;
+        console.log(updatedCards);
+        setCards(updatedCards);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
+
   useEffect(() => fetchBoards, []);
+  useEffect(() => fetchCards, []);
 
   return (
     <div>
       <header>
         <h1>Inspiration Board</h1>
         <Board boards={boards} fetchBoardsCallback={fetchBoards}></Board>
+        <CardList cards={cards} fetchCardsCallback={fetchCards}></CardList>
       </header>
     </div>
   );
