@@ -1,0 +1,12 @@
+[
+    {
+    "board_id": 1,
+    "title": "my dream farm",
+    "owner" : "philomena"
+    },
+    {
+      "board_id": 2,
+      "title": "my dream outfit",
+      "owner": "sujin"
+    }
+  ]
