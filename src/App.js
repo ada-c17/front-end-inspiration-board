@@ -25,8 +25,7 @@ function App() {
           </li>
         ))}
       </ul>
-      <Link to="/new">Add New Space</Link>
-
+      <Link to="/new">Add new Board</Link>
       <footer>
         &copy; 2022 Ada Developers Academy ✨ by Coders from the OtterSpace ✨
         Doina ✨ Fena ✨ Marlyn ✨ Nina ✨
