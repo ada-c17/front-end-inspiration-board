@@ -1,11 +1,11 @@
-import logo from './logo.svg';
-import './App.css';
+import "./App.css";
+import NewBoardForm from "./components/NewBoardForm";
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header"><h1>Inspiration Board</h1>
-        
+      <header className="App-header">
+        <h1>Inspiration Board</h1>
       </header>
       <body>
         <div class="board">
@@ -20,8 +20,8 @@ function App() {
         </div>
         <div class="New-board">
           <h2>Create a New Board</h2>
+          <NewBoardForm />
         </div>
-
       </body>
     </div>
   );
