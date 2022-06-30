@@ -10,7 +10,6 @@ const BoardList = (props) => {
         title={board.title}
         owner={board.owner}
         deleteBoard={props.deleteBoard}
-        addBoard={props.addBoard}
       />
     );
   });

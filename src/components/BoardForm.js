@@ -22,11 +22,12 @@ const BoardForm = (props) => {
   const handleSubmit = (event) => {
     event.preventdefault();
     props.addBoard(formData);
+    setFormData(defaultBoard);
   };
 
   return (
     <div>
-      <form className="New-board-form" onSubmit={handleSubmit}>
+      <form onSubmit={handleSubmit} className="New-board-form">
         <label htmlFor="title"></label>
         <input
           type="text"
