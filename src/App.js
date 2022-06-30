@@ -53,30 +53,38 @@ function App() {
 
   const [cardData, setCardData] = useState([
     {
-        card_id: 0,
-        messageData: 'hi',
-        likesData: null,
-        board_id: null
+      card_id: 0,
+      message: 'hi',
+      likes_count:0,
+      board_id: null
     },
     {
-        card_id: 1,
-        messageData: 'bye',
-        likesData: null,
-        board_id: null
+      card_id: 1,
+      message: 'bye',
+      likes_count: 0,
+      board_id: null
     },
     {
       card_id: 2,
-      messageData: 'bye bye',
-      likesData: null,
+      message: 'bye bye',
+      likes_count: 0,
       board_id: null
     }
   ]);
 
-  // const [likesCount, setLikesCount] = useState(0);
+  // const [likeCount, setLikeCount] = useState(0);
 
   // const increaseLikes = () => {
   //     console.log(`Inside increaseLikes!`);
-  //     setLikesCount(likesCount + 1);
+  //     let likeCount = 0;
+
+  //     for (const card of cardData) {
+  //       if (card.liked === true) {
+  //         likeCount +=1;
+  //       }
+  //     }
+  //     // setLikeCount(likeCount + 1);
+  //     return likeCount;
   // };
 
   return (

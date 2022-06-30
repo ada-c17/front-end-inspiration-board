@@ -9,8 +9,9 @@ const CardList = (props) => {
                 <Card 
                     key={card.card_id}
                     card_id={card.card_id}
-                    message={card.messageData} 
-                    likes={card.likesData}>
+                    board_id = {card.board_id}
+                    message={card.message} 
+                    likes_count={card.likes_count}>
                 </Card>
             </li>
         )
