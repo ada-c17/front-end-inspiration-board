@@ -1,7 +1,9 @@
 html{
   background-color: black;
 }
-
+h1{
+  font-size: 3em;;
+}
 nav{
   display: flex;
   flex-direction: row;
