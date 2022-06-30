@@ -6,10 +6,10 @@ const CardList = ({ cards, onUpdateLikes }) => {
   const cardComponents = cards.map((card) => {
     return (
       <Card
-        key={card.card_id}
-        card_id={card.card_id}
+        key={card.cardId}
+        cardId={card.cardId}
         message={card.message}
-        likes_count={card.likes_count}
+        likesCount={card.likesCount}
         onUpdate={onUpdateLikes}
       />
     );
@@ -21,9 +21,9 @@ const CardList = ({ cards, onUpdateLikes }) => {
 CardList.propTypes = {
   cards: PropTypes.arrayOf(
     PropTypes.shape({
-      card_id: PropTypes.number.isRequired,
+      cardId: PropTypes.number.isRequired,
       message: PropTypes.string.isRequired,
-      likes_count: PropTypes.number.isRequired,
+      likesCount: PropTypes.number.isRequired,
     })
   ),
   onUpdateLikes: PropTypes.func.isRequired,
