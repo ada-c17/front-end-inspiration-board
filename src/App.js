@@ -68,7 +68,9 @@ function App() {
         <h1>Inspiration Board</h1>
       </header>
       <div>
+      <section className="box-container">
         <div className="board">
+          
           <h2>Boards</h2>
           <div>
             <BoardsList
@@ -96,8 +98,10 @@ function App() {
             <HideForm flipFormCallBack={flipDisplayForm} />
           )}
         </div>
+        </section>
       </div>
     </div>
+    
   );
 }
 
