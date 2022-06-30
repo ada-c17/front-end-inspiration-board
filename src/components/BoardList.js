@@ -1,7 +1,7 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
 
-const BoardList = ({ boardData, cardData, likeHeart }) => {
+const BoardList = ({ boardData, setCurrentBoardId }) => {
   let navigate = useNavigate();
 
   const createBoard = (board) => {

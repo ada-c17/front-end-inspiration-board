@@ -8,7 +8,6 @@ const CardsList = ({ cardData, likeHeart }) => {
     // console.log(`cardID: ${card.card_id}`);
     return (
       <div>
-        {/* {card.message} */}
         <Cards
           cardId={card.id}
           message={card.message}
