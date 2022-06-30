@@ -66,14 +66,14 @@ function App() {
   // showing selected board
   const selectedBoard = (id) => {
     const newBoards = [...boards];
-    let chosenBoard = {};
+    //let chosenBoard = {};
     for (const board of newBoards) {
       if (board.id === id) {
-        console.log(board);
-        chosenBoard = Object.assign({}, board);
+        //chosenBoard = Object.assign({}, board);
+        setBoardSelected(board);
       }
     }
-    setBoardSelected(chosenBoard);
+    //setBoardSelected(chosenBoard);
   };
 
   return (
