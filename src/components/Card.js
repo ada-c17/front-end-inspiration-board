@@ -1,10 +1,10 @@
 import React from 'react';
 
-const Card = () => {
+const Card = (props) => {
     return (
         <ul>
-            <li>Message: </li>
-            <li>Likes: </li>
+            <li>Message: {props.message}</li>
+            <li>Likes: {props.likes}</li>
         </ul>
     )
 };
