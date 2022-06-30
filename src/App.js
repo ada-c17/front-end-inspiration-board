@@ -1,5 +1,6 @@
 import "./App.css";
-
+// import Wall from "./components/Wall.js";
+import Board from "./components/Board.js";
 function App() {
   return (
     <div className="App">
