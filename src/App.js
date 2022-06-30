@@ -4,7 +4,8 @@ import { useEffect, useState} from 'react';
 import './App.css';
 import NewBoardForm from './components/NewBoardForm.js';
 import Board from './components/Board.js';
-import NewCardForm from './components/NewCardForm';
+import NewCardForm from './components/NewCardForm.js';
+import CardList from './components/CardList.js';
 
 function App() {
 
@@ -120,6 +121,7 @@ function App() {
 
           <section>
             {/* <CardList cards={cardData}></CardList> */}
+            {selectedBoard.board_id ? <CardList board={selectedBoard}></CardList> : ''}
           </section>
     </div>
   );
