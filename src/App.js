@@ -5,11 +5,13 @@ import NewBoardForm from "./components/NewBoardForm";
 import BoardsList from "./components/BoardsList";
 import HideForm from "./components/HideForm";
 import SelectedBoard from "./components/SelectedBoard";
+
 const selectedBoardData = {
   id: "",
   title: "",
   owner: "",
 };
+
 function App() {
   const [boards, setBoards] = useState([]);
   const [displayForm, setDisplayForm] = useState(true);
@@ -17,7 +19,7 @@ function App() {
   const URL = "https://get-inspired-c17.herokuapp.com/boards";
 
   // get all boards from DB
-  const fetchBoard = () => {
+  const fetchBoards = () => {
     axios
       .get(URL)
       .then((response) => {
@@ -34,14 +36,14 @@ function App() {
         alert("Oop! Could not access the boards!");
       });
   };
-  useEffect(fetchBoard, []);
+  useEffect(fetchBoards, []);
 
   // adding board
   const addBoard = (boardInfo) => {
     axios
       .post(URL, boardInfo)
       .then((res) => {
-        fetchBoard();
+        fetchBoards();
       })
       .catch((err) => {
         alert("Oop! Could not add the board!");
@@ -53,14 +55,10 @@ function App() {
   };
 
   const selectedBoard = (id) => {
-    console.log(`before selected board: ${boarSelected}`);
     const newBoards = [...boards];
     const newSelectedBoard = newBoards.filter((board) => board.id === id);
     setBoardSelected(newSelectedBoard);
   };
-
-  console.log(`after selected board: ${boarSelected}`);
-  //setBoardSelected(selectedBoardData);
 
   return (
     <div className="App">
