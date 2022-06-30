@@ -1,27 +1,29 @@
 import "./App.css";
-// import { BrowserRouter as Router, Routes } from "react-router-dom";
+import { React } from "react";
+import { Link, Outlet } from "react-router-dom";
 
 function App() {
   return (
     <div className="App">
       <header>
         <h1 className="App-title">Inspiration Board</h1>
-        <section className="routes">
-          <p className="create-board"> Create an Inspiration Board</p>
-          <p></p>
-          <p className="choose-board">Choose an inspiration board</p>
+        <nav className="routes">
+          <Link to="/create" className="choose-board">
+            {" "}
+            Create an Inspiration Board
+          </Link>
+          <Link to="/"> Home </Link>
+          <Link to="/boards" className="choose-board">
+            Choose an inspiration board
+          </Link>
+        </nav>
+        <section className="choose-board">
+          <ol>
+            <li>Board List place holder</li>
+          </ol>
         </section>
       </header>
-      <main>
-        <div className="InspoContainers">
-          <section className="newBoardForm">
-            <p>hi</p>
-          </section>
-          <section className="inspoList">
-            <p>Bye</p>
-          </section>
-        </div>
-      </main>
+      <Outlet />
     </div>
   );
 }
