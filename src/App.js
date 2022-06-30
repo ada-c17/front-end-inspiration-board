@@ -37,9 +37,11 @@ function App() {
   
   return (
     <main className="App">
+      <nav>
       <h1>Inspiration Boards</h1>
       <NewBoardForm />
       <NewCardForm />
+      </nav>
       <BoardList boardsData={boardsData}/>
       <CardList selectedBoard={selectedBoard} boardsData={boardsData}/>
     </main>
