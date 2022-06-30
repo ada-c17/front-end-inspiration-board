@@ -6,7 +6,7 @@ const kDefaultFormState = {
   creator: "",
 };
 
-const NewBoardForm = ({ onBoardSubmit }) => {
+const NewCardForm = ({ onCardSubmit }) => {
   const [formFields, setFormFields] = useState(kDefaultFormState);
 
   const handleChange = (event) => {
@@ -20,15 +20,15 @@ const NewBoardForm = ({ onBoardSubmit }) => {
   const handleSubmit = (event) => {
     event.preventDefault();
 
-    onBoardSubmit(formFields);
+    onCardSubmit(formFields);
 
     setFormFields(kDefaultFormState);
   };
 
   return (
-    <div className="NewBoardForm">
+    <div className="NewCardForm">
       <form onSubmit={handleSubmit}>
-        <h2>Create a New Board</h2>
+        <h2>Create a New Card</h2>
         <div>
           <label htmlFor="title">Title</label>
           <input
@@ -48,15 +48,15 @@ const NewBoardForm = ({ onBoardSubmit }) => {
           ></input>
         </div>
         <div>
-          <input type="submit" value="Add board!"></input>
+          <input type="submit" value="Add card!"></input>
         </div>
       </form>
     </div>
   );
 };
 
-NewBoardForm.propTypes = {
-  onBoardSubmit: PropTypes.func.isRequired,
+NewCardForm.propTypes = {
+  onCardSubmit: PropTypes.func.isRequired,
 };
 
-export default NewBoardForm;
+export default NewCardForm;
