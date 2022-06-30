@@ -1,23 +1,34 @@
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import axios from "axios";
+import "./App.css";
+import Board from "../src/components/Board";
+
+const kBaseUrl = "https://mission-inspirational-2.herokuapp.com";
+
+const cardApiToJson = (card) => {
+  const { id, likes, message, board_id: boardId } = card;
+  return { id, likes, message, boardId };
+};
+
+const increaseLike = async (id) => {
+  // needs to receive the ID of the card that was liked with button click
+  try {
+    const response = await axios.patch(`${kBaseUrl}/cards/${id}/like`);
+    return cardApiToJson(response.data);
+  } catch (error) {
+    console.log(error);
+    throw new Error(`Error when liking card ${id}`);
+  }
+};
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <header></header>
+      <main>
+        <Board likeFx={increaseLike} />
+      </main>
+      <footer></footer>
     </div>
   );
 }
