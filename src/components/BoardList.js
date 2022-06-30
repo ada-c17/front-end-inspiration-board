@@ -9,6 +9,7 @@ const BoardList = (props) => {
 
   return (
     <section>
+      <h2>Looking for inspiration? Choose a board!</h2>
       <ul>{boardTitles}</ul>
     </section>
   );
