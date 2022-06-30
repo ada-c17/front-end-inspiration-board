@@ -1,28 +1,102 @@
 import "./App.css";
 import NewBoardForm from "./components/NewBoardForm";
-
+import axios from "axios";
+import { useEffect, useState } from "react";
+import BoardsList from "./components/BoardsList";
+import HideForm from "./components/HideForm";
+import SelectedBoard from "./components/SelectedBoard";
+const selectedBoardData = {
+  id: "",
+  title: "",
+  owner: "",
+};
 function App() {
+  const [boards, setBoards] = useState([]);
+  const [displayForm, setDisplayForm] = useState(true);
+  const [boarSelected, setBoardSelected] = useState(selectedBoardData);
+  const URL = "https://get-inspired-c17.herokuapp.com/boards";
+
+  // get all boards from DB
+  const fetchBoard = () => {
+    axios
+      .get(URL)
+      .then((response) => {
+        const newBoards = response.data.map((board) => {
+          return {
+            id: board.id,
+            title: board.title,
+            owner: board.owner,
+          };
+        });
+        setBoards(newBoards);
+      })
+      .catch((error) => {
+        alert("Oop! Could not access the boards!");
+      });
+  };
+  useEffect(fetchBoard, []);
+
+  // adding board
+  const addBoard = (boardInfo) => {
+    axios
+      .post(URL, boardInfo)
+      .then((res) => {
+        fetchBoard();
+      })
+      .catch((err) => {
+        alert("Oop! Could not add the board!");
+      });
+  };
+
+  const flipDisplayForm = () => {
+    setDisplayForm(!displayForm);
+  };
+
+  const selectedBoard = (id) => {
+    console.log(`before selected board: ${boarSelected}`);
+    const newBoards = [...boards];
+    const newSelectedBoard = newBoards.filter((board) => board.id === id);
+    setBoardSelected(newSelectedBoard);
+  };
+
+  console.log(`after selected board: ${boarSelected}`);
+  //setBoardSelected(selectedBoardData);
+
   return (
     <div className="App">
       <header className="App-header">
         <h1>Inspiration Board</h1>
       </header>
-      <body>
-        <div class="board">
+      <div>
+        <div className="board">
           <h2>Boards</h2>
-          <ol>
-            <li>vida</li>
-            <li>Nish</li>
-          </ol>
+          <div>
+            <BoardsList
+              boardsList={boards}
+              selectedBoardCallBack={selectedBoard}
+            />
+          </div>
         </div>
-        <div class="selected-board">
+        <div className="selected-board">
           <h2>Selected Boards</h2>
+          <SelectedBoard
+            title={boarSelected.title}
+            owner={boarSelected.owner}
+          />
         </div>
-        <div class="New-board">
+        <div className="New-board">
           <h2>Create a New Board</h2>
-          <NewBoardForm />
+
+          {displayForm ? (
+            <NewBoardForm
+              addBoardCallBack={addBoard}
+              flipFormCallBack={flipDisplayForm}
+            />
+          ) : (
+            <HideForm flipFormCallBack={flipDisplayForm} />
+          )}
         </div>
-      </body>
+      </div>
     </div>
   );
 }

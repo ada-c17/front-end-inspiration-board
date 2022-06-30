@@ -7,9 +7,9 @@
     height: 10vh;
     background-color: #f6f8fa;
     display: flex;
-    flex-direction: column;
-    align-items: start;
-    justify-content: center;
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: space-evenly;
     font-size: calc(10px + 2vmin);
     color: rgb(5, 5, 5);
     top:2px;

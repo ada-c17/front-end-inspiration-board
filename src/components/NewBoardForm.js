@@ -20,7 +20,7 @@ const NewBoardForm = (props) => {
   // need to create addBoard func with axios post call to App for proper functionality
   const handleSubmit = (event) => {
     event.preventDefault();
-    props.addBoard(formData);
+    props.addBoardCallBack(formData);
   };
 
   return (
@@ -45,6 +45,9 @@ const NewBoardForm = (props) => {
         <p>- {formData.owner}</p>
         <input type="submit" value="Submit Board" />
       </form>
+      <button onClick={() => props.flipFormCallBack()}>
+        Hide New Board Form
+      </button>
     </div>
   );
 };
