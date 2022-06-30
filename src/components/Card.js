@@ -7,8 +7,13 @@ const Card = (props) => {
   const cardMessage = props.message;
   const cardLikesCount = props.likesCount;
 
+  // lift state to the board.js
   //create likes count function and delete
   //change functions below for buttons
+  // const deleteCard = () => {
+  //   props.deleteCardCallBack(props.id);
+  // };
+
   return (
     <div className="Card">
       <p>{cardMessage}</p>
