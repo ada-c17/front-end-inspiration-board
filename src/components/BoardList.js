@@ -1,32 +1,44 @@
 import React from "react";
 import Board from "./Board";
 
-const BoardList = ({ boardData, cardData }) => {
-  const getBoardList = boardData.map((board) => {
+const BoardList = ({ boardData, cardData, likeHeart }) => {
+  const createBoard = (board) => {
     return (
-      <Board key={board.board_id} title={board.title} owner={board.owner} />
+      <li>
+        <a
+          href="boards"
+          onClick={() => {
+            getBoards(board);
+          }}
+        >
+          {board.title}
+        </a>
+      </li>
+      /* <Board
+        key={board.board_id}
+        title={board.title}
+        owner={board.owner}
+        cards={board.cards}
+        cardData={cardData}
+        likeHeart={likeHeart}
+      /> */
     );
-  });
+  };
 
-
-  console.log(boardData);
-
-  return (
-    <section>
-      <h1>Boardlist</h1>
-      {/* {boardData.map(board => {
-          // return (
-          //   <Board
-          //     key={board.board_id}
-          //     title={board.title}
-          //     owner={board.owner} />
-          // ); */}
-      <ul>{getBoardList}</ul>
-
-
-      {/* <Board></Board> */}
-    </section>
-  );
+  const getBoards = (e, board) => {
+    console.log(e);
+    return (
+      <Board
+        key={board.board_id}
+        title={board.title}
+        owner={board.owner}
+        cards={board.cards}
+        cardData={cardData}
+        likeHeart={likeHeart}
+      />
+    );
+  };
+  return <ul>{boardData.map(createBoard)}</ul>;
 };
 
 export default BoardList;
