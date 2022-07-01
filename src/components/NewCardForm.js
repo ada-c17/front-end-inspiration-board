@@ -3,7 +3,7 @@ import {DropdownButton, Form, Button, Row, Col} from 'react-bootstrap';
 import './NewCardForm.css'
 import PropTypes from 'prop-types';
 
-const NewCardForm = ({onAddCard, boardsData}) => {
+const NewCardForm = ({onAddCard}) => {
 
   const [newCardData, setNewCardData] = useState({message: ''});
 

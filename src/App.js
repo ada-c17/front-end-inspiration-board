@@ -9,7 +9,7 @@ import './App.css';
 function App() {
   // STATE(boardsData: ListOfObjects, selectedBoard: id) 
   const [boardsData, setBoardsData] = useState([]);
-  const [selectedBoard, setSelectedBoard] = useState(1);
+  const [selectedBoard, setSelectedBoard] = useState(2);
 
   const URL = 'https://inspo-board-server.herokuapp.com'
 
@@ -60,22 +60,27 @@ function App() {
     });
   }
 
+  const getBoardDataAndId = (selectedBoard) => {
+    let selectedBoardData;
+    let boardIndex;
+      for (const [index, board] of boardsData.entries()){
+        if (board.boardId === selectedBoard){
+          selectedBoardData = board;
+          boardIndex = index;
+        };
+      };
+      return [selectedBoardData, boardIndex]
+  };
+
   const addCard = (newCard) => {
     axios
     .post(URL + '/boards/' + selectedBoard + '/cards', newCard)
     .then((response) => {
-      let selectedBoardData;
-      let boardIndex;
-        for (const [index, board] of boardsData.entries()){
-          if (board.boardId === selectedBoard){
-            selectedBoardData = board;
-            boardIndex = index;
-          };
-        };
-      const newBoard = {...selectedBoardData, cards: [...selectedBoardData.cards, response.data]};
-      const newBoardsData = {...boardsData}
-      newBoardsData[boardIndex] = newBoard;
-      setBoardsData(newBoardsData);
+      const [selectedBoardData, boardIndex] = getBoardDataAndId(selectedBoard);
+      const updatedBoard = {...selectedBoardData, cards: [...selectedBoardData.cards, response.data]};
+      const updatedBoardsData = [...boardsData]
+      updatedBoardsData[boardIndex] = updatedBoard;
+      setBoardsData(updatedBoardsData);
     })
     .catch((error) => 
     {console.log(error)});
@@ -86,7 +91,7 @@ function App() {
       <nav>
       <h1>Inspiration Boards</h1>
       <NewBoardForm onAddBoard = {addBoard}/>
-      <NewCardForm onAddCard = {addCard} sBoardId={selectedBoard.boardId}/>
+      <NewCardForm onAddCard = {addCard}/>
       </nav>
       <BoardList boardsData={boardsData}/>
       <CardList boardsData={boardsData}/>
