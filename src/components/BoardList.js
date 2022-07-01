@@ -4,6 +4,8 @@ import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
 
 const BoardList = (props) => {
+  props.boards.sort((a, b) => a.title.localeCompare(b.title));
+
   return (
     <div>
       <div>You have these spaces:</div>
