@@ -1,0 +1,13 @@
+.board-bubble button {
+  border-radius: 20px;
+  width: 30rem;
+  height: 10rem;
+}
+
+.no-highlight {
+  border-width: 1px;
+}
+
+.highlight {
+  border-width: 10px;
+}
