@@ -102,6 +102,15 @@ const App = () => {
     });
   };
 
+  // Patch likes_counts in cards
+  const handleLike = (cardId) => {
+    axios
+      .patch(`https://back-end-inspiration-board.herokuapp.com/cards/${cardId}`)
+      .then((response) => {
+        getOneBoard(boardData.boardId);
+      });
+  };
+
   // console.log(boardData);
   return (
     <Router>
@@ -120,6 +129,7 @@ const App = () => {
               getOneBoard={getOneBoard}
               likeHeart={faHeart}
               deleteCard={deleteCard}
+              handleLike={handleLike}
             />
           }
         />

@@ -2,26 +2,24 @@ import React from "react";
 import Cards from "./Cards";
 import { Row } from "react-bootstrap";
 
-const CardsList = ({ cardData, likeHeart, deleteCard }) => {
+const CardsList = ({ cardData, likeHeart, deleteCard, handleLike }) => {
   // console.log("card data: ", cardData);
-  const createCard = (card) => {
-    // console.log(`cardID: ${card.card_id}`);
-    return (
-      <div>
-        <Cards
-          cardId={card.id}
-          message={card.message}
-          likesCount={card.likes_count}
-          likeHeart={likeHeart}
-          deleteCard={deleteCard}
-        />
-      </div>
-    );
-  };
 
   return (
     <Row xs={1} md={2} lg={3} className="g-4">
-      {cardData.map(createCard)}
+      {cardData.map((card) => (
+        <div key={card.id}>
+          <Cards
+            cardId={card.id}
+            message={card.message}
+            likesCount={card.likes_count}
+            likeHeart={likeHeart}
+            // reloadBoard={reloadBoard}
+            handleLike={handleLike}
+            deleteCard={deleteCard}
+          />
+        </div>
+      ))}
     </Row>
   );
 };

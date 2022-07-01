@@ -3,7 +3,13 @@ import CardsList from "./CardsList";
 import "./stylesheet/Board.css";
 import { useNavigate, useParams } from "react-router-dom";
 
-const Board = ({ boardData, getOneBoard, likeHeart, deleteCard }) => {
+const Board = ({
+  boardData,
+  getOneBoard,
+  likeHeart,
+  handleLike,
+  deleteCard,
+}) => {
   let navigate = useNavigate();
   let { boardId } = useParams();
 
@@ -11,6 +17,7 @@ const Board = ({ boardData, getOneBoard, likeHeart, deleteCard }) => {
     getOneBoard(boardId);
     console.log("I ran!");
   }, []);
+  // need [boardId]
 
   console.log("board cards: ", boardData.cards);
 
@@ -36,6 +43,7 @@ const Board = ({ boardData, getOneBoard, likeHeart, deleteCard }) => {
           cardData={boardData.cards}
           likeHeart={likeHeart}
           deleteCard={deleteCard}
+          handleLike={handleLike}
         />
       </li>
     </div>
