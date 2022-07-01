@@ -1,12 +1,14 @@
 import "./App.css";
 // import BoardForm from "./components/BoardForm";
 import BoardList from "./components/BoardList";
+import CardList from "./components/CardList";
 import { useState, useEffect } from "react";
 import axios from "axios";
 import Modal from "./components/Modal";
 
 function App() {
   const [boards, setBoards] = useState([]);
+  const [cards, setCards] = useState([]);
   const [openModal, setOpenModal] = useState(false);
 
   const URL = "https://inspiration-board-eota.herokuapp.com/boards";
@@ -78,7 +80,9 @@ function App() {
               {/* <BoardForm addBoard={addBoard} /> */}
             </section>
           </div>
-          <div className="Board-display"></div>
+          <div className="Board-display">
+            <CardList cards={cards}></CardList>
+          </div>
         </main>
       </div>
     </div>
