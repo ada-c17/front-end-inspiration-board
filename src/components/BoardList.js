@@ -1,14 +1,15 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
+import "./stylesheet/BoardList.css";
 
 const BoardList = ({ boardData, setCurrentBoardId }) => {
   let navigate = useNavigate();
 
   const createBoard = (board) => {
-    // console.log(board);
     return (
       <li>
         <a
+          className="boardName"
           href="#"
           onClick={() => {
             navigate(`boards/${board.boardId}`);
@@ -17,31 +18,15 @@ const BoardList = ({ boardData, setCurrentBoardId }) => {
           {board.title}
         </a>
       </li>
-      /* <Board
-        key={board.board_id}
-        title={board.title}
-        owner={board.owner}
-        cards={board.cards}
-        cardData={cardData}
-        likeHeart={likeHeart}
-      /> */
     );
   };
 
-  // const getBoards = (e, board) => {
-  //   console.log(e);
-  //   return (
-  //     <Board
-  //       key={board.board_id}
-  //       title={board.title}
-  //       owner={board.owner}
-  //       cards={board.cards}
-  //       cardData={cardData}
-  //       likeHeart={likeHeart}
-  //     />
-  //   );
-  // };
-  return <ul>{boardData.map(createBoard)}</ul>;
+  return (
+    <section className="boardList">
+      <h1>Inspiration Board</h1>
+      <ul>{boardData.map(createBoard)}</ul>
+    </section>
+  );
 };
 
 export default BoardList;

@@ -55,22 +55,24 @@ const App = () => {
 
   // console.log(boardData);
   return (
-    <Router>
-      <Routes>
-        <Route path="/" element={<BoardList boardData={allBoards} />} />
-        <Route
-          path="/boards/:boardId"
-          element={
-            <Board
-              boardData={boardData}
-              getOneBoard={getOneBoard}
-              likeHeart={faHeart}
-            />
-          }
-        />
-        <Route path="*" element={<Error />} />
-      </Routes>
-    </Router>
+    <div className="App">
+      <Router>
+        <Routes>
+          <Route path="/" element={<BoardList boardData={allBoards} />} />
+          <Route
+            path="/boards/:boardId"
+            element={
+              <Board
+                boardData={boardData}
+                getOneBoard={getOneBoard}
+                likeHeart={faHeart}
+              />
+            }
+          />
+          <Route path="*" element={<Error />} />
+        </Routes>
+      </Router>
+    </div>
   );
 };
 
