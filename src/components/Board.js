@@ -51,7 +51,7 @@ const Board = (props) => {
 
   const setCardLikesCount = (id) => {
     console.log("inside setCardLikesCount", id);
-    const cardLikes = [...cards];
+    const cardLikes = [...boardData.cards];
 
     let targetCard;
     for (let card of cardLikes) {
@@ -93,8 +93,12 @@ const Board = (props) => {
         Return Home
       </Link>
       {/* also add the setLikesCountCallback in CardList */}
-      <CardList data={boardData.cards} deleteCardCallBack={deleteCard} setLikesCountCallBack={setCardLikesCount} />
-      <button to={item.id}>{item.likes_count} add likes +</button> 
+      <CardList
+        data={boardData.cards}
+        deleteCardCallBack={deleteCard}
+        setLikesCountCallBack={setCardLikesCount}
+      />
+      <button to={boardData.id}>{boardData.likes_count} add likes +</button>
       <div>board title : {boardData.title}</div>
       <div>board owner : {boardData.owner}</div>
       <h3>id of the board for the reference: {params.id}</h3>
