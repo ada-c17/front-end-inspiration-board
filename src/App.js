@@ -43,7 +43,7 @@ function App() {
       <div className="container">
         <div className="board-and-card-flex">
           <div className="board-wrapper">
-            <div>{<Boards boards={boardsData} />}</div>
+            <Boards boards={boardsData} />
           </div>
           <div>Card quote</div>
           <div>Card quote</div>
