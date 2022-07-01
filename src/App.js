@@ -70,7 +70,7 @@ function App() {
   };
 
   // delete card
-  const deleteCard = (boardId, cardId) => {
+  const deleteCard = (cardId) => {
     axios
       .delete(`${url}/cards/${cardId}`)
       .then(() => {
@@ -105,7 +105,7 @@ function App() {
       .post(`${url}/boards/${boardId}/card`, requestBody)
       .then((response) => {
         const newCard = {
-          card_id: response.id,
+          card_id: response.card_id,
           message: requestBody.message,
           like_count: requestBody.like_count,
         };
@@ -120,7 +120,7 @@ function App() {
     const cardObj = cards.filter((card) => card.card_id == cardId);
     axios
       .put(`https://powerful-lake-89201.herokuapp.com/cards/${cardId}`, {
-        like_count: cardObj[like_count] + 1,
+        like_count: cardObj.like_count + 1,
       })
       .then(() => {
         const updatedCards = cards.map((card) => {
@@ -129,6 +129,7 @@ function App() {
           }
           return card;
         });
+        setCards(updatedCards);
       })
       .catch((e) => {
         console.log(e);

@@ -4,14 +4,15 @@ import "./CardList.css";
 import Card from "./components/Card";
 import PropTypes from "prop-types";
 
-const CardList = ({ cards, deleteCard }) => {
+const CardList = ({ cards, deleteCard, updateLikes }) => {
   const cardComponents = cards.map((card) => {
     return (
       <Card
-        id={card.card_id}
+        card_id={card.card_id}
         message={card.message}
-        likeCount={card.like_count}
+        like_count={card.like_count}
         deleteCard={deleteCard}
+        updateLikes={updateLikes}
       ></Card>
     );
   });
@@ -25,10 +26,10 @@ CardList.propTypes = {
       card_id: PropTypes.number.isRequired,
       message: PropTypes.string.isRequired,
       like_count: PropTypes.number.isRequired,
-      board_id: PropTypes.number.isRequired,
     })
   ),
   deleteCard: PropTypes.func.isRequired,
+  updateLikes: PropTypes.func.isRequired,
 };
 
 export default CardList;
