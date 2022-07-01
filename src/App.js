@@ -5,7 +5,6 @@ import './App.css';
 import NewBoardForm from './components/NewBoardForm.js';
 import Board from './components/Board.js';
 import NewCardForm from './components/NewCardForm';
-import CardList from './components/CardList';
 
 function App() {
 
@@ -13,24 +12,44 @@ function App() {
 
   const URL = 'http://localhost:5000/boards';
   // when we first load 
-  const [selectedBoard, setSelectedBoard] = useState({
-    title: '',
-    owner: '',
-    board_id: null
-  });
-  // Initial render when component is first mounted
-  useEffect(() => {
-    axios.get(URL)
-    .then((res) => {
-      setBoardsData(res.data);
-      });
-  }, []);
+  // const [selectedBoard, setSelectedBoard] = useState({
+  //   title: '',
+  //   owner: '',
+  //   board_id: null
+  // });
+  // // Initial render when component is first mounted
+  // useEffect(() => {
+  //   axios.get(URL)
+  //   .then((res) => {
+  //     setBoardsData(res.data);
+  //     });
+  // }, []);
 
-  const selectBoard = (board) => { setSelectedBoard(board) };
+  const fetchBoards = () => {
+    axios
+      .get(URL)
+      .then((res) => {
+        const newBoards = res.data.map((board) => {
+          return {
+            board_id: board.board_id,
+            title: board.title,
+            owner: board.owner
+          };
+        });
+        setBoardsData(newBoards);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
+
+  useEffect(fetchBoards, []);
+
+  // const selectBoard = (board) => { setSelectedBoard(board) };
 
   const boardsElements = boardsData.map((board) => {
     return (<li>
-      <Board board={board} onBoardSelect={selectBoard}></Board>
+      {/* <Board board={board} onBoardSelect={selectBoard}></Board> */}
     </li>)
   });
 
@@ -51,26 +70,26 @@ function App() {
   const toggleNewBoardForm = () => {setIsBoardFormVisible(!isBoardFormVisible)}
 
 
-  const [cardData, setCardData] = useState([
-    {
-      card_id: 0,
-      message: 'hi',
-      likes_count:0,
-      board_id: null
-    },
-    {
-      card_id: 1,
-      message: 'bye',
-      likes_count: 0,
-      board_id: null
-    },
-    {
-      card_id: 2,
-      message: 'bye bye',
-      likes_count: 0,
-      board_id: null
-    }
-  ]);
+  // const [cardData, setCardData] = useState([
+  //   {
+  //       card_id: 0,
+  //       messageData: 'hi',
+  //       likesData: null,
+  //       board_id: null
+  //   },
+  //   {
+  //       card_id: 1,
+  //       messageData: 'bye',
+  //       likesData: null,
+  //       board_id: null
+  //   },
+  //   {
+  //     card_id: 2,
+  //     messageData: 'bye bye',
+  //     likesData: null,
+  //     board_id: null
+  //   }
+  // ]);
 
   // const [likeCount, setLikeCount] = useState(0);
 
@@ -99,7 +118,7 @@ function App() {
 
           <section>
             <h2>Selected Board</h2>
-            <p>{selectedBoard.board_id ? `${selectedBoard.title} - ${selectedBoard.owner}` : 'Select a Board from the Board List!'}</p>
+            {/* <p>{selectedBoard.board_id ? `${selectedBoard.title} - ${selectedBoard.owner}` : 'Select a Board from the Board List!'}</p> */}
           </section>
 
           <section>
@@ -114,7 +133,7 @@ function App() {
           </section>
 
           <section>
-            <CardList cards={cardData}></CardList>
+            {/* <CardList cards={cardData}></CardList> */}
           </section>
     </div>
   );
