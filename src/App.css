@@ -17,6 +17,9 @@ img {float:left;
   z-index: 2;
 
 }
+img.Otter{
+  background-image: none;
+}
 
 footer {
   position: absolute;
