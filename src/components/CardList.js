@@ -26,7 +26,7 @@ const CardList = ({ data, deleteCardCallBack, setLikesCountCallBack }) => {
 CardList.propTypes = {
   cardListData: PropTypes.arrayOf(
     PropTypes.shape({
-      // id: PropTypes.number.isRequired,
+      id: PropTypes.number.isRequired,
       data: PropTypes.array.isRequired,
       setLikesCountCallBack: PropTypes.func.isRequired,
       deleteCardCallBack: PropTypes.func.isRequired,

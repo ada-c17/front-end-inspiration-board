@@ -1,5 +1,4 @@
 import { Link } from "react-router-dom";
-// import PropTypes from "prop-types";
 import { useState } from "react";
 import axios from "axios";
 
@@ -36,7 +35,7 @@ const NewBoardForm = () => {
     if (boardData.title === "" || boardData.owner === "") {
       setMessage("Please enter both title and owner");
     } else {
-      setMessage("Board Created");
+      setMessage(`Board ${boardData.title} was created by ${boardData.owner}`);
       makeNewBoard(boardData);
     }
   };
