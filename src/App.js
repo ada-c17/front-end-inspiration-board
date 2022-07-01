@@ -38,11 +38,11 @@ function App() {
 
   useEffect(fetchBoards, []);
 
-  // const selectBoard = (board) => { setSelectedBoard(board) };
+  const selectBoard = (board) => { setSelectedBoard(board) };
 
   const boardsElements = boardsData.map((board) => {
     return (<li>
-      {/* <Board board={board} onBoardSelect={selectBoard}></Board> */}
+      <Board board={board} onBoardSelect={selectBoard}></Board>
     </li>)
   });
 

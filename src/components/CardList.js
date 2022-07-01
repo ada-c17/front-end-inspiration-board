@@ -1,7 +1,7 @@
 import Card from './Card.js';
 // import PropTypes from 'prop-types';
 import axios from 'axios';
-import { useEffect, useState} from 'react';
+import { useEffect, useState } from 'react';
 import NewCardForm from './NewCardForm.js';
 
 const CardList = (props) => {
@@ -12,13 +12,31 @@ const CardList = (props) => {
     const fetchCards = () => {
         axios
           .get(`${URL}/${props.board.board_id}/cards`)
-          .then((res) => {
-            const newCards = res.data.map((card) => {
+          .then((response) => {
+            // console.log("get request");
+            console.log(response);
+            console.log(response.data);
+            // const card_response = res.data
+            // const card_data_response = Array.from(res);
+            // const newCards = {Array.isArray(card_response) ? res.data.map((card) => {
+            // //   // console.log(res);
+            //   return {
+            //     board_id: card.board_id,
+            //     card_id: card.card_id,
+            //     message: card.message,
+            //     likes_count: card.likes_count
+            //   };
+            // }) : null};
+
+            const newCards = response.data["cards"].map((card) => {
               return {
+                board_id: card.board_id,
                 card_id: card.card_id,
                 message: card.message,
+                likes_count: card.likes_count
               };
             });
+
             setCardsData(newCards);
           })
           .catch((err) => {
@@ -26,26 +44,25 @@ const CardList = (props) => {
           });
       };
     
-    useEffect(fetchCards, [props.board]);
+    useEffect(fetchCards, [props.board.board_id]);
 
     const cardElements = cardsData.map((card) => {
-        return (<Card
-            card={card}></Card>)
+        return (<Card card={card}></Card>)
       });
 
-    const createNewCard = (messages) => {
-        axios
-          .post(`${URL}/${props.board.board_id}/cards`, {"board_id":  props.board.board_id,
-          "message": messages})
-          .then((response) => {
-            if (messages.message)
-            console.log(response);
-            fetchCards();
-          })
-          .catch((error) => {
-            console.log(error);
-          });
-      };
+    // const createNewCard = (messages) => {
+    //     axios
+    //       .post(`${URL}/${props.board.board_id}/cards`, {"board_id":  props.board.board_id,
+    //       "message": messages})
+    //       .then((response) => {
+    //         if (messages.message)
+    //         console.log(response);
+    //         fetchCards();
+    //       })
+    //       .catch((error) => {
+    //         console.log(error);
+    //       });
+    //   };
 
     // const cardComponents = props.cards.map(card => {
     //     return (
@@ -67,7 +84,7 @@ const CardList = (props) => {
                 {/* {cardComponents} */}
                 {cardElements}
             </ul>
-            <NewCardForm createNewCard={createNewCard}></NewCardForm>
+            {/* <NewCardForm createNewCard={createNewCard}></NewCardForm> */}
         </section>
     );
 };
