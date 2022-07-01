@@ -63,40 +63,24 @@ function App() {
 
   const addBoard = (newBoard) => {
     axios
-    .post(URL + "/boards", newBoard)
-    .then((response) => {
-      setBoardsData((oldBoards) => [
-        ...oldBoards,
-        {
-          ...newBoard,
-          boardId: response.data.board_id,
-          cards: response.data.cards,
-        },
-      ]);
-      console.log(response);
-      console.log(boardsData);
-    })
-    .catch((error) => {
-      console.log(error);
-    });
-};
-  //     .post(URL + "/boards", newBoard)
-  //     .then((response) => {
-  //       setBoardsData((oldBoards) => [
-  //         ...oldBoards,
-  //         {
-  //           ...newBoard,
-  //           boardId: response.data.board_id,
-  //           cards: response.data.cards,
-  //         },
-  //       ]);
-  //       console.log(response);
-  //       console.log(boardsData);
-  //     })
-  //     .catch((error) => {
-  //       console.log(error);
-  //     });
-  // };
+      .post(URL + "/boards", newBoard)
+      .then((response) => {
+        console.log(response.data);
+        setBoardsData((oldBoards) => [
+          ...oldBoards,
+          {
+            ...newBoard,
+            boardId: response.data.board.board_id,
+            cards: response.data.board.cards,
+          },
+        ]);
+        console.log(response);
+        console.log(boardsData);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
 
   const getCurrentBoard = (id) => {
     const currentBoard = boardsData.filter((board) => board.boardId === id);
