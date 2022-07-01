@@ -18,6 +18,11 @@ function App() {
   };
   const [selectedBoard, setSelectedBoard] = useState(defaultBoard);
   const [cards, setCards] = useState([]);
+  const [boardFormHidden, setBoardFormHidden] = useState(false);
+
+  const setBoardFormVisibility = () => {
+    setBoardFormHidden(!boardFormHidden);
+  };
 
   const selectBoard = (id) => {
     for (const board of boards) {
@@ -147,7 +152,10 @@ function App() {
           likeCardCallback={likeCard}
         />
         <h2>Create a New Board</h2>
-        <BoardForm addBoardCallback={addBoard} />
+        {boardFormHidden ? null : <BoardForm addBoardCallback={addBoard} />}
+        <button onClick={setBoardFormVisibility}>
+          {boardFormHidden ? "Show Board Form" : "Hide Board Form"}
+        </button>
         <h2>Create a New Card</h2>
         <CardForm addCardCallback={addCard} board_id={selectedBoard.id} />
       </main>
