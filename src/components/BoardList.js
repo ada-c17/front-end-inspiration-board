@@ -3,23 +3,30 @@ import { Button, Modal, Form } from "react-bootstrap";
 
 import { useNavigate } from "react-router-dom";
 import addNewBoardForm from "./NewBoardForm"
+import "./stylesheet/BoardList.css";
+import { Link } from "react-router-dom";
 
-const BoardList = ({ boardData, setCurrentBoardId }) => {
+const BoardList = ({ boardData, setCurrentBoardId, deleteBoard }) => {
   let navigate = useNavigate();
 
   const createBoard = (board) => {
-    // console.log(board);
     return (
       <li>
-
-        <a
-          href="#"
+        <Link
+          to={`boards/${board.boardId}`}
           onClick={() => {
             navigate(`boards/${board.boardId}`);
           }}
         >
           {board.title}
-        </a>
+        </Link>
+        <button
+          onClick={() => {
+            deleteBoard(board.boardId);
+          }}
+        >
+          Delete Board
+        </button>
       </li>
     );
   };

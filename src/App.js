@@ -59,6 +59,64 @@ const App = () => {
       });
   };
 
+  const deleteBoardRequest = (id) => {
+    return axios
+      .delete(`${URL}/${id}`)
+      .then((response) => {
+        console.log(response.data);
+      })
+      .catch((error) => {
+        console.log(error);
+
+        throw new Error(`error deleting board ${id}`);
+      });
+  };
+
+  const deleteBoard = (id) => {
+    return deleteBoardRequest(id)
+      .then(() => {
+        setAllBoards((oldBoards) => {
+          return oldBoards.filter((board) => board.boardId !== id);
+        });
+      })
+      .catch((error) => {
+        console.log(error.message);
+      });
+  };
+
+  const deleteCardRequest = (cardID) => {
+    return axios
+      .delete(
+        `https://back-end-inspiration-board.herokuapp.com/cards/${cardID}`
+      )
+      .then((response) => {
+        console.log(response.data);
+      })
+      .catch((error) => {
+        console.log(error);
+        throw new Error(`error deleting card ${cardID}`);
+      });
+  };
+
+  const deleteCard = (cardID) => {
+    return deleteCardRequest(cardID).then(() => {
+      const updatedCards = { ...boardData };
+      updatedCards.cards = updatedCards.cards.filter(
+        (card) => card.id !== cardID
+      );
+      setBoardData(updatedCards);
+    });
+  };
+
+  // Patch likes_counts in cards
+  const handleLike = (cardId) => {
+    axios
+      .patch(`https://back-end-inspiration-board.herokuapp.com/cards/${cardId}`)
+      .then((response) => {
+        getOneBoard(boardData.boardId);
+      });
+  };
+
   // console.log(boardData);
 
   //Post New Board
@@ -70,10 +128,15 @@ const App = () => {
   const [owner, setOwner] = useState("");
 
   return (
-    <section>
+    <div className="App">
       <Router>
         <Routes>
-          <Route path="/" element={<BoardList boardData={allBoards} />} />
+          <Route
+            path="/"
+            element={
+              <BoardList boardData={allBoards} deleteBoard={deleteBoard} />
+            }
+          />
           <Route
             path="/boards/:boardId"
             element={
@@ -81,15 +144,15 @@ const App = () => {
                 boardData={boardData}
                 getOneBoard={getOneBoard}
                 likeHeart={faHeart}
+                deleteCard={deleteCard}
+                handleLike={handleLike}
               />
             }
           />
           <Route path="*" element={<Error />} />
         </Routes>
       </Router>
-
-    </section>
-
+    </div>
   );
 };
 
