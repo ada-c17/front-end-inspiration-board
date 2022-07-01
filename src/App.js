@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-import "./App.css";
 import Board from "./components/Board";
 import BoardDropdown from "./components/BoardDropdown";
+import "./css/inspo_board.css";
 
 const kBaseUrl = "https://mission-inspirational-2.herokuapp.com";
 
@@ -55,19 +55,67 @@ function App() {
   // End functions for dropdown functionality
 
   return (
-    <div className="App">
-      <header>
-        <BoardDropdown
+    <main>
+      <section className="container">
+        <section className="logo-area">
+          <p className="logo">INSPOBOARD</p>
+        </section>
+        <section className="dropdown-menu">
+          <BoardDropdown
           boards={boards}
           boardOption={boardOption}
           onDropdownChange={showChosenBoard}
         />
-      </header>
-      <main>
-        <Board cardLike={increaseLike} />
-      </main>
-      <footer></footer>
-    </div>
+        </section>
+        <section className="add-menu-button">
+          <button>Add Board</button>
+        </section>
+        <section className="collapse">
+          <input className="board-input" type="text" placeholder="Title" />
+          <input className="board-input" type="text" placeholder="Owner" />
+          <button className="board-button">Add</button>
+        </section>
+        <section className="board-content">
+          <h1>Current Board:(current board)</h1>
+          <Board cardLike={increaseLike} />
+          <section className="card-display">
+            <div className="message">
+              <p className="message-text">You can do it!</p>
+              <p className="likes">Likes: 0</p>
+              <button className="like-button">👍</button>
+            </div>
+            <div className="message">
+              <p className="message-text">Way to be!</p>
+              <p className="likes">Likes: 0</p>
+              <button className="like-button">👍</button>
+            </div>
+            <div className="message">
+              <p className="message-text">Amazing work!</p>
+              <p className="likes">Likes: 0</p>
+              <button className="like-button">👍</button>
+            </div>
+            <div className="message">
+              <p className="message-text">Be all you can be!</p>
+              <p className="likes">Likes: 0</p>
+              <button className="like-button">👍</button>
+            </div>
+            <div className="message">
+              <p className="message-text">Reach for the stars!</p>
+              <p className="likes">Likes: 0</p>
+              <button className="like-button">👍</button>
+            </div>
+          </section>
+        </section>
+        <section className="add-message">
+          <input
+            className="message-input"
+            type="text"
+            placeholder="Add a message here!"
+          />
+          <button className="message-button">Add</button>
+        </section>
+      </section>
+    </main>
   );
 }
 
