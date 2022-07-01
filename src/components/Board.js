@@ -59,15 +59,18 @@ const Board = (props) => {
     }
 
     axios
-      .put(`https://inspiration-from-otterspace.herokuapp.com/cards/${id}/like`)
+      .put(
+        `https://inspiration-from-otterspace.herokuapp.com/cards/${id}/like`,
+        { message: targetCard.message, likesCount: targetCard.likesCount + 1 }
+      )
       .then((response) => {
         console.log("made it into like button");
         targetCard.likesCount += 1;
-        // setBoardData(cardLikes);
-        setBoardData(targetCard);
+        setBoardData(cardLikes);
+        // setBoardData(targetCard);
       })
       .catch((error) => {
-        console.log("couldn't add like'");
+        console.log("couldn't add like");
       });
   };
 
