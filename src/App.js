@@ -3,6 +3,7 @@ import "./App.css";
 import { Link } from "react-router-dom";
 import React, { useEffect, useState } from "react";
 import axios from "axios";
+import otter from "./data/Otter.png";
 
 function App() {
   // const [data] = useState([
@@ -37,11 +38,14 @@ function App() {
 
   return (
     <div className="App">
+      <img src={otter} alt={"otterspace"}></img>
       <h1>Inspiration from the OtterSpace</h1>
       <ul className="list">
         {boards.map((item) => (
           <li key={item.id} className="list-item">
-            <Link to={`${item.id}`}>{item.title}</Link>
+            <Link to={`${item.id}`} style={{ cursor: "pointer" }}>
+              {item.title}
+            </Link>
           </li>
         ))}
       </ul>
