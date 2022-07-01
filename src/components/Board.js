@@ -43,6 +43,35 @@ const Board = (props) => {
   //     });
   // };
 
+  //The useEffect below can be used for the axios get route
+
+  // useEffect(() => {
+  //   getCardsFromApi();
+  // }, []);
+
+  const setCardLikesCount = (id) => {
+    console.log("inside setCardLikesCount", id);
+    const cardLikes = [...cards];
+
+    let targetCard;
+    for (let card of cardLikes) {
+      if (card.id === id) {
+        targetCard = card;
+      }
+    }
+
+    axios
+      .put(`http://127.0.0.1:5000/cards/${id}/like`)
+      .then((response) => {
+        console.log("made it into like button");
+        // targetCard.likesCount += 1;
+        // setCards(cardLikes);
+      })
+      .catch((error) => {
+        console.log("couldn't add like'");
+      });
+  };
+
   const deleteCard = (id) => {
     console.log("delete", id);
 
@@ -64,8 +93,8 @@ const Board = (props) => {
         Return Home
       </Link>
       {/* also add the setLikesCountCallback in CardList */}
-      <CardList data={boardData.cards} deleteCardCallBack={deleteCard} />
-      {/* <button to={item.id}>{item.likes_count} add likes +</button> */}
+      <CardList data={boardData.cards} deleteCardCallBack={deleteCard} setLikesCountCallBack={setCardLikesCount} />
+      <button to={item.id}>{item.likes_count} add likes +</button> 
       <div>board title : {boardData.title}</div>
       <div>board owner : {boardData.owner}</div>
       <h3>id of the board for the reference: {params.id}</h3>
