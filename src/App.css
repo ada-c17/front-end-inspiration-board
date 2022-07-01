@@ -31,16 +31,6 @@ html{
   font-family: 'Courier New';
 }
 
-.boardContainer{
-    display: grid;
-    grid-template-columns: repeat(5, 1fr);
-    grid-template-rows: repeat(5, 1fr);
-    grid-column-gap: 0px;
-    grid-row-gap: 0px;
-}
-
-
-
 .choose-board{
   background-color: #f3f3f3;
   padding: .9em;
