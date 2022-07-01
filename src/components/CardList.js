@@ -47,35 +47,9 @@ const CardList = (props) => {
     useEffect(fetchCards, [props.board.board_id]);
 
     const cardElements = cardsData.map((card) => {
-        return (<Card card={card}></Card>)
+        return (
+          <Card card={card}></Card>)
       });
-
-    // const createNewCard = (messages) => {
-    //     axios
-    //       .post(`${URL}/${props.board.board_id}/cards`, {"board_id":  props.board.board_id,
-    //       "message": messages})
-    //       .then((response) => {
-    //         if (messages.message)
-    //         console.log(response);
-    //         fetchCards();
-    //       })
-    //       .catch((error) => {
-    //         console.log(error);
-    //       });
-    //   };
-
-    // const cardComponents = props.cards.map(card => {
-    //     return (
-    //         <li>
-    //             <Card 
-    //                 key={card.card_id}
-    //                 card_id={card.card_id}
-    //                 message={card.messageData} 
-    //                 likes={card.likesData}>
-    //             </Card>
-    //         </li>
-    //     )
-    // });
 
     return (
         <section>

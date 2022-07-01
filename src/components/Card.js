@@ -10,7 +10,8 @@ const Card = (props) => {
     // )
     return (
         <div>
-            <p>{props.card.message}</p>
+            <p>Message: {props.card.message}</p>
+            <p>Like count: {props.card.likes_count}</p>
         </div>
     )
 };
