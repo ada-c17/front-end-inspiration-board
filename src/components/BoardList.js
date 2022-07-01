@@ -6,19 +6,21 @@ import Board from "./Board";
 const BoardList = ({ boards }) => {
   const boardArray = boards.map((board, index) => {
     return (
-      <Board
-        key={board.boardId}
-        boardId={board.boardId}
-        title={board.title}
-        owner={board.owner}
-        //{eventHandlerFunction}
-        //{eventHandlerFunction}
-      />
+      <li>
+        <Board
+          key={board.boardId}
+          boardId={board.boardId}
+          title={board.title}
+          owner={board.owner}
+          cards={board.cards}
+          //{eventHandlerFunction}
+          //{eventHandlerFunction}
+        />
+      </li>
     );
   });
   return (
     <>
-      <h2>Board Count: {boards.length}</h2>
       <section>{boardArray}</section>
     </>
   );
