@@ -1,4 +1,4 @@
-.single-card {
+.single-card-message {
     background-color: pink;
     list-style: none;
     width: 200px;
@@ -6,4 +6,32 @@
     color: rgb(14, 15, 14);
     border: 2px dotted gray;
     
+}
+
+.card-container{
+    display:flex;
+    flex-direction: column;
+    background-color: rgb(236, 131, 201);
+    list-style: none;
+
+
+}
+.like-button{
+    background: none;
+	color: inherit;
+	border: none;
+	font: inherit;
+	cursor: pointer;
+	outline: inherit;
+}
+.likes-count{
+    /* border:1px solid red; */
+    padding:1px;
+    display:flex;
+    justify-content: center;
+}
+.likes{
+    padding:0px;
+    margin: 20px;
+    color:aliceblue
 }

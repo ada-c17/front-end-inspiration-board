@@ -48,6 +48,26 @@ function App() {
       });
   };
 
+  const setLikesForCardId = (id) => {
+    const newCardsData = cardsData.map((card) => {
+      const newCard = { ...card };
+      console.log(newCard.card_id === id);
+      if (newCard.card_id === id) {
+        newCard.likes_count++;
+
+        axios
+          .patch(`https://inspirational-board.herokuapp.com/cards/${id}/like`)
+          .catch((error) => {
+            console.log("Can't get cards.", error);
+          });
+      }
+
+      return newCard;
+    });
+
+    setCards(newCardsData);
+  };
+
   return (
     <div>
       <header>
@@ -60,7 +80,7 @@ function App() {
             <Boards boards={boardsData} onClickGetCards={getCardsForBoard} />
           </div>
           <div className="cards-wrapper">
-            <CardsList cards={cardsData} />
+            <CardsList cards={cardsData} onLikeClick={setLikesForCardId} />
           </div>
         </div>
         <div className="submission-forms">
