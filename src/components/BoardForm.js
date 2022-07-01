@@ -17,26 +17,33 @@ const BoardForm = ({ onAddBoard }) => {
         const newFormData = { ...formData, [fieldName]: fieldValue };
         setFormData(newFormData);
     };
-
+    const titleVal = formData.title ? formData.title : 'How can a dream be manifested without a name?';
+    const ownerVal = formData.owner ? formData.owner : 'A dream needs a dreamer!';
+    
     const handleSubmit = (event) => {
         event.preventDefault();
         onAddBoard(formData);
+        // add error handling for empty title/owner
+        // must be a visible display for user
+        
         setFormData(kDefaultFormState);
     };
 
     return (
         <form className="boardInput" onSubmit={handleSubmit}>
-            <h4>Add Board</h4>
+            <h4>Add A Dream</h4>
+            <h5> ~dream name~ </h5>
             <input
                 type="text"
                 name="title"
-                value={formData.title}
+                value= {titleVal}
                 onChange={onInput}
             ></input>
+            <h5> ~name of dreamer~</h5>
             <input
                 type="text"
                 name="owner"
-                value={formData.owner}
+                value={ownerVal}
                 onChange={onInput}
             ></input>
             <input type="submit" value="Submit"></input>

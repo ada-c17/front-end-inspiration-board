@@ -68,13 +68,32 @@ const App = () => {
         setCardData(currentCards);
     };
 
+    const addBoardData = (addedBoard) => {
+      const requestBody = { ...addedBoard };
+  
+      return axios
+        .post(`${kBaseUrl}`, requestBody)
+        .then(() => loadBoards())
+        .catch((err) => console.log(err));
+    };
+  
+    const handleBoardDataReady = (boardName) => {
+      addBoardData(boardName)
+        .then((newBoard) => {
+          loadBoards((oldData) => [...oldData, newBoard]);
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+    };
+
     return (
         <div id="App">
             <header>
                 <h2>dream board</h2>
             </header>
             <main>
-                <BoardForm />
+              <BoardForm onAddBoard={handleBoardDataReady}></BoardForm>
                 <BoardList boards={boardData} onSelectBoard={getBoardId} />
                 <CardList
                     cards={newCards}
