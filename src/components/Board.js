@@ -12,7 +12,7 @@ const Board = (props) => {
 
   return (
     <div>
-      Hello I am Boards
+      <h2>Hello I am Boards</h2>
       <ul>{boardComponents}</ul>
     </div>
   );

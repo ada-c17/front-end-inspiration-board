@@ -8,6 +8,7 @@ const Card = (props) => {
       <ul>
         <li>Message: {props.message}</li>
         <li>{props.likes_count} ❤️</li>
+        <li>Board ID: {props.board_id}</li>
       </ul>
     </div>
   );

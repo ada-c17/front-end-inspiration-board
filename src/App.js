@@ -11,6 +11,7 @@ function App() {
 
   const [boards, setBoards] = useState([]);
   const [cards, setCards] = useState([]);
+  const [selectedBoard, setSelectedBoard] = useState(1);
 
   const fetchBoards = () => {
     axios
@@ -54,13 +55,26 @@ function App() {
       });
   };
 
+  const createNewCard = (cardForm) => {
+    console.log("I will create a new card");
+    cardForm.board_id = selectedBoard;
+    axios
+      .post(`${URL}/cards`, cardForm)
+      .then((response) => {
+        fetchCards();
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
+
   return (
     <div>
       <header>
         <h1>Inspiration Board</h1>
         <Board boards={boards} fetchBoardsCallback={fetchBoards}></Board>
         <NewBoardForm addBoardCallback={createNewBoard}></NewBoardForm>
-        <NewCardForm></NewCardForm>
+        <NewCardForm addCardCallback={createNewCard}></NewCardForm>
         <CardList cards={cards} fetchCardsCallback={fetchCards}></CardList>
       </header>
     </div>
