@@ -13,7 +13,12 @@ const BoardList = (props) => {
             <Link to={`${item.id}`} style={{ cursor: "pointer" }}>
               {item.title}
             </Link>
-            <button onClick={() => props.deleteBoard(item.id)}>X</button>
+            <button
+              id="delete-board"
+              onClick={() => props.deleteBoard(item.id)}
+            >
+              X
+            </button>
           </li>
         ))}
       </ul>
