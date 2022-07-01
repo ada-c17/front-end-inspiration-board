@@ -55,8 +55,8 @@ const App = () => {
     setCardData(updatedLikes);
   };
 
-  const getBoardId = (selectedBoard) => {
-    const currentBoard = selectedBoard.boardId;
+  const getBoardId = (boardId) => {
+    const currentBoard = boardId;
     console.log(`Board Id: ${currentBoard}`);
   };
 
