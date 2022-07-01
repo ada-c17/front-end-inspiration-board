@@ -1,9 +1,27 @@
 import React from "react";
-import CardList from "./CardList";
+import PropTypes from "prop-types";
+import "./Board.css";
+import Card from "./Card";
 
-const Board = (props) => {
-  // Should we store Card data here? const [cardData, setCardData] = useState({}); Would then need to use useEffect to run an update function after render to updateCards (a fx to get cards of the board using the get cards route and then setCardData to that response). We could then pass through, ugh, not sure if this is needed.
-  return <CardList likeFx={props.cardLike} />;
+const Board = ({ board, cardLike }) => {
+  const cards = board.cards.map((card) => {
+    return (
+      <Card
+        key={card.id}
+        likes={card.likes}
+        board_id={card.board_id}
+        message={card.message}
+        onLike={cardLike}
+      />
+    );
+  });
+
+  return <div className="board">{cards}</div>;
+};
+
+Board.propTypes = {
+  board: PropTypes.arrayOf(PropTypes.object).isRequired,
+  onLike: PropTypes.func,
 };
 
 export default Board;
