@@ -1,6 +1,7 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import axios from "axios";
-import Board from "../src/components/Board";
+import Board from "./components/Board";
+import BoardDropdown from "./components/BoardDropdown";
 import "./css/inspo_board.css";
 
 const kBaseUrl = "https://mission-inspirational-2.herokuapp.com";
@@ -22,6 +23,37 @@ const increaseLike = async (id) => {
 };
 
 function App() {
+  // Functions and variables for the dropdown functionality
+  const [boards, setBoards] = useState([]); // list of all the board dicts
+  const [boardOption, setBoardOption] = useState("Choose a Board");
+
+  const showChosenBoard = (boardTitle) => {
+    setBoardOption(boardTitle);
+  };
+
+  const getBoardOptions = () => {
+    axios
+      .get(`${kBaseUrl}/boards`)
+      .then((response) => {
+        setBoards(response.data);
+      })
+      .catch((error) => {
+        console.log(error);
+        throw new Error("Unable to get board options");
+      });
+  };
+
+  useEffect(() => {
+    getBoardOptions();
+  }, []);
+
+  // Just a way to double check the state has updated; can delete later
+  useEffect(() => {
+    console.log(boardOption);
+  }, [boardOption]);
+
+  // End functions for dropdown functionality
+
   return (
     <main>
       <section className="container">
@@ -29,14 +61,11 @@ function App() {
           <p className="logo">INSPOBOARD</p>
         </section>
         <section className="dropdown-menu">
-          {/* THE BELOW IS A PLACEHOLDER FOR A DROPDOWN MENU */}
-          <select name="boards" id="boards" class="dropdown">
-            <option value="">Select a board</option>
-            <option value="tamara">Tamara's Inspo Board</option>
-            <option value="georgia">Georgia's Inspo Board</option>
-            <option value="natalia">Natalia's Inspo Board</option>
-            <option value="shari">Shari's Inspo Board</option>
-          </select>
+          <BoardDropdown
+          boards={boards}
+          boardOption={boardOption}
+          onDropdownChange={showChosenBoard}
+        />
         </section>
         <section className="add-menu-button">
           <button>Add Board</button>
