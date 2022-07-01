@@ -6,10 +6,10 @@ const BoardsList = (props) => {
     return <Board 
               key={board.id}
               id={board.id}
-              title={board.title} 
               owner={board.owner}
-              cards={props.cards}
+              title={board.title} 
               cardsCallback={props.cardsCallback}
+              cards={props.cards}
               />;
   });
   return (

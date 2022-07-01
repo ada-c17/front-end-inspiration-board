@@ -3,7 +3,7 @@ import React from 'react';
 import BoardsList from "./components/BoardsList";
 import axios from 'axios';
 import { useEffect, useState } from "react";
-import Board from "./components/Board";
+// import Board from "./components/Board";
 
 function App() {
   const [boards, setBoards] = useState([]);
@@ -18,8 +18,7 @@ function App() {
           return {
             id: board.id,
             title: board.title,
-            owner: board.owner,
-            cards: board.cards,
+            owner: board.owner
           };
         });
         setBoards(newBoards);
@@ -31,24 +30,25 @@ function App() {
   
   useEffect(fetchBoards, []);
 
-  // const fetchCardForBoard= (id) => {
-  //   axios.get(`${URL}/${id}/cards`)
-  //   .then((res) => {
-  //     console.log(res)
-  //     const newCards = res.data.map((card) => {
-  //       return {
-  //         card_id: card.id,
-  //         board_id: id,
-  //         message: card.message,
-  //         likes_count: card.likes_count
-  //       };
-  //     });
-  //     setCards(newCards);
-  //   })
-  //   .catch((err) => {
-  //     console.log(err);
-  //   });
-  // };
+  const fetchCardsForBoard= (id) => {
+    axios.get(`${URL}/${id}/cards`)
+    .then((res) => {
+      console.log("we are in this hard function")
+      console.log(res)
+      const newCards = res.data.cards.map((card) => {
+        return {
+          card_id: card.id,
+          board_id: id,
+          message: card.message,
+          likes_count: card.likes_count
+        };
+      });
+      setCards(newCards);
+    })
+    .catch((err) => {
+      console.log(err);
+    });
+  };
 
   
   return (
@@ -56,7 +56,8 @@ function App() {
       <div>
         <BoardsList 
           boards = {boards}
-          // cardsCallback = {fetchCardForBoard}
+          cardsCallback = {fetchCardsForBoard}
+          // cards = {}
         />
       </div>
       {/* <div>
