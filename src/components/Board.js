@@ -5,6 +5,7 @@ import Card from "./Card";
 import "../css/inspo_board.css";
 
 const Board = ({ board, cardLike, boardTitle }) => {
+  console.log(`This is Board's board: ${JSON.stringify(board)}`);
   const cards = board.cards.map((card) => {
     return (
       <Card

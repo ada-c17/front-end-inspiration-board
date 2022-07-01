@@ -32,7 +32,8 @@ function App() {
     setBoardOption(boardTitle);
   };
 
-  const getBoardOptions = () => {
+  // Probably need to have this run again whenever a card or board is added
+  useEffect(() => {
     axios
       .get(`${kBaseUrl}/boards`)
       .then((response) => {
@@ -42,25 +43,20 @@ function App() {
         console.log(error);
         throw new Error("Unable to get board options");
       });
-  };
+  }, [boardOption]);
 
   useEffect(() => {
-    getBoardOptions();
-  }, []);
-
-  // Just a way to double check the state has updated; can delete later
-  useEffect(
-    (boards) => {
-      if (boards) {
-        for (const board of boards) {
-          if (board.title === boardOption) {
-            setChosenBoardData(board);
-          }
+    if (boards) {
+      for (const board of boards) {
+        if (board.title === boardOption) {
+          console.log(
+            `This is the board being chosen: ${JSON.stringify(board)}`
+          );
+          setChosenBoardData(board);
         }
       }
-    },
-    [boardOption]
-  );
+    }
+  }, [boardOption, boards]);
 
   // End functions for dropdown functionality
 
