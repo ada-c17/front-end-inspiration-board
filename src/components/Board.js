@@ -4,7 +4,12 @@ import "./Board.css";
 const Board = (props) => {
   const title = props.title;
   const owner = props.owner;
-  return <div></div>;
+  return (
+    <div>
+      <h1>{title}</h1>
+      <h2>{owner}</h2>
+    </div>
+  );
 };
 
 Board.propTypes = {
