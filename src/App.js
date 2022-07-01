@@ -109,13 +109,39 @@ const App = () => {
   };
 
 
+  const [data, setData] = useState({
+    title: "",
+    owner: ""
+  })
+
+  const submitBoard = (e) => {
+    e.preventDefault();
+    axios.post(URL, {
+      title: data.title,
+      owner: data.owner
+    })
+      .then(response => {
+        console.log(response.data)
+      })
+      .catch((err) => {
+        console.log(err);
+      })
+
+  }
+
+
+
+
   return (
     <Router>
       <Routes>
         <Route
           path="/"
           element={
-            <BoardList boardData={allBoards} deleteBoard={deleteBoard} />
+            <BoardList
+              boardData={allBoards}
+              submitBoard={submitBoard}
+              deleteBoard={deleteBoard} />
           }
         />
         <Route

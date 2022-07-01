@@ -1,6 +1,6 @@
 import { React, useState } from "react";
 import { Button, Modal, Form } from "react-bootstrap";
-import Axios from 'axios';
+import axios from 'axios';
 
 const AddNewBoardForm = (boardData,) => {
 
@@ -18,7 +18,7 @@ const AddNewBoardForm = (boardData,) => {
     })
 
     //Form input stored in state 
-    const handle = (e) => {
+    const handleInput = (e) => {
         const newData = { ...data }
         newData[e.target.id] = e.target.value
         setData(newData)
@@ -28,14 +28,14 @@ const AddNewBoardForm = (boardData,) => {
 
 
     //data in state gets posted to api 
-    const submit = (e) => {
+    const submitBoard = (e) => {
         e.preventDefault();
-        Axios.post(url, {
+        axios.post(url, {
             title: data.title,
             owner: data.owner
         })
-            .then(res => {
-                console.log(res.data)
+            .then(response => {
+                console.log(response.data)
             })
             .catch((err) => {
                 console.log(err);
@@ -57,10 +57,11 @@ const AddNewBoardForm = (boardData,) => {
 
 
                 <Modal.Body>
-                    <Form onSubmit={(e) => submit(e)} >
+
+                    <Form onSubmit={(e) => submitBoard(e)} >
                         <Form.Group className="mb-3">
                             <Form.Control
-                                onChange={(e) => handle(e)}
+                                onChange={(e) => handleInput(e)}
                                 id="title"
                                 value={data.title}
                                 type="text"
@@ -70,7 +71,7 @@ const AddNewBoardForm = (boardData,) => {
                         </Form.Group>
                         <Form.Group className="mb-3">
                             <Form.Control
-                                onChange={(e) => handle(e)}
+                                onChange={(e) => handleInput(e)}
                                 id="owner"
                                 value={data.owner}
                                 type="text"
@@ -79,6 +80,9 @@ const AddNewBoardForm = (boardData,) => {
                             />
                         </Form.Group>
 
+                        <Button class="btn btn-primary text-nowrap" onClick={handleClose} variant="success" type="submit" block>
+                            Submit
+                        </Button>
 
                     </Form>
                 </Modal.Body>
@@ -87,11 +91,9 @@ const AddNewBoardForm = (boardData,) => {
 
                 <Modal.Footer>
                     <Button variant="secondary" onClick={handleClose}>
-                        Close Button
+                        Close
                     </Button>
-                    <Button onClick={handleClose} variant="success" type="submit" block>
-                        Submit
-                    </Button>
+
                 </Modal.Footer>
 
             </Modal>
