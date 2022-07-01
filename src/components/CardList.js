@@ -2,12 +2,12 @@ import Card from './Card.js';
 // import PropTypes from 'prop-types';
 import axios from 'axios';
 import { useEffect, useState} from 'react';
-// import NewCardForm from './NewCardForm.js';
+import NewCardForm from './NewCardForm.js';
 
 const CardList = (props) => {
     const [cardsData, setCardsData] = useState([]);
 
-    const URL = 'https://localhost:5000/boards'
+    const URL = 'https://insp-board-migrationmess.herokuapp.com'
 
     const fetchCards = () => {
         axios
@@ -16,8 +16,7 @@ const CardList = (props) => {
             const newCards = res.data.map((card) => {
               return {
                 card_id: card.card_id,
-                title: card.title,
-                owner: card.owner
+                message: card.message,
               };
             });
             setCardsData(newCards);
@@ -27,17 +26,22 @@ const CardList = (props) => {
           });
       };
     
-    useEffect(fetchCards, []);
+    useEffect(fetchCards, [props.board]);
 
+    const cardElements = cardsData.map((card) => {
+        return (<Card
+            card={card}></Card>)
+      });
 
-    const createNewCard = (message) => {
+    const createNewCard = (messages) => {
         axios
-          .post(`${URL}/${props.board.board_id}/cards`, message)
+          .post(`${URL}/${props.board.board_id}/cards`, {"board_id":  props.board.board_id,
+          "message": messages})
           .then((response) => {
-            if (message.title && message.owner) {
-              console.log(response);
-              fetchCards();
-            }
+            if (messages.message)
+            console.log(response);
+            fetchCards();
+            
           })
           .catch((error) => {
             console.log(error);
@@ -62,8 +66,9 @@ const CardList = (props) => {
             <h2>Cards for {props.board.title}</h2>
             <ul>
                 {/* {cardComponents} */}
+                {cardElements}
             </ul>
-            {/* <NewCardForm createNewCard={createNewCard}></NewCardForm> */}
+            <NewCardForm createNewCard={createNewCard}></NewCardForm>
         </section>
     );
 };

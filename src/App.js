@@ -4,14 +4,13 @@ import { useEffect, useState} from 'react';
 import './App.css';
 import NewBoardForm from './components/NewBoardForm.js';
 import Board from './components/Board.js';
-import NewCardForm from './components/NewCardForm.js';
 import CardList from './components/CardList.js';
 
 function App() {
 
   const [boardsData, setBoardsData] = useState([]);
 
-  const URL = 'http://localhost:5000/boards';
+  const URL = 'https://insp-board-migrationmess.herokuapp.com';
   // when we first load 
   const [selectedBoard, setSelectedBoard] = useState({
     title: '',
@@ -113,12 +112,6 @@ function App() {
             {isBoardFormVisible ? <NewBoardForm createNewBoard={createNewBoard}></NewBoardForm> : ''}
             <span onClick={toggleNewBoardForm} className='hideForm__button'>{isBoardFormVisible ? 'Hide New Board Form' : 'Show New Board Form'}</span>
           </section>
-
-          <section>
-            <h2>Create a New Card</h2>
-            <NewCardForm></NewCardForm>
-          </section>
-
           <section>
             {/* <CardList cards={cardData}></CardList> */}
             {selectedBoard.board_id ? <CardList board={selectedBoard}></CardList> : ''}
