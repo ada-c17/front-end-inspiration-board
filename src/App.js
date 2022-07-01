@@ -9,7 +9,8 @@ import "./App.css";
 function App() {
   // STATE(boardsData: ListOfObjects, selectedBoard: id)
   const [boardsData, setBoardsData] = useState([]);
-  const [selectedBoard, setSelectedBoard] = useState(); // Pass in board
+  const [selectedBoard, setSelectedBoard] = useState(null);
+
 
   const URL = "https://inspo-board-server.herokuapp.com";
 
@@ -34,16 +35,43 @@ function App() {
       });
   }, []);
 
+  const getBoardDataAndId = (selectedBoard) => {
+    let selectedBoardData;
+    let boardIndex;
+      for (const [index, board] of boardsData.entries()){
+        if (board.boardId === selectedBoard){
+          selectedBoardData = board;
+          boardIndex = index;
+        };
+      };
+      return [selectedBoardData, boardIndex]
+  };
+
+  const addCard = (newCard) => {
+    axios
+    .post(URL + '/boards/' + selectedBoard + '/cards', newCard)
+    .then((response) => {
+      const [selectedBoardData, boardIndex] = getBoardDataAndId(selectedBoard);
+      const updatedBoard = {...selectedBoardData, cards: [...selectedBoardData.cards, response.data]};
+      const updatedBoardsData = [...boardsData]
+      updatedBoardsData[boardIndex] = updatedBoard;
+      setBoardsData(updatedBoardsData);
+    })
+    .catch((error) => 
+    {console.log(error)});
+  };
+
   const addBoard = (newBoard) => {
     axios
       .post(URL + "/boards", newBoard)
       .then((response) => {
+        console.log(response.data);
         setBoardsData((oldBoards) => [
           ...oldBoards,
           {
             ...newBoard,
-            boardId: response.data.board_id,
-            cards: response.data.cards,
+            boardId: response.data.board.board_id,
+            cards: response.data.board.cards,
           },
         ]);
         console.log(response);
@@ -64,9 +92,9 @@ function App() {
   return (
     <main className="App">
       <nav>
-        <h1>Inspiration Boards</h1>
-        <NewBoardForm onAddBoard={addBoard} />
-        <NewCardForm />
+      <h1>Inspiration Boards</h1>
+      <NewBoardForm onAddBoard = {addBoard}/>
+      <NewCardForm onAddCard = {addCard}/>
       </nav>
       <BoardList boards={boardsData} onSelectBoard={getCurrentBoard} />
       <CardList selectedBoard={selectedBoard} boardsData={boardsData} />

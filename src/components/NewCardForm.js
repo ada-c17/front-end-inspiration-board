@@ -5,35 +5,28 @@ import PropTypes from 'prop-types';
 
 const NewCardForm = ({onAddCard}) => {
 
-  const [cardMessage, setCardMessage] = useState({
-    message: '',
-  });
+  const [newCardData, setNewCardData] = useState({message: ''});
 
-  const [isVisible, setIsVisible] = useState(false);
+  const [isInvalidInput, setIsInvalidInput] = useState(
+    {message: false});
+
+  const handleChange = (event) => {setNewCardData({message: event.target.value})};
+
+  const handleClick = (e) => {
+    setIsInvalidInput({
+      message: newCardData.message !== '' ? false : true
+    })
+  }
 
   const addNewCard = (e) => {
     e.preventDefault();
-    onAddCard(cardMessage);
-    setCardMessage('');
+    if (!isInvalidInput.message) {
+      onAddCard(newCardData)
+      setNewCardData({message: ''})
+    } else{
+      console.log('Please input valid data')
+    }
   };
-
-  const handleMessage = (e) => {setCardMessage(e.target.value)};
-
-  // return (
-  //   <section className='container'>
-  //     <h2 class='new-card'>Add a new card</h2>
-  //     <form onSubmit={addNewCard}>
-  //       <label>Message</label>
-  //       <input type='text'
-  //             className={cardMessage.length === 0 || cardMessage.length > 5 ? "input_more_40" : ""}
-  //             value={cardMessage.message}
-  //             onChange={handleMessage}>
-  //       </input>
-  //       <input type='Submit' class='submit'></input>
-  //     </form>
-  //   </section>
-  // )
-
 
 
   return (
@@ -42,47 +35,17 @@ const NewCardForm = ({onAddCard}) => {
         <Form onSubmit={addNewCard}>
           <Form.Group className="mb-3" controlId="formBasicEmail">
             <Form.Label>Message</Form.Label>
-            <Form.Control placeholder="Enter message" className='input'/>
-            <Form.Text onChange={handleMessage}
-                    className={cardMessage.length === 0 || cardMessage.length > 5 ? "input_more_40" : "text-muted"}
-                    value={cardMessage}
-                    type="text">   
+            <Form.Control placeholder="Enter message"
+                          className={newCardData.message.length === 0 || newCardData.message.length > 5 ? "input input_more_40" : "input text-muted"}
+                          onChange={handleChange}
+                          value={newCardData.message}/>
+
+            <Form.Text>   
             {/* className="text-muted" */}
               Please enter a card message!
             </Form.Text>
           </Form.Group>
-
-          <fieldset>
-          <Form.Group as={Row} className="mb-3">
-            <Form.Label as="legend" column sm={100}>
-              Select Card Color
-            </Form.Label>
-            <Col sm={100}>
-              <Form.Check
-                type="radio"
-                label="green"
-                name="formHorizontalRadios"
-                id="formHorizontalRadios1"
-                className="green"
-              />
-              <Form.Check
-                type="radio"
-                label="orange"
-                name="formHorizontalRadios"
-                id="formHorizontalRadios2"
-                className='orange'
-              />
-              <Form.Check
-                type="radio"
-                label="blue"
-                name="formHorizontalRadios"
-                id="formHorizontalRadios1"
-                className="blue"
-              />
-            </Col>
-          </Form.Group>
-          </fieldset>
-          <Button variant="success" type="submit" id="submit">
+          <Button variant="success" type="submit" id="submit" onClick={handleClick}>
             Add
           </Button>
 
