@@ -1,7 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 import "./Board.css";
-import Card from "./Card";
+import "./css/inspo_board.css";
 
 const Board = ({ board, cardLike }) => {
   const cards = board.cards.map((card) => {
@@ -16,7 +16,12 @@ const Board = ({ board, cardLike }) => {
     );
   });
 
-  return <div className="board">{cards}</div>;
+  return (
+    <section className="board-content">
+      <h1>Current Board:{board.title}</h1>
+      <section className="card-display">{cards}</section>
+    </section>
+  );
 };
 
 Board.propTypes = {
