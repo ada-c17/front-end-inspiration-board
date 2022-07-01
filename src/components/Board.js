@@ -1,6 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 import "./Board.css";
+import Card from "./Card";
 import "./css/inspo_board.css";
 
 const Board = ({ board, cardLike }) => {
