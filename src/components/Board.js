@@ -64,8 +64,8 @@ const Board = (props) => {
       .put(`http://127.0.0.1:5000/cards/${id}/like`)
       .then((response) => {
         console.log("made it into like button");
-        // targetCard.likesCount += 1;
-        // setCards(cardLikes);
+        targetCard.likesCount += 1;
+        setBoardData(cardLikes);
       })
       .catch((error) => {
         console.log("couldn't add like'");
