@@ -2,7 +2,7 @@ import React from "react";
 // import PropTypes from "prop-types";
 import Card from "./Card";
 
-const CardsList = ({ cards, onLike, onDelete, board_id, postNewCard }) => {
+const CardsList = ({ cards, onLike, deleteCardCallback, board_id}) => {
   const cardComponents = cards.map((card) => {
     return (
       <Card
@@ -11,7 +11,7 @@ const CardsList = ({ cards, onLike, onDelete, board_id, postNewCard }) => {
         message={card.message}
         likes={card.likes}
         onLike={onLike}
-        onDelete={onDelete}
+        deleteCardCallback={deleteCardCallback}
         board_id={board_id}
       />
     );

@@ -8,7 +8,7 @@ const Card = (props) => {
   };
 
   const clickDeleteButton = () => {
-    props.onDelete(props.id);
+    props.deleteCardCallback(props.id);
   };
 
   return (
