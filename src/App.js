@@ -1,14 +1,14 @@
-import React, { useState, useEffect } from "react";
-import "./App.css";
-import "bootstrap/dist/css/bootstrap.min.css";
-import { faHeart } from "@fortawesome/free-regular-svg-icons";
-import BoardList from "./components/BoardList";
-import Board from "./components/Board";
-import Error from "./components/Error";
-import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
-import axios from "axios";
+import React, { useState, useEffect } from 'react';
+import './App.css';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import { faHeart } from '@fortawesome/free-regular-svg-icons';
+import BoardList from './components/BoardList';
+import Board from './components/Board';
+import Error from './components/Error';
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import axios from 'axios';
 
-const URL = "https://back-end-inspiration-board.herokuapp.com/boards";
+const URL = 'https://back-end-inspiration-board.herokuapp.com/boards';
 
 const App = () => {
   const [allBoards, setAllBoards] = useState([]);
@@ -46,10 +46,19 @@ const App = () => {
           cards: response.data.cards,
         };
         setBoardData(newBoard);
-        console.log("in axios: ", response.data);
+        console.log('in axios: ', response.data);
       })
       .catch((err) => {
         console.log(err);
+      });
+  };
+
+  // Patch likes_counts in cards
+  const handleLike = (cardId) => {
+    axios
+      .patch(`https://back-end-inspiration-board.herokuapp.com/cards/${cardId}`)
+      .then((response) => {
+        getOneBoard(boardData.boardId);
       });
   };
 
@@ -57,18 +66,19 @@ const App = () => {
   return (
     <Router>
       <Routes>
-        <Route path="/" element={<BoardList boardData={allBoards} />} />
+        <Route path='/' element={<BoardList boardData={allBoards} />} />
         <Route
-          path="/boards/:boardId"
+          path='/boards/:boardId'
           element={
             <Board
               boardData={boardData}
               getOneBoard={getOneBoard}
               likeHeart={faHeart}
+              handleLike={handleLike}
             />
           }
         />
-        <Route path="*" element={<Error />} />
+        <Route path='*' element={<Error />} />
       </Routes>
     </Router>
   );
