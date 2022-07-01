@@ -10,6 +10,7 @@ const Board = ({ board, cardLike, boardTitle }) => {
     return (
       <Card
         key={card.id}
+        id={card.id}
         likes={card.likes}
         board_id={card.board_id}
         message={card.message}
