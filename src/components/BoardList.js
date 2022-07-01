@@ -4,9 +4,7 @@ import Board from "./Board";
 
 const BoardList = (props) => {
   const boardComponents = props.boardData.map((board) => {
-    return (
-      <Board key={board.board_id} title={board.title} owner={board.owner} />
-    );
+    return <Board key={board.id} title={board.title} owner={board.owner} />;
   });
 
   return <div>{boardComponents}</div>;
