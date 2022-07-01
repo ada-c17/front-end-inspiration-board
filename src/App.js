@@ -38,12 +38,13 @@ function App() {
     axios
       .post(URL + "/boards", newBoard)
       .then((response) => {
+        console.log(response.data);
         setBoardsData((oldBoards) => [
           ...oldBoards,
           {
             ...newBoard,
-            boardId: response.data.board_id,
-            cards: response.data.cards,
+            boardId: response.data.board.board_id,
+            cards: response.data.board.cards,
           },
         ]);
         console.log(response);
