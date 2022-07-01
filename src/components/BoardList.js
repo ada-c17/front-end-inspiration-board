@@ -1,17 +1,32 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import Board from './Board';
+import React from "react";
+import PropTypes from "prop-types";
+import Board from "./Board";
 
-const BoardList = () => {
+const BoardList = ({ boards, onSelectBoard }) => {
+  const boardComponents = boards.map((board) => {
+    return (
+      <ul key={board.boardId}>
+        <Board
+          boardId={board.boardId}
+          title={board.title}
+          owner={board.owner}
+          cards={board.cards}
+          onSelectBoard={onSelectBoard}
+        />
+      </ul>
+    );
+  });
 
   return (
     <>
-      <h2>Boards</h2>
-      <Board />
+      <ul>{boardComponents}</ul>
     </>
-    
-  )
+  );
+};
 
-}
+BoardList.propTypes = {
+  boards: PropTypes.arrayOf(PropTypes.object).isRequired,
+  onSelectBoard: PropTypes.func.isRequired,
+};
 
 export default BoardList;
