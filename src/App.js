@@ -5,14 +5,47 @@ import NewBoardForm from "./components/NewBoardForm";
 import BoardsList from "./components/BoardsList";
 import HideForm from "./components/HideForm";
 import NewCardForm from "./components/NewCardForm";
+import CardList from "./components/CardList";
 
-
+const CARDS = [
+  {
+    id: 1,
+    message: "Card 1",
+    likes: 1,
+  },
+  {
+    id: 2,
+    message: "Card 2",
+    likes: 2,
+  },
+];
 
 function App() {
   const selectedBoardData = {
     id: null,
     title: "",
     owner: "",
+  };
+
+  // my lines
+  const [cards, setCards] = useState(CARDS);
+
+  const onLike = (id) => {
+    const newCards = cards.map((card) => {
+      if (card.id === id) {
+        return {
+          ...card,
+          likes: (card.likes += 1),
+        };
+      }
+      return card;
+    });
+    setCards(newCards);
+  };
+
+  const onDelete = (id) => {
+    const newCards = cards.filter((card) => card.id !== id);
+    setCards(newCards);
   };
 
   // keeping stracking on board state
@@ -131,6 +164,12 @@ function App() {
         </div>
         <div>
           <h2>Card list</h2>
+          <CardList
+            id="Selected-boards"
+            cards={cards}
+            onLike={onLike}
+            onDelete={onDelete}
+          />
         </div>
         <div>
           <NewCardForm postNewCard={postNewCard}></NewCardForm>
