@@ -38,7 +38,7 @@ function App() {
 
   return (
     <div className="App">
-      <img src={Otter} alt={"otterspace"}></img>
+      <img src={Otter} alt={"otterspace"} cache={false}></img>
       <h1>Inspiration from the OtterSpace</h1>
       <ul className="list">
         {boards.map((item) => (
