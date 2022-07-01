@@ -34,7 +34,6 @@ const BoardList = ({ boardData, setCurrentBoardId, deleteBoard }) => {
 
     <section>
       <h1>Inspiration Board</h1>
-
       <ul>{boardData.map(createBoard)}</ul>
       <AddNewBoardForm />
 

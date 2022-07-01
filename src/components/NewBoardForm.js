@@ -4,27 +4,31 @@ import Axios from 'axios';
 
 const AddNewBoardForm = (boardData,) => {
 
+    //state in charge for opening and closing modal
     const [show, setShow] = useState(false);
     const handleShow = () => setShow(true);
     const handleClose = () => setShow(false);
 
 
+    //state in charge of updating form input data
     const url = "https://back-end-inspiration-board.herokuapp.com/boards";
     const [data, setData] = useState({
         title: "",
         owner: ""
     })
 
-    //Input is stored in state 
-    function handle(e) {
+    //Form input stored in state 
+    const handle = (e) => {
         const newData = { ...data }
         newData[e.target.id] = e.target.value
         setData(newData)
         console.log(newData)
     }
 
+
+
     //data in state gets posted to api 
-    function submit(e) {
+    const submit = (e) => {
         e.preventDefault();
         Axios.post(url, {
             title: data.title,
@@ -75,56 +79,24 @@ const AddNewBoardForm = (boardData,) => {
                             />
                         </Form.Group>
 
-                        <Button onClick={handleClose} variant="success" type="submit" block>
-                            Submit
-                        </Button>
+
                     </Form>
                 </Modal.Body>
 
 
-                {/* 
+
                 <Modal.Footer>
                     <Button variant="secondary" onClick={handleClose}>
                         Close Button
                     </Button>
-                </Modal.Footer> */}
+                    <Button onClick={handleClose} variant="success" type="submit" block>
+                        Submit
+                    </Button>
+                </Modal.Footer>
 
             </Modal>
         </section>
-        //add handleclose on butt
 
-        // <Form>
-
-        //     <Form.Group>
-        //         <Form.Control
-        //             type="text"
-        //             placeholder="name"
-        //             required
-        //         />
-        //     </Form.Group>
-
-        //     <Form.Group>
-        //         <Form.Control
-        //             type="email"
-        //             placeholder="Email *"
-        //             required
-        //         />
-        //     </Form.Group>
-
-        //     <Form.Group>
-        //         <Form.Control
-        //             type="textarea"
-        //             placeholder="Adress"
-        //             rows={3}
-        //         />
-        //     </Form.Group>
-
-        //     <Button variant="success" type="submit" block>
-        //         Submit
-        //     </Button>
-
-
-        // </Form>
     )
 
 }
