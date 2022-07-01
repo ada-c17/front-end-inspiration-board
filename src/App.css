@@ -2,7 +2,8 @@
   text-align: center;
   
 }
-img {float:left;
+img {
+  float:left;
   padding: 20px;
   font-size: 2rem;
   text-decoration: none;
@@ -19,6 +20,8 @@ img {float:left;
 }
 .Otter{
   background-image: none;
+  border-radius: 150%;
+  transform: rotate(20deg);
 }
 
 footer {
