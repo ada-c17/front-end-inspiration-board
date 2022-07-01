@@ -11,7 +11,7 @@ function App() {
 
   const [boards, setBoards] = useState([]);
   const [cards, setCards] = useState([]);
-  const [selectedBoard, setSelectedBoard] = useState(1);
+  const [selectedBoard, setSelectedBoard] = useState(8);
 
   const fetchBoards = () => {
     axios
@@ -68,16 +68,60 @@ function App() {
       });
   };
 
-  
+  const deleteBoard = () => {
+    axios
+      .delete(`${URL}/boards/${selectedBoard}`)
+      .then(() => {
+        const updatedBoards = [];
+        for (const board of boards) {
+          if (board.id !== selectedBoard) {
+            updatedBoards.push(board);
+          }
+        }
+        setBoards(updatedBoards);
+        setSelectedBoard(null);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
+
+  const likeCard = (card_id) => {
+    let newCard = {};
+    for (const card of cards) {
+      if (card.card_id === card_id) {
+        newCard = { ...card };
+        newCard.likes_count += 1;
+      }
+    }
+
+    axios
+      .put(`${URL}/cards/${card_id}/like`, newCard)
+      .then((response) => {
+        fetchCards();
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
 
   return (
     <div>
       <header>
         <h1>Inspiration Board</h1>
-        <Board boards={boards} fetchBoardsCallback={fetchBoards}></Board>
+        <Board
+          boards={boards}
+          fetchBoardsCallback={fetchBoards}
+          deleteBoardsCallback={deleteBoard}
+        ></Board>
+        <h3>Selected Board is {selectedBoard}</h3>
         <NewBoardForm addBoardCallback={createNewBoard}></NewBoardForm>
         <NewCardForm addCardCallback={createNewCard}></NewCardForm>
-        <CardList cards={cards} fetchCardsCallback={fetchCards}></CardList>
+        <CardList
+          cards={cards}
+          fetchCardsCallback={fetchCards}
+          likeCardCallback={likeCard}
+        ></CardList>
       </header>
     </div>
   );

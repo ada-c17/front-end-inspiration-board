@@ -12,6 +12,7 @@ const CardList = (props) => {
         likes_count={card.likes_count}
         board_id={card.board_id}
         fetchCardsCallback={props.fetchCardsCallback}
+        likeCardCallback={props.likeCardCallback}
       ></Card>
     );
   });
@@ -34,6 +35,7 @@ CardList.propTypes = {
     })
   ),
   fetchCardsCallback: PropTypes.func.isRequired,
+  likeCardCallback: PropTypes.func.isRequired,
 };
 
 export default CardList;
