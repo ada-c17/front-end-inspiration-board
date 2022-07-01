@@ -1,8 +1,10 @@
 import { Link } from "react-router-dom";
-import React, { useState } from "react";
-import { useParams } from "react-router-dom";
+import React, { useState, useEffect } from "react";
+import { useParams} from "react-router-dom";
 import axios from "axios";
 import CardList from "./CardList";
+import CardForm from "./CardForm";
+
 
 const board_example = {
   id: "1",
@@ -57,6 +59,35 @@ function Board() {
       });
   };
 
+  const [boards, setBoards] = useState([]);
+
+  useEffect(() => {
+    getBoardsFromAPI();
+  }, []);
+
+  const getBoardsFromAPI = () => {
+    axios
+      .get("https://inspiration-from-otterspace.herokuapp.com/boards")
+      .then((response) => {
+        setBoards(response.data);
+        console.log(response.data);
+      })
+      .catch((error) => {
+        console.log("Oh no!!!");
+      });
+  };
+
+  const makeNewCard = (data) => {
+    console.log(data);
+    axios.post("https://inspiration-from-otterspace.herokuapp.com/boards", data)
+         .then((response) => {
+           getBoardsFromAPI();
+         })
+         .catch((error) => {
+           console.log("Could not make a new board!")
+         })
+  }
+
   return (
     <div className="card">
       <Link to="/" className="HomeLink">
@@ -75,7 +106,7 @@ function Board() {
           </li>
         ))}
       </ul>
-
+      <CardForm handleSubmission={makeNewCard}/>
       <h3>id of the board for the reference: {params.id}</h3>
     </div>
   );
