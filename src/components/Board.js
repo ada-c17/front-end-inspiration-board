@@ -4,6 +4,8 @@ import "./Board.css";
 
 const Board = ({ boardId, title, owner, cards, onSelectBoard }) => {
   const onBoardClick = () => {
+    console.log(title);
+    console.log(boardId);
     onSelectBoard(boardId);
   };
 
@@ -11,6 +13,7 @@ const Board = ({ boardId, title, owner, cards, onSelectBoard }) => {
     <>
       <section className="board-bubble">
         <button onClick={onBoardClick}>
+          <h1>{boardId}</h1>
           <h2>Title: {title}</h2>
           <h3>Owner: {owner} </h3>
         </button>

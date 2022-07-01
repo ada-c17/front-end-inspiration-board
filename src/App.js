@@ -13,6 +13,7 @@ function App() {
 
   const URL = "https://inspo-board-server.herokuapp.com";
 
+  console.log(boardsData);
   useEffect(() => {
     axios
       .get(URL + "/boards")
@@ -53,12 +54,11 @@ function App() {
       });
   };
 
-  const getCurrentBoard = (boardId) => {
-    const currentBoard = boardsData.filter(
-      (board) => board.boardId === boardId
-    );
-    console.log(currentBoard);
-    setSelectedBoard(currentBoard);
+  const getCurrentBoard = (id) => {
+    const currentBoard = boardsData.filter((board) => board.boardId === id);
+    console.log(currentBoard[0].boardId);
+    setSelectedBoard(currentBoard[0].boardId);
+    // console.log(selectedBoard);
   };
 
   return (
