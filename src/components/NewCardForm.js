@@ -3,16 +3,14 @@ import {DropdownButton, Form, Button, Row, Col} from 'react-bootstrap';
 import './NewCardForm.css'
 import PropTypes from 'prop-types';
 
-const NewCardForm = ({onAddCard, sBoardId}) => {
+const NewCardForm = ({onAddCard, boardsData}) => {
 
-  const [newCardData, setNewCardData] = useState({
-    message: '',
-  });
+  const [newCardData, setNewCardData] = useState({message: ''});
 
   const [isInvalidInput, setIsInvalidInput] = useState(
     {message: false});
 
-  const handleChange = (event) => {setNewCardData({...newCardData, [event.target.name]: event.target.value})};
+  const handleChange = (event) => {setNewCardData({message: event.target.value})};
 
   const handleClick = (e) => {
     setIsInvalidInput({
@@ -23,7 +21,7 @@ const NewCardForm = ({onAddCard, sBoardId}) => {
   const addNewCard = (e) => {
     e.preventDefault();
     if (!isInvalidInput.message) {
-      onAddCard(newCardData, sBoardId)
+      onAddCard(newCardData)
       setNewCardData({message: ''})
     } else{
       console.log('Please input valid data')

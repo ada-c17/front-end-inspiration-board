@@ -9,7 +9,7 @@ import './App.css';
 function App() {
   // STATE(boardsData: ListOfObjects, selectedBoard: id) 
   const [boardsData, setBoardsData] = useState([]);
-  const [selectedBoard, setSelectedBoard] = useState({});
+  const [selectedBoard, setSelectedBoard] = useState(5);
 
   const URL = 'https://inspo-board-server.herokuapp.com'
 
@@ -27,7 +27,6 @@ function App() {
             };
           });
         });
-        
       })
       .catch((error) => {
         console.log(error);
@@ -47,17 +46,23 @@ function App() {
     });
   }
 
-  const addCard = (newCard, boardId) => {
+  const addCard = (newCard) => {
     axios
-    .post(URL + '/boards/' + {boardId} + '/cards', newCard)
-    .then((response) => {oldBoard => {...oldBoard, cards: [...oldBoard.cards, cards: response.data]}})
-    .catch((error) => {console.log(error)});
+    .post(URL + '/boards/' + selectedBoard + '/cards', newCard)
+    .then((response) => {
+      console.log(response.data)
+      let selectedBoardData;
+        for (let board of boardsData){
+          if (board.boardId === selectedBoard){
+            selectedBoardData = board;
+          }
+        };
+      setBoardsData(oldBoards => [...oldBoards, {...selectedBoardData, cards: [...selectedBoardData.cards, response.data]}]);
+    })
+    .catch((error) => 
+    {console.log(error)});
+    console.log(boardsData);
   }
-
-
-  // setSelectedBoard(oldBoard => {{...selectedBoard, cards: [...selectedBoards.cards, newCard]}})
-  //       console.log(response);
-  //       console.log(selectedBoard)
   
   return (
     <main className="App">
@@ -67,7 +72,7 @@ function App() {
       <NewCardForm onAddCard = {addCard} sBoardId={selectedBoard.boardId}/>
       </nav>
       <BoardList boardsData={boardsData}/>
-      <CardList selectedBoard={selectedBoard} boardsData={boardsData}/>
+      <CardList boardsData={boardsData}/>
     </main>
   );
 }
