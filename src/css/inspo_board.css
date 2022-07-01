@@ -1,0 +1,165 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500&family=Zen+Tokyo+Zoo&display=swap');
+
+body{
+	font-family: 'Montserrat', sans-serif;
+	background-color: #F5F5F5; /* light gray */
+}
+select{
+	font-family: 'Montserrat', sans-serif;
+	height:40px;
+	width:97%;
+	border:1px solid  #4C6F29; /* medium green */
+	border-radius:7px;
+	margin: 16px;
+
+}
+
+button{
+	font-family: 'Montserrat', sans-serif;
+	background-color: #4C6F29; /* medium green */
+	height:40px;
+	width:150px;
+	border:1px solid  #4C6F29; /* medium green */
+	margin:16px;
+	border-radius:7px;
+	color: white;
+	display: inline-block;
+}
+
+h1 {
+	font-size: 36px;
+	text-align:center;
+}
+
+.board-input {
+	font-family: 'Montserrat', sans-serif;
+	height:40px;
+	width:39%;
+	border:1px solid  #4C6F29; /* medium green */
+	border-radius:7px;
+	margin: 16px;
+	display: inline-block;
+}
+.board-button {
+	width:10%;
+}
+
+.message-input {
+	font-family: 'Montserrat', sans-serif;
+	height:40px;
+	width:80%;
+	border:1px solid  #4C6F29; /* medium green */
+	border-radius:7px;
+	margin: 16px;
+	display: inline-block;
+}
+.message-button{
+	width:10%;
+
+}
+.container {
+	display: grid;
+	grid-auto-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+	grid-auto-rows: 68px 68px 1fr 68px;
+	grid-gap: 0em 0em;
+	overflow: hidden;
+	background-color: white;
+
+}
+
+.logo-area {
+	grid-area: 1 / 1 / 2 / 2;
+    height: 68px;
+	width: auto;
+    background-color: #e6ece4; /* light green */
+
+}
+.logo {
+    font-family: 'Zen Tokyo Zoo', sans-serif;
+    color: #4C6F29; /* medium green */
+    font-size: 40px;
+	letter-spacing: -1.5px;
+	display:inline-block;
+    margin-block-start: 16px;
+    margin-block-end: 0px;
+    margin-inline-start: 10px;
+    margin-inline-end: 0px;
+}
+
+.dropdown-menu {
+	grid-area: 1 / 2 / 2 / 7;
+    height:68px;
+	background-color: #e6ece4; /* light green */
+    width:auto;
+
+}
+
+.add-menu-button {
+	grid-area: 1 / 7 / 2 / 8;
+	height:68px;
+	background-color: #e6ece4; /* light green */
+	width: auto;
+}
+
+.collapse {
+	grid-area: 2 / 1 / 3 / 8;
+	background-color: #F5F5F5; /* light gray */
+	height: auto;
+
+}
+.collapsed {
+	grid-area: 2 / 1 / 3 / 8;
+	background-color: #F5F5F5; /* light gray */
+	height: 0px;
+
+}
+
+
+.board-content {
+	grid-area: 3 / 1 / 4 / 8;
+	margin-left:20%;
+	margin-right:20%;
+	margin-bottom:30px;
+
+}
+
+.card-display {
+	display: flex;
+	flex-wrap:wrap;
+}
+.add-message {
+	grid-area: 4 / 1 / 5 / 8;
+	background-color: #F5F5F5; /* light gray */
+}
+
+.message {
+	height: 200px;
+	width: 200px;
+	background-color: #e6ece4; /* light green */
+	border-radius: 7px;
+	padding: 10px;
+	text-align: center;
+	margin: 10px;
+	position: relative;
+}
+.message-text{
+	font-size: 20px;
+}
+.likes{
+	display: inline-block;
+	position: absolute;
+	bottom: 0;
+	left: 0;
+	margin-left: 10px;
+
+}
+.like-button{
+	width: 30px;
+	height: 30px;
+	display: inline-block;
+	vertical-align: middle;
+	margin: 10px;
+	position: absolute;
+	bottom: 0;
+	right: 0;
+}
