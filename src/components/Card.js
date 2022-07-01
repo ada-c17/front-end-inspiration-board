@@ -1,7 +1,14 @@
 import "./card.css";
 
 function Card(props) {
-  return <li >{props.message}</li>;;
+  const deleteCard = () => {
+    props.deleteCardCallback(props.id);
+  };
+  return (
+    <li>
+      {props.message} <button onClick={deleteCard}>Delete</button>
+    </li>
+  );
 }
 
 export default Card;

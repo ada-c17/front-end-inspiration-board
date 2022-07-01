@@ -62,7 +62,9 @@ function App() {
       .then((res) => {
         const newCards = res.data.map((card) => {
           return {
+            id: card.card_id,
             message: card.message,
+            board_id: card.board_id,
           };
         });
         setCards(newCards);
@@ -74,6 +76,18 @@ function App() {
       .post(`${URL}/cards`, cardData)
       .then(() => {
         getCards();
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
+
+  const deleteCard = (cardId) => {
+    axios
+      .delete(`${URL}/cards/${cardId}`)
+      .then((response) => {
+        getCards();
+        console.log(response);
       })
       .catch((err) => {
         console.log(err);
@@ -96,7 +110,7 @@ function App() {
           {selectedBoard.title} - {selectedBoard.owner}
         </p>
         <h2>Cards for Pick-Me-Up Quotes</h2>
-        <CardList cards={cards} />
+        <CardList cards={cards} deleteCardCallback={deleteCard} />
         <h2>Create a New Board</h2>
         <BoardForm addBoardCallback={addBoard} />
         <h2>Create a New Card</h2>
