@@ -10,7 +10,7 @@ function App() {
   // STATE(boardsData: ListOfObjects, selectedBoard: id)
   const [boardsData, setBoardsData] = useState([]);
   const [selectedBoard, setSelectedBoard] = useState(null);
-
+  const [boardTitle, setBoardTitle] = useState();
 
   const URL = "https://inspo-board-server.herokuapp.com";
 
@@ -38,27 +38,32 @@ function App() {
   const getBoardDataAndId = (selectedBoard) => {
     let selectedBoardData;
     let boardIndex;
-      for (const [index, board] of boardsData.entries()){
-        if (board.boardId === selectedBoard){
-          selectedBoardData = board;
-          boardIndex = index;
-        };
-      };
-      return [selectedBoardData, boardIndex]
+    for (const [index, board] of boardsData.entries()) {
+      if (board.boardId === selectedBoard) {
+        selectedBoardData = board;
+        boardIndex = index;
+      }
+    }
+    return [selectedBoardData, boardIndex];
   };
 
   const addCard = (newCard) => {
     axios
-    .post(URL + '/boards/' + selectedBoard + '/cards', newCard)
-    .then((response) => {
-      const [selectedBoardData, boardIndex] = getBoardDataAndId(selectedBoard);
-      const updatedBoard = {...selectedBoardData, cards: [...selectedBoardData.cards, response.data]};
-      const updatedBoardsData = [...boardsData]
-      updatedBoardsData[boardIndex] = updatedBoard;
-      setBoardsData(updatedBoardsData);
-    })
-    .catch((error) => 
-    {console.log(error)});
+      .post(URL + "/boards/" + selectedBoard + "/cards", newCard)
+      .then((response) => {
+        const [selectedBoardData, boardIndex] =
+          getBoardDataAndId(selectedBoard);
+        const updatedBoard = {
+          ...selectedBoardData,
+          cards: [...selectedBoardData.cards, response.data],
+        };
+        const updatedBoardsData = [...boardsData];
+        updatedBoardsData[boardIndex] = updatedBoard;
+        setBoardsData(updatedBoardsData);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
   };
 
   const addBoard = (newBoard) => {
@@ -84,19 +89,19 @@ function App() {
 
   const getCurrentBoard = (id) => {
     const currentBoard = boardsData.filter((board) => board.boardId === id);
-    console.log(currentBoard[0].boardId);
     setSelectedBoard(currentBoard[0].boardId);
-    // console.log(selectedBoard);
+    setBoardTitle(currentBoard[0].title);
   };
 
   return (
     <main className="App">
       <nav>
-      <h1>Inspiration Boards</h1>
-      <NewBoardForm onAddBoard = {addBoard}/>
-      <NewCardForm onAddCard = {addCard}/>
+        <h1>Inspiration Boards</h1>
+        <NewBoardForm onAddBoard={addBoard} />
+        <NewCardForm onAddCard={addCard} />
       </nav>
       <BoardList boards={boardsData} onSelectBoard={getCurrentBoard} />
+      <h2>Cards for Board: {boardTitle}</h2>
       <CardList selectedBoard={selectedBoard} boardsData={boardsData} />
     </main>
   );
