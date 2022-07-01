@@ -11,7 +11,7 @@ function App() {
 
   const [boards, setBoards] = useState([]);
   const [cards, setCards] = useState([]);
-  const [selectedBoard, setSelectedBoard] = useState(1);
+  const [selectedBoard, setSelectedBoard] = useState(8);
 
   const fetchBoards = () => {
     axios
@@ -68,11 +68,35 @@ function App() {
       });
   };
 
+  const deleteBoard = () => {
+    const id = selectedBoard;
+    axios
+      .delete(`${URL}/boards/${id}`)
+      .then(() => {
+        const updatedBoards = [];
+        for (const board of boards) {
+          if (board.id !== id) {
+            updatedBoards.push(board);
+          }
+        }
+        setBoards(updatedBoards);
+        setSelectedBoard(null);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
+
   return (
     <div>
       <header>
         <h1>Inspiration Board</h1>
-        <Board boards={boards} fetchBoardsCallback={fetchBoards}></Board>
+        <Board
+          boards={boards}
+          fetchBoardsCallback={fetchBoards}
+          deleteBoardsCallback={deleteBoard}
+        ></Board>
+        <h3>Selected Board is {selectedBoard}</h3>
         <NewBoardForm addBoardCallback={createNewBoard}></NewBoardForm>
         <NewCardForm addCardCallback={createNewCard}></NewCardForm>
         <CardList cards={cards} fetchCardsCallback={fetchCards}></CardList>
