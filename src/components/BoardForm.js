@@ -20,7 +20,7 @@ const BoardForm = (props) => {
   };
 
   const handleSubmit = (event) => {
-    event.preventdefault();
+    event.preventDefault();
     props.addBoard(formData);
     setFormData(defaultBoard);
   };

@@ -6,6 +6,7 @@ const BoardList = (props) => {
   const boardComponents = props.boards.map((board) => {
     return (
       <Board
+        key={board.board_id}
         id={board.board_id}
         title={board.title}
         owner={board.owner}
