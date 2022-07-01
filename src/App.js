@@ -100,7 +100,7 @@ function App() {
   };
 
   // on formsubmitcard
-  const onFormSubmitCard = (requestBody) => {
+  const onFormSubmitCard = (boardId, requestBody) => {
     axios
       .post(`${url}/boards/${boardId}/card`, requestBody)
       .then((response) => {

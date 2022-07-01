@@ -2,7 +2,7 @@
 import React, { useState } from "react";
 import "./CardsView.css";
 import CardList from "./CardList";
-import NewCardButton from "./components/NewCardButton";
+import NewCardButton from "./NewCardButton";
 // import NewCardForm from "./components/NewCardForm";
 import PropTypes from "prop-types";
 
