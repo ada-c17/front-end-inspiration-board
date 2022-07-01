@@ -7,9 +7,9 @@ const Board = (props) => {
   };
   return (
     <div id="boardItem">
-      <li className="boards__item">
+      <button className="boards__item">
         {props.title} By: {props.owner}{" "}
-      </li>
+      </button>
       <button className="deleteButton" onClick={deleteBoard}>
         X
       </button>
