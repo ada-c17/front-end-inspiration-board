@@ -1,3 +1,5 @@
+
+
 h1.boardId{
   display: none;
 }
@@ -8,6 +10,14 @@ h2{
 
 h3{
   font-size: 1em;
+}
+
+.boardsTitle{
+  color: white;
+  font-size: 2em;
+  margin: .5em;
+  margin-left: 3em;
+
 }
 
 .board-bubble button {
