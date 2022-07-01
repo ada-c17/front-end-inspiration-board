@@ -5,7 +5,24 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background-color: black;
+  color:white;
+  min-height: 100vh;
+  font-size: 1.2em;
 }
+
+a {
+color:white;
+text-decoration: none;
+padding: 14px 25px;
+}
+
+a:hover {
+  color: hotpink;
+  text-decoration: underline;
+
+}
+
 .HomeLink {
   float:right;
   padding: 20px;

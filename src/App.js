@@ -3,21 +3,9 @@ import "./App.css";
 import { Link } from "react-router-dom";
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-import CardForm from "./components/CardForm";
+import Otter from "./data/Otter.jpg";
 
 function App() {
-  // const [data] = useState([
-  //   {
-  //     id: "1",
-  //     title: "Ada is great",
-  //     owner: "Nina",
-  //   },
-  //   {
-  //     id: "2",
-  //     title: "Life is easy",
-  //     owner: "N",
-  //   },
-  // ]);
   const [boards, setBoards] = useState([]);
 
   useEffect(() => {
@@ -29,35 +17,25 @@ function App() {
       .get("https://inspiration-from-otterspace.herokuapp.com/boards")
       .then((response) => {
         setBoards(response.data);
-        console.log(response.data);
       })
       .catch((error) => {
         console.log("Oh no!!!");
       });
   };
 
-  // const makeNewCard = (data) => {
-  //   console.log(data);
-  //   axios.post("https://inspiration-from-otterspace.herokuapp.com/boards", data)
-  //        .then((response) => {
-  //          getBoardsFromAPI();
-  //        })
-  //        .catch((error) => {
-  //          console.log("Could not make a new board!")
-  //        })
-  // }
-
   return (
     <div className="App">
+      <img src={Otter} alt={"otterspace"} cache={false} className="Otter"></img>
       <h1>Inspiration from the OtterSpace</h1>
       <ul className="list">
         {boards.map((item) => (
           <li key={item.id} className="list-item">
-            <Link to={`${item.id}`}>{item.title}</Link>
+            <Link to={`${item.id}`} style={{ cursor: "pointer" }}>
+              {item.title}
+            </Link>
           </li>
         ))}
       </ul>
-      {/* <CardForm handleSubmission={makeNewCard}/> */}
       <Link to="/new">Add new Board</Link>
       <footer>
         &copy; 2022 Ada Developers Academy ✨ by Coders from the OtterSpace ✨
