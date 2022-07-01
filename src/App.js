@@ -1,4 +1,25 @@
+import React from "react";
+import axios from "axios";
+import Board from "../src/components/Board";
 import "./css/inspo_board.css";
+
+const kBaseUrl = "https://mission-inspirational-2.herokuapp.com";
+
+const cardApiToJson = (card) => {
+  const { id, likes, message, board_id: boardId } = card;
+  return { id, likes, message, boardId };
+};
+
+const increaseLike = async (id) => {
+  // needs to receive the ID of the card that was liked with button click
+  try {
+    const response = await axios.patch(`${kBaseUrl}/cards/${id}/like`);
+    return cardApiToJson(response.data);
+  } catch (error) {
+    console.log(error);
+    throw new Error(`Error when liking card ${id}`);
+  }
+};
 
 function App() {
   return (
@@ -27,6 +48,7 @@ function App() {
         </section>
         <section className="board-content">
           <h1>Current Board:(current board)</h1>
+          <Board cardLike={increaseLike} />
           <section className="card-display">
             <div className="message">
               <p className="message-text">You can do it!</p>
