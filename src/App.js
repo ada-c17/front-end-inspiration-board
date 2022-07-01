@@ -1,5 +1,5 @@
 import "./App.css";
-import BoardForm from "./components/BoardForm";
+// import BoardForm from "./components/BoardForm";
 import BoardList from "./components/BoardList";
 import { useState, useEffect } from "react";
 import axios from "axios";
@@ -44,13 +44,20 @@ function App() {
   };
 
   const deleteBoard = (id) => {
-    const newBoards = [];
-    for (const board of boards) {
-      if (board.board_id !== id) {
-        newBoards.push(board);
-      }
-    }
-    setBoards(newBoards);
+    axios
+      .delete(`${URL}/${id}`)
+      .then(() => {
+        const newBoards = [];
+        for (const board of boards) {
+          if (board.board_id !== id) {
+            newBoards.push(board);
+          }
+        }
+        setBoards(newBoards);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
   };
   return (
     <div className="App">
