@@ -1,7 +1,7 @@
-import './App.css';
-import React from 'react';
+import "./App.css";
+import React from "react";
 import BoardsList from "./components/BoardsList";
-import axios from 'axios';
+import axios from "axios";
 import { useEffect, useState } from "react";
 // import Board from "./components/Board";
 
@@ -9,16 +9,17 @@ function App() {
   const [boards, setBoards] = useState([]);
   const [cards, setCards] = useState([]);
 
-  const URL = 'https://fast-caverns-05936.herokuapp.com/boards';
+  const URL = "https://fast-caverns-05936.herokuapp.com/boards";
 
   const fetchBoards = () => {
-    axios.get(URL)
-      .then((res) => { 
-        const newBoards = res.data.map((board) => {       
+    axios
+      .get(URL)
+      .then((res) => {
+        const newBoards = res.data.map((board) => {
           return {
             id: board.id,
             title: board.title,
-            owner: board.owner
+            owner: board.owner,
           };
         });
         setBoards(newBoards);
@@ -27,36 +28,38 @@ function App() {
         console.log(err);
       });
   };
-  
+
   useEffect(fetchBoards, []);
 
-  const fetchCardsForBoard= (id) => {
-    axios.get(`${URL}/${id}/cards`)
-    .then((res) => {
-      console.log("we are in this hard function")
-      console.log(res)
-      const newCards = res.data.cards.map((card) => {
-        return {
-          card_id: card.id,
-          board_id: id,
-          message: card.message,
-          likes_count: card.likes_count
-        };
+  const fetchCardsForBoard = (id) => {
+    axios
+      .get(`${URL}/${id}/cards`)
+      .then((res) => {
+        console.log("we are in this hard function");
+        //console.log(res)
+        //
+        const newCards = res.data.cards.map((card) => {
+          return {
+            card_id: card.card_id,
+            board_id: id,
+            message: card.message,
+            likes_count: card.likes_count,
+          };
+        });
+        setCards(newCards);
+        console.log(newCards);
+      })
+      .catch((err) => {
+        console.log(err);
       });
-      setCards(newCards);
-    })
-    .catch((err) => {
-      console.log(err);
-    });
   };
 
-  
   return (
     <div>
       <div>
-        <BoardsList 
-          boards = {boards}
-          cardsCallback = {fetchCardsForBoard}
+        <BoardsList
+          boards={boards}
+          cardsCallback={fetchCardsForBoard}
           // cards = {}
         />
       </div>
@@ -69,7 +72,5 @@ function App() {
     </div>
   );
 }
-
-
 
 export default App;
