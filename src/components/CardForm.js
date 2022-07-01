@@ -8,6 +8,7 @@ function CardForm(props) {
   };
 
   const [formData, setFormData] = useState(defaultCard);
+  const [disableSubmit, setDisableSubmit] = useState(true);
 
   const onFormChange = (event) => {
     const stateName = event.target.name;
@@ -16,6 +17,11 @@ function CardForm(props) {
     newFormData[stateName] = inputValue;
     newFormData["board_id"] = props.board_id;
     setFormData(newFormData);
+    if (inputValue === "") {
+      setDisableSubmit(true);
+    } else {
+      setDisableSubmit(false);
+    }
   };
 
   const handleSubmit = (event) => {
@@ -31,7 +37,7 @@ function CardForm(props) {
         value={formData.message}
         onChange={onFormChange}
       ></input>
-      <input type="submit" value="Add Card"></input>
+      <input type="submit" value="Add Card" disabled={disableSubmit}></input>
     </form>
   );
 }
