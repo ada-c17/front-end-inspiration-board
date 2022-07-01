@@ -2,7 +2,13 @@ import React from "react";
 // import PropTypes from "prop-types";
 import Card from "./Card";
 
-const CardsList = ({ cards, onLike, deleteCardCallback, board_id}) => {
+const CardsList = ({
+  cards,
+  onLike,
+  deleteCardCallback,
+  board_id,
+  selectedBoard,
+}) => {
   const cardComponents = cards.map((card) => {
     return (
       <Card
@@ -17,7 +23,12 @@ const CardsList = ({ cards, onLike, deleteCardCallback, board_id}) => {
     );
   });
 
-  return <ul className="cards_list_no_bullets">{cardComponents}</ul>;
+  return (
+    <div>
+      <h2>Card for {selectedBoard.title}</h2>
+      <div className="cards_list_no_bullets">{cardComponents}</div>
+    </div>
+  );
 };
 
 // CardsList.propTypes = {

@@ -30,11 +30,6 @@ function App() {
   //   setCards(newCards);
   // };
 
-  // const onDelete = (id) => {
-  //   const newCards = cards.filter((card) => card.id !== id);
-  //   setCards(newCards);
-  // };
-
   // keeping stracking on board state
   const [boards, setBoards] = useState([]);
   // keeping tracking on showing or hiding form state
@@ -49,7 +44,8 @@ function App() {
     axios
       .get(URL)
       .then((response) => {
-        const newBoards = response.data.map((board) => {
+        const responseBoard = [...response.data];
+        const newBoards = responseBoard.map((board) => {
           return {
             id: board.id,
             title: board.title,
@@ -93,11 +89,11 @@ function App() {
     for (const board of newBoards) {
       if (board.id === id) {
         setBoardSelected(board);
-        fetchCards();
       }
     }
   };
 
+  // get all cards
   const fetchCards = () => {
     axios
       .get(`${URL}/${boardSelected.id}/cards`)
@@ -112,26 +108,25 @@ function App() {
           };
         });
         setCardsData(newCards);
-        console.log(newCards);
       })
       .catch((error) => {
         alert("Oop! Could not access the cards!");
       });
   };
 
-  //useEffect(fetchCards, [boardSelected]);
-
+  // creating a new card by specific board
   const postNewCard = (cardInfo) => {
     axios
       .post(`${URL}/${boardSelected.id}/cards`, cardInfo)
       .then((response) => {
-        fetchCards(boardSelected.id);
+        fetchCards();
       })
       .catch((error) => {
         alert("Couldn't create a new card.");
       });
   };
 
+  // deleting a card by id
   const deleteCard = (card_id) => {
     axios
       .delete(`https://get-inspired-c17.herokuapp.com/cards/${card_id}`)
@@ -184,11 +179,16 @@ function App() {
             )}
           </div>
           <div>
-            <h2>Card list</h2>
-            <CardsList cards={cardsData} deleteCardCallback={deleteCard} />
+            {boardSelected.id && (
+              <CardsList
+                cards={cardsData}
+                selectedBoard={boardSelected}
+                deleteCardCallback={deleteCard}
+              />
+            )}
           </div>
           <div>
-            <NewCardForm postNewCard={postNewCard}></NewCardForm>
+            {boardSelected.id && <NewCardForm postNewCard={postNewCard} />}
           </div>
         </section>
       </div>
