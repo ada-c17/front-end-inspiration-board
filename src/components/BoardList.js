@@ -1,22 +1,29 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
 import "./stylesheet/BoardList.css";
+import { Link } from "react-router-dom";
 
-const BoardList = ({ boardData, setCurrentBoardId }) => {
+const BoardList = ({ boardData, setCurrentBoardId, deleteBoard }) => {
   let navigate = useNavigate();
 
   const createBoard = (board) => {
     return (
       <li>
-        <a
-          className="boardName"
-          href="#"
+        <Link
+          to={`boards/${board.boardId}`}
           onClick={() => {
             navigate(`boards/${board.boardId}`);
           }}
         >
           {board.title}
-        </a>
+        </Link>
+        <button
+          onClick={() => {
+            deleteBoard(board.boardId);
+          }}
+        >
+          Delete Board
+        </button>
       </li>
     );
   };
