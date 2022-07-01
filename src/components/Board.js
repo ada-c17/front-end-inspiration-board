@@ -11,14 +11,29 @@ const Board = (props) => {
               message={card.message} 
               likes={card.likes_count} />;
   });
+
+  const fetchTheCard = () => {
+    console.log(props.id)
+    props.cardCallback(props.id)
+  }
+
+
   return (
     <div>
-      <ul>
-        <li>Title: {props.title} </li>
-        <li>Owner :{props.owner}</li> 
-        <li>{cardComponent}</li>
-        {/* <li>Cards:{props.cards}</li> */}
-      </ul>
+      <div>
+        {/* <ol> */}
+          <li onClick= {fetchTheCard}> Title: {props.title}</li>
+        
+          {/* <li>Owner :{props.owner}</li> */}
+          {/* <li>{cardComponent}</li> */}
+          {/* <li>Cards:{props.cards}</li> */}
+          {/* </ol> */}
+
+        
+      </div>
+      <div>
+        {cardComponent}
+      </div>
     </div>
   );
 };

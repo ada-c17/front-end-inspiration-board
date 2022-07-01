@@ -8,12 +8,17 @@ const BoardsList = (props) => {
               id={board.id}
               title={board.title} 
               owner={board.owner}
-              cards={board.cards} />;
+              cards={props.cards}
+              cardsCallback={props.cardsCallback}
+              />;
   });
   return (
     <div>
       <h1>Boards</h1>
-      {boardComponent}
+      <ol>
+        {boardComponent}
+      </ol>
+      
     </div>
   );
 };
