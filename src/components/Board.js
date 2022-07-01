@@ -5,7 +5,6 @@ import axios from "axios";
 import CardList from "./CardList";
 import CardForm from "./CardForm";
 
-
 const Board = (props) => {
   let params = useParams();
 
@@ -16,25 +15,11 @@ const Board = (props) => {
     title: "",
   });
 
-  useEffect(() => {
-    // getBoardDatafromAPI(params.id);
-    axios
-      .get(
-        `https://inspiration-from-otterspace.herokuapp.com/boards/${params.id}/cards`
-      )
-      .then((response) => {
-        setBoardData(response.data);
-      })
-      .catch((error) => {
-        console.log("couldn't call api");
-        console.log(error);
-      });
-  }, []);
-
-  // const getBoardDatafromAPI = (id) => {
+  // useEffect(() => {
+  //   // getBoardDatafromAPI(params.id);
   //   axios
   //     .get(
-  //       `https://inspiration-from-otterspace.herokuapp.com/boards/${id}/cards`
+  //       `https://inspiration-from-otterspace.herokuapp.com/boards/${params.id}/cards`
   //     )
   //     .then((response) => {
   //       setBoardData(response.data);
@@ -43,13 +28,25 @@ const Board = (props) => {
   //       console.log("couldn't call api");
   //       console.log(error);
   //     });
-  // };
-
-  //The useEffect below can be used for the axios get route
-
-  // useEffect(() => {
-  //   getCardsFromApi();
   // }, []);
+
+  const getBoardDatafromAPI = (id) => {
+    axios
+      .get(
+        `https://inspiration-from-otterspace.herokuapp.com/boards/${id}/cards`
+      )
+      .then((response) => {
+        setBoardData(response.data);
+      })
+      .catch((error) => {
+        console.log("couldn't call api");
+        console.log(error);
+      });
+  };
+
+  useEffect(() => {
+    getBoardDatafromAPI(params.id);
+  }, [params.id]);
 
   const setCardLikesCount = (id) => {
     console.log("inside setCardLikesCount", id);
@@ -86,34 +83,18 @@ const Board = (props) => {
       });
   };
 
-  const [boards, setBoards] = useState([]);
-
-  useEffect(() => {
-    getBoardsFromAPI();
-  }, []);
-
-  const getBoardsFromAPI = () => {
-    axios
-      .get("https://inspiration-from-otterspace.herokuapp.com/boards")
-      .then((response) => {
-        setBoards(response.data);
-        console.log(response.data);
-      })
-      .catch((error) => {
-        console.log("Oh no!!!");
-      });
-  };
-
   const makeNewCard = (data) => {
     console.log(data);
-    axios.post("https://inspiration-from-otterspace.herokuapp.com/boards", data)
-         .then((response) => {
-           getBoardsFromAPI();
-         })
-         .catch((error) => {
-           console.log("Could not make a new board!")
-         })
-  }
+    axios
+      .post("https://inspiration-from-otterspace.herokuapp.com/boards", data)
+      .then((response) => {
+        console.log(response);
+        getBoardDatafromAPI(params.id);
+      })
+      .catch((error) => {
+        console.log("Could not make a new card!");
+      });
+  };
 
   return (
     <div className="board">
@@ -127,7 +108,7 @@ const Board = (props) => {
       />
       <div>board title : {boardData.title}</div>
       <div>board owner : {boardData.owner}</div>
-      <CardForm handleSubmission={makeNewCard}/>
+      <CardForm handleSubmission={makeNewCard} />
 
       <h3>id of the board for the reference: {params.id}</h3>
     </div>
