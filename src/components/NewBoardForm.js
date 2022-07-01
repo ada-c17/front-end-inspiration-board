@@ -6,6 +6,7 @@ import axios from "axios";
 const default_board = { title: "", owner: "" };
 const NewBoardForm = () => {
   const [boardData, setBoardData] = useState(default_board);
+  const [message, setMessage] = useState("");
 
   const makeNewBoard = (data) => {
     axios
