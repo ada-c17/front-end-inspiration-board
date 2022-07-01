@@ -1,0 +1,10 @@
+
+.board-header{
+    text-align: center;
+    font-family: 'Courier New';
+    background-color: #f3f3f3;
+    padding: .9em;
+    border-radius: 15px;
+    font-family: 'Courier New';
+    width: 25%
+}
