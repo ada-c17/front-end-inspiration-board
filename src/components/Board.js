@@ -4,23 +4,23 @@ import { useParams } from "react-router-dom";
 import axios from "axios";
 import CardList from "./CardList";
 
-const board_example = {
-  id: "1",
-  title: "Ada is great",
-  owner: "Nina",
-  cards: [
-    {
-      id: "1",
-      message: "card one with some message ",
-      likes_count: "2",
-    },
-    {
-      id: "2",
-      message: "card two and another message",
-      likes_count: "3",
-    },
-  ],
-};
+// const board_example = {
+//   id: "1",
+//   title: "Ada is great",
+//   owner: "Nina",
+//   cards: [
+//     {
+//       id: "1",
+//       message: "card one with some message ",
+//       likes_count: "2",
+//     },
+//     {
+//       id: "2",
+//       message: "card two and another message",
+//       likes_count: "3",
+//     },
+//   ],
+// };
 
 function Board() {
   let params = useParams();
