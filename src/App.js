@@ -10,6 +10,7 @@ function App() {
   // STATE(boardsData: ListOfObjects, selectedBoard: id)
   const [boardsData, setBoardsData] = useState([]);
   const [selectedBoard, setSelectedBoard] = useState(); // Pass in board
+  const [boardTitle, setBoardTitle] = useState();
 
   const URL = "https://inspo-board-server.herokuapp.com";
 
@@ -56,9 +57,8 @@ function App() {
 
   const getCurrentBoard = (id) => {
     const currentBoard = boardsData.filter((board) => board.boardId === id);
-    console.log(currentBoard[0].boardId);
     setSelectedBoard(currentBoard[0].boardId);
-    // console.log(selectedBoard);
+    setBoardTitle(currentBoard[0].title);
   };
 
   return (
@@ -69,6 +69,7 @@ function App() {
         <NewCardForm />
       </nav>
       <BoardList boards={boardsData} onSelectBoard={getCurrentBoard} />
+      <h2>Cards for Board: {boardTitle}</h2>
       <CardList selectedBoard={selectedBoard} boardsData={boardsData} />
     </main>
   );
