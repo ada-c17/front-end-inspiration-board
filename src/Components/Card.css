@@ -1,0 +1,9 @@
+.single-card {
+    background-color: pink;
+    list-style: none;
+    width: 200px;
+    height: 100px;
+    color: rgb(14, 15, 14);
+    border: 2px dotted gray;
+    
+}
