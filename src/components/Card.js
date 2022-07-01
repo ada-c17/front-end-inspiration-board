@@ -12,7 +12,7 @@ const Card = (props) => {
   };
 
   return (
-    <div>
+    <div key={props.id}>
       <section>{props.message}</section>
       <button className="card-likes" onClick={clickLikeButton}>
         {props.likes}💕

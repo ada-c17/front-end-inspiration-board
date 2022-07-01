@@ -18,14 +18,14 @@ const BoardsList = (props) => {
   return <div>{boardComponents}</div>;
 };
 
-BoardsList.propsTypes = {
-  boards: PropTypes.arrayOf(
-    PropTypes.shape({
-      id: PropTypes.number.isRequired,
-      title: PropTypes.string.isRequired,
-      owner: PropTypes.string.isRequired,
-    })
-  ),
-};
+// BoardsList.propsTypes = {
+//   boards: PropTypes.arrayOf(
+//     PropTypes.shape({
+//       id: PropTypes.number.isRequired,
+//       title: PropTypes.string.isRequired,
+//       owner: PropTypes.string.isRequired,
+//     })
+//   ),
+// };
 
 export default BoardsList;

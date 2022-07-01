@@ -6,7 +6,7 @@ const Board = (props) => {
     props.selectedBoardCallBack(props.id);
   };
   return (
-    <div>
+    <div key={props.id}>
       <div onClick={showBoard}>
         {props.id}. {props.title}
       </div>

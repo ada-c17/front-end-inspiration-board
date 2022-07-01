@@ -93,14 +93,14 @@ function App() {
     for (const board of newBoards) {
       if (board.id === id) {
         setBoardSelected(board);
-        fetchCards(id);
+        fetchCards();
       }
     }
   };
 
-  const fetchCards = (id) => {
+  const fetchCards = () => {
     axios
-      .get(`${URL}/${id}/cards`)
+      .get(`${URL}/${boardSelected.id}/cards`)
       .then((response) => {
         const cardsCopy = [...response.data];
         const newCards = cardsCopy.map((card) => {
@@ -108,7 +108,7 @@ function App() {
             id: card.card_id,
             message: card.message,
             likes_count: card.likes_count,
-            board_id: id,
+            board_id: boardSelected.id,
           };
         });
         setCardsData(newCards);
@@ -119,41 +119,34 @@ function App() {
       });
   };
 
+  //useEffect(fetchCards, [boardSelected]);
+
   const postNewCard = (cardInfo) => {
     axios
       .post(`${URL}/${boardSelected.id}/cards`, cardInfo)
       .then((response) => {
-        fetchCards();
+        fetchCards(boardSelected.id);
       })
       .catch((error) => {
         alert("Couldn't create a new card.");
       });
   };
 
-  // const deleteCard = (card_id) => {
-  //   console.log(card_id);
-  //   axios
-  //     .delete(`https://get-inspired-c17.herokuapp.com/cards/${card_id}`)
-  //     .then((response) => {
-  //       const responseCard = { ...response.data };
-  //       const newCardsList = [];
-  //       for (const card of responseCard) {
-  //         if (card.id !== card_id) {
-  //           newCardsList.push(card);
-  //         }
-  //       }
-  //       setCardsData(newCardsList);
-
-  //       // console.log(response)
-  //       // const responseCard = {...response.data}
-  //       // const newCards = responseCard.filter((card) => card.id !== card_id);
-  //       // setCardsData(newCards);
-  //     })
-  //     .catch((error) => {
-  //       console.log(error);
-  //       alert("Couldn't delete a new card.");
-  //     });
-  // };
+  const deleteCard = (card_id) => {
+    axios
+      .delete(`https://get-inspired-c17.herokuapp.com/cards/${card_id}`)
+      .then((response) => {
+        const newCardItems = [...cardsData];
+        const newCardsList = [];
+        for (const card of newCardItems) {
+          if (card.card_id !== card_id) {
+            newCardsList.push(card);
+          }
+        }
+        setCardsData(newCardsList);
+        fetchCards();
+      });
+  };
 
   return (
     <div className="App">
@@ -192,7 +185,7 @@ function App() {
           </div>
           <div>
             <h2>Card list</h2>
-            <CardsList cards={cardsData}/>
+            <CardsList cards={cardsData} deleteCardCallback={deleteCard} />
           </div>
           <div>
             <NewCardForm postNewCard={postNewCard}></NewCardForm>
