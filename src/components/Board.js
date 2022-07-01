@@ -1,7 +1,7 @@
-import React, { useEffect } from "react";
-import CardsList from "./CardsList";
-import "./stylesheet/Board.css";
-import { useNavigate, useParams } from "react-router-dom";
+import React, { useEffect } from 'react';
+import CardsList from './CardsList';
+import './stylesheet/Board.css';
+import { useNavigate, useParams } from 'react-router-dom';
 
 const Board = ({ boardData, getOneBoard, likeHeart }) => {
   let navigate = useNavigate();
@@ -9,10 +9,11 @@ const Board = ({ boardData, getOneBoard, likeHeart }) => {
 
   useEffect(() => {
     getOneBoard(boardId);
-    console.log("I ran!");
+    console.log('I ran!');
   }, []);
+  // need [boardId]
 
-  console.log("board cards: ", boardData.cards);
+  console.log('board cards: ', boardData.cards);
 
   if (boardData.cards === undefined || boardData === []) {
     return <h1> </h1>;
@@ -22,7 +23,7 @@ const Board = ({ boardData, getOneBoard, likeHeart }) => {
     <div>
       <button
         onClick={() => {
-          navigate("/");
+          navigate('/');
         }}
       >
         Go Back to Boards From Board: {boardId}
@@ -32,7 +33,11 @@ const Board = ({ boardData, getOneBoard, likeHeart }) => {
         Welcome to {boardData.owner}'s <em>{boardData.title}</em> Board!
       </h1>
       <li>
-        <CardsList cardData={boardData.cards} likeHeart={likeHeart} />
+        <CardsList
+          cardData={boardData.cards}
+          likeHeart={likeHeart}
+          reloadBoard={() => getOneBoard(boardId)}
+        />
       </li>
     </div>
   );

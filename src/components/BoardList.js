@@ -1,5 +1,6 @@
-import React from "react";
-import { useNavigate } from "react-router-dom";
+import React from 'react';
+import { useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 const BoardList = ({ boardData, setCurrentBoardId }) => {
   let navigate = useNavigate();
@@ -8,14 +9,14 @@ const BoardList = ({ boardData, setCurrentBoardId }) => {
     // console.log(board);
     return (
       <li>
-        <a
-          href="#"
+        <Link
+          to={`boards/${board.boardId}`}
           onClick={() => {
             navigate(`boards/${board.boardId}`);
           }}
         >
           {board.title}
-        </a>
+        </Link>
       </li>
       /* <Board
         key={board.board_id}
