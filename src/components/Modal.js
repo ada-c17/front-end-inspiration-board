@@ -10,7 +10,9 @@ const Modal = (props) => {
           <button onClick={() => props.closeModal(false)}> X </button>
         </div>
         <div className="title">Create a new board</div>
-        <div className="body">{/* <BoardForm /> */}</div>
+        <div className="body">
+          <BoardForm addBoard={props.addBoard} />
+        </div>
         <div className="footer"></div>
       </div>
     </div>

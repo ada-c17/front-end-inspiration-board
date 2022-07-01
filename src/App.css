@@ -43,7 +43,14 @@
 
 .Board-form {
   margin-bottom: 10px;
-  text-align: left;
+  text-align: center;
+}
+
+.Board-form button {
+  border: 1px #C1C1C1 solid;
+  background-color: white;
+  padding: 4px 8px;
+  cursor: pointer;
 }
 
 .Board-display {

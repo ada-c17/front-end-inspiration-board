@@ -7,4 +7,8 @@
 .New-board-form input {
     text-align: center;
     margin: 2px 0px;
+    width: 50%;
+    margin-bottom:  10px;
 }
+
+

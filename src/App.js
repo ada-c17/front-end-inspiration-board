@@ -3,9 +3,11 @@ import BoardForm from "./components/BoardForm";
 import BoardList from "./components/BoardList";
 import { useState, useEffect } from "react";
 import axios from "axios";
+import Modal from "./components/Modal";
 
 function App() {
   const [boards, setBoards] = useState([]);
+  const [openModal, setOpenModal] = useState(false);
 
   const URL = "https://inspiration-board-eota.herokuapp.com/boards";
 
@@ -54,11 +56,19 @@ function App() {
     <div className="App">
       <div className="App-wrapper">
         <header className="App-header">Inspiration Board</header>
+        {openModal && <Modal addBoard={addBoard} closeModal={setOpenModal} />}
         <main className="Main">
           <div className="Boards">
             <BoardList boards={boards} deleteBoard={deleteBoard} />
             <section className="Board-form">
-              <BoardForm addBoard={addBoard} />
+              <button
+                onClick={() => {
+                  setOpenModal(true);
+                }}
+              >
+                + CREATE BOARD
+              </button>
+              {/* <BoardForm addBoard={addBoard} /> */}
             </section>
           </div>
           <div className="Board-display"></div>
