@@ -14,14 +14,14 @@ function App() {
           </Link>
           <Link to="/"> Home </Link>
           <Link to="/boards" className="choose-board">
-            Choose an inspiration board
+            <section>Inspiration board</section>
+            <select>
+              <option>Choose an inspiration board</option>
+              <option> board 1</option>
+              <option> board 2</option>
+            </select>
           </Link>
         </nav>
-        <section className="choose-board">
-          <ol>
-            <li>Board List place holder</li>
-          </ol>
-        </section>
       </header>
       <Outlet />
     </div>

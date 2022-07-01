@@ -1,11 +1,14 @@
 html{  
   background-color: #FFD6FF; 
   background-image: linear-gradient( #FFD6FF,#C8B6FF);
-  height: 800px
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-attachment: scroll;
+  height: 100%
+
 }
 .app{
   font-family: 'Courier New';
-
 }
 .App-title {
   display: flex;
@@ -28,11 +31,23 @@ html{
   font-family: 'Courier New';
 }
 
+.boardContainer{
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    grid-template-rows: repeat(5, 1fr);
+    grid-column-gap: 0px;
+    grid-row-gap: 0px;
+}
+
+
+
 .choose-board{
   background-color: #f3f3f3;
   padding: .9em;
   border-radius: 15px;
   font-family: 'Courier New';
+  width: 25%
+
 }
 
 .InspoContainers{
