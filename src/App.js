@@ -52,6 +52,20 @@ function App() {
       });
   };
 
+  const deleteBoard = (boardId) => {
+    axios
+      .delete(`${URL}/boards/${boardId}`)
+      .then((response) => {
+        getBoards();
+        getCards();
+        setSelectedBoard(defaultBoard);
+        console.log(response);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
+
   const getCards = () => {
     axios
       .get(`${URL}/cards`, {
@@ -116,7 +130,11 @@ function App() {
       <main>
         <div>
           <h2>Boards</h2>
-          <BoardList boards={boards} selectBoardCallback={selectBoard} />
+          <BoardList
+            boards={boards}
+            selectBoardCallback={selectBoard}
+            deleteBoardCallback={deleteBoard}
+          />
         </div>
         <h2>Selected Board</h2>
         <p>
