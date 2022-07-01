@@ -15,21 +15,6 @@ const Board = (props) => {
     title: "",
   });
 
-  // useEffect(() => {
-  //   // getBoardDatafromAPI(params.id);
-  //   axios
-  //     .get(
-  //       `https://inspiration-from-otterspace.herokuapp.com/boards/${params.id}/cards`
-  //     )
-  //     .then((response) => {
-  //       setBoardData(response.data);
-  //     })
-  //     .catch((error) => {
-  //       console.log("couldn't call api");
-  //       console.log(error);
-  //     });
-  // }, []);
-
   const getBoardDatafromAPI = (id) => {
     axios
       .get(
@@ -47,7 +32,6 @@ const Board = (props) => {
   useEffect(() => {
     getBoardDatafromAPI(params.id);
   }, [params.id]);
-
   const setCardLikesCount = (id) => {
     console.log("inside setCardLikesCount", id);
     const cardLikes = [...boardData.cards];
@@ -66,8 +50,7 @@ const Board = (props) => {
       .then((response) => {
         console.log("made it into like button");
         targetCard.likesCount += 1;
-        setBoardData(cardLikes);
-        // setBoardData(targetCard);
+        setBoardData(targetCard);
       })
       .catch((error) => {
         console.log("couldn't add like");

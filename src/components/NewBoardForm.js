@@ -1,5 +1,4 @@
 import { Link } from "react-router-dom";
-// import PropTypes from "prop-types";
 import { useState } from "react";
 import axios from "axios";
 
@@ -11,8 +10,13 @@ const NewBoardForm = () => {
   const makeNewBoard = (data) => {
     axios
       .post("https://inspiration-from-otterspace.herokuapp.com/boards", data)
-      .then(console.log("created board"))
-      .catch(console.log("couldn't create board"));
+      .then((response) => {
+        console.log("created board");
+        console.log(response);
+      })
+      .catch(() => {
+        console.log("couldn't create board");
+      });
   };
 
   const handleFormInput = (event) => {
@@ -26,8 +30,14 @@ const NewBoardForm = () => {
   };
 
   const handleFormSubmission = (event) => {
+    console.log(boardData);
     event.preventDefault();
-    makeNewBoard(boardData);
+    if (boardData.title === "" || boardData.owner === "") {
+      setMessage("Please enter both title and owner");
+    } else {
+      setMessage(`Board ${boardData.title} was created by ${boardData.owner}`);
+      makeNewBoard(boardData);
+    }
   };
 
   return (
@@ -41,6 +51,7 @@ const NewBoardForm = () => {
         <input
           name="title"
           type="text"
+          className="title"
           value={boardData.title}
           onChange={handleFormInput}
         />
@@ -48,11 +59,13 @@ const NewBoardForm = () => {
         <input
           name="owner"
           type="text"
+          className="owner"
           value={boardData.owner}
           onChange={handleFormInput}
         />
         <input type="submit" />
       </form>
+      <p>{message}</p>
     </>
   );
 };

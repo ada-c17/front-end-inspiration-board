@@ -3,7 +3,6 @@ import userEvent from "@testing-library/user-event";
 import { createMemoryHistory } from "history";
 import React from "react";
 import { Router } from "react-router-dom";
-
 import "@testing-library/jest-dom";
 import App from "./app";
 
@@ -24,11 +23,11 @@ test("full app rendering/navigating'", async () => {
 
 test("landing on a board page", () => {
   const history = createMemoryHistory();
-  history.push("1");
+  history.push("/4");
   render(
     <Router location={history.location} navigator={history}>
       <App />
     </Router>
   );
-  // expect(screen.getByText(/List of Cards/i)).toBeInTheDocument();
+  // expect(screen.getByText(/reference/i)).toBeInTheDocument();
 });
