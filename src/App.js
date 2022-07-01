@@ -14,6 +14,27 @@ function App() {
     owner: "",
   };
 
+  // my lines
+  // const [cards, setCards] = useState(CARDS);
+
+  // const onLike = (id) => {
+  //   const newCards = cards.map((card) => {
+  //     if (card.id === id) {
+  //       return {
+  //         ...card,
+  //         likes: (card.likes += 1),
+  //       };
+  //     }
+  //     return card;
+  //   });
+  //   setCards(newCards);
+  // };
+
+  // const onDelete = (id) => {
+  //   const newCards = cards.filter((card) => card.id !== id);
+  //   setCards(newCards);
+  // };
+
   // keeping stracking on board state
   const [boards, setBoards] = useState([]);
   // keeping tracking on showing or hiding form state
@@ -72,24 +93,26 @@ function App() {
     for (const board of newBoards) {
       if (board.id === id) {
         setBoardSelected(board);
-        fetchCards(board.id);
+        fetchCards(id);
       }
     }
   };
 
   const fetchCards = () => {
     axios
-      .get(`${URL}/${boards.id}/cards`)
+      .get(`${URL}/${boardSelected.id}/cards`)
       .then((response) => {
-        const newCards = response.data.map((card) => {
+        const cardsCopy = [...response.data];
+        const newCards = cardsCopy.map((card) => {
           return {
             id: card.card_id,
             message: card.message,
             likes_count: card.likes_count,
-            board_id: card.board_id,
+            board_id: boardSelected.id,
           };
         });
         setCardsData(newCards);
+        console.log(newCards);
       })
       .catch((error) => {
         alert("Oop! Could not access the cards!");
@@ -97,11 +120,8 @@ function App() {
   };
 
   const postNewCard = (cardInfo) => {
-    const boardId = cardInfo.board_id;
-    console.log(cardInfo);
-    console.log(boardSelected.id);
     axios
-      .post(`${URL}/${boardId}/cards`, cardInfo)
+      .post(`${URL}/${boardSelected.id}/cards`, cardInfo)
       .then((response) => {
         fetchCards();
       })
@@ -156,7 +176,7 @@ function App() {
           </div>
           <div>
             <h2>Card list</h2>
-            <CardsList cardsList={cardsData} />
+            <CardsList cards={cardsData} />
           </div>
           <div>
             <NewCardForm postNewCard={postNewCard}></NewCardForm>
