@@ -59,37 +59,79 @@ const App = () => {
       });
   };
 
-  // console.log(boardData);
+  const deleteBoardRequest = (id) => {
+    return axios
+      .delete(`${URL}/${id}`)
+      .then((response) => {
+        console.log(response.data);
+      })
+      .catch((error) => {
+        console.log(error);
 
-  //Post New Board
-  //Create function to handleSubmit
-  //Pass function down to BoardList 
-  //Submit will change state 
-  //Pass it back to app 
-  const [title, setTitle] = useState("");
-  const [owner, setOwner] = useState("");
+        throw new Error(`error deleting board ${id}`);
+      });
+  };
+
+  const deleteBoard = (id) => {
+    return deleteBoardRequest(id)
+      .then(() => {
+        setAllBoards((oldBoards) => {
+          return oldBoards.filter((board) => board.boardId !== id);
+        });
+      })
+      .catch((error) => {
+        console.log(error.message);
+      });
+  };
+
+  const deleteCardRequest = (cardID) => {
+    return axios
+      .delete(
+        `https://back-end-inspiration-board.herokuapp.com/cards/${cardID}`
+      )
+      .then((response) => {
+        console.log(response.data);
+      })
+      .catch((error) => {
+        console.log(error);
+        throw new Error(`error deleting card ${cardID}`);
+      });
+  };
+
+  const deleteCard = (cardID) => {
+    return deleteCardRequest(cardID).then(() => {
+      const updatedCards = { ...boardData };
+      updatedCards.cards = updatedCards.cards.filter(
+        (card) => card.id !== cardID
+      );
+      setBoardData(updatedCards);
+    });
+  };
+
 
   return (
-    <section>
-      <Router>
-        <Routes>
-          <Route path="/" element={<BoardList boardData={allBoards} />} />
-          <Route
-            path="/boards/:boardId"
-            element={
-              <Board
-                boardData={boardData}
-                getOneBoard={getOneBoard}
-                likeHeart={faHeart}
-              />
-            }
-          />
-          <Route path="*" element={<Error />} />
-        </Routes>
-      </Router>
-
-    </section>
-
+    <Router>
+      <Routes>
+        <Route
+          path="/"
+          element={
+            <BoardList boardData={allBoards} deleteBoard={deleteBoard} />
+          }
+        />
+        <Route
+          path="/boards/:boardId"
+          element={
+            <Board
+              boardData={boardData}
+              getOneBoard={getOneBoard}
+              likeHeart={faHeart}
+              deleteCard={deleteCard}
+            />
+          }
+        />
+        <Route path="*" element={<Error />} />
+      </Routes>
+    </Router>
   );
 };
 

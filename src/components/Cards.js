@@ -3,12 +3,15 @@ import { Card } from "react-bootstrap";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTrashCan } from "@fortawesome/free-regular-svg-icons";
 
-const Cards = ({ cardId, message, likesCount, likeHeart }) => {
+const Cards = ({ cardId, message, likesCount, likeHeart, deleteCard }) => {
   return (
     <div>
       <Card style={{ width: "18rem" }}>
         <Card.Body>
-          <FontAwesomeIcon icon={faTrashCan} />
+          <FontAwesomeIcon
+            icon={faTrashCan}
+            onClick={() => deleteCard(cardId)}
+          />
           {message}
         </Card.Body>
         <Card.Footer>
