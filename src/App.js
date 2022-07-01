@@ -50,7 +50,11 @@ function App() {
   const addCard = (newCard, boardId) => {
     axios
     .post(URL + '/boards/' + {boardId} + '/cards', newCard)
-    .then((response) => {oldBoard => {...oldBoard, cards: [...oldBoard.cards, cards: response.data]}})
+    .then((response) => {
+      setSelectedBoard(selectedBoard => {
+        return {...selectedBoard, cards: [...selectedBoard.cards, response.data]}
+      })
+    })
     .catch((error) => {console.log(error)});
   }
 
