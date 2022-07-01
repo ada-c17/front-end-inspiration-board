@@ -6,9 +6,11 @@ const Card = (props) => {
       <p>{props.card.message}</p>
       <ul>
         <li>{props.card.likes_count}</li>
-        <li onClick={}>like button</li>
-        <li onClick={}>delete button</li>
+        <li>+1</li>
+        <li>delete</li>
       </ul>
     </div>
-  )
-}
+  );
+};
+
+export default Card;

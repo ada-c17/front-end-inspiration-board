@@ -5,8 +5,7 @@ import NewBoardForm from "./components/NewBoardForm";
 import BoardsList from "./components/BoardsList";
 import HideForm from "./components/HideForm";
 import NewCardForm from "./components/NewCardForm";
-
-
+import CardsList from "./components/CardsList";
 
 function App() {
   const selectedBoardData = {
@@ -73,69 +72,98 @@ function App() {
     for (const board of newBoards) {
       if (board.id === id) {
         setBoardSelected(board);
+        fetchCards(board.id);
       }
     }
   };
 
-  const postNewCard = (message) => {
+  const fetchCards = () => {
     axios
-    .post(`${URL}${boards.id}/cards`,{message})
-    .then((response) => {
-        const cards = [...cardsData];
-        cards.push(response.data.card);
-        setCardsData(cards);
-    })
-    .catch((error) => {
-        console.log('Error:', error);
-        alert('Couldn\'t create a new card.');
-    });
-};
+      .get(`${URL}/${boards.id}/cards`)
+      .then((response) => {
+        const newCards = response.data.map((card) => {
+          return {
+            id: card.card_id,
+            message: card.message,
+            likes_count: card.likes_count,
+            board_id: card.board_id,
+          };
+        });
+        setCardsData(newCards);
+      })
+      .catch((error) => {
+        alert("Oop! Could not access the cards!");
+      });
+  };
+
+  const postNewCard = (cardInfo) => {
+    const boardId = cardInfo.board_id;
+    console.log(cardInfo);
+    console.log(boardSelected.id);
+    axios
+      .post(`${URL}/${boardId}/cards`, cardInfo)
+      .then((response) => {
+        fetchCards();
+      })
+      .catch((error) => {
+        alert("Couldn't create a new card.");
+      });
+  };
+
+  // .then((response) => {
+  //   const new_cards = [...cardsData];
+  //   new_cards.push(response.data.new_cards);
+  //   setCardsData(new_cards);
+  // })
+  // .catch((error) => {
+  //   console.log("Error:", error);
+  //   alert("Couldn't create a new card.");
+  // });
   return (
     <div className="App">
       <header className="App-header">
         <h1>Inspiration Board</h1>
       </header>
       <div>
-      <section className="box-container">
-        <div className="board">
-          
-          <h2>Boards</h2>
-          <div className="boards-list">
-            <BoardsList
-              boardsList={boards}
-              selectedBoardCallBack={selectedBoard}
-            />
+        <section className="box-container">
+          <div className="board">
+            <h2>Boards</h2>
+            <div className="boards-list">
+              <BoardsList
+                boardsList={boards}
+                selectedBoardCallBack={selectedBoard}
+              />
+            </div>
           </div>
-        </div>
-        <div className="selected-board">
-          <h2>Selected Boards</h2>
+          <div className="selected-board">
+            <h2>Selected Boards</h2>
+            <div>
+              {boardSelected.id
+                ? `${boardSelected.title} - ${boardSelected.owner}`
+                : "Select a Board from the Board List!"}
+            </div>
+          </div>
+          <div className="New-board">
+            <h2>Create a New Board</h2>
+            {displayForm ? (
+              <NewBoardForm
+                addBoardCallBack={addBoard}
+                flipFormCallBack={flipDisplayForm}
+              />
+            ) : (
+              <HideForm flipFormCallBack={flipDisplayForm} />
+            )}
+          </div>
           <div>
-            {boardSelected.id
-              ? `${boardSelected.title} - ${boardSelected.owner}`
-              : "Select a Board from the Board List!"}
+            <h2>Card list</h2>
+            <CardsList cardsList={cardsData} />
           </div>
-        </div>
-        <div className="New-board">
-          <h2>Create a New Board</h2>
-          {displayForm ? (
-            <NewBoardForm
-              addBoardCallBack={addBoard}
-              flipFormCallBack={flipDisplayForm}
-            />
-          ) : (
-            <HideForm flipFormCallBack={flipDisplayForm} />
-          )}
-        </div>
-        <div>
-          <h2>Card list</h2>
-        </div>
-        <div>
-          <NewCardForm postNewCard={postNewCard}></NewCardForm>
-        </div>
+          <div>
+            <NewCardForm postNewCard={postNewCard}></NewCardForm>
+          </div>
         </section>
       </div>
     </div>
-    
   );
 }
 

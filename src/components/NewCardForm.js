@@ -1,41 +1,54 @@
-import { useState } from 'react';
+import { useState } from "react";
 
+const defaultCard = {
+  message: "",
+  board_id: null,
+  likes_count: null,
+};
 
 const NewCardForm = (props) => {
+  const [cardForm, setCardForm] = useState(defaultCard);
+  const onMessageChange = (event) => {
+    setCardForm({
+      message: event.target.value,
+      board_id: null,
+      likes_count: null,
+    });
+  };
 
-    const [message, setMessage] = useState("");
-    const onMessageChange = (msg) => { setMessage(msg.target.value) };
+  const submitNewCard = (event) => {
+    event.preventDefault();
+    props.postNewCard(cardForm);
+    console.log("hello");
+    setCardForm(defaultCard);
+  };
 
-    const submitNewCard = (msg) => {
-        msg.preventDefault();
-        props.postNewCard(message);
-        setMessage('');
-    };
-
-    return (
+  return (
     <section className="new-card-container">
-        <h2>Create a New Card</h2>
-        <form onSubmit={submitNewCard} className="new-card-form">
-            <label>Message</label>
-            <input
-            type="text"
-            className={
-                message.length === 0 || message.length > 40
-                ? "invalid-form-input"
-                : ""
-            }
-            onChange={onMessageChange}
-            value={message}
-            ></input>
-            <p>Preview: {message}</p>
-            <input
-            type="Submit"
-            disabled={message.length === 0 || message.length > 40}
-            className="form-submit-btn"
-            ></input>
-        </form>
-        </section>
-    );
+      <h2>Create a New Card</h2>
+      <form onSubmit={submitNewCard} className="new-card-form">
+        <label>Message</label>
+        <input
+          type="text"
+          className={
+            cardForm.message.length === 0 || cardForm.message.length > 40
+              ? "invalid-form-input"
+              : ""
+          }
+          onChange={onMessageChange}
+          value={cardForm.message}
+        ></input>
+        <p>Preview: {cardForm.message}</p>
+        <input
+          type="Submit"
+          disabled={
+            cardForm.message.length === 0 || cardForm.message.length > 40
+          }
+          className="form-submit-btn"
+        ></input>
+      </form>
+    </section>
+  );
 };
 
 export default NewCardForm;
