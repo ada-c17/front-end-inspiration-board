@@ -86,7 +86,10 @@ const Board = (props) => {
   const makeNewCard = (data) => {
     console.log(data);
     axios
-      .post("https://inspiration-from-otterspace.herokuapp.com/boards", data)
+      .post(
+        `https://inspiration-from-otterspace.herokuapp.com/boards/${params.id}/cards`,
+        data
+      )
       .then((response) => {
         console.log(response);
         getBoardDatafromAPI(params.id);
