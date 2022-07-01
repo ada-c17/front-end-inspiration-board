@@ -61,7 +61,7 @@ const Board = (props) => {
     }
 
     axios
-      .put(`http://127.0.0.1:5000/cards/${id}/like`)
+      .put(`https://inspiration-from-otterspace.herokuapp.com/cards/${id}/like`)
       .then((response) => {
         console.log("made it into like button");
         // targetCard.likesCount += 1;

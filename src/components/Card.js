@@ -22,9 +22,7 @@ const Card = (props) => {
         x
       </button>
 
-      {/* <button onClick={() => props.setLikesCountCallback(props.id)}> 
-        ⭐️
-        </button> */}
+      <button onClick={() => props.setLikesCountCallback(props.id)}>⭐️</button>
     </div>
   );
 };
