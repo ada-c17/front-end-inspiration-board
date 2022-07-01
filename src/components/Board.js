@@ -8,8 +8,10 @@ const Board = ({ board_id }) => {
   useEffect(() => {
     getBoardData(board_id);
   }, []);
+
   const [owner, setOwner] = useState("Default Owner");
   const [title, setTitle] = useState("Default Title");
+
   const getBoardData = (board_id) => {
     axios
       .get(`${process.env.REACT_APP_BACKEND_URL}/boards/${board_id}`)
