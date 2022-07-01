@@ -20,5 +20,5 @@ h1 {
 h2 {
   /* border-bottom: 10px solid lightgrey; */
   border: 2px solid black;
-  box-shadow: -15px 7px 1px black;
+  box-shadow: -15px 7px 1px #7CBFBF;
 }

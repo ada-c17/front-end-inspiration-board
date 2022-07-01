@@ -24,6 +24,7 @@ function App() {
       .then((res) => {
         const newBoards = res.data.map((board) => {
           return {
+            key: board.board_id,
             board_id: board.board_id,
             title: board.title,
             owner: board.owner
@@ -113,7 +114,6 @@ function App() {
             <span onClick={toggleNewBoardForm} className='hideForm__button'>{isBoardFormVisible ? 'Hide New Board Form' : 'Show New Board Form'}</span>
           </section>
           <section>
-            {/* <CardList cards={cardData}></CardList> */}
             {selectedBoard.board_id ? <CardList board={selectedBoard}></CardList> : ''}
           </section>
     </div>

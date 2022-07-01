@@ -15,8 +15,10 @@ const CardList = (props) => {
           .then((res) => {
             const newCards = res.data.map((card) => {
               return {
+                key: card.card_id,
                 card_id: card.card_id,
                 message: card.message,
+
               };
             });
             setCardsData(newCards);
@@ -29,8 +31,9 @@ const CardList = (props) => {
     useEffect(fetchCards, [props.board]);
 
     const cardElements = cardsData.map((card) => {
-        return (<Card
-            card={card}></Card>)
+        return (
+            <Card
+            card={card} ></Card>)
       });
 
     const createNewCard = (messages) => {
@@ -47,33 +50,17 @@ const CardList = (props) => {
           });
       };
 
-    // const cardComponents = props.cards.map(card => {
-    //     return (
-    //         <li>
-    //             <Card 
-    //                 key={card.card_id}
-    //                 card_id={card.card_id}
-    //                 message={card.messageData} 
-    //                 likes={card.likesData}>
-    //             </Card>
-    //         </li>
-    //     )
-    // });
-
     return (
         <section>
+        <section>
             <h2>Cards for {props.board.title}</h2>
-            <ul>
-                {/* {cardComponents} */}
-                {cardElements}
-            </ul>
-            <NewCardForm createNewCard={createNewCard}></NewCardForm>
+            <div>
+               {cardElements}
+            </div>
+        </section>
+        <NewCardForm createNewCard={createNewCard}></NewCardForm>
         </section>
     );
 };
-
-// CardList.propTypes = {
-//     cards: PropTypes.array.isRequired
-// };
 
 export default CardList;
