@@ -32,8 +32,6 @@ function App() {
     setBoardOption(boardTitle);
   };
 
-  const getChosenBoard = ;
-
   const getBoardOptions = () => {
     axios
       .get(`${kBaseUrl}/boards`)
@@ -51,13 +49,16 @@ function App() {
   }, []);
 
   // Just a way to double check the state has updated; can delete later
-  useEffect((boards) => {
-    for (const board of boards) {
-      if (board.title === boardOption) {
-        setChosenBoardData(board);
+  useEffect(
+    (boards) => {
+      for (const board of boards) {
+        if (board.title === boardOption) {
+          setChosenBoardData(board);
+        }
       }
-    }
-  }, [boardOption]);
+    },
+    [boardOption]
+  );
 
   // End functions for dropdown functionality
 
