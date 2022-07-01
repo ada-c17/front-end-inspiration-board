@@ -4,24 +4,20 @@ import PropTypes from "prop-types";
 
 // import { useState } from "react";
 
-const Card = (props) => {
-  const cardMessage = props.message;
-  // const cardLikesCount = props.likesCount;
-
-  // lift state to the board.js
-  //create likes count function and delete
-  //change functions below for buttons
-  // const deleteCard = () => {
-  //   props.deleteCardCallBack(props.id);
-  // };
-
+const Card = ({
+  id,
+  message,
+  likesCount,
+  setLikesCountCallBack,
+  deleteCardCallBack,
+}) => {
   return (
     <div className="card">
-      <p>{cardMessage}</p>
-      <button id="delete" onClick={() => props.deleteCardCallBack(props.id)}>
+      <p>{message}</p>
+      <button id="delete" onClick={() => deleteCardCallBack(id)}>
         x
       </button>
-      <button onClick={() => props.setLikesCountCallback(props.id)}>⭐️</button>
+      <button onClick={() => setLikesCountCallBack(id)}>⭐️</button>
     </div>
   );
 };

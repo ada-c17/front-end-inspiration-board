@@ -24,9 +24,14 @@ const CardList = ({ data, deleteCardCallBack, setLikesCountCallBack }) => {
 };
 
 CardList.propTypes = {
-  data: PropTypes.array.isRequired,
-  setLikesCountCallBack: PropTypes.func.isRequired,
-  deleteCardCallBack: PropTypes.func.isRequired,
+  cardListData: PropTypes.arrayOf(
+    PropTypes.shape({
+      // id: PropTypes.number.isRequired,
+      data: PropTypes.array.isRequired,
+      setLikesCountCallBack: PropTypes.func.isRequired,
+      deleteCardCallBack: PropTypes.func.isRequired,
+    })
+  ),
 };
 
 export default CardList;

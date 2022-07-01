@@ -63,7 +63,7 @@ const Board = (props) => {
       .then((response) => {
         console.log("made it into like button");
         targetCard.likesCount += 1;
-        setBoardData(cardLikes);
+        // setBoardData(cardLikes);
         setBoardData(targetCard);
       })
       .catch((error) => {
