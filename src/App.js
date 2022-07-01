@@ -1,5 +1,5 @@
+import React, { useState, useEffect } from "react";
 import axios from "axios";
-import { useState, useEffect } from "react";
 import "./App.css";
 import BoardsView from "./components/BoardsView";
 import CardsView from "./components/CardsView";
@@ -98,7 +98,7 @@ function App() {
   };
 
   // on formsubmitcard
-  const onFormSubmitCard = (boardId, requestBody) => {
+  const onFormSubmitCard = (requestBody) => {
     axios
       .post(`${url}/boards/${boardId}/card`, requestBody)
       .then((response) => {

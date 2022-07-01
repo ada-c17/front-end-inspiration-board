@@ -1,9 +1,16 @@
-import axios from "axios";
-import React, { useState } from "react";
+// import axios from "axios";
+import React from "react";
 import "./Card.css";
 import PropTypes from "prop-types";
 
-const Card = ({ card_id, message, like_count, deleteCard, updateLikes }) => {
+const Card = ({
+  card_id,
+  board_id,
+  message,
+  like_count,
+  deleteCard,
+  updateLikes,
+}) => {
   // const increaseLikeCt = () => {
   //     updateLikes(id);
   // }
@@ -19,6 +26,7 @@ const Card = ({ card_id, message, like_count, deleteCard, updateLikes }) => {
 
 Card.propTypes = {
   card_id: PropTypes.number.isRequired,
+  board_id: PropTypes.number.isRequired,
   message: PropTypes.string.isRequired,
   likeCount: PropTypes.number.isRequired,
   deleteCard: PropTypes.func.isRequired,

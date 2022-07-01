@@ -1,9 +1,9 @@
-import axios from "axios";
+// import axios from "axios";
 import React, { useState } from "react";
 import "./CardsView.css";
-import CardList from "./components/CardList";
+import CardList from "./CardList";
 import NewCardButton from "./components/NewCardButton";
-import NewCardForm from "./components/NewCardForm";
+// import NewCardForm from "./components/NewCardForm";
 import PropTypes from "prop-types";
 
 const CardsView = ({ cards, deleteCard, submitCard, updateLikes }) => {
@@ -20,7 +20,7 @@ const CardsView = ({ cards, deleteCard, submitCard, updateLikes }) => {
         updateLikes={updateLikes}
       ></CardList>
       <NewCardButton onClick={toggleButton}></NewCardButton>
-      <NewCardForm submitCard={submitCard} buttonState={button}></NewCardForm>
+      {/* <NewCardForm submitCard={submitCard} buttonState={button}></NewCardForm> */}
     </div>
   );
 };
