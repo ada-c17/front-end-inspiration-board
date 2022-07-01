@@ -65,6 +65,7 @@ function App() {
             id: card.card_id,
             message: card.message,
             board_id: card.board_id,
+            likes: card.likes_count,
           };
         });
         setCards(newCards);
@@ -94,6 +95,18 @@ function App() {
       });
   };
 
+  const likeCard = (cardId) => {
+    axios
+      .patch(`${URL}/cards/${cardId}/like`)
+      .then((response) => {
+        getCards();
+        console.log(response);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
+
   useEffect(getBoards, []);
   useEffect(getCards, [selectedBoard]);
 
@@ -110,7 +123,11 @@ function App() {
           {selectedBoard.title} - {selectedBoard.owner}
         </p>
         <h2>Cards for Pick-Me-Up Quotes</h2>
-        <CardList cards={cards} deleteCardCallback={deleteCard} />
+        <CardList
+          cards={cards}
+          deleteCardCallback={deleteCard}
+          likeCardCallback={likeCard}
+        />
         <h2>Create a New Board</h2>
         <BoardForm addBoardCallback={addBoard} />
         <h2>Create a New Card</h2>

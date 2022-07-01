@@ -1,6 +1,6 @@
 import Card from "./Card";
 
-function CardList({ cards, deleteCardCallback }) {
+function CardList({ cards, deleteCardCallback, likeCardCallback }) {
   const getCardListJSX = (cards) => {
     return cards.map((card) => {
       return (
@@ -9,7 +9,9 @@ function CardList({ cards, deleteCardCallback }) {
           id={card.id}
           message={card.message}
           board_id={card.board_id}
+          likes={card.likes}
           deleteCardCallback={deleteCardCallback}
+          likeCardCallback={likeCardCallback}
         />
       );
     });
