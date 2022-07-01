@@ -33,7 +33,7 @@ Card.propTypes = {
   id: PropTypes.number.isRequired,
   message: PropTypes.string.isRequired,
   likesCount: PropTypes.number.isRequired,
-  setLikesCountCallback: PropTypes.func.isRequired,
+  setLikesCountCallBack: PropTypes.func.isRequired,
   deleteCardCallBack: PropTypes.func.isRequired,
 };
 
