@@ -5,8 +5,7 @@ import NewBoardForm from "./components/NewBoardForm";
 import BoardsList from "./components/BoardsList";
 import HideForm from "./components/HideForm";
 import NewCardForm from "./components/NewCardForm";
-
-
+import CardsList from "./components/CardsList";
 
 function App() {
   const selectedBoardData = {
@@ -14,6 +13,27 @@ function App() {
     title: "",
     owner: "",
   };
+
+  // my lines
+  // const [cards, setCards] = useState(CARDS);
+
+  // const onLike = (id) => {
+  //   const newCards = cards.map((card) => {
+  //     if (card.id === id) {
+  //       return {
+  //         ...card,
+  //         likes: (card.likes += 1),
+  //       };
+  //     }
+  //     return card;
+  //   });
+  //   setCards(newCards);
+  // };
+
+  // const onDelete = (id) => {
+  //   const newCards = cards.filter((card) => card.id !== id);
+  //   setCards(newCards);
+  // };
 
   // keeping stracking on board state
   const [boards, setBoards] = useState([]);
@@ -25,7 +45,7 @@ function App() {
   const URL = "https://get-inspired-c17.herokuapp.com/boards";
 
   // get all boards from DB
-  const fetchBoard = () => {
+  const fetchBoards = () => {
     axios
       .get(URL)
       .then((response) => {
@@ -44,7 +64,7 @@ function App() {
   };
 
   // rendering and showing data once
-  useEffect(fetchBoard, []);
+  useEffect(fetchBoards, []);
 
   // adding board
   const addBoard = (boardInfo) => {
@@ -52,7 +72,7 @@ function App() {
       .post(URL, boardInfo)
       .then((res) => {
         if (boardInfo.title && boardInfo.owner) {
-          fetchBoard();
+          fetchBoards();
         } else {
           alert("Oop! Missing title or owner!");
         }
@@ -70,75 +90,91 @@ function App() {
   // showing selected board
   const selectedBoard = (id) => {
     const newBoards = [...boards];
-    //let chosenBoard = {};
     for (const board of newBoards) {
       if (board.id === id) {
-        //chosenBoard = Object.assign({}, board);
         setBoardSelected(board);
+        fetchCards(id);
       }
     }
-    //setBoardSelected(chosenBoard);
   };
 
-  const postNewCard = (message) => {
+  const fetchCards = () => {
     axios
-    .post(`${URL}${boards.id}/cards`,{message})
-    .then((response) => {
-        const cards = [...cardsData];
-        cards.push(response.data.card);
-        setCardsData(cards);
-    })
-    .catch((error) => {
-        console.log('Error:', error);
-        alert('Couldn\'t create a new card.');
-    });
-};
+      .get(`${URL}/${boardSelected.id}/cards`)
+      .then((response) => {
+        const cardsCopy = [...response.data];
+        const newCards = cardsCopy.map((card) => {
+          return {
+            id: card.card_id,
+            message: card.message,
+            likes_count: card.likes_count,
+            board_id: boardSelected.id,
+          };
+        });
+        setCardsData(newCards);
+        console.log(newCards);
+      })
+      .catch((error) => {
+        alert("Oop! Could not access the cards!");
+      });
+  };
+
+  const postNewCard = (cardInfo) => {
+    axios
+      .post(`${URL}/${boardSelected.id}/cards`, cardInfo)
+      .then((response) => {
+        fetchCards();
+      })
+      .catch((error) => {
+        alert("Couldn't create a new card.");
+      });
+  };
+
   return (
     <div className="App">
       <header className="App-header">
         <h1>Inspiration Board</h1>
       </header>
       <div>
-      <section className="box-container">
-        <div className="board">
-          
-          <h2>Boards</h2>
-          <div>
-            <BoardsList
-              boardsList={boards}
-              selectedBoardCallBack={selectedBoard}
-            />
+        <section className="box-container">
+          <div className="board">
+            <h2>Boards</h2>
+            <div className="boards-list">
+              <BoardsList
+                boardsList={boards}
+                selectedBoardCallBack={selectedBoard}
+              />
+            </div>
           </div>
-        </div>
-        <div className="selected-board">
-          <h2>Selected Boards</h2>
-          <div>
-            {boardSelected.id
-              ? `${boardSelected.title} - ${boardSelected.owner}`
-              : "Select a Board from the Board List!"}
+          <div className="selected-board">
+            <h2>Selected Boards</h2>
+            <div>
+              {boardSelected.id
+                ? `${boardSelected.title} - ${boardSelected.owner}`
+                : "Select a Board from the Board List!"}
+            </div>
           </div>
-        </div>
-        <div className="New-board">
-          <h2>Create a New Board</h2>
-          {displayForm ? (
-            <NewBoardForm
-              addBoardCallBack={addBoard}
-              flipFormCallBack={flipDisplayForm}
-            />
-          ) : (
-            <HideForm flipFormCallBack={flipDisplayForm} />
-          )}
-        </div>
-        <div>
-          <h2>Card list</h2>
-        </div>
-        <div>
-          <NewCardForm postNewCard={postNewCard}></NewCardForm>
-        </div>
+          <div className="New-board">
+            <h2>Create a New Board</h2>
+            {displayForm ? (
+              <NewBoardForm
+                addBoardCallBack={addBoard}
+                flipFormCallBack={flipDisplayForm}
+              />
+            ) : (
+              <HideForm flipFormCallBack={flipDisplayForm} />
+            )}
+          </div>
+          <div>
+            <h2>Card list</h2>
+            <CardsList cards={cardsData} />
+          </div>
+          <div>
+            <NewCardForm postNewCard={postNewCard}></NewCardForm>
+          </div>
         </section>
       </div>
     </div>
-    
   );
 }
 
