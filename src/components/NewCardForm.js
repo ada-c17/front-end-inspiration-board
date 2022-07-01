@@ -1,21 +1,48 @@
 import React from "react";
-import "./card.js";
+import { useState } from "react";
+import "./Card.js";
 import PropTypes from "prop-types";
 
-const NewCardForm = (props) => {
-  const updatedEntry = {
-    card_id: props.card_id,
-    message: props.message,
-    board_id: props.board_id,
+//change CSS classes
+const NewCardForm = ({ addCardCallback }) => {
+  const [cardData, setCardData] = useState({
+    message: "",
+  });
+
+  const submitCardData = (e) => {
+    e.preventDefault();
+
+    addCardCallback(cardData);
+    setCardData({ message: "" });
   };
-  NewCardForm(updatedEntry);
-  return <div className="card"></div>;
+
+  const handleChange = (e) => {
+    setCardData({ ...cardData, [e.target.name]: e.target.value });
+  };
+
+  return (
+    <form onSubmit={submitCardData} className="new-card__form">
+      <section>
+        <h2>Add a Card</h2>
+        <div className="new-card__fields">
+          <label htmlFor="name">Message</label>
+          <input
+            name="message"
+            id="message"
+            value={cardData.message}
+            onChange={handleChange}
+          />
+          <button className="button new-card__submit" type="submit">
+            Add Card
+          </button>
+        </div>
+      </section>
+    </form>
+  );
 };
 
 NewCardForm.propTypes = {
-  board_id: PropTypes.number.isRequired,
-  card_id: PropTypes.number.isRequired,
-  message: PropTypes.string.isRequired,
+  addCardCallback: PropTypes.func.isRequired,
 };
 
 export default NewCardForm;
