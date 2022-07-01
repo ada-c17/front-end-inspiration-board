@@ -44,31 +44,37 @@ function App() {
   const addBoard = (boardData) => {
     axios
       .post(`${URL}/boards`, boardData)
-      .then(getBoards())
+      .then(() => {
+        getBoards();
+      })
       .catch((err) => {
         console.log(err);
       });
   };
 
   const getCards = () => {
-    axios.get(`${URL}/cards`, {
-      params: {
-        board_id: selectedBoard.id
-      }
-    }).then((res) => {
-      const newCards = res.data.map((card) => {
-        return {
-          message: card.message,
-        };
+    axios
+      .get(`${URL}/cards`, {
+        params: {
+          board_id: selectedBoard.id,
+        },
+      })
+      .then((res) => {
+        const newCards = res.data.map((card) => {
+          return {
+            message: card.message,
+          };
+        });
+        setCards(newCards);
       });
-      setCards(newCards);
-    });
   };
 
   const addCard = (cardData) => {
     axios
       .post(`${URL}/cards`, cardData)
-      .then(getCards())
+      .then(() => {
+        getCards();
+      })
       .catch((err) => {
         console.log(err);
       });
@@ -90,7 +96,7 @@ function App() {
           {selectedBoard.title} - {selectedBoard.owner}
         </p>
         <h2>Cards for Pick-Me-Up Quotes</h2>
-        <CardList cards={cards}/>
+        <CardList cards={cards} />
         <h2>Create a New Board</h2>
         <BoardForm addBoardCallback={addBoard} />
         <h2>Create a New Card</h2>
