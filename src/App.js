@@ -69,18 +69,36 @@ function App() {
   };
 
   const deleteBoard = () => {
-    const id = selectedBoard;
     axios
-      .delete(`${URL}/boards/${id}`)
+      .delete(`${URL}/boards/${selectedBoard}`)
       .then(() => {
         const updatedBoards = [];
         for (const board of boards) {
-          if (board.id !== id) {
+          if (board.id !== selectedBoard) {
             updatedBoards.push(board);
           }
         }
         setBoards(updatedBoards);
         setSelectedBoard(null);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
+
+  const likeCard = (card_id) => {
+    let newCard = {};
+    for (const card of cards) {
+      if (card.card_id === card_id) {
+        newCard = { ...card };
+        newCard.likes_count += 1;
+      }
+    }
+
+    axios
+      .put(`${URL}/cards/${card_id}/like`, newCard)
+      .then((response) => {
+        fetchCards();
       })
       .catch((err) => {
         console.log(err);
@@ -99,7 +117,11 @@ function App() {
         <h3>Selected Board is {selectedBoard}</h3>
         <NewBoardForm addBoardCallback={createNewBoard}></NewBoardForm>
         <NewCardForm addCardCallback={createNewCard}></NewCardForm>
-        <CardList cards={cards} fetchCardsCallback={fetchCards}></CardList>
+        <CardList
+          cards={cards}
+          fetchCardsCallback={fetchCards}
+          likeCardCallback={likeCard}
+        ></CardList>
       </header>
     </div>
   );
