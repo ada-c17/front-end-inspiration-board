@@ -21,7 +21,6 @@ const Card = (props) => {
       <button id="delete" onClick={() => props.deleteCardCallBack(props.id)}>
         x
       </button>
-
       <button onClick={() => props.setLikesCountCallback(props.id)}>⭐️</button>
     </div>
   );
@@ -31,9 +30,7 @@ Card.propTypes = {
   id: PropTypes.number.isRequired,
   message: PropTypes.string.isRequired,
   likesCount: PropTypes.number.isRequired,
-
   setLikesCountCallBack: PropTypes.func.isRequired,
-
   deleteCardCallBack: PropTypes.func.isRequired,
 };
 

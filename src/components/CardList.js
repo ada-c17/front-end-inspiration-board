@@ -25,7 +25,7 @@ const CardList = ({ data, deleteCardCallBack, setLikesCountCallBack }) => {
 
 CardList.propTypes = {
   data: PropTypes.array.isRequired,
-  setLikesCountCallBack: PropTypes.func,
+  setLikesCountCallBack: PropTypes.func.isRequired,
   deleteCardCallBack: PropTypes.func.isRequired,
 };
 
