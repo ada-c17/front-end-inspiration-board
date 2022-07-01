@@ -12,7 +12,7 @@ const Board = ({ board_id }) => {
   const [title, setTitle] = useState("Default Title");
   const getBoardData = (board_id) => {
     axios
-      .get(`https://inspotters.herokuapp.com/boards/${board_id}`)
+      .get(`${process.env.REACT_APP_BACKEND_URL}/boards/${board_id}`)
       .then((response) => {
         console.log(response.data);
         setTitle(response.data.title);
@@ -25,6 +25,7 @@ const Board = ({ board_id }) => {
     <div className="Board">
       <h1>{title}</h1>
       <h2>{owner}</h2>
+      <Card />
     </div>
   );
 };
