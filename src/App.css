@@ -13,22 +13,36 @@ header {
 .container {
   padding: 20px;
   border: 3px solid black;
+  display: grid;
+  grid-template-columns: 40% 60%;
+  grid-template-rows: 70% 30%;
 }
 
-.board-and-card-flex{
+/* .board-and-card-flex{
   display: flex;
   flex-direction: row;
   border: 3px solid red;
   justify-content: space-between;
   
-}
+} */
 .board-wrapper{
   background-color: rgb(3, 3, 3);
   padding: 10px;
+  grid-column-start: 1;
+  grid-row-start: 1;
 
 }
 
 .cards-wrapper {
-  border: 2px solid brown;
+  background: url('../src/cards-background.jpeg');
+  border: 3mm ridge rgb(160, 167, 166);
+  grid-column-start: 2;
+  grid-row-start: 1;
+  display: flex;
+  flex-direction: row;
 }
 
+.new-board-form {
+  grid-column-start: 1;
+  grid-row-start: 2;
+}

@@ -48,6 +48,17 @@ function App() {
       });
   };
 
+  const deleteCard = (card_id) => {
+    axios
+      .delete(`https://inspirational-board.herokuapp.com/cards/${card_id}`)
+      .then((response) => {
+        const newCards = cardsData.filter((card) => card.card_id !== card_id);
+        setCards(newCards);
+      })
+      .catch((error) => {
+        console.log("Can't delete a card.", error);
+      });
+  };
   return (
     <div>
       <header>
@@ -55,15 +66,15 @@ function App() {
       </header>
 
       <div className="container">
-        <div className="board-and-card-flex">
-          <div className="board-wrapper">
-            <Boards boards={boardsData} onClickGetCards={getCardsForBoard} />
-          </div>
-          <div className="cards-wrapper">
-            <CardsList cards={cardsData} />
-          </div>
+        {/* <div className="board-and-card-flex"> */}
+        <div className="board-wrapper">
+          <Boards boards={boardsData} onClickGetCards={getCardsForBoard} />
         </div>
-        <div className="submission-forms">
+        <div className="cards-wrapper">
+          <CardsList cards={cardsData} onClickDeleteCard={deleteCard} />
+        </div>
+        {/* </div> */}
+        <div className="new-board-form">
           <NewBoardForm handleSubmission={makeNewBoard} />
         </div>
       </div>

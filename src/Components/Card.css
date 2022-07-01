@@ -7,3 +7,9 @@
     border: 2px dotted gray;
     
 }
+
+.delete-button {
+    border: none;
+    background: none;
+    font-size: 25px;
+}
