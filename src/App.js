@@ -119,13 +119,28 @@ const App = () => {
 
   // console.log(boardData);
 
-  //Post New Board
-  //Create function to handleSubmit
-  //Pass function down to BoardList 
-  //Submit will change state 
-  //Pass it back to app 
-  const [title, setTitle] = useState("");
-  const [owner, setOwner] = useState("");
+  const [data, setData] = useState({
+    title: "",
+    owner: ""
+  })
+
+  const submitBoard = (e) => {
+    e.preventDefault();
+    axios.post(URL, {
+      title: data.title,
+      owner: data.owner
+    })
+      .then(response => {
+        console.log(response.data)
+      })
+      .catch((err) => {
+        console.log(err);
+      })
+
+  }
+
+
+
 
   return (
     <div className="App">
