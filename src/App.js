@@ -26,7 +26,7 @@ function App() {
   // Functions and variables for the dropdown functionality
   const [boards, setBoards] = useState([]); // list of all the board dicts
   const [boardOption, setBoardOption] = useState("Choose a Board");
-  const [chosenBoardData, setChosenBoardData] = useState([]);
+  const [chosenBoardData, setChosenBoardData] = useState({ cards: [] });
 
   const showChosenBoard = (boardTitle) => {
     setBoardOption(boardTitle);
@@ -51,9 +51,11 @@ function App() {
   // Just a way to double check the state has updated; can delete later
   useEffect(
     (boards) => {
-      for (const board of boards) {
-        if (board.title === boardOption) {
-          setChosenBoardData(board);
+      if (boards) {
+        for (const board of boards) {
+          if (board.title === boardOption) {
+            setChosenBoardData(board);
+          }
         }
       }
     },

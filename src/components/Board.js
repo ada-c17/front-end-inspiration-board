@@ -4,7 +4,7 @@ import "./Board.css";
 import Card from "./Card";
 import "../css/inspo_board.css";
 
-const Board = ({ board, cardLike }) => {
+const Board = ({ board, cardLike, boardTitle }) => {
   const cards = board.cards.map((card) => {
     return (
       <Card
@@ -19,14 +19,14 @@ const Board = ({ board, cardLike }) => {
 
   return (
     <section className="board-content">
-      <h1>Current Board:{board.title}</h1>
+      <h1>Current Board: {boardTitle}</h1>
       <section className="card-display">{cards}</section>
     </section>
   );
 };
 
 Board.propTypes = {
-  board: PropTypes.arrayOf(PropTypes.object).isRequired,
+  board: PropTypes.object.isRequired,
   onLike: PropTypes.func,
 };
 
