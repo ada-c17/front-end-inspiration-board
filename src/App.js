@@ -37,7 +37,7 @@ function App() {
 
   // BoardView -> BoardList, NewBoardButton, NewBoardForm (visible/invisible depending on NewBoardButton toggle): siblings easier ^^ -> all state at BoardView level to control NewBoardForm visibility
 
-  // get all cards from user chosen board -> pass down to boardlist
+  //get all cards from user chosen board -> pass down to boardlist
   const getCardsFromOneBoard = (boardId) => {
     axios
       .get(`${url}/boards/${boardId}/cards`)
