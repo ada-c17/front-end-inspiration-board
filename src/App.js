@@ -3,7 +3,7 @@ import "./App.css";
 import { Link } from "react-router-dom";
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-import otter from "./data/Otter.png";
+import Otter from "./data/Otter.jpg";
 
 function App() {
   const [boards, setBoards] = useState([]);
@@ -25,7 +25,7 @@ function App() {
 
   return (
     <div className="App">
-      <img src={otter} alt={"otterspace"} className="Otter"></img>
+      <img src={Otter} alt={"otterspace"} cache={false} className="Otter"></img>
       <h1>Inspiration from the OtterSpace</h1>
       <ul className="list">
         {boards.map((item) => (

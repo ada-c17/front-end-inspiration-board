@@ -18,7 +18,7 @@ img {
   z-index: 2;
 
 }
-img.Otter{
+.Otter{
   background-image: none;
   border-radius: 150%;
   transform: rotate(20deg);
