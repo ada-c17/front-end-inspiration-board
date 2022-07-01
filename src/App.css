@@ -2,8 +2,10 @@
   text-align: center;
   
 }
+
+
 img {
-  float:left;
+  float:right;
   padding: 20px;
   font-size: 2rem;
   text-decoration: none;
@@ -20,8 +22,12 @@ img {
 }
 .Otter{
   background-image: none;
-  border-radius: 150%;
-  transform: rotate(20deg);
+  clip-path: circle(55%);
+  border-radius: 25%;
+  width:260px;
+  height:260px;
+  transform: rotate(30deg);
+
 }
 
 footer {
@@ -33,11 +39,11 @@ footer {
   padding: 2rem 4rem;
   padding-left: 100px;
 }
+
 li{
   
   list-style: none
 }
 .list{
-  text-align: left;
-  
+  text-align: left; 
 }
