@@ -29,11 +29,11 @@ function App() {
       )
       .then((response) => {
         console.log("Deleted board");
-        // console.log(response);
-        // console.log(boardID);
         getBoardsFromAPI();
       })
-      .catch(console.log("couldn't delete board"));
+      .catch(() => {
+        console.log("couldn't delete board");
+      });
   };
 
   return (
