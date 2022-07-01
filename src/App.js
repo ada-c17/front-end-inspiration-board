@@ -22,6 +22,19 @@ function App() {
         console.log("Oh no!!!");
       });
   };
+  const deleteBoard = (boardID) => {
+    axios
+      .delete(
+        `https://inspiration-from-otterspace.herokuapp.com/boards/${boardID}`
+      )
+      .then((response) => {
+        console.log("Deleted board");
+        // console.log(response);
+        // console.log(boardID);
+        getBoardsFromAPI();
+      })
+      .catch(console.log("couldn't delete board"));
+  };
 
   return (
     <div className="App">
@@ -33,6 +46,7 @@ function App() {
             <Link to={`${item.id}`} style={{ cursor: "pointer" }}>
               {item.title}
             </Link>
+            <button onClick={() => deleteBoard(item.id)}>X</button>
           </li>
         ))}
       </ul>
