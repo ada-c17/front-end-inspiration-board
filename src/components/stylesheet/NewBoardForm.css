@@ -1,0 +1,20 @@
+.board-btn {
+    color: white;
+    font-family:'Fredericka the Great', cursive;;
+    background: none;
+    border: none;
+    font-size: 1.5rem;
+}
+
+.board-btn:hover {
+    color: white;
+    /* font-family:inherit; */
+    background-color: none;
+    border: none;
+    font-size: 1.8rem;
+}
+
+.header {
+    background-image: url('../../images/chalkboard.png');
+    color: white;
+}

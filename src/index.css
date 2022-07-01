@@ -5,9 +5,22 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background-image: url('./images/chalkboard.png');
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
 }
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+
+@media screen and (max-width: 768px) {
+  body {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 8px 24px;
+    background-repeat:repeat-y
+  }}
