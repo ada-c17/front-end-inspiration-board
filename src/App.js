@@ -26,10 +26,13 @@ function App() {
   // Functions and variables for the dropdown functionality
   const [boards, setBoards] = useState([]); // list of all the board dicts
   const [boardOption, setBoardOption] = useState("Choose a Board");
+  const [chosenBoardData, setChosenBoardData] = useState([]);
 
   const showChosenBoard = (boardTitle) => {
     setBoardOption(boardTitle);
   };
+
+  const getChosenBoard = ;
 
   const getBoardOptions = () => {
     axios
@@ -48,8 +51,12 @@ function App() {
   }, []);
 
   // Just a way to double check the state has updated; can delete later
-  useEffect(() => {
-    console.log(boardOption);
+  useEffect((boards) => {
+    for (const board of boards) {
+      if (board.title === boardOption) {
+        setChosenBoardData(board);
+      }
+    }
   }, [boardOption]);
 
   // End functions for dropdown functionality
@@ -62,10 +69,10 @@ function App() {
         </section>
         <section className="dropdown-menu">
           <BoardDropdown
-          boards={boards}
-          boardOption={boardOption}
-          onDropdownChange={showChosenBoard}
-        />
+            boards={boards}
+            boardOption={boardOption}
+            onDropdownChange={showChosenBoard}
+          />
         </section>
         <section className="add-menu-button">
           <button>Add Board</button>
@@ -76,44 +83,26 @@ function App() {
           <button className="board-button">Add</button>
         </section>
         <section className="board-content">
-          <h1>Current Board:(current board)</h1>
-          <Board cardLike={increaseLike} />
-          <section className="card-display">
+          <Board
+            cardLike={increaseLike}
+            boardTitle={boardOption}
+            board={chosenBoardData}
+          />
+          {/* <section className="card-display">
             <div className="message">
               <p className="message-text">You can do it!</p>
               <p className="likes">Likes: 0</p>
               <button className="like-button">👍</button>
-            </div>
-            <div className="message">
-              <p className="message-text">Way to be!</p>
-              <p className="likes">Likes: 0</p>
-              <button className="like-button">👍</button>
-            </div>
-            <div className="message">
-              <p className="message-text">Amazing work!</p>
-              <p className="likes">Likes: 0</p>
-              <button className="like-button">👍</button>
-            </div>
-            <div className="message">
-              <p className="message-text">Be all you can be!</p>
-              <p className="likes">Likes: 0</p>
-              <button className="like-button">👍</button>
-            </div>
-            <div className="message">
-              <p className="message-text">Reach for the stars!</p>
-              <p className="likes">Likes: 0</p>
-              <button className="like-button">👍</button>
-            </div>
-          </section>
+            </div> */}
         </section>
-        <section className="add-message">
-          <input
-            className="message-input"
-            type="text"
-            placeholder="Add a message here!"
-          />
-          <button className="message-button">Add</button>
-        </section>
+      </section>
+      <section className="add-message">
+        <input
+          className="message-input"
+          type="text"
+          placeholder="Add a message here!"
+        />
+        <button className="message-button">Add</button>
       </section>
     </main>
   );

@@ -16,7 +16,12 @@ const Board = ({ board, cardLike }) => {
     );
   });
 
-  return <div className="board">{cards}</div>;
+  return (
+    <section className="board-content">
+      <h1>Current Board:{board.title}</h1>
+      <section className="card-display">{cards}</section>
+    </section>
+  );
 };
 
 Board.propTypes = {
