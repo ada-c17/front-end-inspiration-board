@@ -33,20 +33,6 @@ function App() {
       });
   }, []);
 
-  // const BoardsDataChange = (boardsData) => {
-  //   useEffect(() => {
-  //     console.log("changing boards and cards")
-  //   }, [boardsData]);
-
-  //   return (
-  //     <>
-  //     <BoardList boardsData={boardsData}/>
-  //     <CardList boardsData={boardsData}/>
-  //     </>
-  //   )
-
-  // }
-
   const addBoard = newBoard => {
     axios
     .post(URL + '/boards', newBoard)
