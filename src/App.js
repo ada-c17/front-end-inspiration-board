@@ -6,18 +6,6 @@ import axios from "axios";
 import otter from "./data/Otter.png";
 
 function App() {
-  // const [data] = useState([
-  //   {
-  //     id: "1",
-  //     title: "Ada is great",
-  //     owner: "Nina",
-  //   },
-  //   {
-  //     id: "2",
-  //     title: "Life is easy",
-  //     owner: "N",
-  //   },
-  // ]);
   const [boards, setBoards] = useState([]);
 
   useEffect(() => {
@@ -29,7 +17,6 @@ function App() {
       .get("https://inspiration-from-otterspace.herokuapp.com/boards")
       .then((response) => {
         setBoards(response.data);
-        console.log(response.data);
       })
       .catch((error) => {
         console.log("Oh no!!!");
@@ -38,7 +25,7 @@ function App() {
 
   return (
     <div className="App">
-      <img src={otter} alt={"otterspace"}></img>
+      <img src={otter} alt={"otterspace"} className="Otter"></img>
       <h1>Inspiration from the OtterSpace</h1>
       <ul className="list">
         {boards.map((item) => (
