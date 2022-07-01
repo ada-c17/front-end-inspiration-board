@@ -25,7 +25,7 @@ import CardList from "./CardList";
 function Board() {
   let params = useParams();
 
-  const [boardsData, setBoardData] = useState([]);
+  const [boardData, setBoardData] = useState([]);
   const getBoardDatafromAPI = (id) => {
     axios
       .get(
@@ -33,17 +33,22 @@ function Board() {
       )
       .then((response) => {
         console.log("made it into response");
+        const updatedBoardData = response.data;
         // console.log(response);
+        // console.log(response.data);
         // console.log(response.data.cards);
-        const updatedBoardData = response.data.cards.map((board) => {
-          // console.log(board);
-          return {
-            id: board.id,
-            message: board.message,
-            likes_count: board.likes_count,
-          };
-        });
-        // console.log(updatedBoardData);
+        // updatedBoardData.id = response.data.id
+        // updatedBoardData.title = response.data.title
+        // updatedBoardData.owner = response.data.owner
+        // updatedBoardData.cards = response.data.cards.map((board) => {
+        //   // console.log(board);
+        //   return {
+        //     id: board.id,
+        //     message: board.message,
+        //     likes_count: board.likes_count,
+        //   };
+        // });
+        console.log(updatedBoardData);
         setBoardData(updatedBoardData);
       })
       .catch((error) => {
@@ -112,17 +117,17 @@ function Board() {
         Return Home
       </Link>
       <ul className="list">
-        {boardsData.map((item) => (
-          <li key={item.id} className="list-item">
-            {/* also add the setLikesCountCallback in CardList */}
+        {/* {boardData.cards.map((item) => ( */}
+        <li key={boardData.id} className="list-item">
+          {/* also add the setLikesCountCallback in CardList */}
 
-            <CardList data={item} deleteCardCallBack={deleteCard} />
-            <button to={item.id}>{item.likes_count} add likes +</button>
-          </li>
-        ))}
+          {/* <CardList data={boardData.cards} deleteCardCallBack={deleteCard} /> */}
+          {/* <button to={item.id}>{item.likes_count} add likes +</button> */}
+        </li>
+        {/* ))} */}
       </ul>
 
-      <h1>{boardsData.message}</h1>
+      {/* <h1>{boardData.message}</h1> */}
       <h3>id of the board for the reference: {params.id}</h3>
     </div>
   );
