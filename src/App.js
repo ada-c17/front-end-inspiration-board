@@ -35,7 +35,7 @@ function App() {
       });
   }, []);
 
-  const getBoardDataAndId = (selectedBoard) => {
+  const getBoardDataAndIndex = (selectedBoard) => {
     let selectedBoardData;
     let boardIndex;
     for (const [index, board] of boardsData.entries()) {
@@ -52,7 +52,7 @@ function App() {
       .post(URL + "/boards/" + selectedBoard + "/cards", newCard)
       .then((response) => {
         const [selectedBoardData, boardIndex] =
-          getBoardDataAndId(selectedBoard);
+          getBoardDataAndIndex(selectedBoard);
         const updatedBoard = {
           ...selectedBoardData,
           cards: [...selectedBoardData.cards, response.data],
