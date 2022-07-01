@@ -55,6 +55,11 @@ const App = () => {
     setCardData(updatedLikes);
   };
 
+  const getBoardId = (selectedBoard) => {
+    const currentBoard = selectedBoard.boardId;
+    console.log(`Board Id: ${currentBoard}`);
+  };
+
   const onCardDelete = (cardId) => {
     const currentCards = cardData.filter((card) => {
       return card.cardId !== cardId;
@@ -68,7 +73,7 @@ const App = () => {
         <h2>dream board</h2>
       </header>
       <main>
-        <BoardList boards={boardData} />
+        <BoardList boards={boardData} onSelectBoard={getBoardId} />
         <CardList
           cards={newCards}
           onUpdateLikes={increaseLikeCount}
