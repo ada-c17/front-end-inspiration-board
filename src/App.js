@@ -22,10 +22,12 @@ function App() {
     axios
       .get(`${url}/boards`)
       .then((response) => {
-        // iterate through each board and append to defaultBoards
-        const updatedBoards = response.data.map((board) => {
-          return [...defaultBoards, board];
-        });
+        // iterate through each board and append to boards
+        const updatedBoards = [...boards];
+        const dataList = response.data;
+        for (const data of dataList) {
+          updatedBoards.push(data);
+        }
         setBoards(updatedBoards);
       })
       .catch((e) => {
@@ -40,9 +42,9 @@ function App() {
     axios
       .get(`${url}/boards/${boardId}/cards`)
       .then((response) => {
-        // iterate through each card and append to defaultCards
+        // iterate through each card and append to cards
         const updatedCards = response.data.map((card) => {
-          return [...defaultCards, card];
+          return [...cards, card];
         });
         setCards(updatedCards);
         setChosenBoard(boardId);
