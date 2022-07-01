@@ -3,7 +3,7 @@ import CardsList from './CardsList';
 import './stylesheet/Board.css';
 import { useNavigate, useParams } from 'react-router-dom';
 
-const Board = ({ boardData, getOneBoard, likeHeart }) => {
+const Board = ({ boardData, getOneBoard, likeHeart, handleLike }) => {
   let navigate = useNavigate();
   let { boardId } = useParams();
 
@@ -36,7 +36,8 @@ const Board = ({ boardData, getOneBoard, likeHeart }) => {
         <CardsList
           cardData={boardData.cards}
           likeHeart={likeHeart}
-          reloadBoard={() => getOneBoard(boardId)}
+          // reloadBoard={() => getOneBoard(boardId)}
+          handleLike={handleLike}
         />
       </li>
     </div>

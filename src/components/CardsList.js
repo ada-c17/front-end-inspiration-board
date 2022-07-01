@@ -2,7 +2,7 @@ import React from 'react';
 import Cards from './Cards';
 import { Row } from 'react-bootstrap';
 
-const CardsList = ({ cardData, likeHeart, reloadBoard }) => {
+const CardsList = ({ cardData, likeHeart, handleLike }) => {
   // console.log("card data: ", cardData);
 
   return (
@@ -14,7 +14,8 @@ const CardsList = ({ cardData, likeHeart, reloadBoard }) => {
             message={card.message}
             likesCount={card.likes_count}
             likeHeart={likeHeart}
-            reloadBoard={reloadBoard}
+            // reloadBoard={reloadBoard}
+            handleLike={handleLike}
           />
         </div>
       ))}
