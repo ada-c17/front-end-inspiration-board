@@ -3,14 +3,14 @@ import "./CardList.css";
 import Card from "./Card";
 import PropTypes from "prop-types";
 
-const CardList = ({ data, setLikesCountCallBack, deleteCardCallBack }) => {
+const CardList = ({ data, deleteCardCallBack }) => {
   const cardComponents = data.map((card) => (
     <Card
       key={card.id}
       id={card.id}
       message={card.message}
-      likesCount={card.likesCount}
-      setLikesCountCallback={setLikesCountCallBack}
+      likesCount={card.likes_count}
+      // setLikesCountCallback={setLikesCountCallBack}
       deleteCardCallBack={deleteCardCallBack}
     />
   ));
@@ -25,7 +25,7 @@ const CardList = ({ data, setLikesCountCallBack, deleteCardCallBack }) => {
 
 CardList.propTypes = {
   data: PropTypes.array.isRequired,
-  setLikesCountCallBack: PropTypes.func.isRequired,
+  setLikesCountCallBack: PropTypes.func,
   deleteCardCallBack: PropTypes.func.isRequired,
 };
 

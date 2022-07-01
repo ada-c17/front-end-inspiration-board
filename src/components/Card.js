@@ -5,7 +5,7 @@ import PropTypes from "prop-types";
 
 const Card = (props) => {
   const cardMessage = props.message;
-  const cardLikesCount = props.likesCount;
+  // const cardLikesCount = props.likesCount;
 
   // lift state to the board.js
   //create likes count function and delete
@@ -18,9 +18,9 @@ const Card = (props) => {
     <div className="Card">
       <p>{cardMessage}</p>
       <p>
-        <button onClick={() => props.setLikesCountCallback(props.id)}>
-          ⭐️
-        </button>
+        {/* <button onClick={() => props.setLikesCountCallback(props.id)}> 
+        ⭐️
+        </button> */}
         <button onClick={() => props.deleteCardCallBack(props.id)}>
           Delete
         </button>
@@ -33,7 +33,9 @@ Card.propTypes = {
   id: PropTypes.number.isRequired,
   message: PropTypes.string.isRequired,
   likesCount: PropTypes.number.isRequired,
+
   setLikesCountCallBack: PropTypes.func.isRequired,
+
   deleteCardCallBack: PropTypes.func.isRequired,
 };
 

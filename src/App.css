@@ -1,5 +1,24 @@
 .App {
   text-align: center;
+  
+}
+img {float:left;
+  padding: 20px;
+  font-size: 2rem;
+  text-decoration: none;
+  text-align: center;
+  margin-right: 100px;
+  margin-top: 20px;
+  background-image: url("./data/Earth.png");
+  background-size: cover;
+  color:white;
+  height:300px;
+  width:300px;
+  z-index: 2;
+
+}
+img.Otter{
+  background-image: none;
 }
 
 footer {
@@ -10,4 +29,12 @@ footer {
   margin-top: 200px;
   padding: 2rem 4rem;
   padding-left: 100px;
+}
+li{
+  
+  list-style: none
+}
+.list{
+  text-align: left;
+  
 }

@@ -1,32 +1,42 @@
+/* eslint-disable no-template-curly-in-string */
 import "./App.css";
 import { Link } from "react-router-dom";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
+import axios from "axios";
+import otter from "./data/Otter.png";
 
 function App() {
-  const [data] = useState([
-    {
-      id: "1",
-      title: "Ada is great",
-      owner: "Nina",
-    },
-    {
-      id: "2",
-      title: "Life is easy",
-      owner: "N",
-    },
-  ]);
+  const [boards, setBoards] = useState([]);
+
+  useEffect(() => {
+    getBoardsFromAPI();
+  }, []);
+
+  const getBoardsFromAPI = () => {
+    axios
+      .get("https://inspiration-from-otterspace.herokuapp.com/boards")
+      .then((response) => {
+        setBoards(response.data);
+      })
+      .catch((error) => {
+        console.log("Oh no!!!");
+      });
+  };
+
   return (
     <div className="App">
+      <img src={otter} alt={"otterspace"} className="Otter"></img>
       <h1>Inspiration from the OtterSpace</h1>
       <ul className="list">
-        {data.map((item) => (
+        {boards.map((item) => (
           <li key={item.id} className="list-item">
-            <Link to={item.id}>{item.title}</Link>
+            <Link to={`${item.id}`} style={{ cursor: "pointer" }}>
+              {item.title}
+            </Link>
           </li>
         ))}
       </ul>
-      <Link to="/new">Add New Space</Link>
-
+      <Link to="/new">Add new Board</Link>
       <footer>
         &copy; 2022 Ada Developers Academy ✨ by Coders from the OtterSpace ✨
         Doina ✨ Fena ✨ Marlyn ✨ Nina ✨
