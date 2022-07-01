@@ -2,6 +2,8 @@
 import "./App.css";
 import BoardList from "./components/BoardList";
 import Board from "./components/Board";
+import CardList from "./components/CardList"
+import Card from "./components/Card"
 
 function App() {
   // const [display, setDisplay] = useState(null);
@@ -30,6 +32,8 @@ function App() {
       <main>
         <BoardList />
         <Board board_id="1" />
+        {/* <CardList />
+        <Card message="We got this y'all" /> */}
       </main>
       <footer>
         ©2022 C17 Otters students: Jodi D., Elaine S., Tori S., Andrea G.Z.
