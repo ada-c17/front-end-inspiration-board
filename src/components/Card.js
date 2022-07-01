@@ -1,6 +1,7 @@
 import React from "react";
 import "./Card.css";
 import PropTypes from "prop-types";
+
 // import { useState } from "react";
 
 const Card = (props) => {
@@ -15,16 +16,15 @@ const Card = (props) => {
   // };
 
   return (
-    <div className="Card">
+    <div className="card">
       <p>{cardMessage}</p>
-      <p>
-        {/* <button onClick={() => props.setLikesCountCallback(props.id)}> 
+      <button id="delete" onClick={() => props.deleteCardCallBack(props.id)}>
+        x
+      </button>
+
+      {/* <button onClick={() => props.setLikesCountCallback(props.id)}> 
         ⭐️
         </button> */}
-        <button onClick={() => props.deleteCardCallBack(props.id)}>
-          Delete
-        </button>
-      </p>
     </div>
   );
 };

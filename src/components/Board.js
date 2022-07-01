@@ -88,7 +88,7 @@ const Board = (props) => {
   };
 
   return (
-    <div className="card">
+    <div className="board">
       <Link to="/" className="HomeLink">
         Return Home
       </Link>

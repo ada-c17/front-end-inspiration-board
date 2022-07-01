@@ -1,0 +1,60 @@
+.card {
+    position:relative;
+    cursor: move;
+    color: black;
+    background-color: yellow;
+    max-width: 215px;
+    overflow-wrap: break-word;
+    border-radius: 5px;
+    padding: 1em;
+    /* margin: auto; */
+    margin: 5px;
+    user-select: none;
+  }
+  
+
+  #new-item {
+    user-select: none;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+  input {
+    border-radius: 5px 0px 0px 5px;
+    color: white;
+    font-size: 1.3em;
+    background-color: transparent;
+    padding: 0.5em;
+  }
+  
+  input:focus {
+    outline: none;
+  }
+  
+  button {
+    cursor: pointer;
+    background-color: gray;
+    font-size: 1em;
+    padding: 0.7em;
+    border-radius: 0px 5px 5px 0px;
+  }
+  
+  button:hover {
+    background-color: rgb(173, 162, 162);
+  }
+  
+  #delete {
+    font-size: 0.6em;
+    position:absolute;
+    top: 0;
+    right: 0; 
+    font-size: 1.2em;
+    background-color: transparent;
+    color:black;
+    border: none;
+  }
+  
+  #delete:hover {
+    color: rgb(255, 55, 55);
+  }
