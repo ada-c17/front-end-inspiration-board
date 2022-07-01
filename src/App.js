@@ -10,7 +10,7 @@ function App() {
 
   const [boardsData, setBoardsData] = useState([]);
 
-  const URL = 'https://insp-board-migrationmess.herokuapp.com';
+  const URL = 'https://insp-board-migrationmess.herokuapp.com/boards';
   // when we first load 
   const [selectedBoard, setSelectedBoard] = useState({
     title: '',

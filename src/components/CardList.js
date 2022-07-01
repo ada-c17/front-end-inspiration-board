@@ -7,7 +7,7 @@ import NewCardForm from './NewCardForm.js';
 const CardList = (props) => {
     const [cardsData, setCardsData] = useState([]);
 
-    const URL = 'https://insp-board-migrationmess.herokuapp.com'
+    const URL = 'https://insp-board-migrationmess.herokuapp.com/boards';
 
     const fetchCards = () => {
         axios
@@ -41,7 +41,6 @@ const CardList = (props) => {
             if (messages.message)
             console.log(response);
             fetchCards();
-            
           })
           .catch((error) => {
             console.log(error);
