@@ -1,3 +1,4 @@
+/* eslint-disable no-template-curly-in-string */
 import "./App.css";
 import { Link } from "react-router-dom";
 import React, { useEffect, useState } from "react";
@@ -27,6 +28,7 @@ function App() {
       .get("https://inspiration-from-otterspace.herokuapp.com/boards")
       .then((response) => {
         setBoards(response.data);
+        console.log(response.data);
       })
       .catch((error) => {
         console.log("Oh no!!!");
@@ -39,7 +41,7 @@ function App() {
       <ul className="list">
         {boards.map((item) => (
           <li key={item.id} className="list-item">
-            <Link to="${item.id}">{item.title}</Link>
+            <Link to={`${item.id}`}>{item.title}</Link>
           </li>
         ))}
       </ul>
