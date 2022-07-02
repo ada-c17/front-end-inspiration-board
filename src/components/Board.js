@@ -88,16 +88,14 @@ const Board = (props) => {
       <Link to="/" className="HomeLink">
         Return Home
       </Link>
+      <div id="board_title">Board {boardData.title}</div>
+      <div id="board-owner"> belongs to: {boardData.owner}</div>
       <CardList
         data={boardData.cards}
         deleteCardCallBack={deleteCard}
         setLikesCountCallBack={setCardLikesCount}
       />
-      <div>board title : {boardData.title}</div>
-      <div>board owner : {boardData.owner}</div>
       <CardForm handleSubmission={makeNewCard} />
-
-      <h3>id of the board for the reference: {params.id}</h3>
     </div>
   );
 };

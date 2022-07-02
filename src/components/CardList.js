@@ -15,12 +15,7 @@ const CardList = ({ data, deleteCardCallBack, setLikesCountCallBack }) => {
     />
   ));
 
-  return (
-    <div>
-      <h2 className="cardList"> List of Cards</h2>
-      {cardComponents}
-    </div>
-  );
+  return <div>{cardComponents}</div>;
 };
 
 CardList.propTypes = {
