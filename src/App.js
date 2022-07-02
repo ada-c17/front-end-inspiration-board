@@ -71,7 +71,7 @@ function App() {
       ></img>
       <h1>Inspiration from the OtterSpace</h1>
       <button onClick={onGetMessage}>
-        Get the massage from the OtterSpace
+        Get the message from the OtterSpace
       </button>
       <div>{quote}</div>
       <input
