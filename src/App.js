@@ -98,9 +98,9 @@ function App() {
     }
   };
 
-  const fetchCards = () => {
+  const fetchCards = (id) => {
     axios
-      .get(`${URL}/${boardSelected.id}/cards`)
+      .get(`${URL}/${id}/cards`)
       .then((response) => {
         const cardsCopy = [...response.data];
         const newCards = cardsCopy.map((card) => {
@@ -108,13 +108,14 @@ function App() {
             id: card.card_id,
             message: card.message,
             likes_count: card.likes_count,
-            board_id: boardSelected.id,
+            board_id: id,
           };
         });
         setCardsData(newCards);
         console.log(newCards);
       })
       .catch((error) => {
+        console.log(error);
         alert("Oop! Could not access the cards!");
       });
   };
