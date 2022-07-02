@@ -57,25 +57,25 @@ const NewBoardForm = () => {
       <Link to="/" className="HomeLink">
         Home is here
       </Link>
-      <h1>Add New Board</h1>
+      <h1>Add New Space</h1>
       <form onSubmit={handleFormSubmission}>
-        <label>Title</label>
         <input
           name="title"
           type="text"
           className="title"
           value={boardData.title}
           onChange={handleFormInput}
+          placeholder="Enter Space Name"
         />
-        <label>Owner</label>
         <input
           name="owner"
           type="text"
           className="owner"
           value={boardData.owner}
+          placeholder="Enter Space Owner"
           onChange={handleFormInput}
         />
-        <input type="submit" />
+        <input type="submit" value="Add" />
       </form>
       <p>{message}</p>
     </>
