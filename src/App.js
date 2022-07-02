@@ -3,17 +3,18 @@ import React from "react";
 import BoardsList from "./components/BoardsList";
 import axios from "axios";
 import { useEffect, useState } from "react";
-// import Board from "./components/Board";
+import BoardWithCards from "./components/BoardWithCards";
 
 function App() {
   const [boards, setBoards] = useState([]);
   const [cards, setCards] = useState([]);
 
-  const URL = "https://fast-caverns-05936.herokuapp.com/boards";
+  const BOARDS_URL = "https://fast-caverns-05936.herokuapp.com/boards";
+  const CARDS_URL = "https://fast-caverns-05936.herokuapp.com/cards";
 
   const fetchBoards = () => {
     axios
-      .get(URL)
+      .get(BOARDS_URL)
       .then((res) => {
         const newBoards = res.data.map((board) => {
           return {
@@ -33,11 +34,10 @@ function App() {
 
   const fetchCardsForBoard = (id) => {
     axios
-      .get(`${URL}/${id}/cards`)
+      .get(`${BOARDS_URL}/${id}/cards`)
       .then((res) => {
         console.log("we are in this hard function");
-        //console.log(res)
-        //
+        console.log(res)
         const newCards = res.data.cards.map((card) => {
           return {
             card_id: card.card_id,
@@ -47,7 +47,22 @@ function App() {
           };
         });
         setCards(newCards);
-        console.log(newCards);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
+
+  const deleteCard = (id) => {
+    axios.delete(`${CARDS_URL}/${id}`)
+      .then(() => {
+        const newCards = [];
+        for (const card of cards) {
+          if (card.card_id !== id){
+            newCards.push(card);
+          }
+        }
+        setCards(newCards);
       })
       .catch((err) => {
         console.log(err);
@@ -63,12 +78,12 @@ function App() {
           // cards = {}
         />
       </div>
-      {/* <div>
-        <Board>
-          
-        </Board>
-
-      </div> */}
+      <div>
+        <BoardWithCards
+          cards={cards}
+          deleteCard={deleteCard}
+        ></BoardWithCards>
+      </div>
     </div>
   );
 }
