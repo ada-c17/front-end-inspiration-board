@@ -14,27 +14,6 @@ function App() {
     owner: "",
   };
 
-  // my lines
-  // const [cards, setCards] = useState(CARDS);
-
-  // const onLike = (id) => {
-  //   const newCards = cards.map((card) => {
-  //     if (card.id === id) {
-  //       return {
-  //         ...card,
-  //         likes: (card.likes += 1),
-  //       };
-  //     }
-  //     return card;
-  //   });
-  //   setCards(newCards);
-  // };
-
-  // const onDelete = (id) => {
-  //   const newCards = cards.filter((card) => card.id !== id);
-  //   setCards(newCards);
-  // };
-
   // keeping stracking on board state
   const [boards, setBoards] = useState([]);
   // keeping tracking on showing or hiding form state
@@ -49,7 +28,8 @@ function App() {
     axios
       .get(URL)
       .then((response) => {
-        const newBoards = response.data.map((board) => {
+        const responseBoard = [...response.data];
+        const newBoards = responseBoard.map((board) => {
           return {
             id: board.id,
             title: board.title,
@@ -98,6 +78,7 @@ function App() {
     }
   };
 
+  // get all cards
   const fetchCards = (id) => {
     axios
       .get(`${URL}/${id}/cards`)
@@ -112,7 +93,6 @@ function App() {
           };
         });
         setCardsData(newCards);
-        console.log(newCards);
       })
       .catch((error) => {
         console.log(error);
@@ -120,26 +100,59 @@ function App() {
       });
   };
 
+  // creating a new card by specific board
   const postNewCard = (cardInfo) => {
     axios
       .post(`${URL}/${boardSelected.id}/cards`, cardInfo)
       .then((response) => {
-        fetchCards();
+        fetchCards(boardSelected.id);
       })
       .catch((error) => {
         alert("Couldn't create a new card.");
       });
   };
 
-  // .then((response) => {
-  //   const new_cards = [...cardsData];
-  //   new_cards.push(response.data.new_cards);
-  //   setCardsData(new_cards);
-  // })
-  // .catch((error) => {
-  //   console.log("Error:", error);
-  //   alert("Couldn't create a new card.");
-  // });
+  // deleting a card by id
+  const deleteCard = (card_id) => {
+    axios
+      .delete(`https://get-inspired-c17.herokuapp.com/cards/${card_id}`)
+      .then((response) => {
+        const newCardItems = [...cardsData];
+        const newCardsList = [];
+        for (const card of newCardItems) {
+          if (card.card_id !== card_id) {
+            newCardsList.push(card);
+          }
+        }
+        setCardsData(newCardsList);
+        fetchCards(boardSelected.id);
+      });
+  };
+
+  //count like
+  const likeCard = (newCard) => {
+    console.log(newCard);
+    console.log(newCard.id);
+    axios
+      .put(
+        `https://get-inspired-c17.herokuapp.com/cards/${newCard.id}/like`,
+        newCard
+      )
+      .then((response) => {
+        // const responseCard = [...response.data]
+        const newCardsData = cardsData.map((existingCard) => {
+          console.log(existingCard);
+          return existingCard.card_id !== newCard.card_id
+            ? existingCard
+            : { ...newCard, likes_count: newCard.likes_count + 1 };
+        });
+        setCardsData(newCardsData);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
+
   return (
     <div className="App">
       <header className="App-header">
@@ -149,12 +162,12 @@ function App() {
         <section className="box-container">
           <div className="board">
             <h2>Boards</h2>
-            <div className="boards-list">
+            <ol className="boards-list">
               <BoardsList
                 boardsList={boards}
                 selectedBoardCallBack={selectedBoard}
               />
-            </div>
+            </ol>
           </div>
           <div className="selected-board">
             <h2>Selected Boards</h2>
@@ -176,11 +189,17 @@ function App() {
             )}
           </div>
           <div>
-            <h2>Card list</h2>
-            <CardsList cards={cardsData} />
+            {boardSelected.id && (
+              <CardsList
+                cards={cardsData}
+                selectedBoard={boardSelected}
+                deleteCardCallback={deleteCard}
+                likeCardCallback={likeCard}
+              />
+            )}
           </div>
           <div>
-            <NewCardForm postNewCard={postNewCard}></NewCardForm>
+            {boardSelected.id && <NewCardForm postNewCard={postNewCard} />}
           </div>
         </section>
       </div>
@@ -189,3 +208,10 @@ function App() {
 }
 
 export default App;
+
+// console.log(response.data);
+//         const newCardsData = cardsData.map((existingCard) => {
+//           console.log(existingCard);
+//           return existingCard.card_id !== newCard.card_id
+//             ? existingCard
+//             : { ...newCard, likes_count: newCard.likes_count + 1 };
