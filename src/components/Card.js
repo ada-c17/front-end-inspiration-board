@@ -4,7 +4,7 @@ import React from "react";
 const Card = (props) => {
   console.log(props.message);
   const clickLikeButton = () => {
-    props.onLike(props.id);
+    props.likeCardCallback(props.id);
   };
 
   const clickDeleteButton = () => {
@@ -12,18 +12,16 @@ const Card = (props) => {
   };
 
   return (
-    <div key={props.id}>
-      <section>{props.message}</section>
-      <button className="card-likes" onClick={clickLikeButton}>
-        {props.likes}💕
-      </button>
-      ;
-      <button className="delete-card" onClick={clickDeleteButton}>
-        delete
-      </button>
+    <div className='card-item' key={props.id}>
+      <p className='card-item__message'>{props.message}</p>
+      <ul className='card-item__controls'></ul>
+        <li><p>{props.likes_count} 💕</p></li>
+        <button className="card-likes" onClick={clickLikeButton}></button>
+      <button className="delete-card" onClick={clickDeleteButton}>delete</button>
     </div>
   );
 };
+
 
 //create proptypes
 // Card.propTypes = {

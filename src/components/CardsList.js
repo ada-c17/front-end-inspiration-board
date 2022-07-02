@@ -2,30 +2,25 @@ import React from "react";
 // import PropTypes from "prop-types";
 import Card from "./Card";
 
-const CardsList = ({
-  cards,
-  onLike,
-  deleteCardCallback,
-  board_id,
-  selectedBoard,
-}) => {
-  const cardComponents = cards.map((card) => {
+const CardsList = (props) => {
+  const cardComponents = props.cards.map((card) => {
     return (
       <Card
         key={card.id}
         id={card.id}
+        cardData = {props.cards}
         message={card.message}
-        likes={card.likes}
-        onLike={onLike}
-        deleteCardCallback={deleteCardCallback}
-        board_id={board_id}
+        likes_count={card.likes_count}
+        deleteCardCallback={props.deleteCardCallback}
+        likeCardCallback={props.likeCardCallback}
+        board_id={props.board_id}
       />
     );
   });
 
   return (
     <div>
-      <h2>Card for {selectedBoard.title}</h2>
+      <h2>Card for {props.selectedBoard.title}</h2>
       <div className="cards_list_no_bullets">{cardComponents}</div>
     </div>
   );

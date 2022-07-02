@@ -143,6 +143,23 @@ function App() {
       });
   };
 
+  //count like 
+  const likeCard = (newCard) => {
+    axios
+      .put(`https://get-inspired-c17.herokuapp.com/cards/${cardsData.card_id}/like`, newCard)
+      .then((response) => {
+        console.log(response.data)
+        const newCardsData = cardsData.map((existingCard) => {
+          console.log(existingCard)
+          return existingCard.card_id !== newCard.card_id ? existingCard : {...newCard, likes_count: newCard.likes_count + 1}
+        });
+        setCardsData(newCardsData);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }
+
   return (
     <div className="App">
       <header className="App-header">
@@ -152,12 +169,12 @@ function App() {
         <section className="box-container">
           <div className="board">
             <h2>Boards</h2>
-            <div className="boards-list">
+            <ol className="boards-list">
               <BoardsList
                 boardsList={boards}
                 selectedBoardCallBack={selectedBoard}
               />
-            </div>
+            </ol>
           </div>
           <div className="selected-board">
             <h2>Selected Boards</h2>
@@ -184,6 +201,7 @@ function App() {
                 cards={cardsData}
                 selectedBoard={boardSelected}
                 deleteCardCallback={deleteCard}
+                likeCardCallback={likeCard}
               />
             )}
           </div>
