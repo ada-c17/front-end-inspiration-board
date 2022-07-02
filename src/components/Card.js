@@ -12,6 +12,7 @@ const Card = (props) => {
         <div>
             <p>Message: {props.card.message}</p>
             <p>Like count: {props.card.likes_count}</p>
+            <button>Delete</button>
         </div>
     )
 };

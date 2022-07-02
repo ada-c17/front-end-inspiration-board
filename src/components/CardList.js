@@ -14,22 +14,12 @@ const CardList = (props) => {
           .get(`${URL}/${props.board.board_id}/cards`)
           .then((response) => {
             // console.log("get request");
-            console.log(response);
             console.log(response.data);
-            // const card_response = res.data
-            // const card_data_response = Array.from(res);
-            // const newCards = {Array.isArray(card_response) ? res.data.map((card) => {
-            // //   // console.log(res);
-            //   return {
-            //     board_id: card.board_id,
-            //     card_id: card.card_id,
-            //     message: card.message,
-            //     likes_count: card.likes_count
-            //   };
-            // }) : null};
+            console.log(props.board.board_id);
 
             const newCards = response.data["cards"].map((card) => {
               return {
+                key: card.card_id,
                 board_id: card.board_id,
                 card_id: card.card_id,
                 message: card.message,
@@ -50,6 +40,11 @@ const CardList = (props) => {
         return (
           <Card card={card}></Card>)
       });
+
+    // const deleteCard = () => {
+    //   axios
+    //     .delete(`${URL}/${props.board.board_id}/cards/{card_id}`)
+    // }
 
     return (
         <section>
