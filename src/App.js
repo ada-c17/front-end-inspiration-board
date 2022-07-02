@@ -47,7 +47,7 @@ function App() {
       ></img>
       <h1>Inspiration from the OtterSpace</h1>
       <BoardList boards={boards} deleteBoard={deleteBoard} />
-      <Link to="/new">Add new Board</Link>
+      <Link to="/new">Add New Space</Link>
       <footer>
         &copy; 2022 Ada Developers Academy ✨ by Coders from the OtterSpace ✨
         Doina ✨ Fena ✨ Marlyn ✨ Nina ✨

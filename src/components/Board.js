@@ -88,7 +88,7 @@ const Board = (props) => {
       <Link to="/" className="HomeLink">
         Return Home
       </Link>
-      <div id="board_title">Board {boardData.title}</div>
+      <div id="board_title">Space {boardData.title}</div>
       <div id="board-owner"> belongs to: {boardData.owner}</div>
       <CardList
         data={boardData.cards}

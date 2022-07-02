@@ -47,7 +47,7 @@ const NewBoardForm = () => {
         .map((s) => s.charAt(0).toUpperCase() + s.substring(1))
         .join(" ");
 
-      setMessage(`Board ${boardData.title} was created by ${boardData.owner}`);
+      setMessage(`Space ${boardData.title} was created by ${boardData.owner}`);
       makeNewBoard(boardData);
     }
   };
