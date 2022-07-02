@@ -10,6 +10,7 @@ const Board = ({ id, title, onClickGetCards }) => {
     </li>
   );
 };
+
 Board.propTypes = {
   owner: PropTypes.string.isRequired,
   title: PropTypes.string.isRequired,

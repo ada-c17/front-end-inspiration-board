@@ -1,9 +1,34 @@
-.single-card {
+.card-message {
+    color: rgb(14, 15, 14);    
+}
+
+.card-container{
+    display: flex;
+    flex-direction: column;
     background-color: pink;
     list-style: none;
-    width: 200px;
-    height: 100px;
-    color: rgb(14, 15, 14);
+    width: fit-content;
+    height: fit-content;
     border: 2px dotted gray;
-    
+}
+
+.emoji-div {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+.like-button{
+    background: none;
+	border: none;
+	cursor: pointer;
+    font-size: 25px;
+}
+.likes-count{
+    font-size: 25px;}
+
+.delete-button {
+    border: none;
+    background: none;
+    font-size: 25px;
+    cursor: pointer;
 }

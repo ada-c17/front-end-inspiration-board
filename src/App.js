@@ -73,6 +73,37 @@ function App() {
 
 
 
+  const setLikesForCardId = (id) => {
+    const newCardsData = cardsData.map((card) => {
+      const newCard = { ...card };
+      console.log(newCard.card_id === id);
+      if (newCard.card_id === id) {
+        newCard.likes_count++;
+
+        axios
+          .patch(`https://inspirational-board.herokuapp.com/cards/${id}/like`)
+          .catch((error) => {
+            console.log("Can't get cards.", error);
+          });
+      }
+
+      return newCard;
+    });
+
+    setCards(newCardsData);
+  };
+
+  const deleteCard = (card_id) => {
+    axios
+      .delete(`https://inspirational-board.herokuapp.com/cards/${card_id}`)
+      .then((response) => {
+        const newCards = cardsData.filter((card) => card.card_id !== card_id);
+        setCards(newCards);
+      })
+      .catch((error) => {
+        console.log("Can't delete a card.", error);
+      });
+  };
   return (
     <div>
       <header>
@@ -80,15 +111,17 @@ function App() {
       </header>
 
       <div className="container">
-        <div className="board-and-card-flex">
-          <div className="board-wrapper">
-            <Boards boards={boardsData} onClickGetCards={getCardsForBoard} handleFormSubmission={createNewCardForSelectedBoard}/>
-          </div>
-          <div className="cards-wrapper">
-            <CardsList boards={boardsData} cards={cardsData} />
-          </div>
+        <div className="board-wrapper">
+          <Boards boards={boardsData} onClickGetCards={getCardsForBoard} />
         </div>
-        <div className="submission-forms">
+        <div>
+          <CardsList
+            cards={cardsData}
+            onClickDeleteCard={deleteCard}
+            onLikeClick={setLikesForCardId}
+          />
+        </div>
+        <div className="new-board-form">
           <NewBoardForm handleSubmission={makeNewBoard} />
         </div>
         <div className="card-submit-form">
