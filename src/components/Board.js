@@ -1,5 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
+import "./Board.css";
 
 const Board = (props) => {
   const deleteOnClick = () => {
@@ -20,8 +21,8 @@ const Board = (props) => {
 
   return (
     <div>
-      <h2>Hello I am Boards</h2>
-      <ul>{boardComponents}</ul>
+      <h2>Boards</h2>
+      <div className="boardlist">{boardComponents}</div>
       <button onClick={deleteOnClick}>Delete Currently Selected Board</button>
     </div>
   );

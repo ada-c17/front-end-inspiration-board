@@ -12,7 +12,7 @@ const Card = (props) => {
 
   return (
     <div>
-      Hello I am Card
+      <h1>Card</h1>
       <ul>
         <li>Message: {props.message}</li>
         <li>{props.likes_count} 💜</li>

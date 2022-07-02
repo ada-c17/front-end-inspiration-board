@@ -114,25 +114,37 @@ function App() {
   const deleteCard = (card_id) => {};
 
   return (
-    <div>
-      <header>
+    <div className="container">
+      <header className="header">
         <h1>Gramtaschie Inspiration Board</h1>
+      </header>
+      <section className="board">
         <Board
           boards={boards}
           fetchBoardsCallback={fetchBoards}
           selectBoardCallback={selectBoard}
           deleteBoardsCallback={deleteBoard}
         ></Board>
+        <h4>{`Current Board: (id: ${selectedBoard}) ${selectedBoardName}`}</h4>
+      </section>
+      <section className="boardform">
         <NewBoardForm addBoardCallback={createNewBoard}></NewBoardForm>
-        <NewCardForm addCardCallback={createNewCard}></NewCardForm>
-        <h2>{selectedBoardName}</h2>
+      </section>
+
+      <section className="cards">
+        <h2>Cards for Board: {selectedBoardName}</h2>
+        <div className="cardform">
+          <NewCardForm addCardCallback={createNewCard}></NewCardForm>
+        </div>
         <CardList
           cards={cards}
           fetchCardsCallback={fetchCards}
           likeCardCallback={likeCard}
           deleteCardCallback={deleteCard}
         ></CardList>
-      </header>
+      </section>
+
+      <footer className="footer">© 2022 gramtaschie</footer>
     </div>
   );
 }

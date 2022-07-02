@@ -1,0 +1,25 @@
+.boardlist{
+    border: solid 1px black;
+    align-items: center;
+    justify-self: center;
+    align-self: center;
+    align-content: center;
+    justify-items: center;
+    height: 100px;
+    width: 100%;
+    overflow-y: scroll;
+}
+
+
+::-webkit-scrollbar {
+    width: 10px;
+}
+::-webkit-scrollbar-track {
+    background: #f1f1f1;
+}
+::-webkit-scrollbar-thumb {
+    background: #888;
+}
+::-webkit-scrollbar-thumb:hover {
+    background: #555;
+}
