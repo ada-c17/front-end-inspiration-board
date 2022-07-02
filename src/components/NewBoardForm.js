@@ -6,7 +6,7 @@ import PropTypes from "prop-types";
 //change CSS
 
 const NewBoardForm = ({ addBoardCallback }) => {
-  const [boardData, setBoardData] = useState({
+  const [newBoardData, setNewBoardData] = useState({
     title: "",
     owner: "",
   });
@@ -14,12 +14,12 @@ const NewBoardForm = ({ addBoardCallback }) => {
   const submitBoardData = (e) => {
     e.preventDefault();
 
-    addBoardCallback(boardData);
-    setBoardData({ title: "", owner: "" });
+    addBoardCallback(newBoardData);
+    setNewBoardData({ title: "", owner: "" });
   };
 
   const handleChange = (e) => {
-    setBoardData({ ...boardData, [e.target.name]: e.target.value });
+    setNewBoardData({ ...newBoardData, [e.target.name]: e.target.value });
   };
 
   return (
@@ -31,14 +31,14 @@ const NewBoardForm = ({ addBoardCallback }) => {
           <input
             name="title"
             id="title"
-            value={boardData.title}
+            value={newBoardData.title}
             onChange={handleChange}
           />
           <label htmlFor="name">Owner</label>
           <input
             name="owner"
             id="owner"
-            value={boardData.owner}
+            value={newBoardData.owner}
             onChange={handleChange}
           />
           <button className="button new-board__submit" type="submit">
