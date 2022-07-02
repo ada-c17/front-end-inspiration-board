@@ -1,13 +1,18 @@
 import { React, useState } from "react";
 import { Container } from "react-bootstrap";
-
 import { useNavigate } from "react-router-dom";
-import addNewBoardForm from "./NewBoardForm";
 import "./stylesheet/BoardList.css";
 import { Link } from "react-router-dom";
 import AddNewBoardForm from "./NewBoardForm";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faTrashCan } from "@fortawesome/free-regular-svg-icons";
 
-const BoardList = ({ boardData, setCurrentBoardId, deleteBoard, submitBoard }) => {
+const BoardList = ({
+  boardData,
+  setCurrentBoardId,
+  deleteBoard,
+  getAllBoards,
+}) => {
   let navigate = useNavigate();
 
   const createBoard = (board) => {
@@ -26,8 +31,9 @@ const BoardList = ({ boardData, setCurrentBoardId, deleteBoard, submitBoard }) =
           onClick={() => {
             deleteBoard(board.boardId);
           }}
+          className="trash-can"
         >
-          Delete Board
+          <FontAwesomeIcon icon={faTrashCan} className="trash-can" />
         </button>
       </li>
     );
@@ -40,10 +46,7 @@ const BoardList = ({ boardData, setCurrentBoardId, deleteBoard, submitBoard }) =
         <ul className="list">{boardData.map(createBoard)}</ul>
       </Container>
 
-      <AddNewBoardForm
-        submitBoard={submitBoard}
-
-      />
+      <AddNewBoardForm getAllBoards={getAllBoards} />
     </section>
   );
 };

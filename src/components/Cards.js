@@ -24,16 +24,22 @@ const Cards = ({
   };
   return (
     <div>
-      <Card style={{ width: "18rem" }}>
-        <Card.Body>
+      <Card style={{ width: "17.5rem" }}>
+        <Card.Header className="card-header">
           <FontAwesomeIcon
             icon={faTrashCan}
             onClick={() => deleteCard(cardId)}
+            className="card-trash-can"
           />
-          {message}
-        </Card.Body>
-        <Card.Footer>
-          <FontAwesomeIcon icon={likeHeart} onClick={likeClick} /> {likesCount}
+        </Card.Header>
+        <Card.Body className="card-body">{message}</Card.Body>
+        <Card.Footer className="class-footer">
+          <FontAwesomeIcon
+            icon={likeHeart}
+            onClick={likeClick}
+            className="heart"
+          />{" "}
+          {likesCount}
         </Card.Footer>
       </Card>
     </div>

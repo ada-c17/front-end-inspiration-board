@@ -26,26 +26,26 @@ const Board = ({
   }
 
   return (
-    <div>
+    <div className="container">
+      <h1 className="boardTitle">
+        {boardData.owner}'s '{boardData.title}'' Board!
+      </h1>
       <button
         onClick={() => {
           navigate("/");
         }}
+        className="back-btn"
       >
-        Go Back to Boards From Board: {boardId}
+        ← Back to Boards
       </button>
-
-      <h1>
-        Welcome to {boardData.owner}'s <em>{boardData.title}</em> Board!
-      </h1>
-      <li>
+      <section className="cardsList">
         <CardsList
           cardData={boardData.cards}
           likeHeart={likeHeart}
           deleteCard={deleteCard}
           handleLike={handleLike}
         />
-      </li>
+      </section>
     </div>
   );
 };

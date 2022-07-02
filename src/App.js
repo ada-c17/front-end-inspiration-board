@@ -2,7 +2,6 @@ import React, { useState, useEffect } from "react";
 import { Modal } from "bootstrap";
 import { Button } from "react-bootstrap";
 
-
 import "./App.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { faHeart } from "@fortawesome/free-regular-svg-icons";
@@ -19,11 +18,11 @@ const URL = "https://back-end-inspiration-board.herokuapp.com/boards";
 const App = () => {
   const [allBoards, setAllBoards] = useState([]);
   const [boardData, setBoardData] = useState([]);
+  const [boardUpdated, setBoardUpdated] = useState(false);
 
   //Get all boards data
   useEffect(() => {
     getAllBoards();
-
   }, []);
 
   const getAllBoards = () => {
@@ -43,7 +42,7 @@ const App = () => {
       .catch((err) => {
         console.log(err);
       });
-  }
+  };
 
   //Gets one board. Called dynamically when Board is rendered.
   const getOneBoard = (id) => {
@@ -124,25 +123,26 @@ const App = () => {
 
   // console.log(boardData);
 
-
   const submitBoard = (data) => {
     console.log(`HELLO`);
-    axios.post(URL, {
-      title: data.title,
-      owner: data.owner,
-    })
-      .then(response => {
+    axios
+      .post(URL, {
+        title: data.title,
+        owner: data.owner,
+      })
+      .then((response) => {
         getAllBoards();
-        setBoardData(response.data)
-        console.log(response.data)
+        setBoardData(response.data);
+        console.log(response.data);
       })
       .catch((err) => {
         console.log(err);
-      })
-  }
+      });
+  };
 
-
-
+  const boardFormSubmit = () => {
+    console.log("Hi!");
+  };
 
   return (
     <div className="App">
@@ -151,9 +151,10 @@ const App = () => {
           <Route
             path="/"
             element={
-              <BoardList boardData={allBoards}
+              <BoardList
+                boardData={allBoards}
                 deleteBoard={deleteBoard}
-                submitBoard={submitBoard}
+                getAllBoards={getAllBoards}
               />
             }
           />

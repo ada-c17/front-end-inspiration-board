@@ -6,7 +6,7 @@ const CardsList = ({ cardData, likeHeart, deleteCard, handleLike }) => {
   // console.log("card data: ", cardData);
 
   return (
-    <Row xs={1} md={2} lg={3} className="g-4">
+    <Row xs={1} md={2} lg={3} className="g-4 cardsList">
       {cardData.map((card) => (
         <div key={card.id}>
           <Cards
