@@ -13,6 +13,7 @@ const CardList = (props) => {
         board_id={card.board_id}
         fetchCardsCallback={props.fetchCardsCallback}
         likeCardCallback={props.likeCardCallback}
+        deleteCardCallback={props.deleteCard}
       ></Card>
     );
   });
@@ -35,6 +36,7 @@ CardList.propTypes = {
   ),
   fetchCardsCallback: PropTypes.func.isRequired,
   likeCardCallback: PropTypes.func.isRequired,
+  deleteCardCallback: PropTypes.func.isRequired,
 };
 
 export default CardList;

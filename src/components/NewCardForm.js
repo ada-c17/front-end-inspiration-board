@@ -15,13 +15,12 @@ const NewCardForm = (props) => {
   const onFormChange = (event) => {
     const stateName = event.target.name;
     const inputValue = event.target.value;
-    const totalChar = inputValue.length;
 
     const newCardForm = { ...cardForm };
     newCardForm[stateName] = inputValue;
 
     setCardForm(newCardForm);
-    setInputChar(totalChar);
+    setInputChar(inputValue.length);
   };
 
   const handleSubmit = (event) => {

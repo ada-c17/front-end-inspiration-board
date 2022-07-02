@@ -58,19 +58,6 @@ function App() {
       });
   };
 
-  const createNewCard = (cardForm) => {
-    console.log("I will create a new card");
-    cardForm.board_id = selectedBoard;
-    axios
-      .post(`${URL}/cards`, cardForm)
-      .then((response) => {
-        fetchCards();
-      })
-      .catch((error) => {
-        console.log(error);
-      });
-  };
-
   const selectBoard = (board) => {
     setSelectedBoard(board.id);
     setSelectedBoardName(board.title);
@@ -94,6 +81,18 @@ function App() {
       });
   };
 
+  const createNewCard = (cardForm) => {
+    cardForm.board_id = selectedBoard;
+    axios
+      .post(`${URL}/cards`, cardForm)
+      .then((response) => {
+        fetchCards();
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
+
   const likeCard = (card_id) => {
     let newCard = {};
     for (const card of cards) {
@@ -112,6 +111,8 @@ function App() {
       });
   };
 
+  const deleteCard = (card_id) => {};
+
   return (
     <div>
       <header>
@@ -129,6 +130,7 @@ function App() {
           cards={cards}
           fetchCardsCallback={fetchCards}
           likeCardCallback={likeCard}
+          deleteCardCallback={deleteCard}
         ></CardList>
       </header>
     </div>
