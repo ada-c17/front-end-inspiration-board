@@ -35,6 +35,18 @@ const NewBoardForm = () => {
     if (boardData.title === "" || boardData.owner === "") {
       setMessage("Please enter both title and owner");
     } else {
+      boardData.title = boardData.title
+        .toLowerCase()
+        .split(" ")
+        .map((s) => s.charAt(0).toUpperCase() + s.substring(1))
+        .join(" ");
+
+      boardData.owner = boardData.owner
+        .toLowerCase()
+        .split(" ")
+        .map((s) => s.charAt(0).toUpperCase() + s.substring(1))
+        .join(" ");
+
       setMessage(`Board ${boardData.title} was created by ${boardData.owner}`);
       makeNewBoard(boardData);
     }
