@@ -1,18 +1,16 @@
 const Card = (props) => {
 
-    // return (
-    //     <ul>
-    //         <li>Card Number: {props.card_id}</li>
-    //         <li>Message: {props.message}</li>
-    //         <li>Likes: {props.likesCount}</li>
-    //         {/* <button onClick={increaseLikes}>Increase Likes</button> */}
-    //     </ul>
-    // )
+    const deleteCallback = () => {
+        console.log("Delete button pressed!");
+        props.onDeleteCallback(props.card.card_id);
+    };
+
     return (
         <div>
+            <p>Card ID: {props.card.card_id}</p>
             <p>Message: {props.card.message}</p>
             <p>Like count: {props.card.likes_count}</p>
-            <button>Delete</button>
+            <button onClick={deleteCallback}>Delete</button>
         </div>
     )
 };
