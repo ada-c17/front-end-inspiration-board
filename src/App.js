@@ -9,6 +9,9 @@ import BoardList from "./components/BoardList";
 function App() {
   const [boards, setBoards] = useState([]);
 
+  const [showBoardList, setShowResults] = useState(false);
+  const onClickShowBoardlist = () => setShowResults(!showBoardList);
+
   useEffect(() => {
     getBoardsFromAPI();
   }, []);
@@ -46,7 +49,16 @@ function App() {
         className="Otter"
       ></img>
       <h1>Inspiration from the OtterSpace</h1>
-      <BoardList boards={boards} deleteBoard={deleteBoard} />
+
+      <input
+        type="submit"
+        value="Show/Hide the List of Spaces"
+        onClick={onClickShowBoardlist}
+      />
+      {showBoardList ? (
+        <BoardList boards={boards} deleteBoard={deleteBoard} />
+      ) : null}
+
       <Link to="/new">Add New Space</Link>
       <footer>
         &copy; 2022 Ada Developers Academy ✨ by Coders from the OtterSpace ✨
