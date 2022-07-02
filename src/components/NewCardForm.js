@@ -10,15 +10,18 @@ const defaultCard = {
 
 const NewCardForm = (props) => {
   const [cardForm, setCardForm] = useState(defaultCard);
+  const [inputChar, setInputChar] = useState(0);
 
   const onFormChange = (event) => {
     const stateName = event.target.name;
     const inputValue = event.target.value;
+    const totalChar = inputValue.length;
 
     const newCardForm = { ...cardForm };
     newCardForm[stateName] = inputValue;
 
     setCardForm(newCardForm);
+    setInputChar(totalChar);
   };
 
   const handleSubmit = (event) => {
@@ -32,13 +35,15 @@ const NewCardForm = (props) => {
       <h3>Make a New Card</h3>
       <form onSubmit={handleSubmit}>
         <label htmlFor="message">Message</label>
-        <input
+        <textarea
           type="text"
           name="message"
           value={cardForm.message}
+          maxLength={40}
           onChange={onFormChange}
-        ></input>
+        ></textarea>
         <input type="submit" value="Add inspiration"></input>
+        <div>{inputChar}/40</div>
       </form>
     </section>
   );
