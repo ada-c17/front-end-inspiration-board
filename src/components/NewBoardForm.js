@@ -35,7 +35,19 @@ const NewBoardForm = () => {
     if (boardData.title === "" || boardData.owner === "") {
       setMessage("Please enter both title and owner");
     } else {
-      setMessage(`Board ${boardData.title} was created by ${boardData.owner}`);
+      boardData.title = boardData.title
+        .toLowerCase()
+        .split(" ")
+        .map((s) => s.charAt(0).toUpperCase() + s.substring(1))
+        .join(" ");
+
+      boardData.owner = boardData.owner
+        .toLowerCase()
+        .split(" ")
+        .map((s) => s.charAt(0).toUpperCase() + s.substring(1))
+        .join(" ");
+
+      setMessage(`Space ${boardData.title} was created by ${boardData.owner}`);
       makeNewBoard(boardData);
     }
   };
@@ -45,25 +57,25 @@ const NewBoardForm = () => {
       <Link to="/" className="HomeLink">
         Home is here
       </Link>
-      <h1>Add New Board</h1>
+      <h1>Add New Space</h1>
       <form onSubmit={handleFormSubmission}>
-        <label>Title</label>
         <input
           name="title"
           type="text"
           className="title"
           value={boardData.title}
           onChange={handleFormInput}
+          placeholder="Enter Space Name"
         />
-        <label>Owner</label>
         <input
           name="owner"
           type="text"
           className="owner"
           value={boardData.owner}
+          placeholder="Enter Space Owner"
           onChange={handleFormInput}
         />
-        <input type="submit" />
+        <input type="submit" value="Add" />
       </form>
       <p>{message}</p>
     </>
