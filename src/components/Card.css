@@ -2,13 +2,13 @@
     position:relative;
     cursor: move;
     color: black;
-    background-color: yellow;
+    background-color:lightsteelblue;
     max-width: 215px;
     overflow-wrap: break-word;
     border-radius: 5px;
     padding: 1em;
     /* margin: auto; */
-    margin: 5px;
+    margin: 25px;
     user-select: none;
   }
   
@@ -25,7 +25,10 @@
     color: white;
     font-size: 1.3em;
     background-color: transparent;
+    overflow: visible;
     padding: 0.5em;
+    margin-right: 2em;
+    margin-left:2em;
   }
   
   input:focus {
@@ -58,3 +61,11 @@
   #delete:hover {
     color: rgb(255, 55, 55);
   }
+#stars{
+    background-color: transparent;
+    border: none;
+    font-size: 1.4em;
+    padding: 0;
+
+
+}

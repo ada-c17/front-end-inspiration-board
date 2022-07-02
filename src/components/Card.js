@@ -17,7 +17,9 @@ const Card = ({
       <button id="delete" onClick={() => deleteCardCallBack(id)}>
         x<p>{likesCount}</p>
       </button>
-      <button onClick={() => setLikesCountCallBack(id)}>⭐️</button>
+      <button id="stars" onClick={() => setLikesCountCallBack(id)}>
+        ⭐️
+      </button>
     </div>
   );
 };

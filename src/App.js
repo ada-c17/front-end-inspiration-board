@@ -1,13 +1,20 @@
 /* eslint-disable no-template-curly-in-string */
 import "./App.css";
+import useSound from "use-sound";
 import { Link } from "react-router-dom";
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import Otter from "./data/Otter.jpg";
 import BoardList from "./components/BoardList";
+import laugh from "./data/Laugh.mp3";
 
 function App() {
   const [boards, setBoards] = useState([]);
+  const [showBoardList, setShowResults] = useState(false);
+
+  const [play] = useSound(laugh);
+
+  const onClickShowBoardlist = () => setShowResults(!showBoardList);
 
   useEffect(() => {
     getBoardsFromAPI();
@@ -44,10 +51,20 @@ function App() {
         alt={"otterspace"}
         // cache={"false"}
         className="Otter"
+        onClick={play}
       ></img>
       <h1>Inspiration from the OtterSpace</h1>
-      <BoardList boards={boards} deleteBoard={deleteBoard} />
-      <Link to="/new">Add new Board</Link>
+
+      <input
+        type="submit"
+        value="Show/Hide the List of Spaces"
+        onClick={onClickShowBoardlist}
+      />
+      {showBoardList ? (
+        <BoardList boards={boards} deleteBoard={deleteBoard} />
+      ) : null}
+
+      <Link to="/new">Add New Space</Link>
       <footer>
         &copy; 2022 Ada Developers Academy ✨ by Coders from the OtterSpace ✨
         Doina ✨ Fena ✨ Marlyn ✨ Nina ✨
