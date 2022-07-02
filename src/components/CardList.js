@@ -10,7 +10,7 @@ const CardList = ({ data, deleteCardCallBack, setLikesCountCallBack }) => {
       id={card.id}
       message={card.message}
       likesCount={card.likes_count}
-      setLikesCountCallback={setLikesCountCallBack}
+      setLikesCountCallBack={setLikesCountCallBack}
       deleteCardCallBack={deleteCardCallBack}
     />
   ));
