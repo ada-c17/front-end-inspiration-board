@@ -89,6 +89,7 @@ function App() {
     for (const board of newBoards) {
       if (board.id === id) {
         setBoardSelected(board);
+        fetchCards();
       }
     }
   };
