@@ -8,8 +8,13 @@ import BoardList from "./components/BoardList";
 
 function App() {
   const [boards, setBoards] = useState([]);
-
   const [showBoardList, setShowResults] = useState(false);
+
+  const audio = new Audio("./data/Laugh.mp3");
+  const start = () => {
+    audio.play();
+  };
+
   const onClickShowBoardlist = () => setShowResults(!showBoardList);
 
   useEffect(() => {
@@ -47,6 +52,7 @@ function App() {
         alt={"otterspace"}
         // cache={"false"}
         className="Otter"
+        onClick={start}
       ></img>
       <h1>Inspiration from the OtterSpace</h1>
 
