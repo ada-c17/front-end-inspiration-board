@@ -19,7 +19,6 @@ const CardList = (props) => {
 
   return (
     <section>
-      <h2>Hello I am CardList</h2>
       <ul>{cardComponents}</ul>
     </section>
   );

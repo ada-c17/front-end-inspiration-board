@@ -11,7 +11,10 @@ function App() {
 
   const [boards, setBoards] = useState([]);
   const [cards, setCards] = useState([]);
-  const [selectedBoard, setSelectedBoard] = useState(8);
+  const [selectedBoard, setSelectedBoard] = useState(null);
+  const [selectedBoardName, setSelectedBoardName] = useState(
+    "Select a board to get inspired!"
+  );
 
   const fetchBoards = () => {
     axios
@@ -68,6 +71,11 @@ function App() {
       });
   };
 
+  const selectBoard = (board) => {
+    setSelectedBoard(board.id);
+    setSelectedBoardName(board.title);
+  };
+
   const deleteBoard = () => {
     axios
       .delete(`${URL}/boards/${selectedBoard}`)
@@ -94,7 +102,6 @@ function App() {
         newCard.likes_count += 1;
       }
     }
-
     axios
       .put(`${URL}/cards/${card_id}/like`, newCard)
       .then((response) => {
@@ -108,15 +115,16 @@ function App() {
   return (
     <div>
       <header>
-        <h1>Inspiration Board</h1>
+        <h1>Gramtaschie Inspiration Board</h1>
         <Board
           boards={boards}
           fetchBoardsCallback={fetchBoards}
+          selectBoardCallback={selectBoard}
           deleteBoardsCallback={deleteBoard}
         ></Board>
-        <h3>Selected Board is {selectedBoard}</h3>
         <NewBoardForm addBoardCallback={createNewBoard}></NewBoardForm>
         <NewCardForm addCardCallback={createNewCard}></NewCardForm>
+        <h2>{selectedBoardName}</h2>
         <CardList
           cards={cards}
           fetchCardsCallback={fetchCards}
