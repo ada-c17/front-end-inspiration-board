@@ -22,6 +22,11 @@ const App = () => {
 
   //Get all boards data
   useEffect(() => {
+    getAllBoards();
+
+  }, []);
+
+  const getAllBoards = () => {
     axios
       .get(URL)
       .then((response) => {
@@ -38,7 +43,7 @@ const App = () => {
       .catch((err) => {
         console.log(err);
       });
-  }, []);
+  }
 
   //Gets one board. Called dynamically when Board is rendered.
   const getOneBoard = (id) => {
@@ -119,24 +124,21 @@ const App = () => {
 
   // console.log(boardData);
 
-  const [data, setData] = useState({
-    title: "",
-    owner: ""
-  })
 
-  const submitBoard = (e) => {
-    e.preventDefault();
+  const submitBoard = (data) => {
+    console.log(`HELLO`);
     axios.post(URL, {
       title: data.title,
-      owner: data.owner
+      owner: data.owner,
     })
       .then(response => {
+        getAllBoards();
+        setBoardData(response.data)
         console.log(response.data)
       })
       .catch((err) => {
         console.log(err);
       })
-
   }
 
 
@@ -149,7 +151,10 @@ const App = () => {
           <Route
             path="/"
             element={
-              <BoardList boardData={allBoards} deleteBoard={deleteBoard} />
+              <BoardList boardData={allBoards}
+                deleteBoard={deleteBoard}
+                submitBoard={submitBoard}
+              />
             }
           />
           <Route

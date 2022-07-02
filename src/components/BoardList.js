@@ -7,7 +7,7 @@ import "./stylesheet/BoardList.css";
 import { Link } from "react-router-dom";
 import AddNewBoardForm from "./NewBoardForm";
 
-const BoardList = ({ boardData, setCurrentBoardId, deleteBoard }) => {
+const BoardList = ({ boardData, setCurrentBoardId, deleteBoard, submitBoard }) => {
   let navigate = useNavigate();
 
   const createBoard = (board) => {
@@ -39,7 +39,11 @@ const BoardList = ({ boardData, setCurrentBoardId, deleteBoard }) => {
         <h1 className="boardTitle">Inspiration Board</h1>
         <ul className="list">{boardData.map(createBoard)}</ul>
       </Container>
-      <AddNewBoardForm />
+
+      <AddNewBoardForm
+        submitBoard={submitBoard}
+
+      />
     </section>
   );
 };
