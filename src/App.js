@@ -1,19 +1,18 @@
 /* eslint-disable no-template-curly-in-string */
 import "./App.css";
+import useSound from "use-sound";
 import { Link } from "react-router-dom";
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import Otter from "./data/Otter.jpg";
 import BoardList from "./components/BoardList";
+import laugh from "./data/Laugh.mp3";
 
 function App() {
   const [boards, setBoards] = useState([]);
   const [showBoardList, setShowResults] = useState(false);
 
-  const audio = new Audio("./data/Laugh.mp3");
-  const start = () => {
-    audio.play();
-  };
+  const [play] = useSound(laugh);
 
   const onClickShowBoardlist = () => setShowResults(!showBoardList);
 
@@ -52,7 +51,7 @@ function App() {
         alt={"otterspace"}
         // cache={"false"}
         className="Otter"
-        onClick={start}
+        onClick={play}
       ></img>
       <h1>Inspiration from the OtterSpace</h1>
 
