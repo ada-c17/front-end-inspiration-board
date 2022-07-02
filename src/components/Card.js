@@ -10,6 +10,7 @@ const Card = (props) => {
             <p>Card ID: {props.card.card_id}</p>
             <p>Message: {props.card.message}</p>
             <p>Like count: {props.card.likes_count}</p>
+            <button>Like</button>
             <button onClick={deleteCallback}>Delete</button>
         </div>
     )

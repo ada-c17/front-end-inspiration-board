@@ -14,9 +14,8 @@ const CardList = (props) => {
           .get(`${URL}/${props.board.board_id}/cards`)
           .then((response) => {
             // console.log("get request");
-            console.log(response.data);
-            console.log(props.board.board_id);
-
+            // console.log(response.data);
+            // console.log(props.board.board_id);
             const newCards = response.data["cards"].map((card) => {
               return {
                 key: card.card_id,
@@ -36,6 +35,18 @@ const CardList = (props) => {
     
     useEffect(fetchCards, [props.board.board_id]);
 
+    // This function is not working yet
+    // const addCard = (cardsData) => {
+    //   axios
+    //     .post(`${URL}/${props.board.board_id}/cards/`)
+    //     .then((response) => {
+    //       fetchCards();
+    //     })
+    //     .catch((error) => {
+    //       console.log(error);
+    //     });
+    // };
+
     const deleteCard = (card_id) => {
       axios
         .delete(`${URL}/${props.board.board_id}/cards/${card_id}`)
@@ -54,30 +65,23 @@ const CardList = (props) => {
         });
     };
 
+    // Display each card with Delete button
     const cardElements = cardsData.map((card) => {
       return (
         <Card key={card.card_id} card={card} onDeleteCallback={deleteCard}></Card>
       );
-      // return (
-      //   <Card
-      //     key={card.card_id}
-      //     id={card.card_id}
-      //     card_id={card.card_id}
-      //     board_id={card.board_id}
-      //     message={card.message}
-      //     likes_count={card.likes_count}
-      //   />
-      // );
     });
 
     return (
         <section>
+            {/* Form to Create a New Card */}
+            {/* <NewCardForm addCardCallback={addCard}></NewCardForm> */}
+
+            {/* Display cards for specific Board */}
             <h2>Cards for {props.board.title}</h2>
             <ul>
-                {/* {cardComponents} */}
                 {cardElements}
             </ul>
-            {/* <NewCardForm createNewCard={createNewCard}></NewCardForm> */}
         </section>
     );
 };
