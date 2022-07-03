@@ -7,8 +7,11 @@ const BoardWithCards = (props) => {
                 key={card.card_id}
                 id={card.card_id}
                 message={card.message}
+                board_id={card.board_id}
                 likes={card.likes_count} 
                 deleteCard={props.deleteCard}
+                changeLikes={props.changeLikes}
+                // boardTitle={props.boardTitle}
                 />;
     });
     

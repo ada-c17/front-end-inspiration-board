@@ -69,6 +69,24 @@ function App() {
       });
   };
 
+  const changeLikes = (id) =>{
+    axios.patch(`${CARDS_URL}/${id}/likes`)
+      .then(() => {
+        const newCards = [];
+        for (const card of cards) {
+          const newCard = {...card};
+          if (newCard.card_id === id){
+            newCard.likes_count++;
+          } 
+          newCards.push(newCard);
+        }
+        setCards(newCards);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
+
   return (
     <div>
       <div>
@@ -82,6 +100,8 @@ function App() {
         <BoardWithCards
           cards={cards}
           deleteCard={deleteCard}
+          changeLikes={changeLikes}
+          // boardTitle={boards.board.title}
         ></BoardWithCards>
       </div>
     </div>
