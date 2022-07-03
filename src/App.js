@@ -1,4 +1,3 @@
-
 import axios from 'axios';
 import { useEffect, useState} from 'react';
 import './App.css';
@@ -102,28 +101,28 @@ function App() {
   // };
 
   return (
-    <div>
+    <div className="page__container">
+      <div className="content__container">
       <h1>Inspiration Board</h1>
-          <section>
-            <h2>Boards</h2>
-            <ol className="board_list">
-              {boardsElements}
-            </ol>
+          <section className="boards__container">
+            <section>
+              <h2>Boards</h2>
+              <ol className="boards__list">
+                {boardsElements}
+              </ol>
           </section>
-
           <section>
             <h2>Selected Board</h2>
-            <p>{selectedBoard.board_id ? `${selectedBoard.title} - ${selectedBoard.owner}` : 'Select a Board from the Board List!'}</p>
+            <p className='boards__selected'>{selectedBoard.board_id ? `${selectedBoard.title} - ${selectedBoard.owner}` : 'Select a Board from the Board List!'}</p>
           </section>
-
-          <section>
+          <section className="new-board-form__container">
             <h2>Create a New Board</h2>
             {isBoardFormVisible ? <NewBoardForm createNewBoard={createNewBoard}></NewBoardForm> : ''}
-            <span onClick={toggleNewBoardForm} className='hideForm__button'>{isBoardFormVisible ? 'Hide New Board Form' : 'Show New Board Form'}</span>
+            <span onClick={toggleNewBoardForm} className='new-board-form__toggle-btn'>{isBoardFormVisible ? 'Hide New Board Form' : 'Show New Board Form'}</span>
           </section>
-          <section>
+          </section>
             {selectedBoard.board_id ? <CardList board={selectedBoard}></CardList> : ''}
-          </section>
+      </div>
     </div>
   );
 };

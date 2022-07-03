@@ -11,13 +11,13 @@ const NewCardForm = (props) => {
     };
 
     return (
-        <section>
+        <section className='new-card-form__container'>
             <h2>Create a New Card</h2>
-            <form onSubmit={submitNewCard}>
+            <form onSubmit={submitNewCard} className='new-card-form__form'>
                 <label htmlFor="message">Message</label>
                 <input type="text" name="message" value={message} onChange={handleMessageChange}/>
                 <p>Preview: {message}</p>
-                <input type="Submit"></input>
+                <input type="Submit" className='new-card-form__form-submit-btn'></input>
             </form>
         </section>
     )
