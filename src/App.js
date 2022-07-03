@@ -86,11 +86,19 @@ function App() {
   //   }
   // ]);
 
-  // const [likesCount, setLikesCount] = useState(0);
+  // const [likeCount, setLikeCount] = useState(0);
 
   // const increaseLikes = () => {
   //     console.log(`Inside increaseLikes!`);
-  //     setLikesCount(likesCount + 1);
+  //     let likeCount = 0;
+
+  //     for (const card of cardData) {
+  //       if (card.liked === true) {
+  //         likeCount +=1;
+  //       }
+  //     }
+  //     // setLikeCount(likeCount + 1);
+  //     return likeCount;
   // };
 
   return (
