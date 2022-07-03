@@ -18,22 +18,9 @@ header {
   grid-template-rows: 70% 30%;
 }
 
-.board-wrapper{
-  background-color: rgb(3, 3, 3);
-  padding: 10px;
-  grid-column-start: 1;
-  grid-row-start: 1;
-
-}
-
-.cards-wrapper {
-  background: url('../src/cards-background.jpeg');
-  border: 3mm ridge rgb(160, 167, 166);
+.card-submit-form {
   grid-column-start: 2;
-  grid-row-start: 1;
-  display: flex;
-  flex-flow: row wrap;
-  height: 500px;
+  grid-row-start: 2;
 }
 
 .new-board-form {

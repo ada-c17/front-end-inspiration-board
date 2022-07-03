@@ -1,5 +1,6 @@
 import PropTypes from "prop-types";
 import Card from "./Card";
+import "./CardsList.css";
 
 const CardsList = ({ cards, onClickDeleteCard, onLikeClick }) => {
   const getCardsList = (cards) => {

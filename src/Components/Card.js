@@ -7,11 +7,11 @@ const Card = ({ id, likes_count, message, onLikeClick, onClickDeleteCard }) => {
     <li className="card-container">
       <p className="card-message">{message}</p>
       <div className="emoji-div">
-        <p className="likes-count">{likes_count}</p>
-        <button onClick={() => onLikeClick(id)} className="like-button">
-          ❤️
+        {/* <p className="likes-count">{likes_count}</p> */}
+        <button onClick={() => onLikeClick(id)} className="card-buttons">
+          {likes_count} ❤️
         </button>
-        <button className="delete-button" onClick={() => onClickDeleteCard(id)}>
+        <button className="card-buttons" onClick={() => onClickDeleteCard(id)}>
           ✂️
         </button>
       </div>

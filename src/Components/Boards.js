@@ -17,7 +17,7 @@ const Boards = ({ boards, onClickGetCards }) => {
       );
     });
   };
-  return <ul className="board_list"> {getBoardsList(boards)} </ul>;
+  return <ul className="board-wrapper"> {getBoardsList(boards)} </ul>;
 };
 
 Boards.propTypes = {

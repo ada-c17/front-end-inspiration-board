@@ -4,13 +4,13 @@ import axios from "axios";
 import Boards from "./Components/Boards";
 import NewBoardForm from "./Components/NewBoardForm";
 import CardsList from "./Components/CardsList";
-import CardForm from './Components/CardForm';
+import CardForm from "./Components/CardForm";
 // import { response } from "express";
 
 function App() {
   const [boardsData, setBoards] = useState([]);
   const [cardsData, setCards] = useState([]);
-  const [selectedBoard, setSelectedBoard] = useState(null)
+  const [selectedBoard, setSelectedBoard] = useState(null);
 
   useEffect(() => {
     getBoardsFromAPI();
@@ -50,28 +50,25 @@ function App() {
       .catch((error) => {
         console.log("Can't get cards.", error);
       });
-      // return board_id;
+    // return board_id;
   };
 
-
-
   //creates new card for selected board
-  
-  const createNewCardForSelectedBoard = (data,board_id) => {
 
-    axios.post(`https://inspirational-board.herokuapp.com/boards/${selectedBoard}/cards`, data)
-        .then((response) => {
-          getCardsForBoard(selectedBoard);
-          console.log(response.data);
-         
-        })
-        .catch((error) => {
-          console.log(error, 'create card failed.');
-        })
-  }
-
-
-
+  const createNewCardForSelectedBoard = (data, board_id) => {
+    axios
+      .post(
+        `https://inspirational-board.herokuapp.com/boards/${selectedBoard}/cards`,
+        data
+      )
+      .then((response) => {
+        getCardsForBoard(selectedBoard);
+        console.log(response.data);
+      })
+      .catch((error) => {
+        console.log(error, "create card failed.");
+      });
+  };
 
   const setLikesForCardId = (id) => {
     const newCardsData = cardsData.map((card) => {
@@ -111,7 +108,7 @@ function App() {
       </header>
 
       <div className="container">
-        <div className="board-wrapper">
+        <div>
           <Boards boards={boardsData} onClickGetCards={getCardsForBoard} />
         </div>
         <div>
