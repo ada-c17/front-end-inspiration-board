@@ -35,6 +35,8 @@ function App() {
       });
   }, []);
 
+  //When currently selected board changes use useEffect with selectedBoard state as the dependency to make API call get CARDS from our GET cards enpoint in backend. The more data you have to display on your website, the less you want to store in the front end as state. It would be better to make more API calls for more specific data than to keep a giant nested object of data in the front end.
+
   const getBoardDataAndIndex = (selectedBoard) => {
     let selectedBoardData;
     let boardIndex;
@@ -86,6 +88,8 @@ function App() {
         console.log(error);
       });
   };
+
+  //Calling our API to update all of the data in front end as opposed to updating directly is more expensive(takes more time), but will show the most current data. This a design choice. Setting state directly in the front end with one board is faster, but might give an inconsistent view of list of boards if multiple users are interacting with it at once. You won't see current list of boards unless you refresh the browser.
 
   const getCurrentBoard = (id) => {
     const currentBoard = boardsData.filter((board) => board.boardId === id);
