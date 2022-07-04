@@ -52,7 +52,7 @@ function App() {
       .catch((error) => {
         console.log(error);
       });
-  }, [selectedBoard, boardsData]);
+  }, [selectedBoard, boardsData, selectedCards]);
 
   //When currently selected board changes use useEffect with selectedBoard state as the dependency to make API call get CARDS from our GET cards enpoint in backend. The more data you have to display on your website, the less you want to store in the front end as state. It would be better to make more API calls for more specific data than to keep a giant nested object of data in the front end.
 
@@ -80,7 +80,7 @@ function App() {
           {boardId: response.data.board_id,
           cardId: response.data.card_id,
           message: response.data.message,
-          likesCound: response.data.likes_count}]
+          likesCount: response.data.likes_count}]
         };
         const updatedBoardsData = [...boardsData];
         updatedBoardsData[boardIndex] = updatedBoard;
@@ -128,6 +128,18 @@ function App() {
     }
   };
 
+  const deleteCard = cardId => {
+    console.log('cardId >', cardId)
+    axios.delete(URL + '/cards/' + cardId)
+    .then(response => {
+      console.log("Inside delete, see response cardsData", selectedCards)
+      const newCardList = selectedCards.filter(cardInList => cardInList.card_id !== cardId)
+      console.log("newCardList >", newCardList)
+      setSelectedCards(newCardList)
+    })
+    .catch(error => console.log(error))
+  }
+
   // const onLikeCallback = (cardId) => {
   //   axios
   //   .put(URL + "/cards/" + cardId + "/like", 
@@ -154,7 +166,7 @@ function App() {
       </nav>
       <section className="boards__cards">
       <BoardList boards={boardsData} onSelectBoard={getCurrentBoard} />
-      <CardList selectedCards={selectedCards} boardTitle={boardTitle} />
+      <CardList selectedCards={selectedCards} boardTitle={boardTitle} deleteCard={deleteCard}/>
       </section>
     </main>
   );

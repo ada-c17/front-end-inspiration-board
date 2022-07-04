@@ -9,6 +9,7 @@ const Card = ({
     boardId,
     onLikeCallback,
     onDeleteCallback,
+    deleteCard,
 }) => {
 
     return (
@@ -24,7 +25,7 @@ const Card = ({
             </button>
             <button
                 className="delete"
-                onClick={() => onDeleteCallback(cardId)}
+                onClick={() => deleteCard(cardId)}
             >
             delete
             </button>
