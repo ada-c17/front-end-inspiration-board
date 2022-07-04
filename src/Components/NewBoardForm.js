@@ -24,7 +24,7 @@ const NewBoardForm = (props) => {
 
   return (
     <div className="board-form-container">
-      <h4>Post new card for selected board</h4>
+      <h4>Create new board</h4>
       <form onSubmit={handleSubmissionForm}>
         <table>
           <tr>
