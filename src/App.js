@@ -132,16 +132,15 @@ function App() {
     console.log('cardId >', cardId)
     axios.delete(URL + '/cards/' + cardId)
     .then(response => {
-      console.log("Inside delete, see response cardsData", selectedCards)
       const newCardList = selectedCards.filter(cardInList => cardInList.card_id !== cardId)
-      console.log("newCardList >", newCardList)
       setSelectedCards(newCardList)
     })
     .catch(error => console.log(error))
   }
 
   const addLike = cardId => {
-    axios.put(URL + '/cards/' + cardId + '/like')
+    // axios.put(URL + '/cards/' + cardId + '/like')
+    axios.put(`${URL}/cards/${cardId}/like`)
     .then(response => {
       console.log("response >", response.data)
       const newCardList = selectedCards.map(cardInList => {
