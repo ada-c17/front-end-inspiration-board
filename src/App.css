@@ -13,3 +13,9 @@ nav{
   padding: 2em;
   color: aliceblue;
 }
+
+.boards__cards{
+  display: flex;
+  flex-direction: row;
+  justify-content:flex-start;
+}
