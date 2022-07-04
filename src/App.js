@@ -140,6 +140,19 @@ function App() {
     .catch(error => console.log(error))
   }
 
+  const addLike = cardId => {
+    axios.put(URL + '/cards/' + cardId + '/like')
+    .then(response => {
+      console.log("response >", response.data)
+      const newCardList = selectedCards.map(cardInList => {
+        return cardInList.card_id === cardId ? {...response.data, likesCount: response.data.likes_count+1} : cardInList
+      })
+
+      setSelectedCards(newCardList)
+    })
+    .catch(error => console.log(error))
+  }
+
   // const onLikeCallback = (cardId) => {
   //   axios
   //   .put(URL + "/cards/" + cardId + "/like", 
@@ -166,7 +179,7 @@ function App() {
       </nav>
       <section className="boards__cards">
       <BoardList boards={boardsData} onSelectBoard={getCurrentBoard} />
-      <CardList selectedCards={selectedCards} boardTitle={boardTitle} deleteCard={deleteCard}/>
+      <CardList selectedCards={selectedCards} boardTitle={boardTitle} deleteCard={deleteCard} addLike={addLike}/>
       </section>
     </main>
   );

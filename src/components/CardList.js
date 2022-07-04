@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import Card from './Card';
 import './CardList.css';
 
-const CardList = ({selectedCards, boardTitle, onLikeCallback, onDeleteCallback, deleteCard}) => {
+const CardList = ({selectedCards, boardTitle, onLikeCallback, onDeleteCallback, deleteCard, addLike}) => {
   const cardList = (selectedCards) => {
     return selectedCards.map((card) => {
       return (
@@ -16,6 +16,7 @@ const CardList = ({selectedCards, boardTitle, onLikeCallback, onDeleteCallback, 
           onLikeCallback={onLikeCallback}
           onDeleteCallback={onDeleteCallback}
           deleteCard={deleteCard}
+          addLike={addLike}
         />
       );
     });

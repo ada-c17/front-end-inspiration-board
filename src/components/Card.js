@@ -10,6 +10,7 @@ const Card = ({
     onLikeCallback,
     onDeleteCallback,
     deleteCard,
+    addLike
 }) => {
 
     return (
@@ -19,7 +20,7 @@ const Card = ({
             </p>
             <button
                 className="liked"
-                onClick={() => onLikeCallback(cardId)}
+                onClick={() => addLike(cardId)}
             >
                 {likesCount} ❤️
             </button>
