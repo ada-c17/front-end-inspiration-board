@@ -11,6 +11,7 @@ function App() {
   const [boardsData, setBoards] = useState([]);
   const [cardsData, setCards] = useState([]);
   const [selectedBoard, setSelectedBoard] = useState(null);
+  const [selectedBoardName, setBoardName] = useState(null);
 
   useEffect(() => {
     getBoardsFromAPI();
@@ -50,6 +51,12 @@ function App() {
       .catch((error) => {
         console.log("Can't get cards.", error);
       });
+
+    for (let board of boardsData) {
+      if (board.board_id === board_id) {
+        setBoardName(board.title);
+      }
+    }
     // return board_id;
   };
 
@@ -107,9 +114,17 @@ function App() {
         <h3>Inspirational Boards by Beastly Raptors</h3>
       </header>
 
+      <div className="selected-bord-name">
+        <h4>You selected board "{selectedBoardName}"</h4>
+      </div>
+
       <div className="container">
         <div>
-          <Boards boards={boardsData} onClickGetCards={getCardsForBoard} />
+          <Boards
+            boards={boardsData}
+            selectedBoardId={selectedBoard}
+            onClickGetCards={getCardsForBoard}
+          />
         </div>
         <div>
           <CardsList
@@ -118,11 +133,13 @@ function App() {
             onLikeClick={setLikesForCardId}
           />
         </div>
-        <div className="new-board-form">
-          <NewBoardForm handleSubmission={makeNewBoard} />
-        </div>
-        <div className="card-submit-form">
-          {<CardForm handleFormSubmission={createNewCardForSelectedBoard} />}
+        <div className="forms-container">
+          <div className="new-board-form">
+            <NewBoardForm handleSubmission={makeNewBoard} />
+          </div>
+          <div className="card-submit-form">
+            {<CardForm handleFormSubmission={createNewCardForSelectedBoard} />}
+          </div>
         </div>
       </div>
     </div>

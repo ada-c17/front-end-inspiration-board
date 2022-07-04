@@ -3,15 +3,17 @@ import PropTypes from "prop-types";
 import "./Boards.css";
 import Board from "./Board";
 
-const Boards = ({ boards, onClickGetCards }) => {
+const Boards = ({ boards, selectedBoardId, onClickGetCards }) => {
   const getBoardsList = (boards) => {
     return boards.map((board) => {
+      const isSelected = board.board_id === selectedBoardId;
       return (
         <Board
           key={board.board_id}
           id={board.board_id}
           owner={board.owner}
           title={board.title}
+          isSelectedBoard={isSelected}
           onClickGetCards={onClickGetCards}
         />
       );

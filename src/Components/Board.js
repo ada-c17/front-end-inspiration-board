@@ -2,10 +2,15 @@ import React from "react";
 import PropTypes from "prop-types";
 import "./Board.css";
 
-const Board = ({ id, title, onClickGetCards }) => {
+const Board = ({ id, title, onClickGetCards, isSelectedBoard }) => {
   // console.log("inside the board div");
+
+  let clasName = "single-board";
+  if (isSelectedBoard) {
+    clasName = "single-board-selected";
+  }
   return (
-    <li className="single-board">
+    <li className={clasName}>
       <button onClick={() => onClickGetCards(id)}>{title}</button>
     </li>
   );

@@ -1,5 +1,6 @@
 import { useState } from "react";
 import PropTypes from "prop-types";
+import "./NewBoardForm.css";
 
 const defaultBoard = { title: "", owner: "" };
 
@@ -22,23 +23,42 @@ const NewBoardForm = (props) => {
   };
 
   return (
-    <form onSubmit={handleSubmissionForm}>
-      <label>Title</label>
-      <input
-        type="text"
-        name="title"
-        value={boardData.title}
-        onChange={handleInputForm}
-      />
-      <label>Owner</label>
-      <input
-        type="text"
-        name="owner"
-        value={boardData.owner}
-        onChange={handleInputForm}
-      />
-      <input type="submit" />
-    </form>
+    <div className="board-form-container">
+      <h4>Post new card for selected board</h4>
+      <form onSubmit={handleSubmissionForm}>
+        <table>
+          <tr>
+            <td>
+              <label>Title</label>
+            </td>
+            <td>
+              <input
+                type="text"
+                name="title"
+                value={boardData.title}
+                placeholder="Title of board"
+                onChange={handleInputForm}
+              />
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <label>Owner</label>
+            </td>
+            <td>
+              <input
+                type="text"
+                name="owner"
+                value={boardData.owner}
+                placeholder="Owner of the board"
+                onChange={handleInputForm}
+              />
+            </td>
+          </tr>
+          <input type="submit" value="Submit" />
+        </table>
+      </form>
+    </div>
   );
 };
 
