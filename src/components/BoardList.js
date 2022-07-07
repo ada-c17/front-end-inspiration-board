@@ -29,11 +29,8 @@ const BoardList = (props) => {
   );
 };
 
-// receives array of board objects which contain board title and creator
-// (these board objects should reflect boards in database)
 BoardList.propTypes = {
-  boards: PropTypes.array.isRequired,
-  // function that will execute when user selects a board (should display board)
+  boards: PropTypes.arrayOf(PropTypes.object).isRequired,
   selectBoard: PropTypes.func.isRequired,
 };
 
