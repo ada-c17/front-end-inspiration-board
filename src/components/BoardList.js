@@ -1,21 +1,7 @@
-import React, { useEffect } from "react";
-import axios from "axios";
+import React from "react";
 import PropTypes from "prop-types";
 
 const BoardList = (props) => {
-  // useEffect to re-render component anytime boards is updated
-  // useEffect(() => {
-  //   axios
-  //     .get("http://127.0.0.1:5000/boards")
-  //     .then((response) => {
-  //       console.log("Successfully retrieved boards!");
-  //       console.log(response.data);
-  //     })
-  //     .catch(() => {
-  //       console.log("Error retrieving boards");
-  //     });
-  // }, [props.boards]);
-
   const viewBoard = () => {
     props.selectBoard();
   };
