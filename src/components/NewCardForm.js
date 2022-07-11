@@ -36,7 +36,8 @@ const NewCardForm = ({onAddCard}) => {
           <Form.Group className="mb-3" controlId="formBasicEmail">
             <Form.Label>Message</Form.Label>
             <Form.Control placeholder="Enter message"
-                          className={newCardData.message.length === 0 || newCardData.message.length > 5 ? "input input_more_40" : "input text-muted"}
+                          as="textarea"
+                          className={newCardData.message.length === 0 || newCardData.message.length > 5 ? "input_more_40" : ""}
                           onChange={handleChange}
                           value={newCardData.message}/>
 

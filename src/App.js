@@ -12,8 +12,11 @@ function App() {
   const [selectedBoard, setSelectedBoard] = useState(null);
   const [boardTitle, setBoardTitle] = useState();
   const [selectedCards, setSelectedCards] = useState([])
+  const [like, setLike] = useState(0)
+
 
   const URL = "https://inspo-board-server.herokuapp.com";
+  // const URL = "http://127.0.0.1:5000/"
   useEffect(() => {
     axios
       .get(URL + "/boards")
@@ -52,7 +55,8 @@ function App() {
       .catch((error) => {
         console.log(error);
       });
-  }, [selectedBoard, boardsData, selectedCards]);
+  }, [selectedBoard, boardsData, like]);
+
 
   //When currently selected board changes use useEffect with selectedBoard state as the dependency to make API call get CARDS from our GET cards enpoint in backend. The more data you have to display on your website, the less you want to store in the front end as state. It would be better to make more API calls for more specific data than to keep a giant nested object of data in the front end.
 
@@ -132,42 +136,60 @@ function App() {
     console.log('cardId >', cardId)
     axios.delete(URL + '/cards/' + cardId)
     .then(response => {
+      console.log("delete response", response.data)
       const newCardList = selectedCards.filter(cardInList => cardInList.card_id !== cardId)
       setSelectedCards(newCardList)
     })
     .catch(error => console.log(error))
   }
 
+
   const addLike = cardId => {
-    // axios.put(URL + '/cards/' + cardId + '/like')
-    axios.put(`${URL}/cards/${cardId}/like`)
+    console.log("cardId", cardId)
+    axios.get(URL + "/boards/" + selectedBoard + "/cards")
+    .then(response => {
+      console.log("responseData", response.data.cards)
+      const cardList = response.data.cards.filter(card => card.card_id === cardId)
+
+      axios.put(URL + '/cards/' + cardId + '/like', {likes_count: cardList[0].likes_count + 1})
+    // axios.put(`${URL}/cards/${cardId}/like`, {likes_count: 100})
+    // axios.put(`http://localhost:3000/cards/${cardId}/like`)
     .then(response => {
       console.log("response >", response.data)
       const newCardList = selectedCards.map(cardInList => {
-        return cardInList.card_id === cardId ? {...response.data, likesCount: response.data.likes_count+1} : cardInList
+        return cardInList.card_id === cardId ? {...response.data, likesCount: response.data.likes_count} : cardInList
       })
+      console.log("newCardList", newCardList)
+
+      // const newLike = newCardList.filter(cardLike => cardLike.cardId == cardId )
+      // console.log("newLike", newLike)
+
+      // setLike(newLike.likesCount)
 
       setSelectedCards(newCardList)
     })
     .catch(error => console.log(error))
+
+    })
+    .catch(error => console.log(error))
+   
+    
+
+    // axios.put(URL + '/cards/' + cardId + '/like')
+    // // axios.put(`${URL}/cards/${cardId}/like`, {likes_count: 100})
+    // // axios.put(`http://localhost:3000/cards/${cardId}/like`)
+    // .then(response => {
+    //   console.log("response >", response.data)
+    //   const newCardList = selectedCards.map(cardInList => {
+    //     return cardInList.card_id === cardId ? {...response.data, likesCount: response.data.likes_count} : cardInList
+    //   })
+
+    //   setSelectedCards(newCardList)
+    // })
+    // .catch(error => console.log(error))
   }
 
-  // const onLikeCallback = (cardId) => {
-  //   axios
-  //   .put(URL + "/cards/" + cardId + "/like", 
-  //   {likes_count: selectedCards[getCardIndex(cardId)].likesCount + 1})
-  //   .then((response) => {
-  //     console.log(response.data);
-  //     const updatedCardsData = [...selectedCards];
-  //     updatedCardsData[getCardIndex(cardId)] = {...updatedCardsData[getCardIndex(cardId)], likesCount: updatedCardsData[getCardIndex(cardId).likesCount + 1};
-  //     setSelectedCards(updatedCardsData);
-  //     console.log(response);
-  //     console.log(selectedCards);
-  //   })
-  //   .catch((error) => {
-  //     console.log(error);
-  //   });
-  // }
+  
 
   return (
     <main className="App">
