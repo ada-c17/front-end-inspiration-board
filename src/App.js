@@ -1,21 +1,16 @@
-import './App.css';
+import "./App.css";
 
-function App() {
-// State: what file should it be? app
-  // can there be more than one state?
+const App = () => {
+    // State: what file should it be? app
+    // can there be more than one state?
 
-  return (
-  
     // <section>
     //   <Navigation>
     //   </Navigation>
-
     //   <Board>
     //   </Board>
-
     // </section>
-
-  );
-}
+    return <div>Hello World</div>;
+};
 
 export default App;
