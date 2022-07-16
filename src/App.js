@@ -31,18 +31,24 @@ function App() {
         console.log("Oh no!!!");
       });
   };
+
   const deleteBoard = (boardID) => {
-    axios
-      .delete(
-        `https://inspiration-from-otterspace.herokuapp.com/boards/${boardID}`
-      )
-      .then((response) => {
-        console.log("Deleted board");
-        getBoardsFromAPI();
-      })
-      .catch((error) => {
-        console.log("couldn't delete board");
-      });
+    const confirm = window.confirm(
+      "Are you sure you wish to delete the Space?"
+    );
+    if (confirm) {
+      axios
+        .delete(
+          `https://inspiration-from-otterspace.herokuapp.com/boards/${boardID}`
+        )
+        .then((response) => {
+          console.log("Deleted board");
+          getBoardsFromAPI();
+        })
+        .catch((error) => {
+          console.log("couldn't delete board");
+        });
+    }
   };
 
   return (
