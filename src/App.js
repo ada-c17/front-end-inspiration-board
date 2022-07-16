@@ -23,7 +23,7 @@ function App() {
 
   const getBoardsFromAPI = () => {
     axios
-      .get("https://inspiration-from-otterspace.herokuapp.com/boards")
+      .get("/boards")
       .then((response) => {
         setBoards(response.data);
       })
@@ -33,14 +33,13 @@ function App() {
   };
 
   const deleteBoard = (boardID) => {
+    const board_name = boards.find((x) => x.id === boardID).title;
     const confirm = window.confirm(
-      "Are you sure you wish to delete the Space?"
+      `Are you sure you wish to delete the Space ${board_name}?`
     );
     if (confirm) {
       axios
-        .delete(
-          `https://inspiration-from-otterspace.herokuapp.com/boards/${boardID}`
-        )
+        .delete(`/boards/${boardID}`)
         .then((response) => {
           console.log("Deleted board");
           getBoardsFromAPI();
