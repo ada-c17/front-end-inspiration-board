@@ -21,7 +21,7 @@ test("full app rendering/navigating'", async () => {
   expect(screen.getByText(/Add New Space/i)).toBeInTheDocument();
 });
 
-test("landing on a board page", () => {
+test("landing on a board page", async () => {
   const history = createMemoryHistory();
   history.push("/4");
   render(
@@ -29,5 +29,5 @@ test("landing on a board page", () => {
       <App />
     </Router>
   );
-  // expect(screen.getByText(/reference/i)).toBeInTheDocument();
+  expect(screen.getByText(/belongs/i)).toBeInTheDocument();
 });

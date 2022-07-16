@@ -6,6 +6,7 @@ const default_board = { title: "", owner: "" };
 const NewBoardForm = () => {
   const [boardData, setBoardData] = useState(default_board);
   const [message, setMessage] = useState("");
+  const [quote, setQuote] = useState("");
 
   const makeNewBoard = (data) => {
     axios
@@ -49,7 +50,24 @@ const NewBoardForm = () => {
 
       setMessage(`Space ${boardData.title} was created by ${boardData.owner}`);
       makeNewBoard(boardData);
+
+      onGetQuote();
     }
+  };
+
+  const onGetQuote = () => {
+    axios
+      .get(
+        "https://zenquotes.io/api/random/9cb78bb6438d8736d47428af7d09b8dbd1906ea8",
+        {}
+      )
+      .then((response) => {
+        setQuote(response.data.q);
+        console.log(response.data);
+      })
+      .catch((error) => {
+        console.log("Oh no!!!");
+      });
   };
 
   return (
@@ -78,6 +96,8 @@ const NewBoardForm = () => {
         <input type="submit" value="Add" />
       </form>
       <p>{message}</p>
+
+      <p>{quote}</p>
     </>
   );
 };

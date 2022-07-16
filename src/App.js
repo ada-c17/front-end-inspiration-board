@@ -7,11 +7,11 @@ import axios from "axios";
 import Otter from "./data/Otter.jpg";
 import BoardList from "./components/BoardList";
 import laugh from "./data/Laugh.mp3";
+import Story from "./components/Story";
 
 function App() {
   const [boards, setBoards] = useState([]);
   const [showBoardList, setShowResults] = useState(false);
-  const [quote, setQuote] = useState("");
 
   const [play] = useSound(laugh);
 
@@ -45,21 +45,6 @@ function App() {
       });
   };
 
-  const onGetMessage = () => {
-    axios
-      .get(
-        "https://zenquotes.io/api/random/9cb78bb6438d8736d47428af7d09b8dbd1906ea8",
-        {}
-      )
-      .then((response) => {
-        setQuote(response.data.q);
-        console.log(response.data);
-      })
-      .catch((error) => {
-        console.log("Oh no!!!");
-      });
-  };
-
   return (
     <div className="App">
       <img
@@ -70,18 +55,17 @@ function App() {
         onClick={play}
       ></img>
       <h1>Inspiration from the OtterSpace</h1>
-      <button onClick={onGetMessage}>
-        Get the message from the OtterSpace
-      </button>
-      <div>{quote}</div>
+
       <input
         type="submit"
-        value="Show/Hide the List of Spaces"
+        value="Story / Spaces"
         onClick={onClickShowBoardlist}
       />
       {showBoardList ? (
         <BoardList boards={boards} deleteBoard={deleteBoard} />
-      ) : null}
+      ) : (
+        <Story />
+      )}
 
       <Link to="/new">Add New Space</Link>
       <footer>
