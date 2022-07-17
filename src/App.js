@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import './App.css';
 import BoardList from './components/BoardList';
+import NewBoardForm from './components/NewBoardForm';
 import boardData from './data/boardData.json';
 
 const App = () => {
@@ -27,6 +28,7 @@ const App = () => {
       </header>
       <main>
         <h2>Selected Board: {boardTitle}</h2>
+        <NewBoardForm />
         <BoardList
           boardData={boardData}
           displayBoardTitle={displayBoardTitle}
