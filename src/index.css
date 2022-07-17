@@ -4,7 +4,6 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  /* src: local('MyFont'), url(data/Fonts/spacefont.woff2) format('woff2'); */
   background-color: black;
   color:white;
   min-height: 100vh;
