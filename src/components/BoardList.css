@@ -1,0 +1,7 @@
+.board-list {
+    background-color: red;
+    width: 500px;
+    align-self: center;
+    border: 1px solid black;
+    justify-content: center;
+}
