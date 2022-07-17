@@ -1,10 +1,19 @@
-import React from "react";
+import React, { useState } from "react";
 import "./BoardList.css";
 import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
 
 const BoardList = (props) => {
   props.boards.sort((a, b) => a.title.localeCompare(b.title));
+  // const [showInput, setShowInput] = useState(false);
+
+  // const handleEditing = () => setShowInput(true);
+
+  // const handleUpdatedDone = (event) => {
+  //   if (event.key === "Enter") {
+  //     setShowInput(false);
+  //   }
+  // };
 
   return (
     <div>
@@ -21,6 +30,19 @@ const BoardList = (props) => {
             >
               X
             </button>
+            {/* <input
+              type="text"
+              style={editMode}
+              className={textInput}
+              value={title}
+              onChange={(e) => {
+                props.setUpdate(e.target.value, id);
+              }}
+              onKeyDown={this.handleUpdatedDone}
+            />
+            <button id="edit-board" onClick={handleEditing}>
+              ✎ ✐
+            </button> */}
           </li>
         ))}
       </ul>

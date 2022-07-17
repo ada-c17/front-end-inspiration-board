@@ -50,6 +50,18 @@ function App() {
     }
   };
 
+  const editBoard = (boardID, new_title) => {
+    axios
+      .put(`/boards/${boardID}`, { title: new_title })
+      .then((response) => {
+        console.log("Updated board");
+        getBoardsFromAPI();
+      })
+      .catch((error) => {
+        console.log("couldn't delete board");
+      });
+  };
+
   return (
     <div className="App">
       <img
@@ -67,7 +79,11 @@ function App() {
         onClick={onClickShowBoardlist}
       />
       {showBoardList ? (
-        <BoardList boards={boards} deleteBoard={deleteBoard} />
+        <BoardList
+          boards={boards}
+          deleteBoard={deleteBoard}
+          editBoard={editBoard}
+        />
       ) : (
         <Story />
       )}
