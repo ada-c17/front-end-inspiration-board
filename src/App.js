@@ -21,6 +21,12 @@ const App = () => {
   const displayBoardTitle = (title) => {
     setBoardTitle(title);
   };
+
+  // sending API call to submit new BoardForm
+  const addNewBoard = () => {
+    console.log('Adding new Board!');
+  };
+
   return (
     <div>
       <header>
@@ -28,7 +34,7 @@ const App = () => {
       </header>
       <main>
         <h2>Selected Board: {boardTitle}</h2>
-        <NewBoardForm />
+        <NewBoardForm addNewBoard={addNewBoard} />
         <BoardList
           boardData={boardData}
           displayBoardTitle={displayBoardTitle}
