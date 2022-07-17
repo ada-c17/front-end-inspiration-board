@@ -2,17 +2,20 @@ import React from "react";
 import "./Card.css";
 import PropTypes from "prop-types";
 
-// import { useState } from "react";
-
 const Card = ({
   id,
   message,
+  color,
   likesCount,
   setLikesCountCallBack,
   deleteCardCallBack,
 }) => {
+  console.log(color);
+  if (color == null) {
+    color = "#b3b3fc";
+  }
   return (
-    <div className="card">
+    <div className="card" style={{ backgroundColor: color }}>
       <p>{message}</p>
       <button id="delete" onClick={() => deleteCardCallBack(id)}>
         x
@@ -20,7 +23,7 @@ const Card = ({
       <button id="stars" onClick={() => setLikesCountCallBack(id)}>
         ⭐️
       </button>
-      <p>{likesCount}</p>
+      <span> {likesCount}</span>
     </div>
   );
 };

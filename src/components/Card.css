@@ -2,7 +2,7 @@
     position:relative;
     cursor: move;
     color: black;
-    background-color:lightsteelblue;
+    /* background-color:lightsteelblue; */
     max-width: 215px;
     overflow-wrap: break-word;
     border-radius: 5px;

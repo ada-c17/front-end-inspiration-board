@@ -7,7 +7,7 @@ import axios from "axios";
 import CardList from "./CardList";
 import CardForm from "./CardForm";
 
-const Board = (props) => {
+const Board = () => {
   let params = useParams();
 
   const [boardData, setBoardData] = useState({
@@ -25,16 +25,15 @@ const Board = (props) => {
       })
       .catch((error) => {
         console.log("couldn't call api");
-        console.log(error);
       });
   };
 
   useEffect(() => {
     getBoardDatafromAPI(params.id);
-  }, [params.id, boardData]);
+  }, [params.id]);
+  //! I added boardData and then its started to rerender Card nonstop
 
   const setCardLikesCount = (id) => {
-    console.log("inside setCardLikesCount", id);
     const updatedBoardData = boardData;
     const cardsList = [...updatedBoardData.cards];
     let targetCard;
@@ -47,7 +46,11 @@ const Board = (props) => {
       .put(`/cards/${id}/like`)
       .then((response) => {
         targetCard.likes_count += 1;
+
+        // !!!!!why this setBoardData do not rerender the board component?
         setBoardData(updatedBoardData);
+        // if it will rerender we do not need to call getBoardDataFromAPI
+        getBoardDatafromAPI(params.id);
       })
       .catch((error) => {
         console.log("couldn't add like");
@@ -55,12 +58,10 @@ const Board = (props) => {
   };
 
   const deleteCard = (id) => {
-    console.log("delete", id);
     axios
       .delete(`/cards/${id}`)
       .then((response) => {
         const newCards = boardData.cards.filter((card) => card.id !== id);
-        console.log(newCards);
         setBoardData(newCards);
       })
       .catch((error) => {
@@ -69,11 +70,9 @@ const Board = (props) => {
   };
 
   const makeNewCard = (data) => {
-    console.log(data);
     axios
       .post(`/boards/${params.id}/cards`, data)
       .then((response) => {
-        console.log(response);
         getBoardDatafromAPI(params.id);
       })
       .catch((error) => {

@@ -13,7 +13,6 @@ const NewBoardForm = () => {
       .post("/boards", data)
       .then((response) => {
         console.log("created board");
-        console.log(response);
       })
       .catch(() => {
         console.log("couldn't create board");
@@ -31,7 +30,6 @@ const NewBoardForm = () => {
   };
 
   const handleFormSubmission = (event) => {
-    console.log(boardData);
     event.preventDefault();
     if (boardData.title === "" || boardData.owner === "") {
       setMessage("Please enter both title and owner");
@@ -63,7 +61,6 @@ const NewBoardForm = () => {
       )
       .then((response) => {
         setQuote(response.data.q);
-        console.log(response.data);
       })
       .catch((error) => {
         console.log("Oh no!!!");

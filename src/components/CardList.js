@@ -9,6 +9,7 @@ const CardList = ({ data, deleteCardCallBack, setLikesCountCallBack }) => {
       key={card.id}
       id={card.id}
       message={card.message}
+      color={card.color}
       likesCount={card.likes_count}
       setLikesCountCallBack={setLikesCountCallBack}
       deleteCardCallBack={deleteCardCallBack}
