@@ -1,6 +1,6 @@
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont,'MyFont',
+  font-family: 'MyFont',
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -15,7 +15,7 @@ body {
 
 @font-face {
   font-family: 'MyFont';
-  src: local('MyFont'), url(./data/Fonts/spacefont.woff2) format('woff2');
+  src: local('MyFont'), url(./fonts/spacefont.woff2) format('woff2');
 }
 
 

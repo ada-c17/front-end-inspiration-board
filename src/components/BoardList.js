@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import "./BoardList.css";
 import PropTypes from "prop-types";
 import { Link } from "react-router-dom";

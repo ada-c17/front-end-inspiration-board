@@ -54,7 +54,7 @@ function App() {
     axios
       .put(`/boards/${boardID}`, { title: new_title })
       .then((response) => {
-        console.log("Updated board");
+        console.log("Board successfully updated");
         getBoardsFromAPI();
       })
       .catch((error) => {

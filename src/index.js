@@ -5,6 +5,7 @@ import "./index.css";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 import Board from "./components/Board.js";
+import "./fonts/spacefont.woff2";
 
 import NewBoardForm from "./components/NewBoardForm.js";
 
