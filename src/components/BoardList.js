@@ -1,40 +1,85 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "./BoardList.css";
 import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
 import EditBoardForm from "./EditBoardForm";
+import axios from "axios";
 
 let edit_board = {};
-const BoardList = (props) => {
-  props.boards.sort((a, b) => a.title.localeCompare(b.title));
+const BoardList = () => {
+  const [boards, setBoards] = useState([]);
+
+  useEffect(() => {
+    getBoardsFromAPI();
+  }, []);
+
+  const getBoardsFromAPI = () => {
+    axios
+      .get("/boards")
+      .then((response) => {
+        setBoards(response.data);
+      })
+      .catch((error) => {
+        console.log("Oh no!!!");
+      });
+  };
+
+  const deleteBoard = (boardID) => {
+    const board_name = boards.find((x) => x.id === boardID).title;
+    const confirm = window.confirm(
+      `Are you sure you wish to delete the Space ${board_name}?`
+    );
+    if (confirm) {
+      axios
+        .delete(`/boards/${boardID}`)
+        .then((response) => {
+          console.log("Deleted board");
+          getBoardsFromAPI();
+        })
+        .catch((error) => {
+          console.log("couldn't delete board");
+        });
+    }
+  };
+
+  const editBoard = (boardID, new_title) => {
+    axios
+      .put(`/boards/${boardID}`, { title: new_title })
+      .then((response) => {
+        console.log("Board successfully updated");
+        getBoardsFromAPI();
+      })
+      .catch((error) => {
+        console.log("couldn't delete board");
+      });
+  };
+
+  boards.sort((a, b) => a.title.localeCompare(b.title));
 
   const [showInput, setShowInput] = useState(true);
   const handleEditing = (id) => {
     setShowInput(false);
-    edit_board = props.boards.find((x) => x.id === id);
+    edit_board = boards.find((x) => x.id === id);
     console.log(edit_board);
   };
 
   const onEditSubmission = (board) => {
     // I should change it to true only after response from the database
     setShowInput(true);
-    props.editBoard(board.id, board.title);
+    editBoard(board.id, board.title);
   };
 
   return (
     <div>
       {showInput ? (
         <ul className="list">
-          {props.boards.map((item) => (
+          {boards.map((item) => (
             <li key={item.id} className="list-item">
               <div>
                 <Link to={`${item.id}`} style={{ cursor: "pointer" }}>
                   {item.title}
                 </Link>
-                <button
-                  id="delete-board"
-                  onClick={() => props.deleteBoard(item.id)}
-                >
+                <button id="delete-board" onClick={() => deleteBoard(item.id)}>
                   X
                 </button>
                 <span>

@@ -26,9 +26,8 @@
     font-size: 1.3em;
     background-color: transparent;
     overflow: visible;
-    padding: 0.5em;
-    margin-right: 2em;
-    margin-left:2em;
+    padding: 0.2em;
+    margin: 1.5em;
   }
   
   input:focus {

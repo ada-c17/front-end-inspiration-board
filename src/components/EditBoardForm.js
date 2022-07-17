@@ -1,4 +1,5 @@
 import { useState } from "react";
+import "./BoardList.css";
 
 const EditBoardForm = (props) => {
   const [boardData, setBoardData] = useState(props.board);
@@ -34,13 +35,14 @@ const EditBoardForm = (props) => {
   return (
     <>
       <form onSubmit={handleFormSubmission}>
+        <div>Change the name of the Space here:</div>
         <input
           name="title"
           type="text"
           className="title"
           value={boardData.title}
           onChange={handleFormInput}
-          placeholder={boardData.title}
+          // placeholder={boardData.title}
         />
         <input type="submit" value="Submit" />
       </form>

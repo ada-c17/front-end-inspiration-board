@@ -4,6 +4,14 @@
     margin-left: 50px;
 
 }
-#board_title{
- color:bisque
+#board-owner{
+ color:darkseagreen;
+
 }
+
+#board_title{
+    color:cadetblue;
+    font-size: 2em;
+
+}
+

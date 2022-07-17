@@ -29,7 +29,7 @@ const CardForm = (props) => {
       <input
         name="message"
         type="text"
-        placeholder="Enter Your Message "
+        placeholder="Enter New Message "
         value={cardData.message}
         onChange={handleFormInput}
       />
