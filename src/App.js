@@ -7,6 +7,7 @@ import axios from "axios";
 import Otter from "./data/Otter.jpg";
 import BoardList from "./components/BoardList";
 import laugh from "./data/Laugh.mp3";
+import Story from "./components/Story";
 
 function App() {
   const [boards, setBoards] = useState([]);
@@ -22,7 +23,7 @@ function App() {
 
   const getBoardsFromAPI = () => {
     axios
-      .get("https://inspiration-from-otterspace.herokuapp.com/boards")
+      .get("/boards")
       .then((response) => {
         setBoards(response.data);
       })
@@ -30,18 +31,23 @@ function App() {
         console.log("Oh no!!!");
       });
   };
+
   const deleteBoard = (boardID) => {
-    axios
-      .delete(
-        `https://inspiration-from-otterspace.herokuapp.com/boards/${boardID}`
-      )
-      .then((response) => {
-        console.log("Deleted board");
-        getBoardsFromAPI();
-      })
-      .catch((error) => {
-        console.log("couldn't delete board");
-      });
+    const board_name = boards.find((x) => x.id === boardID).title;
+    const confirm = window.confirm(
+      `Are you sure you wish to delete the Space ${board_name}?`
+    );
+    if (confirm) {
+      axios
+        .delete(`/boards/${boardID}`)
+        .then((response) => {
+          console.log("Deleted board");
+          getBoardsFromAPI();
+        })
+        .catch((error) => {
+          console.log("couldn't delete board");
+        });
+    }
   };
 
   return (
@@ -57,12 +63,14 @@ function App() {
 
       <input
         type="submit"
-        value="Show/Hide the List of Spaces"
+        value="Story / Spaces"
         onClick={onClickShowBoardlist}
       />
       {showBoardList ? (
         <BoardList boards={boards} deleteBoard={deleteBoard} />
-      ) : null}
+      ) : (
+        <Story />
+      )}
 
       <Link to="/new">Add New Space</Link>
       <footer>

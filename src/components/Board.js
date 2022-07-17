@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
+
 import axios from "axios";
 import CardList from "./CardList";
 import CardForm from "./CardForm";
@@ -17,9 +18,7 @@ const Board = (props) => {
 
   const getBoardDatafromAPI = (id) => {
     axios
-      .get(
-        `https://inspiration-from-otterspace.herokuapp.com/boards/${id}/cards`
-      )
+      .get(`/boards/${id}/cards`)
       .then((response) => {
         setBoardData(response.data);
       })
@@ -31,26 +30,23 @@ const Board = (props) => {
 
   useEffect(() => {
     getBoardDatafromAPI(params.id);
-  }, [params.id]);
+  }, [params.id, boardData]);
+
   const setCardLikesCount = (id) => {
     console.log("inside setCardLikesCount", id);
-    const cardLikes = [...boardData.cards];
+    const updatedBoardData = boardData;
+    const cardsList = [...updatedBoardData.cards];
     let targetCard;
-    for (let card of cardLikes) {
+    for (let card of cardsList) {
       if (card.id === id) {
         targetCard = card;
       }
     }
-
     axios
-      .put(
-        `https://inspiration-from-otterspace.herokuapp.com/cards/${id}/like`,
-        { message: targetCard.message, likesCount: targetCard.likesCount + 1 }
-      )
+      .put(`/cards/${id}/like`)
       .then((response) => {
-        console.log("made it into like button");
-        targetCard.likesCount += 1;
-        setBoardData(targetCard);
+        targetCard.likes_count += 1;
+        setBoardData(updatedBoardData);
       })
       .catch((error) => {
         console.log("couldn't add like");
@@ -60,9 +56,10 @@ const Board = (props) => {
   const deleteCard = (id) => {
     console.log("delete", id);
     axios
-      .delete(`https://inspiration-from-otterspace.herokuapp.com/cards/${id}`)
+      .delete(`/cards/${id}`)
       .then((response) => {
         const newCards = boardData.cards.filter((card) => card.id !== id);
+        console.log(newCards);
         setBoardData(newCards);
       })
       .catch((error) => {
@@ -73,10 +70,7 @@ const Board = (props) => {
   const makeNewCard = (data) => {
     console.log(data);
     axios
-      .post(
-        `https://inspiration-from-otterspace.herokuapp.com/boards/${params.id}/cards`,
-        data
-      )
+      .post(`/boards/${params.id}/cards`, data)
       .then((response) => {
         console.log(response);
         getBoardDatafromAPI(params.id);
