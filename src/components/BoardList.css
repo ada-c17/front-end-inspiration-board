@@ -12,6 +12,8 @@ li{
   }
 
   #delete-board {
+    text-align: left; 
+
     font-size: 1em;
     background-color: transparent;
     color:aqua;
