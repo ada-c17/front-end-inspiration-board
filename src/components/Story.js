@@ -11,7 +11,15 @@ const Story = () => {
         utterly insignificant little blue green planet whose ape- descended life
         forms are so amazingly primitive that they still think digital watches
         are a pretty neat idea. This planet has - or rather had - a problem,
-        which was this: most of the people living on it were
+        which was this: most of the people living on it were mean to the otter
+        species. Everyday they were met with rude remarks and ridicule that was
+        just too much to bear. Until one day, all of the otters finally teamed
+        up and built a rocketship that launched them into space! Once in space,
+        they built an otter colony and vowed to always be kind to each other and
+        inspire one another to be the best version of themselves. They came up
+        with a great idea to create a communial inspiration board where they
+        were able to stick to word by writing encouraging and kind notes to one
+        another in OtterSpace.
       </p>
     </div>
   );
