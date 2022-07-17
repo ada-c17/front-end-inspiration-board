@@ -5,9 +5,10 @@
     grid-row-start: 1;
     display: flex;
     flex-flow: row wrap;
-    height: 500px;
+    height: 400px;
     overflow: scroll;
     padding: auto;
+    /* max-height: inherit; */
 
 
 }

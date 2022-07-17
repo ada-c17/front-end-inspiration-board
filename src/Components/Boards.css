@@ -1,7 +1,7 @@
 .board-wrapper{
     background-color: rgb(3, 3, 3);
     padding: 10px;
-    height: 500px;
+    height: 400px;
     grid-column-start: 1;
     grid-row-start: 1;
     overflow: scroll;
