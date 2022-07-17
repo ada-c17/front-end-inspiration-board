@@ -1,42 +1,77 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import './NewBoardForm.css';
 
 // Default values to set/reset state of the BoardForm
-const newBoardForm = {
+const initialFormValues = {
   title: '',
   owner: '',
 };
 
 const NewBoardForm = (props) => {
-  const [boardForm, setBoardForm] = useState(newBoardForm);
+  const [formValues, setFormValues] = useState(initialFormValues);
+  const [formErrors, setFormErrors] = useState({});
+  const [isSubmit, setIsSubmit] = useState(false);
 
   const handleChange = (e) => {
-    const fieldLabel = e.target.name;
+    const name = e.target.name;
     const value = e.target.value;
-    setBoardForm((oldData) => ({ ...oldData, [fieldLabel]: value }));
+    setFormValues({ ...formValues, [name]: value });
   };
 
   // calls below function when submitted
   const handleSubmit = (e) => {
     e.preventDefault();
-    setBoardForm(newBoardForm);
+    setFormErrors(validateForm(formValues));
+    setIsSubmit(true);
   };
 
-  // state change for submission
+  // whenever formErrors changes, below code triggers
+  useEffect(() => {
+    if (Object.keys(formErrors).length === 0 && isSubmit) {
+      console.log({ formValues });
+      props.addNewBoard();
+      setFormValues(initialFormValues);
+    }
+  }, [formErrors]);
+
+  // function to validate form when submitted
+  const validateForm = (values) => {
+    const errors = {};
+    if (!values.title) {
+      errors.title = 'Title is required!';
+    }
+    if (!values.owner) {
+      errors.owner = 'Owner is required!';
+    }
+    return errors;
+  };
 
   return (
-    <form onSubmit={handleSubmit} className="new-board__form">
-      <div className="new-board__fields">
-        <label>Title: </label>
-        <input name="title" value={boardForm.title} onChange={handleChange} />
-        <label>Owner: </label>
-        <input name="owner" value={boardForm.owner} onChange={handleChange} />
-        <button className="new-board__submit" type="submit">
-          Submit Form
-        </button>
-      </div>
-    </form>
+    <div>
+      <pre>{JSON.stringify(formValues, undefined, 2)}</pre>
+      <form onSubmit={handleSubmit} className="new-board__form">
+        <div className="new-board__fields">
+          <label>Title: </label>
+          <input
+            name="title"
+            value={formValues.title}
+            onChange={handleChange}
+          />
+          <p className="form-errors">{formErrors.title}</p>
+          <label>Owner: </label>
+          <input
+            name="owner"
+            value={formValues.owner}
+            onChange={handleChange}
+          />
+          <p className="form-errors">{formErrors.owner}</p>
+          <button className="new-board__submit" type="submit">
+            Submit Form
+          </button>
+        </div>
+      </form>
+    </div>
   );
 };
 

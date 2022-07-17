@@ -5,11 +5,16 @@
 
 .new-board__fields {
     display: grid;
-    grid-template-columns: 1fr 1fr;
-    width: 350px;
+    grid-template-columns: 1fr 1fr 1fr;
+    width: 500x;
     row-gap: 10px;
 }
 
 .new-board__submit {
     grid-column: span 2;
+}
+
+.form-errors {
+    font-size: x-small;
+    color: red
 }
