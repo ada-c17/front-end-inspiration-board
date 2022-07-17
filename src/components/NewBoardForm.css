@@ -1,0 +1,15 @@
+.new-board__form {
+    display: flex;
+    justify-content: center;;
+}
+
+.new-board__fields {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    width: 350px;
+    row-gap: 10px;
+}
+
+.new-board__submit {
+    grid-column: span 2;
+}

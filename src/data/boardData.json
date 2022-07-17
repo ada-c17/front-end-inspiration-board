@@ -1,0 +1,24 @@
+[
+    {
+        "board_id": 1,
+        "title": "Happy Board List",
+        "owner": "Anne",
+        "cards": [
+            {
+                "card_id": 1,
+                "message": "I like Pie!",
+                "likes": 0}
+            ]
+    },
+    {
+        "board_id": 2,
+        "title": "Shower Thoughts",
+        "owner": "Dog",
+        "cards": [
+            {
+                "card_id": 1,
+                "message": "Food please!",
+                "likes": 5}
+            ]
+    }
+]

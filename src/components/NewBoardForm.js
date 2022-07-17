@@ -1,11 +1,42 @@
-import React from "react";
+import React, { useState } from 'react';
+import PropTypes from 'prop-types';
+import './NewBoardForm.css';
 
-const NewBoardForm = () => {
+// Default values to set/reset state of the BoardForm
+const newBoardForm = {
+  title: '',
+  owner: '',
+};
+
+const NewBoardForm = (props) => {
+  const [boardForm, setBoardForm] = useState(newBoardForm);
+
+  const handleChange = (e) => {
+    const fieldLabel = e.target.name;
+    const value = e.target.value;
+    setBoardForm((oldData) => ({ ...oldData, [fieldLabel]: value }));
+  };
+
+  // calls below function when submitted
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    setBoardForm(newBoardForm);
+  };
+
+  // state change for submission
+
   return (
-    <>
-      <h1>Create A New Board</h1>
-      Board Title: text box Owner Name: text box Submit button
-    </>
+    <form onSubmit={handleSubmit} className="new-board__form">
+      <div className="new-board__fields">
+        <label>Title: </label>
+        <input name="title" value={boardForm.title} onChange={handleChange} />
+        <label>Owner: </label>
+        <input name="owner" value={boardForm.owner} onChange={handleChange} />
+        <button className="new-board__submit" type="submit">
+          Submit Form
+        </button>
+      </div>
+    </form>
   );
 };
 
