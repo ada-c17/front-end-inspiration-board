@@ -17,7 +17,18 @@ li{
     color:aqua;
     border: none;
   }
+
+  #edit-board {
+    font-size: 1.4em;
+    background-color: transparent;
+    color:aqua;
+    border: none;
+  }
   
   #delete-board:hover {
     color: rgb(255, 55, 55);
+  }
+
+  #edit-board:hover {
+    color: rgb(221, 35, 190);
   }

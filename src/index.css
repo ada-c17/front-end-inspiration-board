@@ -1,10 +1,9 @@
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont,'MyFont',
+  font-family: -apple-system, BlinkMacSystemFont, 'SpaceFont',
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  /* src: local('MyFont'), url(data/Fonts/spacefont.woff2) format('woff2'); */
   background-color: black;
   color:white;
   min-height: 100vh;
@@ -14,10 +13,9 @@ body {
 }
 
 @font-face {
-  font-family: 'MyFont';
-  src: local('MyFont'), url(./data/Fonts/spacefont.woff2) format('woff2');
+  font-family: 'SpaceFont';
+  src: local('SpaceFont'), url(./fonts/spacefont.woff2) format('woff2');
 }
-
 
 a {
 color:white;
