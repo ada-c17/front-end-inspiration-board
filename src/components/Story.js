@@ -18,8 +18,8 @@ const Story = () => {
         they built an otter colony and vowed to always be kind to each other and
         inspire one another to be the best version of themselves. They came up
         with a great idea to create a communial inspiration board where they
-        were able to stick to word by writing encouraging and kind notes to one
-        another in OtterSpace.
+        were able to stick to their word by writing encouraging and kind notes
+        to one another in OtterSpace.
       </p>
     </div>
   );
