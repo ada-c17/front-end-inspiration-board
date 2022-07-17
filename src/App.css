@@ -4,6 +4,7 @@
 }
 
 
+
 h1{
   font-family: "SpaceFont";
 }
@@ -18,7 +19,6 @@ img {
   margin-top: 20px;
   background-image: url("./data/Earth.png");
   background-size: cover;
-  color:white;
   height:300px;
   width:300px;
   z-index: 2;

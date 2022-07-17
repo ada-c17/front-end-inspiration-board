@@ -33,7 +33,9 @@ function App() {
       />
       {showBoardList ? <BoardList /> : <Story />}
 
-      <Link to="/new">Add New Space</Link>
+      <Link to="/new">
+        <div id="add-new-space">Add New Space</div>
+      </Link>
       <footer>
         &copy; 2022 Ada Developers Academy ✨ by Coders from the OtterSpace ✨
         Doina ✨ Fena ✨ Marlyn ✨ Nina ✨

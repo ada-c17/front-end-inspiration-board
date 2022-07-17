@@ -26,13 +26,18 @@ body {
 }
 
 a {
-color:white;
+color:blanchedalmond;
 text-decoration: none;
 padding: 14px 25px;
 }
 
+#add-new-space{
+  color:chocolate;
+  font-size: 1.6em;
+}
+
 a:hover {
-  color: hotpink;
+  color:firebrick;
   text-decoration: underline;
 
 }
@@ -47,7 +52,7 @@ a:hover {
   margin-top: 20px;
   background-image: url("./data/Earth.png");
   background-size: cover;
-  color:white;
+  color:greenyellow;
   height:170px;
   width:170px;
   z-index: 2;
