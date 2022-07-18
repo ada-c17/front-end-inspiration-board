@@ -137,7 +137,13 @@ function App() {
           <h2>
             {selectedBoard ? `Cards for Board "${selectedBoardName}"` : "Cards"}
           </h2>
-          <button onClick={sortCardsByLikes}>sort by likes </button>
+          {selectedBoard ? (
+            <button className="sort-button" onClick={sortCardsByLikes}>
+              Sort by ❤️
+            </button>
+          ) : (
+            ""
+          )}
           <CardsList
             cards={cardsData}
             onClickDeleteCard={deleteCard}

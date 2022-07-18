@@ -55,8 +55,8 @@ h2 {
   font-size: 30px;
   width: fit-content;
   background: rgba(255, 255, 255, 0.688);
-
   color: #a45e60;
+  display: inline;
 }
 
 h3 {
@@ -77,4 +77,12 @@ h3 {
   border-style: inset;
   background: rgba(255, 255, 255, 0.507);
   cursor: pointer;
+}
+
+.sort-button {
+  display: inline;
+  background-color: #a45e60;
+  font-size: 18px;
+  border-radius: 4px;
+  margin: 0px;
 }
