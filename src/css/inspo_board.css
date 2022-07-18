@@ -26,6 +26,11 @@ button{
 	display: inline-block;
 }
 
+button:hover{
+	background-color: #789060; /* light-ish green */
+	color: white;
+}
+
 h1 {
 	font-size: 36px;
 	text-align:center;
@@ -44,6 +49,13 @@ h1 {
 	width:10%;
 }
 
+.board-button-grey { 
+	background-color: gray;
+}
+.board-button-grey:hover{
+	background-color: gray;
+}
+
 .message-input {
 	font-family: 'Montserrat', sans-serif;
 	height:40px;
@@ -56,6 +68,12 @@ h1 {
 .message-button{
 	width:10%;
 
+}
+.message-button-grey { 
+	background-color: gray;
+}
+.message-button-grey:hover{
+	background-color: gray;
 }
 .container {
 	display: grid;
@@ -107,14 +125,6 @@ h1 {
 	height: auto;
 
 }
-.collapsed {
-	grid-area: 2 / 1 / 3 / 8;
-	background-color: #F5F5F5; /* light gray */
-	height: 0px;
-
-}
-
-
 .board-content {
 	grid-area: 3 / 1 / 4 / 8;
 	margin-left:20%;

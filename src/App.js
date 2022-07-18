@@ -3,6 +3,7 @@ import axios from "axios";
 import Board from "./components/Board";
 import BoardDropdown from "./components/BoardDropdown";
 import "./css/inspo_board.css";
+import AddBoard from "./components/AddBoard";
 
 const kBaseUrl = "https://mission-inspirational-2.herokuapp.com";
 
@@ -29,6 +30,7 @@ function App() {
   const [boards, setBoards] = useState([]); // list of all the board dicts
   const [boardOption, setBoardOption] = useState("Choose a Board");
   const [chosenBoardData, setChosenBoardData] = useState({ cards: [] });
+  const [showBoardForm, setShowBoardForm] = useState(false);
 
   const showChosenBoard = (boardTitle) => {
     setBoardOption(boardTitle);
@@ -76,26 +78,17 @@ function App() {
           />
         </section>
         <section className="add-menu-button">
-          <button>Add Board</button>
+          <button onClick={() => setShowBoardForm(!showBoardForm)}>
+            Add Board
+          </button>
         </section>
-        <section className="collapse">
-          <input className="board-input" type="text" placeholder="Title" />
-          <input className="board-input" type="text" placeholder="Owner" />
-          <button className="board-button">Add</button>
-        </section>
+        {showBoardForm && <AddBoard />}
         <section className="board-content">
           <Board
             cardLike={increaseLike}
             boardTitle={boardOption}
             board={chosenBoardData}
           />
-          <section className="card-display">
-            <div className="message">
-              <p className="message-text">You can do it!</p>
-              <p className="likes">Likes: 0</p>
-              <button className="like-button">👍</button>
-            </div>
-          </section>
         </section>
       </section>
       <section className="add-message">
