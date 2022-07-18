@@ -12,9 +12,11 @@ const cardApiToJson = (card) => {
 };
 
 const increaseLike = async (id) => {
+  console.log("increase like entered");
   // needs to receive the ID of the card that was liked with button click
   try {
     const response = await axios.patch(`${kBaseUrl}/cards/${id}/like`);
+    console.log(response.data);
     return cardApiToJson(response.data);
   } catch (error) {
     console.log(error);
@@ -87,12 +89,13 @@ function App() {
             boardTitle={boardOption}
             board={chosenBoardData}
           />
-          {/* <section className="card-display">
+          <section className="card-display">
             <div className="message">
               <p className="message-text">You can do it!</p>
               <p className="likes">Likes: 0</p>
               <button className="like-button">👍</button>
-            </div> */}
+            </div>
+          </section>
         </section>
       </section>
       <section className="add-message">
