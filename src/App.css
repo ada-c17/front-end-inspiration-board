@@ -1,11 +1,14 @@
 .App {
   text-align: center;
-  
+  background-color: red;
 }
 
 h1{
   font-family: "SpaceFont";
 }
+
+
+
 
 
 img {
@@ -33,6 +36,7 @@ img {
   transform: rotate(30deg);
 
 }
+
 
 footer {
   position: absolute;

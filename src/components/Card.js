@@ -20,7 +20,7 @@ const Card = ({
       <button id="stars" onClick={() => setLikesCountCallBack(id)}>
         ⭐️
       </button>
-      <p>{likesCount}</p>
+      <p className="likes-count">{likesCount}</p>
     </div>
   );
 };

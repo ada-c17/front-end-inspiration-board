@@ -1,9 +1,8 @@
 
 .board{
-    text-align: center;
-    margin-left: 50px;
 
 }
-#board_title{
- color:bisque
+#board_title, #board-owner{
+    color:bisque;
+    text-align: center;
 }

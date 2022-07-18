@@ -5,6 +5,7 @@ import { Link } from "react-router-dom";
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import Otter from "./data/Otter.jpg";
+import Galaxy from "./data/Tealspace.jpg";
 import BoardList from "./components/BoardList";
 import laugh from "./data/Laugh.mp3";
 import Story from "./components/Story";
@@ -71,6 +72,7 @@ function App() {
         className="Otter"
         onClick={play}
       ></img>
+
       <h1>Inspiration from the OtterSpace</h1>
 
       <input

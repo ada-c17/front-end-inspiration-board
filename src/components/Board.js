@@ -5,6 +5,7 @@ import { useParams } from "react-router-dom";
 import axios from "axios";
 import CardList from "./CardList";
 import CardForm from "./CardForm";
+import "./Board.css";
 
 const Board = (props) => {
   let params = useParams();
@@ -55,10 +56,12 @@ const Board = (props) => {
 
   const deleteCard = (id) => {
     console.log("delete", id);
+    const delUpdateBoard = boardData;
+    const delCard = [...delUpdateBoard.cards];
     axios
       .delete(`/cards/${id}`)
       .then((response) => {
-        const newCards = boardData.cards.filter((card) => card.id !== id);
+        const newCards = delCard.cards.filter((card) => card.id !== id);
         console.log(newCards);
         setBoardData(newCards);
       })
