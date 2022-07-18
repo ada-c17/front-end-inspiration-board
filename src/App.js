@@ -35,6 +35,7 @@ function App() {
   useEffect(fetchBoards, []);
 
   const fetchCardsForBoard = (id) => {
+    console.log(id)
     axios
       .get(`${BOARDS_URL}/${id}/cards`)
       .then((res) => {
@@ -104,9 +105,9 @@ function App() {
 
   const addCard = (cardInfo) => {
     axios
-      .post(BOARDS_URL, cardInfo)
+      .post(CARDS_URL, cardInfo)
       .then((response) => {
-        fetchCardsForBoard();
+        fetchCardsForBoard(cardInfo.board_id);
         console.log(response);
       })
       .catch((error) => {
