@@ -35,7 +35,7 @@ const Board = (props) => {
 
   const setCardLikesCount = (id) => {
     console.log("inside setCardLikesCount", id);
-    const updatedBoardData = boardData;
+    const updatedBoardData = { ...boardData };
     const cardsList = [...updatedBoardData.cards];
     let targetCard;
     for (let card of cardsList) {
@@ -56,7 +56,7 @@ const Board = (props) => {
 
   const deleteCard = (id) => {
     console.log("delete", id);
-    const delUpdateBoard = boardData;
+    const delUpdateBoard = { ...boardData };
     const delCard = [...delUpdateBoard.cards];
     axios
       .delete(`/cards/${id}`)
