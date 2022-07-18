@@ -1,5 +1,6 @@
 import PropTypes from "prop-types";
 import BoardName from "./BoardName.js";
+import './BoardForm'
 
 const BoardsList = (props) => {
   const boardComponent = props.boards.map((board) => {

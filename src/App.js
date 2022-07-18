@@ -116,14 +116,15 @@ function App() {
 
   return (
     <div>
-      <div>
+      <div id="Boards">
+        <hi>BOARDS</hi>
         <BoardsList
-          boards={boards}
+          boards = {boards}
           cardsCallback={fetchCardsForBoard}
           // cards = {}
         />
       </div>
-      <div>
+      <div id= "BoardsWithCards">
         <BoardWithCards
           cards={cards}
           deleteCard={deleteCard}
