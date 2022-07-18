@@ -2,38 +2,61 @@
   text-align: center;
 }
 
+body {
+  background: url('../src/app-background.png') no-repeat center fixed;
+  background-size: cover;
+}
+
 *{
   margin: 20px;
 }
+
 header {
-  padding: 20px;
+  padding: 10px;
   margin: 20px;
+  font-family: 'Pacifico';
+  font-size: 40px;
   
 }
 .container {
-  /* padding: 20px; */
-  border: 5px solid black;
   display: grid;
   grid-template-columns: 40% 60%;
   grid-template-rows: 70% 30%;
 }
 
-.card-submit-form {
-  grid-column-start: 2;
-  grid-row-start: 2;
-  border: blue 2px solid;
-}
-
-.new-board-form {
-  grid-column-start: 1;
-  grid-row-start: 2;
-  border: blue 2px solid;
-  border-radius: 5px;
-  max-height: 150px;
-  display: inline;
-}
 
 input:placeholder-shown {
-  border: 1px solid red;
+  border: 2px solid red;
   border-radius: 2px;
+  font-size: 15px;
+}
+
+input {
+  font-size: 15px;
+}
+.button {
+  background-color: #a45e60;
+  font-size: 18px;
+  border-radius: 4px;
+}
+
+.button:hover {
+  cursor: pointer;
+  background-color: #03a3b4;
+}
+
+h2 {
+  border: thick double #536670 ;
+  box-shadow: 8px 7px 1px #03a3b4;
+  padding: 0 40px 0 5px;
+  font-family: 'Pacifico';
+  font-size: 30px;
+  width: fit-content;
+  background: rgba(255, 255, 255, 0.688);
+
+  color: #a45e60;
+}
+
+h3 {
+  margin: 0px;
 }

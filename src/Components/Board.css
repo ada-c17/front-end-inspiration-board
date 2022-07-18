@@ -1,10 +1,22 @@
-.single-board {
-    background-color: rgb(32, 227, 192);
-    list-style: none;
+.single-board button {
+    background-color: #8ec0c7;
+    width: 100%;
     min-width: fit-content;
     height: 60px;
     text-align: center;
-    color: rgb(14, 15, 14);
+    color: rgb(0, 0, 0);
+    border: none;
     border-radius: 5px;
-    
-}
+    margin: 0px;
+    font-size: 20px;
+    font-family: 'Pacifico';}
+
+.single-board button:hover {
+        cursor: pointer;
+        background-color: #71b8c1;
+        box-shadow: 4px 4px 7px #c1f8ff;
+        height: 65px;
+        width: 101%;
+    }
+
+

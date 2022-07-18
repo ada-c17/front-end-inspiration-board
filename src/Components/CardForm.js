@@ -26,7 +26,7 @@ const CardForm = (props) => {
   };
 
   return (
-    <form onSubmit={handleFormSubmission}>
+    <form onSubmit={handleFormSubmission} className="card-submit-form">
       <label>Message</label>
       <input
         type="text"
@@ -37,7 +37,7 @@ const CardForm = (props) => {
         value={cards.message}
         onChange={handleFormInput}
       ></input>
-      <input className="card-form-btn" type="submit" value="Submit" />
+      <input className="button" type="submit" value="Submit" />
     </form>
   );
 };

@@ -1,9 +1,11 @@
 .board-wrapper{
-    background-color: rgb(3, 3, 3);
+    background-color: #213438;
     padding: 10px;
     height: 400px;
     grid-column-start: 1;
     grid-row-start: 1;
     overflow: scroll;
-    border: 2px red double;
+    border-radius: 15px;
+    box-shadow: 14px 10px 20px #2134389f;
+    list-style: none;
 }

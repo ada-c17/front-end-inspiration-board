@@ -109,19 +109,23 @@ function App() {
 
       <div className="container">
         <div>
+          <h2>Boards</h2>
           <Boards boards={boardsData} onClickGetCards={getCardsForBoard} />
         </div>
         <div>
+          <h2>Cards</h2>
           <CardsList
             cards={cardsData}
             onClickDeleteCard={deleteCard}
             onLikeClick={setLikesForCardId}
           />
         </div>
-        <div className="new-board-form">
+        <div>
+          <h2>Create a New Board</h2>
           <NewBoardForm handleSubmission={makeNewBoard} />
         </div>
-        <div className="card-submit-form">
+        <div>
+          <h2>Create a New Card</h2>
           {<CardForm handleFormSubmission={createNewCardForSelectedBoard} />}
         </div>
       </div>
