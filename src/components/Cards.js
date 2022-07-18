@@ -3,6 +3,7 @@ import { Card } from "react-bootstrap";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTrashCan } from "@fortawesome/free-regular-svg-icons";
 import axios from "axios";
+import "./stylesheet/Cards.css";
 
 const Cards = ({
   cardId,
@@ -39,7 +40,7 @@ const Cards = ({
             icon={likeHeart}
             onClick={likeClick}
             className="heart"
-          />{" "}
+          />
           {likesCount}
         </Card.Footer>
       </Card>

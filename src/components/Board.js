@@ -29,7 +29,7 @@ const Board = ({
   return (
     <div className="container">
       <h1 className="boardTitle">
-        {boardData.owner}'s '{boardData.title}'' Board!
+        {boardData.owner}'s '{boardData.title}' Board!
       </h1>
       <button
         onClick={() => {

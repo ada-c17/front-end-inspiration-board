@@ -6,6 +6,7 @@ import "./stylesheet/NewBoardForm.css";
 const AddNewBoardForm = ({ submitBoard }) => {
   //state in charge for opening and closing modal
   const [show, setShow] = useState(false);
+  const [validated, setValidated] = useState(false);
   const handleShow = () => setShow(true);
   const handleClose = () => setShow(false);
 
@@ -25,77 +26,63 @@ const AddNewBoardForm = ({ submitBoard }) => {
   };
 
   const submit = (e) => {
-    e.preventDefault();
-    // if (boardFormSubmit === undefined) {
-    //   return <h1>...loading</h1>;
-    // }
-    // boardFormSubmit();
-    // console.log("I've submitted");
-    const newData = {
-      title: data.title,
-      owner: data.owner,
-    };
-    submitBoard(newData);
-  };
-  //data in state gets posted to api
-  // const submitBoard = () => {
-  //   console.log("submit board ran");
-  //   axios
-  //     .post(url, {
-  //       title: data.title,
-  //       owner: data.owner,
-  //     })
-  //     .then((response) => {
-  //       // console.log(response.data);
-  //       console.log(getAllBoards);
-  //       getAllBoards();
-  //     })
-  //     .catch((err) => {
-  //       console.log(err);
-  //     });
-  // };
+    const form = e.currentTarget;
+    if (form.checkValidity() === false) {
+      e.preventDefault();
+      e.stopPropagation();
+    }
 
-  //   useEffect(() => {
-  //     getAllBoards();
-  //   }, [data]);
+    setValidated(true);
+    if (data.title && data.owner) {
+      console.log("working");
+      const newData = {
+        title: data.title,
+        owner: data.owner,
+      };
+      submitBoard(newData);
+    }
+  };
 
   return (
     <section>
       <button onClick={handleShow} type="button" className=" board-btn">
-        Add New Board{" "}
+        Add New Board
       </button>
 
-      <Modal show={show} onHide={handleClose}>
+      <Modal
+        show={show}
+        // onHide={handleClose}
+      >
         <Modal.Header closeButton className="header">
           <Modal.Title>Add Board</Modal.Title>
         </Modal.Header>
 
         <Modal.Body>
-          <Form onSubmit={(e) => submit(e)}>
+          <Form noValidate validated={validated} onSubmit={(e) => submit(e)}>
             <Form.Group className="mb-3">
               <Form.Control
                 onChange={(e) => handleInput(e)}
+                required
                 id="title"
                 value={data.title}
                 type="text"
                 placeholder="Title *"
-                required
               />
             </Form.Group>
             <Form.Group className="mb-3">
               <Form.Control
                 onChange={(e) => handleInput(e)}
+                required
                 id="owner"
                 value={data.owner}
                 type="text"
                 placeholder="Owner *"
-                required
               />
             </Form.Group>
 
             <Button
               className="btn btn-primary text-nowrap"
-              onClick={handleClose}
+              // onClick={handleClose}
               variant="success"
               type="submit"
               block
