@@ -21,7 +21,11 @@ const Board = () => {
     axios
       .get(`/boards/${id}/cards`)
       .then((response) => {
+        console.log(response.data);
+
         setBoardData(response.data);
+        console.log(boardData.cards);
+        // !!!!!same problem here setBoardData return old data in console.log
       })
       .catch((error) => {
         console.log("couldn't call api");
@@ -46,7 +50,6 @@ const Board = () => {
       .put(`/cards/${id}/like`)
       .then((response) => {
         targetCard.likes_count += 1;
-
         // !!!!!why this setBoardData do not rerender the board component?
         setBoardData(updatedBoardData);
         // if it will rerender we do not need to call getBoardDataFromAPI
@@ -81,17 +84,18 @@ const Board = () => {
   };
 
   const updatePos = (data, id) => {
+    console.log(data, id);
     axios
       .put(`/cards/${id}`, {
-        params: {
-          defaultPos: { x: data.x, y: data.y },
-        },
+        PosX: data.x,
+        PosY: data.y,
       })
       .then((response) => {
+        console.log("Card position sucessfully updated!");
         getBoardDatafromAPI(params.id);
       })
       .catch((error) => {
-        console.log("Could not make a new card!");
+        console.log("Could not update a  position of the card!");
       });
   };
 

@@ -9,13 +9,15 @@ const CardList = ({
   setLikesCountCallBack,
   updatePos,
 }) => {
-  const cardComponents = data.map((card) => (
+  const cardComponents = data.map((card, index) => (
     <Card
       key={card.id}
+      index={index}
       id={card.id}
       message={card.message}
       color={card.color}
-      defaultPos={card.defaultPos}
+      PosX={card.PosX}
+      PosY={card.PosY}
       likesCount={card.likes_count}
       updatePos={updatePos}
       setLikesCountCallBack={setLikesCountCallBack}

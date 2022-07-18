@@ -5,27 +5,28 @@ import Draggable from "react-draggable";
 
 const Card = ({
   id,
+  index,
   message,
   color,
-  defaultPos,
+  PosX,
+  PosY,
   likesCount,
   updatePos,
   setLikesCountCallBack,
   deleteCardCallBack,
 }) => {
-  console.log(defaultPos);
   if (color == null) {
     color = "#b3b3fc";
   }
-  if (defaultPos == null) {
-    defaultPos = { x: 100, y: 0 };
+  if (PosX == null || PosY == null) {
+    PosX = 100;
+    PosY = 0;
   }
-  console.log(defaultPos);
 
   return (
     <Draggable
       key={id}
-      defaultPosition={defaultPos}
+      defaultPosition={{ x: PosX, y: PosY }}
       onStop={(e, data) => {
         updatePos(data, id);
       }}
