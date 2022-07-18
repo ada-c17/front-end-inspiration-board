@@ -29,16 +29,18 @@ const CardForm = (props) => {
   };
 
   return (
-    <form onSubmit={handleFormSubmission}>
-      <input
-        name="message"
-        type="text"
-        placeholder="Enter New Message "
-        value={cardData.message}
-        onChange={handleFormInput}
-      />
-      <input type="submit" value="Add" />
-    </form>
+    <div className="new-card">
+      <form onSubmit={handleFormSubmission}>
+        <input
+          name="message"
+          type="text"
+          placeholder="Enter New Message "
+          value={cardData.message}
+          onChange={handleFormInput}
+        />
+        <input type="submit" value="Add" />
+      </form>
+    </div>
   );
 };
 
