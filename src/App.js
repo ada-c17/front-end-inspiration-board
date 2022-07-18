@@ -1,21 +1,34 @@
-import React, { useState } from 'react';
 import './App.css';
+import React, { useState, useEffect } from 'react';
+import axios from 'axios';
 import BoardList from './components/BoardList';
 import NewBoardForm from './components/NewBoardForm';
 import boardData from './data/boardData.json';
 
 const App = () => {
-  // State: what file should it be? app
-  // can there be more than one state?
+  // state of the board db
+  const [boards, setBoards] = useState([]);
 
-  // <section>
-  //   <Navigation>
-  //   </Navigation>
-  //   <Board>
-  //   </Board>
-  // </section>
+  useEffect(() => {
+    axios
+      .get(URL)
+      .then((response) => {
+        console.log('Boards Loaded!');
+        const newBoards = response.data.map((board) => {
+          return {
+            title: board.title,
+            id: board.id,
+            owner: board.owner,
+          };
+        });
+        setBoards(newBoards);
+      })
+      .catch((err) => {
+        console.log('err');
+      });
+  }, []);
 
-  // what happens when Board is clicked
+  // state of the 'selected Board' title display
   const [boardTitle, setBoardTitle] = useState('TBD');
 
   const displayBoardTitle = (title) => {
@@ -23,10 +36,18 @@ const App = () => {
   };
 
   // sending API call to submit new BoardForm
-  const addNewBoard = () => {
-    console.log('Adding new Board!');
+  const addNewBoard = (newBoardData) => {
+    axios
+      .post(URL, newBoardData)
+      .then((response) => {
+        const newBoards = [...boards];
+        newBoards.push({ id: response.data.id, ...newBoardData });
+        setBoards(newBoards);
+      })
+      .catch((error) => console.log(error));
   };
 
+  // BEAUTY
   return (
     <div>
       <header>
