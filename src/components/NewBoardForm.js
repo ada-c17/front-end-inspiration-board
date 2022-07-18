@@ -21,11 +21,19 @@ const NewBoardForm = (props) => {
         name="title" 
         value={title} 
         onChange={handleTitleChange}
-        className='invalid-form-input'/>
+        className={((title.length === 0) || (title.length > 40)) ? 'invalid-form-input' : ''}></input>
         <label htmlFor="owner">Owner's Name</label>
-        <input type="text" name="owner" value={owner} onChange={handleOwnerChange}/>
+        <input 
+        type="text" 
+        name="owner" 
+        value={owner} 
+        onChange={handleOwnerChange}
+        className={((owner.length === 0) || (owner.length > 40)) ? 'invalid-form-input' : ''}></input>
         <p>Preview: {title} - {owner}</p>
-        <input type="Submit" className='new-board-form__form-submit-btn'></input>
+        <input 
+        type="Submit"
+        disabled={((title.length === 0) || (owner.length === 0) || (title.length > 40) || (owner.length > 40))} 
+        className='new-board-form__form-submit-btn'></input>
     </form>
     )
 };

@@ -15,9 +15,16 @@ const NewCardForm = (props) => {
             <h2>Create a New Card</h2>
             <form onSubmit={submitNewCard} className='new-card-form__form'>
                 <label htmlFor="message">Message</label>
-                <input type="text" name="message" value={message} onChange={handleMessageChange}/>
+                <input 
+                type="text" 
+                className={message.length === 0 || message.length > 40 ? "invalid-form-input" : ""}
+                value={message} 
+                onChange={handleMessageChange}></input>
                 <p>Preview: {message}</p>
-                <input type="Submit" className='new-card-form__form-submit-btn'></input>
+                <input 
+                type="Submit"
+                disabled= {message.length === 0 || message.length > 40}
+                className='new-card-form__form-submit-btn'></input>
             </form>
         </section>
     )
