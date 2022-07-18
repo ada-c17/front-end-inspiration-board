@@ -83,13 +83,11 @@ function App() {
           </button>
         </section>
         {showBoardForm && <AddBoard />}
-        <section className="board-content">
-          <Board
-            cardLike={increaseLike}
-            boardTitle={boardOption}
-            board={chosenBoardData}
-          />
-        </section>
+        <Board
+          cardLike={increaseLike}
+          boardTitle={boardOption}
+          board={chosenBoardData}
+        />
       </section>
       <section className="add-message">
         <input
