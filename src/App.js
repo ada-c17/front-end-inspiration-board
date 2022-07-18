@@ -93,7 +93,9 @@ const App = () => {
                 <h2>dream board</h2>
             </header>
             <main>
-              <BoardForm onAddBoard={handleBoardDataReady}></BoardForm>
+                <button id="ToggleBoardForm">Create New Dream</button>
+                {/* maybe change the button text to Hide Dream Form */}
+                <BoardForm onAddBoard={handleBoardDataReady}></BoardForm>
                 <BoardList boards={boardData} onSelectBoard={getBoardId} />
                 <CardList
                     cards={newCards}
