@@ -6,6 +6,7 @@ const Board = (props) => {
   const handleBoardClick = () => {
     props.displayBoardTitle(props.title);
     console.log('Working! Clicked!');
+    // will render Card List as well
   };
 
   return (

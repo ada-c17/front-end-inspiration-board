@@ -30,7 +30,7 @@ const NewBoardForm = (props) => {
   useEffect(() => {
     if (Object.keys(formErrors).length === 0 && isSubmit) {
       console.log({ formValues });
-      props.addNewBoard();
+      props.addNewBoard(formValues);
       setFormValues(initialFormValues);
     }
   }, [formErrors]);
