@@ -101,6 +101,12 @@ function App() {
         console.log("Can't delete a card.", error);
       });
   };
+
+  const [isBoardFormVisible, setBoardFormVisibility] = useState(true);
+  const newBoardFormVisibility = () => {
+    setBoardFormVisibility(!isBoardFormVisible);
+  };
+
   return (
     <div>
       <header>
@@ -122,7 +128,17 @@ function App() {
         </div>
         <div>
           <h2>Create a New Board</h2>
-          <NewBoardForm handleSubmission={makeNewBoard} />
+          {isBoardFormVisible ? (
+            <NewBoardForm handleSubmission={makeNewBoard} />
+          ) : (
+            ""
+          )}
+          <button
+            className="button-board-visibility"
+            onClick={newBoardFormVisibility}
+          >
+            {isBoardFormVisible ? "Hide New Board form" : "Open New Board form"}
+          </button>
         </div>
         <div>
           <h2>Create a New Card</h2>

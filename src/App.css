@@ -60,3 +60,19 @@ h2 {
 h3 {
   margin: 0px;
 }
+
+.button-board-visibility {
+  border: 3px outset #536670 ;
+  /* box-shadow: 8px 7px 1px #03a3b4; */
+  font-size: 20px;
+  width: fit-content;
+  background: rgba(255, 255, 255, 0.688);
+  padding: 10px 25px;
+  color: #a45e60;
+}
+
+.button-board-visibility:hover {
+  border-style: inset;
+  background: rgba(255, 255, 255, 0.507);
+  cursor: pointer;
+}
