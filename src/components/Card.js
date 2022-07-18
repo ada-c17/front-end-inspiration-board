@@ -1,7 +1,7 @@
 import React from 'react';
 
 // have multiple props in so good canidate to destructure
-const Card = ({ props }) => {
+const Card = (props) => {
   // BEAUTY
   return (
     <div>

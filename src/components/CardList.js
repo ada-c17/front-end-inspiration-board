@@ -2,6 +2,7 @@ import axios from 'axios';
 import { useState, useEffect } from 'react';
 import Card from './Card';
 import NewCardForm from './NewCardForm';
+import './CardList.css';
 
 const CardList = (props) => {
   //brains
@@ -9,9 +10,7 @@ const CardList = (props) => {
 
   useEffect(() => {
     axios
-      .get(
-        ``
-      )
+      .get(``)
       .then((response) => {
         setCardData(response.data);
       })
@@ -50,7 +49,7 @@ const CardList = (props) => {
       });
   };
 
-  const cardElements = cardData.map((card) => {
+  const cardElements = props.cardData.map((card) => {
     return (
       <Card card={card} addOneCard={addOneCard} deleteCard={deleteCard}></Card>
     );
@@ -58,10 +57,7 @@ const CardList = (props) => {
 
   const postNewCard = (message) => {
     axios
-      .post(
-        ``,
-        { message }
-      )
+      .post(``, { message })
       .then((response) => {
         const cards = [...cardData];
         cards.push(response.data.card);
@@ -75,14 +71,12 @@ const CardList = (props) => {
   //beauty
   return (
     <>
-      <div>
-        <h2>{props.board.title}</h2>
-      </div>
-      <div>
-        <section>{cardElements}</section>
-      </div>
+      <div>{/* <h2>{props.board.title}</h2> */}</div>
       <div>
         <NewCardForm postNewCard={postNewCard}></NewCardForm>
+      </div>
+      <div>
+        <section className="Card">{cardElements}</section>
       </div>
     </>
   );

@@ -3,6 +3,8 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import BoardList from './components/BoardList';
 import NewBoardForm from './components/NewBoardForm';
+import CardList from './components/CardList';
+import cardData from './data/cardData.json';
 
 // read the base url from .env file
 // current base url connects to your local host
@@ -13,7 +15,6 @@ const App = () => {
   const [boards, setBoards] = useState([]);
 
   // Get all boards when web app loads
-  // AND when a new board is added
   useEffect(() => {
     axios
       .get(`${baseURL}/boards`)
@@ -64,6 +65,7 @@ const App = () => {
         <h3>Create Your Board:</h3>
         <NewBoardForm addNewBoard={addNewBoard} />
         <BoardList boards={boards} displayBoardTitle={displayBoardTitle} />
+        <CardList cardData={cardData} />
       </main>
     </div>
   );
