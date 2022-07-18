@@ -80,6 +80,21 @@ const Board = () => {
       });
   };
 
+  const updatePos = (data, id) => {
+    axios
+      .put(`/cards/${id}`, {
+        params: {
+          defaultPos: { x: data.x, y: data.y },
+        },
+      })
+      .then((response) => {
+        getBoardDatafromAPI(params.id);
+      })
+      .catch((error) => {
+        console.log("Could not make a new card!");
+      });
+  };
+
   return (
     <div className="board">
       <Link to="/" className="HomeLink">
@@ -89,6 +104,7 @@ const Board = () => {
       <div id="board-owner"> belongs to: {boardData.owner}</div>
       <CardList
         data={boardData.cards}
+        updatePos={updatePos}
         deleteCardCallBack={deleteCard}
         setLikesCountCallBack={setCardLikesCount}
       />

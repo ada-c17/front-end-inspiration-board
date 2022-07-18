@@ -1,30 +1,46 @@
 import React from "react";
 import "./Card.css";
 import PropTypes from "prop-types";
+import Draggable from "react-draggable";
 
 const Card = ({
   id,
   message,
   color,
+  defaultPos,
   likesCount,
+  updatePos,
   setLikesCountCallBack,
   deleteCardCallBack,
 }) => {
-  console.log(color);
+  console.log(defaultPos);
   if (color == null) {
     color = "#b3b3fc";
   }
+  if (defaultPos == null) {
+    defaultPos = { x: 100, y: 0 };
+  }
+  console.log(defaultPos);
+
   return (
-    <div className="card" style={{ backgroundColor: color }}>
-      <p>{message}</p>
-      <button id="delete" onClick={() => deleteCardCallBack(id)}>
-        x
-      </button>
-      <button id="stars" onClick={() => setLikesCountCallBack(id)}>
-        ⭐️
-      </button>
-      <span> {likesCount}</span>
-    </div>
+    <Draggable
+      key={id}
+      defaultPosition={defaultPos}
+      onStop={(e, data) => {
+        updatePos(data, id);
+      }}
+    >
+      <div style={{ backgroundColor: color }} className="card">
+        <p>{message}</p>
+        <button id="delete" onClick={() => deleteCardCallBack(id)}>
+          x
+        </button>
+        <button id="stars" onClick={() => setLikesCountCallBack(id)}>
+          ⭐️
+        </button>
+        <span> {likesCount}</span>
+      </div>
+    </Draggable>
   );
 };
 

@@ -3,14 +3,21 @@ import "./CardList.css";
 import Card from "./Card";
 import PropTypes from "prop-types";
 
-const CardList = ({ data, deleteCardCallBack, setLikesCountCallBack }) => {
+const CardList = ({
+  data,
+  deleteCardCallBack,
+  setLikesCountCallBack,
+  updatePos,
+}) => {
   const cardComponents = data.map((card) => (
     <Card
       key={card.id}
       id={card.id}
       message={card.message}
       color={card.color}
+      defaultPos={card.defaultPos}
       likesCount={card.likes_count}
+      updatePos={updatePos}
       setLikesCountCallBack={setLikesCountCallBack}
       deleteCardCallBack={deleteCardCallBack}
     />
