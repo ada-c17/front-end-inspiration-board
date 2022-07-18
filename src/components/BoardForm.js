@@ -33,12 +33,14 @@ function BoardForm(props) {
       <input
         type="text"
         name="title"
+        placeholder="Title"
         value={formData.title}
         onChange={onFormChange}
       ></input>
       <input
         type="text"
         name="owner"
+        placeholder="Owner"
         value={formData.owner}
         onChange={onFormChange}
       ></input>

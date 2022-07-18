@@ -34,6 +34,7 @@ function CardForm(props) {
       <input
         type="text"
         name="message"
+        placeholder="Message"
         value={formData.message}
         onChange={onFormChange}
       ></input>
