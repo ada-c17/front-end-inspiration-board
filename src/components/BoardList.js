@@ -60,11 +60,10 @@ const BoardList = () => {
   const handleEditing = (id) => {
     setShowInput(false);
     edit_board = boards.find((x) => x.id === id);
-    console.log(edit_board);
   };
 
   const onEditSubmission = (board) => {
-    // I should change it to true only after response from the database
+    //! I should change it to true only after response from the database
     setShowInput(true);
     editBoard(board.id, board.title);
   };

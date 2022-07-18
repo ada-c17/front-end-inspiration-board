@@ -33,7 +33,7 @@ const EditBoardForm = (props) => {
   };
 
   return (
-    <>
+    <div className="edit-board">
       <form onSubmit={handleFormSubmission}>
         <div>Change the name of the Space here:</div>
         <input
@@ -47,7 +47,7 @@ const EditBoardForm = (props) => {
         <input type="submit" value="Submit" />
       </form>
       <p>{message}</p>
-    </>
+    </div>
   );
 };
 

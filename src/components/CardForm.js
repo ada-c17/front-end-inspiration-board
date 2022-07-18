@@ -15,18 +15,10 @@ const CardForm = (props) => {
 
   const handleFormInput = (event) => {
     const inputElement = event.target;
-    const name = inputElement.name;
     const value = inputElement.value;
-
     const newCardData = { ...cardData };
     newCardData.message = value;
     newCardData.color = color;
-
-    // newCardData[name] = value;
-    console.log(newCardData);
-    console.log(newCardData[name]);
-    console.log(name);
-    console.log(value);
 
     setCardData(newCardData);
   };
