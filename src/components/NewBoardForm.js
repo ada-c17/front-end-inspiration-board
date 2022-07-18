@@ -39,9 +39,8 @@ const AddNewBoardForm = ({ submitBoard }) => {
 
     const submit = (e) => {
 
-        // const form = e.currentTarget;
-        // form.checkValidity() === fals
-        if (validated === false) {
+        const form = e.currentTarget;
+        if (form.checkValidity() === false) {
             e.preventDefault();
             e.stopPropagation();
         }
