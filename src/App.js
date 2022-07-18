@@ -31,7 +31,7 @@ const App = () => {
       .catch((err) => {
         console.log('err');
       });
-  }, [boards]);
+  }, []);
 
   // state of the 'selected Board' title display
   const [boardTitle, setBoardTitle] = useState('TBD');
@@ -61,6 +61,7 @@ const App = () => {
       </header>
       <main>
         <h2>Selected Board: {boardTitle}</h2>
+        <h3>Create Your Board:</h3>
         <NewBoardForm addNewBoard={addNewBoard} />
         <BoardList boards={boards} displayBoardTitle={displayBoardTitle} />
       </main>
