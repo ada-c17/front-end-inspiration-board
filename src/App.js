@@ -140,10 +140,14 @@ function App() {
             {isBoardFormVisible ? "Hide New Board form" : "Open New Board form"}
           </button>
         </div>
-        <div>
-          <h2>Create a New Card</h2>
-          {<CardForm handleFormSubmission={createNewCardForSelectedBoard} />}
-        </div>
+        {selectedBoard ? (
+          <div>
+            <h2>Create a New Card</h2>
+            {<CardForm handleFormSubmission={createNewCardForSelectedBoard} />}
+          </div>
+        ) : (
+          ""
+        )}
       </div>
     </div>
   );

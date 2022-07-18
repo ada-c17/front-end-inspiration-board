@@ -20,8 +20,10 @@ header {
 }
 .container {
   display: grid;
-  grid-template-columns: 40% 60%;
-  grid-template-rows: 70% 30%;
+  /* grid-template-columns: 40% 60%;
+  grid-template-rows: 60% 40%; */
+  grid-template-columns: 35em auto;
+  grid-template-rows: 35em auto;
 }
 
 
