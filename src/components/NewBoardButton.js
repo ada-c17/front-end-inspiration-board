@@ -1,10 +1,23 @@
 import React from "react";
+import { useState } from "react";
 import PropTypes from "prop-types";
+import NewBoardForm from "./NewBoardForm";
 
 //makeBoardCallback
 
 const NewBoardButton = (props) => {
-  return <button onClick={props.makeBoardCallback}> Make New Board </button>;
+  const [isOpen, setIsOpen] = useState(false);
+
+  const togglePopup = () => {
+    setIsOpen(!isOpen);
+  };
+  return (
+    <div>
+      <button onClick={togglePopup}>+</button>; 
+      {if (setIsOpen) {
+      <NewBoardForm makeBoardCallback={props.makeBoardCallback} />} }
+    </div>
+  );
 };
 
 NewBoardButton.propTypes = {
