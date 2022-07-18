@@ -11,6 +11,7 @@ function App() {
   const [boardsData, setBoards] = useState([]);
   const [cardsData, setCards] = useState([]);
   const [selectedBoard, setSelectedBoard] = useState(null);
+  const [selectedBoardName, setBoardName] = useState(null);
 
   useEffect(() => {
     getBoardsFromAPI();
@@ -50,6 +51,13 @@ function App() {
       .catch((error) => {
         console.log("Can't get cards.", error);
       });
+    // return board_id;
+
+    for (let board of boardsData) {
+      if (board.board_id === board_id) {
+        setBoardName(board.title);
+      }
+    }
     // return board_id;
   };
 
@@ -119,7 +127,9 @@ function App() {
           <Boards boards={boardsData} onClickGetCards={getCardsForBoard} />
         </div>
         <div>
-          <h2>Cards</h2>
+          <h2>
+            {selectedBoard ? `Cards for Board "${selectedBoardName}"` : "Cards"}
+          </h2>
           <CardsList
             cards={cardsData}
             onClickDeleteCard={deleteCard}
