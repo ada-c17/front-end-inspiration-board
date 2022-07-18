@@ -42,7 +42,12 @@ function BoardForm(props) {
         value={formData.owner}
         onChange={onFormChange}
       ></input>
-      <input type="submit" value="Add Board" disabled={disableSubmit}></input>
+      <input
+        type="submit"
+        value="Add Board"
+        disabled={disableSubmit}
+        className="submit"
+      ></input>
     </form>
   );
 }

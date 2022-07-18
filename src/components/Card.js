@@ -11,7 +11,10 @@ function Card(props) {
   return (
     <li>
       {props.message} <button onClick={deleteCard}>Delete</button>{" "}
-      <button onClick={likeCard}>+1</button> Likes: {props.likes}
+      <button onClick={likeCard} className="like">
+        ♡
+      </button>{" "}
+      Likes: {props.likes}
     </li>
   );
 }
