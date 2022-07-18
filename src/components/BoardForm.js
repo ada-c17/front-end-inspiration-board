@@ -4,6 +4,8 @@ import "./BoardForm.css";
 const defaultBoard = {
   title: "",
   owner: "",
+  titleError: "",
+  ownerError: "",
 };
 
 const BoardForm = (props) => {
@@ -21,8 +23,31 @@ const BoardForm = (props) => {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    props.addBoard(formData);
-    setFormData(defaultBoard);
+    const isValid = validate();
+    if (isValid) {
+      props.addBoard(formData);
+      setFormData(defaultBoard);
+    }
+  };
+
+  const validate = () => {
+    let titleError = "";
+    let ownerError = "";
+
+    if (!formData.title) {
+      titleError = "Title can't be blank";
+    }
+
+    if (!formData.owner) {
+      ownerError = "Owner can't be blank";
+    }
+
+    if (titleError || ownerError) {
+      setFormData({ titleError, ownerError });
+      return false;
+    }
+
+    return true;
   };
 
   return (
@@ -36,6 +61,7 @@ const BoardForm = (props) => {
           value={formData.title}
           onChange={onFormChange}
         />
+        <div>{formData.titleError}</div>
         <label htmlFor="owner"></label>
         <input
           type="text"
@@ -44,6 +70,7 @@ const BoardForm = (props) => {
           value={formData.owner}
           onChange={onFormChange}
         />
+        <div>{formData.ownerError}</div>
         <input type="submit" value="Create Board" />
       </form>
     </div>
