@@ -4,6 +4,8 @@ import BoardsList from "./components/BoardsList";
 import axios from "axios";
 import { useEffect, useState } from "react";
 import BoardWithCards from "./components/BoardWithCards";
+import CardForm from "./components/CardForm";
+import BoardForm from "./components/BoardForm";
 
 function App() {
   const [boards, setBoards] = useState([]);
@@ -36,7 +38,7 @@ function App() {
     axios
       .get(`${BOARDS_URL}/${id}/cards`)
       .then((res) => {
-        console.log("we are in this hard function");
+        // console.log("we are in this hard function");
         console.log(res)
         const newCards = res.data.cards.map((card) => {
           return {
@@ -87,6 +89,31 @@ function App() {
       });
   };
 
+  const addBoard = (boardInfo) => {
+    axios
+      .post(BOARDS_URL, boardInfo)
+      .then((response) => {
+        fetchBoards();
+        console.log(response);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
+
+
+  const addCard = (cardInfo) => {
+    axios
+      .post(BOARDS_URL, cardInfo)
+      .then((response) => {
+        fetchCardsForBoard();
+        console.log(response);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
+
   return (
     <div>
       <div>
@@ -102,7 +129,13 @@ function App() {
           deleteCard={deleteCard}
           changeLikes={changeLikes}
           // boardTitle={boards.board.title}
-        ></BoardWithCards>
+        />
+      </div>
+      <div>
+        <BoardForm addBoardCallback={addBoard} />
+      </div>  
+      <div>
+        <CardForm cardsCallback={addCard} />
       </div>
     </div>
   );
