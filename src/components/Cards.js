@@ -11,6 +11,7 @@ const Cards = ({
   likeHeart,
   handleLike,
   deleteCard,
+  setBoardData,
 }) => {
   // const handleLike = () => {
   //   axios

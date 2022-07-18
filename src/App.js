@@ -132,8 +132,6 @@ const App = () => {
       })
       .then((response) => {
         getAllBoards();
-        setBoardData(response.data);
-        console.log(response.data);
       })
       .catch((err) => {
         console.log(err);
@@ -154,7 +152,7 @@ const App = () => {
               <BoardList
                 boardData={allBoards}
                 deleteBoard={deleteBoard}
-                getAllBoards={getAllBoards}
+                submitBoard={submitBoard}
               />
             }
           />
@@ -167,6 +165,7 @@ const App = () => {
                 likeHeart={faHeart}
                 deleteCard={deleteCard}
                 handleLike={handleLike}
+                setBoardData={setBoardData}
               />
             }
           />

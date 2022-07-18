@@ -9,6 +9,7 @@ const Board = ({
   likeHeart,
   handleLike,
   deleteCard,
+  setBoardData,
 }) => {
   let navigate = useNavigate();
   let { boardId } = useParams();
@@ -44,6 +45,7 @@ const Board = ({
           likeHeart={likeHeart}
           deleteCard={deleteCard}
           handleLike={handleLike}
+          setBoardData={setBoardData}
         />
       </section>
     </div>

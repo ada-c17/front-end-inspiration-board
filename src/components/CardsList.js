@@ -2,7 +2,13 @@ import React from "react";
 import Cards from "./Cards";
 import { Row } from "react-bootstrap";
 
-const CardsList = ({ cardData, likeHeart, deleteCard, handleLike }) => {
+const CardsList = ({
+  cardData,
+  likeHeart,
+  deleteCard,
+  handleLike,
+  setBoardData,
+}) => {
   // console.log("card data: ", cardData);
 
   return (
@@ -17,6 +23,7 @@ const CardsList = ({ cardData, likeHeart, deleteCard, handleLike }) => {
             // reloadBoard={reloadBoard}
             handleLike={handleLike}
             deleteCard={deleteCard}
+            setBoardData={setBoardData}
           />
         </div>
       ))}

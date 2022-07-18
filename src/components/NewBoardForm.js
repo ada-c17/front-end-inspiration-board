@@ -3,7 +3,7 @@ import { Button, Modal, Form } from "react-bootstrap";
 import axios from "axios";
 import "./stylesheet/NewBoardForm.css";
 
-const AddNewBoardForm = (boardData, getAllBoards) => {
+const AddNewBoardForm = ({ submitBoard }) => {
   //state in charge for opening and closing modal
   const [show, setShow] = useState(false);
   const handleShow = () => setShow(true);
@@ -30,23 +30,30 @@ const AddNewBoardForm = (boardData, getAllBoards) => {
     //   return <h1>...loading</h1>;
     // }
     // boardFormSubmit();
-    submitBoard();
+    // console.log("I've submitted");
+    const newData = {
+      title: data.title,
+      owner: data.owner,
+    };
+    submitBoard(newData);
   };
   //data in state gets posted to api
-  const submitBoard = () => {
-    axios
-      .post(url, {
-        title: data.title,
-        owner: data.owner,
-      })
-      .then((response) => {
-        console.log(response.data);
-        // getAllBoards();
-      })
-      .catch((err) => {
-        console.log(err);
-      });
-  };
+  // const submitBoard = () => {
+  //   console.log("submit board ran");
+  //   axios
+  //     .post(url, {
+  //       title: data.title,
+  //       owner: data.owner,
+  //     })
+  //     .then((response) => {
+  //       // console.log(response.data);
+  //       console.log(getAllBoards);
+  //       getAllBoards();
+  //     })
+  //     .catch((err) => {
+  //       console.log(err);
+  //     });
+  // };
 
   //   useEffect(() => {
   //     getAllBoards();

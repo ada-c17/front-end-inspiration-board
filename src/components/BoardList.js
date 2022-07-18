@@ -11,7 +11,7 @@ const BoardList = ({
   boardData,
   setCurrentBoardId,
   deleteBoard,
-  getAllBoards,
+  submitBoard,
 }) => {
   let navigate = useNavigate();
 
@@ -46,7 +46,7 @@ const BoardList = ({
         <ul className="list">{boardData.map(createBoard)}</ul>
       </Container>
 
-      <AddNewBoardForm getAllBoards={getAllBoards} />
+      <AddNewBoardForm submitBoard={submitBoard} />
     </section>
   );
 };
