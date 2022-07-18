@@ -52,13 +52,15 @@ const CardList = (props) => {
 
     const increaseLikes = (card_id) => {
         // console.log(`Inside increaseLikes!`);
+      // const [likes_count, setLikeCount] = useState(0);
+
       axios
         .patch(`${URL}/${props.board.board_id}/cards/${card_id}/likes`)
         .then(() => {
           console.log('inside the increase likes function!');
           card_id.likes_count = card_id.likes_count + 1;
-          }
           // setLikeCount(likes_count + 1);
+          }
           // setCardsData(card_id)
         );
     };
