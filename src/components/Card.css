@@ -1,0 +1,25 @@
+* {
+    margin: 10px auto;
+    font-family: 'Lato'; 
+}
+
+ul,li{
+    list-style:none;
+}
+ul{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+.card {
+    text-decoration:none;
+    color:#000;
+    background:#ffc;
+    display:block;
+    height:15em;
+    width:15em;
+    padding:1em;
+}
+ul li{
+    margin:1em;
+}

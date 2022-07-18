@@ -1,5 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
+import "./Card.css";
 
 const Card = (props) => {
   const likeOnClick = () => {
@@ -11,7 +12,7 @@ const Card = (props) => {
   };
 
   return (
-    <div>
+    <div className="card">
       <h1>Card</h1>
       <ul>
         <li>Message: {props.message}</li>
