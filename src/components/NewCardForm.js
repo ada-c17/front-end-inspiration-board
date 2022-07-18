@@ -8,18 +8,20 @@ const NewCardForm = (props) => {
     setMessage(event.target.value);
   };
 
-  const submitCard = (event) => {
-    // event.preventDefault();
+  const handleSubmitCard = (event) => {
+    event.preventDefault();
     // https://developer.mozilla.org/en-US/docs/Web/API/Event/preventDefault
     props.postCard(message);
     setMessage('');
   };
 
+  
+
   //beauty
   return (
     <>
       <h1>Create Your Card</h1>
-      <form onSubmit={submitCard}>
+      <form onSubmit={handleSubmitCard}>
         <label>
           Message:
           <input
@@ -33,7 +35,7 @@ const NewCardForm = (props) => {
             value={message}
           ></input>
         </label>
-        <button onClick={submitCard}>Submit</button>
+        <button onClick={handleSubmitCard}>Submit</button>
         {/* <input type="submit" value="Submit" className=""></input> */}
         {/* <input
           type="Submit"
