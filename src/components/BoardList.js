@@ -4,7 +4,7 @@ import Board from './Board';
 import './BoardList.css';
 
 const BoardList = (props) => {
-  const boardItems = props.boardData.map((board) => {
+  const boardItems = props.boards.map((board) => {
     return (
       <Board
         key={board.id}
