@@ -3,15 +3,20 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import BoardList from './components/BoardList';
 import NewBoardForm from './components/NewBoardForm';
-import boardData from './data/boardData.json';
+
+// read the base url from .env file
+// current base url connects to your local host
+export const baseURL = process.env['REACT_APP_BACKEND_URL'];
 
 const App = () => {
   // state of the board db
   const [boards, setBoards] = useState([]);
 
+  // Get all boards when web app loads
+  // AND when a new board is added
   useEffect(() => {
     axios
-      .get(URL)
+      .get(`${baseURL}/boards`)
       .then((response) => {
         console.log('Boards Loaded!');
         const newBoards = response.data.map((board) => {
@@ -26,7 +31,7 @@ const App = () => {
       .catch((err) => {
         console.log('err');
       });
-  }, []);
+  }, [boards]);
 
   // state of the 'selected Board' title display
   const [boardTitle, setBoardTitle] = useState('TBD');
@@ -38,8 +43,9 @@ const App = () => {
   // sending API call to submit new BoardForm
   const addNewBoard = (newBoardData) => {
     axios
-      .post(URL, newBoardData)
+      .post(`${baseURL}/boards`, newBoardData)
       .then((response) => {
+        console.log(response.data);
         const newBoards = [...boards];
         newBoards.push({ id: response.data.id, ...newBoardData });
         setBoards(newBoards);
@@ -56,10 +62,7 @@ const App = () => {
       <main>
         <h2>Selected Board: {boardTitle}</h2>
         <NewBoardForm addNewBoard={addNewBoard} />
-        <BoardList
-          boardData={boardData}
-          displayBoardTitle={displayBoardTitle}
-        />
+        <BoardList boards={boards} displayBoardTitle={displayBoardTitle} />
       </main>
     </div>
   );
