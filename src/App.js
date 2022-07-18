@@ -11,7 +11,10 @@ function App() {
 
   const [boards, setBoards] = useState([]);
   const [cards, setCards] = useState([]);
-  const [selectedBoard, setSelectedBoard] = useState(8);
+  const [selectedBoard, setSelectedBoard] = useState(null);
+  const [selectedBoardName, setSelectedBoardName] = useState(
+    "Select a board to get inspired!"
+  );
 
   const fetchBoards = () => {
     axios
@@ -55,17 +58,9 @@ function App() {
       });
   };
 
-  const createNewCard = (cardForm) => {
-    console.log("I will create a new card");
-    cardForm.board_id = selectedBoard;
-    axios
-      .post(`${URL}/cards`, cardForm)
-      .then((response) => {
-        fetchCards();
-      })
-      .catch((error) => {
-        console.log(error);
-      });
+  const selectBoard = (board) => {
+    setSelectedBoard(board.id);
+    setSelectedBoardName(board.title);
   };
 
   const deleteBoard = () => {
@@ -86,6 +81,18 @@ function App() {
       });
   };
 
+  const createNewCard = (cardForm) => {
+    cardForm.board_id = selectedBoard;
+    axios
+      .post(`${URL}/cards`, cardForm)
+      .then((response) => {
+        fetchCards();
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
+
   const likeCard = (card_id) => {
     let newCard = {};
     for (const card of cards) {
@@ -94,7 +101,6 @@ function App() {
         newCard.likes_count += 1;
       }
     }
-
     axios
       .put(`${URL}/cards/${card_id}/like`, newCard)
       .then((response) => {
@@ -105,24 +111,40 @@ function App() {
       });
   };
 
+  const deleteCard = (card_id) => {};
+
   return (
-    <div>
-      <header>
-        <h1>Inspiration Board</h1>
+    <div className="container">
+      <header className="header">
+        <h1>Gramtaschie Inspiration Board</h1>
+      </header>
+      <section className="board">
         <Board
           boards={boards}
           fetchBoardsCallback={fetchBoards}
+          selectBoardCallback={selectBoard}
           deleteBoardsCallback={deleteBoard}
         ></Board>
-        <h3>Selected Board is {selectedBoard}</h3>
+        <h4>{`Current Board: (id: ${selectedBoard}) ${selectedBoardName}`}</h4>
+      </section>
+      <section className="boardform">
         <NewBoardForm addBoardCallback={createNewBoard}></NewBoardForm>
-        <NewCardForm addCardCallback={createNewCard}></NewCardForm>
+      </section>
+
+      <section className="cards">
+        <h2>Cards for Board: {selectedBoardName}</h2>
+        <div className="cardform">
+          <NewCardForm addCardCallback={createNewCard}></NewCardForm>
+        </div>
         <CardList
           cards={cards}
           fetchCardsCallback={fetchCards}
           likeCardCallback={likeCard}
+          deleteCardCallback={deleteCard}
         ></CardList>
-      </header>
+      </section>
+
+      <footer className="footer">© 2022 gramtaschie</footer>
     </div>
   );
 }

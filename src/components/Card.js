@@ -6,14 +6,18 @@ const Card = (props) => {
     props.likeCardCallback(props.card_id);
   };
 
+  const deleteOnClick = () => {
+    props.deleteCardCallback(props.card_id);
+  };
+
   return (
     <div>
-      Hello I am Card
+      <h1>Card</h1>
       <ul>
         <li>Message: {props.message}</li>
         <li>{props.likes_count} 💜</li>
         <button onClick={likeOnClick}>+ 💜</button>
-        <button>🗑️</button>
+        <button onClick={deleteOnClick}>🗑️</button>
         <li>Board ID: {props.board_id}</li>
       </ul>
     </div>
@@ -27,6 +31,7 @@ Card.propTypes = {
   board_id: PropTypes.number.isRequired,
   fetchCardsCallback: PropTypes.func.isRequired,
   likeCardCallback: PropTypes.func.isRequired,
+  deleteCardCallback: PropTypes.func.isRequired,
 };
 
 export default Card;

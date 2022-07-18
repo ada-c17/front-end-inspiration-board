@@ -23,11 +23,12 @@ const NewBoardForm = (props) => {
   const handleSubmit = (event) => {
     event.preventDefault();
     props.addBoardCallback(boardForm);
+    setBoardForm(defaultBoard);
   };
 
   return (
     <section>
-      <h2>Make a New Board</h2>
+      <h3>Make a New Board</h3>
       <form onSubmit={handleSubmit}>
         <label htmlFor="title">Board Title</label>
         <input

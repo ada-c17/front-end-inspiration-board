@@ -1,38 +1,66 @@
-.App {
+@import url('https://fonts.googleapis.com/css2?family=Patrick+Hand&display=swap');
+
+
+body {
+  height: 100vh;
+  width: 100%;
+}
+
+.container {
+  width: 100%;
+  display: grid;
+  grid-template-areas: 
+  "header header"
+  "board boardform"
+  "cards cards"
+  "footer footer";
+  align-items: center;
+  height: 100vh;
+}
+h1, h2, h3 {
+  font-family: Patrick Hand;
+}
+
+.header {
+  grid-area: header;
   text-align: center;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.board, .boardform, .cards {
+  margin: 1em;
+  padding: 0.5em;
+  border-radius: 15px;
+  background-color: lightgray;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.board {
+  height: 300px;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+.boardform {
+  grid-area: boardform;
+  justify-self: center;
+  align-self: center;
+  text-align: center;
+  height: 200px;
 }
 
-.App-link {
-  color: #61dafb;
+.cards {
+  grid-area: cards;
+  background-color: lightblue;
+  text-align: center;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.cardform {
+  border-radius: 15px;
+}
+
+.footer {
+  grid-area: footer;
+  text-align: center;
+  margin: 1em;
+  padding: 0.5em;
+  font-style: italic;
+  font-weight:lighter;
+  font-size: small;
 }
