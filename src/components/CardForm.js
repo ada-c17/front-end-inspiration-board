@@ -2,25 +2,29 @@ import "./CardForm.css";
 import PropTypes from "prop-types";
 import { useState } from "react";
 
-const defaultCard = { message: "" };
+const randomColor = require("randomcolor");
+
+const defaultCard = {
+  message: "",
+  color: "",
+};
 
 const CardForm = (props) => {
   const [cardData, setCardData] = useState(defaultCard);
+  const color = String(randomColor({ luminosity: "light" }));
 
   const handleFormInput = (event) => {
     const inputElement = event.target;
-    const name = inputElement.name;
     const value = inputElement.value;
-
     const newCardData = { ...cardData };
-    newCardData[name] = value;
-    console.log(newCardData);
+    newCardData.message = value;
+    newCardData.color = color;
+
     setCardData(newCardData);
   };
 
   const handleFormSubmission = (event) => {
     event.preventDefault();
-    console.log(props);
     props.handleSubmission(cardData);
   };
 
@@ -29,7 +33,7 @@ const CardForm = (props) => {
       <input
         name="message"
         type="text"
-        placeholder="Enter Your Message "
+        placeholder="Enter New Message "
         value={cardData.message}
         onChange={handleFormInput}
       />

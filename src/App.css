@@ -5,6 +5,7 @@
 
 h1{
   font-family: "SpaceFont";
+  text-align: center;
 }
 
 
@@ -21,7 +22,6 @@ img {
   margin-top: 20px;
   background-image: url("./data/Earth.png");
   background-size: cover;
-  color:white;
   height:300px;
   width:300px;
   z-index: 2;
@@ -36,16 +36,4 @@ img {
   transform: rotate(30deg);
 
 }
-
-
-footer {
-  position: absolute;
-  bottom: 0px;
-  height: 40px;
-  font-size: 0.9em;
-  margin-top: 200px;
-  padding: 2rem 4rem;
-  padding-left: 100px;
-}
-
 

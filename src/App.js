@@ -2,8 +2,7 @@
 import "./App.css";
 import useSound from "use-sound";
 import { Link } from "react-router-dom";
-import React, { useEffect, useState } from "react";
-import axios from "axios";
+import React, { useState } from "react";
 import Otter from "./data/Otter.jpg";
 import Galaxy from "./data/Tealspace.jpg";
 import BoardList from "./components/BoardList";
@@ -11,57 +10,11 @@ import laugh from "./data/Laugh.mp3";
 import Story from "./components/Story";
 
 function App() {
-  const [boards, setBoards] = useState([]);
   const [showBoardList, setShowResults] = useState(false);
 
   const [play] = useSound(laugh);
 
   const onClickShowBoardlist = () => setShowResults(!showBoardList);
-
-  useEffect(() => {
-    getBoardsFromAPI();
-  }, []);
-
-  const getBoardsFromAPI = () => {
-    axios
-      .get("/boards")
-      .then((response) => {
-        setBoards(response.data);
-      })
-      .catch((error) => {
-        console.log("Oh no!!!");
-      });
-  };
-
-  const deleteBoard = (boardID) => {
-    const board_name = boards.find((x) => x.id === boardID).title;
-    const confirm = window.confirm(
-      `Are you sure you wish to delete the Space ${board_name}?`
-    );
-    if (confirm) {
-      axios
-        .delete(`/boards/${boardID}`)
-        .then((response) => {
-          console.log("Deleted board");
-          getBoardsFromAPI();
-        })
-        .catch((error) => {
-          console.log("couldn't delete board");
-        });
-    }
-  };
-
-  const editBoard = (boardID, new_title) => {
-    axios
-      .put(`/boards/${boardID}`, { title: new_title })
-      .then((response) => {
-        console.log("Board successfully updated");
-        getBoardsFromAPI();
-      })
-      .catch((error) => {
-        console.log("couldn't delete board");
-      });
-  };
 
   return (
     <div className="App">
@@ -80,17 +33,11 @@ function App() {
         value="Story / Spaces"
         onClick={onClickShowBoardlist}
       />
-      {showBoardList ? (
-        <BoardList
-          boards={boards}
-          deleteBoard={deleteBoard}
-          editBoard={editBoard}
-        />
-      ) : (
-        <Story />
-      )}
+      {showBoardList ? <BoardList /> : <Story />}
 
-      <Link to="/new">Add New Space</Link>
+      <Link to="/new">
+        <div id="add-new-space">Add New Space</div>
+      </Link>
       <footer>
         &copy; 2022 Ada Developers Academy ✨ by Coders from the OtterSpace ✨
         Doina ✨ Fena ✨ Marlyn ✨ Nina ✨

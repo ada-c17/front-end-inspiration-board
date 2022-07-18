@@ -1,13 +1,14 @@
 import { Link } from "react-router-dom";
 import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
+import "./Board.css";
 
 import axios from "axios";
 import CardList from "./CardList";
 import CardForm from "./CardForm";
 import "./Board.css";
 
-const Board = (props) => {
+const Board = () => {
   let params = useParams();
 
   const [boardData, setBoardData] = useState({
@@ -25,16 +26,15 @@ const Board = (props) => {
       })
       .catch((error) => {
         console.log("couldn't call api");
-        console.log(error);
       });
   };
 
   useEffect(() => {
     getBoardDatafromAPI(params.id);
-  }, [params.id, boardData]);
+  }, [params.id]);
+  //! I added boardData and then its started to rerender Card nonstop
 
   const setCardLikesCount = (id) => {
-    console.log("inside setCardLikesCount", id);
     const updatedBoardData = { ...boardData };
     const cardsList = [...updatedBoardData.cards];
     let targetCard;
@@ -63,6 +63,7 @@ const Board = (props) => {
       .then((response) => {
         const newCards = delCard.cards.filter((card) => card.id !== id);
         console.log(newCards);
+
         setBoardData(newCards);
       })
       .catch((error) => {
@@ -71,15 +72,29 @@ const Board = (props) => {
   };
 
   const makeNewCard = (data) => {
-    console.log(data);
     axios
       .post(`/boards/${params.id}/cards`, data)
       .then((response) => {
-        console.log(response);
         getBoardDatafromAPI(params.id);
       })
       .catch((error) => {
         console.log("Could not make a new card!");
+      });
+  };
+
+  const updatePos = (data, id) => {
+    console.log(data, id);
+    axios
+      .put(`/cards/${id}`, {
+        PosX: data.x,
+        PosY: data.y,
+      })
+      .then((response) => {
+        console.log("Card position sucessfully updated!");
+        getBoardDatafromAPI(params.id);
+      })
+      .catch((error) => {
+        console.log("Could not update a  position of the card!");
       });
   };
 
@@ -92,6 +107,7 @@ const Board = (props) => {
       <div id="board-owner"> belongs to: {boardData.owner}</div>
       <CardList
         data={boardData.cards}
+        updatePos={updatePos}
         deleteCardCallBack={deleteCard}
         setLikesCountCallBack={setCardLikesCount}
       />

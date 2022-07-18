@@ -8,10 +8,13 @@ li{
   .list{
     text-align: left; 
     margin:20px 150px;
-
+    
+    font-family: "SpaceFont";
+    
   }
 
   #delete-board {
+
     font-size: 1em;
     background-color: transparent;
     color:aqua;

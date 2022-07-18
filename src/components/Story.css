@@ -1,0 +1,15 @@
+.story {font-size: 1em;
+    width: 90%;
+    text-align: left;
+    margin: auto;
+    font-family: cormorant infant;
+
+}
+p#first-line::first-letter {
+    font-size: 70px;
+    display: block;
+    float: left;
+    line-height: 0.5;
+    margin: 0.2em .2em 0 0;
+
+}

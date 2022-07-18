@@ -1,15 +1,23 @@
 body {
   margin: 0;
+  /* font-family: 'SpaceFont'; */
   font-family: -apple-system, BlinkMacSystemFont, 'SpaceFont',
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   font-family: 'Cairo', sans-serif;
   background-color: black;
-  color:white;
-  min-height: 100vh;
+  color:paleturquoise;
+  /* height: 100vh; */
   font-size: 1.2em;
-  position: relative;
+  /* position: relative; */
+
+  display: grid;
+    grid-gap: 1em 0;
+    grid: auto auto ;
+    margin: 0;
+    min-height: calc(100vh - 40px);
+
 
 }
 
@@ -19,13 +27,18 @@ body {
 }
 
 a {
-color:white;
+color:blanchedalmond;
 text-decoration: none;
 padding: 14px 25px;
 }
 
+#add-new-space{
+  color:chocolate;
+  font-size: 1.6em;
+}
+
 a:hover {
-  color: hotpink;
+  color:firebrick;
   text-decoration: underline;
 
 }
@@ -40,14 +53,30 @@ a:hover {
   margin-top: 20px;
   background-image: url("./data/Earth.png");
   background-size: cover;
-  color:white;
+  color:greenyellow;
   height:170px;
   width:170px;
   z-index: 2;
 
 }
 
-code {
+/* code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
+} */
+
+
+footer {
+
+  align-self: end;
+    grid-column: 2;
+    padding: 20px;
+
+  /* position: absolute; */
+  bottom: 0px;
+  height: 40px;
+  font-size: 0.9em;
+  margin-top: 200px;
+  padding: 2rem 4rem;
+  padding-left: 100px;
 }

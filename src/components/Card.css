@@ -2,7 +2,7 @@
     position:relative;
     cursor: move;
     color: black;
-    background-color:lightsteelblue;
+    /* background-color:lightsteelblue; */
     max-width: 215px;
     overflow-wrap: break-word;
     border-radius: 5px;
@@ -23,13 +23,13 @@
   }
   input {
     border-radius: 5px 0px 0px 5px;
-    color: white;
+    color:cornflowerblue;
     font-size: 1.3em;
     background-color: transparent;
     overflow: visible;
-    padding: 0.5em;
-    /* margin-right: 2em; */
-    margin-left:2em;
+
+    padding: 0.2em;
+    margin: 1.5em;
   }
   
   input:focus {

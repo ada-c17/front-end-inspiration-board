@@ -1,8 +1,19 @@
 
 .board{
 
-}
-#board_title, #board-owner{
-    color:bisque;
     text-align: center;
+    margin-left: 50px;
+    
+
 }
+#board-owner{
+ color:darkseagreen;
+
+}
+
+#board_title{
+    color:cadetblue;
+    font-size: 2em;
+
+}
+
