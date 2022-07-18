@@ -10,7 +10,7 @@ const CardList = (props) => {
   useEffect(() => {
     axios
       .get(
-      
+        ``
       )
       .then((response) => {
         setCardData(response.data);
@@ -22,7 +22,7 @@ const CardList = (props) => {
 
   const deleteCard = (card) => {
     axios
-      .delete()
+      .delete(``)
       .then((response) => {
         const newCardData = cardData.filter((existingCard) => {
           return existingCard.card_id !== card.card_id;
@@ -30,13 +30,13 @@ const CardList = (props) => {
         setCardData(newCardData);
       })
       .catch((error) => {
-        console.log('Card not deleted', error.response.data);
+        console.log('Error in deleteing card', error.response.data);
       });
   };
 
   const addOneCard = (card) => {
     axios
-      .put()
+      .put(``)
       .then((response) => {
         const newCardData = cardData.map((existingCard) => {
           return existingCard.card_id !== card.card_id
@@ -46,7 +46,7 @@ const CardList = (props) => {
         setCardData(newCardData);
       })
       .catch((error) => {
-        console.log('Error in adding a like:', error.response.data);
+        console.log('Error in adding a like', error.response.data);
       });
   };
 
@@ -59,8 +59,17 @@ const CardList = (props) => {
   const postNewCard = (message) => {
     axios
       .post(
-       
-        
+        ``,
+        { message }
+      )
+      .then((response) => {
+        const cards = [...cardData];
+        cards.push(response.data.card);
+        setCardData(cards);
+      })
+      .catch((error) => {
+        console.log('Error in creating a new card', error.response.data);
+      });
   };
 
   //beauty
