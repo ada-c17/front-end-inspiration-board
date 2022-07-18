@@ -21,7 +21,10 @@ const Board = ({ board, cardLike, boardTitle }) => {
 
   return (
     <section className="board-content">
-      <h1>Current Board: {boardTitle}</h1>
+      <h1>
+        Current Board: <br />
+        {boardTitle}
+      </h1>
       <section className="card-display">{cards}</section>
     </section>
   );
