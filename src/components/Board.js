@@ -2,7 +2,6 @@ import { Link } from "react-router-dom";
 import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import "./Board.css";
-
 import axios from "axios";
 import CardList from "./CardList";
 import CardForm from "./CardForm";
@@ -36,9 +35,8 @@ const Board = () => {
 
   const setCardLikesCount = (id) => {
     const updatedBoardData = { ...boardData };
-    const cardsList = [...updatedBoardData.cards];
     let targetCard;
-    for (let card of cardsList) {
+    for (let card of updatedBoardData.cards) {
       if (card.id === id) {
         targetCard = card;
       }
@@ -55,16 +53,19 @@ const Board = () => {
   };
 
   const deleteCard = (id) => {
-    console.log("delete", id);
+    console.log(id);
     const delUpdateBoard = { ...boardData };
-    const delCard = [...delUpdateBoard.cards];
+    console.log(delUpdateBoard);
+
     axios
       .delete(`/cards/${id}`)
       .then((response) => {
-        const newCards = delCard.cards.filter((card) => card.id !== id);
-        console.log(newCards);
+        delUpdateBoard.cards = delUpdateBoard.cards.filter(
+          (card) => card.id !== id
+        );
+        console.log(delUpdateBoard);
 
-        setBoardData(newCards);
+        setBoardData(delUpdateBoard);
       })
       .catch((error) => {
         console.log("Unable to delete");
@@ -84,6 +85,13 @@ const Board = () => {
 
   const updatePos = (data, id) => {
     console.log(data, id);
+    const updatedBoardData = { ...boardData };
+    let targetCard;
+    for (let card of updatedBoardData.cards) {
+      if (card.id === id) {
+        targetCard = card;
+      }
+    }
     axios
       .put(`/cards/${id}`, {
         PosX: data.x,
@@ -91,7 +99,11 @@ const Board = () => {
       })
       .then((response) => {
         console.log("Card position sucessfully updated!");
-        getBoardDatafromAPI(params.id);
+        // getBoardDatafromAPI(params.id);
+        targetCard.PosX = data.x;
+        targetCard.PosY = data.y;
+
+        setBoardData(updatedBoardData);
       })
       .catch((error) => {
         console.log("Could not update a  position of the card!");

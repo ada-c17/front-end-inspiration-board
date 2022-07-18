@@ -26,6 +26,8 @@ const BoardList = () => {
 
   const deleteBoard = (boardID) => {
     const board_name = boards.find((x) => x.id === boardID).title;
+
+    // pop up window to confirm delete
     const confirm = window.confirm(
       `Are you sure you wish to delete the Space ${board_name}?`
     );
@@ -50,12 +52,14 @@ const BoardList = () => {
         getBoardsFromAPI();
       })
       .catch((error) => {
-        console.log("couldn't delete board");
+        console.log("couldn't edit board");
       });
   };
 
+  // sorting boards by name
   boards.sort((a, b) => a.title.localeCompare(b.title));
 
+  // switcher between list of boards and editBoardForm
   const [showInput, setShowInput] = useState(true);
   const handleEditing = (id) => {
     setShowInput(false);
@@ -63,7 +67,6 @@ const BoardList = () => {
   };
 
   const onEditSubmission = (board) => {
-    //! I should change it to true only after response from the database
     setShowInput(true);
     editBoard(board.id, board.title);
   };
