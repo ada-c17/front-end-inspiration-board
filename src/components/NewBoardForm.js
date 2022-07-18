@@ -7,7 +7,18 @@ const AddNewBoardForm = ({ submitBoard }) => {
     //state in charge for opening and closing modal
     const [show, setShow] = useState(false);
     const handleShow = () => setShow(true);
-    const handleClose = () => setShow(false);
+    const handleClose = () => {
+        setShow(false)
+
+    };
+    const handleRestart = () => {
+        setShow(false)
+        data.title = ""
+        data.owner = ""
+
+    };
+    const [validated, setValidated] = useState(false);
+
 
 
     //state in charge of updating form input data
@@ -27,12 +38,24 @@ const AddNewBoardForm = ({ submitBoard }) => {
     };
 
     const submit = (e) => {
-        e.preventDefault();
-        const newData = {
-            title: data.title,
-            owner: data.owner,
-        };
-        submitBoard(newData);
+
+        const form = e.currentTarget;
+        if (form.checkValidity() === false) {
+            e.preventDefault();
+            e.stopPropagation();
+        }
+
+        else {
+            setValidated(true);
+            e.preventDefault();
+            const newData = {
+                title: data.title,
+                owner: data.owner,
+            };
+            submitBoard(newData);
+        }
+        data.title = ""
+        data.owner = ""
     };
     //data in state gets posted to api
     // const submitBoard = () => {
@@ -68,7 +91,7 @@ const AddNewBoardForm = ({ submitBoard }) => {
                 </Modal.Header>
 
                 <Modal.Body>
-                    <Form onSubmit={(e) => submit(e)}>
+                    <Form noValidate validated={validated} onSubmit={(e) => submit(e)}>
                         <Form.Group className="mb-3">
                             <Form.Control
                                 onChange={(e) => handleInput(e)}
@@ -104,7 +127,7 @@ const AddNewBoardForm = ({ submitBoard }) => {
                 </Modal.Body>
 
                 <Modal.Footer>
-                    <Button variant="secondary" onClick={handleClose}>
+                    <Button variant="secondary" onClick={handleRestart}>
                         Close
                     </Button>
                 </Modal.Footer>
