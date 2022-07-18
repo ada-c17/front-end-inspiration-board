@@ -24,12 +24,13 @@ const Card = ({
   }
 
   return (
-
     <Draggable
       key={id}
       defaultPosition={{ x: PosX, y: PosY }}
       onStop={(e, data) => {
-        updatePos(data, id);
+        if (data.x !== PosX && data.y !== PosY) {
+          updatePos(data, id);
+        }
       }}
     >
       <div style={{ backgroundColor: color }} className="card">

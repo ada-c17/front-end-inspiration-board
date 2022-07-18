@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import "./BoardList.css";
-import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
 import EditBoardForm from "./EditBoardForm";
 import axios from "axios";
@@ -101,10 +100,6 @@ const BoardList = () => {
       )}
     </div>
   );
-};
-
-BoardList.propTypes = {
-  boards: PropTypes.array.isRequired,
 };
 
 export default BoardList;

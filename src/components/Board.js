@@ -53,18 +53,13 @@ const Board = () => {
   };
 
   const deleteCard = (id) => {
-    console.log(id);
     const delUpdateBoard = { ...boardData };
-    console.log(delUpdateBoard);
-
     axios
       .delete(`/cards/${id}`)
       .then((response) => {
         delUpdateBoard.cards = delUpdateBoard.cards.filter(
           (card) => card.id !== id
         );
-        console.log(delUpdateBoard);
-
         setBoardData(delUpdateBoard);
       })
       .catch((error) => {
@@ -84,7 +79,6 @@ const Board = () => {
   };
 
   const updatePos = (data, id) => {
-    console.log(data, id);
     const updatedBoardData = { ...boardData };
     let targetCard;
     for (let card of updatedBoardData.cards) {
@@ -99,10 +93,8 @@ const Board = () => {
       })
       .then((response) => {
         console.log("Card position sucessfully updated!");
-        // getBoardDatafromAPI(params.id);
         targetCard.PosX = data.x;
         targetCard.PosY = data.y;
-
         setBoardData(updatedBoardData);
       })
       .catch((error) => {
