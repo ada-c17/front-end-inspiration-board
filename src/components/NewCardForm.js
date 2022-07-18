@@ -2,6 +2,7 @@ import React from "react";
 import { useState } from "react";
 import "./Card.js";
 import PropTypes from "prop-types";
+import "./NewCardForm.css";
 
 //change CSS classes
 const NewCardForm = ({ addCardCallback }) => {
@@ -31,6 +32,7 @@ const NewCardForm = ({ addCardCallback }) => {
             id="message"
             value={cardData.message}
             onChange={handleChange}
+            required
           />
           <button className="button new-card__submit" type="submit">
             Add Card
