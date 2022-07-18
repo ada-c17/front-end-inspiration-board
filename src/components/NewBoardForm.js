@@ -2,6 +2,7 @@ import React from "react";
 import { useState } from "react";
 import "./Board.js";
 import PropTypes from "prop-types";
+import "./NewBoardForm.css";
 
 //change CSS
 
@@ -33,6 +34,7 @@ const NewBoardForm = ({ addBoardCallback }) => {
             id="title"
             value={newBoardData.title}
             onChange={handleChange}
+            required
           />
           <label htmlFor="name">Owner</label>
           <input
@@ -40,6 +42,7 @@ const NewBoardForm = ({ addBoardCallback }) => {
             id="owner"
             value={newBoardData.owner}
             onChange={handleChange}
+            required
           />
           <button className="button new-board__submit" type="submit">
             Add Board

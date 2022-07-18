@@ -12,6 +12,7 @@ import NewBoard from "./routes/newBoard";
 import Board from "./routes/board";
 
 //sample data if GET request made to endpoint /boards
+//get all cards will only render boardID, title, owner
 const boards = [
   {
     boardId: 1,
@@ -21,6 +22,7 @@ const boards = [
   {
     boardId: 2,
     title: "Let's go Sheepydoodles!",
+
     cards: [
       { cardId: 1, message: "I love pups!", likesCount: 1 },
       { cardId: 1, message: "I love pups!", likesCount: 1 },

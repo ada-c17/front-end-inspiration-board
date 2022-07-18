@@ -10,6 +10,7 @@ export default function BoardDisplay({ selectedBoard }) {
       <h3 className="board-header">{selectedBoard.title}</h3>
       <section>
         {/* <Board selectedBoard={selectedBoard} /> */}
+        {/* <CardList></CardList> */}
         <NewCardForm />
       </section>
     </main>
