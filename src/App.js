@@ -33,6 +33,26 @@ function App() {
 
   useEffect(fetchBoards, []);
 
+  const fetchCards = (id) => {
+    axios
+      .get(`${URL}/${id}/cards`)
+      .then((res) => {
+        const newCards = res.data.cards.map((card) => {
+          return {
+            card_id: card.id,
+            message: card.message,
+            likes_count: card.likes_count,
+          };
+        });
+        setCards(newCards);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
+
+  useEffect(fetchCards, []);
+
   const addBoard = (boardInfo) => {
     axios
       .post(URL, boardInfo)
@@ -68,7 +88,11 @@ function App() {
         {openModal && <Modal addBoard={addBoard} closeModal={setOpenModal} />}
         <main className="Main">
           <div className="Boards">
-            <BoardList boards={boards} deleteBoard={deleteBoard} />
+            <BoardList
+              boards={boards}
+              deleteBoard={deleteBoard}
+              fetchCards={fetchCards}
+            />
             <section className="Board-form">
               <button
                 onClick={() => {

@@ -11,6 +11,7 @@ const BoardList = (props) => {
         title={board.title}
         owner={board.owner}
         deleteBoard={props.deleteBoard}
+        fetchCards={props.fetchCards}
       />
     );
   });
