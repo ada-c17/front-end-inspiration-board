@@ -37,7 +37,7 @@ const NewCardForm = ({onAddCard}) => {
             <Form.Label>Message</Form.Label>
             <Form.Control placeholder="Enter message"
                           as="textarea"
-                          className={newCardData.message.length === 0 || newCardData.message.length > 5 ? "input_more_40" : ""}
+                          className={newCardData.message.length === 0 || newCardData.message.length > 40 ? "input_more_40" : ""}
                           onChange={handleChange}
                           value={newCardData.message}/>
 

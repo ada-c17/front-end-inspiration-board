@@ -4,7 +4,9 @@ import BoardList from "./components/BoardList";
 import CardList from "./components/CardList";
 import NewBoardForm from "./components/NewBoardForm";
 import NewCardForm from "./components/NewCardForm";
+// import Card from "./components/Card";
 import "./App.css";
+import Button from 'react-bootstrap/Button';
 
 function App() {
   // STATE(boardsData: ListOfObjects, selectedBoard: id)
@@ -12,10 +14,10 @@ function App() {
   const [selectedBoard, setSelectedBoard] = useState(null);
   const [boardTitle, setBoardTitle] = useState();
   const [selectedCards, setSelectedCards] = useState([])
-  const [like, setLike] = useState(0)
 
 
-  const URL = "https://inspo-board-server.herokuapp.com";
+  // const URL = "https://inspo-board-server.herokuapp.com";
+  const URL = "https://inspiration-board-server.herokuapp.com"
   // const URL = "http://127.0.0.1:5000/"
   useEffect(() => {
     axios
@@ -55,7 +57,7 @@ function App() {
       .catch((error) => {
         console.log(error);
       });
-  }, [selectedBoard, boardsData, like]);
+  }, [selectedBoard, boardsData]);
 
 
   //When currently selected board changes use useEffect with selectedBoard state as the dependency to make API call get CARDS from our GET cards enpoint in backend. The more data you have to display on your website, the less you want to store in the front end as state. It would be better to make more API calls for more specific data than to keep a giant nested object of data in the front end.
@@ -137,7 +139,7 @@ function App() {
     axios.delete(URL + '/cards/' + cardId)
     .then(response => {
       console.log("delete response", response.data)
-      const newCardList = selectedCards.filter(cardInList => cardInList.card_id !== cardId)
+      const newCardList = selectedCards.filter(cardInList => cardInList.cardId !== cardId)
       setSelectedCards(newCardList)
     })
     .catch(error => console.log(error))
@@ -146,47 +148,55 @@ function App() {
 
   const addLike = cardId => {
     console.log("cardId", cardId)
-    axios.get(URL + "/boards/" + selectedBoard + "/cards")
-    .then(response => {
-      console.log("responseData", response.data.cards)
-      const cardList = response.data.cards.filter(card => card.card_id === cardId)
+    
+    // const cardList = selectedCards.filter(card => card.cardId === cardId)
 
-      axios.put(URL + '/cards/' + cardId + '/like', {likes_count: cardList[0].likes_count + 1})
-    // axios.put(`${URL}/cards/${cardId}/like`, {likes_count: 100})
-    // axios.put(`http://localhost:3000/cards/${cardId}/like`)
-    .then(response => {
+    // axios.put(URL + '/cards/' + cardId + '/like', {likes_count: cardList[0].likesCount + 1})
+      axios.put(URL + '/cards/' + cardId + '/like')
+      .then(response => {
       console.log("response >", response.data)
       const newCardList = selectedCards.map(cardInList => {
-        return cardInList.card_id === cardId ? {...response.data, likesCount: response.data.likes_count} : cardInList
+        return cardInList.cardId === cardId ? {...cardInList, likesCount: cardInList.likesCount+1} : cardInList
+        // return cardInList.cardId === cardId ? {...cardInList, likesCount: response.data.card.likes_count} : cardInList
       })
       console.log("newCardList", newCardList)
-
-      // const newLike = newCardList.filter(cardLike => cardLike.cardId == cardId )
-      // console.log("newLike", newLike)
-
-      // setLike(newLike.likesCount)
 
       setSelectedCards(newCardList)
     })
     .catch(error => console.log(error))
 
-    })
-    .catch(error => console.log(error))
-   
-    
-
-    // axios.put(URL + '/cards/' + cardId + '/like')
-    // // axios.put(`${URL}/cards/${cardId}/like`, {likes_count: 100})
-    // // axios.put(`http://localhost:3000/cards/${cardId}/like`)
-    // .then(response => {
-    //   console.log("response >", response.data)
-    //   const newCardList = selectedCards.map(cardInList => {
-    //     return cardInList.card_id === cardId ? {...response.data, likesCount: response.data.likes_count} : cardInList
-    //   })
-
-    //   setSelectedCards(newCardList)
     // })
     // .catch(error => console.log(error))
+  }
+
+  const sortById = arr => {
+    const sorted = [...arr].sort((a, b) => {
+      return a.cardId - b.cardId
+    })
+    setSelectedCards(sorted)
+  }
+
+  const sortAphabetically = arr => {
+    const sorted = [...arr].sort((a, b) => {
+      let lowerA = a.message.toLowerCase(),
+        lowerB = b.message.toLowerCase();
+
+      if (lowerA < lowerB) {
+        return -1;
+      }
+      if (lowerA > lowerB) {
+        return 1;
+      }
+      return 0;
+    })
+    setSelectedCards(sorted)
+  }
+
+  const sortByLikes = arr => {
+    const sorted = [...arr].sort((a, b) => {
+      return a.likesCount - b.likesCount
+    })
+    setSelectedCards(sorted)
   }
 
   
@@ -198,9 +208,16 @@ function App() {
         <NewBoardForm onAddBoard={addBoard} />
         <NewCardForm onAddCard={addCard} />
       </nav>
+      <nav>
+        <h2>Sort cards</h2>
+        <Button variant="warning" onClick={() => sortById(selectedCards)}>by ID</Button>
+        <Button variant="warning" onClick={() => sortAphabetically(selectedCards)}>aphabetically</Button>
+        <Button variant="warning" onClick={() => sortByLikes(selectedCards)}>by number of "likes"</Button>
+      </nav>
       <section className="boards__cards">
       <BoardList boards={boardsData} onSelectBoard={getCurrentBoard} />
-      <CardList selectedCards={selectedCards} boardTitle={boardTitle} deleteCard={deleteCard} addLike={addLike}/>
+      <CardList selectedCards={selectedCards} boardTitle={boardTitle} deleteCard={deleteCard} addLike={addLike}
+                sortById={sortById} sortAphabetically={sortAphabetically} sortByLikes={sortByLikes}/>
       </section>
     </main>
   );

@@ -18,6 +18,9 @@ const Card = ({
             <p>
                 {message}
             </p>
+            <p>
+                {`Card ID: ${cardId}`}
+            </p>
             <button
                 className="liked"
                 onClick={() => addLike(cardId)}
