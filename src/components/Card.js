@@ -2,25 +2,26 @@ import React from "react";
 // import PropTypes from "prop-types";
 
 const Card = (props) => {
-  console.log(props.message);
   const clickLikeButton = () => {
-    props.onLike(props.id);
+    props.likeCardCallback(props.cardInfo);
   };
 
   const clickDeleteButton = () => {
-    props.deleteCardCallback(props.id);
+    props.deleteCardCallback(props.cardInfo.id);
   };
 
   return (
-    <div key={props.id}>
-      <section>{props.message}</section>
-      <button className="card-likes" onClick={clickLikeButton}>
-        {props.likes}💕
-      </button>
-      ;
-      <button className="delete-card" onClick={clickDeleteButton}>
-        delete
-      </button>
+    <div className="card-item" key={props.cardInfo.id}>
+      <ul className="card-item__controls">
+        <li>{props.cardInfo.message}</li>
+        <li>{props.cardInfo.likes_count} 💕</li>
+        <button className="card-likes" onClick={clickLikeButton}>
+          +1
+        </button>
+        <button className="delete-card" onClick={clickDeleteButton}>
+          delete
+        </button>
+      </ul>
     </div>
   );
 };

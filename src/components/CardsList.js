@@ -2,30 +2,22 @@ import React from "react";
 // import PropTypes from "prop-types";
 import Card from "./Card";
 
-const CardsList = ({
-  cards,
-  onLike,
-  deleteCardCallback,
-  board_id,
-  selectedBoard,
-}) => {
-  const cardComponents = cards.map((card) => {
+const CardsList = (props) => {
+  const cardComponents = props.cards.map((card) => {
     return (
       <Card
-        key={card.id}
-        id={card.id}
-        message={card.message}
-        likes={card.likes}
-        onLike={onLike}
-        deleteCardCallback={deleteCardCallback}
-        board_id={board_id}
+        key={card.card_id}
+        cardInfo={card}
+        deleteCardCallback={props.deleteCardCallback}
+        likeCardCallback={props.likeCardCallback}
+        board_id={props.board_id}
       />
     );
   });
 
   return (
     <div>
-      <h2>Card for {selectedBoard.title}</h2>
+      <h2>Card for {props.selectedBoard.title}</h2>
       <div className="cards_list_no_bullets">{cardComponents}</div>
     </div>
   );
@@ -44,18 +36,16 @@ const CardsList = ({
 // };
 export default CardsList;
 
-//     const cardComponents = props.cardsList.map((card) => {
-//       return (
-//         <Card
-//           key={card.card_id}
-//           id={card.card_id}
-//           board_id={card.board_id}
-//           message={card.message}
-//           likes_count={card.likes_count}
-//           showBoardCallBack={props.showBoardCallBack}
-//           selectedBoardCallBack={props.selectedBoardCallBack}
-//         />
-//       );
-//     });
-//     return <div>{cardComponents}</div>;
-//   };
+// {
+//   /* <Card
+//         key={card.id}
+//         id={card.id}
+//         cardData={props.cards}
+//         message={card.message}
+//         likes_count={card.likes_count}
+//         card={card}
+//         deleteCardCallback={props.deleteCardCallback}
+//         likeCardCallback={props.likeCardCallback}
+//         board_id={props.board_id}
+//       /> */
+// }

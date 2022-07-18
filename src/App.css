@@ -5,7 +5,7 @@
 
 .App-header {
     height: 20vh;
-    background-color: #f6f8fa;
+    background-color: white;
     display: flex;
     flex-direction: row;
     align-items: flex-start;
@@ -42,13 +42,35 @@ h2 {
     grid-template-columns: 1fr 1fr 1fr;
 }
 
-.body {
-    color: white;
+.boards-list {
+    max-height: 9rem;
+    min-height: 9rem;
+    overflow: scroll;
+    margin-right: 2.5rem;
+    border: black solid 1px;
+}
+
+.card-item {
+    font-family: "Homemade Apple", cursive;
+    font-family: 'Concert One', cursive;
+    background-color: rgb(255, 248, 165);
+    box-shadow: -10px 7px 7px lightgrey;
+    min-height: 200px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem;
+    flex-direction: column;
+}
+
+input {
+    box-sizing: content-box;
 }
 
 .App-link {
     color: #61dafb;
 }
+
 
 /* .boards-list {
     height: 100vh;

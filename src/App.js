@@ -14,22 +14,6 @@ function App() {
     owner: "",
   };
 
-  // my lines
-  // const [cards, setCards] = useState(CARDS);
-
-  // const onLike = (id) => {
-  //   const newCards = cards.map((card) => {
-  //     if (card.id === id) {
-  //       return {
-  //         ...card,
-  //         likes: (card.likes += 1),
-  //       };
-  //     }
-  //     return card;
-  //   });
-  //   setCards(newCards);
-  // };
-
   // keeping stracking on board state
   const [boards, setBoards] = useState([]);
   // keeping tracking on showing or hiding form state
@@ -89,15 +73,15 @@ function App() {
     for (const board of newBoards) {
       if (board.id === id) {
         setBoardSelected(board);
-        fetchCards();
+        fetchCards(id);
       }
     }
   };
 
   // get all cards
-  const fetchCards = () => {
+  const fetchCards = (id) => {
     axios
-      .get(`${URL}/${boardSelected.id}/cards`)
+      .get(`${URL}/${id}/cards`)
       .then((response) => {
         const cardsCopy = [...response.data];
         const newCards = cardsCopy.map((card) => {
@@ -105,22 +89,24 @@ function App() {
             id: card.card_id,
             message: card.message,
             likes_count: card.likes_count,
-            board_id: boardSelected.id,
+            board_id: id,
           };
         });
         setCardsData(newCards);
       })
       .catch((error) => {
+        console.log(error);
         alert("Oop! Could not access the cards!");
       });
   };
 
+  //useEffect(fetchCards, [boardSelected]);
   // creating a new card by specific board
   const postNewCard = (cardInfo) => {
     axios
       .post(`${URL}/${boardSelected.id}/cards`, cardInfo)
       .then((response) => {
-        fetchCards();
+        fetchCards(boardSelected.id);
       })
       .catch((error) => {
         alert("Couldn't create a new card.");
@@ -140,8 +126,36 @@ function App() {
           }
         }
         setCardsData(newCardsList);
-        fetchCards();
+        fetchCards(boardSelected.id);
       });
+  };
+
+  //count like
+  const likeCard = (newCard) => {
+    //console.log(newCard);
+    //console.log(newCard.id);
+    const cards = [...cardsData];
+    let newCardsData = [];
+    for (let card of cards) {
+      if (card.id === newCard.id) {
+        card.likes_count += 1;
+        newCardsData.push(card);
+        axios
+          .put(
+            `https://get-inspired-c17.herokuapp.com/cards/${newCard.id}/like`,
+            card
+          )
+
+          .then((res) => {
+            setCardsData(newCardsData);
+            fetchCards(boardSelected.id);
+          })
+
+          .catch((err) => {
+            alert("Oop! Could not +1 the card");
+          });
+      }
+    }
   };
 
   return (
@@ -153,12 +167,12 @@ function App() {
         <section className="box-container">
           <div className="board">
             <h2>Boards</h2>
-            <div className="boards-list">
+            <ol className="boards-list">
               <BoardsList
                 boardsList={boards}
                 selectedBoardCallBack={selectedBoard}
               />
-            </div>
+            </ol>
           </div>
           <div className="selected-board">
             <h2>Selected Boards</h2>
@@ -185,6 +199,7 @@ function App() {
                 cards={cardsData}
                 selectedBoard={boardSelected}
                 deleteCardCallback={deleteCard}
+                likeCardCallback={likeCard}
               />
             )}
           </div>
@@ -198,3 +213,10 @@ function App() {
 }
 
 export default App;
+
+// console.log(response.data);
+//         const newCardsData = cardsData.map((existingCard) => {
+//           console.log(existingCard);
+//           return existingCard.card_id !== newCard.card_id
+//             ? existingCard
+//             : { ...newCard, likes_count: newCard.likes_count + 1 };
