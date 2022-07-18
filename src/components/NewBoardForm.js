@@ -27,7 +27,7 @@ const AddNewBoardForm = ({ submitBoard }) => {
         title: "",
         owner: "",
     });
-    const isValid = data.title.length > 0 && data.owner.length > 0;
+    const isValid = data.title.length > 0 && data.owner.length > 0 && data.title.length < 40;
 
     //Form input stored in state
     const handleInput = (e) => {
@@ -39,8 +39,9 @@ const AddNewBoardForm = ({ submitBoard }) => {
 
     const submit = (e) => {
 
-        const form = e.currentTarget;
-        if (form.checkValidity() === false) {
+        // const form = e.currentTarget;
+        // form.checkValidity() === fals
+        if (validated === false) {
             e.preventDefault();
             e.stopPropagation();
         }
