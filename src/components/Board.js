@@ -21,10 +21,7 @@ const Board = () => {
     axios
       .get(`/boards/${id}/cards`)
       .then((response) => {
-        console.log(response.data);
         setBoardData(response.data);
-        console.log(boardData.cards);
-        // !!!!!same problem here setBoardData return old data in console.log (it does not set cards for sure)
       })
       .catch((error) => {
         console.log("couldn't call api");
@@ -37,7 +34,7 @@ const Board = () => {
   //! I added boardData and then its started to rerender Card nonstop
 
   const setCardLikesCount = (id) => {
-    const updatedBoardData = boardData;
+    const updatedBoardData = { ...boardData };
     const cardsList = [...updatedBoardData.cards];
     let targetCard;
     for (let card of cardsList) {
@@ -49,10 +46,7 @@ const Board = () => {
       .put(`/cards/${id}/like`)
       .then((response) => {
         targetCard.likes_count += 1;
-        // !!!!!why this setBoardData do not rerender the board component?
         setBoardData(updatedBoardData);
-        // if it will rerender we do not need to call getBoardDataFromAPI
-        getBoardDatafromAPI(params.id);
       })
       .catch((error) => {
         console.log("couldn't add like");
