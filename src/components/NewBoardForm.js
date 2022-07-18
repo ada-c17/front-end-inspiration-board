@@ -49,7 +49,6 @@ const NewBoardForm = (props) => {
 
   return (
     <div>
-      <pre>{JSON.stringify(formValues, undefined, 2)}</pre>
       <form onSubmit={handleSubmit} className="new-board__form">
         <div className="new-board__fields">
           <label>Title: </label>
