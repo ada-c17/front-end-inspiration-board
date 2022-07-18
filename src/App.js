@@ -104,7 +104,7 @@ function App() {
               {/* <BoardForm addBoard={addBoard} /> */}
             </section>
           </div>
-          <div className="Board-display">
+          <div className="Card-display">
             <CardList cards={cards}></CardList>
           </div>
         </main>

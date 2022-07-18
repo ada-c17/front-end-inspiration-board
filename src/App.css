@@ -59,3 +59,17 @@
   width: 80%;
   margin-top: 5px;
 }
+
+.Card-display {
+  background-color: white;
+  border: 1px #C1C1C1 solid;
+  width: 80%;
+  margin-top: 5px;
+  display: flex;
+
+  /* grid-template-columns: repeat(auto-fill, 200px); */
+  /* grid-template-rows: repeat(auto-fill, 200px); */
+  /* padding: 24px;
+  gap: 24px; */
+
+}
