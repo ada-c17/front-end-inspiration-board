@@ -4,6 +4,7 @@ import useSound from "use-sound";
 import { Link } from "react-router-dom";
 import React, { useState } from "react";
 import Otter from "./data/Otter.jpg";
+import Galaxy from "./data/Tealspace.jpg";
 import BoardList from "./components/BoardList";
 import laugh from "./data/Laugh.mp3";
 import Story from "./components/Story";
@@ -24,6 +25,7 @@ function App() {
         className="Otter"
         onClick={play}
       ></img>
+
       <h1>Inspiration from the OtterSpace</h1>
 
       <input

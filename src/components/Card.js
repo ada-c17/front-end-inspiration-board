@@ -24,6 +24,7 @@ const Card = ({
   }
 
   return (
+
     <Draggable
       key={id}
       defaultPosition={{ x: PosX, y: PosY }}
