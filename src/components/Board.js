@@ -22,10 +22,9 @@ const Board = () => {
       .get(`/boards/${id}/cards`)
       .then((response) => {
         console.log(response.data);
-
         setBoardData(response.data);
         console.log(boardData.cards);
-        // !!!!!same problem here setBoardData return old data in console.log
+        // !!!!!same problem here setBoardData return old data in console.log (it does not set cards for sure)
       })
       .catch((error) => {
         console.log("couldn't call api");
