@@ -41,7 +41,7 @@ function App() {
   };
 
   const getCardsForBoard = (board_id) => {
-    console.log("getcardsforboard")
+    console.log("getcardsforboard");
     axios
       .get(`https://inspirational-board.herokuapp.com/boards/${board_id}/cards`)
       .then((response) => {
@@ -59,17 +59,15 @@ function App() {
         setBoardName(board.title);
       }
     }
-
-    
   };
 
-    const sortCardsByLikes = (board_id) => {
-      getCardsForBoard(board_id);
-      const newCards = [...cardsData].sort((a, b) => 
-        b.likes_count - a.likes_count
+  const sortCardsByLikes = () => {
+    const newCards = [...cardsData].sort(
+      (a, b) => b.likes_count - a.likes_count
     );
-      return newCards
-  }
+    setCards(newCards);
+    return newCards;
+  };
 
   //creates new card for selected board
   const createNewCardForSelectedBoard = (data, board_id) => {
@@ -106,8 +104,6 @@ function App() {
 
     setCards(newCardsData);
   };
-  
-  
 
   const deleteCard = (card_id) => {
     axios
@@ -130,7 +126,6 @@ function App() {
     <div>
       <header>
         <h3>Inspirational Boards by Beastly Raptors</h3>
-        
       </header>
 
       <div className="container">
