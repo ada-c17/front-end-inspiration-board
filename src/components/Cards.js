@@ -40,7 +40,7 @@ const Cards = ({
             icon={likeHeart}
             onClick={likeClick}
             className="heart"
-          />
+          />{" "}
           {likesCount}
         </Card.Footer>
       </Card>

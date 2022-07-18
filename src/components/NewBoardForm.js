@@ -9,6 +9,7 @@ const AddNewBoardForm = ({ submitBoard }) => {
   const [validated, setValidated] = useState(false);
   const handleShow = () => setShow(true);
   const handleClose = () => setShow(false);
+  const [disableBtn, setDisableBtn] = useState(true);
 
   //state in charge of updating form input data
   const url = "https://back-end-inspiration-board.herokuapp.com/boards";
@@ -23,6 +24,9 @@ const AddNewBoardForm = ({ submitBoard }) => {
     newData[e.target.id] = e.target.value;
     setData(newData);
     console.log(newData);
+    if (data.title !== "" && data.owner !== "") {
+      setDisableBtn(false);
+    }
   };
 
   const submit = (e) => {
@@ -49,10 +53,7 @@ const AddNewBoardForm = ({ submitBoard }) => {
         Add New Board
       </button>
 
-      <Modal
-        show={show}
-        // onHide={handleClose}
-      >
+      <Modal show={show} onHide={handleClose}>
         <Modal.Header closeButton className="header">
           <Modal.Title>Add Board</Modal.Title>
         </Modal.Header>
@@ -85,6 +86,8 @@ const AddNewBoardForm = ({ submitBoard }) => {
               // onClick={handleClose}
               variant="success"
               type="submit"
+              disabled={disableBtn}
+              // disabled={!data.owner}
               block
             >
               Submit
