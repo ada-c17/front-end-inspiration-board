@@ -87,12 +87,13 @@ function App() {
             boardTitle={boardOption}
             board={chosenBoardData}
           />
-          {/* <section className="card-display">
+          <section className="card-display">
             <div className="message">
               <p className="message-text">You can do it!</p>
               <p className="likes">Likes: 0</p>
               <button className="like-button">👍</button>
-            </div> */}
+            </div>
+          </section>
         </section>
       </section>
       <section className="add-message">
