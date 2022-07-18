@@ -15,6 +15,7 @@ function App() {
   const [selectedBoardName, setSelectedBoardName] = useState(
     "Select a board to get inspired!"
   );
+  const [isBoardFormVisible, setIsBoardFormVisible] = useState(true);
 
   const fetchBoards = () => {
     axios
@@ -32,7 +33,7 @@ function App() {
 
   const fetchCards = () => {
     axios
-      .get(`${URL}/cards`)
+      .get(`${URL}/boards/${selectedBoard}`)
       .then((response) => {
         console.log("fetchCard request");
         const updatedCards = response.data;
@@ -45,7 +46,7 @@ function App() {
   };
 
   useEffect(() => fetchBoards, []);
-  useEffect(() => fetchCards, []);
+  // useEffect(() => fetchCards, [selectBoard]);
 
   const createNewBoard = (boardForm) => {
     axios
@@ -61,6 +62,7 @@ function App() {
   const selectBoard = (board) => {
     setSelectedBoard(board.id);
     setSelectedBoardName(board.title);
+    fetchCards();
   };
 
   const deleteBoard = () => {
@@ -113,6 +115,10 @@ function App() {
 
   const deleteCard = (card_id) => {};
 
+  const toggleNewBoardForm = () => {
+    setIsBoardFormVisible(!isBoardFormVisible);
+  };
+
   return (
     <div className="container">
       <header className="header">
@@ -124,11 +130,19 @@ function App() {
           fetchBoardsCallback={fetchBoards}
           selectBoardCallback={selectBoard}
           deleteBoardsCallback={deleteBoard}
+          fetchCardsCallback={fetchCards}
         ></Board>
         <h4>{`Current Board: (id: ${selectedBoard}) ${selectedBoardName}`}</h4>
       </section>
       <section className="boardform">
-        <NewBoardForm addBoardCallback={createNewBoard}></NewBoardForm>
+        {isBoardFormVisible ? (
+          <NewBoardForm addBoardCallback={createNewBoard}></NewBoardForm>
+        ) : (
+          ""
+        )}
+        <button onClick={toggleNewBoardForm} className="boardform-button">
+          {isBoardFormVisible ? "Hide New Board Form" : "Show New Board Form"}
+        </button>
       </section>
 
       <section className="cards">
