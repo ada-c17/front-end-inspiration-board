@@ -7,7 +7,7 @@ const Card = (props) =>{
     if (props.board_id === {}){
         return null
     }
-    const cardComponents = props.board_id.cards.map((card,index) => {
+    const cardComponents = props.activeBoard.cards.map((card,index) => {
         return (
         <div>
             <SingleCard

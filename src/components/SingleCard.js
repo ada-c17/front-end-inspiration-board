@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-const SingleBoard = (props) => {
+const SingleCard = (props) => {
     return (
         <section>
             <ul>
@@ -11,4 +11,4 @@ const SingleBoard = (props) => {
         </section>)
 }
 
-export default SingleBoard;
+export default SingleCard;
