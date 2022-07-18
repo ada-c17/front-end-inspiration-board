@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import Board from "./components/Board";
 import BoardDropdown from "./components/BoardDropdown";
+import NewCardForm from "./components/NewCardForm";
 import "./css/inspo_board.css";
 
 const kBaseUrl = "https://mission-inspirational-2.herokuapp.com";
@@ -89,23 +90,17 @@ function App() {
             boardTitle={boardOption}
             board={chosenBoardData}
           />
-          <section className="card-display">
-            <div className="message">
-              <p className="message-text">You can do it!</p>
-              <p className="likes">Likes: 0</p>
-              <button className="like-button">👍</button>
-            </div>
-          </section>
         </section>
       </section>
-      <section className="add-message">
+      <NewCardForm />
+      {/* <section className="add-message">
         <input
           className="message-input"
           type="text"
           placeholder="Add a message here!"
         />
         <button className="message-button">Add</button>
-      </section>
+      </section> */}
     </main>
   );
 }
