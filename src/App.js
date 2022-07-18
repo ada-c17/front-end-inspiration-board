@@ -1,7 +1,6 @@
 import "./App.css";
 import { useState, useEffect } from "react";
 import axios from "axios";
-import Board from "./components/Board";
 import BoardForm from "./components/BoardForm";
 import BoardList from "./components/BoardList";
 import CardForm from "./components/CardForm";
@@ -131,33 +130,49 @@ function App() {
 
   return (
     <div className="App">
-      <header className="App-header"></header>
+      <header>
+        <h1>Eggplant Parmesan Inspiration Board</h1>
+      </header>
       <main>
-        <div>
+        <section className="board-container">
           <h2>Boards</h2>
           <BoardList
             boards={boards}
             selectBoardCallback={selectBoard}
             deleteBoardCallback={deleteBoard}
           />
-        </div>
-        <h2>Selected Board</h2>
-        <p>
-          {selectedBoard.title} - {selectedBoard.owner}
-        </p>
-        <h2>Cards for Pick-Me-Up Quotes</h2>
-        <CardList
-          cards={cards}
-          deleteCardCallback={deleteCard}
-          likeCardCallback={likeCard}
-        />
-        <h2>Create a New Board</h2>
-        {boardFormHidden ? null : <BoardForm addBoardCallback={addBoard} />}
-        <button onClick={setBoardFormVisibility}>
-          {boardFormHidden ? "Show Board Form" : "Hide Board Form"}
-        </button>
-        <h2>Create a New Card</h2>
-        <CardForm addCardCallback={addCard} board_id={selectedBoard.id} />
+        </section>
+
+        <section className="selected-board-container">
+          <h2>Selected Board</h2>
+          <p>
+            {selectedBoard.title} - {selectedBoard.owner}
+          </p>
+        </section>
+
+        <section className="board-form-container">
+          <h2>Create a New Board</h2>
+          {boardFormHidden ? null : <BoardForm addBoardCallback={addBoard} />}
+          <button onClick={setBoardFormVisibility}>
+            {boardFormHidden ? "Show Board Form" : "Hide Board Form"}
+          </button>
+        </section>
+
+        <section>
+          <h2>Cards for Pick-Me-Up Quotes</h2>
+          <div className="cards-container">
+            <CardList
+              cards={cards}
+              deleteCardCallback={deleteCard}
+              likeCardCallback={likeCard}
+            />
+          </div>
+        </section>
+
+        <section className="card-form-container">
+          <h2>Create a New Card</h2>
+          <CardForm addCardCallback={addCard} board_id={selectedBoard.id} />
+        </section>
       </main>
     </div>
   );

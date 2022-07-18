@@ -1,0 +1,16 @@
+.cards-container{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+}
+
+.cards-container li {
+    list-style: None;
+    background-color: #C2631A;
+    /* width: 30%;
+    height: 200px; */
+    /* flex: 25%; */
+    margin: 10px;
+    padding: 10px;
+    text-align: center;
+}
+

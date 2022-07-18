@@ -10,8 +10,10 @@ const Board = (props) => {
   };
   return (
     <li>
-      <div onClick={selectBoardCallback}>{props.title}</div>
-      <button onClick={deleteBoard}>Delete</button>
+      <div onClick={selectBoardCallback}>
+        {props.title}
+        <button onClick={deleteBoard}>Delete</button>
+      </div>
     </li>
   );
 };
