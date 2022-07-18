@@ -1,0 +1,74 @@
+.card-container{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    background-color: rgb(248, 248, 162);
+    list-style: none;
+    max-width: 250px;
+    max-height: 200px;
+
+    /* border: 2px dotted gray; */
+
+/* Making sticky notes */
+    box-shadow: 5px 5px 7px rgba(33,33,33,.7);
+    transform: rotate(-6deg);
+    transition: transform .15s linear;
+}
+
+.card-container:nth-child(even) {
+    transform:rotate(4deg);
+    position:relative;
+    top:5px;
+    background:#cfc;
+}
+
+.card-container:nth-child(4n) {
+    transform:rotate(-3deg);
+    position:relative;
+    top:-5px;
+    background:#ccf;
+}
+
+.card-container:nth-child(5n) {
+    transform:rotate(7deg);
+    position:relative;
+    top:-5px;
+    background:rgb(241, 204, 255);
+}
+
+.card-container:hover {
+    box-shadow: 7px 7px 7px rgba(0,0,0,.7);
+    transform: scale(1.25);
+    position:relative;
+    z-index: 2;
+    /* height: fit-content;
+    overflow: visible; */
+}
+
+.card-message {
+    color: rgb(14, 15, 14);
+    font-family: 'Reenie Beanie';
+    font-size: 25px;
+    overflow: auto;
+    overflow: hidden;
+    margin: 10px;
+    /* border: double 2px rgb(4, 0, 255); */
+}
+
+.emoji-div {
+    display: flex;
+    justify-self:flex-start;
+
+    align-self: flex-end;
+    justify-content: end;
+    margin: 5px;
+    max-width: fit-content;
+}
+
+.card-buttons{
+    background: none;
+	border: none;
+	cursor: pointer;
+    font-size: 15px;
+    margin: 5px;
+}

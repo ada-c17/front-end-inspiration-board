@@ -1,0 +1,64 @@
+.board-form-container{
+    margin: 0px;
+    height: 99%;
+    background-color: #f5dcf5;
+    border:2px solid rgb(212, 12, 238);
+}
+
+h4{
+    font-family:"Pt Sans", helvetica, sans-serif;
+    font-family:"droid serif";
+    font-style:italic;
+    color:#920565; 
+    text-align:center;
+    font-size:1.2em;
+  }
+
+
+  form{
+    margin-top:10px;
+    display:inline-block;
+  }
+  
+
+label{
+   font-family:"Pt Sans", helvetica, sans-serif;
+    font-family:"droid serif";
+    font-style:italic;
+    color:#920565; 
+    font-size:0.5em;
+}
+
+input{
+    font-family: 'Reenie Beanie';
+    font-size:1.2em;
+    border:none;
+    outline:none;
+    display:inline-block;
+    height: 30%;
+    vertical-align:middle;
+    position:relative;
+    border-radius:22px;
+    width:160px;
+    box-sizing:border-box;
+    padding: 10px; 
+  }
+
+  input[type="submit"]{ 
+    font-family: "Pt Sans", helvetica, sans-serif;;
+    background:rgba(144, 8, 172);
+    font-size:1em;
+    color:#fff;
+    width:100px;
+    cursor:pointer;
+  }
+
+  input[type="submit"]:hover{ 
+    background:rgba(201, 7, 168) ;
+    color:#fff;
+    position:relative;
+    left:9px;
+    top:2px; 
+    width:100px;
+    cursor:pointer;
+  }

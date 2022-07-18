@@ -1,0 +1,66 @@
+.card-form-container{
+    
+    
+    margin: 0px;
+    height: 99%;
+    background-color: #f6f894;
+    border:2px solid rgb(212, 12, 238);
+}
+
+  .card-form-container h4{
+    font-family:"Pt Sans", helvetica, sans-serif;
+    font-family:"droid serif";
+    font-style:italic;
+    color:#920565; 
+    text-align:center;
+    font-size:1.2em;
+  }
+
+
+  form{
+    margin-top:1px;
+    display:inline-block;
+  }
+  
+
+label{
+  font-family:"Pt Sans", helvetica, sans-serif;
+    font-family:"droid serif";
+    font-style:italic;
+    color:#920565; 
+    text-align:center;
+    font-size:1.2em;
+}
+
+input{
+    font-family: 'Reenie Beanie';
+    font-size:1.2em;
+    border:none;
+    outline:none;
+    display:inline-block;
+    height:30px;
+    vertical-align:middle;
+    position:relative;
+    
+    border-radius:22px;
+    max-width:220px;
+    box-sizing:border-box;
+    padding:0 11px; 
+  }
+
+  input[type="submit"]{ 
+    font-family: "Pt Sans", helvetica, sans-serif;;
+    background:rgba(144, 8, 172);
+    font-size:1em;
+    color:#fff;
+    position:relative;
+    width:100px;
+    cursor:pointer;
+  }
+  input[type="submit"]:hover{ 
+    background:rgba(201, 7, 168) ;
+    color:#fff;
+    position:relative;
+    width:100px;
+    cursor:pointer;
+  }

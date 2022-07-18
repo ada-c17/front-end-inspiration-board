@@ -1,0 +1,19 @@
+.single-board {
+    background-color: rgb(32, 227, 192);
+    list-style: none;
+    min-width: fit-content;
+    height: 60px;
+    text-align: center;
+    color: rgb(14, 15, 14);
+    border-radius: 5px;
+    
+}
+.single-board-selected{
+    background-color: blueviolet;
+    list-style: none;
+    min-width: fit-content;
+    height: 60px;
+    text-align: center;
+    color: rgb(14, 15, 14);
+    border-radius: 5px;
+}
