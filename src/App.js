@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { useEffect, useState} from 'react';
+import { useEffect, useState } from 'react';
 import './App.css';
 import NewBoardForm from './components/NewBoardForm.js';
 import Board from './components/Board.js';
@@ -63,42 +63,6 @@ function App() {
   const [isBoardFormVisible, setIsBoardFormVisible] = useState(true);
   const toggleNewBoardForm = () => {setIsBoardFormVisible(!isBoardFormVisible)}
 
-
-  // const [cardData, setCardData] = useState([
-  //   {
-  //       card_id: 0,
-  //       messageData: 'hi',
-  //       likesData: null,
-  //       board_id: null
-  //   },
-  //   {
-  //       card_id: 1,
-  //       messageData: 'bye',
-  //       likesData: null,
-  //       board_id: null
-  //   },
-  //   {
-  //     card_id: 2,
-  //     messageData: 'bye bye',
-  //     likesData: null,
-  //     board_id: null
-  //   }
-  // ]);
-
-  // const [likeCount, setLikeCount] = useState(0);
-
-  // const increaseLikes = () => {
-  //     console.log(`Inside increaseLikes!`);
-  //     let likeCount = 0;
-
-  //     for (const card of cardData) {
-  //       if (card.liked === true) {
-  //         likeCount +=1;
-  //       }
-  //     }
-  //     // setLikeCount(likeCount + 1);
-  //     return likeCount;
-  // };
 
   return (
     <div className="page__container">

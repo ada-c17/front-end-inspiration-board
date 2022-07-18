@@ -2,7 +2,7 @@ body {
   margin: 3rem;
   font-family: 'Open Sans', sans-serif;
   color: #263238;
-  background-image: url('../src/positive-doodle-images.jpeg');
+  /* background-image: url('../src/positive-doodle-images.jpeg'); */
   background-size: cover;
 }
 

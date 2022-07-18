@@ -46,6 +46,25 @@ const CardList = (props) => {
     //     });
     // };
 
+  // const [cardData, setCardData] = useState([])
+
+  // // const [likes_count, setLikeCount] = useState(0);
+
+    const increaseLikes = (card_id) => {
+        // console.log(`Inside increaseLikes!`);
+      axios
+        .patch(`${URL}/${props.board.board_id}/cards/${card_id}/likes`)
+        .then(() => {
+          console.log('inside the increase likes function!');
+          card_id.likes_count = card_id.likes_count + 1;
+          }
+          // setLikeCount(likes_count + 1);
+          // setCardsData(card_id)
+        );
+    };
+
+    // useEffect(increaseLikes, [props.board.board_id.card_id]);
+
     const deleteCard = (card_id) => {
       axios
         .delete(`${URL}/${props.board.board_id}/cards/${card_id}`)
@@ -67,7 +86,7 @@ const CardList = (props) => {
     // Display each card with Delete button
     const cardElements = cardsData.map((card) => {
       return (
-        <Card key={card.card_id} card={card} onDeleteCallback={deleteCard}></Card>
+        <Card key={card.card_id} card={card} onLikeCallback={increaseLikes} onDeleteCallback={deleteCard}></Card>
       );
     });
 
