@@ -17,8 +17,8 @@ const BoardForm = ({ onAddBoard }) => {
         const newFormData = { ...formData, [fieldName]: fieldValue };
         setFormData(newFormData);
     };
-    const titleVal = formData.title ? formData.title : 'How can a dream be manifested without a name?';
-    const ownerVal = formData.owner ? formData.owner : 'A dream needs a dreamer!';
+    const titleVal = formData.title ? formData.title : '';
+    const ownerVal = formData.owner ? formData.owner : '';
     
     const handleSubmit = (event) => {
         event.preventDefault();
