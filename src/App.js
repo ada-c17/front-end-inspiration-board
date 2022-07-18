@@ -3,6 +3,7 @@ import NewBoardForm from "./components/NewBoardForm";
 import NewCardForm from "./components/NewCardForm";
 import BoardList from "./components/BoardList";
 import axios from "axios";
+import Board from "./components/Board";
 
 // this could all go in a separate apiCalls.js folder or something
 
@@ -43,6 +44,26 @@ const likeCardAsync = (cardId) => {};
 
 // API call (delete) to delete card by id
 const deleteCardAsync = (cardId) => {};
+
+const selectBoardAsync = (boardId) => {
+  return axios
+    .get(`${kBaseUrl}/boards/${boardId}`)
+    .then((response) => {
+      return response.data
+  })
+    .catch((error) => {
+      console.log(`${error.data}`)
+  });
+}
+
+const selectBoard = (boardId) =>{
+  const selectedBoard = selectBoardAsync(boardId);
+
+  return <Board title={selectedBoard.title}
+          creator={selectedBoard.creator}
+          cards={selectedBoard.cards}
+          />
+}
 
 function App() {
   const [boardData, setBoardData] = useState([]);
@@ -85,7 +106,7 @@ function App() {
   return (
     <main className="App">
       <h1>Inspiration Board</h1>
-      <BoardList boards={boardSet} />
+      <BoardList boards={boardSet} selectBoard={selectBoard} />
       <NewBoardForm onBoardSubmit={handleNewBoard} />
       {/* We probably only want to show when a board is selected */}
       <NewCardForm onCardSubmit={handleNewCard} />
