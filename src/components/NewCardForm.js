@@ -3,12 +3,12 @@ import React, { useState } from "react";
 import "./NewCardForm.css";
 import PropTypes from "prop-types";
 
-const NewCardForm = ({ submitCard, buttonState }) => {
+const NewCardForm = ({ submitCard, visibilityState }) => {
   const defaultCard = { message: "", like_count: 0 };
   const [cardData, setCardData] = useState(defaultCard);
 
-  const handleCardFormInput = (event) => {
-    const inputElement = event.target;
+  const handleCardFormInput = (e) => {
+    const inputElement = e.target;
     const name = inputElement.name;
     const value = inputElement.value;
 
@@ -23,25 +23,28 @@ const NewCardForm = ({ submitCard, buttonState }) => {
     setCardData(defaultCard);
   };
 
+  const visibilityClass = visibilityState ? "visible" : "hidden";
+
   return (
-    <form onSubmit={handleCardFormSubmission}>
-      <label htmlFor="message">Message</label>
-      <input
-        name="message"
-        type="text"
-        value={cardData.message}
-        onChange={handleCardFormInput}
-        id="message"
-      ></input>
-      <label htmlFor="like_count">Like Count</label>
-      <input
-        name="like_count"
-        type="text"
-        value={cardData.like_count}
-        onChange={handleCardFormInput}
-        id="like_count"
-      ></input>
+    <form onSubmit={handleCardFormSubmission} className={visibilityClass}>
+      <fieldset>
+        <legend>Create a new card.</legend>
+        <label htmlFor="message">Message</label>
+        <input
+          name="message"
+          type="text"
+          value={cardData.message}
+          onChange={handleCardFormInput}
+          id="message"
+        ></input>
       <input type="submit" />
-    </form>
+    </fieldset>
+  </form>
   );
 };
+NewCardForm.propTypes={
+  submitCard: PropTypes.func.isRequired,
+  visibilityState: PropTypes.bool.isRequired,
+}
+
+export default NewCardForm;
