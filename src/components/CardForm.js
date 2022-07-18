@@ -37,7 +37,12 @@ function CardForm(props) {
         value={formData.message}
         onChange={onFormChange}
       ></input>
-      <input type="submit" value="Add Card" disabled={disableSubmit}></input>
+      <input
+        type="submit"
+        value="Add Card"
+        disabled={disableSubmit}
+        className="submit"
+      ></input>
     </form>
   );
 }

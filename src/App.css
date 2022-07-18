@@ -28,4 +28,13 @@ section:nth-child(5n) {
   margin: 5px;
   width: 30%
 }
+button {
+  background-color: #9e5246;
+  color: white;
+  border: none;
+  padding: 7px;
+  border-radius: 5px;
+  margin: 1px;
+
+}
 

@@ -14,3 +14,11 @@
     text-align: center;
 }
 
+.like {
+    background-color: rgb(129, 180, 129);
+    color: white;
+    border: none;
+    padding: 7px;
+    border-radius: 5px;
+    margin: 1px;
+}
