@@ -1,7 +1,16 @@
 import React, { useState } from "react";
 import PropTypes from "prop-types";
-
-const Board = () => {};
+import CardList from "./CardList"
+const Board = (props) => {
+  return(
+    <h1> {props.title} by {props.creator} </h1>,
+    <div>
+      <CardList
+      cards= {props.cards}
+      />
+    </div>
+  );
+};
 
 Board.propTypes = {
   id: PropTypes.number.isRequired,
