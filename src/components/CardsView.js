@@ -3,13 +3,13 @@ import React, { useState } from "react";
 import "./CardsView.css";
 import CardList from "./CardList";
 import NewCardButton from "./NewCardButton";
-// import NewCardForm from "./components/NewCardForm";
+import NewCardForm from "./NewCardForm";
 import PropTypes from "prop-types";
 
 const CardsView = ({ cards, deleteCard, submitCard, updateLikes }) => {
-  const [button, setButton] = useState(false);
+  const [visibility, setVisibility] = useState(false);
   const toggleButton = () => {
-    setButton(!button);
+    setVisibility(!visibility);
   };
 
   return (
@@ -20,7 +20,7 @@ const CardsView = ({ cards, deleteCard, submitCard, updateLikes }) => {
         updateLikes={updateLikes}
       ></CardList>
       <NewCardButton onClick={toggleButton}></NewCardButton>
-      {/* <NewCardForm submitCard={submitCard} buttonState={button}></NewCardForm> */}
+      <NewCardForm submitCard={submitCard} visibilityState={visibility}></NewCardForm>
     </div>
   );
 };
