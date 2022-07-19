@@ -2,7 +2,7 @@ import React from "react";
 import PropTypes from "prop-types";
 import "./Board.css";
 
-const Board = ({ boardId, title, owner, cards, onSelectBoard, color, selectedBoard }) => {
+const Board = ({ boardId, title, owner, onSelectBoard, color, selectedBoard, isSelected }) => {
   const onBoardClick = () => {
     console.log(title);
     console.log(boardId);
@@ -29,6 +29,7 @@ Board.propTypes = {
   owner: PropTypes.string.isRequired,
   cards: PropTypes.array,
   onSelectBoard: PropTypes.func,
+  isSelected: PropTypes.bool.isRequired,
 };
 
 export default Board;

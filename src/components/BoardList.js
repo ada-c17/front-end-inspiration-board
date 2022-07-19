@@ -4,6 +4,7 @@ import Board from "./Board";
 
 const BoardList = ({ boards, onSelectBoard, selectedBoard }) => {
   const boardComponents = boards.map((board) => {
+    // const isSelected = (board.boardId === selectedBoard)
     return (
       <ul key={board.boardId}>
         <Board
@@ -14,6 +15,8 @@ const BoardList = ({ boards, onSelectBoard, selectedBoard }) => {
           color={board.color}
           onSelectBoard={onSelectBoard}
           selectedBoard={selectedBoard}
+          boards={boards}
+          // isSelected={isSelected}
         />
       </ul>
     );

@@ -16,3 +16,8 @@
 	align-self: center;
 	border:none;
 }
+
+.message {
+	font-weight: bolder;
+	font-style: italic;
+}

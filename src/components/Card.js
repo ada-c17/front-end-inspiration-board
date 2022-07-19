@@ -6,28 +6,30 @@ const Card = ({
     cardId,
     message,
     likesCount,
-    boardId,
-    onLikeCallback,
-    onDeleteCallback,
+    deleteCard,
+    addLike,
     color
 }) => {
 
     return (
         <div className="card__item" style={{backgroundColor: color}}>
-            <p>
+            <p className="message">
                 {message}
+            </p>
+            <p>
+                {`Card ID: ${cardId}`}
             </p>
             <button
                 className="liked"
-                onClick={() => onLikeCallback(cardId)}
                 style={{backgroundColor: color}}
+                onClick={() => addLike(cardId)}
             >
                 {likesCount} ❤️
             </button>
             <button
                 className="delete"
-                onClick={() => onDeleteCallback(cardId)}
                 style={{backgroundColor: color}}
+                onClick={() => deleteCard(cardId)}
             >
             delete
             </button>
@@ -40,7 +42,7 @@ Card.propTypes = {
     boardId: PropTypes.number.isRequired,
     message: PropTypes.string.isRequired,
     likesCount: PropTypes.number.isRequired,
-    onLikeCallback: PropTypes.func.isRequired,
-    onDeleteCallback: PropTypes.func.isRequired,
+    addLike: PropTypes.func.isRequired,
+    deleteCard: PropTypes.func.isRequired,
 };
 export default Card;
