@@ -22,4 +22,8 @@ nav{
   justify-content:flex-start;
 }
 
+nav button{
+  background-color: whitesmoke !important;
+  color: black !important;
+}
 

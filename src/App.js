@@ -9,7 +9,7 @@ import Button from 'react-bootstrap/Button';
 
 function App() {
   const [boardsData, setBoardsData] = useState([]);
-  const [selectedBoard, setSelectedBoard] = useState(null);
+  const [selectedBoardId, setselectedBoardId] = useState(null);
   const [boardTitle, setBoardTitle] = useState();
   const [boardColor, setBoardColor] = useState();
   const [selectedCards, setSelectedCards] = useState([]);
@@ -41,7 +41,7 @@ function App() {
 
   useEffect(() => {
     axios
-      .get(URL + "/boards/" + selectedBoard + "/cards")
+      .get(URL + "/boards/" + selectedBoardId + "/cards")
       .then((response) => {
         setSelectedCards(() => {
           return response.data.cards.map((card) => {
@@ -57,32 +57,32 @@ function App() {
       .catch((error) => {
         console.log(error);
       });
-  }, [selectedBoard, boardsData]);
+  }, [selectedBoardId, boardsData]);
 
 
-  //When currently selected board changes use useEffect with selectedBoard state as the dependency to make API call get CARDS from our GET cards enpoint in backend. The more data you have to display on your website, the less you want to store in the front end as state. It would be better to make more API calls for more specific data than to keep a giant nested object of data in the front end.
+  //When currently selected board changes use useEffect with selectedBoardId state as the dependency to make API call get CARDS from our GET cards enpoint in backend. The more data you have to display on your website, the less you want to store in the front end as state. It would be better to make more API calls for more specific data than to keep a giant nested object of data in the front end.
 
-  const getBoardDataAndIndex = (selectedBoard) => {
-    let selectedBoardData;
+  const getBoardDataAndIndex = (selectedBoardId) => {
+    let selectedBoardIdData;
     let boardIndex;
     for (const [index, board] of boardsData.entries()) {
-      if (board.boardId === selectedBoard) {
-        selectedBoardData = board;
+      if (board.boardId === selectedBoardId) {
+        selectedBoardIdData = board;
         boardIndex = index;
       }
     }
-    return [selectedBoardData, boardIndex];
+    return [selectedBoardIdData, boardIndex];
   };
 
   const addCard = (newCard) => {
     axios
-      .post(URL + "/boards/" + selectedBoard + "/cards", newCard)
+      .post(URL + "/boards/" + selectedBoardId + "/cards", newCard)
       .then((response) => {
-        const [selectedBoardData, boardIndex] =
-          getBoardDataAndIndex(selectedBoard);
+        const [selectedBoardIdData, boardIndex] =
+          getBoardDataAndIndex(selectedBoardId);
         const updatedBoard = {
-          ...selectedBoardData,
-          cards: [...selectedBoardData.cards, 
+          ...selectedBoardIdData,
+          cards: [...selectedBoardIdData.cards, 
           {boardId: response.data.board_id,
           cardId: response.data.card_id,
           message: response.data.message,
@@ -122,7 +122,7 @@ function App() {
 
   const getCurrentBoard = (id) => {
     const currentBoard = boardsData.filter((board) => board.boardId === id);
-    setSelectedBoard(currentBoard[0].boardId);
+    setselectedBoardId(currentBoard[0].boardId);
     setBoardTitle(currentBoard[0].title);
     setBoardColor(currentBoard[0].color)
   };
@@ -208,12 +208,12 @@ function App() {
       </nav>
       <nav>
         <h2>Sort cards</h2>
-        <Button variant="warning" onClick={() => sortById(selectedCards)}>by ID</Button>
-        <Button variant="warning" onClick={() => sortAphabetically(selectedCards)}>aphabetically</Button>
-        <Button variant="warning" onClick={() => sortByLikes(selectedCards)}>by number of "likes"</Button>
+        <Button variant="secondary" onClick={() => sortById(selectedCards)}>by ID</Button>
+        <Button variant="secondary" onClick={() => sortAphabetically(selectedCards)}>alphabetically</Button>
+        <Button variant="secondary" onClick={() => sortByLikes(selectedCards)}>by number of "likes"</Button>
       </nav>
       <section className="boards__cards">
-      <BoardList boards={boardsData} onSelectBoard={getCurrentBoard} selectedBoard={selectedBoard} />
+      <BoardList boards={boardsData} onSelectBoard={getCurrentBoard} selectedBoardId={selectedBoardId} />
       <CardList selectedCards={selectedCards} boardTitle={boardTitle} boardColor={boardColor} deleteCard={deleteCard} addLike={addLike} sortById={sortById} sortAphabetically={sortAphabetically} sortByLikes={sortByLikes}/>
       </section>
     </main>
