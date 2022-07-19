@@ -21,7 +21,6 @@ body {
   url("./data/Darkspace.jpg");
   background: cover;
   background-size: 150%;
- 
 }
 
 @font-face {
@@ -48,6 +47,7 @@ a:hover {
 
 .HomeLink {
   font-family: 'SpaceFont';
+
   float:right;
   line-height : 40px ;
   padding: 20px;

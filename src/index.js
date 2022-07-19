@@ -8,9 +8,11 @@ import Board from "./components/Board.js";
 
 import NewBoardForm from "./components/NewBoardForm.js";
 
+// added reactrouter library to work with routes down below
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <BrowserRouter>
+    {/* Able to work with the paths below based on endpoint */}
     <Routes>
       <Route path="new" element={<NewBoardForm />} />
       <Route path="/" element={<App />} />
