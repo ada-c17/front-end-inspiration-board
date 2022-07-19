@@ -21,6 +21,7 @@ const CardList = (props) => {
     <div>
       <h1 className="Cards-title">CARDS</h1>
       <div className="cardList">{cardsComponents}</div>
+      <div>{/* <CardForm addCard={props.addCard}></CardForm> */}</div>
     </div>
   );
 };

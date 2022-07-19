@@ -12,6 +12,7 @@ const BoardList = (props) => {
         owner={board.owner}
         deleteBoard={props.deleteBoard}
         fetchCards={props.fetchCards}
+        addCard={props.addCard}
       />
     );
   });

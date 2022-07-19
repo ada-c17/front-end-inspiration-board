@@ -1,5 +1,6 @@
 import React from "react";
 import "./Board.css";
+import CardForm from "./CardForm";
 
 const Board = (props) => {
   const deleteBoard = () => {
@@ -16,6 +17,9 @@ const Board = (props) => {
       <button className="deleteButton" onClick={deleteBoard}>
         X
       </button>
+      <div>
+        <CardForm addCard={props.addCard} boardID={props.id}></CardForm>
+      </div>
     </div>
   );
 };
