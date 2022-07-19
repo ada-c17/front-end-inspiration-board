@@ -16,6 +16,25 @@ const CardsView = ({
     setChosenBoard(null);
   };
 
+  const funcOnSortChange = (event) => {
+    const sortOption = document.getElementById("sortOptionsDropDown");
+    sortOption.addEventListener("change", sortCards);
+  };
+
+  // have state for cards?   setCards()
+
+  const sortCards = () => {
+    let optionChosen = document.getElementById("sortOptionsDropDown").value;
+    if (optionChosen === "sort alphabetically") {
+      cards.sort((obj1, obj2) => (obj1.message > obj2.message ? 1 : -1));
+    } else if (optionChosen === "sort by likes") {
+      cards.sort((obj1, obj2) => (obj1.like_count > obj2.like_count ? 1 : -1));
+    } else if (optionChosen === "sort by ID") {
+      cards.sort((obj1, obj2) => (obj1.card_id > obj2.card_id ? 1 : -1));
+    }
+    setCards(cards);
+  };
+
   return (
     <div>
       <button onClick={exitBoard}>Return to boards</button>
@@ -28,7 +47,7 @@ const CardsView = ({
         submitCard={submitCard}
         chosenBoard={chosenBoard}
       ></NewCardButton>
-      <select id="sortOptionsDropDown">
+      <select id="sortOptionsDropDown" onSortChange={funcOnSortChange}>
         <option> sort alphabetically </option>
         <option> sort by likes </option>
         <option> sort by ID </option>
