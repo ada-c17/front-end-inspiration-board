@@ -5,7 +5,7 @@ import axios from "axios";
 import NewCardForm from "./NewCardForm";
 import CardList from "./CardList";
 
-const Board = ({ board_id, changeBoardCallBack }) => {
+const Board = ({ board_id, changeBoardCallback }) => {
   useEffect(() => {
     getBoardData(board_id);
   }, []);
@@ -56,16 +56,15 @@ const Board = ({ board_id, changeBoardCallBack }) => {
       .catch((error) => console.log("Didnt get board data", error));
   };
 
-  const deleteBoard = (board_id, changeBoardCallBack) => {
-    console.log({ changeBoardCallBack });
+  const deleteBoard = (board_id) => {
     axios
       .delete(`${process.env.REACT_APP_BACKEND_URL}/boards/${board_id}`)
       .then(() => {
         console.log("deleted board");
+        changeBoardCallback(0);
       })
       .catch((error) => console.log(`Cannot delete board ${error}`));
     console.log("Board deleted now we are resetting display");
-    changeBoardCallBack(null);
   };
 
   return (
@@ -73,16 +72,14 @@ const Board = ({ board_id, changeBoardCallBack }) => {
       <h1>{title}</h1>
       <h2>{owner}</h2>
       <CardList cardsOnBoard={testCards} />
-      <button onClick={() => deleteBoard(board_id, changeBoardCallBack)}>
-        DELETE THIS BOARD
-      </button>
-      <button onClick={() => console.log("setBoardCallBack(null)")}> 🔙</button>
+      <button onClick={() => deleteBoard(board_id)}>DELETE THIS BOARD</button>
+      <button onClick={() => changeBoardCallback(0)}> 🔙</button>
     </div>
   );
 };
 
 export default Board;
 
-// Board.propTypes = {
-//   board_id: PropTypes.string.isRequired,
-// };
+Board.propTypes = {
+  changeBoardCallback: PropTypes.func.isRequired,
+};

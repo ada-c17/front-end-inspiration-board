@@ -12,6 +12,7 @@ function App() {
     console.log("If/Else func - Switch between BoardList & Board");
     if (display) {
       console.log("you have display of", display);
+      console.log(typeof changeDisplay);
       return <Board board_id={display} changeBoardCallback={changeDisplay} />;
     } else {
       return <BoardList changeBoardCallback={changeDisplay} />;
