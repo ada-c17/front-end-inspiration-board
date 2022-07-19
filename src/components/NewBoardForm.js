@@ -58,7 +58,12 @@ const AddNewBoardForm = ({ submitBoard }) => {
       </button>
 
       <Modal show={show} onHide={handleClose} autoFocus={false}>
-        <Modal.Header closeButton className="header">
+        <Modal.Header
+          closeButton
+          closeVariant="white"
+          closeLabel="Close"
+          className="header"
+        >
           <Modal.Title>Add Board</Modal.Title>
         </Modal.Header>
 

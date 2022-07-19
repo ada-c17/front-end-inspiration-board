@@ -48,11 +48,16 @@ const AddNewCardForm = ({ submitCard, boardId }) => {
   return (
     <section>
       <button onClick={handleShow} type="button" className="card-btn">
-        Add New Card{" "}
+        Add New Card
       </button>
 
       <Modal show={show} onHide={handleClose} autoFocus={false}>
-        <Modal.Header closeButton className="header">
+        <Modal.Header
+          closeButton
+          closeVariant="white"
+          closeLabel="Close"
+          className="header"
+        >
           <Modal.Title>Add Card</Modal.Title>
         </Modal.Header>
 
