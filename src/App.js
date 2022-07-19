@@ -31,7 +31,7 @@ function App() {
         owner: newBoard.ownerData,
       })
       .then((response) => {
-        getBoards(response.data.boards);
+        getBoards([...boards, response.data.board]);
       })
       .catch((error) => {
         console.log(<section>{error.response.data.message}</section>);

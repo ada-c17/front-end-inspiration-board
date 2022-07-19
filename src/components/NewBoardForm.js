@@ -23,7 +23,7 @@ const NewBoardForm = (props) => {
   };
 
   const onFormSubmit = (event) => {
-    // event.preventDefault();
+    event.preventDefault();
 
     props.addBoardCallback({
       titleData: formFields.title,
