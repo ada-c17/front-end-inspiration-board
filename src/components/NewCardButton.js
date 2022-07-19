@@ -1,12 +1,25 @@
 // import axios from "axios";
-import React from "react";
+import React, { useState } from "react";
 import "./NewCardButton.css";
-// import PropTypes from "prop-types";
+import NewCardForm from "./NewCardForm";
+import PropTypes from "prop-types";
 
-const NewCardButton = () => {
+const NewCardButton = ({submitCard}) => {
+  const [isOpen, setIsOpen] = useState(false);
+
+  const togglePopup = () => {
+    setIsOpen(!isOpen);
+  };
+
   return (
     <div>
-      <button className="newCardBtn">+</button>
+      <button onClick={togglePopup}>+</button>
+      {isOpen && (
+        <NewCardForm
+          submitCard={submitCard}
+          handleClose={togglePopup}
+        />
+      )}     
     </div>
   );
 };
