@@ -84,14 +84,18 @@ const App = () => {
         <h1>INSPIRATION BOARD by Team Name</h1>
       </header>
       <main>
-        <h2>Selected Board: {boardTitle}</h2>
-        <button
-          className="button-toggle"
-          onClick={() => setIsBoardFormVisible(!isBoardFormVisible)}
-        >
-          {isBoardFormVisible ? 'Hide Form' : 'Create Your Board'}
-        </button>
-        {isBoardFormVisible ? <NewBoardForm addNewBoard={addNewBoard} /> : null}
+        <h2 className="board-select_header">Selected Board: {boardTitle}</h2>
+        <div className="board-form_container">
+          <button
+            className="button-toggle"
+            onClick={() => setIsBoardFormVisible(!isBoardFormVisible)}
+          >
+            {isBoardFormVisible ? 'Hide Form' : 'Create Your Board'}
+          </button>
+          {isBoardFormVisible ? (
+            <NewBoardForm addNewBoard={addNewBoard} />
+          ) : null}
+        </div>
         <h2 className="board-list_header">Board List</h2>
         <div className="board-list_container">
           <BoardList
