@@ -20,7 +20,7 @@ const CardList = (props) => {
                 board_id: card.board_id,
                 card_id: card.card_id,
                 message: card.message,
-                likes_count: 0
+                likes_count: card.likes_count
               };
             });
             setCardsData(newCards);
@@ -62,7 +62,7 @@ const CardList = (props) => {
         .delete(`${URL}/${props.board.board_id}/cards/${card_id}`)
         .then(() => {
           const newCards = [];
-          
+
           for (const card of cardsData) {
             if (card.card_id !== card_id) {
               newCards.push(card);
