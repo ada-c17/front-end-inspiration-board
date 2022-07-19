@@ -10,6 +10,7 @@
     /* margin: auto; */
     margin: 25px;
     user-select: none;
+    font-weight: bolder;
   }
   
 
@@ -26,6 +27,7 @@
     font-size: 1.3em;
     background-color: transparent;
     overflow: visible;
+
     padding: 0.2em;
     margin: 1.5em;
   }
@@ -36,14 +38,14 @@
   
   button {
     cursor: pointer;
-    background-color: gray;
+    background-color: rgb(128, 128, 128);
     font-size: 1em;
     padding: 0.7em;
     border-radius: 0px 5px 5px 0px;
   }
   
   button:hover {
-    background-color: rgb(173, 162, 162);
+    background-color: rgb(164, 162, 173);
   }
   
   #delete {
@@ -60,7 +62,7 @@
   #delete:hover {
     color: rgb(255, 55, 55);
   }
-#stars{
+  #stars{
     background-color: transparent;
     border: none;
     font-size: 1.4em;

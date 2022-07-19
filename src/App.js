@@ -10,7 +10,7 @@ import Story from "./components/Story";
 
 function App() {
   const [showBoardList, setShowResults] = useState(false);
-
+  // to play sound
   const [play] = useSound(laugh);
 
   const onClickShowBoardlist = () => setShowResults(!showBoardList);

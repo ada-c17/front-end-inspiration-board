@@ -2,10 +2,10 @@ import { Link } from "react-router-dom";
 import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import "./Board.css";
-
 import axios from "axios";
 import CardList from "./CardList";
 import CardForm from "./CardForm";
+import "./Board.css";
 
 const Board = () => {
   let params = useParams();
@@ -35,9 +35,8 @@ const Board = () => {
 
   const setCardLikesCount = (id) => {
     const updatedBoardData = { ...boardData };
-    const cardsList = [...updatedBoardData.cards];
     let targetCard;
-    for (let card of cardsList) {
+    for (let card of updatedBoardData.cards) {
       if (card.id === id) {
         targetCard = card;
       }
@@ -54,11 +53,14 @@ const Board = () => {
   };
 
   const deleteCard = (id) => {
+    const delUpdateBoard = { ...boardData };
     axios
       .delete(`/cards/${id}`)
       .then((response) => {
-        const newCards = boardData.cards.filter((card) => card.id !== id);
-        setBoardData(newCards);
+        delUpdateBoard.cards = delUpdateBoard.cards.filter(
+          (card) => card.id !== id
+        );
+        setBoardData(delUpdateBoard);
       })
       .catch((error) => {
         console.log("Unable to delete");
@@ -77,7 +79,13 @@ const Board = () => {
   };
 
   const updatePos = (data, id) => {
-    console.log(data, id);
+    const updatedBoardData = { ...boardData };
+    let targetCard;
+    for (let card of updatedBoardData.cards) {
+      if (card.id === id) {
+        targetCard = card;
+      }
+    }
     axios
       .put(`/cards/${id}`, {
         PosX: data.x,
@@ -85,7 +93,9 @@ const Board = () => {
       })
       .then((response) => {
         console.log("Card position sucessfully updated!");
-        getBoardDatafromAPI(params.id);
+        targetCard.PosX = data.x;
+        targetCard.PosY = data.y;
+        setBoardData(updatedBoardData);
       })
       .catch((error) => {
         console.log("Could not update a  position of the card!");
@@ -99,13 +109,13 @@ const Board = () => {
       </Link>
       <div id="board_title">Space {boardData.title}</div>
       <div id="board-owner"> belongs to: {boardData.owner}</div>
+      <CardForm handleSubmission={makeNewCard} />
       <CardList
         data={boardData.cards}
         updatePos={updatePos}
         deleteCardCallBack={deleteCard}
         setLikesCountCallBack={setCardLikesCount}
       />
-      <CardForm handleSubmission={makeNewCard} />
     </div>
   );
 };
