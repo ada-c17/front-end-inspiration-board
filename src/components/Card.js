@@ -19,10 +19,11 @@ const Card = (props) => {
           rel="stylesheet"
         ></link>
         <li className="handwritten">{props.message}</li>
-        <li>{props.likes_count} 💜</li>
-        <button onClick={likeOnClick}>+ 💜</button>
-        <button onClick={deleteOnClick}>🗑️</button>
-        <li>Board ID: {props.board_id}</li>
+        <div className="bottomicon">
+          <li>{props.likes_count} 💜</li>
+          <button onClick={likeOnClick}>+ 💜</button>
+          <button onClick={deleteOnClick}>🗑️</button>
+        </div>
       </ul>
     </div>
   );

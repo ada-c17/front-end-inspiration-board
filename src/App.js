@@ -21,9 +21,9 @@ function App() {
     axios
       .get(`${URL}/boards`)
       .then((response) => {
-        // console.log("fetchBoard request");
+        console.log("fetchBoard request");
         const updatedBoards = response.data;
-        // console.log(updatedBoards);
+        console.log(updatedBoards);
         setBoards(updatedBoards);
       })
       .catch((error) => {
@@ -35,9 +35,9 @@ function App() {
     axios
       .get(`${URL}/boards/${selectedBoard}`)
       .then((response) => {
-        // console.log("fetchCard request");
+        console.log("fetchCard request");
         const updatedCards = response.data;
-        // console.log(updatedCards);
+        console.log(updatedCards);
         setCards(updatedCards);
       })
       .catch((error) => {
@@ -52,7 +52,6 @@ function App() {
     } else {
       fetchCards();
     }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [selectedBoard]);
 
   const createNewBoard = (boardForm) => {
@@ -69,6 +68,7 @@ function App() {
   const selectBoard = (board) => {
     setSelectedBoard(board.id);
     setSelectedBoardName(board.title);
+    // fetchCards();
   };
 
   const deleteBoard = () => {
@@ -119,22 +119,7 @@ function App() {
       });
   };
 
-  const deleteCard = (card_id) => {
-    axios
-      .delete(`${URL}/cards/${card_id}`)
-      .then(() => {
-        const updatedCards = [];
-        for (const card of cards) {
-          if (card.card_id !== card_id) {
-            updatedCards.push(card);
-          }
-        }
-        setCards(updatedCards);
-      })
-      .catch((err) => {
-        console.log(err);
-      });
-  };
+  const deleteCard = (card_id) => {};
 
   const toggleNewBoardForm = () => {
     setIsBoardFormVisible(!isBoardFormVisible);
