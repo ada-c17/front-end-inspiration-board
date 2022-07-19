@@ -25,6 +25,7 @@ const NewCardForm = ({ submitCard, handleClose, chosenBoard }) => {
     e.preventDefault();
     submitCard(chosenBoard, cardData);
     setCardData(defaultCard);
+    handleClose();
   };
 
   return (

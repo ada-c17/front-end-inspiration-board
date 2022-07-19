@@ -15,6 +15,7 @@ const BoardList = (props) => {
         title={board.title}
         owner={board.owner}
         selectBoardCallback={props.selectBoardCallback}
+        deleteBoardCallback={props.deleteBoardCallback}
         // onClick={getCardsforBoard(board.id)}
       />
     );
