@@ -1,6 +1,6 @@
 import axios from "axios";
 import { React, useState } from "react";
-import "./Card.css";
+// import "./Card.css";
 
 export const Card = ({ id, message, likes, onRemoveCallback }) => {
   const [like, setLike] = useState(likes);
