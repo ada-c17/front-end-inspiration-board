@@ -1,11 +1,11 @@
-import { React, useState } from "react";
-import { Container } from "react-bootstrap";
-import { useNavigate } from "react-router-dom";
-import "./stylesheet/BoardList.css";
-import { Link } from "react-router-dom";
-import AddNewBoardForm from "./NewBoardForm";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faTrashCan } from "@fortawesome/free-regular-svg-icons";
+import { React, useState } from 'react';
+import { Container } from 'react-bootstrap';
+import { useNavigate } from 'react-router-dom';
+import './stylesheet/BoardList.css';
+import { Link } from 'react-router-dom';
+import AddNewBoardForm from './NewBoardForm';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faTrashCan } from '@fortawesome/free-regular-svg-icons';
 
 const BoardList = ({
   boardData,
@@ -19,7 +19,7 @@ const BoardList = ({
     return (
       <li>
         <Link
-          className="boardName"
+          className='boardName'
           to={`boards/${board.boardId}`}
           onClick={() => {
             navigate(`boards/${board.boardId}`);
@@ -31,9 +31,9 @@ const BoardList = ({
           onClick={() => {
             deleteBoard(board.boardId);
           }}
-          className="trash-can"
+          className='trash-can'
         >
-          <FontAwesomeIcon icon={faTrashCan} className="trash-can" />
+          <FontAwesomeIcon icon={faTrashCan} className='trash-can' />
         </button>
       </li>
     );
@@ -41,9 +41,9 @@ const BoardList = ({
 
   return (
     <section>
-      <Container fluid className="boardList">
-        <h1 className="boardTitle">Inspiration Board</h1>
-        <ul className="list">{boardData.map(createBoard)}</ul>
+      <Container fluid className='boardList'>
+        <h1 className='mainBoardTitle'>Inspiration Board</h1>
+        <ul className='list'>{boardData.map(createBoard)}</ul>
       </Container>
 
       <AddNewBoardForm submitBoard={submitBoard} />

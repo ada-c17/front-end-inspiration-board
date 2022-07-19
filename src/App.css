@@ -1,7 +1,14 @@
 .App {
   text-align: center;
-  height: 100vh;
+  min-height: 100vh;
   width: 100vw;
+  border: transparent solid 5vw;
+  border-image-source: url('./images/chalkboard.png');
+  border-image-slice: 200;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
 }
 
 .App-logo {

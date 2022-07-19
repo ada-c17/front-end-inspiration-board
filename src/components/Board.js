@@ -1,7 +1,7 @@
-import React, { useEffect } from "react";
-import CardsList from "./CardsList";
-import "./stylesheet/Board.css";
-import { useNavigate, useParams } from "react-router-dom";
+import React, { useEffect } from 'react';
+import CardsList from './CardsList';
+import './stylesheet/Board.css';
+import { useNavigate, useParams } from 'react-router-dom';
 
 const Board = ({
   boardData,
@@ -16,30 +16,30 @@ const Board = ({
 
   useEffect(() => {
     getOneBoard(boardId);
-    console.log("I ran!");
+    console.log('I ran!');
   }, []);
   // need [boardId]
 
-  console.log("board cards: ", boardData.cards);
+  console.log('board cards: ', boardData.cards);
 
   if (boardData.cards === undefined || boardData === []) {
     return <h1> </h1>;
   }
 
   return (
-    <div className="container">
-      <h1 className="boardTitle">
+    <div className='container'>
+      <h1 className='boardTitle'>
         {boardData.owner}'s '{boardData.title}'' Board!
       </h1>
       <button
         onClick={() => {
-          navigate("/");
+          navigate('/');
         }}
-        className="back-btn"
+        className='back-btn'
       >
         ← Back to Boards
       </button>
-      <section className="cardsList">
+      <section className='cardsList'>
         <CardsList
           cardData={boardData.cards}
           likeHeart={likeHeart}
