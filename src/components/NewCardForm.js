@@ -13,6 +13,16 @@ const NewCardForm = (props) => {
     });
   };
 
+  const addMessageWithEnter = (event) => {
+    if (event.key === "Enter") {
+      setCardField({
+        ...cardField,
+        message: event.target.value,
+      });
+      props.updateCards(cardField.message);
+    }
+  };
+
   const onUpdateCards = (event) => {
     event.preventDefault();
     props.updateCards(cardField.message);
@@ -27,6 +37,7 @@ const NewCardForm = (props) => {
         value={cardField.message}
         placeholder="Add a message here!"
         onChange={addMessage}
+        onKeyPress={addMessageWithEnter}
       />
       <button className="message-button" onClick={onUpdateCards}>
         Add
