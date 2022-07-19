@@ -8,7 +8,7 @@ const BoardsList = (props) => {
               id={board.id}
               owner={board.owner}
               title={board.title}
-              cardsCallback={props.cardsCallback} 
+              // cardsCallback={props.cardsCallback} 
               />;
   });
   return (

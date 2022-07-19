@@ -3,8 +3,6 @@ import PropTypes from "prop-types";
 
 const BoardName = (props) => {
   const fetchTheCard = () => {
-    console.log("in the fetch card function");
-    console.log(props)
     props.cardsCallback(props.id)
   }; 
 

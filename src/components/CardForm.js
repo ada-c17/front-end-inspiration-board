@@ -2,18 +2,16 @@ import { useState } from "react";
 
 const defaultCard = {
   message:"",
-  board_id: ""
+  board_id:""
 };
 
 const CardForm = (props) => {
-  console.log("We are in Card Form")
   const [formData, setFormData] = useState(defaultCard);
 
   const onFormChange = (event) => {
     const stateName = event.target.name;
     const inputValue = event.target.value;
-    console.log(event.target)
-
+    
     const newFormData = { ...formData };
     newFormData[stateName] = inputValue;
 
