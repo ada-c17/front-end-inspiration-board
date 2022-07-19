@@ -47,6 +47,6 @@ const Board = ({ board_id }) => {
 
 export default Board;
 
-Board.propTypes = {
-  board_id: PropTypes.string.isRequired,
-};
+// Board.propTypes = {
+//   board_id: PropTypes.string.isRequired,
+// };

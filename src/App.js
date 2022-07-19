@@ -9,17 +9,18 @@ import CardList from "./components/CardList";
 import Card from "./components/Card";
 
 function App() {
-  const [display, setDisplay] = useState(2);
+  const toggleDisplay = () => {
+    console.log("If/Else func - Switch between BoardList & Board");
+    if (display) {
+      console.log("you have display of", display);
+      return <Board board_id={display} />;
+    } else {
+      return <BoardList changeBoardCallback={changeDisplay} />;
+    }
+  };
+  const [display, setDisplay] = useState(null);
+  // toggleDisplay();
 
-  // const toggleDisplay = () => {
-  //   console.log("If/Else func - Switch between BoardList & Board");
-  //   if (display) {
-  //     return <Board board_id="{display}" />;
-  //   } else {
-  //     return <BoardList />;
-  //   }
-  // };
-  //
   const changeDisplay = ({ id }) => {
     console.log("change display", id);
     setDisplay(id);
@@ -38,13 +39,12 @@ function App() {
       <header className="App-header">
         <p>Inspotters</p>
       </header>
-      {/* <main>{toggleDisplay()}</main> */}
-      {/* NOTE: DELETE LINES 31-34 ONCE changeDisplay() FUNC IS COMPLETE */}
       <main>
+        {toggleDisplay()}
         <NewCardForm submitFunction={newCard} />
-        <BoardList changeBoardCallback={changeDisplay} />
+        {/* <BoardList changeBoardCallback={changeDisplay} /> */}
         <NewBoardForm submitFunction={newBoard} />
-        <Board board_id={display} />
+        {/* <Board board_id={display} /> */}
         {/* <CardList />
         <Card message="We got this y'all" /> */}
       </main>
