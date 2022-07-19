@@ -11,9 +11,12 @@ const Board = (props) => {
   const boardId = props.id;
 
   return (
-    <div onClick={() => props.selectBoardCallback(boardId)}>
-      <h1>{title}</h1>
-      <h2>{owner}</h2>
+    <div>
+      <div onClick={() => props.selectBoardCallback(boardId)}>
+        <h1>{title}</h1>
+        <h2>{owner}</h2>
+      </div>
+      <button onClick={() => props.deleteBoardCallback(boardId)}>Delete</button>
     </div>
   );
 };
@@ -24,6 +27,7 @@ Board.propTypes = {
   title: PropTypes.string.isRequired,
   owner: PropTypes.string.isRequired,
   selectBoardCallback: PropTypes.func.isRequired,
+  deleteBoardCallback: PropTypes.func.isRequired,
 };
 
 export default Board;

@@ -26,6 +26,7 @@ const NewBoardForm = (props) => {
   const handleFormSubmission = (event) => {
     event.preventDefault();
     props.makeBoardCallback(formData);
+    props.handleClose();
   };
 
   return (
