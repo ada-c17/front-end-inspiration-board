@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 import React, { useState } from "react";
 import Otter from "./data/Otter.jpg";
 import BoardList from "./components/BoardList";
-import laugh from "./data/Laugh.mp3";
+import laugh from "./data/Laugh.wav";
 import Story from "./components/Story";
 
 function App() {
