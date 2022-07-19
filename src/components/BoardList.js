@@ -82,6 +82,7 @@ const BoardList = () => {
               <div>
                 <Link to={`${item.id}`} style={{ cursor: "pointer" }}>
                   {item.title}
+                  {/* pointer is the cursor (hand) */}
                 </Link>
                 <button id="delete-board" onClick={() => deleteBoard(item.id)}>
                   X

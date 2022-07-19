@@ -14,6 +14,7 @@ function App() {
   const [play] = useSound(laugh);
 
   const onClickShowBoardlist = () => setShowResults(!showBoardList);
+  // from false to true (the above)
 
   return (
     <div className="App">
@@ -33,6 +34,7 @@ function App() {
       />
 
       {showBoardList ? <BoardList /> : <Story />}
+      {/* if false will render story, if true will render board list */}
 
       <Link to="/new">
         <div id="add-new-space">Create alternate world</div>

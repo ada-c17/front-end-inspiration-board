@@ -83,6 +83,7 @@ const NewBoardForm = () => {
         Every idea, thought, and message is valuable in the cosmos. We welcome
         you to start a new Otterspace in which you can share anything that you
         can imagine.
+      </p>
 
       <h1>Quantum Realm</h1>
       <p className="story" id="first-line">
