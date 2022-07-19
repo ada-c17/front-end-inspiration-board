@@ -2,7 +2,7 @@ import "./App.css";
 import Board from "./components/boards.js";
 import { useState, useEffect } from "react";
 import Header from "./components/Header.js";
-import SingleBoard from "./components/SingleBoard.js";
+import Card from "./components/cards.js";
 import axios from "axios";
 import NewBoardForm from "./components/NewBoardForm.js";
 
@@ -59,11 +59,7 @@ function App() {
           isOnHomepage={isOnHomepage}
           setIsOnHomepage={setIsOnHomepage}
         />
-        <SingleBoard
-          board={activeBoard}
-          setActiveBoard={setActiveBoard}
-          setIsOnHomepage={setIsOnHomepage}
-        ></SingleBoard>
+        <Card activeBoard={activeBoard} />
       </>
     );
   }
