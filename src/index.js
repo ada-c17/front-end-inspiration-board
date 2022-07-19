@@ -16,6 +16,7 @@ root.render(
     <Routes>
       <Route path="new" element={<NewBoardForm />} />
       <Route path="/" element={<App />} />
+      {/* route that creates a new page for board(boardlist), we are using useParams in board */}
       <Route path="/:id" element={<Board />} />
     </Routes>
   </BrowserRouter>

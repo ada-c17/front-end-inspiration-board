@@ -33,7 +33,7 @@ function App() {
       />
       {/* Toggle to display boardlist when clicked, otherwise it will show the story */}
       {showBoardList ? <BoardList /> : <Story />}
-
+      {/* Code that links to page where we create a new world(board) */}
       <Link to="/new">
         <div id="add-new-space">Create alternate world</div>
       </Link>
