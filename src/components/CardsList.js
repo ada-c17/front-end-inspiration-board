@@ -4,8 +4,6 @@ import { Row } from "react-bootstrap";
 import "./stylesheet/CardList.css";
 
 const CardsList = ({ cardData, likeHeart, deleteCard, handleLike }) => {
-  // console.log("card data: ", cardData);
-
   return (
     <Row xs={1} md={2} lg={3} className="g-4 cardsList">
       {cardData.map((card) => (

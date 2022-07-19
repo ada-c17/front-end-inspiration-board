@@ -35,15 +35,19 @@ li {
   margin-bottom: 2.5vw;
   padding-left: 5.2%;
   flex-wrap: wrap;
-  /* margin-right: 1.5vw; */
   width: 100%;
-  /* height: 350px; */
   height: 80%;
   overflow: scroll;
+  -ms-overflow-style: none;  
+  scrollbar-width: none;  
 }
+
+.cardsList::-webkit-scrollbar {
+  display: none;
+}
+
 .container {
   max-width: 90%;
-  /* margin-top: 5vh; */
   height: 92%;
 }
 
@@ -53,7 +57,6 @@ li {
   border: none;
   font-family: 'Fredericka the Great', cursive;
   font-size: 1.7rem;
-  /* width: 100%; */
   text-align: left;
 }
 

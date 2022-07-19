@@ -29,7 +29,6 @@ const AddNewBoardForm = ({ submitBoard }) => {
     const newData = { ...data };
     newData[e.target.id] = e.target.value;
     setData(newData);
-    // console.log(newData);
   };
 
   //submits for and refreshes boards
@@ -107,8 +106,6 @@ const AddNewBoardForm = ({ submitBoard }) => {
             </div>
           </Form>
         </Modal.Body>
-
-        {/* <Modal.Footer></Modal.Footer> */}
       </Modal>
     </section>
   );

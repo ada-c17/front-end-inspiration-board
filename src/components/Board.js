@@ -1,8 +1,8 @@
-import React, { useEffect } from 'react';
-import CardsList from './CardsList';
-import './stylesheet/Board.css';
-import { useNavigate, useParams } from 'react-router-dom';
-import AddNewCardForm from './NewCardForm';
+import React, { useEffect } from "react";
+import CardsList from "./CardsList";
+import "./stylesheet/Board.css";
+import { useNavigate, useParams } from "react-router-dom";
+import AddNewCardForm from "./NewCardForm";
 
 const Board = ({
   boardData,
@@ -19,29 +19,27 @@ const Board = ({
     getOneBoard(boardId);
   }, []);
 
-  // console.log("board cards: ", boardData.cards);
-
   if (boardData.cards === undefined || boardData === []) {
     return <h1> </h1>;
   }
 
   return (
-    <div className='container'>
-      <h1 className='boardTitle'>
+    <div className="container">
+      <h1 className="boardTitle">
         {boardData.owner}'s '{boardData.title}' Board!
       </h1>
-      <div className='board-nav'>
+      <div className="board-nav">
         <button
           onClick={() => {
-            navigate('/');
+            navigate("/");
           }}
-          className='back-btn'
+          className="back-btn"
         >
           ← Back to Boards
         </button>
         <AddNewCardForm boardId={boardData.boardId} submitCard={submitCard} />
       </div>
-      <section className='cardsList'>
+      <section className="cardsList">
         <CardsList
           cardData={boardData.cards}
           likeHeart={likeHeart}

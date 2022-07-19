@@ -1,14 +1,9 @@
 import React, { useState, useEffect } from "react";
-import { Modal } from "bootstrap";
-import { Button } from "react-bootstrap";
-
 import "./App.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { faHeart } from "@fortawesome/free-regular-svg-icons";
 import BoardList from "./components/BoardList";
 import Board from "./components/Board";
-import addNewBoardForm from "./components/NewBoardForm";
-
 import Error from "./components/Error";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import axios from "axios";
@@ -18,7 +13,6 @@ const URL = "https://back-end-inspiration-board.herokuapp.com/boards";
 const App = () => {
   const [allBoards, setAllBoards] = useState([]);
   const [boardData, setBoardData] = useState([]);
-  const [boardUpdated, setBoardUpdated] = useState(false);
 
   //Get all boards data
   useEffect(() => {
@@ -29,7 +23,6 @@ const App = () => {
     axios
       .get(URL)
       .then((response) => {
-        // console.log(`response body: ${response.data}`);
         const newBoards = response.data.map((board) => {
           return {
             boardId: board.id,
@@ -56,7 +49,6 @@ const App = () => {
           cards: response.data.cards,
         };
         setBoardData(newBoard);
-        // console.log("in axios: ", response.data);
       })
       .catch((err) => {
         console.log(err);
@@ -66,12 +58,9 @@ const App = () => {
   const deleteBoardRequest = (id) => {
     return axios
       .delete(`${URL}/${id}`)
-      .then((response) => {
-        // console.log(response.data);
-      })
+      .then((response) => {})
       .catch((error) => {
         console.log(error);
-
         throw new Error(`error deleting board ${id}`);
       });
   };
@@ -93,9 +82,7 @@ const App = () => {
       .delete(
         `https://back-end-inspiration-board.herokuapp.com/cards/${cardID}`
       )
-      .then((response) => {
-        // console.log(response.data);
-      })
+      .then((response) => {})
       .catch((error) => {
         console.log(error);
         throw new Error(`error deleting card ${cardID}`);
@@ -121,10 +108,7 @@ const App = () => {
       });
   };
 
-  // console.log(boardData);
-
   const submitBoard = (data) => {
-    // console.log(`HELLO`);
     axios
       .post(URL, {
         title: data.title,

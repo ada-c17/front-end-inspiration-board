@@ -8,7 +8,6 @@
 
 .board-btn:hover {
   color: white;
-  /* font-family:inherit; */
   background-color: none;
   border: none;
   font-size: 1.8rem;
@@ -19,10 +18,10 @@
   color: white;
 }
 
-/* .modal-btns {
+.modal-btns {
   display: flex;
   justify-content: right;
-} */
+}
 
 .success-btn {
   margin-right: 1vw;

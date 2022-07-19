@@ -1,4 +1,3 @@
-
 .card-btn {
     color: white;
     background: none;
@@ -11,12 +10,10 @@
 
 .card-btn:hover {
     color: white;
-    /* font-family:inherit; */
     background-color: none;
     border: none;
     font-size: 1.9rem;
 }
-
 
 .header {
     background-image: url('../../images/chalkboard.png');
