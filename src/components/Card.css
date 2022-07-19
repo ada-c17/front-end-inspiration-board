@@ -67,9 +67,10 @@
     border: none;
     font-size: 1.4em;
     padding: 0;
+  }
 
 
-span {
+#likes {
     position:relative;
     padding: 4px;
     color:rgb(26, 13, 205);

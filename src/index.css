@@ -15,15 +15,13 @@ body {
   grid: auto auto ;
   margin: 0;
   min-height: calc(100vh - 40px);
-
+  height:100%;
+  width: 100%;
   background-image: 
   url("./data/Darkspace.jpg");
+  background: cover;
   background-size: 150%;
-  background-position: center;
-  /* margin-top: -70px; */
-  background-repeat:no-repeat; 
-
-
+ 
 }
 
 @font-face {
