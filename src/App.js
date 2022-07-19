@@ -53,8 +53,6 @@ function App() {
       });
   };
 
-  useEffect(fetchCards, []);
-
   const addBoard = (boardInfo) => {
     axios
       .post(BOARD_URL, boardInfo)
