@@ -78,6 +78,15 @@ function App() {
     }
   };
 
+  // sort card by id
+  const sort_card = (card_a, card_b) => {
+    if (card_a.id < card_b.id) {
+      return -1;
+    } else {
+      return 1;
+    }
+  };
+
   // get all cards
   const fetchCards = (id) => {
     axios
@@ -92,7 +101,7 @@ function App() {
             board_id: id,
           };
         });
-        setCardsData(newCards);
+        setCardsData(newCards.sort(sort_card));
       })
       .catch((error) => {
         console.log(error);
@@ -132,8 +141,6 @@ function App() {
 
   //count like
   const likeCard = (newCard) => {
-    //console.log(newCard);
-    //console.log(newCard.id);
     const cards = [...cardsData];
     let newCardsData = [];
     for (let card of cards) {
@@ -142,15 +149,12 @@ function App() {
         newCardsData.push(card);
         axios
           .put(
-            `https://get-inspired-c17.herokuapp.com/cards/${newCard.id}/like`,
+            `https://get-inspired-c17.herokuapp.com/cards/${card.id}/like`,
             card
           )
-
           .then((res) => {
-            setCardsData(newCardsData);
             fetchCards(boardSelected.id);
           })
-
           .catch((err) => {
             alert("Oop! Could not +1 the card");
           });
