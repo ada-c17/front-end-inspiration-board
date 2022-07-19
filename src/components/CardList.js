@@ -2,7 +2,7 @@ import axios from 'axios';
 import { useState, useEffect } from 'react';
 import Card from './Card';
 import NewCardForm from './NewCardForm';
-import './CardList.css';
+// import './CardList.css';
 
 const CardList = (props) => {
   //brains
