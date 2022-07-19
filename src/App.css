@@ -4,6 +4,7 @@ body {
   color: #263238;
   /* background-image: url('../src/positive-doodle-images.jpeg'); */
   background-size: cover;
+  /* overflow-x: hidden; */
 }
 
 h1,
@@ -45,14 +46,21 @@ h2 {
   margin-right: 6rem;
   border: black solid 1px;
   background-color: #ADC6CC;
+  padding-left: 30px;
 }
 
 .boards__selected {
-  max-height: 2rem;
-  min-height: 2rem;
+  /* max-height: 2rem;*/
+  min-height: 100px; 
   margin-right: 11rem;
+  max-width: 200px;
+  width: fit-content;
   border: black solid 1px;
   background-color: #ADC6CC;
+  padding: 15px;
+  overflow-x: hidden;
+  
+
 }
 
 .new-board-form__container,
