@@ -88,6 +88,7 @@ function App() {
         getBoards();
         getCards();
         setSelectedBoard(defaultBoard);
+        setCardListAndFormHidden(true);
         console.log(response);
       })
       .catch((err) => {
