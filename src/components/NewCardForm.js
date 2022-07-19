@@ -32,11 +32,11 @@ const NewCardForm = (props) => {
     }
   }, [formErrors]);
 
-  const validate = (values) => {
+  const validate = (message) => {
     const errors = {};
-    if (!values.message) {
+    if (!message) {
       errors.message = 'Message is required';
-    } else if (values.message.length > 40) {
+    } else if (message.length > 40) {
       errors.message = 'Message cannot exceed 40 characters.';
     }
     return errors;
