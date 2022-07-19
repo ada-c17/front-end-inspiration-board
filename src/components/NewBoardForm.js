@@ -77,7 +77,6 @@ const NewBoardForm = () => {
         <br />
         Home is here
       </Link>
-
       <h1>Quantum Realm</h1>
       <p className="story" id="first-line">
         Time.Space.Reality. It's more then a linear path. It's a prism of
