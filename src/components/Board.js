@@ -9,38 +9,6 @@ const Board = ({ board_id, changeBoardCallback }) => {
   useEffect(() => {
     getBoardData(board_id);
   }, []);
-  const [testCards, setTestCards] = useState([
-    {
-      card_id: 1,
-      message: "Test Card 1 (To Be Deleted)",
-      likes_count: 1,
-    },
-    {
-      card_id: 2,
-      message: "Test Card 2 (To Be Deleted)",
-      likes_count: 0,
-    },
-    {
-      card_id: 3,
-      message: "Test Card 3 (To Be Deleted)",
-      likes_count: 0,
-    },
-    {
-      card_id: 4,
-      message: "Test Card 4 (To Be Deleted)",
-      likes_count: 0,
-    },
-    {
-      card_id: 5,
-      message: "Test Card 5(To Be Deleted)",
-      likes_count: 0,
-    },
-    {
-      card_id: 6,
-      message: "Test Card 6 (To Be Deleted)",
-      likes_count: 1,
-    },
-  ]);
 
   const [owner, setOwner] = useState("Default Owner");
   const [title, setTitle] = useState("Default Title");
@@ -75,61 +43,60 @@ const Board = ({ board_id, changeBoardCallback }) => {
   }, []);
 
   const getCardData = (board_id) => {
-    axios
-      .get(`${process.env.REACT_APP_BACKEND_URL}/boards/${board_id}/cards`)
-      .then((response) => {
-        setCardsDisplayedOnBoard(response.data.cards);
-      })
-      .catch((error) => {
-        console.log(
-          `Cards for this Board Cannot be Displayed Delete Due to: ${error}`
-        );
-      });
+      axios
+          .get(`${process.env.REACT_APP_BACKEND_URL}/boards/${board_id}/cards`)
+          .then((response) => {
+              console.log(response.data.cards);
+              setCardsDisplayedOnBoard(response.data.cards);
+          })
+          .catch((error) => {
+              console.log(`Cards for this Board Cannot be Displayed Delete Due to: ${error}`);
+          });
   };
   const deleteCard = (card_id) => {
-    console.log(`Delete Card: ${card_id}`);
-    axios
-      .delete(`process.env.REACT_APP_BACKEND_URL}/cards/${card_id}`)
+      console.log(`Delete Card: ${card_id}`);
+      axios
+          .delete(`${process.env.REACT_APP_BACKEND_URL}/cards/${card_id}`)
+          .then((response) => {
+              console.log(`Card ${card_id} Deleted`);
+              const updatedCards = cardsDisplayedOnBoard.filter((card) => card.id !== card_id);
+              setCardsDisplayedOnBoard(updatedCards);
+          })
+          .catch((error) => {
+              console.log(`Card Cannot be Deleted Due to: ${error}`);
+          });
+  };
+
+  const likeCard = (card_id) => {
+      console.log("+1 Like!")
+      const likedCards = [...cardsDisplayedOnBoard];
+      let targetCard;
+      for(let card of likedCards) {
+          if(card.id === card_id) {
+              targetCard = card;
+          }
+      }
+
+      axios
+      .patch(`${process.env.REACT_APP_BACKEND_URL}/cards/${targetCard.id}/like`, {likes_count:targetCard.likes_count + 1})
       .then((response) => {
-        console.log(`Card ${card_id} Deleted`);
-        const updatedCards = cardsDisplayedOnBoard.filter(
-          (card) => card.id !== card.card_id
-        ); //Tori to update
-        setCardsDisplayedOnBoard(updatedCards);
+          targetCard.likes_count += 1
+          console.log(`Card ${card_id} Liked`);
+          setCardsDisplayedOnBoard(likedCards);
+
       })
       .catch((error) => {
-        console.log(`Card Cannot be Delete Due to: ${error}`);
+          console.log(`New Card Could Not be Created Due to: ${error}`);
       });
   };
 
-  // const likeCard = (card_id) => {
-  //     console.log("+1 Like!")
-  //     const newCards = [...cardsDisplayedOnBoard];
-  //     for(let card of newCards) {
-  //         if(card.id === card.card_id) { //Tori to update
-  //             card.likes_count += 1;
-  //         }
-  //     }
-  //     setCardsDisplayedOnBoard(newCards);
-
+  // const makeNewCard = (board_id, message) => {
+  //     console.log(message);
   //     axios
-  //     .patch(`${process.env.REACT_APP_BACKEND_URL}/cards/${card_id}/like`)
-  //     .then((response) => {
-  //         console.log(`Card ${card_id} Liked`);
-
-  //     })
-  //     .catch((error) => {
-  //         console.log(`New Card Could Not be Created Due to: ${error}`);
-  //     });
-  // };
-
-  // const makeNewCard = (data) => {
-  //     console.log(data);
-  //     axios
-  //     .post(`${process.env.REACT_APP_BACKEND_URL}/${board_id}/cards`, data)
+  //     .post(`${process.env.REACT_APP_BACKEND_URL}/${board_id}/cards`, message)
   //     .then((response) => {
   //         console.log("Card Successfully Created");
-  //         getCardDataForBoard();
+  //         getCardData();
   //     })
   //     .catch((error) => {
   //         console.log(`New Card Could Not be Created Due to: ${error}`);
@@ -140,9 +107,11 @@ const Board = ({ board_id, changeBoardCallback }) => {
     <div className="Board">
       <h1>{title}</h1>
       <h2>{owner}</h2>
-      <CardList
+      {/* <NewCardForm submitFunction={makeNewCard}/> */}
+      <CardList 
         cardsDisplayedOnBoard={cardsDisplayedOnBoard}
         deleteCardCallback={deleteCard}
+        likeCardCallback={likeCard}
       />
       <button onClick={() => deleteBoard(board_id)}>DELETE THIS BOARD</button>
       <button onClick={() => changeBoardCallback(0)}> 🔙</button>
