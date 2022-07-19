@@ -1,11 +1,11 @@
 import { useState } from "react";
 
-const defaultCard = {
-  message:"",
-  board_id:""
-};
-
 const CardForm = (props) => {
+  const defaultCard = {
+    message:"",
+    board_id: props.boardID
+  };
+
   const [formData, setFormData] = useState(defaultCard);
 
   const onFormChange = (event) => {
@@ -34,13 +34,13 @@ const CardForm = (props) => {
         value={formData.message}
         onChange={onFormChange}
       />
-      <label htmlFor="board_id">Board Id</label>
+      {/* <label htmlFor="board_id">Board Id</label>
       <input
         type="text"
         name="board_id"
         value={formData.board_id}
         onChange={onFormChange}
-      />
+      /> */}
       <input type="submit" value="Submit new Card" />
     </form>
   );

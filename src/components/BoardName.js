@@ -2,15 +2,14 @@ import "./Board.css";
 import PropTypes from "prop-types";
 
 const BoardName = (props) => {
-  const fetchTheCard = () => {
-    props.cardsCallback(props.id)
+  const passBoardId = () => {
+    props.boardIdCallback(props.id)
   }; 
 
   return (
     <div>
       <div>
-        <li onClick={fetchTheCard}> Title: {props.title}</li>
-        {/* <li> Title: {props.title}</li> */}
+        <li onClick={passBoardId}> Title: {props.title}</li>
       </div>
     </div>
   );
@@ -18,7 +17,7 @@ const BoardName = (props) => {
 
 BoardName.propTypes = {
   title: PropTypes.string.isRequired,
-  cardsCallback: PropTypes.func.isRequired,
+  boardIdCallback: PropTypes.func.isRequired,
 };
 
 export default BoardName;

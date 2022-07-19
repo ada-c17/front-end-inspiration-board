@@ -2,24 +2,24 @@ import PropTypes from "prop-types";
 import Card from "./Card";
 import CardForm from "./CardForm";
 import axios from "axios";
-import {useState } from "react";
+import {useState, useEffect} from "react";
+
 const CARDS_URL = "https://fast-caverns-05936.herokuapp.com/cards";
 const BOARDS_URL = "https://fast-caverns-05936.herokuapp.com/boards";
 
 const BoardWithCards = (props) => {
     const [cards, setCards] = useState([]);
 
-    const fetchCardsForBoard = (id) => {
-        console.log(id)
+    const fetchCardsForBoard = () => {
         axios
-            .get(`${BOARDS_URL}/${id}/cards`)
+            .get(`${BOARDS_URL}/${props.boardID}/cards`)
             .then((res) => {
                 // console.log("we are in this hard function");
                 console.log(res)
                 const newCards = res.data.cards.map((card) => {
                 return {
                     card_id: card.card_id,
-                    board_id: id,
+                    board_id: props.boardID,
                     message: card.message,
                     likes_count: card.likes_count,
                 };
@@ -29,7 +29,9 @@ const BoardWithCards = (props) => {
             .catch((err) => {
                 console.log(err);
             });
-        };
+    };
+
+    useEffect(fetchCardsForBoard, [props.boardID]);
 
     const addCard = (cardInfo) => {
         axios
@@ -41,7 +43,7 @@ const BoardWithCards = (props) => {
             .catch((error) => {
                 console.log(error);
             });
-        };
+    };
     
     const deleteCard = (id) => {
         axios.delete(`${CARDS_URL}/${id}`)
@@ -57,7 +59,7 @@ const BoardWithCards = (props) => {
             .catch((err) => {
             console.log(err);
             });
-        };
+    };
 
     const changeLikes = (id) =>{
         axios.patch(`${CARDS_URL}/${id}/likes`)
@@ -75,18 +77,18 @@ const BoardWithCards = (props) => {
             .catch((err) => {
             console.log(err);
             });
-        };
+    };
 
     const cardComponent = cards.map((card) => {
+        console.log("inside the map of boards with cards")
         return <Card
                 key={card.card_id}
                 id={card.card_id}
                 message={card.message}
                 board_id={card.board_id}
-                likes={card.likes_count} 
-                deleteCard={props.deleteCard}
-                changeLikes={props.changeLikes}
-                // boardTitle={props.boardTitle}
+                likes={card.likes_count}
+                changeLikes={changeLikes}
+                deleteCard={deleteCard}
                 />;
     });
     
@@ -95,7 +97,7 @@ const BoardWithCards = (props) => {
             
             <div>{cardComponent}</div>
             <div>
-                <CardForm cardsCallback={addCard} />
+                <CardForm cardsCallback={addCard} boardID={props.boardID}/>
             </div>
         </div>
         );

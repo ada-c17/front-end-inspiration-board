@@ -44,17 +44,22 @@ function App() {
       });
   };
 
+  const [boardID, setBoardsID] = useState(null);
+  const boardSelected = (boardID) => {
+    // console.log(boardID)
+    setBoardsID(boardID)
+  }
   return (
     <div>
       <div id="Boards">
         <hi>BOARDS</hi>
         <BoardsList
           boards={boards}
+          boardIdCallback={boardSelected}
         />
       </div>
       <div>
-        {/* check if board is selected if board is selected show this if not don't show */}
-        <BoardWithCards/>
+        {boardID && <BoardWithCards boardID={boardID}/>}
       </div>
       <div>
         <BoardForm addBoardCallback={addBoard} />
