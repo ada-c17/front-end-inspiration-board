@@ -31,7 +31,6 @@ const Board = () => {
   useEffect(() => {
     getBoardDatafromAPI(params.id);
   }, [params.id]);
-  //! I added boardData and then its started to rerender Card nonstop
 
   const setCardLikesCount = (id) => {
     const updatedBoardData = { ...boardData };
@@ -86,6 +85,7 @@ const Board = () => {
         targetCard = card;
       }
     }
+    console.log(data);
     axios
       .put(`/cards/${id}`, {
         PosX: data.x,

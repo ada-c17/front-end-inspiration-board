@@ -22,9 +22,10 @@ const Card = ({
     PosX = 100;
     PosY = 0;
   }
-
+  console.log(PosX, PosY);
   return (
     <Draggable
+      bounds="parent"
       key={id}
       defaultPosition={{ x: PosX, y: PosY }}
       onStop={(e, data) => {
