@@ -142,11 +142,9 @@ function App() {
   //count like
   const likeCard = (newCard) => {
     const cards = [...cardsData];
-    let newCardsData = [];
     for (let card of cards) {
       if (card.id === newCard.id) {
         card.likes_count += 1;
-        newCardsData.push(card);
         axios
           .put(
             `https://get-inspired-c17.herokuapp.com/cards/${card.id}/like`,
