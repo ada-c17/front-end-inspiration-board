@@ -2,13 +2,16 @@ import React from "react";
 import PropTypes from "prop-types";
 
 const BoardList = (props) => {
-  const viewBoard = () => {
-    props.selectBoard();
+  const viewBoard = (id) => {
+    props.selectBoard(id);
   };
 
   // map function to return buttons with title of each board
   const boardTitles = props.boards.map((board) => {
-    return <button onClick={viewBoard}>{board.title}</button>;
+    const viewBoardById = () => {
+      viewBoard(board.id);
+    };
+    return <button onClick={viewBoardById}>{board.title}</button>;
   });
 
   return (
