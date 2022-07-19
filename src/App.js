@@ -150,13 +150,11 @@ function App() {
           )}
         </section>
         {showBoardForm && <AddBoard />}
-        <section className="board-content">
-          <Board
-            cardLike={increaseLike}
-            boardTitle={boardOption}
-            board={chosenBoardData}
-          />
-        </section>
+        <Board
+          cardLike={increaseLike}
+          boardTitle={boardOption}
+          board={chosenBoardData}
+        />
       </section>
       <NewCardForm updateCards={addNewCard} />
     </main>

@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500&family=Zen+Tokyo+Zoo&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;800&family=Zen+Tokyo+Zoo&display=swap');
 
 body{
 	font-family: 'Montserrat', sans-serif;
@@ -172,4 +172,24 @@ h1 {
 	position: absolute;
 	bottom: 0;
 	right: 0;
+}
+.delete_X{
+	width: 30px;
+	height: 30px;
+	background-color: #e6ece4; /* light green */
+	border: none;
+	font-size: larger;
+	font-weight: 500;
+	color: black;
+	display: inline-block;
+	vertical-align: middle;
+	margin: 10px;
+	position: absolute;
+	top: 0;
+	right: 0;
+}
+.delete_X:hover{
+	background-color: #e6ece4; /* light green */
+	font-weight: 800;
+	color: black;
 }
