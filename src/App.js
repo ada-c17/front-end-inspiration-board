@@ -1,6 +1,7 @@
 import "./App.css";
 import Board from "./components/boards.js";
 import { useState, useEffect } from "react";
+import Header from "./components/Header.js";
 import SingleBoard from "./components/SingleBoard.js";
 import axios from "axios";
 
@@ -22,7 +23,7 @@ function App() {
     return (
       <div>
         <div>
-          <h1>Inspiration Board</h1>
+          <Header title="Inspiration Board" isOnHomepage={isOnHomepage} />
           <Board
             boards={boards}
             setActiveBoard={setActiveBoard}
@@ -33,13 +34,19 @@ function App() {
       </div>
     );
   } else {
-    // return(<div></div>)
     return (
-      <SingleBoard
-        board={activeBoard}
-        setActiveBoard={setActiveBoard}
-        setIsOnHomepage={setIsOnHomepage}
-      ></SingleBoard>
+      <>
+        <Header
+          title={activeBoard.title}
+          isOnHomepage={isOnHomepage}
+          setIsOnHomepage={setIsOnHomepage}
+        />
+        <SingleBoard
+          board={activeBoard}
+          setActiveBoard={setActiveBoard}
+          setIsOnHomepage={setIsOnHomepage}
+        ></SingleBoard>
+      </>
     );
   }
 }
