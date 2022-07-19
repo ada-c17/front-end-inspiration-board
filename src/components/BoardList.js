@@ -7,12 +7,7 @@ import AddNewBoardForm from "./NewBoardForm";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTrashCan } from "@fortawesome/free-regular-svg-icons";
 
-const BoardList = ({
-  boardData,
-  setCurrentBoardId,
-  deleteBoard,
-  submitBoard,
-}) => {
+const BoardList = ({ boardData, deleteBoard, submitBoard }) => {
   let navigate = useNavigate();
 
   const createBoard = (board) => {

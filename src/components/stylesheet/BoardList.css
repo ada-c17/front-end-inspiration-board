@@ -9,6 +9,7 @@ a {
     font-size: 2.5rem;
     margin-right: 5vw;
     text-align: center;
+    text-transform: capitalize;
 }
 
 .boardName:hover {
@@ -43,25 +44,6 @@ a {
     font-size: 1.2rem;
 }
 
-
-/* cards trashcan and heart css */
-.card-trash-can:hover {
-    font-size: 1.2rem
-}
-.heart:hover {
-    font-size: 1.2rem;
-}
-
-.card {
-    background: none;
-    color: white;
-    border-color: white;
-    border-style: dashed;
-}
-
-.classList {
-    margin-left: 100px;
-}
 
 @media screen and (max-width: 768px) {
     .boardName {

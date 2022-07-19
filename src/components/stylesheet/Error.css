@@ -1,0 +1,14 @@
+.error {
+    font-family: 'Fredericka the Great', cursive;
+    color: white;
+    font-size: 5rem;
+    margin-top: 5vh;
+    width: 100%;
+    text-transform: capitalize;
+    vertical-align: middle;
+}
+
+.error-pg{
+    width: 100%;
+    text-align: center;
+}

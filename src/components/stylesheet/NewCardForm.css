@@ -1,29 +1,24 @@
-.board-btn {
+
+.card-btn {
     color: white;
-    font-family:'Fredericka the Great', cursive;;
     background: none;
     border: none;
-    font-size: 1.5rem;
+    font-family: 'Fredericka the Great', cursive;
+    font-size: 2rem;
+    width: 100%;
+    text-align: left;
 }
 
-.board-btn:hover {
+.card-btn:hover {
     color: white;
     /* font-family:inherit; */
     background-color: none;
     border: none;
-    font-size: 1.8rem;
+    font-size: 2.2rem;
 }
+
 
 .header {
     background-image: url('../../images/chalkboard.png');
     color: white;
-}
-
-.modal-btns {
-    display: flex;
-    justify-content: right;
-}
-
-.success-btn {
-    margin-right: 1vw;
 }

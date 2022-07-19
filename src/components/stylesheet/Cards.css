@@ -1,3 +1,17 @@
 
 
 /* card elements css lives in boardList.css */
+.card-trash-can:hover {
+    font-size: 1.2rem
+}
+.heart:hover {
+    font-size: 1.2rem;
+}
+
+.card {
+    background: none;
+    color: white;
+    border-color: white;
+    border-style: dashed;
+    /* border-image: url("../../images/Flowers-Border.png") 15% round; */
+}

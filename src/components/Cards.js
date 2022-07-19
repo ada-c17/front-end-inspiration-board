@@ -2,7 +2,6 @@ import React from "react";
 import { Card } from "react-bootstrap";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTrashCan } from "@fortawesome/free-regular-svg-icons";
-import axios from "axios";
 import "./stylesheet/Cards.css";
 
 const Cards = ({
@@ -12,15 +11,7 @@ const Cards = ({
   likeHeart,
   handleLike,
   deleteCard,
-  setBoardData,
 }) => {
-  // const handleLike = () => {
-  //   axios
-  //     .patch(`https://back-end-inspiration-board.herokuapp.com/cards/${cardId}`)
-  //     .then(() => {
-  //       reloadBoard();
-  //     });
-  // };
   const likeClick = () => {
     handleLike(cardId);
   };

@@ -1,59 +1,63 @@
-import { React, useEffect, useState } from "react";
+import { React, useState } from "react";
 import { Button, Modal, Form } from "react-bootstrap";
-import axios from "axios";
 import "./stylesheet/NewBoardForm.css";
 
 const AddNewBoardForm = ({ submitBoard }) => {
   //state in charge for opening and closing modal
   const [show, setShow] = useState(false);
-  const [validated, setValidated] = useState(false);
   const handleShow = () => setShow(true);
-  const handleClose = () => setShow(false);
-  const [disableBtn, setDisableBtn] = useState(true);
+  const handleClose = () => {
+    setShow(false);
+  };
+  const handleRestart = () => {
+    setShow(false);
+    data.title = "";
+    data.owner = "";
+  };
+  const [validated, setValidated] = useState(false);
 
   //state in charge of updating form input data
-  const url = "https://back-end-inspiration-board.herokuapp.com/boards";
   const [data, setData] = useState({
     title: "",
     owner: "",
   });
+  const isValid =
+    data.title.length > 0 && data.owner.length > 0 && data.title.length < 40;
 
   //Form input stored in state
   const handleInput = (e) => {
     const newData = { ...data };
     newData[e.target.id] = e.target.value;
     setData(newData);
-    console.log(newData);
-    if (data.title !== "" && data.owner !== "") {
-      setDisableBtn(false);
-    }
+    // console.log(newData);
   };
 
+  //submits for and refreshes boards
   const submit = (e) => {
     const form = e.currentTarget;
     if (form.checkValidity() === false) {
       e.preventDefault();
       e.stopPropagation();
-    }
-
-    setValidated(true);
-    if (data.title && data.owner) {
-      console.log("working");
+    } else {
+      setValidated(true);
+      e.preventDefault();
       const newData = {
         title: data.title,
         owner: data.owner,
       };
       submitBoard(newData);
     }
+    data.title = "";
+    data.owner = "";
   };
 
   return (
     <section>
       <button onClick={handleShow} type="button" className=" board-btn">
-        Add New Board
+        Add New Board{" "}
       </button>
 
-      <Modal show={show} onHide={handleClose}>
+      <Modal show={show} onHide={handleClose} autoFocus={false}>
         <Modal.Header closeButton className="header">
           <Modal.Title>Add Board</Modal.Title>
         </Modal.Header>
@@ -63,43 +67,43 @@ const AddNewBoardForm = ({ submitBoard }) => {
             <Form.Group className="mb-3">
               <Form.Control
                 onChange={(e) => handleInput(e)}
-                required
                 id="title"
                 value={data.title}
                 type="text"
                 placeholder="Title *"
+                required
+                autoFocus={true}
               />
             </Form.Group>
             <Form.Group className="mb-3">
               <Form.Control
                 onChange={(e) => handleInput(e)}
-                required
                 id="owner"
                 value={data.owner}
                 type="text"
                 placeholder="Owner *"
+                required
               />
             </Form.Group>
-
-            <Button
-              className="btn btn-primary text-nowrap"
-              // onClick={handleClose}
-              variant="success"
-              type="submit"
-              disabled={disableBtn}
-              // disabled={!data.owner}
-              block
-            >
-              Submit
-            </Button>
+            <div className="modal-btns">
+              <Button
+                className="btn btn-primary text-nowrap success-btn"
+                onClick={handleClose}
+                disabled={!isValid}
+                variant="success"
+                type="submit"
+                block
+              >
+                Submit
+              </Button>
+              <Button variant="secondary" onClick={handleRestart}>
+                Close
+              </Button>
+            </div>
           </Form>
         </Modal.Body>
 
-        <Modal.Footer>
-          <Button variant="secondary" onClick={handleClose}>
-            Close
-          </Button>
-        </Modal.Footer>
+        {/* <Modal.Footer></Modal.Footer> */}
       </Modal>
     </section>
   );
