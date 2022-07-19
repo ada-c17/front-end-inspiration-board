@@ -44,7 +44,16 @@ const NewBoardForm = (props) => {
           value={boardForm.owner}
           onChange={onFormChange}
         />
-        <input type="submit" value="Start a board"></input>
+        <input
+          type="submit"
+          value="Start a board"
+          disabled={
+            boardForm.title.length < 1 ||
+            boardForm.owner.length < 1 ||
+            boardForm.title.length > 40 ||
+            boardForm.owner.length > 40
+          }
+        ></input>
       </form>
     </section>
   );
