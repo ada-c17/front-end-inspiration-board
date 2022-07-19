@@ -46,7 +46,7 @@ function App() {
         console.log(error);
         throw new Error("Unable to get board options");
       });
-  }, [boardOption, boards]);
+  }, [boardOption]);
 
   useEffect(() => {
     if (boards) {
@@ -63,7 +63,6 @@ function App() {
   // End functions for dropdown functionality
 
   const addNewCard = (newMessage) => {
-    console.log("entered addNewCard function");
     let boardId;
     for (const board of boards) {
       if (board.title === boardOption) {
