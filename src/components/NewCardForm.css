@@ -1,0 +1,29 @@
+.new-card__form {
+    display: flex;
+    justify-content: left;
+}
+
+.new-card__fields {
+    width: 500x;
+    row-gap: 10px;
+    font-family: Silkscreen;
+}
+
+.new-card__input {
+    text-align: left;
+    margin: 1px;
+    padding: 1px;
+    width: 300px;
+    height: 100px;
+    vertical-align: top;
+}
+
+.new-card__submit {
+    font-family: Silkscreen;
+}
+
+.form-errors {
+    font-size: small;
+    color: #4a394a;
+    background-color: #eebdf4;
+}
