@@ -3,9 +3,14 @@ import React, { useState } from "react";
 const CardForm = (props) => {
   const defaultCard = {
     message: "",
-    boardID: props.boardID,
+    board_id: props.boardID,
     messageError: "",
   };
+
+  // const fetchCards = () => {
+  //   props.fetchCards(defaultCard.board_id);
+  // };
+
   const [formData, setFormData] = useState(defaultCard);
 
   const onFormChange = (event) => {
@@ -22,25 +27,20 @@ const CardForm = (props) => {
     event.preventDefault();
     const isValid = validate();
     if (isValid) {
-      props.addCard(formData.message, formData.boardID);
+      props.addCard(formData);
       setFormData(defaultCard);
     }
   };
 
   const validate = () => {
     let messageError = "";
-    let boardIDError = "";
 
     if (!formData.message) {
       messageError = "Message can't be empty";
     }
 
-    if (!formData.boardID) {
-      boardIDError = "Board ID can't be blank";
-    }
-
-    if (messageError || boardIDError) {
-      setFormData({ messageError, boardIDError });
+    if (messageError) {
+      setFormData({ messageError });
       return false;
     }
 
@@ -59,14 +59,6 @@ const CardForm = (props) => {
           onChange={onFormChange}
         />
         <div>{formData.messageError}</div>
-        <label htmlFor="boardID"></label>
-        <input
-          type="text"
-          name="boardID"
-          placeholder="Enter a board ID"
-          value={formData.boardID}
-          onChange={onFormChange}
-        />
         <input type="submit" value="Add Card" />
       </form>
     </div>

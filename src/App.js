@@ -82,9 +82,9 @@ function App() {
       });
   };
 
-  const addCard = (cardMessage, boardID) => {
+  const addCard = (cardInfo) => {
     axios
-      .post(`${BOARD_URL}/${boardID}`, cardMessage)
+      .post(CARD_URL, cardInfo)
       .then((response) => {
         console.log(response);
         fetchBoards();
