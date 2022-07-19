@@ -70,6 +70,12 @@ h2 {
   width: 100%;
 }
 
+.new-board-form__form-submit-btn:hover,
+.new-board-form__toggle-btn:hover,
+.new-card-form__form-submit-btn:hover {
+  background-color: rgb(213, 210, 210);
+}
+
 .new-board-form__form-submit-btn,
 .new-board-form__toggle-btn,
 .new-card-form__form-submit-btn {
@@ -77,6 +83,7 @@ h2 {
   background-color: white;
   border: 2px solid black;
   border-radius: 15px;
+  
 }
 
 .card-items__container {
