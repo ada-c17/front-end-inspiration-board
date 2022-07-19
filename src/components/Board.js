@@ -49,7 +49,6 @@ const Board = ({ board_id, changeBoardCallback }) => {
     axios
       .get(`${process.env.REACT_APP_BACKEND_URL}/boards/${board_id}`)
       .then((response) => {
-        console.log(response.data);
         setTitle(response.data.title);
         setOwner(response.data.owner);
       })
