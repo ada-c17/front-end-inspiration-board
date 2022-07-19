@@ -9,102 +9,122 @@ import cardData from "./data/cards.json";
 const kBaseUrl = "https://ssh-back-end-inspiration-board.herokuapp.com/boards";
 
 const boardApiToJson = (board) => {
-    const { title, owner, board_id: boardId } = board;
-    return { title, owner, boardId };
+  const { title, owner, board_id: boardId } = board;
+  return { title, owner, boardId };
 };
 
 const getBoardData = () => {
-    return axios
-        .get(`${kBaseUrl}`)
-        .then((response) => {
-            return response.data.map(boardApiToJson);
-        })
-        .catch((err) => {
-            console.log(err);
-        });
+  return axios
+    .get(`${kBaseUrl}`)
+    .then((response) => {
+      return response.data.map(boardApiToJson);
+    })
+    .catch((err) => {
+      console.log(err);
+    });
 };
 const App = () => {
-    const [newCards, setCardData] = useState(cardData);
-    const [boardData, setBoardData] = useState([]);
+  const [newCards, setCardData] = useState(cardData);
+  const [boardData, setBoardData] = useState([]);
 
-    const loadBoards = () => {
-        getBoardData().then((boards) => {
-            setBoardData(boards);
-        });
-    };
+  const loadBoards = () => {
+    getBoardData().then((boards) => {
+      setBoardData(boards);
+    });
+  };
 
-    // const loadCards = () => {
-    //   getCardData().then((cards) => {
-    //     setCardData(cards);
-    //   });
-    // };
+  // const loadCards = () => {
+  //   getCardData().then((cards) => {
+  //     setCardData(cards);
+  //   });
+  // };
 
-    useEffect(() => {
-        loadBoards();
-        // loadCards();
-    }, []);
+  useEffect(() => {
+    loadBoards();
+    // loadCards();
+  }, []);
 
-    const increaseLikeCount = (updatedCard) => {
-        const updatedLikes = cardData.map((card) => {
-            if (card.cardId === updatedCard.cardId) {
-                return updatedCard;
-            } else {
-                return card;
-            }
-        });
+  const increaseLikeCount = (updatedCard) => {
+    const updatedLikes = cardData.map((card) => {
+      if (card.cardId === updatedCard.cardId) {
+        return updatedCard;
+      } else {
+        return card;
+      }
+    });
 
-        setCardData(updatedLikes);
-    };
+    setCardData(updatedLikes);
+  };
 
-    const getBoardId = (boardId) => {
-        const currentBoard = boardId;
-        console.log(`Board Id: ${currentBoard}`);
-    };
+  const getBoardId = (boardId) => {
+    const currentBoard = boardId;
+    console.log(`Board Id: ${currentBoard}`);
+  };
 
-    const onCardDelete = (cardId) => {
-        const currentCards = cardData.filter((card) => {
-            return card.cardId !== cardId;
-        });
-        setCardData(currentCards);
-    };
+  const onCardDelete = (cardId) => {
+    const currentCards = cardData.filter((card) => {
+      return card.cardId !== cardId;
+    });
+    setCardData(currentCards);
+  };
 
-    const addBoardData = (addedBoard) => {
-      const requestBody = { ...addedBoard };
-  
-      return axios
-        .post(`${kBaseUrl}`, requestBody)
-        .then(() => loadBoards())
-        .catch((err) => console.log(err));
-    };
-  
-    const handleBoardDataReady = (boardName) => {
-      addBoardData(boardName)
-        .then((newBoard) => {
-          loadBoards((oldData) => [...oldData, newBoard]);
-        })
-        .catch((err) => {
-          console.log(err);
-        });
-    };
+  const addBoardData = (addedBoard) => {
+    const requestBody = { ...addedBoard };
 
-    return (
-        <div id="App">
-            <header>
-                <h2>dream board</h2>
-            </header>
-            <main>
-                <button id="ToggleBoardForm">Create New Dream</button>
-                {/* maybe change the button text to Hide Dream Form */}
-                <BoardForm onAddBoard={handleBoardDataReady}></BoardForm>
-                <BoardList boards={boardData} onSelectBoard={getBoardId} />
-                <CardList
-                    cards={newCards}
-                    onUpdateLikes={increaseLikeCount}
-                    onDelete={onCardDelete}
-                />
-            </main>
-        </div>
-    );
+    return axios
+      .post(`${kBaseUrl}`, requestBody)
+      .then(() => loadBoards())
+      .catch((err) => console.log(err));
+  };
+
+  // let btnToggle = false;
+  let [btnText, setButtonText] = useState("Hide Dream Form");
+  let showBoard = "showBoard";
+
+  const boardToggle = () => {
+    // console.log(btnToggle);
+    // btnToggle = !btnToggle;
+    if (btnText === "Create New Dream") {
+      btnText = "Hide Dream Form";
+      showBoard = "showBoard";
+    } else {
+      btnText = "Create New Dream";
+      showBoard = "hideBoard";
+    }
+    setButtonText(btnText);
+  };
+
+  const handleBoardDataReady = (boardName) => {
+    addBoardData(boardName)
+      .then((newBoard) => {
+        loadBoards((oldData) => [...oldData, newBoard]);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
+
+  return (
+    <div id="App">
+      <header>
+        <h2>dream board</h2>
+      </header>
+      <main>
+        <button onClick={boardToggle}>{btnText}</button>
+        {/* maybe change the button text to Hide Dream Form */}
+        <BoardForm
+          onAddBoard={handleBoardDataReady}
+          className={showBoard}
+        ></BoardForm>
+        <BoardList boards={boardData} onSelectBoard={getBoardId} />
+        <CardList
+          cards={newCards}
+          onUpdateLikes={increaseLikeCount}
+          onDelete={onCardDelete}
+        />
+      </main>
+    </div>
+  );
 };
 
 export default App;
