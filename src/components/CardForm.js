@@ -31,6 +31,7 @@ function CardForm(props) {
   const handleSubmit = (event) => {
     event.preventDefault();
     props.addCardCallback(formData);
+    setFormData(defaultCard);
   };
 
   return (

@@ -26,6 +26,7 @@ function BoardForm(props) {
   const handleSubmit = (event) => {
     event.preventDefault();
     props.addBoardCallback(formData);
+    setFormData(defaultBoard);
   };
 
   return (
