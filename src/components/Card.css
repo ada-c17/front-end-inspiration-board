@@ -62,19 +62,17 @@
   #delete:hover {
     color: rgb(255, 55, 55);
   }
-#stars{
+  #stars{
     background-color: transparent;
     border: none;
     font-size: 1.4em;
-    padding: 15px;
-    position:absolute;
-    bottom: 0;
-    left: 0;
-}
+    padding: 0;
+
 
 span {
     position:relative;
     padding: 4px;
     color:rgb(26, 13, 205);
 }
+
 

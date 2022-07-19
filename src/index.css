@@ -1,23 +1,20 @@
 body {
   margin: 0;
-  /* font-family: 'SpaceFont'; */
-  font-family: -apple-system, BlinkMacSystemFont, 'SpaceFont',
-    sans-serif;
+  /* font-family: -apple-system, BlinkMacSystemFont, 'SpaceFont', */
+    /* sans-serif; */
+  font-family: 'Cairo', sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  font-family: 'Cairo', sans-serif;
   background-color: black;
   color:rgb(97, 203, 203);
   /* height: 100vh; */
   font-size: 1.4em;
   /* position: relative; */
-
   display: grid;
   grid-gap: 1em 0;
   grid: auto auto ;
   margin: 0;
   min-height: calc(100vh - 40px);
-
 
   background-image: 
   url("./data/Darkspace.jpg");
@@ -25,6 +22,7 @@ body {
   background-position: center;
   /* margin-top: -70px; */
   background-repeat:no-repeat; 
+
 
 }
 
@@ -68,19 +66,10 @@ a:hover {
 
 }
 
-/* code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
-} */
-
-
 footer {
-
   align-self: end;
-    grid-column: 2;
-    padding: 20px;
-
-  /* position: absolute; */
+  grid-column: 2;
+  padding: 20px;
   bottom: 0px;
   height: 40px;
   font-size: 0.9em;

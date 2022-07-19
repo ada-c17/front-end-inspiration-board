@@ -109,13 +109,13 @@ const Board = () => {
       </Link>
       <div id="board_title">Space {boardData.title}</div>
       <div id="board-owner"> belongs to: {boardData.owner}</div>
+      <CardForm handleSubmission={makeNewCard} />
       <CardList
         data={boardData.cards}
         updatePos={updatePos}
         deleteCardCallBack={deleteCard}
         setLikesCountCallBack={setCardLikesCount}
       />
-      <CardForm handleSubmission={makeNewCard} />
     </div>
   );
 };
