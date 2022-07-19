@@ -14,11 +14,11 @@ function App() {
     owner: "",
   };
 
-  // keeping stracking on board state
+  // keep tracking on board state
   const [boards, setBoards] = useState([]);
-  // keeping tracking on showing or hiding form state
+  // keep tracking on showing or hiding form state
   const [displayForm, setDisplayForm] = useState(true);
-  // keeping tracking on selected board state
+  // keep tracking on selected board state
   const [boardSelected, setBoardSelected] = useState(selectedBoardData);
   const [cardsData, setCardsData] = useState([]);
   const URL = "https://get-inspired-c17.herokuapp.com/boards";
@@ -39,7 +39,7 @@ function App() {
         setBoards(newBoards);
       })
       .catch((error) => {
-        alert("Oop! Could not access the boards!");
+        alert("Oops! Could not access the boards!");
       });
   };
 
@@ -54,11 +54,11 @@ function App() {
         if (boardInfo.title && boardInfo.owner) {
           fetchBoards();
         } else {
-          alert("Oop! Missing title or owner!");
+          alert("Oops! Missing title or owner!");
         }
       })
       .catch((err) => {
-        alert("Oop! Could not add the board!");
+        alert("Oops! Could not add the board!");
       });
   };
 
@@ -105,7 +105,7 @@ function App() {
       })
       .catch((error) => {
         console.log(error);
-        alert("Oop! Could not access the cards!");
+        alert("Oops! Could not access the cards!");
       });
   };
 
@@ -154,7 +154,7 @@ function App() {
             fetchCards(boardSelected.id);
           })
           .catch((err) => {
-            alert("Oop! Could not +1 the card");
+            alert("Oops! Could not +1 the card");
           });
       }
     }

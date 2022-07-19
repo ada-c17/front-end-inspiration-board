@@ -37,16 +37,3 @@ CardsList.propTypes = {
 };
 export default CardsList;
 
-// {
-//   /* <Card
-//         key={card.id}
-//         id={card.id}
-//         cardData={props.cards}
-//         message={card.message}
-//         likes_count={card.likes_count}
-//         card={card}
-//         deleteCardCallback={props.deleteCardCallback}
-//         likeCardCallback={props.likeCardCallback}
-//         board_id={props.board_id}
-//       /> */
-// }

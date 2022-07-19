@@ -14,6 +14,6 @@ const Board = (props) => {
   );
 };
 
-// props type??
+
 
 export default Board;
