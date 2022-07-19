@@ -72,6 +72,7 @@ const NewBoardForm = () => {
   return (
     <>
       <Link to="/" className="HomeLink">
+        <br />
         Home is here
       </Link>
       <h1>Add New Space</h1>

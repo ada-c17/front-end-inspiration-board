@@ -105,6 +105,7 @@ const Board = () => {
   return (
     <div className="board">
       <Link to="/" className="HomeLink">
+        <br />
         Return Home
       </Link>
       <div id="board_title">Space {boardData.title}</div>

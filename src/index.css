@@ -47,6 +47,8 @@ a:hover {
 }
 
 .HomeLink {
+  font-family: 'SpaceFont';
+
   float:right;
   line-height : 40px ;
   padding: 20px;
