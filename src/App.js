@@ -6,6 +6,7 @@ import NewCardForm from "./components/NewCardForm";
 import "./css/inspo_board.css";
 
 const kBaseUrl = "https://mission-inspirational-2.herokuapp.com";
+// const kBaseUrl = "http://localhost:5000";
 
 const cardApiToJson = (card) => {
   const { id, likes, message, board_id: boardId } = card;
@@ -13,7 +14,6 @@ const cardApiToJson = (card) => {
 };
 
 const increaseLike = async (id) => {
-  console.log("increase like entered");
   // needs to receive the ID of the card that was liked with button click
   try {
     const response = await axios.patch(`${kBaseUrl}/cards/${id}/like`);
@@ -46,7 +46,7 @@ function App() {
         console.log(error);
         throw new Error("Unable to get board options");
       });
-  }, [boardOption]);
+  }, [boardOption, boards]);
 
   useEffect(() => {
     if (boards) {
@@ -60,8 +60,32 @@ function App() {
       }
     }
   }, [boardOption, boards]);
-
   // End functions for dropdown functionality
+
+  const addNewCard = (newMessage) => {
+    console.log("entered addNewCard function");
+    let boardId;
+    for (const board of boards) {
+      if (board.title === boardOption) {
+        boardId = board.id;
+      }
+    }
+    const requestBody = {
+      message: newMessage,
+      board_id: boardId,
+      likes: 0,
+    };
+    axios
+      .post(`${kBaseUrl}/cards`, requestBody)
+      .then((response) => {
+        console.log("response:", response.data);
+        return cardApiToJson(response.data);
+      })
+      .catch((err) => {
+        console.log(err);
+        throw new Error("error adding card");
+      });
+  };
 
   return (
     <main>
@@ -92,7 +116,7 @@ function App() {
           />
         </section>
       </section>
-      <NewCardForm />
+      <NewCardForm updateCards={addNewCard} />
       {/* <section className="add-message">
         <input
           className="message-input"

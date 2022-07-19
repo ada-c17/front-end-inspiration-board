@@ -1,6 +1,7 @@
 import { useState } from "react";
+import PropTypes from "prop-types";
 
-const CardMessageInput = () => {
+const NewCardForm = (props) => {
   const [cardField, setCardField] = useState({
     message: "",
   });
@@ -11,6 +12,12 @@ const CardMessageInput = () => {
       message: event.target.value,
     });
   };
+
+  const onUpdateCards = (event) => {
+    event.preventDefault();
+    props.updateCards(cardField.message);
+  };
+
   return (
     <section className="add-message">
       <input
@@ -20,9 +27,15 @@ const CardMessageInput = () => {
         placeholder="Add a message here!"
         onChange={addMessage}
       />
-      <button className="message-button">Add</button>
+      <button className="message-button" onClick={onUpdateCards}>
+        Add
+      </button>
     </section>
   );
 };
 
-export default CardMessageInput;
+NewCardForm.propTypes = {
+  updateCards: PropTypes.func,
+};
+
+export default NewCardForm;
