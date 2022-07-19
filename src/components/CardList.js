@@ -13,7 +13,6 @@ const CardList = (props) => {
     sort_by = event.target.value;
     fetchCards();
   };
-
   const URL = "https://insp-board-migrationmess.herokuapp.com/boards";
   //const URL = "http://127.0.0.1:5000/boards"
 
@@ -117,14 +116,14 @@ const CardList = (props) => {
   return (
     <section className="cards__container">
       {/* Display cards for specific Board */}
-      <div className= "cards_dropdown_container">
-      <h2>Cards for {props.board.title} </h2>
-      <label>Sort by</label>
-      <select onChange={sortCards}>
-        <option value="asc_id">Id</option>
-        <option value="asc_alpha">Message</option>
-        <option value="asc_likes">Likes</option>
-      </select>
+      <div className="cards_dropdown_container">
+        <h2>Cards for {props.board.title} </h2>
+        <label>Sort by</label>
+        <select onChange={sortCards}>
+          <option value="asc_id">Id</option>
+          <option value="asc_alpha">Message</option>
+          <option value="asc_likes">Likes</option>
+        </select>
       </div>
       <div className="card-items__container">{cardElements}</div>
       {/* Form to Create a New Card */}
