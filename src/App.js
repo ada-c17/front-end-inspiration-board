@@ -4,6 +4,7 @@ import Board from "./components/Board";
 import BoardDropdown from "./components/BoardDropdown";
 import NewCardForm from "./components/NewCardForm";
 import "./css/inspo_board.css";
+import { render } from "@testing-library/react";
 
 const kBaseUrl = "https://mission-inspirational-2.herokuapp.com";
 // const kBaseUrl = "http://localhost:5000";
@@ -35,8 +36,8 @@ function App() {
     setBoardOption(boardTitle);
   };
 
-  // Probably need to have this run again whenever a card or board is added
-  useEffect(() => {
+  // new helper
+  const getBoardListDropdown = () => {
     axios
       .get(`${kBaseUrl}/boards`)
       .then((response) => {
@@ -46,9 +47,14 @@ function App() {
         console.log(error);
         throw new Error("Unable to get board options");
       });
-  }, [boardOption]);
+  };
 
   useEffect(() => {
+    // initially loads boards
+    getBoardListDropdown();
+  }, []);
+
+  const renderChosenBoard = () => {
     if (boards) {
       for (const board of boards) {
         if (board.title === boardOption) {
@@ -59,8 +65,21 @@ function App() {
         }
       }
     }
-  }, [boardOption, boards]);
-  // End functions for dropdown functionality
+  };
+
+  useEffect(() => {
+    renderChosenBoard();
+  }, [boardOption]);
+
+  // Get updated board data for selected board and set board
+  const getSelectedBoardData = (boardId) => {
+    axios.get(`${kBaseUrl}/boards/${boardId}`).then((response) => {
+      console.log(response);
+      setChosenBoardData({
+        cards: response.data.cards,
+      });
+    });
+  };
 
   const addNewCard = (newMessage) => {
     let boardId;
@@ -80,6 +99,7 @@ function App() {
         console.log("response:", response.data);
         return cardApiToJson(response.data);
       })
+      .then(() => getSelectedBoardData(boardId))
       .catch((err) => {
         console.log(err);
         throw new Error("error adding card");
