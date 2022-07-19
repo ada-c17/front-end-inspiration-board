@@ -16,11 +16,6 @@ li {
   color: white;
   font-size: 2.75rem;
 }
-/* 
-.boardList {
-    margin-top: 18vh;
-    text-align: center;
-} */
 
 .boardTitle {
   font-family: 'Fredericka the Great', cursive;
@@ -50,15 +45,6 @@ li {
   max-width: 90%;
   /* margin-top: 5vh; */
   height: 92%;
-}
-
-.list {
-  margin-top: 5%;
-  margin-bottom: 5%;
-  padding-top: 0;
-  width: 100%;
-  height: 300px;
-  overflow: scroll;
 }
 
 .back-btn {
