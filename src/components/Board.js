@@ -108,8 +108,8 @@ const Board = () => {
         <br />
         Return Home
       </Link>
-      <div id="board_title">Space {boardData.title}</div>
-      <div id="board-owner"> belongs to: {boardData.owner}</div>
+      <div id="board_title">Space 💫 {boardData.title}</div>
+      <div id="board-owner"> New Galaxy started by: {boardData.owner}</div>
       <CardForm handleSubmission={makeNewCard} />
       <CardList
         data={boardData.cards}
