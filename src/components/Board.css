@@ -1,26 +1,14 @@
 
 .board{
-
     text-align: center;
     margin-left: 50px;
-    
-
 }
 #board-owner{
-    color:rgb(58, 186, 122);
-    font-weight: bolder;
-
-
+ color:darkseagreen;
 }
 
 #board_title{
-    color:rgb(138, 222, 224);
+    color:cadetblue;
     font-size: 2em;
-    font-weight: bolder;
-}
-
-.HomeLink:hoover {
-    color:chocolate;
-    font-size: 1.6em;
 }
 

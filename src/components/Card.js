@@ -19,14 +19,14 @@ const Card = ({
     color = "#b3b3fc";
   }
   if (PosX == null || PosY == null) {
-    PosX = 100;
+    PosX = 0;
     PosY = 0;
   }
   console.log(PosX, PosY);
   return (
     <Draggable
-      bounds="parent"
       key={id}
+      positionOffset={{ x: 100, y: 100 }}
       defaultPosition={{ x: PosX, y: PosY }}
       onStop={(e, data) => {
         if (data.x !== PosX && data.y !== PosY) {

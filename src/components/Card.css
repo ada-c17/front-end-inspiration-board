@@ -1,19 +1,16 @@
 .card {
-    position:relative;
+    position:absolute;
     cursor: move;
     color: black;
-    /* background-color:lightsteelblue; */
-    max-width: 215px;
+    width: 215px;
     overflow-wrap: break-word;
     border-radius: 5px;
     padding: 1em;
-    /* margin: auto; */
     margin: 25px;
     user-select: none;
     font-weight: bolder;
   }
   
-
   #new-item {
     user-select: none;
     position: absolute;
@@ -27,7 +24,6 @@
     font-size: 1.3em;
     background-color: transparent;
     overflow: visible;
-
     padding: 0.2em;
     margin: 1.5em;
   }
@@ -68,7 +64,6 @@
     font-size: 1.4em;
     padding: 0;
   }
-
 
 #likes {
     position:relative;
