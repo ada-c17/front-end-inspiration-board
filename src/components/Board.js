@@ -15,13 +15,13 @@ const Board = (props) => {
   return (
     <li className="board__container">
       <div className="board__item" onClick={handleBoardSelect}>
-        {props.title}
+        {props.title} by {props.owner}
       </div>
       <button
         className="button.board__item__remove"
         onClick={handleBoardDelete}
       >
-        x
+        X
       </button>
     </li>
   );
