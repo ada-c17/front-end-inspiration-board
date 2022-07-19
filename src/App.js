@@ -141,7 +141,7 @@ function App() {
     return (
       <BoardsView
         boardData={boards}
-        selectoBoardCallback={getCardsFromOneBoard}
+        selectBoardCallback={getCardsFromOneBoard}
         deleteBoardCallback={deleteBoard}
         makeBoardCallback={onFormSubmitBoard}
       ></BoardsView>

@@ -9,7 +9,7 @@ const BoardsView = (props) => {
       <h1>Inspiration Board!</h1>
       <BoardList
         boardData={props.boardData}
-        selectoBoardCallback={props.selectoBoardCallback}
+        selectBoardCallback={props.selectBoardCallback}
         deleteBoardCallback={props.deleteBoardCallback}
       />
       <NewBoardButton makeBoardCallback={props.makeBoardCallback} />
@@ -19,7 +19,7 @@ const BoardsView = (props) => {
 
 BoardsView.propTypes = {
   boardData: PropTypes.array.isRequired,
-  selectoBoardCallback: PropTypes.func.isRequired,
+  selectBoardCallback: PropTypes.func.isRequired,
   deleteBoardCallback: PropTypes.func.isRequired,
   makeBoardCallback: PropTypes.func.isRequired,
 };

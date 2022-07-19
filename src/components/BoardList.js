@@ -3,8 +3,21 @@ import "./BoardList.css";
 import Board from "./Board";
 
 const BoardList = (props) => {
+  // const getCardsforBoard = (board_id) => {
+  //   props.selectBoardCallback(board_id);
+  // };
+
   const boardComponents = props.boardData.map((board) => {
-    return <Board key={board.id} title={board.title} owner={board.owner} />;
+    return (
+      <Board
+        key={board.id}
+        id={board.id}
+        title={board.title}
+        owner={board.owner}
+        selectBoardCallback={props.selectBoardCallback}
+        // onClick={getCardsforBoard(board.id)}
+      />
+    );
   });
 
   return <div>{boardComponents}</div>;
@@ -12,7 +25,7 @@ const BoardList = (props) => {
 
 BoardList.propTypes = {
   boardData: PropTypes.array.isRequired,
-  selectoBoardCallback: PropTypes.func.isRequired,
+  selectBoardCallback: PropTypes.func.isRequired,
   deleteBoardCallback: PropTypes.func.isRequired,
 };
 
