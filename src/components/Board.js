@@ -16,25 +16,19 @@ const Board = ({
   sortedData,
   deleteCard,
 }) => {
-  console.log(`This is Board's board.cards: ${JSON.stringify(board.cards)}`);
-
-  // const sortedData = sortedCardList()
-  console.log(`This is sortedData: ${JSON.stringify(sortedData)}`);
   const sortedCards = sortedData?.map((card) => {
     return (
       <Card
         key={card.id}
         id={card.id}
         likes={card.likes}
-        board_id={card.board_id}
+        boardId={card.board_id}
         message={card.message}
         onLike={cardLike}
         onDelete={deleteCard}
       />
     );
   });
-
-  // const updateCardList
 
   return (
     <section className="board-content">

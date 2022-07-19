@@ -16,7 +16,6 @@ const cardApiToJson = (card) => {
 const increaseLike = async (id) => {
   try {
     const response = await axios.patch(`${kBaseUrl}/cards/${id}/like`);
-    console.log(response.data);
     return cardApiToJson(response.data);
   } catch (error) {
     console.log(error);
@@ -50,9 +49,7 @@ function App() {
     axios
       .get(`${kBaseUrl}/boards`)
       .then((response) => {
-        console.log(response.data);
         setBoards(response.data);
-        console.log(boards);
       })
       .catch((error) => {
         console.log(error);
@@ -84,24 +81,7 @@ function App() {
     getBoardListDropdown();
   }, []);
 
-  // const renderChosenBoard = () => {
-  //   if (boards) {
-  //     for (const board of boards) {
-  //       if (board.title === boardOption) {
-  //         console.log(
-  //           `This is the board being chosen: ${JSON.stringify(board)}`
-  //         );
-  //         setChosenBoardData(board);
-  //       }
-  //     }
-  //   }
-  // };
-
   useEffect(() => {
-    console.log(chosenBoardData.cards);
-    console.log(
-      `This is cardOrder: ${cardOrder}. This is cardSort: ${cardSort}`
-    );
     if (cardOrder && cardSort) {
       let sortedCardData;
       if (cardOrder === "Ascending") {
@@ -139,29 +119,19 @@ function App() {
     }
   }, [cardOrder, cardSort, boardOption, chosenBoardData]);
 
-  console.log(
-    `This is sortedData after sort outside UseEffect: ${JSON.stringify(
-      sortedData
-    )}`
-  );
-
   useEffect(() => {
     if (boards) {
       for (const board of boards) {
         if (board.title === boardOption) {
-          console.log(
-            `This is the board being chosen: ${JSON.stringify(board)}`
-          );
           setChosenBoardData(board);
         }
       }
     }
-  }, [boardOption]);
+  }, [boardOption, boards]);
 
   // Get updated board data for selected board and set board
   const getSelectedBoardData = (boardId) => {
     axios.get(`${kBaseUrl}/boards/${boardId}`).then((response) => {
-      console.log(response);
       setChosenBoardData({
         cards: response.data.cards,
       });
@@ -183,7 +153,6 @@ function App() {
     axios
       .post(`${kBaseUrl}/cards`, requestBody)
       .then((response) => {
-        console.log("response:", response.data);
         return cardApiToJson(response.data);
       })
       .then(() => getSelectedBoardData(boardId))
@@ -194,14 +163,10 @@ function App() {
   };
 
   const deleteCard = (cardId, boardId) => {
+    const oldBoardId = boardId;
     axios
       .delete(`${kBaseUrl}/cards/${cardId}`)
-      // .then((response) => {
-      //   console.log("response:", response.data);
-      //   return cardApiToJson(response.data);
-      // })
-      .then(() => getSelectedBoardData(boardId))
-      // .then(( ) => renderChosenboard) //work here
+      .then(() => getSelectedBoardData(oldBoardId))
       .catch((err) => {
         console.log(err);
         throw new Error("error adding card");
