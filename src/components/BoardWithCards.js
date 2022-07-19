@@ -1,17 +1,94 @@
 import PropTypes from "prop-types";
 import Card from "./Card";
+import CardForm from "./CardForm";
+import axios from "axios";
+import {useState, useEffect} from "react";
+
+const CARDS_URL = "https://fast-caverns-05936.herokuapp.com/cards";
+const BOARDS_URL = "https://fast-caverns-05936.herokuapp.com/boards";
 
 const BoardWithCards = (props) => {
-    const cardComponent = props.cards.map((card) => {
+    const [cards, setCards] = useState([]);
+
+    const fetchCardsForBoard = () => {
+        axios
+            .get(`${BOARDS_URL}/${props.boardID}/cards`)
+            .then((res) => {
+                // console.log("we are in this hard function");
+                console.log(res)
+                const newCards = res.data.cards.map((card) => {
+                return {
+                    card_id: card.card_id,
+                    board_id: props.boardID,
+                    message: card.message,
+                    likes_count: card.likes_count,
+                };
+                });
+                setCards(newCards);
+            })
+            .catch((err) => {
+                console.log(err);
+            });
+    };
+
+    useEffect(fetchCardsForBoard, [props.boardID]);
+
+    const addCard = (cardInfo) => {
+        axios
+            .post(CARDS_URL, cardInfo)
+            .then((response) => {
+                fetchCardsForBoard(cardInfo.board_id);
+                console.log(response);
+            })
+            .catch((error) => {
+                console.log(error);
+            });
+    };
+    
+    const deleteCard = (id) => {
+        axios.delete(`${CARDS_URL}/${id}`)
+            .then(() => {
+            const newCards = [];
+            for (const card of cards) {
+                if (card.card_id !== id){
+                newCards.push(card);
+                }
+            }
+            setCards(newCards);
+            })
+            .catch((err) => {
+            console.log(err);
+            });
+    };
+
+    const changeLikes = (id) =>{
+        axios.patch(`${CARDS_URL}/${id}/likes`)
+            .then(() => {
+            const newCards = [];
+            for (const card of cards) {
+                const newCard = {...card};
+                if (newCard.card_id === id){
+                newCard.likes_count++;
+                } 
+                newCards.push(newCard);
+            }
+            setCards(newCards);
+            })
+            .catch((err) => {
+            console.log(err);
+            });
+    };
+
+    const cardComponent = cards.map((card) => {
+        console.log("inside the map of boards with cards")
         return <Card
                 key={card.card_id}
                 id={card.card_id}
                 message={card.message}
                 board_id={card.board_id}
-                likes={card.likes_count} 
-                deleteCard={props.deleteCard}
-                changeLikes={props.changeLikes}
-                // boardTitle={props.boardTitle}
+                likes={card.likes_count}
+                changeLikes={changeLikes}
+                deleteCard={deleteCard}
                 />;
     });
     
@@ -19,12 +96,11 @@ const BoardWithCards = (props) => {
         <div>
             
             <div>{cardComponent}</div>
+            <div>
+                <CardForm cardsCallback={addCard} boardID={props.boardID}/>
+            </div>
         </div>
         );
-    };
-    
-    BoardWithCards.propTypes = {
-        cards: PropTypes.array.isRequired,
     };
     
     export default BoardWithCards;

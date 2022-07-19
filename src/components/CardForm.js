@@ -1,19 +1,17 @@
 import { useState } from "react";
 
-const defaultCard = {
-  message:"",
-  board_id: ""
-};
-
 const CardForm = (props) => {
-  console.log("We are in Card Form")
+  const defaultCard = {
+    message:"",
+    board_id: props.boardID
+  };
+
   const [formData, setFormData] = useState(defaultCard);
 
   const onFormChange = (event) => {
     const stateName = event.target.name;
     const inputValue = event.target.value;
-    console.log(event.target)
-
+    
     const newFormData = { ...formData };
     newFormData[stateName] = inputValue;
 
@@ -36,13 +34,13 @@ const CardForm = (props) => {
         value={formData.message}
         onChange={onFormChange}
       />
-      <label htmlFor="board_id">Board Id</label>
+      {/* <label htmlFor="board_id">Board Id</label>
       <input
         type="text"
         name="board_id"
         value={formData.board_id}
         onChange={onFormChange}
-      />
+      /> */}
       <input type="submit" value="Submit new Card" />
     </form>
   );

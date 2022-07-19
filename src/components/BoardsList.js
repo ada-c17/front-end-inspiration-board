@@ -6,9 +6,9 @@ const BoardsList = (props) => {
     return <BoardName 
               key={board.id}
               id={board.id}
-              owner={board.owner}
+              // owner={board.owner}
               title={board.title}
-              cardsCallback={props.cardsCallback} 
+              boardIdCallback={props.boardIdCallback}
               />;
   });
   return (
@@ -23,5 +23,6 @@ const BoardsList = (props) => {
 
 BoardsList.propTypes = {
   boards: PropTypes.array.isRequired,
+  boardIdCallback: PropTypes.func.isRequired
 };
 export default BoardsList;
