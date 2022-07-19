@@ -1,17 +1,10 @@
 import React, { useState } from "react";
 import "./App.css";
-<<<<<<< HEAD
-import Wall from "./components/Wall";
-// import NewBoardForm from './components/NewBoardForm';
+import Board from "./components/Board";
+import BoardList from "./components/BoardList";
 import axios from "axios";
 import NewCardForm from "./components/NewCardForm";
 import NewBoardForm from "./components/NewBoardForm";
-=======
-import BoardList from "./components/BoardList";
-import Board from "./components/Board";
-import CardList from "./components/CardList";
-import Card from "./components/Card";
->>>>>>> ebe40ac5a7718904771b5c8c4196aef5cdd33ba9
 
 function App() {
   const [display, setDisplay] = useState(null);
@@ -46,7 +39,6 @@ function App() {
       {/* <main>{toggleDisplay()}</main> */}
       {/* NOTE: DELETE LINES 31-34 ONCE changeDisplay() FUNC IS COMPLETE */}
       <main>
-        <Wall boardData={boards} />
         {/* <NewBoardForm handleSubmission={makeNewBoard} /> */}
         <NewCardForm submitFunction={newCard} />
         <br />
