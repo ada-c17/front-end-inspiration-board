@@ -68,35 +68,38 @@ const Board = ({ board_id, changeBoardCallback }) => {
     changeBoardCallback(null);
   };
 
-
   const [cardsDisplayedOnBoard, setCardsDisplayedOnBoard] = useState([]);
-  
+
   useEffect(() => {
-      getCardData(board_id);
+    getCardData(board_id);
   }, []);
 
   const getCardData = (board_id) => {
-      axios
-          .get(`${process.env.REACT_APP_BACKEND_URL}/boards/${board_id}/cards`)
-          .then((response) => {
-              setCardsDisplayedOnBoard(response.data.cards);
-          })
-          .catch((error) => {
-              console.log(`Cards for this Board Cannot be Displayed Delete Due to: ${error}`);
-          });
+    axios
+      .get(`${process.env.REACT_APP_BACKEND_URL}/boards/${board_id}/cards`)
+      .then((response) => {
+        setCardsDisplayedOnBoard(response.data.cards);
+      })
+      .catch((error) => {
+        console.log(
+          `Cards for this Board Cannot be Displayed Delete Due to: ${error}`
+        );
+      });
   };
   const deleteCard = (card_id) => {
-      console.log(`Delete Card: ${card_id}`);
-      axios
-          .delete(`process.env.REACT_APP_BACKEND_URL}/cards/${card_id}`)
-          .then((response) => {
-              console.log(`Card ${card_id} Deleted`);
-              const updatedCards = cardsDisplayedOnBoard.filter((card) => card.id !== card.card_id); //Tori to update
-              setCardsDisplayedOnBoard(updatedCards);
-          })
-          .catch((error) => {
-              console.log(`Card Cannot be Delete Due to: ${error}`);
-          });
+    console.log(`Delete Card: ${card_id}`);
+    axios
+      .delete(`process.env.REACT_APP_BACKEND_URL}/cards/${card_id}`)
+      .then((response) => {
+        console.log(`Card ${card_id} Deleted`);
+        const updatedCards = cardsDisplayedOnBoard.filter(
+          (card) => card.id !== card.card_id
+        ); //Tori to update
+        setCardsDisplayedOnBoard(updatedCards);
+      })
+      .catch((error) => {
+        console.log(`Card Cannot be Delete Due to: ${error}`);
+      });
   };
 
   // const likeCard = (card_id) => {
@@ -137,13 +140,12 @@ const Board = ({ board_id, changeBoardCallback }) => {
     <div className="Board">
       <h1>{title}</h1>
       <h2>{owner}</h2>
-      <CardList 
+      <CardList
         cardsDisplayedOnBoard={cardsDisplayedOnBoard}
         deleteCardCallback={deleteCard}
       />
       <button onClick={() => deleteBoard(board_id)}>DELETE THIS BOARD</button>
       <button onClick={() => changeBoardCallback(0)}> 🔙</button>
-      <button onClick={() => console.log("setBoardCallBack(null)")}> 🔙</button>
     </div>
   );
 };
