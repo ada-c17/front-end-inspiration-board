@@ -51,7 +51,7 @@ const AddNewCardForm = ({ submitCard, boardId }) => {
         Add New Card
       </button>
 
-      <Modal show={show} onHide={handleClose} autoFocus={false}>
+      <Modal centered show={show} onHide={handleClose} autoFocus={false}>
         <Modal.Header
           closeButton
           closeVariant="white"

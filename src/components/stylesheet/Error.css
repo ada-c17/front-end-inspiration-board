@@ -6,9 +6,25 @@
     width: 100%;
     text-transform: capitalize;
     vertical-align: middle;
+    text-align: center;
 }
 
 .error-pg{
     width: 100%;
-    text-align: center;
+    text-align: left;
 }
+
+.error-back-btn {
+    color: white;
+    background: none;
+    border: none;
+    font-family: 'Fredericka the Great', cursive;
+    font-size: 1.7rem;
+    /* width: 100%; */
+    text-align: left;
+    margin-left: 5%;
+  }
+  
+  .error-back-btn:hover {
+    font-size: 1.9rem;
+  }

@@ -57,7 +57,7 @@ const AddNewBoardForm = ({ submitBoard }) => {
         Add New Board{" "}
       </button>
 
-      <Modal show={show} onHide={handleClose} autoFocus={false}>
+      <Modal centered show={show} onHide={handleClose} autoFocus={false}>
         <Modal.Header
           closeButton
           closeVariant="white"
