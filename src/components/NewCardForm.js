@@ -31,8 +31,9 @@ const NewCardForm = (props) => {
 
   return (
     <section>
-      ``
-      <h3>Make a New Card</h3>
+      <h3>
+        <span>Make a New Card</span>
+      </h3>
       <form onSubmit={handleSubmit}>
         <label htmlFor="message">Message</label>
         <textarea
