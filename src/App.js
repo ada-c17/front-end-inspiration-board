@@ -42,10 +42,11 @@ function App() {
     axios
       .get(`${url}/boards/${boardId}/cards`)
       .then((response) => {
-        // iterate through each card and append to cards
-        const updatedCards = response.data.map((card) => {
-          return [...cards, card];
-        });
+        const updatedCards = [];
+        const dataList = response.data;
+        for (const data of dataList) {
+          updatedCards.push(data);
+        }
         setCards(updatedCards);
         setChosenBoard(boardId);
       })
@@ -104,12 +105,12 @@ function App() {
     axios
       .post(`${url}/boards/${boardId}/card`, requestBody)
       .then((response) => {
-        const newCard = {
-          // card_id: response.card_id,
-          message: requestBody.message,
-          // like_count: requestBody.like_count,
-        };
-        setCards([...cards, newCard]);
+        // const newCard = {
+        //   card_id: response.card_id,
+        //   message: requestBody.message,
+        //   like_count: response.like_count,
+        // };
+        getCardsFromOneBoard(boardId);
       })
       .catch((e) => {
         console.log(e);
