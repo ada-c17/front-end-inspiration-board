@@ -1,27 +1,44 @@
-import React from 'react';
-import SingleBoard from './SingleBoard.js'
-import './boards.css'
+import React from "react";
+import SingleBoard from "./SingleBoard.js";
+import "./boards.css";
+import PropTypes from "prop-types";
 
+const Board = (props) => {
+  const boardComponents = props.boards.map((board, index) => {
+    return (
+      <div>
+        <SingleBoard
+          setIsOnHomepage={props.setIsOnHomepage}
+          board={board}
+          isOnHomepage={props.isOnHomepage}
+          setActiveBoard={props.setActiveBoard}
+        ></SingleBoard>
+      </div>
+    );
+  });
 
-const Board = (props) =>{
-    const boardComponents = props.boards.map((board,index) => {
-        return (
-        <div>
-            <SingleBoard
-            setIsOnHomepage={props.setIsOnHomepage}
-            // function={props.showCardsFunction}
-            // board_id={board.board_id}
-            // title={board.title}
-            // owner={board.owner}
-            board={board}
-            isOnHomepage={props.isOnHomepage}
-            setActiveBoard={props.setActiveBoard}
-            ></SingleBoard>
-        </div>)
+  return <section>{boardComponents}</section>;
+};
+
+Board.propTypes = {
+  setIsOnHomepage: PropTypes.func.isRequired,
+  isOnHomepage: PropTypes.bool.isRequired,
+  setActiveBoard: PropTypes.func.isRequired,
+  boards: PropTypes.arrayOf(
+    PropTypes.shape({
+      board_id: PropTypes.number,
+      title: PropTypes.string,
+      owner: PropTypes.string,
+      cards: PropTypes.arrayOf(
+        PropTypes.shape({
+          card_id: PropTypes.number,
+          message: PropTypes.string,
+          likes_count: PropTypes.number,
+          board_id: PropTypes.number,
+        })
+      ),
     })
-
-    return (<section>{boardComponents}</section>)
-
-}
+  ),
+};
 
 export default Board;

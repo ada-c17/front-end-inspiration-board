@@ -12,4 +12,10 @@ const SingleCard = (props) => {
   );
 };
 
+SingleCard.propTypes = {
+  card_id: PropTypes.number,
+  message: PropTypes.string,
+  likes_count: PropTypes.number,
+};
+
 export default SingleCard;
