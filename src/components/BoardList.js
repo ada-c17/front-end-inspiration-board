@@ -14,7 +14,7 @@ const BoardList = () => {
 
   const getBoardsFromAPI = () => {
     axios
-      .get("/boards")
+      .get("https://inspiration-from-otterspace.herokuapp.com/boards")
       .then((response) => {
         setBoards(response.data);
       })
@@ -32,7 +32,9 @@ const BoardList = () => {
     );
     if (confirm) {
       axios
-        .delete(`/boards/${boardID}`)
+        .delete(
+          `https://inspiration-from-otterspace.herokuapp.com/boards/${boardID}`
+        )
         .then((response) => {
           console.log("Deleted board");
           getBoardsFromAPI();
@@ -46,7 +48,10 @@ const BoardList = () => {
 
   const editBoard = (boardID, new_title) => {
     axios
-      .put(`/boards/${boardID}`, { title: new_title })
+      .put(
+        `https://inspiration-from-otterspace.herokuapp.com/boards/${boardID}`,
+        { title: new_title }
+      )
       .then((response) => {
         console.log("Board successfully updated");
         getBoardsFromAPI();

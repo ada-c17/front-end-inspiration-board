@@ -19,7 +19,9 @@ const Board = () => {
 
   const getBoardDatafromAPI = (id) => {
     axios
-      .get(`/boards/${id}/cards`)
+      .get(
+        `https://inspiration-from-otterspace.herokuapp.com/boards/${id}/cards`
+      )
       .then((response) => {
         setBoardData(response.data);
       })
@@ -41,7 +43,7 @@ const Board = () => {
       }
     }
     axios
-      .put(`/cards/${id}/like`)
+      .put(`https://inspiration-from-otterspace.herokuapp.com/cards/${id}/like`)
       .then((response) => {
         targetCard.likes_count += 1;
         setBoardData(updatedBoardData);
@@ -54,7 +56,7 @@ const Board = () => {
   const deleteCard = (id) => {
     const delUpdateBoard = { ...boardData };
     axios
-      .delete(`/cards/${id}`)
+      .delete(`https://inspiration-from-otterspace.herokuapp.com/cards/${id}`)
       .then((response) => {
         delUpdateBoard.cards = delUpdateBoard.cards.filter(
           (card) => card.id !== id
@@ -69,7 +71,10 @@ const Board = () => {
 
   const makeNewCard = (data) => {
     axios
-      .post(`/boards/${params.id}/cards`, data)
+      .post(
+        `https://inspiration-from-otterspace.herokuapp.com/boards/${params.id}/cards`,
+        data
+      )
       .then((response) => {
         getBoardDatafromAPI(params.id);
       })
@@ -88,7 +93,7 @@ const Board = () => {
     }
     console.log(data);
     axios
-      .put(`/cards/${id}`, {
+      .put(`https://inspiration-from-otterspace.herokuapp.com/cards/${id}`, {
         PosX: data.x,
         PosY: data.y,
       })
