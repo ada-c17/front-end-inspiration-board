@@ -6,15 +6,13 @@ import PropTypes from "prop-types";
 const Board = (props) => {
   const boardComponents = props.boards.map((board, index) => {
     return (
-      <div>
-        <SingleBoard
-          key={index}
-          setIsOnHomepage={props.setIsOnHomepage}
-          board={board}
-          isOnHomepage={props.isOnHomepage}
-          setActiveBoard={props.setActiveBoard}
-        ></SingleBoard>
-      </div>
+      <SingleBoard
+        key={index}
+        setIsOnHomepage={props.setIsOnHomepage}
+        board={board}
+        isOnHomepage={props.isOnHomepage}
+        setActiveBoard={props.setActiveBoard}
+      ></SingleBoard>
     );
   });
 

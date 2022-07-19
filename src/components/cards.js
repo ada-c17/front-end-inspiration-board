@@ -8,14 +8,12 @@ const Card = (props) => {
   }
   const cardComponents = props.activeBoard.cards.map((card, index) => {
     return (
-      <div>
-        <SingleCard
-          key={index}
-          card_id={card.card_id}
-          message={card.message}
-          likesCount={card.likesCount}
-        ></SingleCard>
-      </div>
+      <SingleCard
+        key={index}
+        card_id={card.card_id}
+        message={card.message}
+        likesCount={card.likesCount}
+      ></SingleCard>
     );
   });
   return <section>{cardComponents}</section>;
