@@ -1,5 +1,5 @@
 import React from "react";
-// import PropTypes from "prop-types";
+import PropTypes from "prop-types";
 import Card from "./Card";
 
 const CardsList = (props) => {
@@ -24,17 +24,17 @@ const CardsList = (props) => {
   );
 };
 
-// CardsList.propTypes = {
-//   cards: PropTypes.arrayOf(
-//     PropTypes.shape({
-//       id: PropTypes.number.isRequired,
-//       message: PropTypes.string.isRequired,
-//       likes: PropTypes.number.isRequired,
-//     })
-//   ).isRequired,
-//   onLike: PropTypes.func.isRequired,
-//   onDelete: PropTypes.func.isRequired,
-// };
+CardsList.propTypes = {
+  cards: PropTypes.arrayOf(
+    PropTypes.shape({
+      id: PropTypes.number.isRequired,
+      message: PropTypes.string.isRequired,
+      likes: PropTypes.number.isRequired,
+    })
+  ).isRequired,
+  onLike: PropTypes.func.isRequired,
+  onDelete: PropTypes.func.isRequired,
+};
 export default CardsList;
 
 // {
