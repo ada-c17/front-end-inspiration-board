@@ -19,7 +19,7 @@ function App() {
   const [selectedBoard, setSelectedBoard] = useState(defaultBoard);
   const [cards, setCards] = useState([]);
   const [boardFormHidden, setBoardFormHidden] = useState(false);
-  const [cardListHidden, setCardListHidden] = useState(true);
+  const [cardListAndFormHidden, setCardListAndFormHidden] = useState(true);
   const [cardListOrder, setCardListOrder] = useState("id");
 
   const cardOrder = (order_by) => {
@@ -51,7 +51,7 @@ function App() {
     }
 
     if (id !== 0) {
-      setCardListHidden(false);
+      setCardListAndFormHidden(false);
     }
 
     getCards();
@@ -183,7 +183,7 @@ function App() {
           </button>
         </section>
 
-        <section hidden={cardListHidden}>
+        <section hidden={cardListAndFormHidden}>
           <h2>Cards for {selectedBoard.title}</h2>
           <button onClick={iDCardOrder}>Sort by ID</button>
           <button onClick={alphaCardOrder}>Sort alphabetically</button>
@@ -198,7 +198,7 @@ function App() {
           </div>
         </section>
 
-        <section className="card-form-container">
+        <section className="card-form-container" hidden={cardListAndFormHidden}>
           <h2>Create a New Card</h2>
           <CardForm addCardCallback={addCard} board_id={selectedBoard.id} />
         </section>
