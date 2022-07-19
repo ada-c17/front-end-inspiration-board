@@ -22,9 +22,6 @@ function App() {
   }, []);
 
   const addBoardData = (newBoard) => {
-    // Duplicate the student list
-    // Logic to generate the next valid student ID
-
     axios
       .post("http://shiver-of-sharks.herokuapp.com/boards", {
         title: newBoard.titleData,
@@ -54,13 +51,14 @@ function App() {
       </div>
     );
   } else {
-    // return(<div></div>)
     return (
-      <SingleBoard
-        board={activeBoard}
-        setActiveBoard={setActiveBoard}
-        setIsOnHomepage={setIsOnHomepage}
-      ></SingleBoard>
+      <div>
+        <SingleBoard
+          board={activeBoard}
+          setActiveBoard={setActiveBoard}
+          setIsOnHomepage={setIsOnHomepage}
+        ></SingleBoard>
+      </div>
     );
   }
 }
