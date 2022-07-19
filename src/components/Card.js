@@ -7,12 +7,20 @@ import PropTypes from "prop-types";
 //cardId and modifies
 
 const Card = ({ message, cardId, likesCount, boardId }) => {
+  const handleToggleLiked = () => {
+  //   const updatedEntry = {
+  //     message: message, cardId: cardId, likesCount: likesCount, boardId:boardId, liked: !liked
+  //   };
+  //   toggleLike(updatedEntry)
+
+  // }
+  // const likeTrack = liked ? 1 : + 1;
   return (
     <div className="NewCard">
       <section className="message">
         <p>{message}</p>
         <p>{likesCount}</p>
-        <button>+1</button>
+        <button className="like" onClick={handleToggleLiked}>+1</button>
         <button>Delete</button>
       </section>
     </div>

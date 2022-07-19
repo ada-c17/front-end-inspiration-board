@@ -5,7 +5,6 @@ import {
   Routes,
   Route,
   Link,
-  Outlet,
   BrowserRouter as Router,
 } from "react-router-dom";
 import NewBoard from "./routes/newBoard";
