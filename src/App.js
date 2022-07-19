@@ -199,16 +199,15 @@ function App() {
           />
         </section>
         <section className="add-menu-button">
-          <button onClick={toggleNewBoardForm}>Add Board</button>
+          <button onClick={toggleNewBoardForm}>
+            {isBoardFormVisible ? "Hide Form" : "Add Board"}
+          </button>
         </section>
-        <section className="collapse">
-          {isBoardFormVisible ? (
-            <NewBoardForm createNewBoard={createNewBoard}></NewBoardForm>
-          ) : (
-            ""
-          )}
-        </section>
-
+        {isBoardFormVisible ? (
+          <NewBoardForm createNewBoard={createNewBoard}></NewBoardForm>
+        ) : (
+          ""
+        )}
         <section className="board-content">
           <Board
             cardLike={increaseLike}

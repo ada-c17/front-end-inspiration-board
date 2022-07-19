@@ -18,39 +18,41 @@ const NewBoardForm = (props) => {
   };
 
   return (
-    <form onSubmit={submitNewBoard}>
-      <input
-        type="text"
-        value={title}
-        onChange={handleTitleChange}
-        className="board-input"
-        placeholder="Title"
-      ></input>
-      <input
-        type="text"
-        value={owner}
-        onChange={handleOwnerChange}
-        className="board-input"
-        placeholder="Owner"
-      ></input>
-      <input
-        type="Submit"
-        disabled={
-          title.length === 0 ||
-          owner.length === 0 ||
-          title.length > 40 ||
-          owner.length > 40
-        }
-        className={
-          title.length === 0 ||
-          owner.length === 0 ||
-          title.length > 40 ||
-          owner.length > 40
-            ? "board-button-grey"
-            : "board-button"
-        }
-      ></input>
-    </form>
+    <section className="collapse">
+      <form onSubmit={submitNewBoard}>
+        <input
+          type="text"
+          value={title}
+          onChange={handleTitleChange}
+          className="board-input"
+          placeholder="Title"
+        ></input>
+        <input
+          type="text"
+          value={owner}
+          onChange={handleOwnerChange}
+          className="board-input"
+          placeholder="Owner"
+        ></input>
+        <input
+          type="Submit"
+          disabled={
+            title.length === 0 ||
+            owner.length === 0 ||
+            title.length > 40 ||
+            owner.length > 40
+          }
+          className={
+            title.length === 0 ||
+            owner.length === 0 ||
+            title.length > 40 ||
+            owner.length > 40
+              ? "board-button"
+              : "board-button-grey"
+          }
+        ></input>
+      </form>
+    </section>
   );
 };
 
