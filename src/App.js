@@ -46,7 +46,13 @@ function App() {
   };
 
   useEffect(() => fetchBoards, []);
-  // useEffect(() => fetchCards, [selectBoard]);
+  useEffect(() => {
+    if (selectedBoard === null) {
+      return;
+    } else {
+      fetchCards();
+    }
+  }, [selectedBoard]);
 
   const createNewBoard = (boardForm) => {
     axios
@@ -62,7 +68,7 @@ function App() {
   const selectBoard = (board) => {
     setSelectedBoard(board.id);
     setSelectedBoardName(board.title);
-    fetchCards();
+    // fetchCards();
   };
 
   const deleteBoard = () => {
