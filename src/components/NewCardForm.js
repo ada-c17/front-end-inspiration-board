@@ -47,7 +47,7 @@ const AddNewCardForm = ({ submitCard, boardId }) => {
 
   return (
     <section>
-      <button onClick={handleShow} type="button" className=" card-btn">
+      <button onClick={handleShow} type="button" className="card-btn">
         Add New Card{" "}
       </button>
 
