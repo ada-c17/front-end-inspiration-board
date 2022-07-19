@@ -11,9 +11,10 @@ function App() {
   const [boardsData, setBoardsData] = useState([]);
   const [selectedBoard, setSelectedBoard] = useState(null);
   const [boardTitle, setBoardTitle] = useState();
-  const [selectedCards, setSelectedCards] = useState([])
+  const [boardColor, setBoardColor] = useState();
+  const [selectedCards, setSelectedCards] = useState([]);
 
-  const URL = "https://inspo-board-server.herokuapp.com";
+  const URL = "http://127.0.0.1:5000";
   useEffect(() => {
     axios
       .get(URL + "/boards")
@@ -25,6 +26,7 @@ function App() {
               boardId: board.board_id,
               owner: board.owner,
               cards: board.cards,
+              color: board.color
             };
           });
         });
@@ -118,6 +120,7 @@ function App() {
     const currentBoard = boardsData.filter((board) => board.boardId === id);
     setSelectedBoard(currentBoard[0].boardId);
     setBoardTitle(currentBoard[0].title);
+    setBoardColor(currentBoard[0].color)
   };
 
   const getCardIndex = (cardId) => {
@@ -153,8 +156,8 @@ function App() {
         <NewCardForm onAddCard={addCard} />
       </nav>
       <section className="boards__cards">
-      <BoardList boards={boardsData} onSelectBoard={getCurrentBoard} />
-      <CardList selectedCards={selectedCards} boardTitle={boardTitle} />
+      <BoardList boards={boardsData} onSelectBoard={getCurrentBoard} selectedBoard={selectedBoard}/>
+      <CardList selectedCards={selectedCards} boardTitle={boardTitle} boardColor={boardColor} />
       </section>
     </main>
   );

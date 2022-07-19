@@ -9,22 +9,25 @@ const Card = ({
     boardId,
     onLikeCallback,
     onDeleteCallback,
+    color
 }) => {
 
     return (
-        <div className="card__item">
+        <div className="card__item" style={{backgroundColor: color}}>
             <p>
                 {message}
             </p>
             <button
                 className="liked"
                 onClick={() => onLikeCallback(cardId)}
+                style={{backgroundColor: color}}
             >
                 {likesCount} ❤️
             </button>
             <button
                 className="delete"
                 onClick={() => onDeleteCallback(cardId)}
+                style={{backgroundColor: color}}
             >
             delete
             </button>
