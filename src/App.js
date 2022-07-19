@@ -96,7 +96,7 @@ function App() {
         }
       }
     }
-  }, [boardOption, boards, cardOrder, cardSort]);
+  };
 
   useEffect(() => {
     console.log(chosenBoardData.cards);
