@@ -8,6 +8,7 @@ const Board = (props) => {
     return (
       <div>
         <SingleBoard
+          key={index}
           setIsOnHomepage={props.setIsOnHomepage}
           board={board}
           isOnHomepage={props.isOnHomepage}

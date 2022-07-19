@@ -60,6 +60,7 @@ function App() {
         board={activeBoard}
         setActiveBoard={setActiveBoard}
         setIsOnHomepage={setIsOnHomepage}
+        isOnHomepage={isOnHomepage}
       ></SingleBoard>
     );
   }
