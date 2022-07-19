@@ -63,7 +63,6 @@ function App() {
   const [isBoardFormVisible, setIsBoardFormVisible] = useState(true);
   const toggleNewBoardForm = () => {setIsBoardFormVisible(!isBoardFormVisible)}
 
-
   return (
     <div className="page__container">
       <div className="content__container">

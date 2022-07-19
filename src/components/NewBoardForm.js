@@ -32,7 +32,8 @@ const NewBoardForm = (props) => {
         <p>Preview: {title} - {owner}</p>
         <input 
         type="Submit"
-        disabled={((title.length === 0) || (owner.length === 0) || (title.length > 40) || (owner.length > 40))} 
+        // disabled={((title.length === 0) || (owner.length === 0) || (title.length > 40) || (owner.length > 40))}
+        disabled={((title.length === 0) || (owner.length === 0) || (title.length > 40) || (owner.length > 40))}
         className='new-board-form__form-submit-btn'></input>
     </form>
     )
