@@ -3,16 +3,27 @@ import PropTypes from 'prop-types';
 import './Board.css';
 
 const Board = (props) => {
-  const handleBoardClick = () => {
-    props.displayBoardTitle(props.title);
+  const handleBoardSelect = () => {
+    props.selectBoard(props);
     console.log('Working! Clicked!');
-    // will render Card List as well
+  };
+
+  const handleBoardDelete = () => {
+    props.deleteBoard(props.id);
   };
 
   return (
-    <div onClick={handleBoardClick} className="Board">
-      {props.title}
-    </div>
+    <li className="board__container">
+      <div className="board__item" onClick={handleBoardSelect}>
+        {props.title}
+      </div>
+      <button
+        className="button.board__item__remove"
+        onClick={handleBoardDelete}
+      >
+        x
+      </button>
+    </li>
   );
 };
 

@@ -10,7 +10,8 @@ const BoardList = (props) => {
         key={board.id}
         id={board.id}
         title={board.title}
-        displayBoardTitle={props.displayBoardTitle}
+        selectBoard={props.selectBoard}
+        deleteBoard={props.deleteBoard}
       />
     );
   });
