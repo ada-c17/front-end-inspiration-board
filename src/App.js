@@ -5,6 +5,7 @@ import CardList from "./components/CardList";
 import { useState, useEffect } from "react";
 import axios from "axios";
 import Modal from "./components/Modal";
+import CardForm from "./components/CardForm";
 
 function App() {
   const [boards, setBoards] = useState([]);
@@ -12,6 +13,7 @@ function App() {
   const [openModal, setOpenModal] = useState(false);
 
   const URL = "https://inspiration-board-eota.herokuapp.com/boards";
+  const cardsURL = "https://inspiration-board-eota.herokuapp.com/cards";
 
   const fetchBoards = () => {
     axios
@@ -81,6 +83,19 @@ function App() {
         console.log(error);
       });
   };
+
+  const addCard = (cardInfo) => {
+    axios
+      .post(cardsURL, cardInfo)
+      .then((response) => {
+        console.log(response);
+        fetchCards();
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
+
   return (
     <div className="App">
       <div className="App-wrapper">
@@ -92,6 +107,7 @@ function App() {
               boards={boards}
               deleteBoard={deleteBoard}
               fetchCards={fetchCards}
+              addCard={addCard}
             />
             <section className="Board-form">
               <button
@@ -105,6 +121,7 @@ function App() {
             </section>
           </div>
           <div className="Card-display">
+            <CardForm addCard={addCard}></CardForm>
             <CardList cards={cards}></CardList>
           </div>
         </main>
