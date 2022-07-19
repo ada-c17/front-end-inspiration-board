@@ -28,6 +28,7 @@ const CardList = (props) => {
         <option value="message">Alphabetically</option>
       </select>
       <div className="cardList">{cardsComponents}</div>
+      <div>{/* <CardForm addCard={props.addCard}></CardForm> */}</div>
     </div>
   );
 };

@@ -105,9 +105,9 @@ function App() {
       });
   };
 
-  const addCard = (cardInfo) => {
+  const addCard = (cardMessage, boardID) => {
     axios
-      .post(CARD_URL, cardInfo)
+      .post(`${BOARD_URL}/${boardID}`, cardMessage)
       .then((response) => {
         console.log(response);
         fetchBoards();
@@ -183,8 +183,8 @@ function App() {
               deleteCard={deleteCard}
               updateLike={updateLike}
               setSortType={setSortType}
+              addCard={addCard}
             ></CardList>
-            <CardForm addCard={addCard}></CardForm>
           </div>
         </main>
       </div>

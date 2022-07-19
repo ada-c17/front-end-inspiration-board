@@ -1,12 +1,11 @@
 import React, { useState } from "react";
 
-const defaultCard = {
-  message: "",
-  boardID: "",
-  messageError: "",
-};
-
 const CardForm = (props) => {
+  const defaultCard = {
+    message: "",
+    boardID: props.boardID,
+    messageError: "",
+  };
   const [formData, setFormData] = useState(defaultCard);
 
   const onFormChange = (event) => {
@@ -23,7 +22,7 @@ const CardForm = (props) => {
     event.preventDefault();
     const isValid = validate();
     if (isValid) {
-      props.addCard(formData);
+      props.addCard(formData.message, formData.boardID);
       setFormData(defaultCard);
     }
   };
