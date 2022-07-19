@@ -30,6 +30,9 @@ h2 {
   grid-template-columns: 1fr 1fr 1fr;
 }
 
+.cards_dropdown_container {
+  display:grid
+}
 .cards__container {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
