@@ -32,6 +32,7 @@ const CardForm = (props) => {
     <div className="new-card">
       <form onSubmit={handleFormSubmission}>
         <input
+          maxLength={40}
           name="message"
           type="text"
           placeholder="Enter New Message "
