@@ -1,6 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 import { useState } from "react";
+import "./NewCardForm.css";
 
 const defaultCard = {
   message: "",
@@ -30,24 +31,30 @@ const NewCardForm = (props) => {
   };
 
   return (
-    <section>
+    <section className="cardFormContainer">
       <h3>
-        <span>Make a New Card</span>
+        <span className="handwritten">✨ Add a New Card ✨</span>
       </h3>
       <form onSubmit={handleSubmit}>
-        <label htmlFor="message">Message</label>
+        <label htmlFor="message"></label>
         <textarea
           type="text"
           name="message"
           value={cardForm.message}
           maxLength={40}
           onChange={onFormChange}
+          placeholder="Write your message here~ (max 40 char.)"
         ></textarea>
-        <input
-          type="submit"
-          value="Add inspiration"
-          disabled={cardForm.message.length < 1 || cardForm.message.length > 40}
-        ></input>
+        <div>
+          <input
+            className="addCardButton"
+            type="submit"
+            value="Add Card"
+            disabled={
+              cardForm.message.length < 1 || cardForm.message.length > 40
+            }
+          ></input>
+        </div>
         <div>{inputChar}/40</div>
       </form>
     </section>

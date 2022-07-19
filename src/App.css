@@ -58,8 +58,14 @@ h1 {
 }
 
 .cardform {
-  border-radius: 15px;
-}
+  text-decoration:none;
+  color:#000;
+  background:rgb(204, 255, 253);
+  box-shadow: 5px 5px 7px rgba(33,33,33,.7);
+  display:block;
+  height:15em;
+  width:15em;
+  padding:1em;}
 
 .footer {
   grid-area: footer;
