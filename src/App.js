@@ -31,10 +31,22 @@ function App() {
   const [boards, setBoards] = useState([]); // list of all the board dicts
   const [boardOption, setBoardOption] = useState("Choose a Board");
   const [chosenBoardData, setChosenBoardData] = useState({ cards: [] });
+  const [cardOrder, setSortOrder] = useState("");
+  const [cardSort, setSortType] = useState("");
+  const [sortedData, setSortedData] = useState([]);
   const [isBoardFormVisible, setIsBoardFormVisible] = useState(false);
 
   const showChosenBoard = (boardTitle) => {
     setBoardOption(boardTitle);
+  };
+
+  // order is ascending or descending, type is which type of sort
+  const updateSortOrder = (order) => {
+    setSortOrder(order);
+  };
+
+  const updateSortType = (type) => {
+    setSortType(type);
   };
 
   // new helper
@@ -84,7 +96,55 @@ function App() {
         }
       }
     }
-  };
+  }, [boardOption, boards, cardOrder, cardSort]);
+
+  useEffect(() => {
+    console.log(chosenBoardData.cards);
+    console.log(
+      `This is cardOrder: ${cardOrder}. This is cardSort: ${cardSort}`
+    );
+    if (cardOrder && cardSort) {
+      let sortedCardData;
+      if (cardOrder === "Ascending") {
+        if (cardSort === "ID") {
+          sortedCardData = chosenBoardData.cards.sort((a, b) =>
+            a.id > b.id ? 1 : -1
+          );
+        } else if (cardSort === "Likes") {
+          sortedCardData = chosenBoardData.cards.sort((a, b) =>
+            a.likes > b.likes ? 1 : -1
+          );
+        } else if (cardSort === "Alphabetically") {
+          sortedCardData = chosenBoardData.cards.sort((a, b) =>
+            a.message > b.message ? 1 : -1
+          );
+        }
+      } else if (cardOrder === "Descending") {
+        if (cardSort === "ID") {
+          sortedCardData = chosenBoardData.cards.sort((a, b) =>
+            a.id < b.id ? 1 : -1
+          );
+        } else if (cardSort === "Likes") {
+          sortedCardData = chosenBoardData.cards.sort((a, b) =>
+            a.likes < b.likes ? 1 : -1
+          );
+        } else if (cardSort === "Alphabetically") {
+          sortedCardData = chosenBoardData.cards.sort((a, b) =>
+            a.message < b.message ? 1 : -1
+          );
+        }
+      }
+      setSortedData([...sortedCardData]);
+    } else {
+      setSortedData(chosenBoardData.cards);
+    }
+  }, [cardOrder, cardSort, boardOption, chosenBoardData]);
+
+  console.log(
+    `This is sortedData after sort outside UseEffect: ${JSON.stringify(
+      sortedData
+    )}`
+  );
 
   useEffect(() => {
     renderChosenBoard();
@@ -148,11 +208,19 @@ function App() {
             ""
           )}
         </section>
-        <Board
-          cardLike={increaseLike}
-          boardTitle={boardOption}
-          board={chosenBoardData}
-        />
+
+        <section className="board-content">
+          <Board
+            cardLike={increaseLike}
+            boardTitle={boardOption}
+            board={chosenBoardData}
+            cardOrder={cardOrder}
+            cardSort={cardSort}
+            updateSortOrder={updateSortOrder}
+            updateSortType={updateSortType}
+            sortedData={sortedData}
+          />
+        </section>
       </section>
       <NewCardForm updateCards={addNewCard} />
     </main>
