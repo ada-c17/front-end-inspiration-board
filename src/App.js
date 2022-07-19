@@ -5,7 +5,6 @@ import BoardDropdown from "./components/BoardDropdown";
 import NewBoardForm from "./components/NewBoardForm";
 import NewCardForm from "./components/NewCardForm";
 import "./css/inspo_board.css";
-import AddBoard from "./components/AddBoard";
 
 const kBaseUrl = "https://mission-inspirational-2.herokuapp.com";
 // const kBaseUrl = "http://localhost:5000";
@@ -55,9 +54,9 @@ function App() {
     axios
       .post(`${kBaseUrl}/boards`, newBoard)
       .then((response) => {
-        const boards = [...boards];
-        boards.push(response.data.board);
-        setBoards(boards);
+        const newBoards = [...boards];
+        newBoards.push(response.data.board);
+        setBoards(newBoards);
       })
       .catch((error) => {
         console.log(error);
@@ -149,7 +148,6 @@ function App() {
             ""
           )}
         </section>
-        {showBoardForm && <AddBoard />}
         <Board
           cardLike={increaseLike}
           boardTitle={boardOption}
