@@ -8,6 +8,7 @@ const NewCardForm = (props) => {
   const [message, setMessage] = useState('');
   // const [formValues, setFormValues] =useState({InitialFormValues});
   const [formErrors, setFormErrors] = useState({});
+  const [isSubmit, setIsSubmit] = useState(false);
 
   const handleMessage = (event) => {
     setMessage(event.target.value);
@@ -16,14 +17,16 @@ const NewCardForm = (props) => {
   const handleSubmitCard = (event) => {
     event.preventDefault();
     setFormErrors(validate(message));
-    props.postCard(message);
-    setMessage('');
+    // props.postNewCard(message);
+    console.log(formErrors);
+    // setMessage('');
+    setIsSubmit(true);
   };
 
   useEffect(() => {
-    if (Object.keys(formErrors).length === 0) {
+    if (Object.keys(formErrors).length === 0 && isSubmit) {
       console.log({ message });
-      props.addNewCard(message);
+      props.postNewCard(message);
       setMessage('');
       // setFormValues(initialFormValues);
     }
@@ -33,8 +36,6 @@ const NewCardForm = (props) => {
     const errors = {};
     if (!values.message) {
       errors.message = 'Message is required';
-    } else if (values.message.length < 1) {
-      errors.message = 'Message must be more than 1 character.';
     } else if (values.message.length > 40) {
       errors.message = 'Message cannot exceed 40 characters.';
     }
@@ -59,6 +60,7 @@ const NewCardForm = (props) => {
             }
             onChange={handleMessage}
           ></input>
+          <p>{formErrors.message}</p>
         </label>
         <button className="new-card__submit" type="submit">
           Submit Card
