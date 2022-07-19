@@ -4,11 +4,13 @@
     margin-left: 50px;
 }
 #board-owner{
- color:darkseagreen;
+    color:rgb(132, 213, 132);
+    font-weight:550;
 }
 
 #board_title{
-    color:cadetblue;
+    color:rgb(80, 188, 191);
     font-size: 2em;
+    font-weight: bolder;
 }
 

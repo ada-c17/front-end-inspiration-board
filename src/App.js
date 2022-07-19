@@ -31,6 +31,7 @@ function App() {
         value="Story / Spaces"
         onClick={onClickShowBoardlist}
       />
+
       {showBoardList ? <BoardList /> : <Story />}
 
       <Link to="/new">

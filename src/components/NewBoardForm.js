@@ -76,6 +76,11 @@ const NewBoardForm = () => {
         Home is here
       </Link>
       <h1>Add New Space</h1>
+      <p id="board-text">
+        Every idea, thought, and message is valuable in the cosmos. We welcome
+        you to start a new Otterspace in which you can share anything that you
+        can imagine.
+      </p>
       <form onSubmit={handleFormSubmission}>
         <input
           id="title"

@@ -3,13 +3,21 @@
     text-align: left;
     margin: auto;
     font-family: "Cairo";
-
 }
-p#first-line::first-letter {
+
+#first-line::first-letter {
     font-size: 70px;
     display: block;
     float: left;
-    line-height: 0.5;
-    margin: 0.2em .2em 0 0;
+    line-height: 0.1;
+    margin: 0.2em .1em 0 0;
+}
 
+
+#second-line:first-letter, #third-line:first-letter, #fourth-line:first-letter, #fifth-line:first-letter, #sixth-line:first-letter {
+    font-size: 30px;
+    display: block;
+    float: left;
+    line-height: 0.9;
+    margin: 0.1em .1em 0 0;
 }
