@@ -1,18 +1,33 @@
-import React from "react";
+import React, { useState } from "react";
+import PropTypes from "prop-types";
 
-// Props needs to have the onLike function
-const Card = (props) => {
-  const handleLike = (event) => {
-    console.log(event);
-    props.onLike(event.card_id); // Need to update this with the correct pathway to the ID of the card; can either get it from props or maybe event?
+const Card = ({ id, boardId, message, likes, onLike }) => {
+  const [cardData, setCardData] = useState({
+    id: id,
+    boardId: boardId,
+    message: message,
+    likes: likes,
+  });
+  const handleLike = async (event) => {
+    let likeData = await onLike(id);
+    setCardData(likeData);
   };
 
   return (
-    <>
-      <h4>{props.likeCount} ❤️'s</h4>
-      <button onClick={handleLike}>Like</button>
-    </>
+    <section className="card-display">
+      <div className="message">
+        <p className="message-text">{cardData.message}</p>
+        <p className="likes">Likes: {cardData.likes}</p>
+        <button className="like-button" onClick={handleLike}>
+          👍
+        </button>
+      </div>
+    </section>
   );
+};
+
+Card.propTypes = {
+  onLike: PropTypes.func,
 };
 
 export default Card;

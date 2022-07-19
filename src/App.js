@@ -3,9 +3,12 @@ import axios from "axios";
 import Board from "./components/Board";
 import BoardDropdown from "./components/BoardDropdown";
 import NewBoardForm from "./components/NewBoardForm";
+import NewCardForm from "./components/NewCardForm";
 import "./css/inspo_board.css";
+import AddBoard from "./components/AddBoard";
 
 const kBaseUrl = "https://mission-inspirational-2.herokuapp.com";
+// const kBaseUrl = "http://localhost:5000";
 
 const cardApiToJson = (card) => {
   const { id, likes, message, board_id: boardId } = card;
@@ -16,6 +19,7 @@ const increaseLike = async (id) => {
   // needs to receive the ID of the card that was liked with button click
   try {
     const response = await axios.patch(`${kBaseUrl}/cards/${id}/like`);
+    console.log(response.data);
     return cardApiToJson(response.data);
   } catch (error) {
     console.log(error);
@@ -27,12 +31,15 @@ function App() {
   // Functions and variables for the dropdown functionality
   const [boards, setBoards] = useState([]); // list of all the board dicts
   const [boardOption, setBoardOption] = useState("Choose a Board");
+  const [chosenBoardData, setChosenBoardData] = useState({ cards: [] });
+  const [isBoardFormVisible, setIsBoardFormVisible] = useState(false);
 
   const showChosenBoard = (boardTitle) => {
     setBoardOption(boardTitle);
   };
 
-  const getBoardOptions = () => {
+  // new helper
+  const getBoardListDropdown = () => {
     axios
       .get(`${kBaseUrl}/boards`)
       .then((response) => {
@@ -58,21 +65,66 @@ function App() {
       });
   };
 
-  const [isBoardFormVisible, setIsBoardFormVisible] = useState(false);
   const toggleNewBoardForm = () => {
     setIsBoardFormVisible(!isBoardFormVisible);
   };
 
   useEffect(() => {
-    getBoardOptions();
+    // initially loads boards
+    getBoardListDropdown();
   }, []);
 
-  // Just a way to double check the state has updated; can delete later
+  const renderChosenBoard = () => {
+    if (boards) {
+      for (const board of boards) {
+        if (board.title === boardOption) {
+          console.log(
+            `This is the board being chosen: ${JSON.stringify(board)}`
+          );
+          setChosenBoardData(board);
+        }
+      }
+    }
+  };
+
   useEffect(() => {
-    console.log(boardOption);
+    renderChosenBoard();
   }, [boardOption]);
 
-  // End functions for dropdown functionality
+  // Get updated board data for selected board and set board
+  const getSelectedBoardData = (boardId) => {
+    axios.get(`${kBaseUrl}/boards/${boardId}`).then((response) => {
+      console.log(response);
+      setChosenBoardData({
+        cards: response.data.cards,
+      });
+    });
+  };
+
+  const addNewCard = (newMessage) => {
+    let boardId;
+    for (const board of boards) {
+      if (board.title === boardOption) {
+        boardId = board.id;
+      }
+    }
+    const requestBody = {
+      message: newMessage,
+      board_id: boardId,
+      likes: 0,
+    };
+    axios
+      .post(`${kBaseUrl}/cards`, requestBody)
+      .then((response) => {
+        console.log("response:", response.data);
+        return cardApiToJson(response.data);
+      })
+      .then(() => getSelectedBoardData(boardId))
+      .catch((err) => {
+        console.log(err);
+        throw new Error("error adding card");
+      });
+  };
 
   return (
     <main>
@@ -97,46 +149,16 @@ function App() {
             ""
           )}
         </section>
+        {showBoardForm && <AddBoard />}
         <section className="board-content">
-          <h1>Current Board:(current board)</h1>
-          <Board cardLike={increaseLike} />
-          <section className="card-display">
-            <div className="message">
-              <p className="message-text">You can do it!</p>
-              <p className="likes">Likes: 0</p>
-              <button className="like-button">👍</button>
-            </div>
-            <div className="message">
-              <p className="message-text">Way to be!</p>
-              <p className="likes">Likes: 0</p>
-              <button className="like-button">👍</button>
-            </div>
-            <div className="message">
-              <p className="message-text">Amazing work!</p>
-              <p className="likes">Likes: 0</p>
-              <button className="like-button">👍</button>
-            </div>
-            <div className="message">
-              <p className="message-text">Be all you can be!</p>
-              <p className="likes">Likes: 0</p>
-              <button className="like-button">👍</button>
-            </div>
-            <div className="message">
-              <p className="message-text">Reach for the stars!</p>
-              <p className="likes">Likes: 0</p>
-              <button className="like-button">👍</button>
-            </div>
-          </section>
-        </section>
-        <section className="add-message">
-          <input
-            className="message-input"
-            type="text"
-            placeholder="Add a message here!"
+          <Board
+            cardLike={increaseLike}
+            boardTitle={boardOption}
+            board={chosenBoardData}
           />
-          <button className="message-button">Add</button>
         </section>
       </section>
+      <NewCardForm updateCards={addNewCard} />
     </main>
   );
 }
