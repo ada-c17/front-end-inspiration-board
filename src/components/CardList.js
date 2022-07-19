@@ -22,7 +22,7 @@ const CardList = ({selectedCards, boardTitle, deleteCard, addLike, boardColor })
   };
   return (
     <section className="cards">
-      <h2 className="cardsTitle">Cards for <span>{boardTitle}</span> board</h2>
+      <h2 className="cardsTitle">Cards for <span style={{color: boardColor}}>{boardTitle}</span> board</h2>
       {cardList(selectedCards)}
     </section>
   )

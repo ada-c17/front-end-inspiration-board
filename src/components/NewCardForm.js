@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import {DropdownButton, Form, Button, Row, Col} from 'react-bootstrap';
+import {DropdownButton, Form, Button} from 'react-bootstrap';
 import './NewCardForm.css'
 import PropTypes from 'prop-types';
 
