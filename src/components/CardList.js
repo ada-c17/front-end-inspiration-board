@@ -116,15 +116,17 @@ const CardList = (props) => {
   return (
     <section className="cards__container">
       {/* Display cards for specific Board */}
-      <div className="cards_dropdown_container">
-        <h2>Cards for {props.board.title} </h2>
-        <label>Sort by</label>
-        <select onChange={sortCards}>
-          <option value="asc_id">Id</option>
-          <option value="asc_alpha">Message</option>
-          <option value="asc_likes">Likes</option>
-        </select>
-      </div>
+      {/* <div className="cards_dropdown_container"> */}
+      <h2>Cards for {props.board.title} 
+        <div className="cards_dropdown_container">
+          <label>Sort by</label>
+          <select onChange={sortCards}>
+            <option value="asc_id">Id</option>
+            <option value="asc_alpha">Message</option>
+            <option value="asc_likes">Likes</option>
+          </select>
+        </div>
+      </h2>
       <div className="card-items__container">{cardElements}</div>
       {/* Form to Create a New Card */}
       <NewCardForm createNewCard={createNewCard}></NewCardForm>
