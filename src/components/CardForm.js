@@ -11,6 +11,7 @@ const defaultCard = {
 
 const CardForm = (props) => {
   const [cardData, setCardData] = useState(defaultCard);
+
   const color = String(randomColor({ luminosity: "light" }));
 
   const handleFormInput = (event) => {

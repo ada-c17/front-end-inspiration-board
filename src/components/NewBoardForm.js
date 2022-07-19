@@ -78,13 +78,6 @@ const NewBoardForm = () => {
         Home is here
       </Link>
 
-      <h1>Add New Space</h1>
-      <p id="board-text">
-        Every idea, thought, and message is valuable in the cosmos. We welcome
-        you to start a new Otterspace in which you can share anything that you
-        can imagine.
-      </p>
-
       <h1>Quantum Realm</h1>
       <p className="story" id="first-line">
         Time.Space.Reality. It's more then a linear path. It's a prism of
