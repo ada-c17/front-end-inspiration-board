@@ -13,7 +13,7 @@ const Board = (props) => {
 };
 
 Board.propTypes = {
-  key: PropTypes.number.isRequired,
+  // key: PropTypes.number.isRequired,
   title: PropTypes.string.isRequired,
   owner: PropTypes.string.isRequired,
 };

@@ -3,8 +3,6 @@ import { useState } from "react";
 import PropTypes from "prop-types";
 import NewBoardForm from "./NewBoardForm";
 
-//makeBoardCallback
-
 const NewBoardButton = (props) => {
   const [isOpen, setIsOpen] = useState(false);
 
