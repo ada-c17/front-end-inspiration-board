@@ -207,7 +207,7 @@ function App() {
         <NewCardForm onAddCard={addCard} />
       </nav>
       <nav>
-        <h2>Sort cards</h2>
+        <h2>Sort Cards</h2>
         <Button variant="secondary" onClick={() => sortById(selectedCards)}>by ID</Button>
         <Button variant="secondary" onClick={() => sortAphabetically(selectedCards)}>alphabetically</Button>
         <Button variant="secondary" onClick={() => sortByLikes(selectedCards)}>by number of "likes"</Button>
