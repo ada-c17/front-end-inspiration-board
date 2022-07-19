@@ -17,7 +17,11 @@ function CardForm(props) {
     newFormData[stateName] = inputValue;
     newFormData["board_id"] = props.board_id;
     setFormData(newFormData);
-    if (newFormData.message === "" || newFormData.message.length > 40) {
+    if (
+      newFormData.message === "" ||
+      newFormData.message.length > 40 ||
+      newFormData.board_id === 0
+    ) {
       setDisableSubmit(true);
     } else {
       setDisableSubmit(false);
