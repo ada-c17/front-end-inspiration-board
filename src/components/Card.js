@@ -5,7 +5,6 @@ import Draggable from "react-draggable";
 
 const Card = ({
   id,
-  index,
   message,
   color,
   PosX,

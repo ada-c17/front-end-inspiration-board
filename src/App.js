@@ -20,7 +20,6 @@ function App() {
       <img
         src={Otter}
         alt={"otterspace"}
-        // cache={"false"}
         className="Otter"
         onClick={play}
       ></img>

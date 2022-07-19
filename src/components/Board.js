@@ -62,6 +62,7 @@ const Board = () => {
         setBoardData(delUpdateBoard);
       })
       .catch((error) => {
+        getBoardDatafromAPI(id);
         console.log("Unable to delete");
       });
   };
@@ -92,13 +93,13 @@ const Board = () => {
         PosY: data.y,
       })
       .then((response) => {
-        console.log("Card position sucessfully updated!");
+        console.log("Card position successfully updated!");
         targetCard.PosX = data.x;
         targetCard.PosY = data.y;
         setBoardData(updatedBoardData);
       })
       .catch((error) => {
-        console.log("Could not update a  position of the card!");
+        console.log("Could not update a position of the card!");
       });
   };
 
