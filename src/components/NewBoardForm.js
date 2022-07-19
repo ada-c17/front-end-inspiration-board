@@ -104,7 +104,7 @@ const NewBoardForm = () => {
         />
         <input type="submit" value="Big Bang" />
       </form>
-      <p>{message}</p>
+      <p className="story">{message}</p>
 
       <p>{quote}</p>
     </>
