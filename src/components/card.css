@@ -1,0 +1,24 @@
+.cards-container{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+}
+
+.cards-container li {
+    list-style: None;
+    background-color: #C2631A;
+    /* width: 30%;
+    height: 200px; */
+    /* flex: 25%; */
+    margin: 10px;
+    padding: 10px;
+    text-align: center;
+}
+
+.like {
+    background-color: rgb(129, 180, 129);
+    color: white;
+    border: none;
+    padding: 7px;
+    border-radius: 5px;
+    margin: 1px;
+}
