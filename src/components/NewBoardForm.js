@@ -29,24 +29,49 @@ const NewBoardForm = (props) => {
   };
 
   return (
-    <form onSubmit={handleFormSubmission}>
-      <label>Title</label>
-      <input
-        type="text"
-        name="title"
-        value={formData.title}
-        onChange={handleFormInput}
-      ></input>
-      <label>Owner</label>
-      <input
-        type="text"
-        name="owner"
-        value={formData.owner}
-        onChange={handleFormInput}
-      ></input>
+    <div className="popup-box">
+      <div className="box">
+        <span className="close-icon" onClick={props.handleClose}>
+          x
+        </span>
+        <form onSubmit={handleFormSubmission}>
+          <label>Title</label>
+          <input
+            type="text"
+            name="title"
+            value={formData.title}
+            onChange={handleFormInput}
+          ></input>
+          <label>Owner</label>
+          <input
+            type="text"
+            name="owner"
+            value={formData.owner}
+            onChange={handleFormInput}
+          ></input>
 
-      <input type="submit"></input>
-    </form>
+          <input type="submit"></input>
+        </form>
+      </div>
+    </div>
+    // <form onSubmit={handleFormSubmission}>
+    //   <label>Title</label>
+    //   <input
+    //     type="text"
+    //     name="title"
+    //     value={formData.title}
+    //     onChange={handleFormInput}
+    //   ></input>
+    //   <label>Owner</label>
+    //   <input
+    //     type="text"
+    //     name="owner"
+    //     value={formData.owner}
+    //     onChange={handleFormInput}
+    //   ></input>
+
+    //   <input type="submit"></input>
+    // </form>
   );
 };
 

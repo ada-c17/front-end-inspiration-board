@@ -13,9 +13,13 @@ const NewBoardButton = (props) => {
   };
   return (
     <div>
-      <button onClick={togglePopup}>+</button>; 
-      {if (setIsOpen) {
-      <NewBoardForm makeBoardCallback={props.makeBoardCallback} />} }
+      <button onClick={togglePopup}>+</button>
+      {isOpen && (
+        <NewBoardForm
+          makeBoardCallback={props.makeBoardCallback}
+          handleClose={togglePopup}
+        />
+      )}
     </div>
   );
 };
