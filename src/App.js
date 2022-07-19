@@ -5,7 +5,6 @@ import Boards from "./Components/Boards";
 import NewBoardForm from "./Components/NewBoardForm";
 import CardsList from "./Components/CardsList";
 import CardForm from "./Components/CardForm";
-// import { response } from "express";
 
 function App() {
   const [boardsData, setBoards] = useState([]);
@@ -41,7 +40,6 @@ function App() {
   };
 
   const getCardsForBoard = (board_id) => {
-    console.log("getcardsforboard");
     axios
       .get(`https://inspirational-board.herokuapp.com/boards/${board_id}/cards`)
       .then((response) => {
@@ -52,7 +50,6 @@ function App() {
       .catch((error) => {
         console.log("Can't get cards.", error);
       });
-    // return board_id;
 
     for (let board of boardsData) {
       if (board.board_id === board_id) {
@@ -70,7 +67,7 @@ function App() {
   };
 
   //creates new card for selected board
-  const createNewCardForSelectedBoard = (data, board_id) => {
+  const createNewCardForSelectedBoard = (data) => {
     axios
       .post(
         `https://inspirational-board.herokuapp.com/boards/${selectedBoard}/cards`,
@@ -88,7 +85,6 @@ function App() {
   const setLikesForCardId = (id) => {
     const newCardsData = cardsData.map((card) => {
       const newCard = { ...card };
-      console.log(newCard.card_id === id);
       if (newCard.card_id === id) {
         newCard.likes_count++;
 
@@ -117,6 +113,20 @@ function App() {
       });
   };
 
+  const deleteBoard = (board_id) => {
+    axios
+      .delete(`https://inspirational-board.herokuapp.com/boards/${board_id}`)
+      .then((response) => {
+        const newBoards = boardsData.filter(
+          (board) => board.board_id !== board_id
+        );
+        setBoards(newBoards);
+      })
+      .catch((error) => {
+        console.log("Can't delete a board.", error);
+      });
+  };
+
   const [isBoardFormVisible, setBoardFormVisibility] = useState(true);
   const newBoardFormVisibility = () => {
     setBoardFormVisibility(!isBoardFormVisible);
@@ -131,7 +141,11 @@ function App() {
       <div className="container">
         <div>
           <h2>Boards</h2>
-          <Boards boards={boardsData} onClickGetCards={getCardsForBoard} />
+          <Boards
+            boards={boardsData}
+            onClickGetCards={getCardsForBoard}
+            onClickDeleteCard={deleteBoard}
+          />
         </div>
         <div>
           <h2>
