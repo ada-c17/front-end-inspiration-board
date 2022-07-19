@@ -100,6 +100,44 @@ function App() {
       });
   };
 
+  const updateLike = (id) => {
+    axios
+      .patch(`${CARD_URL}/${id}/updatelike`)
+      .then(() => {
+        const newCards = [];
+        for (const card of cards) {
+          const newCard = { ...card };
+          if (newCard.card_id === id) {
+            newCard.likes_count += 1;
+          }
+          newCards.push(newCard);
+        }
+        setCards(newCards);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
+
+  // const flipHandsome = (id) => {
+  //   axios
+  //     .patch(`${URL}/${id}/fliphandsome`)
+  //     .then(() => {
+  //       const newDrivers = [];
+  //       for (const driver of drivers) {
+  //         const newDriver = { ...driver };
+  //         if (newDriver.id === id) {
+  //           newDriver.handsome = !newDriver.handsome;
+  //         }
+  //         newDrivers.push(newDriver);
+  //       }
+  //       setDrivers(newDrivers);
+  //     })
+  //     .catch((err) => {
+  //       console.log(err);
+  //     });
+  // };
+
   return (
     <div className="App">
       <div className="App-wrapper">
@@ -124,7 +162,11 @@ function App() {
             </section>
           </div>
           <div className="Card-display">
-            <CardList cards={cards} deleteCard={deleteCard}></CardList>
+            <CardList
+              cards={cards}
+              deleteCard={deleteCard}
+              updateLike={updateLike}
+            ></CardList>
           </div>
         </main>
       </div>
