@@ -15,9 +15,11 @@ function App() {
     owner: "",
     id: 0,
   };
+
   const [selectedBoard, setSelectedBoard] = useState(defaultBoard);
   const [cards, setCards] = useState([]);
   const [boardFormHidden, setBoardFormHidden] = useState(false);
+  const [cardListHidden, setCardListHidden] = useState(true);
   const [cardListOrder, setCardListOrder] = useState("id");
 
   const cardOrder = (order_by) => {
@@ -47,6 +49,11 @@ function App() {
         setSelectedBoard(board);
       }
     }
+
+    if (id !== 0) {
+      setCardListHidden(false);
+    }
+
     getCards();
   };
 
@@ -176,8 +183,8 @@ function App() {
           </button>
         </section>
 
-        <section>
-          <h2>Cards for Pick-Me-Up Quotes</h2>
+        <section hidden={cardListHidden}>
+          <h2>Cards for {selectedBoard.title}</h2>
           <button onClick={iDCardOrder}>Sort by ID</button>
           <button onClick={alphaCardOrder}>Sort alphabetically</button>
           <button onClick={likesCardOrder}>Sort by Likes</button>
