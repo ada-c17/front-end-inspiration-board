@@ -7,7 +7,6 @@ import NewCardForm from "./components/NewCardForm";
 import "./css/inspo_board.css";
 
 const kBaseUrl = "https://mission-inspirational-2.herokuapp.com";
-// const kBaseUrl = "http://localhost:5000";
 
 const cardApiToJson = (card) => {
   const { id, likes, message, board_id: boardId } = card;
@@ -15,7 +14,6 @@ const cardApiToJson = (card) => {
 };
 
 const increaseLike = async (id) => {
-  // needs to receive the ID of the card that was liked with button click
   try {
     const response = await axios.patch(`${kBaseUrl}/cards/${id}/like`);
     console.log(response.data);
@@ -27,7 +25,6 @@ const increaseLike = async (id) => {
 };
 
 function App() {
-  // Functions and variables for the dropdown functionality
   const [boards, setBoards] = useState([]); // list of all the board dicts
   const [boardOption, setBoardOption] = useState("Choose a Board");
   const [chosenBoardData, setChosenBoardData] = useState({ cards: [] });
@@ -49,12 +46,13 @@ function App() {
     setSortType(type);
   };
 
-  // new helper
   const getBoardListDropdown = () => {
     axios
       .get(`${kBaseUrl}/boards`)
       .then((response) => {
+        console.log(response.data);
         setBoards(response.data);
+        console.log(boards);
       })
       .catch((error) => {
         console.log(error);
@@ -65,10 +63,11 @@ function App() {
   const createNewBoard = (newBoard) => {
     axios
       .post(`${kBaseUrl}/boards`, newBoard)
-      .then((response) => {
-        const newBoards = [...boards];
-        newBoards.push(response.data.board);
-        setBoards(newBoards);
+      .then(() => {
+        getBoardListDropdown();
+      })
+      .then(() => {
+        setBoardOption(newBoard.title);
       })
       .catch((error) => {
         console.log(error);
@@ -85,18 +84,18 @@ function App() {
     getBoardListDropdown();
   }, []);
 
-  const renderChosenBoard = () => {
-    if (boards) {
-      for (const board of boards) {
-        if (board.title === boardOption) {
-          console.log(
-            `This is the board being chosen: ${JSON.stringify(board)}`
-          );
-          setChosenBoardData(board);
-        }
-      }
-    }
-  };
+  // const renderChosenBoard = () => {
+  //   if (boards) {
+  //     for (const board of boards) {
+  //       if (board.title === boardOption) {
+  //         console.log(
+  //           `This is the board being chosen: ${JSON.stringify(board)}`
+  //         );
+  //         setChosenBoardData(board);
+  //       }
+  //     }
+  //   }
+  // };
 
   useEffect(() => {
     console.log(chosenBoardData.cards);
@@ -147,7 +146,16 @@ function App() {
   );
 
   useEffect(() => {
-    renderChosenBoard();
+    if (boards) {
+      for (const board of boards) {
+        if (board.title === boardOption) {
+          console.log(
+            `This is the board being chosen: ${JSON.stringify(board)}`
+          );
+          setChosenBoardData(board);
+        }
+      }
+    }
   }, [boardOption]);
 
   // Get updated board data for selected board and set board
@@ -193,6 +201,7 @@ function App() {
       //   return cardApiToJson(response.data);
       // })
       .then(() => getSelectedBoardData(boardId))
+      // .then(( ) => renderChosenboard) //work here
       .catch((err) => {
         console.log(err);
         throw new Error("error adding card");
