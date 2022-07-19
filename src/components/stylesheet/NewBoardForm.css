@@ -17,5 +17,13 @@
 .header {
   background-image: url('../../images/chalkboard.png');
   color: white;
-  /* display: flex; */
+}
+
+.modal-btns {
+  display: flex;
+  justify-content: right;
+}
+
+.success-btn {
+  margin-right: 1vw;
 }

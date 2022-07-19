@@ -41,23 +41,21 @@ a {
   font-size: 1.2rem;
 }
 
-/* cards trashcan and heart css */
-.card-trash-can:hover {
-  font-size: 1.2rem;
-}
-.heart:hover {
-  font-size: 1.2rem;
+.list {
+  margin-top: 10vh;
+  width: 100%;
+  height: 300px;
+  overflow: scroll;
 }
 
-.card {
-  background: none;
+.trash-can {
   color: white;
-  border-color: white;
-  border-style: dashed;
+  background: none;
+  border: none;
 }
 
-.classList {
-  margin-left: 100px;
+.trash-can:hover {
+  font-size: 1.2rem;
 }
 
 @media screen and (max-width: 768px) {

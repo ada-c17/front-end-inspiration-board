@@ -56,7 +56,7 @@ const App = () => {
           cards: response.data.cards,
         };
         setBoardData(newBoard);
-        console.log("in axios: ", response.data);
+        // console.log("in axios: ", response.data);
       })
       .catch((err) => {
         console.log(err);
@@ -67,7 +67,7 @@ const App = () => {
     return axios
       .delete(`${URL}/${id}`)
       .then((response) => {
-        console.log(response.data);
+        // console.log(response.data);
       })
       .catch((error) => {
         console.log(error);
@@ -94,7 +94,7 @@ const App = () => {
         `https://back-end-inspiration-board.herokuapp.com/cards/${cardID}`
       )
       .then((response) => {
-        console.log(response.data);
+        // console.log(response.data);
       })
       .catch((error) => {
         console.log(error);
@@ -124,7 +124,7 @@ const App = () => {
   // console.log(boardData);
 
   const submitBoard = (data) => {
-    console.log(`HELLO`);
+    // console.log(`HELLO`);
     axios
       .post(URL, {
         title: data.title,
@@ -138,8 +138,17 @@ const App = () => {
       });
   };
 
-  const boardFormSubmit = () => {
-    console.log("Hi!");
+  const submitCard = (data, boardId) => {
+    axios
+      .post(`${URL}/${boardId}/cards`, {
+        message: data.message,
+      })
+      .then((response) => {
+        getOneBoard(boardId);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
   };
 
   return (
@@ -166,6 +175,7 @@ const App = () => {
                 deleteCard={deleteCard}
                 handleLike={handleLike}
                 setBoardData={setBoardData}
+                submitCard={submitCard}
               />
             }
           />

@@ -28,6 +28,7 @@ li {
   padding-top: 5vh;
   padding-bottom: 1vh;
   width: 100%;
+  text-transform: capitalize;
 }
 
 .cardsList {
@@ -39,7 +40,6 @@ li {
   height: 80%;
   overflow: scroll;
 }
-
 .container {
   max-width: 90%;
   /* margin-top: 5vh; */
@@ -67,4 +67,9 @@ li {
 
 .back.btn:hover {
   font-size: 1.2rem;
+}
+
+.board-nav {
+  display: flex;
+  justify-content: space-between;
 }
