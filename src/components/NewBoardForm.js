@@ -48,7 +48,9 @@ const NewBoardForm = () => {
         .map((s) => s.charAt(0).toUpperCase() + s.substring(1))
         .join(" ");
 
-      setMessage(`Space ${boardData.title} was created by ${boardData.owner}`);
+      setMessage(
+        `Newly Formed Universe ${boardData.title} was created by ${boardData.owner}. `
+      );
       makeNewBoard(boardData);
 
       onGetQuote();
@@ -75,7 +77,12 @@ const NewBoardForm = () => {
         <br />
         Home is here
       </Link>
-      <h1>Add New Space</h1>
+      <h1>Quantum Realm</h1>
+      <p className="story" id="first-line">
+        Time.Space.Reality. It's more then a linear path. It's a prism of
+        endless possibility, where a single choice can branch out into infinite
+        realities, creating alternate worlds from the ones you know.
+      </p>
       <form onSubmit={handleFormSubmission}>
         <input
           id="title"
@@ -92,10 +99,10 @@ const NewBoardForm = () => {
           type="text"
           className="owner"
           value={boardData.owner}
-          placeholder="Enter Space Owner"
+          placeholder="Creator"
           onChange={handleFormInput}
         />
-        <input type="submit" value="Add" />
+        <input type="submit" value="Big Bang" />
       </form>
       <p>{message}</p>
 

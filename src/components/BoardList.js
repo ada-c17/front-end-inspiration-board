@@ -72,6 +72,9 @@ const BoardList = () => {
 
   return (
     <div>
+      <p>
+        The Multiverse is a concept about which we know frighteningly little
+      </p>
       {showInput ? (
         <ul className="list">
           {boards.map((item) => (

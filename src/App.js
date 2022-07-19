@@ -28,13 +28,13 @@ function App() {
 
       <input
         type="submit"
-        value="Story / Spaces"
+        value="Story / Multiverse"
         onClick={onClickShowBoardlist}
       />
       {showBoardList ? <BoardList /> : <Story />}
 
       <Link to="/new">
-        <div id="add-new-space">Add New Space</div>
+        <div id="add-new-space">Create alternate world</div>
       </Link>
       <footer>
         &copy; 2022 Ada Developers Academy ✨ by Coders from the OtterSpace ✨
