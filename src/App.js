@@ -11,11 +11,12 @@ function App() {
   const [cards, setCards] = useState([]);
   const [openModal, setOpenModal] = useState(false);
 
-  const URL = "https://inspiration-board-eota.herokuapp.com/boards";
+  const BOARD_URL = "https://inspiration-board-eota.herokuapp.com/boards";
+  const CARD_URL = "https://inspiration-board-eota.herokuapp.com/cards";
 
   const fetchBoards = () => {
     axios
-      .get(URL)
+      .get(BOARD_URL)
       .then((res) => {
         const newBoards = res.data.map((board) => {
           return {
@@ -35,7 +36,7 @@ function App() {
 
   const fetchCards = (id) => {
     axios
-      .get(`${URL}/${id}/cards`)
+      .get(`${BOARD_URL}/${id}/cards`)
       .then((res) => {
         const newCards = res.data.cards.map((card) => {
           return {
@@ -55,7 +56,7 @@ function App() {
 
   const addBoard = (boardInfo) => {
     axios
-      .post(URL, boardInfo)
+      .post(BOARD_URL, boardInfo)
       .then((response) => {
         console.log(response);
         fetchBoards();
@@ -67,7 +68,7 @@ function App() {
 
   const deleteBoard = (id) => {
     axios
-      .delete(`${URL}/${id}`)
+      .delete(`${BOARD_URL}/${id}`)
       .then(() => {
         const newBoards = [];
         for (const board of boards) {
@@ -81,6 +82,24 @@ function App() {
         console.log(error);
       });
   };
+
+  const deleteCard = (id) => {
+    axios
+      .delete(`${CARD_URL}/${id}`)
+      .then(() => {
+        const newCards = [];
+        for (const card of cards) {
+          if (card.card_id !== id) {
+            newCards.push(card);
+          }
+        }
+        setCards(newCards);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
+
   return (
     <div className="App">
       <div className="App-wrapper">
@@ -105,7 +124,7 @@ function App() {
             </section>
           </div>
           <div className="Card-display">
-            <CardList cards={cards}></CardList>
+            <CardList cards={cards} deleteCard={deleteCard}></CardList>
           </div>
         </main>
       </div>

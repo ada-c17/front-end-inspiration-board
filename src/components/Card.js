@@ -13,11 +13,15 @@ const Card = (props) => {
       {/* display like count */}
       <p>Likes: {props.likes_count}</p>
       {/* display button to like the card */}
-      <p><button className="cards__item">Like</button></p>
+      <p>
+        <button className="cards__item">Like</button>
+      </p>
       {/* display button to delete the card */}
-      <p><button className="deleteButton" onClick={deleteCard}>
-        X
-      </button></p>
+      <p>
+        <button className="deleteButton" onClick={deleteCard}>
+          X
+        </button>
+      </p>
     </div>
   );
 };
