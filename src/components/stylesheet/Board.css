@@ -33,9 +33,14 @@ li {
 }
 
 .cardsList {
+  display: flex;
+  justify-content: center;
+  align-content: space-between;
   margin-top: 0.1vw;
   margin-bottom: 2.5vw;
-  margin-left: 1.5vw;
+  padding-left: 5.2%;
+  flex-wrap: wrap;
+  /* margin-right: 1.5vw; */
   width: 100%;
   /* height: 350px; */
   height: 80%;
@@ -62,7 +67,7 @@ li {
   border: none;
   font-family: 'Fredericka the Great', cursive;
   font-size: 1.7rem;
-  width: 100%;
+  /* width: 100%; */
   text-align: left;
 }
 
@@ -73,4 +78,5 @@ li {
 .board-nav {
   display: flex;
   justify-content: space-between;
+  padding-bottom: 1.5vw;
 }
