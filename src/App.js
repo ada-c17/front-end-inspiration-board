@@ -45,22 +45,26 @@ function App() {
   };
 
   const [boardID, setBoardsID] = useState(null);
-  const boardSelected = (boardID) => {
-    // console.log(boardID)
+  const [boardTitle, setboardTitle] = useState(null); 
+
+  const boardSelected = (boardID, boardTitle) => {
     setBoardsID(boardID)
+    setboardTitle(boardTitle)
   }
   return (
-    <div>
+    <div class = "container">
       <div id="Boards">
-        <hi>BOARDS</hi>
+        <h1>BOARDS</h1>
         <BoardsList
           boards={boards}
           boardIdCallback={boardSelected}
         />
       </div>
+
       <div>
-        {boardID && <BoardWithCards boardID={boardID}/>}
+        {boardID && <BoardWithCards boardID={boardID} boardTitle = {boardTitle}/>}
       </div>
+
       <div>
         <BoardForm addBoardCallback={addBoard} />
       </div>  

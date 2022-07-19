@@ -9,14 +9,14 @@ const BOARDS_URL = "https://fast-caverns-05936.herokuapp.com/boards";
 
 const BoardWithCards = (props) => {
     const [cards, setCards] = useState([]);
-
+    console.log(props.boardTitle);
+    console.log("in board with cards function ");
     const fetchCardsForBoard = () => {
         axios
             .get(`${BOARDS_URL}/${props.boardID}/cards`)
             .then((res) => {
-                // console.log("we are in this hard function");
-                console.log(res)
                 const newCards = res.data.cards.map((card) => {
+                console.log(card)
                 return {
                     card_id: card.card_id,
                     board_id: props.boardID,
@@ -80,7 +80,6 @@ const BoardWithCards = (props) => {
     };
 
     const cardComponent = cards.map((card) => {
-        console.log("inside the map of boards with cards")
         return <Card
                 key={card.card_id}
                 id={card.card_id}
@@ -93,15 +92,24 @@ const BoardWithCards = (props) => {
     });
     
     return (
-        <div>
-            
+        <div id = "boardWithcard">
+            <h2> {props.boardTitle}</h2>
+            <p></p>
             <div>{cardComponent}</div>
             <div>
-                <CardForm cardsCallback={addCard} boardID={props.boardID}/>
+                <CardForm cardsCallback={addCard} boardID={props.boardID} />
             </div>
         </div>
         );
     };
     
+    BoardWithCards.propTypes = {
+      id: PropTypes.number.isRequired,
+      message: PropTypes.string.isRequired,
+      board_id:PropTypes.number.isRequired,
+      // likes: PropTypes.number.isRequired,
+      // changeLikes:PropTypes.func.isRequired,
+      // deleteCard: PropTypes.func.isRequired,
+  };
     export default BoardWithCards;
     

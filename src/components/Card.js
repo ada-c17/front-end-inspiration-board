@@ -8,13 +8,13 @@ const Card = (props) => {
     const changeLike = () => {
         props.changeLikes(props.id)
     };
-    console.log("I am in the card component")
+    //console.log("I am in the card component")
     return (
-        <div>
-            <ul>
-                <li>Message: {props.message} </li>
-                <li>Likes :{props.likes}</li>
-                <button onClick={changeLike}>+1</button>
+        <div id= "post-it-note">
+            <ul id = "singleNote">
+                <li> {props.message} </li>
+                <li>{props.likes} ❤️ </li>
+                <button onClick={changeLike}> +1</button>
                 <button onClick={deleteMe}>Delete</button> 
             </ul>
         </div>
