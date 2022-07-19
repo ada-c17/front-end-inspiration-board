@@ -18,6 +18,24 @@ function App() {
   const [selectedBoard, setSelectedBoard] = useState(defaultBoard);
   const [cards, setCards] = useState([]);
   const [boardFormHidden, setBoardFormHidden] = useState(false);
+  const [cardListOrder, setCardListOrder] = useState("id");
+
+  const cardOrder = (order_by) => {
+    setCardListOrder(order_by);
+    console.log(order_by);
+  };
+
+  const iDCardOrder = () => {
+    cardOrder("id");
+  };
+
+  const alphaCardOrder = () => {
+    cardOrder("message");
+  };
+
+  const likesCardOrder = () => {
+    cardOrder("likes");
+  };
 
   const setBoardFormVisibility = () => {
     setBoardFormHidden(!boardFormHidden);
@@ -160,11 +178,15 @@ function App() {
 
         <section>
           <h2>Cards for Pick-Me-Up Quotes</h2>
+          <button onClick={iDCardOrder}>Sort by ID</button>
+          <button onClick={alphaCardOrder}>Sort alphabetically</button>
+          <button onClick={likesCardOrder}>Sort by Likes</button>
           <div className="cards-container">
             <CardList
               cards={cards}
               deleteCardCallback={deleteCard}
               likeCardCallback={likeCard}
+              cardListOrder={cardListOrder}
             />
           </div>
         </section>

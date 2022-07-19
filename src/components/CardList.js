@@ -1,6 +1,23 @@
 import Card from "./Card";
 
-function CardList({ cards, deleteCardCallback, likeCardCallback }) {
+function CardList({
+  cards,
+  deleteCardCallback,
+  likeCardCallback,
+  cardListOrder,
+}) {
+  const sortCards = (cardListOrder) => {
+    if (cardListOrder === "likes") {
+      cards = cards.sort((a, b) => b[cardListOrder] - a[cardListOrder]);
+    } else if (cardListOrder === "id") {
+      cards = cards.sort((a, b) => a[cardListOrder] - b[cardListOrder]);
+    } else if (cardListOrder === "message") {
+      cards = cards.sort((a, b) => a.message.localeCompare(b.message));
+    }
+    console.log(cards);
+  };
+  sortCards(cardListOrder);
+
   const getCardListJSX = (cards) => {
     return cards.map((card) => {
       return (
