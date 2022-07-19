@@ -19,7 +19,7 @@ const CardList = (props) => {
   return (
     <div>
       <h1 className="Cards-title">CARDS</h1>
-      {cardsComponents}
+      <div className="cardList">{cardsComponents}</div>
     </div>
   );
 };
