@@ -12,8 +12,8 @@ const Card = (props) => {
 
   return (
     <div className="card-item" key={props.cardInfo.id}>
+      <h3 className='card-item__message'>{props.cardInfo.message}</h3>
       <ul className="card-item__controls">
-        <li>{props.cardInfo.message}</li>
         <li>{props.cardInfo.likes_count} 💕</li>
         <button className="card-likes" onClick={clickLikeButton}>
           +1

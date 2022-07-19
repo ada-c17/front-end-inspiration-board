@@ -1,4 +1,6 @@
-@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
+/* @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap'); */
+
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,500;0,800;1,300;1,500;1,600&display=swap');
 .App {
     text-align: center;
 }
@@ -51,8 +53,6 @@ h2 {
 }
 
 .card-item {
-    font-family: "Homemade Apple", cursive;
-    font-family: 'Concert One', cursive;
     background-color: rgb(255, 248, 165);
     box-shadow: -10px 7px 7px lightgrey;
     min-height: 200px;
@@ -61,6 +61,33 @@ h2 {
     justify-content: center;
     padding: 2rem;
     flex-direction: column;
+}
+
+.cards__container {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+}
+
+.cards_list_no_bullets {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-gap: 2rem;
+    margin: 2rem;
+}
+
+.card-item__controls {
+    font-family: "Open Sans", sans-serif;
+    list-style-type: none;
+    display: flex;
+    padding: 0;
+    width: 100%;
+    justify-content: space-evenly;
+}
+
+.card-item__message {
+    text-align: center;
+    font-size: 1.4rem;
+    word-break: break-word;
 }
 
 input {
