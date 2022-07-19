@@ -21,6 +21,7 @@ const NewCardForm = (props) => {
   return (
     <section className="add-message">
       <input
+        maxLength={40}
         className="message-input"
         type="text"
         value={cardField.message}
