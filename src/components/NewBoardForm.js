@@ -77,20 +77,11 @@ const NewBoardForm = () => {
         <br />
         Home is here
       </Link>
-
-      <h1>Add New Space</h1>
-      <p id="board-text">
-        Every idea, thought, and message is valuable in the cosmos. We welcome
-        you to start a new Otterspace in which you can share anything that you
-        can imagine.
-      </p>
-
       <h1>Quantum Realm</h1>
       <p className="story" id="first-line">
         Time.Space.Reality. It's more then a linear path. It's a prism of
         endless possibility, where a single choice can branch out into infinite
         realities, creating alternate worlds from the ones you know.
-
       </p>
       <form onSubmit={handleFormSubmission}>
         <input

@@ -39,6 +39,7 @@ const BoardList = () => {
         })
         .catch((error) => {
           console.log("couldn't delete board");
+          getBoardsFromAPI(boardID);
         });
     }
   };
@@ -59,23 +60,23 @@ const BoardList = () => {
   boards.sort((a, b) => a.title.localeCompare(b.title));
 
   // switcher between list of boards and editBoardForm
-  const [showInput, setShowInput] = useState(true);
+  const [showBoardsOrEdit, setShowBoardsOrEdit] = useState(true);
   const handleEditing = (id) => {
-    setShowInput(false);
+    setShowBoardsOrEdit(false);
     edit_board = boards.find((x) => x.id === id);
   };
 
   const onEditSubmission = (board) => {
-    setShowInput(true);
+    setShowBoardsOrEdit(true);
     editBoard(board.id, board.title);
   };
 
   return (
     <div>
       <p>
-        The Multiverse is a concept about which we know frighteningly little
+        The Multiverse is a concept about which we know frighteningly little.
       </p>
-      {showInput ? (
+      {showBoardsOrEdit ? (
         <ul className="list">
           {boards.map((item) => (
             <li key={item.id} className="list-item">
