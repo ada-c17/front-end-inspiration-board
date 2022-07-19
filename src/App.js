@@ -89,7 +89,7 @@ function App() {
       .post(`${url}/boards`, requestBody)
       .then((response) => {
         const newBoard = {
-          board_id: response.id,
+          id: response.data.id,
           title: requestBody.title,
           owner: requestBody.owner,
         };
@@ -105,12 +105,13 @@ function App() {
     axios
       .post(`${url}/boards/${boardId}/card`, requestBody)
       .then((response) => {
-        // const newCard = {
-        //   card_id: response.card_id,
-        //   message: requestBody.message,
-        //   like_count: response.like_count,
-        // };
-        getCardsFromOneBoard(boardId);
+        const newCard = {
+          card_id: response.data.card_id,
+          board_id: response.data.board_id,
+          message: response.data.message,
+          like_count: response.data.like_count,
+        };
+        setCards([...cards, newCard]);
       })
       .catch((e) => {
         console.log(e);
