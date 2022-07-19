@@ -1,6 +1,10 @@
-.Board {
-    background-color: lightgray;
+/* .Board {
+    background-image: "./images/corkboard.gif";
     border-radius: 25px;
-    padding: 50px;
+    height: 600px;
+    padding: 30px;
     margin: 50px;
-}
+    width: 1200px;
+} */
+.Board {
+    background-image: url(https://www.commentslive.com/backgrounds/bulletin-board/corkboard.jpg); background-repeat:repeat; background-attachment: fixed;}

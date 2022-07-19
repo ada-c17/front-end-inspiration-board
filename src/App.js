@@ -30,7 +30,6 @@ function App() {
       </header>
       <main>
         {toggleDisplay()}
-        <NewCardForm submitFunction={newCard} />
 
         {/* <CardList cardsOnBoard={testCards} /> */}
       </main>
