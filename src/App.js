@@ -7,7 +7,6 @@ import NewCardForm from "./components/NewCardForm";
 import "./css/inspo_board.css";
 
 const kBaseUrl = "https://mission-inspirational-2.herokuapp.com";
-// const kBaseUrl = "http://localhost:5000";
 
 const cardApiToJson = (card) => {
   const { id, likes, message, board_id: boardId } = card;
@@ -172,12 +171,10 @@ function App() {
     axios
       .post(`${kBaseUrl}/cards`, requestBody)
       .then((response) => {
-        console.log("response:", response.data);
         return cardApiToJson(response.data);
       })
       .then(() => getSelectedBoardData(boardId))
       .catch((err) => {
-        console.log(err);
         throw new Error("error adding card");
       });
   };
