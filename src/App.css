@@ -2,4 +2,32 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
+  background: url('./assets/DreamySunset-by-Stardust-Spects.jpg') no-repeat;
+  background-size: cover;
+  background-color: #a9acd5;
+}
+
+@font-face {
+  font-family: 'Silkscreen';
+  src: local('Silkscreen'), url(./fonts/slkscr.ttf) format('truetype');
+}
+
+.header {
+  color: #ffffff;
+  background-color: #f4bdf4;
+  font-family: 'Silkscreen';
+  font-size: 1.5em;
+}
+
+.button-toggle {
+    background-color: #dcaadc; /* Green */
+    border: none;
+    color: #fdf2fd;
+    padding: 1em;
+    margin: 1em;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    font-family: Silkscreen;
 }
