@@ -24,10 +24,10 @@ CardsList.propTypes = {
   cards: PropTypes.arrayOf(
     PropTypes.shape({
       message: PropTypes.string.isRequired,
-      onLikeClick: PropTypes.func.isRequired,
-      onClickDeleteCard: PropTypes.func.isRequired,
     })
   ).isRequired,
+  onLikeClick: PropTypes.func.isRequired,
+  onClickDeleteCard: PropTypes.func.isRequired,
 };
 
 export default CardsList;
