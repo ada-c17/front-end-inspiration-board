@@ -118,8 +118,8 @@ const CardList = (props) => {
       {/* Display cards for specific Board */}
       {/* <div className="cards_dropdown_container"> */}
       <h2>Cards for {props.board.title} 
-        <div className="cards_dropdown_container">
-          <label>Sort by</label>
+        <div>
+          <label className="dropdown__arrows"> Sort by </label>
           <select onChange={sortCards}>
             <option value="asc_id">Id</option>
             <option value="asc_alpha">Message</option>
