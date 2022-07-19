@@ -65,11 +65,8 @@ function App() {
   const createNewBoard = (newBoard) => {
     axios
       .post(`${kBaseUrl}/boards`, newBoard)
-      .then((response) => {
-        const newBoards = [...boards];
-        newBoards.push(response.data.board);
-        setBoards(newBoards);
-      })
+      .then(() => getBoardListDropdown())
+      .then(() => setBoardOption(newBoard.title))
       .catch((error) => {
         console.log(error);
         throw new Error("Couldn't create a new board.");
