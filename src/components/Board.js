@@ -1,14 +1,46 @@
 import React, { useEffect, useState } from "react";
 import "./Board.css";
 import PropTypes from "prop-types";
-import Card from "./Card.js";
 import axios from "axios";
 import NewCardForm from "./NewCardForm";
+import CardList from "./CardList";
 
 const Board = ({ board_id }) => {
   useEffect(() => {
     getBoardData(board_id);
   }, []);
+  const [testCards, setTestCards] = useState([
+    {
+      card_id: 1,
+      message: "Test Card 1 (To Be Deleted)",
+      likes_count: 1,
+    },
+    {
+      card_id: 2,
+      message: "Test Card 2 (To Be Deleted)",
+      likes_count: 0,
+    },
+    {
+      card_id: 3,
+      message: "Test Card 3 (To Be Deleted)",
+      likes_count: 0,
+    },
+    {
+      card_id: 4,
+      message: "Test Card 4 (To Be Deleted)",
+      likes_count: 0,
+    },
+    {
+      card_id: 5,
+      message: "Test Card 5(To Be Deleted)",
+      likes_count: 0,
+    },
+    {
+      card_id: 6,
+      message: "Test Card 6 (To Be Deleted)",
+      likes_count: 1,
+    },
+  ]);
 
   const [owner, setOwner] = useState("Default Owner");
   const [title, setTitle] = useState("Default Title");
@@ -34,14 +66,11 @@ const Board = ({ board_id }) => {
       .catch((error) => console.log(`Cannot delete board ${error}`));
   };
 
-
   return (
     <div className="Board">
       <h1>{title}</h1>
       <h2>{owner}</h2>
-      {/* <CardList
-
-      /> */}
+      <CardList cardsOnBoard={testCards} />
       <button onClick={() => deleteBoard(board_id)}>DELETE THIS BOARD</button>
       <button onClick={() => console.log("setBaordCallBack(null)")}> 🔙</button>
     </div>
