@@ -6,6 +6,8 @@ import Card from "./Card";
 //cardList gets rendered in a specific page
 const CardList = ({ cards, boardId }) => {
   //useEffect() -> when pages loads (boardId), makes an API call to boards/<boardId>/cards-> endpoint
+  // console.log(cards);
+  // console.log(boardId);
   const cardListArray = cards.map((card) => {
     return (
       <div>

@@ -9,10 +9,10 @@ import CardList from "./CardList";
 //<Link to="/boards/:boardId" className="choose-board">
 
 const Board = (props) => {
+  console.log(props.boardId);
+  console.log(props.cards);
   return (
     <div>
-      <button>{props.title}</button>
-
       <CardList cards={props.cards} boardId={props.boardId} />
     </div>
   );

@@ -7,7 +7,7 @@ import BoardDisplay from "./routes/ChosenBoard";
 
 //sample data if GET request made to endpoint /boards
 //get all cards will only render boardID, title, owner
-const boards = [
+export const boards = [
   {
     boardId: 1,
     title: "Let's go Whoodles!",
@@ -48,18 +48,18 @@ function App() {
 
   //updates state for newly selected board from drop-down menu. I don't love that it comes from "title" and not "boardId"
   const selectNewBoard = (e) => {
-    const boardTitle = e.target.value;
+    const boardId = e.target.value;
     const newSelectedBoard = boardData.filter(
-      (board) => board.title === boardTitle
+      (board) => board.boardId == boardId
     );
     console.log(newSelectedBoard);
-    setSelectedBoard(newSelectedBoard);
+    setSelectedBoard(newSelectedBoard[0]);
   };
 
   //displays board choices on drop down
   const boardOptions = boardData.map((board) => {
     return (
-      <option key={board.boardId} boardId={board.boardId}>
+      <option key={board.boardId} value={board.boardId}>
         {board.title}
       </option>
     );
@@ -79,9 +79,8 @@ function App() {
           <Link to="/boards" className="choose-board">
             <section>Inspiration board</section>
             <select onChange={selectNewBoard}>
-              {/* <option>Choose an inspiration board</option>
-              <option> {selectedBoard.title}</option>
-              <option> board 2</option> */}
+              <option>Choose an inspiration board</option>
+              {/* <option> {selectedBoard.title}</option> */}
               {boardOptions}
             </select>
           </Link>
