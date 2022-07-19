@@ -119,25 +119,6 @@ function App() {
       });
   };
 
-  // const flipHandsome = (id) => {
-  //   axios
-  //     .patch(`${URL}/${id}/fliphandsome`)
-  //     .then(() => {
-  //       const newDrivers = [];
-  //       for (const driver of drivers) {
-  //         const newDriver = { ...driver };
-  //         if (newDriver.id === id) {
-  //           newDriver.handsome = !newDriver.handsome;
-  //         }
-  //         newDrivers.push(newDriver);
-  //       }
-  //       setDrivers(newDrivers);
-  //     })
-  //     .catch((err) => {
-  //       console.log(err);
-  //     });
-  // };
-
   return (
     <div className="App">
       <div className="App-wrapper">
