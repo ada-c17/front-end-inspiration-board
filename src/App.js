@@ -4,7 +4,14 @@ import NewCardForm from "./components/NewCardForm";
 import BoardList from "./components/BoardList";
 import axios from "axios";
 import Board from "./components/Board";
-import {postBoardAsync, postCardAsync, likeCardAsync, deleteCardAsync, selectBoardAsync, getAllBoardsAsync} from './apiCalls';
+import {
+  postBoardAsync,
+  postCardAsync,
+  likeCardAsync,
+  deleteCardAsync,
+  selectBoardAsync,
+  getAllBoardsAsync,
+} from "./apiCalls";
 
 // this could all go in a separate apiCalls.js folder or something
 
@@ -12,35 +19,37 @@ function App() {
   const [boardData, setBoardData] = useState([]);
   const [cardData, setCardData] = useState([]);
   // sample boards data to test BoardList
-  const boardSet = [
-    { title: "Memes", creator: "Michael Scott", id: 1 },
-    { title: "Inspirational Quotes", creator: "Dwight Schrute", id: 2 },
-    { title: "Romance Advice", creator: "Kelly Kapoor" , id: 3},
-  ];
+  // const boardSet = [
+  //   { title: "Memes", creator: "Michael Scott", id: 1 },
+  //   { title: "Inspirational Quotes", creator: "Dwight Schrute", id: 2 },
+  //   { title: "Romance Advice", creator: "Kelly Kapoor" , id: 3},
+  // ];
 
   const displayAllBoards = () => {
     getAllBoardsAsync()
-    .then(
-      boards => {
+      .then((boards) => {
         setBoardData(boards);
-    })
-    .catch((err) => {
-      console.log(err);
-      throw new Error("error displaying boards");
-    });
-  }
+      })
+      .catch((err) => {
+        console.log(err);
+        throw new Error("error displaying boards");
+      });
+  };
 
   useEffect(() => {
     displayAllBoards();
-  }, [boardData])
+  }, [boardData]);
 
-  const selectBoard = (boardId) =>{
+  const selectBoard = (boardId) => {
     const selectedBoard = selectBoardAsync(boardId);
-    return <Board title={selectedBoard.title}
-            creator={selectedBoard.creator}
-            cards={selectedBoard.cards}
-            />
-  }
+    return (
+      <Board
+        title={selectedBoard.title}
+        creator={selectedBoard.creator}
+        cards={selectedBoard.cards}
+      />
+    );
+  };
 
   const postBoard = (boardData) => {
     postBoardAsync(boardData)
