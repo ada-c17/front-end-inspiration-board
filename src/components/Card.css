@@ -1,0 +1,133 @@
+div {
+    margin: 20px auto;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    background:#666;
+    color:#fff;
+}
+
+*{
+    margin:0;
+    padding:0;
+}
+
+p {
+    font-weight: bold;
+    font-size: 2rem;
+}
+
+ul,li{
+    list-style:none;
+}
+
+ul{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.delete-button {
+    text-align: right;
+}
+
+ul li section{
+    text-decoration:none;
+    color:#000;
+    /* background:#cfc; */
+    background:#ffc;
+    display:block;
+    height:15em;
+    width:10em;
+    padding:1em;
+    box-shadow: 5px 5px 7px rgba(33,33,33,.7);
+    transform: rotate(-6deg);
+    transition: transform .15s linear;
+}
+
+.card-entry .card-container {
+    max-width: 50vh;
+    min-width: 35vh;
+    padding: 1rem 1rem 0.1rem 1rem;
+    position: relative;
+    width: fit-content;
+    overflow-wrap: normal;
+}
+
+ul li section .like-button {
+    border: none;
+    /* background: #cfc; */
+    background:#ffc;
+    position: relative;
+    top: 65%;
+    transform: translateY(-100%);
+}
+
+ul li section .delete-button {
+    float: right;
+    width: 15px;
+    text-align: center;
+}
+
+.divisibleBy2 .card-container {
+    transform:rotate(4deg);
+    position:relative;
+    top:5px;
+    background:#ffc;
+}
+
+.divisibleBy2 .like-button {
+    background:#ffc;
+    top: 65%;
+    transform: translateY(-100%);
+    
+}
+
+.divisibleBy3 .card-container {
+    transform:rotate(-3deg);
+    position:relative;
+    top:-5px;
+    /* background:#ccf; */
+    background:#ffc;
+}
+
+.divisibleBy3 .like-button {
+    /* background:#ccf; */
+    background:#ffc;
+    top: 65%;
+    transform: translateY(-100%);
+}
+
+.divisibleBy5 .card-container {
+    transform:rotate(5deg);
+    position:relative;
+    top:-10px;
+    /* background:#fcf; */
+    background:#ffc;
+}
+
+.divisibleBy5 .like-button {
+    /* background:#fcf; */
+    background:#ffc;
+    top: 65%;
+    transform: translateY(-100%);
+}
+
+.rotateDefault .card-container {
+    transform:rotate(-6deg);
+    position:relative;
+}
+
+ul li .card-container:hover,ul li .card-container:focus{
+    box-shadow:10px 10px 7px rgba(0,0,0,.7);
+    transform: scale(1.25);
+    position:relative;
+    z-index:5;
+}
+
+ul li{
+    margin:1em;
+}
+
+
+
+
+
