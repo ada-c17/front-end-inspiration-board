@@ -20,7 +20,7 @@ header {
 }
 .container {
   display: grid;
-  grid-template-columns: 45% auto;
+  grid-template-columns: 40% auto;
   grid-template-rows: 35em auto;
 }
 

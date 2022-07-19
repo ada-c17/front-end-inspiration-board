@@ -23,6 +23,7 @@ const CardForm = (props) => {
     console.log("inside card form");
     event.preventDefault();
     props.handleFormSubmission(cards);
+    setCards(defaultCard);
   };
 
   return (
