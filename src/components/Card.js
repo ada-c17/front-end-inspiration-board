@@ -18,7 +18,7 @@ const Card = (props) => {
           href="https://fonts.googleapis.com/css2?family=Reenie+Beanie&display=swap"
           rel="stylesheet"
         ></link>
-        <li className="handwritten">Message: {props.message}</li>
+        <li className="handwritten">{props.message}</li>
         <li>{props.likes_count} 💜</li>
         <button onClick={likeOnClick}>+ 💜</button>
         <button onClick={deleteOnClick}>🗑️</button>

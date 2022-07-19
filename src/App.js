@@ -143,7 +143,7 @@ function App() {
   return (
     <div className="container">
       <header className="header">
-        <h1>Gramtaschie Inspiration Board</h1>
+        <h1>✨ Gramtaschie Inspiration Board ✨</h1>
       </header>
       <section className="board">
         <Board
@@ -153,7 +153,6 @@ function App() {
           deleteBoardsCallback={deleteBoard}
           fetchCardsCallback={fetchCards}
         ></Board>
-        <h4>{`Current Board: (id: ${selectedBoard}) ${selectedBoardName}`}</h4>
       </section>
       <section className="boardform">
         {isBoardFormVisible ? (
@@ -167,9 +166,13 @@ function App() {
       </section>
 
       <section className="cards">
-        <h2>Cards for Board: {selectedBoardName}</h2>
-        <div className="cardform">
-          <NewCardForm addCardCallback={createNewCard}></NewCardForm>
+        <h2>{selectedBoardName}</h2>
+        <div>
+          {selectedBoard != null ? (
+            <div className="cardform">
+              <NewCardForm addCardCallback={createNewCard}></NewCardForm>
+            </div>
+          ) : null}
         </div>
         <CardList
           cards={cards}
