@@ -11,6 +11,9 @@ const NewBoardForm = (props) => {
         props.createNewBoard({ title, owner});
         setTitle('');
         setOwner('');
+        if (owner.length === 0 || title.length > 40 || owner.length > 40 || title.length === 0) {
+            alert('Typo needs to be less than 40 characters!');
+        }
     };
 
     return (
@@ -21,7 +24,7 @@ const NewBoardForm = (props) => {
         name="title" 
         value={title} 
         onChange={handleTitleChange}
-        className={((title.length === 0) || (title.length > 40)) ? 'invalid-form-input' : ''}></input>
+        className={((title.length === 0) || (title.length > 40)) ? 'invalid-form-input' : 'invalid'}></input>
         <label htmlFor="owner">Owner's Name</label>
         <input 
         type="text" 
@@ -32,8 +35,6 @@ const NewBoardForm = (props) => {
         <p>Preview: {title} - {owner}</p>
         <input 
         type="Submit"
-        // disabled={((title.length === 0) || (owner.length === 0) || (title.length > 40) || (owner.length > 40))}
-        disabled={((title.length === 0) || (owner.length === 0) || (title.length > 40) || (owner.length > 40))}
         className='new-board-form__form-submit-btn'></input>
     </form>
     )

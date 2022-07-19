@@ -8,6 +8,9 @@ const NewCardForm = (props) => {
         event.preventDefault();
         props.createNewCard(message);
         setMessage('');
+        if (message.length === 0 || message.length > 40) {
+            alert('Typo needs to be less than 40 characters!')
+        }
     };
 
     return (
@@ -23,7 +26,6 @@ const NewCardForm = (props) => {
                 <p>Preview: {message}</p>
                 <input 
                 type="Submit"
-                disabled= {message.length === 0 || message.length > 40}
                 className='new-card-form__form-submit-btn'></input>
             </form>
         </section>
