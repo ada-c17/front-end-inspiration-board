@@ -24,7 +24,6 @@ h2 {
   border: 2px solid #45BFDD;
   background-color: #C3EAF4;
   box-shadow: -15px 7px 1px #6D7375;
-  max-height: 100px;
 }
 
 .boards__container {
@@ -33,7 +32,7 @@ h2 {
 }
 
 .cards_dropdown_container {
-  font-size: 20px;
+  display:grid
 }
 .cards__container {
   display: grid;
@@ -55,13 +54,11 @@ h2 {
   min-height: 100px; 
   margin-right: 11rem;
   max-width: 200px;
-  width: fit-content;
+  /* width: fit-content; */
   border: black solid 1px;
   background-color: #ADC6CC;
   padding: 15px;
   overflow-x: hidden;
-  
-
 }
 
 .new-board-form__container,
