@@ -4,10 +4,17 @@ import CardList from "./CardList";
 import NewCardButton from "./NewCardButton";
 import PropTypes from "prop-types";
 
-const CardsView = ({ cards, deleteCard, submitCard, updateLikes, chosenBoard, setChosenBoard }) => {
+const CardsView = ({
+  cards,
+  deleteCard,
+  submitCard,
+  updateLikes,
+  chosenBoard,
+  setChosenBoard,
+}) => {
   const exitBoard = () => {
     setChosenBoard(null);
-  }
+  };
 
   return (
     <div>
@@ -17,8 +24,16 @@ const CardsView = ({ cards, deleteCard, submitCard, updateLikes, chosenBoard, se
         deleteCard={deleteCard}
         updateLikes={updateLikes}
       ></CardList>
-      <NewCardButton submitCard={submitCard} chosenBoard={chosenBoard}></NewCardButton>
-  </div>
+      <NewCardButton
+        submitCard={submitCard}
+        chosenBoard={chosenBoard}
+      ></NewCardButton>
+      <select id="sortOptionsDropDown">
+        <option> sort alphabetically </option>
+        <option> sort by likes </option>
+        <option> sort by ID </option>
+      </select>
+    </div>
   );
 };
 
