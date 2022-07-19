@@ -185,6 +185,20 @@ function App() {
       });
   };
 
+  const deleteCard = (cardId, boardId) => {
+    axios
+      .delete(`${kBaseUrl}/cards/${cardId}`)
+      // .then((response) => {
+      //   console.log("response:", response.data);
+      //   return cardApiToJson(response.data);
+      // })
+      .then(() => getSelectedBoardData(boardId))
+      .catch((err) => {
+        console.log(err);
+        throw new Error("error adding card");
+      });
+  };
+
   return (
     <main>
       <section className="container">
@@ -219,6 +233,7 @@ function App() {
             updateSortOrder={updateSortOrder}
             updateSortType={updateSortType}
             sortedData={sortedData}
+            deleteCard={deleteCard}
           />
         </section>
       </section>

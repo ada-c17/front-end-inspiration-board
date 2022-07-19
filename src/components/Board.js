@@ -14,6 +14,7 @@ const Board = ({
   updateSortType,
   updateSortOrder,
   sortedData,
+  deleteCard,
 }) => {
   console.log(`This is Board's board.cards: ${JSON.stringify(board.cards)}`);
 
@@ -28,6 +29,7 @@ const Board = ({
         board_id={card.board_id}
         message={card.message}
         onLike={cardLike}
+        onDelete={deleteCard}
       />
     );
   });
