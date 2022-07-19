@@ -51,7 +51,7 @@ const CardList = (props) => {
 
   const cardElements = props.cardData.map((card) => {
     return (
-      <Card card={card} addOneCard={addOneCard} deleteCard={deleteCard}></Card>
+      <Card card={card} addOneLike={addOneCard} deleteCard={deleteCard}></Card>
     );
   });
 

@@ -8,7 +8,7 @@ const Card = (props) => {
       <ul>
         <li>{props.card.message}</li>
         <li>{props.card.like_count}💖</li>
-        <li onClick={() => props.likeAdd(props.card)}>+1</li>
+        <li onClick={() => props.addOneLike(props.card)}>+1</li>
         <li onClick={() => props.deleteCard(props.card)}>Delete</li>
       </ul>
     </div>
