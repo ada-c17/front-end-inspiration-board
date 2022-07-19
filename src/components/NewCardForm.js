@@ -11,6 +11,7 @@ const NewCardForm = (props) => {
   const [isSubmit, setIsSubmit] = useState(false);
 
   const handleMessage = (event) => {
+    // console.log(event.target.value);
     setMessage(event.target.value);
   };
 
@@ -39,6 +40,8 @@ const NewCardForm = (props) => {
     } else if (message.length > 40) {
       errors.message = 'Message cannot exceed 40 characters.';
     }
+    console.log(message);
+    console.log(errors);
     return errors;
   };
 
@@ -65,12 +68,6 @@ const NewCardForm = (props) => {
         <button className="new-card__submit" type="submit">
           Submit Card
         </button>
-        {/* <input type="submit" value="Submit" className=""></input> */}
-        {/* <input
-          type="Submit"
-          disabled={message.length === 0 || message.length > 40}
-          className="new-card-form__form-submit-btn"
-        ></input> */}
       </form>
     </>
   );
