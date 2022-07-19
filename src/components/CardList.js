@@ -33,7 +33,7 @@ const CardList = (props) => {
       });
   };
 
-  const addOneCard = (card) => {
+  const addOneLike = (card) => {
     axios
       .put(``)
       .then((response) => {
@@ -51,7 +51,7 @@ const CardList = (props) => {
 
   const cardElements = props.cardData.map((card) => {
     return (
-      <Card card={card} addOneLike={addOneCard} deleteCard={deleteCard}></Card>
+      <Card card={card} addOneLike={addOneLike} deleteCard={deleteCard}></Card>
     );
   });
 
