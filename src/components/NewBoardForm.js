@@ -45,6 +45,7 @@ const NewBoardForm = (props) => {
           onChange={onFormChange}
         />
         <input
+          className="startButton"
           type="submit"
           value="Start a board"
           disabled={

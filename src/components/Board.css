@@ -1,5 +1,5 @@
 .boardlist{
-    border: solid 1px black;
+    border: solid 2px white;
     align-items: center;
     justify-self: center;
     align-self: center;
@@ -21,5 +21,5 @@
     background: #888;
 }
 ::-webkit-scrollbar-thumb:hover {
-    background: #555;
+    background: #31b090;
 }

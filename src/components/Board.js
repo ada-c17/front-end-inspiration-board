@@ -23,7 +23,9 @@ const Board = (props) => {
     <div>
       <h2>Boards</h2>
       <div className="boardlist">{boardComponents}</div>
-      <button onClick={deleteOnClick}>Delete Currently Selected Board</button>
+      <button className="deleteButton" onClick={deleteOnClick}>
+        Delete Selected Board
+      </button>
     </div>
   );
 };
