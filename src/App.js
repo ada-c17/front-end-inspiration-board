@@ -3,11 +3,13 @@ import Board from "./components/boards.js";
 import { useState, useEffect } from "react";
 import SingleBoard from "./components/SingleBoard.js";
 import axios from "axios";
+import NewBoardForm from "./components/NewBoardForm.js";
 
 function App() {
   const [isOnHomepage, setIsOnHomepage] = useState(true);
   const [activeBoard, setActiveBoard] = useState({});
   const [boards, getBoards] = useState([]);
+
   useEffect(() => {
     axios
       .get("http://shiver-of-sharks.herokuapp.com/boards")
@@ -18,6 +20,24 @@ function App() {
         console.log(<section>{error.response.data.message}</section>);
       });
   }, []);
+
+  const addBoardData = (newBoard) => {
+    // Duplicate the student list
+    // Logic to generate the next valid student ID
+
+    axios
+      .post("http://shiver-of-sharks.herokuapp.com/boards", {
+        title: newBoard.titleData,
+        owner: newBoard.ownerData,
+      })
+      .then((response) => {
+        getBoards(response.data.boards);
+      })
+      .catch((error) => {
+        console.log(<section>{error.response.data.message}</section>);
+      });
+  };
+
   if (isOnHomepage) {
     return (
       <div>
@@ -30,6 +50,7 @@ function App() {
             isOnHomepage={isOnHomepage}
           ></Board>
         </div>
+        <NewBoardForm addBoardCallback={addBoardData} />
       </div>
     );
   } else {
