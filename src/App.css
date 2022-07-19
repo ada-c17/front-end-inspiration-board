@@ -23,6 +23,7 @@ h2 {
   border: 2px solid #45BFDD;
   background-color: #C3EAF4;
   box-shadow: -15px 7px 1px #6D7375;
+  max-height: 100px;
 }
 
 .boards__container {
@@ -31,7 +32,7 @@ h2 {
 }
 
 .cards_dropdown_container {
-  display:grid
+  font-size: 20px;
 }
 .cards__container {
   display: grid;
