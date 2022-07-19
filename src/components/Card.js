@@ -9,14 +9,12 @@ const Card = ({ id, boardId, message, likes, onLike }) => {
     likes: likes,
   });
   const handleLike = async (event) => {
-    console.log("handleLike entered");
-    console.log(id);
     let likeData = await onLike(id);
-    console.log(likeData);
     setCardData(likeData);
   };
 
   return (
+    <section className="card-display">
     <div className="message">
       <button className="delete_X">X</button>
       <p className="message-text">{cardData.message}</p>
@@ -25,6 +23,8 @@ const Card = ({ id, boardId, message, likes, onLike }) => {
         👍
       </button>
     </div>
+    </section>
+
   );
 };
 
