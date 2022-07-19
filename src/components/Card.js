@@ -1,10 +1,6 @@
 const Card = (props) => {
 
-    // const [likes_count, setLikesCount] = useState(0);
-
     const onLikeCallback = () => {
-        // console.log("inside the like function!!");
-        // setLikesCount(props.card.likes_count + 1);
         console.log("Like button pressed!");
         props.onLikeCallback(props.card.card_id);
     };
