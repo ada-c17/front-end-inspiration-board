@@ -1,0 +1,8 @@
+.card-item {
+    background-color: violet;
+    display: flex;
+    flex-wrap: wrap;
+    border: 2px solid;
+    justify-content: center;
+    gap: 10px;
+}

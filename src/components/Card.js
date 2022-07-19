@@ -1,10 +1,11 @@
 import React from 'react';
+import './Card.css';
 
 // have multiple props in so good canidate to destructure
 const Card = (props) => {
   // BEAUTY
   return (
-    <div>
+    <div className="card-item">
       <ul>
         <li>{props.card.message}</li>
         <li>{props.card.like_count}💖</li>
