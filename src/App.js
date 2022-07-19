@@ -59,7 +59,7 @@ const App = () => {
       .catch((error) => console.log(error));
   };
 
-  // sending API call to delete Board - not working ATM
+  // sending API call to delete Board
   const deleteBoard = (id) => {
     console.log('Test!');
     axios
@@ -92,12 +92,14 @@ const App = () => {
           {isBoardFormVisible ? 'Hide Form' : 'Create Your Board'}
         </button>
         {isBoardFormVisible ? <NewBoardForm addNewBoard={addNewBoard} /> : null}
-        <h2>Board List</h2>
-        <BoardList
-          boards={boards}
-          selectBoard={selectBoard}
-          deleteBoard={deleteBoard}
-        />
+        <h2 className="board-list_header">Board List</h2>
+        <div className="board-list_container">
+          <BoardList
+            boards={boards}
+            selectBoard={selectBoard}
+            deleteBoard={deleteBoard}
+          />
+        </div>
         <CardList cardData={cardData} />
       </main>
     </div>

@@ -15,9 +15,25 @@ body {
 .header {
   color: #ffffff;
   background-color: #f4bdf4;
+  text-shadow: 7px 2px 1px #bdd8f4;
   font-family: 'Silkscreen';
   font-size: 1.5em;
 }
+
+.board-list_header {
+  display: flex;
+  justify-content: center;
+  color: #ffffff;
+  text-shadow: 7px 2px 1px #51B6E8;
+  font-family: 'Silkscreen';
+  font-size: 3em;
+}
+
+.board-list_container {
+  display: flex;
+  justify-content: center;
+}
+
 
 .button-toggle {
     background-color: #dcaadc; /* Green */
