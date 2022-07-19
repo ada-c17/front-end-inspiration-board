@@ -105,9 +105,9 @@ function App() {
       .post(`${url}/boards/${boardId}/card`, requestBody)
       .then((response) => {
         const newCard = {
-          card_id: response.card_id,
+          // card_id: response.card_id,
           message: requestBody.message,
-          like_count: requestBody.like_count,
+          // like_count: requestBody.like_count,
         };
         setCards([...cards, newCard]);
       })
@@ -156,6 +156,7 @@ function App() {
         updateLikes={updateLikeCts}
         deleteCard={deleteCard}
         submitCard={onFormSubmitCard}
+        chosenBoard={chosenBoard}
       ></CardsView>
     );
   }

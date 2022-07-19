@@ -4,7 +4,7 @@ import CardList from "./CardList";
 import NewCardButton from "./NewCardButton";
 import PropTypes from "prop-types";
 
-const CardsView = ({ cards, deleteCard, submitCard, updateLikes }) => {
+const CardsView = ({ cards, deleteCard, submitCard, updateLikes, chosenBoard }) => {
   return (
     <div>
       <CardList
@@ -12,7 +12,7 @@ const CardsView = ({ cards, deleteCard, submitCard, updateLikes }) => {
         deleteCard={deleteCard}
         updateLikes={updateLikes}
       ></CardList>
-      <NewCardButton submitCard={submitCard}></NewCardButton>
+      <NewCardButton submitCard={submitCard} chosenBoard={chosenBoard}></NewCardButton>
   </div>
   );
 };

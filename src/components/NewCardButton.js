@@ -4,7 +4,7 @@ import "./NewCardButton.css";
 import NewCardForm from "./NewCardForm";
 import PropTypes from "prop-types";
 
-const NewCardButton = ({submitCard}) => {
+const NewCardButton = ({submitCard, chosenBoard}) => {
   const [isOpen, setIsOpen] = useState(false);
 
   const togglePopup = () => {
@@ -18,6 +18,7 @@ const NewCardButton = ({submitCard}) => {
         <NewCardForm
           submitCard={submitCard}
           handleClose={togglePopup}
+          chosenBoard={chosenBoard}
         />
       )}     
     </div>

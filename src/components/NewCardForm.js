@@ -8,7 +8,7 @@ const defaultCard = {
   like_count: 0 
 };
 
-const NewCardForm = ({ submitCard, handleClose }) => {
+const NewCardForm = ({ submitCard, handleClose, chosenBoard }) => {
   const [cardData, setCardData] = useState(defaultCard);
 
   const handleCardFormInput = (e) => {
@@ -23,7 +23,7 @@ const NewCardForm = ({ submitCard, handleClose }) => {
 
   const handleCardFormSubmission = (e) => {
     e.preventDefault();
-    submitCard(cardData);
+    submitCard(chosenBoard, cardData);
     setCardData(defaultCard);
   };
 
