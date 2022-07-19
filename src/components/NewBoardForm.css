@@ -1,6 +1,6 @@
 .new-board__form {
     display: flex;
-    justify-content: center;;
+    justify-content: left;
 }
 
 .new-board__fields {
