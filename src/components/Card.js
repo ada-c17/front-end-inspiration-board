@@ -5,15 +5,15 @@ import "./Card.css";
 
 const Card = (props) => {
   // return console.log("This is a Card");
-  const cardClassType = props.card_id % 2 === 0 ? 'divisibleBy2' : props.card_id % 3 === 0 ? 'divisibleBy3' : props.card_id % 5 === 0 ? 'divisibleBy5' : 'rotateDefault';
+  const cardClassType = props.id % 2 === 0 ? 'divisibleBy2' : props.id % 3 === 0 ? 'divisibleBy3' : props.id % 5 === 0 ? 'divisibleBy5' : 'rotateDefault';
 
 
   const deleteCard = () => {
-    props.deleteCardCallback(props.id);
+    props.deleteCardCallback(props.card_id);
   };
 
   const likeCard = () => {
-    props.likeCardCallback(props.id);
+    props.likeCardCallback(props.card_id);
   };
 
   return (
