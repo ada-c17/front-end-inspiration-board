@@ -160,6 +160,7 @@ function App() {
     }
   };
 
+
   return (
     <div className="App">
       <header className="App-header">
@@ -216,9 +217,3 @@ function App() {
 
 export default App;
 
-// console.log(response.data);
-//         const newCardsData = cardsData.map((existingCard) => {
-//           console.log(existingCard);
-//           return existingCard.card_id !== newCard.card_id
-//             ? existingCard
-//             : { ...newCard, likes_count: newCard.likes_count + 1 };

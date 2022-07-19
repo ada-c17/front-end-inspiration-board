@@ -15,12 +15,13 @@ const CardsList = (props) => {
     );
   });
 
-  return (<section className='cards__container'>
+  return (
+  <section className='cards__container'>
     <div>
       <h2>Card for {props.selectedBoard.title}</h2>
       <div className="cards_list_no_bullets">{cardComponents}</div>
     </div>
-    </section>
+  </section>
   );
 };
 
