@@ -1,14 +1,18 @@
 import "./App.css";
 import { React, useState } from "react";
 // import { Link, Outlet } from "react-router-dom";
+<<<<<<< HEAD
 import {
   Routes,
   Route,
   Link,
   BrowserRouter as Router,
 } from "react-router-dom";
+=======
+import { Routes, Route, Link, BrowserRouter as Router } from "react-router-dom";
+>>>>>>> 80bda2019511a877c75776a1ca42398ebd7db5d1
 import NewBoard from "./routes/newBoard";
-import Board from "./routes/board";
+import BoardDisplay from "./routes/ChosenBoard";
 
 //sample data if GET request made to endpoint /boards
 //get all cards will only render boardID, title, owner
@@ -100,7 +104,7 @@ function App() {
         />
         <Route
           path="/boards"
-          element={<Board selectedBoard={selectedBoard} />}
+          element={<BoardDisplay selectedBoard={selectedBoard} />}
         />
       </Routes>
     </Router>
