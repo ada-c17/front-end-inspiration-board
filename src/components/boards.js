@@ -1,19 +1,21 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import SingleBoard from './SingleBoard.js'
 import './boards.css'
 
 
 const Board = (props) =>{
-    const boardList = props.boards[0]
     const boardComponents = props.boards.map((board,index) => {
         return (
         <div>
             <SingleBoard
-            function={props.showCardsFunction}
-            board_id={board.board_id}
-            title={board.title}
-            owner={board.owner}
+            setIsOnHomepage={props.setIsOnHomepage}
+            // function={props.showCardsFunction}
+            // board_id={board.board_id}
+            // title={board.title}
+            // owner={board.owner}
+            board={board}
+            isOnHomepage={props.isOnHomepage}
+            setActiveBoard={props.setActiveBoard}
             ></SingleBoard>
         </div>)
     })
