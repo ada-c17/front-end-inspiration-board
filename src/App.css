@@ -140,4 +140,8 @@ input {
   flex: 1 0 auto;
 }
 
+ol.boards__list > li:hover {
+  background-color:  #30859a;
+}
+
 
