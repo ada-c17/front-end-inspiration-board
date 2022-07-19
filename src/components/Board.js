@@ -3,6 +3,7 @@ import "./Board.css";
 import PropTypes from "prop-types";
 import Card from "./Card.js";
 import axios from "axios";
+import NewCardForm from "./NewCardForm";
 
 const Board = ({ board_id }) => {
   useEffect(() => {

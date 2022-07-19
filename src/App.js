@@ -3,6 +3,8 @@ import "./App.css";
 import Wall from "./components/Wall";
 // import NewBoardForm from './components/NewBoardForm';
 import axios from "axios";
+import NewCardForm from "./components/NewCardForm";
+import NewBoardForm from "./components/NewBoardForm";
 
 function App() {
   const [boards, setBoards] = useState([]);
@@ -22,6 +24,14 @@ function App() {
       });
   };
 
+  const newCard = (card) => {
+    // console.log(card);
+  };
+
+  const newBoard = (board) => {
+    console.log(board);
+  };
+
   return (
     <div className="App">
       <header className="App-header">
@@ -30,6 +40,9 @@ function App() {
       <main>
         <Wall boardData={boards} />
         {/* <NewBoardForm handleSubmission={makeNewBoard} /> */}
+        <NewCardForm submitFunction={newCard} />
+        <br />
+        <NewBoardForm submitFunction={newBoard} />
       </main>
       <footer>
         ©2022 C17 Otters students: Jodi D., Elaine S., Tori S., Andrea G.Z.
