@@ -1,14 +1,20 @@
 import React, { useState } from "react";
 import PropTypes from "prop-types";
-import CardList from "./CardList"
+import CardList from "./CardList";
+
 const Board = (props) => {
-  return(
-    <h1> {props.title} by {props.creator} </h1>,
-    <div>
-      <CardList
-      cards= {props.cards}
-      />
-    </div>
+  return (
+    (
+      <h1>
+        {" "}
+        {props.title} by {props.creator}{" "}
+      </h1>
+    ),
+    (
+      <div>
+        <CardList cards={props.cards} />
+      </div>
+    )
   );
 };
 

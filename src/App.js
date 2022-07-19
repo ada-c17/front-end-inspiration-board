@@ -17,6 +17,11 @@ import {
 
 function App() {
   const [boardData, setBoardData] = useState([]);
+  const [selectedBoardData, setSelectedBoardData] = useState({
+    title: "",
+    creator: "",
+    boardId: null,
+  });
   const [cardData, setCardData] = useState([]);
   // sample boards data to test BoardList
   // const boardSet = [
@@ -40,15 +45,8 @@ function App() {
     displayAllBoards();
   }, [boardData]);
 
-  const selectBoard = (boardId) => {
-    const selectedBoard = selectBoardAsync(boardId);
-    return (
-      <Board
-        title={selectedBoard.title}
-        creator={selectedBoard.creator}
-        cards={selectedBoard.cards}
-      />
-    );
+  const selectBoard = (board) => {
+    setSelectedBoardData(board);
   };
 
   const postBoard = (boardData) => {
@@ -82,7 +80,21 @@ function App() {
   return (
     <main className="App">
       <h1>Inspiration Board</h1>
+      {/* ternary to check if theres is board selected*/}
       <BoardList boards={boardData} selectBoard={selectBoard} />
+      <h2>Selected Board</h2>
+      <p>
+        {selectedBoardData.boardId ? (
+          <Board
+            id={selectedBoardData.boardId}
+            title={selectedBoardData.title}
+            creator={selectedBoardData.creator}
+          ></Board>
+        ) : (
+          ""
+        )}
+      </p>
+
       <NewBoardForm onBoardSubmit={handleNewBoard} />
       {/* We probably only want to show when a board is selected */}
       <NewCardForm onCardSubmit={handleNewCard} />
