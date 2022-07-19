@@ -10,7 +10,7 @@ const NewBoardForm = () => {
 
   const makeNewBoard = (data) => {
     axios
-      .post("/boards", data)
+      .post("https://inspiration-from-otterspace.herokuapp.com/boards", data)
       .then((response) => {
         console.log("created board");
         setBoardData(default_board);
