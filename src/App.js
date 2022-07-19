@@ -117,14 +117,6 @@ function App() {
         </section>
       </section>
       <NewCardForm updateCards={addNewCard} />
-      {/* <section className="add-message">
-        <input
-          className="message-input"
-          type="text"
-          placeholder="Add a message here!"
-        />
-        <button className="message-button">Add</button>
-      </section> */}
     </main>
   );
 }
