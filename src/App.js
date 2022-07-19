@@ -144,7 +144,7 @@ function App() {
           <Boards
             boards={boardsData}
             onClickGetCards={getCardsForBoard}
-            onClickDeleteCard={deleteBoard}
+            onClickDeleteBoard={deleteBoard}
           />
         </div>
         <div>
