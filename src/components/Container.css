@@ -1,0 +1,10 @@
+.container {
+    width: 400px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    padding: 10px;
+  }
+.container__lg {
+    width: 800px
+}
