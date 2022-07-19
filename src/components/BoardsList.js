@@ -6,14 +6,12 @@ const BoardsList = (props) => {
     return <BoardName 
               key={board.id}
               id={board.id}
-              // owner={board.owner}
               title={board.title}
-              boardIdCallback={props.boardIdCallback}
+              boardInfoCallback={props.boardInfoCallback}
               />;
   });
   return (
     <div>
-      <h1>Boards</h1>
       <ol>
         {boardComponent}
       </ol>
@@ -23,6 +21,6 @@ const BoardsList = (props) => {
 
 BoardsList.propTypes = {
   boards: PropTypes.array.isRequired,
-  boardIdCallback: PropTypes.func.isRequired
+  boardInfoCallback: PropTypes.func.isRequired
 };
 export default BoardsList;

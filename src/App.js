@@ -48,6 +48,7 @@ function App() {
   const [boardTitle, setboardTitle] = useState(null); 
 
   const boardSelected = (boardID, boardTitle) => {
+    // console.log(boardID)
     setBoardsID(boardID)
     setboardTitle(boardTitle)
   }
@@ -57,7 +58,7 @@ function App() {
         <h1>BOARDS</h1>
         <BoardsList
           boards={boards}
-          boardIdCallback={boardSelected}
+          boardInfoCallback={boardSelected}
         />
       </div>
 

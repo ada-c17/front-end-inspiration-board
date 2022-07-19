@@ -6,7 +6,6 @@ const defaultBoard = {
 };
 
 const BoardForm = (props) => {
-  console.log("We are in Board Form")
   const [formData, setFormData] = useState(defaultBoard);
 
   const onFormChange = (event) => {

@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 
 const BoardName = (props) => {
   const passBoardId = () => {
-    props.boardIdCallback(props.id, props.title)
+    props.boardInfoCallback(props.id, props.title)
   }; 
 
   return (
@@ -17,7 +17,7 @@ const BoardName = (props) => {
 
 BoardName.propTypes = {
   title: PropTypes.string.isRequired,
-  boardIdCallback: PropTypes.func.isRequired,
+  boardInfoCallback: PropTypes.func.isRequired,
 };
 
 export default BoardName;
