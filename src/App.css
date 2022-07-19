@@ -1,7 +1,17 @@
 .App {
-  text-align: center;
+  background-image: url(/src/images/notebook.jpg);
 }
 
+#Boards {
+  text-align: center;
+  background-image: url(/src/images/notebook.jpg);
+  background-repeat: repeat-x
+
+} 
+
+#BoardsWithCards { 
+  text-align: center
+}
 .App-logo {
   height: 40vmin;
   pointer-events: none;
