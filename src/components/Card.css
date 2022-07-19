@@ -69,4 +69,10 @@
     padding: 0;
 
 
+span {
+    position:relative;
+    padding: 4px;
+    color:rgb(26, 13, 205);
 }
+
+
