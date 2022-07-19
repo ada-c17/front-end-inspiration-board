@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import Board from "./components/Board";
 import BoardDropdown from "./components/BoardDropdown";
+import NewBoardForm from "./components/NewBoardForm";
 import "./css/inspo_board.css";
 
 const kBaseUrl = "https://mission-inspirational-2.herokuapp.com";
@@ -43,6 +44,25 @@ function App() {
       });
   };
 
+  const createNewBoard = (newBoard) => {
+    axios
+      .post(`${kBaseUrl}/boards`, newBoard)
+      .then((response) => {
+        const boards = [...boards];
+        boards.push(response.data.board);
+        setBoards(boards);
+      })
+      .catch((error) => {
+        console.log(error);
+        throw new Error("Couldn't create a new board.");
+      });
+  };
+
+  const [isBoardFormVisible, setIsBoardFormVisible] = useState(false);
+  const toggleNewBoardForm = () => {
+    setIsBoardFormVisible(!isBoardFormVisible);
+  };
+
   useEffect(() => {
     getBoardOptions();
   }, []);
@@ -62,18 +82,20 @@ function App() {
         </section>
         <section className="dropdown-menu">
           <BoardDropdown
-          boards={boards}
-          boardOption={boardOption}
-          onDropdownChange={showChosenBoard}
-        />
+            boards={boards}
+            boardOption={boardOption}
+            onDropdownChange={showChosenBoard}
+          />
         </section>
         <section className="add-menu-button">
-          <button>Add Board</button>
+          <button onClick={toggleNewBoardForm}>Add Board</button>
         </section>
         <section className="collapse">
-          <input className="board-input" type="text" placeholder="Title" />
-          <input className="board-input" type="text" placeholder="Owner" />
-          <button className="board-button">Add</button>
+          {isBoardFormVisible ? (
+            <NewBoardForm createNewBoard={createNewBoard}></NewBoardForm>
+          ) : (
+            ""
+          )}
         </section>
         <section className="board-content">
           <h1>Current Board:(current board)</h1>
