@@ -4,20 +4,18 @@ import BoardList from "./components/BoardList";
 import CardList from "./components/CardList";
 import NewBoardForm from "./components/NewBoardForm";
 import NewCardForm from "./components/NewCardForm";
-// import Card from "./components/Card";
 import "./App.css";
 import Button from 'react-bootstrap/Button';
 
 function App() {
-  // STATE(boardsData: ListOfObjects, selectedBoard: id)
   const [boardsData, setBoardsData] = useState([]);
   const [selectedBoard, setSelectedBoard] = useState(null);
   const [boardTitle, setBoardTitle] = useState();
   const [selectedCards, setSelectedCards] = useState([])
 
 
-  // const URL = "https://inspo-board-server.herokuapp.com";
-  const URL = "https://inspiration-board-server.herokuapp.com"
+  const URL = "https://inspo-board-server.herokuapp.com";
+  // const URL = "https://inspiration-board-server.herokuapp.com"
   // const URL = "http://127.0.0.1:5000/"
   useEffect(() => {
     axios
@@ -126,13 +124,13 @@ function App() {
     setBoardTitle(currentBoard[0].title);
   };
 
-  const getCardIndex = (cardId) => {
-    for (const [index, card] of selectedCards.entries()) {
-      if (card.cardId === cardId) {
-        return index;
-      }
-    }
-  };
+  // const getCardIndex = (cardId) => {
+  //   for (const [index, card] of selectedCards.entries()) {
+  //     if (card.cardId === cardId) {
+  //       return index;
+  //     }
+  //   }
+  // };
 
   const deleteCard = cardId => {
     console.log('cardId >', cardId)
@@ -164,9 +162,6 @@ function App() {
       setSelectedCards(newCardList)
     })
     .catch(error => console.log(error))
-
-    // })
-    // .catch(error => console.log(error))
   }
 
   const sortById = arr => {
@@ -215,7 +210,7 @@ function App() {
         <Button variant="warning" onClick={() => sortByLikes(selectedCards)}>by number of "likes"</Button>
       </nav>
       <section className="boards__cards">
-      <BoardList boards={boardsData} onSelectBoard={getCurrentBoard} />
+      <BoardList boards={boardsData} onSelectBoard={getCurrentBoard} selectedBoard={selectedBoard} />
       <CardList selectedCards={selectedCards} boardTitle={boardTitle} deleteCard={deleteCard} addLike={addLike}
                 sortById={sortById} sortAphabetically={sortAphabetically} sortByLikes={sortByLikes}/>
       </section>

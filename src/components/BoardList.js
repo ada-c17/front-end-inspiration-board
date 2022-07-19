@@ -2,8 +2,9 @@ import React from "react";
 import PropTypes from "prop-types";
 import Board from "./Board";
 
-const BoardList = ({ boards, onSelectBoard }) => {
+const BoardList = ({ boards, onSelectBoard, deleteBoard, selectedBoard }) => {
   const boardComponents = boards.map((board) => {
+    const isSelected = (board.boardId === selectedBoard)
     return (
       <ul key={board.boardId}>
         <Board
@@ -12,6 +13,9 @@ const BoardList = ({ boards, onSelectBoard }) => {
           owner={board.owner}
           cards={board.cards}
           onSelectBoard={onSelectBoard}
+          boards={boards}
+          deleteBoard={deleteBoard}
+          isSelected={isSelected}
         />
       </ul>
     );

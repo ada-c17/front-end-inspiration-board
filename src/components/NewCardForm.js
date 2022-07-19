@@ -41,8 +41,7 @@ const NewCardForm = ({onAddCard}) => {
                           onChange={handleChange}
                           value={newCardData.message}/>
 
-            <Form.Text>   
-            {/* className="text-muted" */}
+            <Form.Text className={isInvalidInput.message ? "show text-muted": "hide"}>   
               Please enter a message!
             </Form.Text>
           </Form.Group>

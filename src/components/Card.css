@@ -18,3 +18,8 @@
 	background-color: bisque;
 	border:none;
 }
+
+.message {
+	font-weight: bolder;
+	font-style: italic;
+}

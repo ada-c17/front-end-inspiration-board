@@ -6,16 +6,13 @@ const Card = ({
     cardId,
     message,
     likesCount,
-    boardId,
-    onLikeCallback,
-    onDeleteCallback,
     deleteCard,
     addLike
 }) => {
 
     return (
         <div className="card__item">
-            <p>
+            <p className="message">
                 {message}
             </p>
             <p>
@@ -42,7 +39,7 @@ Card.propTypes = {
     boardId: PropTypes.number.isRequired,
     message: PropTypes.string.isRequired,
     likesCount: PropTypes.number.isRequired,
-    onLikeCallback: PropTypes.func.isRequired,
-    onDeleteCallback: PropTypes.func.isRequired,
+    addLike: PropTypes.func.isRequired,
+    deleteCard: PropTypes.func.isRequired,
 };
 export default Card;

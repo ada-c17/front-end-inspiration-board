@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import Card from './Card';
 import './CardList.css';
 
-const CardList = ({selectedCards, boardTitle, onLikeCallback, onDeleteCallback, deleteCard, addLike, sortById, sortAphabetically, sortByLikes}) => {
+const CardList = ({selectedCards, boardTitle, deleteCard, addLike }) => {
   const cardList = (selectedCards) => {
     return selectedCards.map((card) => {
       return (
@@ -13,8 +13,6 @@ const CardList = ({selectedCards, boardTitle, onLikeCallback, onDeleteCallback, 
           cardId={card.cardId}
           message={card.message}
           likesCount={card.likesCount}
-          onLikeCallback={onLikeCallback}
-          onDeleteCallback={onDeleteCallback}
           deleteCard={deleteCard}
           addLike={addLike}
         />
@@ -30,7 +28,7 @@ const CardList = ({selectedCards, boardTitle, onLikeCallback, onDeleteCallback, 
 };
 
 CardList.propTypes = {
-  cards: PropTypes.arrayOf(
+  selectedCards: PropTypes.arrayOf(
     PropTypes.shape({
       cardId: PropTypes.number.isRequired,
       boardId: PropTypes.number.isRequired,
@@ -38,6 +36,7 @@ CardList.propTypes = {
       likesCount: PropTypes.number.isRequired,
     })
   ).isRequired,
+  boardTitle: PropTypes.string.isRequired,
   addLike: PropTypes.func.isRequired,
   deleteCard: PropTypes.func.isRequired,
 }; 
