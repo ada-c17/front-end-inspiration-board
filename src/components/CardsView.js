@@ -4,9 +4,14 @@ import CardList from "./CardList";
 import NewCardButton from "./NewCardButton";
 import PropTypes from "prop-types";
 
-const CardsView = ({ cards, deleteCard, submitCard, updateLikes, chosenBoard }) => {
+const CardsView = ({ cards, deleteCard, submitCard, updateLikes, chosenBoard, setChosenBoard }) => {
+  const exitBoard = () => {
+    setChosenBoard(null);
+  }
+
   return (
     <div>
+      <button onClick={exitBoard}>Return to boards</button>
       <CardList
         cards={cards}
         deleteCard={deleteCard}

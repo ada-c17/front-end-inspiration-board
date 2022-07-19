@@ -159,6 +159,7 @@ function App() {
         deleteCard={deleteCard}
         submitCard={onFormSubmitCard}
         chosenBoard={chosenBoard}
+        setChosenBoard={setChosenBoard}
       ></CardsView>
     );
   }
