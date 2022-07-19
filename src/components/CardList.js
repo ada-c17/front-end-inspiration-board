@@ -4,7 +4,7 @@ import { useEffect, useState } from 'react';
 import NewCardForm from './NewCardForm.js';
 
 const CardList = (props) => {
-
+    // Initial state for card data
     const [cardsData, setCardsData] = useState([]);
 
     const URL = 'https://insp-board-migrationmess.herokuapp.com/boards';
@@ -13,6 +13,7 @@ const CardList = (props) => {
         axios
           .get(`${URL}/${props.board.board_id}/cards`)
           .then((response) => {
+            // Response data is a nested JS object
             const newCards = response.data["cards"].map((card) => {
               return {
                 key: card.card_id,
@@ -36,9 +37,11 @@ const CardList = (props) => {
       axios
         .patch(`${URL}/${props.board.board_id}/cards/${card_id}/likes`)
         .then(() => {
+
           const newCards = [];
 
           for (const card of cardsData) {
+            // Creating a shallow copy of card and updating it's likes count
             const likedCard = { ...card };
 
             if (likedCard.card_id === card_id) {
@@ -59,7 +62,7 @@ const CardList = (props) => {
         .delete(`${URL}/${props.board.board_id}/cards/${card_id}`)
         .then(() => {
           const newCards = [];
-
+          
           for (const card of cardsData) {
             if (card.card_id !== card_id) {
               newCards.push(card);
