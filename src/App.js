@@ -5,22 +5,24 @@ import BoardList from "./components/BoardList";
 import axios from "axios";
 import NewCardForm from "./components/NewCardForm";
 import NewBoardForm from "./components/NewBoardForm";
+import CardList from "./components/CardList";
+import Card from "./components/Card";
 
 function App() {
-  const [display, setDisplay] = useState(null);
+  const [display, setDisplay] = useState(2);
 
-  const toggleDisplay = () => {
-    console.log("If/Else func - Switch between BoardList & Board");
-    if (display) {
-      return <Board board_id="{display}" />;
-    } else {
-      return <BoardList />;
-    }
-  };
-
-  const changeDisplay = ({ setBoardCallback }) => {
-    console.log("This will update setDisplay");
-    // setDisplay(setBoardCallback) NOTE: setBoardCallback == board_id
+  // const toggleDisplay = () => {
+  //   console.log("If/Else func - Switch between BoardList & Board");
+  //   if (display) {
+  //     return <Board board_id="{display}" />;
+  //   } else {
+  //     return <BoardList />;
+  //   }
+  // };
+  //
+  const changeDisplay = ({ id }) => {
+    console.log("change display", id);
+    setDisplay(id);
   };
 
   const newCard = (card) => {
@@ -39,12 +41,12 @@ function App() {
       {/* <main>{toggleDisplay()}</main> */}
       {/* NOTE: DELETE LINES 31-34 ONCE changeDisplay() FUNC IS COMPLETE */}
       <main>
-        {/* <NewBoardForm handleSubmission={makeNewBoard} /> */}
         <NewCardForm submitFunction={newCard} />
-        <br />
+        <BoardList changeBoardCallback={changeDisplay} />
         <NewBoardForm submitFunction={newBoard} />
-        <BoardList />
-        <Board board_id="2" />
+        <Board board_id={display} />
+        {/* <CardList />
+        <Card message="We got this y'all" /> */}
       </main>
       <footer>
         ©2022 C17 Otters students: Jodi D., Elaine S., Tori S., Andrea G.Z.

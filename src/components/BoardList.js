@@ -5,8 +5,7 @@ import Button from "./Button";
 import PropTypes from "prop-types";
 import axios from "axios";
 
-// const BoardList = ({ changeBoardCallback }) => {
-const BoardList = () => {
+const BoardList = ({ changeBoardCallback }) => {
   const [board, setBoard] = useState([]);
 
   useEffect(() => {
@@ -30,6 +29,7 @@ const BoardList = () => {
       id={button.id}
       title={button.title}
       owner={button.owner}
+      changeBoardCallback={changeBoardCallback}
     />
   ));
 
@@ -42,7 +42,7 @@ const BoardList = () => {
 };
 
 BoardList.propTypes = {
-  // changeBoardCallback: PropTypes.func.isRequired,
+  changeBoardCallback: PropTypes.func.isRequired,
 };
 
 export default BoardList;
