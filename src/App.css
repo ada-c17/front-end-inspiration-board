@@ -63,7 +63,6 @@ h3 {
 
 .button-board-visibility {
   border: 3px outset #536670 ;
-  /* box-shadow: 8px 7px 1px #03a3b4; */
   font-size: 20px;
   width: fit-content;
   background: rgba(255, 255, 255, 0.688);

@@ -5,3 +5,7 @@
     background-color: #8ec0c7;;
     box-shadow: 7px 7px 10px #2134389f;
   }
+
+  .message-input {
+    width: 50%;
+  }

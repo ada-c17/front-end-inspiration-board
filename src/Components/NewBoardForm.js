@@ -24,7 +24,6 @@ const NewBoardForm = (props) => {
 
   return (
     <form onSubmit={handleSubmissionForm} className="new-board-form">
-      {/* <label>Title</label> */}
       <input
         type="text"
         required
@@ -33,7 +32,6 @@ const NewBoardForm = (props) => {
         value={boardData.title}
         onChange={handleInputForm}
       />
-      {/* <label>Owner</label> */}
       <input
         type="text"
         name="owner"

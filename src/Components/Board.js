@@ -3,7 +3,6 @@ import PropTypes from "prop-types";
 import "./Board.css";
 
 const Board = ({ id, title, onClickGetCards, onClickDeleteBoard }) => {
-  // console.log("inside the board div");
   return (
     <li className="single-board">
       <button className="get-board-button" onClick={() => onClickGetCards(id)}>

@@ -21,10 +21,9 @@ function App() {
       .get("https://inspirational-board.herokuapp.com/boards")
       .then((response) => {
         setBoards(response.data);
-        console.log(response.data);
       })
       .catch((error) => {
-        console.log(error);
+        console.log("Can't get boards", error);
       });
   };
 
@@ -45,7 +44,6 @@ function App() {
       .then((response) => {
         setCards(response.data);
         setSelectedBoard(board_id);
-        console.log(response.data);
       })
       .catch((error) => {
         console.log("Can't get cards.", error);
@@ -66,7 +64,6 @@ function App() {
     return newCards;
   };
 
-  //creates new card for selected board
   const createNewCardForSelectedBoard = (data) => {
     axios
       .post(
@@ -75,7 +72,6 @@ function App() {
       )
       .then((response) => {
         getCardsForBoard(selectedBoard);
-        console.log(response.data);
       })
       .catch((error) => {
         console.log(error, "create card failed.");
