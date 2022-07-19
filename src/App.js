@@ -12,12 +12,12 @@ function App() {
   const [cards, setCards] = useState([]);
   const [openModal, setOpenModal] = useState(false);
 
-  const URL = "https://inspiration-board-eota.herokuapp.com/boards";
-  const cardsURL = "https://inspiration-board-eota.herokuapp.com/cards";
+  const BOARD_URL = "https://inspiration-board-eota.herokuapp.com/boards";
+  const CARD_URL = "https://inspiration-board-eota.herokuapp.com/cards";
 
   const fetchBoards = () => {
     axios
-      .get(URL)
+      .get(BOARD_URL)
       .then((res) => {
         const newBoards = res.data.map((board) => {
           return {
@@ -37,7 +37,7 @@ function App() {
 
   const fetchCards = (id) => {
     axios
-      .get(`${URL}/${id}/cards`)
+      .get(`${BOARD_URL}/${id}/cards`)
       .then((res) => {
         const newCards = res.data.cards.map((card) => {
           return {
@@ -57,7 +57,7 @@ function App() {
 
   const addBoard = (boardInfo) => {
     axios
-      .post(URL, boardInfo)
+      .post(BOARD_URL, boardInfo)
       .then((response) => {
         console.log(response);
         fetchBoards();
@@ -69,7 +69,7 @@ function App() {
 
   const deleteBoard = (id) => {
     axios
-      .delete(`${URL}/${id}`)
+      .delete(`${BOARD_URL}/${id}`)
       .then(() => {
         const newBoards = [];
         for (const board of boards) {
@@ -86,13 +86,49 @@ function App() {
 
   const addCard = (cardInfo) => {
     axios
-      .post(cardsURL, cardInfo)
+      .post(CARD_URL, cardInfo)
       .then((response) => {
         console.log(response);
-        fetchCards();
+        fetchBoards();
       })
       .catch((error) => {
         console.log(error);
+      });
+  };
+
+  const deleteCard = (id) => {
+    axios
+      .delete(`${CARD_URL}/${id}`)
+      .then(() => {
+        const newCards = [];
+        for (const card of cards) {
+          if (card.card_id !== id) {
+            newCards.push(card);
+          }
+        }
+        setCards(newCards);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
+
+  const updateLike = (id) => {
+    axios
+      .patch(`${CARD_URL}/${id}/updatelike`)
+      .then(() => {
+        const newCards = [];
+        for (const card of cards) {
+          const newCard = { ...card };
+          if (newCard.card_id === id) {
+            newCard.likes_count += 1;
+          }
+          newCards.push(newCard);
+        }
+        setCards(newCards);
+      })
+      .catch((err) => {
+        console.log(err);
       });
   };
 
@@ -121,8 +157,12 @@ function App() {
             </section>
           </div>
           <div className="Card-display">
+            <CardList
+              cards={cards}
+              deleteCard={deleteCard}
+              updateLike={updateLike}
+            ></CardList>
             <CardForm addCard={addCard}></CardForm>
-            <CardList cards={cards}></CardList>
           </div>
         </main>
       </div>

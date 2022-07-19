@@ -13,6 +13,7 @@ const CardList = (props) => {
         message={card.message}
         board_id={card.board_id}
         deleteCard={props.deleteCard}
+        updateLike={props.updateLike}
       />
     );
   });
