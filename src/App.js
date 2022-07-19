@@ -23,6 +23,7 @@ function App() {
   const [cardsData, setCardsData] = useState([]);
   const URL = "https://get-inspired-c17.herokuapp.com/boards";
 
+
   // get all boards from DB
   const fetchBoards = () => {
     axios
@@ -78,7 +79,7 @@ function App() {
     }
   };
 
-  // sort card by id
+  //sort card by id
   const sort_card = (card_a, card_b) => {
     if (card_a.id < card_b.id) {
       return -1;
@@ -102,6 +103,7 @@ function App() {
           };
         });
         setCardsData(newCards.sort(sort_card));
+        
       })
       .catch((error) => {
         console.log(error);
@@ -109,7 +111,9 @@ function App() {
       });
   };
 
-  //useEffect(fetchCards, [boardSelected]);
+
+
+
   // creating a new card by specific board
   const postNewCard = (cardInfo) => {
     axios
@@ -160,7 +164,14 @@ function App() {
     }
   };
 
-
+  const sortCards = (e) => {
+    const feature = e.target.selectedIndex;
+    const cards = {1: "id", 2: "likes_count", 3: "message"};
+    const sortedCards = [...cardsData];
+    sortedCards.sort((a,b) => {return a[cards[feature]] - b[cards[feature]]})
+    setCardsData(sortedCards);   
+  };
+    
   return (
     <div className="App">
       <header className="App-header">
@@ -203,6 +214,7 @@ function App() {
                 selectedBoard={boardSelected}
                 deleteCardCallback={deleteCard}
                 likeCardCallback={likeCard}
+                sortCards = {sortCards}
               />
             )}
           </div>

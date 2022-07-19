@@ -20,10 +20,11 @@ const CardsList = (props) => {
     <div>
       <h2>Card for {props.selectedBoard.title}</h2>
       <br/>
-      <select id="sort-button">
-        <option value="Sort by ID">ID</option>
-        <option value="Sort Alphabetically">Alphabetically</option>
-        <option value="Sort by Number of Likes">Likes</option>
+      <select id="sort-button" onChange = {props.sortCards}>
+        <option value="" key="">select</option>
+        <option value="Sort by ID" key = "sort by id" >ID</option>
+        <option value="Sort Alphabetically" key = "sort by Alphabetically" >Alphabetically</option>
+        <option value="Sort by Number of Likes" key = "sort by likes">Likes</option>
         </select>
       <div className="cards_list_no_bullets">{cardComponents}</div>
 
