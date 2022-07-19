@@ -1,15 +1,15 @@
 .cards-container{
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
+    display: flex;
+    flex-wrap: wrap;
 }
 
 .cards-container li {
     list-style: None;
     background-color: #C2631A;
-    /* width: 30%;
-    height: 200px; */
-    /* flex: 25%; */
-    margin: 10px;
+    display: inline-block ;
+    width: 35%;
+    height: 200px;
+    margin: 7px;
     padding: 10px;
     text-align: center;
 }
