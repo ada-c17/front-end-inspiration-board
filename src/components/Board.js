@@ -2,7 +2,14 @@ import React from "react";
 import PropTypes from "prop-types";
 import "./Board.css";
 
-const Board = ({ boardId, title, owner, onSelectBoard, color, selectedBoardId}) => {
+const Board = ({
+  boardId,
+  title,
+  owner,
+  onSelectBoard,
+  color,
+  selectedBoardId,
+}) => {
   const onBoardClick = () => {
     console.log(title);
     console.log(boardId);
@@ -13,7 +20,13 @@ const Board = ({ boardId, title, owner, onSelectBoard, color, selectedBoardId}) 
   return (
     <>
       <section className="board-bubble">
-        <button onClick={onBoardClick} style={{backgroundColor: color, height: selectedBoardId === boardId ? "10rem" : "5rem"}}>
+        <button
+          onClick={onBoardClick}
+          style={{
+            backgroundColor: color,
+            height: selectedBoardId === boardId ? "10rem" : "5rem",
+          }}
+        >
           <h1 className="boardId">{boardId}</h1>
           <h2>{title}</h2>
           <h3>By {owner} </h3>
@@ -28,8 +41,9 @@ Board.propTypes = {
   title: PropTypes.string.isRequired,
   owner: PropTypes.string.isRequired,
   cards: PropTypes.array,
+  color: PropTypes.string.isRequired,
   onSelectBoard: PropTypes.func,
-  isSelected: PropTypes.bool.isRequired,
+  isSelected: PropTypes.bool,
 };
 
 export default Board;

@@ -4,7 +4,6 @@ import Board from "./Board";
 
 const BoardList = ({ boards, onSelectBoard, selectedBoardId }) => {
   const boardComponents = boards.map((board) => {
-    // const isSelected = (board.boardId === selectedBoardId)
     return (
       <ul key={board.boardId}>
         <Board
@@ -16,15 +15,14 @@ const BoardList = ({ boards, onSelectBoard, selectedBoardId }) => {
           onSelectBoard={onSelectBoard}
           selectedBoardId={selectedBoardId}
           boards={boards}
-          // isSelected={isSelected}
         />
       </ul>
     );
   });
 
   return (
-    <section className='boardsContainer'>
-      <h2 className='boardsTitle'>Boards</h2>
+    <section className="boardsContainer">
+      <h2 className="boardsTitle">Boards</h2>
       <ul>{boardComponents}</ul>
     </section>
   );
@@ -33,6 +31,7 @@ const BoardList = ({ boards, onSelectBoard, selectedBoardId }) => {
 BoardList.propTypes = {
   boards: PropTypes.arrayOf(PropTypes.object).isRequired,
   onSelectBoard: PropTypes.func.isRequired,
+  selectedBoardId: PropTypes.func,
 };
 
 export default BoardList;

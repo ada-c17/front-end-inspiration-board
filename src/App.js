@@ -5,7 +5,7 @@ import CardList from "./components/CardList";
 import NewBoardForm from "./components/NewBoardForm";
 import NewCardForm from "./components/NewCardForm";
 import "./App.css";
-import Button from 'react-bootstrap/Button';
+import Button from "react-bootstrap/Button";
 
 function App() {
   const [boardsData, setBoardsData] = useState([]);
@@ -14,10 +14,9 @@ function App() {
   const [boardColor, setBoardColor] = useState();
   const [selectedCards, setSelectedCards] = useState([]);
 
-
   const URL = "https://inspo-board-server.herokuapp.com";
-  // const URL = "https://inspiration-board-server.herokuapp.com"
-  // const URL = "http://127.0.0.1:5000/"
+
+  // GET all boards and set boards data
   useEffect(() => {
     axios
       .get(URL + "/boards")
@@ -29,7 +28,7 @@ function App() {
               boardId: board.board_id,
               owner: board.owner,
               cards: board.cards,
-              color: board.color
+              color: board.color,
             };
           });
         });
@@ -39,6 +38,7 @@ function App() {
       });
   }, []);
 
+  // GET all Cards for selected board
   useEffect(() => {
     axios
       .get(URL + "/boards/" + selectedBoardId + "/cards")
@@ -49,8 +49,8 @@ function App() {
               cardId: card.card_id,
               message: card.message,
               likesCount: card.likes_count,
-              boardId: card.board_id
-            }
+              boardId: card.board_id,
+            };
           });
         });
       })
@@ -59,9 +59,7 @@ function App() {
       });
   }, [selectedBoardId, boardsData]);
 
-
-  //When currently selected board changes use useEffect with selectedBoardId state as the dependency to make API call get CARDS from our GET cards enpoint in backend. The more data you have to display on your website, the less you want to store in the front end as state. It would be better to make more API calls for more specific data than to keep a giant nested object of data in the front end.
-
+  // GET selected Board ID
   const getBoardDataAndIndex = (selectedBoardId) => {
     let selectedBoardIdData;
     let boardIndex;
@@ -74,6 +72,7 @@ function App() {
     return [selectedBoardIdData, boardIndex];
   };
 
+  // POST a New Card to Selected Board
   const addCard = (newCard) => {
     axios
       .post(URL + "/boards/" + selectedBoardId + "/cards", newCard)
@@ -82,11 +81,15 @@ function App() {
           getBoardDataAndIndex(selectedBoardId);
         const updatedBoard = {
           ...selectedBoardIdData,
-          cards: [...selectedBoardIdData.cards, 
-          {boardId: response.data.board_id,
-          cardId: response.data.card_id,
-          message: response.data.message,
-          likesCount: response.data.likes_count}]
+          cards: [
+            ...selectedBoardIdData.cards,
+            {
+              boardId: response.data.board_id,
+              cardId: response.data.card_id,
+              message: response.data.message,
+              likesCount: response.data.likes_count,
+            },
+          ],
         };
         const updatedBoardsData = [...boardsData];
         updatedBoardsData[boardIndex] = updatedBoard;
@@ -97,6 +100,7 @@ function App() {
       });
   };
 
+  // POST a new Board
   const addBoard = (newBoard) => {
     axios
       .post(URL + "/boards", newBoard)
@@ -118,63 +122,57 @@ function App() {
       });
   };
 
-  //Calling our API to update all of the data in front end as opposed to updating directly is more expensive(takes more time), but will show the most current data. This a design choice. Setting state directly in the front end with one board is faster, but might give an inconsistent view of list of boards if multiple users are interacting with it at once. You won't see current list of boards unless you refresh the browser.
-
+  // GET current Board ID
   const getCurrentBoard = (id) => {
     const currentBoard = boardsData.filter((board) => board.boardId === id);
     setselectedBoardId(currentBoard[0].boardId);
     setBoardTitle(currentBoard[0].title);
-    setBoardColor(currentBoard[0].color)
+    setBoardColor(currentBoard[0].color);
   };
 
-  // const getCardIndex = (cardId) => {
-  //   for (const [index, card] of selectedCards.entries()) {
-  //     if (card.cardId === cardId) {
-  //       return index;
-  //     }
-  //   }
-  // };
-
-  const deleteCard = cardId => {
-    console.log('cardId >', cardId)
-    axios.delete(URL + '/cards/' + cardId)
-    .then(response => {
-      console.log("delete response", response.data)
-      const newCardList = selectedCards.filter(cardInList => cardInList.cardId !== cardId)
-      setSelectedCards(newCardList)
-    })
-    .catch(error => console.log(error))
-  }
-
-
-  const addLike = cardId => {
-    console.log("cardId", cardId)
-    
-    // const cardList = selectedCards.filter(card => card.cardId === cardId)
-
-    // axios.put(URL + '/cards/' + cardId + '/like', {likes_count: cardList[0].likesCount + 1})
-      axios.put(URL + '/cards/' + cardId + '/like')
-      .then(response => {
-      console.log("response >", response.data)
-      const newCardList = selectedCards.map(cardInList => {
-        return cardInList.cardId === cardId ? {...cardInList, likesCount: cardInList.likesCount+1} : cardInList
-        // return cardInList.cardId === cardId ? {...cardInList, likesCount: response.data.card.likes_count} : cardInList
+  // DELETE Card
+  const deleteCard = (cardId) => {
+    console.log("cardId >", cardId);
+    axios
+      .delete(URL + "/cards/" + cardId)
+      .then((response) => {
+        console.log("delete response", response.data);
+        const newCardList = selectedCards.filter(
+          (cardInList) => cardInList.cardId !== cardId
+        );
+        setSelectedCards(newCardList);
       })
-      console.log("newCardList", newCardList)
+      .catch((error) => console.log(error));
+  };
 
-      setSelectedCards(newCardList)
-    })
-    .catch(error => console.log(error))
-  }
+  // UPDATE Likes of Card
+  const addLike = (cardId) => {
+    console.log("cardId", cardId);
+    axios
+      .put(URL + "/cards/" + cardId + "/like")
+      .then((response) => {
+        console.log("response >", response.data);
+        const newCardList = selectedCards.map((cardInList) => {
+          return cardInList.cardId === cardId
+            ? { ...cardInList, likesCount: cardInList.likesCount + 1 }
+            : cardInList;
+        });
+        console.log("newCardList", newCardList);
 
-  const sortById = arr => {
+        setSelectedCards(newCardList);
+      })
+      .catch((error) => console.log(error));
+  };
+
+  // SORT Cards
+  const sortById = (arr) => {
     const sorted = [...arr].sort((a, b) => {
-      return a.cardId - b.cardId
-    })
-    setSelectedCards(sorted)
-  }
+      return a.cardId - b.cardId;
+    });
+    setSelectedCards(sorted);
+  };
 
-  const sortAphabetically = arr => {
+  const sortAphabetically = (arr) => {
     const sorted = [...arr].sort((a, b) => {
       let lowerA = a.message.toLowerCase(),
         lowerB = b.message.toLowerCase();
@@ -186,19 +184,18 @@ function App() {
         return 1;
       }
       return 0;
-    })
-    setSelectedCards(sorted)
-  }
+    });
+    setSelectedCards(sorted);
+  };
 
-  const sortByLikes = arr => {
+  const sortByLikes = (arr) => {
     const sorted = [...arr].sort((a, b) => {
-      return a.likesCount - b.likesCount
-    })
-    setSelectedCards(sorted)
-  }
+      return a.likesCount - b.likesCount;
+    });
+    setSelectedCards(sorted);
+  };
 
-  
-
+  // Pass down Props
   return (
     <main className="App">
       <nav>
@@ -208,13 +205,35 @@ function App() {
       </nav>
       <nav>
         <h2>Sort Cards</h2>
-        <Button variant="secondary" onClick={() => sortById(selectedCards)}>by ID</Button>
-        <Button variant="secondary" onClick={() => sortAphabetically(selectedCards)}>alphabetically</Button>
-        <Button variant="secondary" onClick={() => sortByLikes(selectedCards)}>by number of "likes"</Button>
+        <Button variant="secondary" onClick={() => sortById(selectedCards)}>
+          by Oldest to Newest
+        </Button>
+        <Button
+          variant="secondary"
+          onClick={() => sortAphabetically(selectedCards)}
+        >
+          Alphabetically
+        </Button>
+        <Button variant="secondary" onClick={() => sortByLikes(selectedCards)}>
+          by Number of "Likes"
+        </Button>
       </nav>
       <section className="boards__cards">
-      <BoardList boards={boardsData} onSelectBoard={getCurrentBoard} selectedBoardId={selectedBoardId} />
-      <CardList selectedCards={selectedCards} boardTitle={boardTitle} boardColor={boardColor} deleteCard={deleteCard} addLike={addLike} sortById={sortById} sortAphabetically={sortAphabetically} sortByLikes={sortByLikes}/>
+        <BoardList
+          boards={boardsData}
+          onSelectBoard={getCurrentBoard}
+          selectedBoardId={selectedBoardId}
+        />
+        <CardList
+          selectedCards={selectedCards}
+          boardTitle={boardTitle}
+          boardColor={boardColor}
+          deleteCard={deleteCard}
+          addLike={addLike}
+          sortById={sortById}
+          sortAphabetically={sortAphabetically}
+          sortByLikes={sortByLikes}
+        />
       </section>
     </main>
   );

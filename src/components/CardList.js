@@ -1,9 +1,15 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import Card from './Card';
-import './CardList.css';
+import React from "react";
+import PropTypes from "prop-types";
+import Card from "./Card";
+import "./CardList.css";
 
-const CardList = ({selectedCards, boardTitle, deleteCard, addLike, boardColor }) => {
+const CardList = ({
+  selectedCards,
+  boardTitle,
+  deleteCard,
+  addLike,
+  boardColor,
+}) => {
   const cardList = (selectedCards) => {
     return selectedCards.map((card) => {
       return (
@@ -22,10 +28,12 @@ const CardList = ({selectedCards, boardTitle, deleteCard, addLike, boardColor })
   };
   return (
     <section className="cards">
-      <h2 className="cardsTitle">Cards for <span style={{color: boardColor}}>{boardTitle}</span></h2>
+      <h2 className="cardsTitle">
+        Cards for <span style={{ color: boardColor }}>{boardTitle}</span>
+      </h2>
       {cardList(selectedCards)}
     </section>
-  )
+  );
 };
 
 CardList.propTypes = {
@@ -37,9 +45,10 @@ CardList.propTypes = {
       likesCount: PropTypes.number.isRequired,
     })
   ).isRequired,
-  boardTitle: PropTypes.string.isRequired,
+  boardTitle: PropTypes.string,
   addLike: PropTypes.func.isRequired,
   deleteCard: PropTypes.func.isRequired,
-}; 
+  boardColor: PropTypes.string,
+};
 
 export default CardList;
