@@ -41,7 +41,7 @@ const Card = ({
         <button id="stars" onClick={() => setLikesCountCallBack(id)}>
           ⭐️
         </button>
-        <span> {likesCount}</span>
+        <span id="likes"> {likesCount}</span>
       </div>
     </Draggable>
   );

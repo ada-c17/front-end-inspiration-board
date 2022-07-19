@@ -72,8 +72,9 @@
     left: 0;
 }
 
-.likes-count {
+span {
     position:relative;
     padding: 4px;
     color:rgb(26, 13, 205);
 }
+
