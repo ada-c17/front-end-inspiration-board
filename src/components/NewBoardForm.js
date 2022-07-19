@@ -13,6 +13,7 @@ const NewBoardForm = () => {
       .post("/boards", data)
       .then((response) => {
         console.log("created board");
+        setBoardData(default_board);
       })
       .catch(() => {
         console.log("couldn't create board");
@@ -31,6 +32,7 @@ const NewBoardForm = () => {
 
   const handleFormSubmission = (event) => {
     event.preventDefault();
+
     if (boardData.title === "" || boardData.owner === "") {
       setMessage("Please enter both title and owner");
     } else {
@@ -75,6 +77,7 @@ const NewBoardForm = () => {
       <h1>Add New Space</h1>
       <form onSubmit={handleFormSubmission}>
         <input
+          id="title"
           name="title"
           type="text"
           className="title"
@@ -83,6 +86,7 @@ const NewBoardForm = () => {
           placeholder="Enter Space Name"
         />
         <input
+          id="owner"
           name="owner"
           type="text"
           className="owner"
