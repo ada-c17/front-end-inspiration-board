@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import Board from "./components/Board";
 import BoardDropdown from "./components/BoardDropdown";
+import NewBoardForm from "./components/NewBoardForm";
 import NewCardForm from "./components/NewCardForm";
 import "./css/inspo_board.css";
 import AddBoard from "./components/AddBoard";
@@ -31,7 +32,7 @@ function App() {
   const [boards, setBoards] = useState([]); // list of all the board dicts
   const [boardOption, setBoardOption] = useState("Choose a Board");
   const [chosenBoardData, setChosenBoardData] = useState({ cards: [] });
-  const [showBoardForm, setShowBoardForm] = useState(false);
+  const [isBoardFormVisible, setIsBoardFormVisible] = useState(false);
 
   const showChosenBoard = (boardTitle) => {
     setBoardOption(boardTitle);
@@ -48,6 +49,24 @@ function App() {
         console.log(error);
         throw new Error("Unable to get board options");
       });
+  };
+
+  const createNewBoard = (newBoard) => {
+    axios
+      .post(`${kBaseUrl}/boards`, newBoard)
+      .then((response) => {
+        const boards = [...boards];
+        boards.push(response.data.board);
+        setBoards(boards);
+      })
+      .catch((error) => {
+        console.log(error);
+        throw new Error("Couldn't create a new board.");
+      });
+  };
+
+  const toggleNewBoardForm = () => {
+    setIsBoardFormVisible(!isBoardFormVisible);
   };
 
   useEffect(() => {
@@ -121,9 +140,14 @@ function App() {
           />
         </section>
         <section className="add-menu-button">
-          <button onClick={() => setShowBoardForm(!showBoardForm)}>
-            Add Board
-          </button>
+          <button onClick={toggleNewBoardForm}>Add Board</button>
+        </section>
+        <section className="collapse">
+          {isBoardFormVisible ? (
+            <NewBoardForm createNewBoard={createNewBoard}></NewBoardForm>
+          ) : (
+            ""
+          )}
         </section>
         {showBoardForm && <AddBoard />}
         <section className="board-content">
