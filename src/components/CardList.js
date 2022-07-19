@@ -4,6 +4,7 @@ import Card from "./Card";
 // import "./BoardList.css";
 
 const CardList = (props) => {
+  const setSortType = props.setSortType;
   const cardsComponents = props.cards.map((card) => {
     return (
       <Card
@@ -20,6 +21,12 @@ const CardList = (props) => {
   return (
     <div>
       <h1 className="Cards-title">CARDS</h1>
+      <p>Sort by</p>
+      <select onChange={(e) => setSortType(e.target.value)}>
+        <option value="card_id">ID</option>
+        <option value="likes_count">Likes</option>
+        <option value="message">Alphabetically</option>
+      </select>
       <div className="cardList">{cardsComponents}</div>
     </div>
   );
