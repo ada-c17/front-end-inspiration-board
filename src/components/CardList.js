@@ -31,7 +31,7 @@ const CardList = (props) => {
     
     useEffect(fetchCards, [props.board.board_id]);
 
-    // Add likes to specific card
+    // Add likes to specific card, updating card's like count
     const increaseLikes = (card_id) => {
       axios
         .patch(`${URL}/${props.board.board_id}/cards/${card_id}/likes`)
