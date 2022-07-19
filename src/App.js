@@ -14,7 +14,7 @@ function App() {
   const [boardColor, setBoardColor] = useState();
   const [selectedCards, setSelectedCards] = useState([]);
 
-  const URL = "http://127.0.0.1:5000";
+  const URL = "https://inspo-board-server.herokuapp.com";
   useEffect(() => {
     axios
       .get(URL + "/boards")
