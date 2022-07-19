@@ -13,7 +13,7 @@ const CardList = (props) => {
         board_id={card.board_id}
         fetchCardsCallback={props.fetchCardsCallback}
         likeCardCallback={props.likeCardCallback}
-        deleteCardCallback={props.deleteCard}
+        deleteCardCallback={props.deleteCardCallback}
       ></Card>
     );
   });
