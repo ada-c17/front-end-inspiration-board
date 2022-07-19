@@ -7,17 +7,24 @@ body {
   -moz-osx-font-smoothing: grayscale;
   font-family: 'Cairo', sans-serif;
   background-color: black;
-  color:paleturquoise;
+  color:rgb(97, 203, 203);
   /* height: 100vh; */
-  font-size: 1.2em;
+  font-size: 1.4em;
   /* position: relative; */
 
   display: grid;
-    grid-gap: 1em 0;
-    grid: auto auto ;
-    margin: 0;
-    min-height: calc(100vh - 40px);
+  grid-gap: 1em 0;
+  grid: auto auto ;
+  margin: 0;
+  min-height: calc(100vh - 40px);
 
+
+  background-image: 
+  url("./data/Darkspace.jpg");
+  background-size: 150%;
+  background-position: center;
+  /* margin-top: -70px; */
+  background-repeat:no-repeat; 
 
 }
 
@@ -27,7 +34,7 @@ body {
 }
 
 a {
-color:blanchedalmond;
+color:rgb(243, 179, 83);
 text-decoration: none;
 padding: 14px 25px;
 }
@@ -38,7 +45,7 @@ padding: 14px 25px;
 }
 
 a:hover {
-  color:firebrick;
+  color:rgb(231, 68, 68);
   text-decoration: underline;
 
 }
@@ -53,7 +60,8 @@ a:hover {
   margin-top: 20px;
   background-image: url("./data/Earth.png");
   background-size: cover;
-  color:greenyellow;
+  color:rgb(22, 238, 47);
+  font-weight: bold;
   height:170px;
   width:170px;
   z-index: 2;

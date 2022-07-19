@@ -7,13 +7,20 @@
 
 }
 #board-owner{
- color:darkseagreen;
+    color:rgb(58, 186, 122);
+    font-weight: bolder;
+
 
 }
 
 #board_title{
-    color:cadetblue;
+    color:rgb(138, 222, 224);
     font-size: 2em;
+    font-weight: bolder;
+}
 
+.HomeLink:hoover {
+    color:chocolate;
+    font-size: 1.6em;
 }
 
