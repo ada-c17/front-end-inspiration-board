@@ -41,7 +41,7 @@ const BoardForm = (props) => {
         value={formData.owner}
         onChange={onFormChange}
       />
-      <input type="submit" value="Submit new Board" />
+      <input type="submit" value="Submit" />
     </form>
   );
 };
