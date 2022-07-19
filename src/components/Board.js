@@ -34,11 +34,14 @@ const Board = ({ board_id }) => {
       .catch((error) => console.log(`Cannot delete board ${error}`));
   };
 
+
   return (
     <div className="Board">
       <h1>{title}</h1>
       <h2>{owner}</h2>
-      <Card />
+      {/* <CardList
+
+      /> */}
       <button onClick={() => deleteBoard(board_id)}>DELETE THIS BOARD</button>
       <button onClick={() => console.log("setBaordCallBack(null)")}> 🔙</button>
     </div>
