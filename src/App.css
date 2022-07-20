@@ -6,6 +6,8 @@ font-family: 'M PLUS 1 Code', sans-serif; */
 div {
   background-color: #3D405B;
   background-image: url("./assets/space.png");
+  background-size: cover;
+  background-position: center center;
   color: #F4F1DE;
 }
 
