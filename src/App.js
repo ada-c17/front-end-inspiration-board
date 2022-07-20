@@ -76,11 +76,11 @@ function App() {
 
   const postCard = (cardData) => {
     postCardAsync(cardData, selectedBoardId)
-      .then((selectedBoard) => {
+      .then(() => {
         setBoardData((oldBoardData) => {
           const newBoardData = oldBoardData.map((board) => {
             if (board.boardId === selectedBoardId) {
-              return selectedBoard;
+              return getSelectedBoard(selectedBoardId);
             } else {
               return board;
             }
