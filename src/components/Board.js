@@ -4,7 +4,7 @@ import axios from "axios";
 import { useState, useEffect } from "react";
 import "./Board.css";
 
-export const Board = ({ id, title, owner }) => {
+export const Board = ({ id, title, owner, onRemoveCallback }) => {
   const [cardData, setCardData] = useState([]);
 
   useEffect(() => {
@@ -49,11 +49,24 @@ export const Board = ({ id, title, owner }) => {
       .catch((error) => console.log(error));
   };
 
+  const onRemove = () => {
+    axios
+      .delete(`http://127.0.0.1:5000/boards/${id}`)
+      .then((response) => {
+        console.log(response);
+        onRemoveCallback(id);
+      })
+      .catch(console.log);
+  };
+
   return (
     <div className="board">
       <div className="board-body">
         <h1 className="board-title">{title}</h1>
         <p className="board-subtitle">Owner: {owner}</p>
+        <button onClick={onRemove} type="button" className="delete-btn">
+          Delete
+        </button>
         <div className="new-card">
           <div className="add-card">
           <CreateCard addCardCallback={addCard}></CreateCard>

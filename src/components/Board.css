@@ -57,3 +57,16 @@
     grid-column-end: span 2;
 }
 
+.delete-btn {
+    margin: 5%;
+    color: #fff;
+    background-color: #FCD5CE;
+    border-color: #fff;
+    border-style: dashed;
+    border-width: medium;
+}
+
+.delete-btn:hover {
+    background-color: #F9DCC4;
+    cursor: pointer;
+}
