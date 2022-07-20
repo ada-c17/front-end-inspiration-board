@@ -33,7 +33,7 @@ const NewCardForm = (props) => {
   return (
     <section className="cardFormContainer">
       <h3>
-        <div className="handwritten">✨ Add a New Card ✨</div>
+        <div className="handwritten">✨ Add a Note ✨</div>
       </h3>
       <form onSubmit={handleSubmit}>
         <label htmlFor="message"></label>
@@ -43,14 +43,14 @@ const NewCardForm = (props) => {
           value={cardForm.message}
           maxLength={40}
           onChange={onFormChange}
-          placeholder="Write your message here~ (max 40 char.)"
+          placeholder="Write inspiration here! (max 40 char.)"
         ></textarea>
         <div>
           <div>{inputChar}/40 char.</div>
           <input
             className="addCardButton"
             type="submit"
-            value="Add Card"
+            value="Add Note"
             disabled={
               cardForm.message.length < 1 || cardForm.message.length > 40
             }
