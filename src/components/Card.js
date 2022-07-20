@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import PropTypes from "prop-types";
+import image from "../assets/thumbs-up.png";
 
 const Card = ({ id, boardId, message, likes, onLike, onDelete }) => {
   const [cardData, setCardData] = useState({
@@ -27,7 +28,7 @@ const Card = ({ id, boardId, message, likes, onLike, onDelete }) => {
         <p className="message-text">{cardData.message}</p>
         <p className="likes">Likes: {cardData.likes}</p>
         <button className="like-button" onClick={handleLike}>
-          👍
+          <img src={image} alt="thumbs-up" />
         </button>
       </div>
     </section>

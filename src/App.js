@@ -60,12 +60,9 @@ function App() {
   const createNewBoard = (newBoard) => {
     axios
       .post(`${kBaseUrl}/boards`, newBoard)
-      .then(() => {
-        getBoardListDropdown();
-      })
-      .then(() => {
-        setBoardOption(newBoard.title);
-      })
+      .then(() => getBoardListDropdown())
+      .then(() => setBoardOption(newBoard.title))
+      .then(() => setChosenBoardData({ cards: [] }))
       .catch((error) => {
         console.log(error);
         throw new Error("Couldn't create a new board.");
@@ -157,7 +154,6 @@ function App() {
       })
       .then(() => getSelectedBoardData(boardId))
       .catch((err) => {
-        console.log(err);
         throw new Error("error adding card");
       });
   };
@@ -170,6 +166,24 @@ function App() {
       .catch((err) => {
         console.log(err);
         throw new Error("error adding card");
+
+  const deleteBoard = () => {
+    let boardId;
+    for (const board of boards) {
+      if (board.title === boardOption) {
+        boardId = board.id;
+      }
+    }
+    axios
+      .delete(`${kBaseUrl}/boards/${boardId}`)
+      .then((response) => console.log(response))
+      // rerender here
+      .then(() => getBoardListDropdown())
+      .then(() => setBoardOption("Choose a Board"))
+      .then(() => setChosenBoardData({ cards: [] }))
+      .catch((error) => {
+        console.log(error);
+        throw new Error("Couldn't delete board.");
       });
   };
 
@@ -186,9 +200,13 @@ function App() {
             onDropdownChange={showChosenBoard}
           />
         </section>
-        <section className="add-menu-button">
-          <button onClick={toggleNewBoardForm}>Add Board</button>
+        <section className="delete-button-container">
+          <button>Delete Board</button>
         </section>
+        <section className="add-menu-button">
+          <button onClick={toggleNewBoardForm}>
+            {isBoardFormVisible ? "Hide Form" : "Add Board"}
+          </button>
         <section className="collapse">
           {isBoardFormVisible ? (
             <NewBoardForm createNewBoard={createNewBoard}></NewBoardForm>
@@ -196,7 +214,6 @@ function App() {
             ""
           )}
         </section>
-
         <section className="board-content">
           <Board
             cardLike={increaseLike}
