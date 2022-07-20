@@ -24,12 +24,6 @@ function App() {
     boardId: null,
   });
   const [cardData, setCardData] = useState([]);
-  // sample boards data to test BoardList
-  // const boardSet = [
-  //   { title: "Memes", creator: "Michael Scott", id: 1 },
-  //   { title: "Inspirational Quotes", creator: "Dwight Schrute", id: 2 },
-  //   { title: "Romance Advice", creator: "Kelly Kapoor" , id: 3},
-  // ];
 
   const displayAllBoards = () => {
     getAllBoardsAsync()
@@ -93,21 +87,19 @@ function App() {
         </section>
 
         <BoardList boards={boardData} selectBoard={selectBoard} />
-        {/* ternary to check if theres is board selected*/}
-        <p>
-          {selectedBoardData.boardId ? (
-            <Board
-              id={selectedBoardData.boardId}
-              title={selectedBoardData.title}
-              creator={selectedBoardData.creator}
-            ></Board>
-          ) : (
-            ""
-          )}
-        </p>
+        {/* ternary to display board if there is board selected, otherwise display create board form */}
+        {selectedBoardData.boardId ? (
+          <Board
+            id={selectedBoardData.boardId}
+            title={selectedBoardData.title}
+            creator={selectedBoardData.creator}
+          ></Board>
+        ) : (
+          <NewBoardForm onBoardSubmit={handleNewBoard} />
+        )}
       </main>
 
-      <NewBoardForm onBoardSubmit={handleNewBoard} />
+      {/* <NewBoardForm onBoardSubmit={handleNewBoard} /> */}
       {/* We probably only want to show when a board is selected */}
       <NewCardForm onCardSubmit={handleNewCard} />
     </div>
