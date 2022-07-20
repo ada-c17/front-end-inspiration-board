@@ -3,9 +3,7 @@ import "./App.css";
 import Board from "./components/Board";
 import BoardList from "./components/BoardList";
 import NewCardForm from "./components/NewCardForm";
-import NewBoardForm from "./components/NewBoardForm";
 import CardList from "./components/CardList";
-import Card from "./components/Card";
 
 function App() {
   const toggleDisplay = () => {
@@ -25,14 +23,6 @@ function App() {
     setDisplay(id);
   };
 
-  const newCard = (card) => {
-    // console.log(card);
-  };
-
-  const newBoard = (board) => {
-    console.log(board);
-  };
-
   return (
     <div className="App">
       <header className="App-header">
@@ -40,8 +30,7 @@ function App() {
       </header>
       <main>
         {toggleDisplay()}
-        <NewCardForm submitFunction={newCard} />
-        <NewBoardForm submitFunction={newBoard} />
+
         {/* <CardList cardsOnBoard={testCards} /> */}
       </main>
       <footer>

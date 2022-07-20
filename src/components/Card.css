@@ -1,7 +1,6 @@
 div {
     margin: 20px auto;
     font-family: Georgia, 'Times New Roman', Times, serif;
-    background:#666;
     color:#fff;
 }
 
@@ -44,8 +43,8 @@ ul li section{
 }
 
 .card-entry .card-container {
-    max-width: 50vh;
-    min-width: 35vh;
+    max-width: 25em;
+    min-width: 15em;
     padding: 1rem 1rem 0.1rem 1rem;
     position: relative;
     width: fit-content;
@@ -56,9 +55,11 @@ ul li section .like-button {
     border: none;
     /* background: #cfc; */
     background:#ffc;
-    position: relative;
-    top: 65%;
-    transform: translateY(-100%);
+    position: fixed;
+    /* padding: 2em; */
+    left: 50%;
+    top: 90%;
+    transform: translate(-50%, -50%);
 }
 
 ul li section .delete-button {
@@ -67,21 +68,19 @@ ul li section .delete-button {
     text-align: center;
 }
 
-.divisibleBy2 .card-container {
+.every2Cards .card-container {
     transform:rotate(4deg);
     position:relative;
     top:5px;
     background:#ffc;
 }
 
-.divisibleBy2 .like-button {
+.every2Cards .like-button {
     background:#ffc;
-    top: 65%;
-    transform: translateY(-100%);
     
 }
 
-.divisibleBy3 .card-container {
+.every3Cards .card-container {
     transform:rotate(-3deg);
     position:relative;
     top:-5px;
@@ -89,14 +88,12 @@ ul li section .delete-button {
     background:#ffc;
 }
 
-.divisibleBy3 .like-button {
+.every3Cards .like-button {
     /* background:#ccf; */
     background:#ffc;
-    top: 65%;
-    transform: translateY(-100%);
 }
 
-.divisibleBy5 .card-container {
+.every5Cards .card-container {
     transform:rotate(5deg);
     position:relative;
     top:-10px;
@@ -104,11 +101,9 @@ ul li section .delete-button {
     background:#ffc;
 }
 
-.divisibleBy5 .like-button {
+.devery5Cards .like-button {
     /* background:#fcf; */
     background:#ffc;
-    top: 65%;
-    transform: translateY(-100%);
 }
 
 .rotateDefault .card-container {

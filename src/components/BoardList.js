@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import "./BoardList.css";
-// import NewBoardForm from './components/NewBoardForm';
+import NewBoardForm from "./NewBoardForm";
 import Button from "./Button";
 import PropTypes from "prop-types";
 import axios from "axios";
@@ -23,6 +23,17 @@ const BoardList = ({ changeBoardCallback }) => {
       });
   };
 
+  const makeNewBoard = (newBoard) => {
+    axios
+      .post(`${process.env.REACT_APP_BACKEND_URL}/boards`, newBoard)
+      .then((response) => {
+        getBoardsFromAPI();
+      })
+      .catch((error) => {
+        console.log("ERROR");
+      });
+  };
+
   const buttonComponents = board.map((button) => (
     <Button
       key={button.id}
@@ -36,7 +47,7 @@ const BoardList = ({ changeBoardCallback }) => {
   return (
     <div>
       <ul>{buttonComponents}</ul>
-      {/* <NewBoardForm handleSubmission={makeNewBoard} /> */}
+      <NewBoardForm handleSubmission={makeNewBoard} />
     </div>
   );
 };

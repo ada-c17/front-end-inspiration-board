@@ -10,7 +10,7 @@ const NewBoardForm = (props) => {
   const createNewBoard = (event) => {
     event.preventDefault();
     // console.log(boardData);
-    props.submitFunction(boardData);
+    props.handleSubmission(boardData);
     setBoardData(defaultBoard);
   };
 
