@@ -21,11 +21,13 @@ const BoardsList = (props) => {
 BoardsList.propsTypes = {
   boards: PropTypes.arrayOf(
     PropTypes.shape({
-      id: PropTypes.number.isRequired,
-      title: PropTypes.string.isRequired,
-      owner: PropTypes.string.isRequired,
+        id: PropTypes.number.isRequired,
+        title: PropTypes.string.isRequired,
+        owner: PropTypes.string.isRequired,
     })
-  ),
+  ).isRequired,
+  showBoardCallBack: PropTypes.func,
+  selectedBoardCallBack: PropTypes.func,
 };
 
 export default BoardsList;

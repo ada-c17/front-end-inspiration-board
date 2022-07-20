@@ -52,7 +52,7 @@ CardsList.propTypes = {
       likes: PropTypes.number,
     })
   ).isRequired,
-  onLike: PropTypes.func,
-  onDelete: PropTypes.func,
+  deleteCardCallback: PropTypes.func,
+  likeCardCallback: PropTypes.func,
 };
 export default CardsList;

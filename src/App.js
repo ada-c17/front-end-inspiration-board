@@ -120,7 +120,12 @@ function App() {
     axios
       .post(`${BOARDS_URL}/${boardSelected.id}/cards`, cardInfo)
       .then((response) => {
-        fetchCards(boardSelected.id);
+        if (cardInfo.message) {
+          fetchCards(boardSelected.id);
+        }else {
+          alert("Oops! Missing message!");
+        } 
+        
       })
       .catch((error) => {
         alert("Couldn't create a new card.");
@@ -130,13 +135,6 @@ function App() {
   // deleting a card by id
   const deleteCard = (card_id) => {
     axios.delete(`${CARDS_URL}/${card_id}`).then((response) => {
-      const newCardItems = [...cardsData];
-      const newCardsList = [];
-      for (const card of newCardItems) {
-        if (card.card_id !== card_id) {
-          newCardsList.push(card);
-        }
-      }
       fetchCards(boardSelected.id);
     });
   };
