@@ -45,6 +45,7 @@ const App = () => {
   const [boardData, setBoardData] = useState([]);
   const [btnText, setButtonText] = useState("Create New Dream");
   let [boardNum, setBoardNum] = useState(0);
+  let [boardTitle, setBoardTitle] = useState("");
   let newText = "";
 
   const showBoardForm =
@@ -107,9 +108,11 @@ const App = () => {
 
   const handleBoard = (boardId, title) => {
     const newNum = boardId;
+    const bTitle = title;
 
     setBoardNum(newNum);
     loadCards(boardId);
+    setBoardTitle(bTitle);
   };
 
   const onCardDelete = (cardId) => {
@@ -181,6 +184,7 @@ const App = () => {
           shouldHideBoard={showBoardForm}
         ></BoardForm>
         <BoardList boards={boardData} onSelectBoard={handleBoard} />
+        <h4>{boardTitle}</h4>
         <CardList
           cards={cardData}
           onUpdateLikes={increaseLikeCount}

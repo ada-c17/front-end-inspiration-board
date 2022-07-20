@@ -1,10 +1,10 @@
 import React from "react";
 import PropTypes from "prop-types";
-import '../style/Board.css'
+import "../style/Board.css";
 
 const Board = ({ boardId, owner, title, onSelectBoard }) => {
   const onTitleClick = () => {
-    onSelectBoard(boardId);
+    onSelectBoard(boardId, title);
   };
 
   return (

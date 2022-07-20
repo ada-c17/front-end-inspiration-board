@@ -22,3 +22,11 @@ main {
   font-family: 'M PLUS 1 Code', sans-serif;
   margin: 2vw;
 }
+
+h4 {
+  background-color: #F2CC8F;
+  color: #3D405B;
+  text-align: center;
+  border-radius: 5px;
+  padding: 5px;
+}
