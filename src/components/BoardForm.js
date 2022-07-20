@@ -61,6 +61,7 @@ const BoardForm = ({ onAddBoard, shouldHideBoard }) => {
 
 BoardForm.propTypes = {
   onAddBoard: PropTypes.func,
+  shouldHideBoard: PropTypes.string,
 };
 
 export default BoardForm;

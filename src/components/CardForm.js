@@ -56,6 +56,7 @@ const CardForm = ({ onAddCard, shouldHideCard }) => {
 
 CardForm.propTypes = {
   onAddCard: PropTypes.func,
+  shouldHideCard: PropTypes.string,
 };
 
 export default CardForm;

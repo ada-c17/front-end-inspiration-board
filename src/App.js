@@ -8,6 +8,7 @@ import CardForm from "./components/CardForm";
 
 const kBaseUrl = "https://ssh-back-end-inspiration-board.herokuapp.com";
 
+
 const boardApiToJson = (board) => {
   const { title, owner, board_id: boardId } = board;
   return { title, owner, boardId };
@@ -170,7 +171,7 @@ const App = () => {
   };
 
   return (
-    <div id="App">
+    <div>
       <header>
         <h2>dream board</h2>
       </header>
@@ -180,7 +181,7 @@ const App = () => {
           onAddBoard={handleBoardDataReady}
           shouldHideBoard={showBoardForm}
         ></BoardForm>
-        <BoardList boards={boardData} onSelectBoard={handleBoard} />
+        <BoardList boards={boardData} onSelectBoard={handleBoard}/>
         <CardList
           cards={cardData}
           onUpdateLikes={increaseLikeCount}

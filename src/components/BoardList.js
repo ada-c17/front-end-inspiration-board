@@ -1,6 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 import Board from "./Board";
+import "../style/BoardList.css"
 
 const BoardList = ({ boards, onSelectBoard }) => {
   const boardComponents = boards.map((board) => {
@@ -15,7 +16,7 @@ const BoardList = ({ boards, onSelectBoard }) => {
     );
   });
 
-  return <section>{boardComponents}</section>;
+  return <section className="BoardList">{boardComponents}</section>;
 };
 
 BoardList.propTypes = {

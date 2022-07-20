@@ -1,4 +1,22 @@
-.App {
-  text-align: center;
+@import url('https://fonts.googleapis.com/css2?family=Clicker+Script&family=M+PLUS+1+Code:wght@200&display=swap');
+
+/* font-family: 'Clicker Script', cursive;
+font-family: 'M PLUS 1 Code', sans-serif; */
+
+div {
+  background-color: #3D405B;
+  color: #F4F1DE;
 }
 
+main {
+  font-family: 'M PLUS 1 Code', sans-serif;
+  margin: 2vw;
+}
+
+
+header {
+  font-family: 'Clicker Script', cursive;
+  font-size: 2rem;
+  color: #f2CC8F;
+  margin-left: 10vw;
+}
