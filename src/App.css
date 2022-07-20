@@ -6,6 +6,9 @@ body {
   background-image: url('../src/pexels-fwstudio-129731.jpg'); 
   background-size: cover;
   /* overflow-x: hidden; */
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
 }
 
 h1,
@@ -224,7 +227,14 @@ ol.boards__list > li:hover {
 }
 
 footer {
-  text-align: left;
+  /* text-align: right;  */
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  background-color: #1098ad;
+  color: white;
+  text-align: center;
 }
 
 h2 {
