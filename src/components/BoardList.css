@@ -1,6 +1,6 @@
 .board-list {
-    grid-column-start: 2;
-    grid-column-end: 6;
+    grid-column-start: 3;
+    grid-column-end: 5;
     grid-row-start: 3;
     grid-row-end: 4;
     justify-self: center;
@@ -10,11 +10,18 @@
     flex-wrap: wrap;
     justify-content: center;
     align-items: center;
-    /* align-content: space-around; */
-
-    border: 2pt solid slategrey;
+    gap: 20px;
 }
 
 .board-button {
     font-size: 1em;
+    width: 20vh;
+    height: 10vh;
+    border-radius: 5%;
+    border: 0px
+}
+
+.board-button:hover {
+    background-color: peachpuff;
+    font-weight: bold;
 }
