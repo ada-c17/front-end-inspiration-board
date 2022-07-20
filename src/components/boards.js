@@ -1,6 +1,6 @@
 import React from "react";
 import SingleBoard from "./SingleBoard.js";
-import "./boards.css";
+import "./Boards.css";
 import PropTypes from "prop-types";
 
 const Board = (props) => {

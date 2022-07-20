@@ -1,9 +1,9 @@
 import "./App.css";
-import "./components/boards.css";
-import Board from "./components/boards.js";
+import "./components/Boards.css";
+import Board from "./components/Boards.js";
 import { useState, useEffect } from "react";
 import Header from "./components/Header.js";
-import Cards from "./components/cards.js";
+import Cards from "./components/Cards.js";
 import axios from "axios";
 import NewBoardForm from "./components/NewBoardForm.js";
 import NewCardForm from "./components/NewCardForm.js";
@@ -101,8 +101,12 @@ function App() {
             isOnHomepage={isOnHomepage}
             setIsOnHomepage={setIsOnHomepage}
           />
-          <Cards activeBoard={activeBoard} deleteCardCallBack={deleteCard} />
+          <Cards cards={cards} deleteCardCallBack={deleteCard} />
         </div>
+        <NewCardForm
+          addCardCallback={addCardData}
+          boardId={activeBoard.board_id}
+        />
       </div>
     );
   }

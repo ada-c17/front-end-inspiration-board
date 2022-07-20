@@ -1,7 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 import SingleCard from "./SingleCard.js";
-import "./cards.css";
+import "./Cards.css";
 
 const Cards = (props) => {
   if (props.cards === []) {
@@ -21,7 +21,7 @@ const Cards = (props) => {
   return <section className="cards-display">{cardComponents}</section>;
 };
 
-Card.propTypes = {
+Cards.propTypes = {
   cards: PropTypes.arrayOf(
     PropTypes.shape({
       card_id: PropTypes.number,
