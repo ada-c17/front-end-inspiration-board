@@ -26,29 +26,53 @@ const NewBoardForm = (props) => {
 
   return (
     <div>
-      <form onSubmit={handleSubmit}>
-        <label htmlFor="title">Title: </label>
+      <form onSubmit={handleSubmit} className="new-board-form">
+        <label htmlFor="title" className="label">
+          Title:{" "}
+        </label>
+
         <input
           type="text"
           name="title"
           value={formData.title}
           onChange={formUpdate}
+          className={
+            formData.title.length === 0 || formData.title.length > 40
+              ? "invalid-form-input"
+              : ""
+          }
         />
-        <label htmlFor="owner">Owner's Name: </label>
+        <label htmlFor="owner" className="label">
+          Owner's Name:{" "}
+        </label>
         <input
           type="text"
           name="owner"
           value={formData.owner}
           onChange={formUpdate}
+          className={
+            formData.owner.length === 0 || formData.owner.length > 40
+              ? "invalid-form-input"
+              : ""
+          }
         />
-        <h3>Preview: </h3>
-        <p>{formData.title}</p>
-        <p>- {formData.owner}</p>
-        <input type="submit" value="Submit Board" />
+        <p>
+          Preview:{" "}
+          <span className="preview">
+            {formData.title} - {formData.owner}
+          </span>
+        </p>
+        <input
+          type="Submit"
+          className="submit"
+          disabled={
+            formData.title.length === 0 ||
+            formData.owner.length === 0 ||
+            formData.title.length > 40 ||
+            formData.owner.length > 40
+          }
+        />
       </form>
-      <button onClick={() => props.flipFormCallBack()}>
-        Hide New Board Form
-      </button>
     </div>
   );
 };

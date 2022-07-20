@@ -19,7 +19,6 @@ const NewCardForm = (props) => {
   const submitNewCard = (event) => {
     event.preventDefault();
     props.postNewCard(cardForm);
-    console.log("hello");
     setCardForm(defaultCard);
   };
 
@@ -27,7 +26,7 @@ const NewCardForm = (props) => {
     <section className="new-card-container">
       <h2>Create a New Card</h2>
       <form onSubmit={submitNewCard} className="new-card-form">
-        <label>Message</label>
+        <label className="label">Message</label>
         <input
           type="text"
           className={
@@ -38,7 +37,9 @@ const NewCardForm = (props) => {
           onChange={onMessageChange}
           value={cardForm.message}
         ></input>
-        <p>Preview: {cardForm.message}</p>
+        <p>
+          Preview: <span className="preview">{cardForm.message}</span>
+        </p>
         <input
           type="Submit"
           disabled={
