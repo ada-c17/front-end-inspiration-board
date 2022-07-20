@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import { useState } from "react";
 import axios from "axios";
-import galaxy from "../data/galaxy.jpg";
+import galaxy from "../data/galaxy copy-4.jpg";
 import "./NewBoardForm.css";
 // import { attachClipboardStubToView } from "@testing-library/user-event/dist/types/utils";
 
