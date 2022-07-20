@@ -93,8 +93,8 @@ h2 {
   margin-right: 5rem;
   /* background-color: #ADC6CC; */
   background-color:#74bec1;
-  padding-left: 30px;
-  box-shadow: -10px 7px 7px #4F4F4F;
+  padding-left: 40px;
+  box-shadow: -10px 7px 8px #4F4F4F;
 }
 
 .boards__selected {
@@ -272,7 +272,7 @@ h2:nth-of-type(1) {
   display: block;
   z-index: 10;
   display: block;
-  /* height: 50%; */
+  height: 18%;
   width: 20%;
   background: linear-gradient(to right, #fff 20%, #fff 40%, #8cc7ec 50%, #8cc7ec 55%, #fff 70%, #fff 100%);
   background-size: 200% auto;
@@ -287,3 +287,4 @@ h2:nth-of-type(1) {
       background-position: 200% center;
     }
   }
+
