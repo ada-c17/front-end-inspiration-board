@@ -91,9 +91,9 @@ function App() {
             below!
           </h2>
         </section>
+
         <BoardList boards={boardData} selectBoard={selectBoard} />
         {/* ternary to check if theres is board selected*/}
-        <h2>Selected Board</h2>
         <p>
           {selectedBoardData.boardId ? (
             <Board
