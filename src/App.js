@@ -12,6 +12,7 @@ import {
   selectBoardAsync,
   getAllBoardsAsync,
 } from "./apiCalls";
+import "./App.css";
 
 // this could all go in a separate apiCalls.js folder or something
 
@@ -78,27 +79,38 @@ function App() {
   };
 
   return (
-    <main className="App">
-      <h1>Inspiration Board</h1>
-      {/* ternary to check if theres is board selected*/}
-      <BoardList boards={boardData} selectBoard={selectBoard} />
-      <h2>Selected Board</h2>
-      <p>
-        {selectedBoardData.boardId ? (
-          <Board
-            id={selectedBoardData.boardId}
-            title={selectedBoardData.title}
-            creator={selectedBoardData.creator}
-          ></Board>
-        ) : (
-          ""
-        )}
-      </p>
+    <div className="App">
+      <header>
+        <h1>in5piration board</h1>
+      </header>
+
+      <main>
+        <section id="call-to-action">
+          <h2>
+            Need a little inspiration? Create a new board or select a board
+            below!
+          </h2>
+        </section>
+        <BoardList boards={boardData} selectBoard={selectBoard} />
+        {/* ternary to check if theres is board selected*/}
+        <h2>Selected Board</h2>
+        <p>
+          {selectedBoardData.boardId ? (
+            <Board
+              id={selectedBoardData.boardId}
+              title={selectedBoardData.title}
+              creator={selectedBoardData.creator}
+            ></Board>
+          ) : (
+            ""
+          )}
+        </p>
+      </main>
 
       <NewBoardForm onBoardSubmit={handleNewBoard} />
       {/* We probably only want to show when a board is selected */}
       <NewCardForm onCardSubmit={handleNewCard} />
-    </main>
+    </div>
   );
 }
 
