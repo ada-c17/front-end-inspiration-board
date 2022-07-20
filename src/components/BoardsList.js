@@ -12,7 +12,7 @@ const BoardsList = (props) => {
   });
   return (
     <div>
-      <ol>
+      <ol  id="EachBoard">
         {boardComponent}
       </ol>
     </div>

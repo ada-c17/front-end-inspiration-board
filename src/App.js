@@ -54,22 +54,24 @@ function App() {
   }
   return (
     <div class = "container">
-      <div id="Boards">
-        <h1>BOARDS</h1>
-        <BoardsList
-          boards={boards}
-          boardInfoCallback={boardSelected}
-        />
-      </div>
+      <div >
+        <div id="Boards">
+          <h1>BOARDS</h1>
+          <BoardsList
+            boards={boards}
+            boardInfoCallback={boardSelected}
+          />
+        </div>
 
-      <div>
-        {boardID && <BoardWithCards boardID={boardID} boardTitle = {boardTitle}/>}
-      </div>
+        <div>
+          {boardID && <BoardWithCards boardID={boardID} boardTitle = {boardTitle}/>}
+        </div>
 
-      <div>
-        <BoardForm addBoardCallback={addBoard} />
-      </div>  
-      
+        <div>
+          <BoardForm addBoardCallback={addBoard} />
+        </div>  
+        
+      </div>
     </div>
   );
 }
