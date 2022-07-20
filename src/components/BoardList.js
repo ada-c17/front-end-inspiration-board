@@ -1,18 +1,35 @@
 import React from "react";
 import PropTypes from "prop-types";
+import Board from "./Board";
 
 const BoardList = (props) => {
-  const viewBoard = (id) => {
-    props.selectBoard(id);
-  };
+  // const viewBoard = () => {
+  //   props.selectBoard(props.id);
+  // };
 
   // map function to return buttons with title of each board
-  const boardTitles = props.boards.map((board) => {
-    const viewBoardById = () => {
-      viewBoard(board.id);
-    };
-    return <button onClick={viewBoardById}>{board.title}</button>;
+  const boardTitles = props.boardData.map((board) => {
+    return (
+      <Board
+        boardId={board.boardId}
+        title={board.title}
+        creator={board.creator}
+        selectBoard={props.selectBoard}
+        cards={board.cards}
+      ></Board>
+    );
   });
+
+  // const boardTitles = props.boardData.map((board) => {
+  //   return <button onClick={viewBoard}>{board.title}</button>;
+  // });
+
+  // const boardTitles = props.boardData.map((board) => {
+  //   const viewBoardById = () => {
+  //     viewBoard();
+  //   };
+  //   return <button onClick={viewBoardById}>{board.title}</button>;
+  // });
 
   return (
     <section>
@@ -23,8 +40,8 @@ const BoardList = (props) => {
 };
 
 BoardList.propTypes = {
-  boards: PropTypes.arrayOf(PropTypes.object).isRequired,
-  selectBoard: PropTypes.func.isRequired,
+  boardData: PropTypes.arrayOf(PropTypes.object).isRequired,
+  // selectBoard: PropTypes.func.isRequired,
 };
 
 export default BoardList;

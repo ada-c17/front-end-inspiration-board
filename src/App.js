@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import NewBoardForm from "./components/NewBoardForm";
 import NewCardForm from "./components/NewCardForm";
 import BoardList from "./components/BoardList";
-import axios from "axios";
+import CardList from "./components/CardList";
 import Board from "./components/Board";
 import {
   postBoardAsync,
@@ -11,24 +11,13 @@ import {
   deleteCardAsync,
   selectBoardAsync,
   getAllBoardsAsync,
+  getAllCardsAsync,
 } from "./apiCalls";
-
-// this could all go in a separate apiCalls.js folder or something
 
 function App() {
   const [boardData, setBoardData] = useState([]);
-  const [selectedBoardData, setSelectedBoardData] = useState({
-    title: "",
-    creator: "",
-    boardId: null,
-  });
-  const [cardData, setCardData] = useState([]);
-  // sample boards data to test BoardList
-  // const boardSet = [
-  //   { title: "Memes", creator: "Michael Scott", id: 1 },
-  //   { title: "Inspirational Quotes", creator: "Dwight Schrute", id: 2 },
-  //   { title: "Romance Advice", creator: "Kelly Kapoor" , id: 3},
-  // ];
+  const [selectedBoardId, setSelectedBoardId] = useState(null);
+  // const [cardData, setCardData] = useState([]);
 
   const displayAllBoards = () => {
     getAllBoardsAsync()
@@ -45,9 +34,34 @@ function App() {
     displayAllBoards();
   }, [boardData]);
 
-  const selectBoard = (board) => {
-    setSelectedBoardData(board);
+  const selectBoard = (id) => {
+    selectBoardAsync(id)
+      .then((board) => {
+        setSelectedBoardId(board.boardId);
+
+        // setCardData(board.cards);
+        console.log(board);
+      })
+      .catch((err) => {
+        console.log(err);
+        throw new Error("error displaying board");
+      });
   };
+
+  // const displayAllCards = () => {
+  //   getAllCardsAsync()
+  //     .then((cards) => {
+  //       setCardData(cards);
+  //     })
+  //     .catch((err) => {
+  //       console.log(err);
+  //       throw new Error("error displaying boards");
+  //     });
+  // };
+
+  // useEffect(() => {
+  //   displayAllCards();
+  // }, [cardData]);
 
   const postBoard = (boardData) => {
     postBoardAsync(boardData)
@@ -60,15 +74,24 @@ function App() {
   };
 
   const postCard = (cardData) => {
-    postCardAsync(cardData)
-      .then((newCard) => {
-        setCardData((oldData) => [...oldData, newCard]);
+    postCardAsync(cardData, selectedBoardId)
+      .then((selectedBoard) => {
+        setBoardData((oldBoardData) => {
+          const newBoardData = oldBoardData.map((board) => {
+            if (board.boardId === selectedBoardId) {
+              return selectedBoard;
+            } else {
+              return board;
+            }
+          });
+          return newBoardData;
+        });
       })
       .catch((err) => {
         console.log(err.message);
       });
   };
-  // these seem kind of unecessary to me
+  // not sure if we want/need these to be in a helper function
   const handleNewBoard = (formFields) => {
     postBoard(formFields);
   };
@@ -77,27 +100,37 @@ function App() {
     postCard(formFields);
   };
 
+  const getSelectedBoard = (id) => {
+    for (const board of boardData) {
+      if (board.boardId === id) {
+        return board;
+      }
+    }
+  };
+
   return (
     <main className="App">
       <h1>Inspiration Board</h1>
-      {/* ternary to check if theres is board selected*/}
-      <BoardList boards={boardData} selectBoard={selectBoard} />
+      <BoardList boardData={boardData} selectBoard={selectBoard} />
       <h2>Selected Board</h2>
+      {/* helper function for these ternarys */}
       <p>
-        {selectedBoardData.boardId ? (
-          <Board
-            id={selectedBoardData.boardId}
-            title={selectedBoardData.title}
-            creator={selectedBoardData.creator}
-          ></Board>
+        {selectedBoardId
+          ? `${getSelectedBoard(selectedBoardId).title} by ${
+              getSelectedBoard(selectedBoardId).creator
+            }`
+          : "choose a board!"}
+      </p>
+      <p>
+        {selectedBoardId ? (
+          <CardList cardData={getSelectedBoard(selectedBoardId).cards} />
         ) : (
           ""
         )}
       </p>
 
       <NewBoardForm onBoardSubmit={handleNewBoard} />
-      {/* We probably only want to show when a board is selected */}
-      <NewCardForm onCardSubmit={handleNewCard} />
+      {selectedBoardId ? <NewCardForm onCardSubmit={handleNewCard} /> : ""}
     </main>
   );
 }

@@ -20,10 +20,8 @@ export const postBoardAsync = (boardData) => {
     });
 };
 
-export const postCardAsync = (cardData) => {
+export const postCardAsync = (cardData, boardId) => {
   const requestBody = { ...cardData };
-  // need to extract board id somehow: not like this
-  const boardId = cardData.boardId;
 
   return axios
     .post(`${kBaseUrl}/boards/${boardId}/cards`, requestBody)
@@ -32,7 +30,7 @@ export const postCardAsync = (cardData) => {
     })
     .catch((err) => {
       console.log(err);
-      throw new Error("error posting board");
+      throw new Error("error posting card");
     });
 };
 
@@ -46,22 +44,34 @@ export const getAllBoardsAsync = () => {
   return axios
     .get(`${kBaseUrl}/boards/`)
     .then((response) => {
-      return response.data
+      return response.data;
     })
     .catch((err) => {
       console.log(err);
       throw new Error("error getting all boards");
-    })
-}
+    });
+};
 
 export const selectBoardAsync = (boardId) => {
   return axios
     .get(`${kBaseUrl}/boards/${boardId}`)
     .then((response) => {
-      return response.data
-  })
+      return response.data;
+    })
     .catch((err) => {
       console.log(err);
       throw new Error(`error getting board ${boardId}`);
-  });
-}
+    });
+};
+
+// export const getAllCardsForBoardAsync = (boardId) => {
+//   return axios
+//     .get(`${kBaseUrl}/boards/${boardId}/cards`)
+//     .then((response) => {
+//       return response.data;
+//     })
+//     .catch((err) => {
+//       console.log(err);
+//       throw new Error("error getting cards for board id:");
+//     });
+// };

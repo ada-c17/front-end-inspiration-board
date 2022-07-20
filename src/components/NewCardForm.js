@@ -2,8 +2,7 @@ import React, { useState } from "react";
 import PropTypes from "prop-types";
 
 const kDefaultFormState = {
-  title: "",
-  creator: "",
+  message: "",
 };
 
 const NewCardForm = ({ onCardSubmit }) => {
@@ -30,23 +29,15 @@ const NewCardForm = ({ onCardSubmit }) => {
       <form onSubmit={handleSubmit}>
         <h2>Create a New Card</h2>
         <div>
-          <label htmlFor="title">Title</label>
+          <label htmlFor="message">Message</label>
           <input
             type="text"
-            name="title"
-            value={formFields.title}
+            name="message"
+            value={formFields.message}
             onChange={handleChange}
           ></input>
         </div>
-        <div>
-          <label htmlFor="creator"> Creator</label>
-          <input
-            type="text"
-            name="creator"
-            value={formFields.creator}
-            onChange={handleChange}
-          ></input>
-        </div>
+
         <div>
           <input type="submit" value="Add card!"></input>
         </div>
@@ -60,3 +51,15 @@ NewCardForm.propTypes = {
 };
 
 export default NewCardForm;
+
+{
+  /* <div>
+<label htmlFor="creator"> Creator</label>
+<input
+  type="text"
+  name="creator"
+  value={formFields.creator}
+  onChange={handleChange}
+></input>
+</div> */
+}
