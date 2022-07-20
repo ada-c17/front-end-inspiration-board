@@ -37,25 +37,33 @@ const BoardForm = (props) => {
 
   return (
     <form onSubmit={handleSubmit}>
-      <label htmlFor="title">Title</label>
-      <input
-        type="text"
-        name="title"
-        value={formData.title}
-        onChange={onFormChange}
-      />
-      <label htmlFor="owner">Created by</label>
-      <input
-        type="text"
-        name="owner"
-        value={formData.owner}
-        onChange={onFormChange}
-      />
-      <input
-        type="submit"
-        value="Submit"
-        disabled={disableBoard}
-      />
+      <div id="inputBox">
+        <label htmlFor="title"></label>
+        <input
+          type="text"
+          name="title"
+          value={formData.title}
+          onChange={onFormChange}
+        />
+        <span>Title</span>
+      </div>
+      <div id="inputBox">
+        <label htmlFor="owner"></label>
+        <input
+          type="text"
+          name="owner"
+          value={formData.owner}
+          onChange={onFormChange}
+        />
+        <span>Owner</span>
+      </div>
+      <div id="inputBox"> 
+        <input
+          type="submit"
+          value="Submit"
+          disabled={disableBoard}
+        />
+      </div>
     </form>
   );
 };

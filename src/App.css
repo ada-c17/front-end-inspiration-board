@@ -2,19 +2,21 @@
   width: 100vw;
   height: 100vh;
   display: grid;
-  grid-template-columns: auto auto auto auto;
+  grid-template-columns: auto auto;
   grid-template-rows: 30% auto auto auto auto;
-  gap: 10px;
+  row-gap: 50px;
+  column-gap: 50px;
   justify-items: space-evenly;
 }
 
 #boards {
-  text-align: center;
+  text-align: left;
   /* background-image: url(/src/images/notebook.jpg);
   background-repeat: no-repeat;
   background-size: cover; */
-  grid-column: 1/4;
-  grid-row: 2/3
+  grid-column: 1/1;
+  grid-row: 1/1;
+  font-size: 25pt
 } 
 
 
@@ -25,7 +27,7 @@
 #eachBoard{
   list-style-type: none;
   grid-column: 3/3;
-  grid-column: 2/3
+  grid-row: 2/3
 }
 
 #eachBoard:hover {
@@ -111,6 +113,88 @@
 #boardWithcard {
   text-align: center;
 }
+
+#boardFormContainer {
+  grid-column: 1/1;
+  grid-row: 4/4;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  
+}
+
+#boardForm {
+  position: relative;
+  padding: 50px 50px;
+  background: #fff;
+  border-radius: 10px;
+  background: linear-gradient(45deg, pink, dodgerblue);
+}
+
+#boardForm h1 {
+  font-size: 2em;
+  padding: 10px;
+  color: #000;
+  letter-spacing: 5px;
+  margin-bottom: 60px;
+  font-weight: bold;
+  padding-left: 10px;
+  text-align: center
+}
+#boardForm #inputBox {
+  position: relative;
+  width: 300px;
+  height: 50px;
+  margin-bottom: 50px;
+}
+
+#boardForm #inputbox input {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  border: 2px solid #000;
+  outline: none;
+  background: none;
+  padding: 10px;
+  border-radius: 10px;
+  font-size: 1.2em;
+}
+
+#boardForm #inputbox:last-child {
+  margin-bottom: 0;
+}
+
+#boardForm #inputbox span {
+  position: absolute;
+  top: 14px;
+  left: 20px;
+  font-size: 1em;
+  transition: 0.6s;
+  font-family: sans-serif;
+}
+
+#boardForm #inputbox input:focus ~ span,
+#boardForm #inputbox input:valid ~ span {
+  transform: translateX(-13px) translateY(-35px);
+  font-size: 1em;
+}
+
+#boardForm #inputbox [type="button"] {
+  width: 50%;
+  background: dodgerblue;
+  color: #fff;
+  border: #fff;
+}
+
+#boardForm #inputbox:hover [type="button"] {
+  background: linear-gradient(45deg, greenyellow, dodgerblue);
+}
+
 
 
 /* #redTextBox {

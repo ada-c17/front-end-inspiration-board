@@ -66,11 +66,12 @@ function App() {
         <div>
           {boardID && <BoardWithCards boardID={boardID} boardTitle = {boardTitle}/>}
         </div>
-
-        <div>
-          <BoardForm addBoardCallback={addBoard} />
-        </div>  
-        
+        <section id="boardFormContainer">
+          <div id="boardForm">
+            <h1>Make a new board</h1>
+            <BoardForm addBoardCallback={addBoard} />
+          </div>  
+        </section>
       </div>
     </div>
   );
