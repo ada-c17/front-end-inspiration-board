@@ -5,11 +5,11 @@
     text-align: center;
 }
 .visible{
-    margin-left:500px;
+    margin-left:450px;
     background-image:none;
     float:left;
-    height:400px;
-    width:400px;
+    height:250px;
+    width:500px;
 }
 
 .not-visible{

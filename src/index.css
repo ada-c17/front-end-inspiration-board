@@ -57,20 +57,18 @@ a:hover {
   font-family: 'SpaceFont';
   float:right;
   line-height : 40px ;
-  font-size: 2rem;
+  font-size: 1.8rem;
   text-decoration: none;
-  text-align:right; 
-  text-align-last: right; 
-  /* text-align: center; */
+  text-align: center;
   margin-right: 100px;
   margin-top: 20px; 
-  background-image: url("./data/earth2.png");
+  background-image: url("./data/earth3.png");
   background-size: cover;
   color:rgb(171, 234, 134);
   text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
   font-weight: bold;
-  height:170px;
-  width:179px;
+  height:150px;
+  width:130px;
   z-index: 2;
 
 }
