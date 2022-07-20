@@ -5,10 +5,9 @@ import "./index.css";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 import Board from "./components/Board.js";
-
 import NewBoardForm from "./components/NewBoardForm.js";
 
-// added reactrouter library to work with routes down below
+// added react-router library to work with routes down below
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <BrowserRouter>

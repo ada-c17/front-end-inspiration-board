@@ -58,21 +58,11 @@ const NewBoardForm = () => {
   };
 
   const onGetQuote = () => {
-    axios.defaults.headers.common["Authorization"] =
-      process.env.REACT_APP_API_KEY_ZEN;
-
     axios
-      .get(
-        `https://zenquotes.io/api/random?api-key=${process.env.REACT_APP_API_KEY_ZEN}`,
-        {
-          mode: "no-cors",
-        }
-      )
+      .get(`http://127.0.0.1:5000/zen`)
       .then((response) => {
-        console.log(response);
-        console.log(process.env.REACT_APP_API_KEY_ZEN);
-
-        setQuote(response.data.q);
+        console.log(response.data[0]);
+        setQuote(response.data[0].q);
       })
       .catch((error) => {
         console.log("Oh no!!!");
