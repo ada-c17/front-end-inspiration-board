@@ -36,6 +36,27 @@ function App() {
       });
   };
 
+  const deleteBoard = (id) => {
+    console.log(`deleteBoard: Deleting Board ${id}`);
+    /* Find and remove board with give id from list of boards */
+
+    for (let i = 0; i < boards.length; i++) {
+      if (boards[i].board_id === id) {
+        boards.splice(i, 1);
+      }
+    }
+    /* Update number of boards so that React will see change */
+    getBoards([...boards]);
+
+    /* Delete board in the back end */
+    axios
+      .delete(`http://shiver-of-sharks.herokuapp.com/boards/${id}`)
+      .then((response) => {})
+      .catch((error) => {
+        console.log(<section>{error.response.data.message}</section>);
+      });
+  };
+
   useEffect(() => {
     axios
       .get("http://shiver-of-sharks.herokuapp.com/boards")
@@ -87,6 +108,7 @@ function App() {
             setIsOnHomepage={setIsOnHomepage}
             isOnHomepage={isOnHomepage}
             setCards={setCards}
+            deleteBoardCallBack={deleteBoard}
           ></Board>
         </div>
         <NewBoardForm addBoardCallback={addBoardData} />

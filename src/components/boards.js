@@ -13,6 +13,7 @@ const Board = (props) => {
         isOnHomepage={props.isOnHomepage}
         setActiveBoard={props.setActiveBoard}
         setCards={props.setCards}
+        deleteBoardCallBack={props.deleteBoardCallBack}
       ></SingleBoard>
     );
   });

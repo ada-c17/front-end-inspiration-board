@@ -2,6 +2,11 @@ import React from "react";
 import PropTypes from "prop-types";
 
 const SingleBoard = (props) => {
+  const deleteSingleBoard = () => {
+    console.log(`Deleting board ${props.board.board_id}`);
+    props.deleteBoardCallBack(props.board.board_id);
+  };
+
   const clickMe = () => {
     props.setIsOnHomepage(false);
     console.log(props.board);
@@ -9,11 +14,14 @@ const SingleBoard = (props) => {
     props.setCards(props.board.cards);
   };
   return (
-    <section className= "single-board" onClick={clickMe}>
-      <ul>
-        <li>{props.board.owner}</li>
-        <li>{props.board.title}</li>
-      </ul>
+    <section>
+      <section className="single-board" onClick={clickMe}>
+        <ul>
+          <li>{props.board.owner}</li>
+          <li>{props.board.title}</li>
+        </ul>
+      </section>
+      <button onClick={deleteSingleBoard}>Delete</button>
     </section>
   );
 };
