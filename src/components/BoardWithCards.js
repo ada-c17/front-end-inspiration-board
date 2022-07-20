@@ -93,7 +93,7 @@ const BoardWithCards = (props) => {
 
   return (
     <div id="boardWithcard">
-      <h2> {props.boardTitle}</h2>
+      <h1> {props.boardTitle}</h1>
       <div>{cardComponent}</div>
       <div class = "redTextBox">
         <CardForm cardsCallback={addCard} boardID={props.boardID} />
