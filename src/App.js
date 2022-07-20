@@ -63,6 +63,8 @@ function App() {
         console.log(err.message);
       });
   };
+
+  // can confirm -- we do not need postBoard -TH
   // these seem kind of unecessary to me
   // const handleNewBoard = (formFields) => {
   //   postBoard(formFields);
@@ -80,7 +82,8 @@ function App() {
 
       <section id="call-to-action">
         <h2>
-          Need a little inspiration? Create a new board or select a board below!
+          Need a little ✨inspiration✨? Create a new board or select a board
+          below!
         </h2>
       </section>
 
