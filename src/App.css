@@ -1,8 +1,9 @@
 body {
   margin: 3rem;
   font-family: 'Open Sans', sans-serif;
+  font-size: medium;
   color: #263238;
-  /* background-image: url('../src/positive-doodle-images.jpeg'); */
+  background-image: url('../src/pexels-fwstudio-129731.jpg'); 
   background-size: cover;
   /* overflow-x: hidden; */
 }
@@ -30,6 +31,10 @@ h2 {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
 }
+.options {
+  display: block;
+  font-size:large;
+}
 
 .cards__container {
   display: grid;
@@ -39,27 +44,31 @@ h2 {
 
 .boards__list {
   font-family: "Permanent Marker", cursive;
+  padding: 15px;
   font-size: larger;
   font-weight: bolder;
   max-height: 15rem;
   /* min-height: 9rem; */
   overflow: scroll;
   margin-right: 5rem;
-  border: black solid 1px;
-  background-color: #ADC6CC;
+  /* background-color: #ADC6CC; */
+  background-color:#74bec1;
   padding-left: 30px;
+  box-shadow: -10px 7px 7px #4F4F4F;
 }
 
 .boards__selected {
   font-family: "Permanent Marker", cursive;
   font-size: larger;
   font-weight: bolder;
-  min-height: 100px; 
+  min-height: 60px; 
   margin-right: 11rem;
-  border: black solid 1px;
-  background-color: #ADC6CC;
-  padding: 15px;
+  background-color:#adebbe;
+  text-align: center;
+  padding-top: 30px;
+  padding-bottom: 30px;
   overflow-x: hidden;
+  box-shadow: -10px 7px 7px #4F4F4F;
 }
 
 .new-board-form__container,
@@ -67,6 +76,7 @@ h2 {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
+  font-size:medium;
 }
 
 .new-board-form__form,
@@ -87,6 +97,7 @@ h2 {
 .new-board-form__toggle-btn,
 .new-card-form__form-submit-btn {
   padding: 0.5em;
+  font-size: larger;
   background-color: white;
   border: 2px solid black;
   border-radius: 15px;
@@ -106,7 +117,7 @@ h2 {
 .card-item {
   font-family: "Homemade Apple", cursive;
   font-family: 'Concert One', cursive;
-  background-color: #F3E0AE;
+  background-color:#FFFF88;
   box-shadow: -10px 7px 7px #4F4F4F;
   min-height: 200px;
   display: flex;

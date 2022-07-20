@@ -120,7 +120,7 @@ const CardList = (props) => {
       <h2>Cards for {props.board.title} 
         <div>
           <label className="dropdown__arrows"> Sort by </label>
-          <select onChange={sortCards}>
+          <select className="options" onChange={sortCards}>
             <option value="asc_id">Id</option>
             <option value="asc_alpha">Message</option>
             <option value="asc_likes">Likes</option>
