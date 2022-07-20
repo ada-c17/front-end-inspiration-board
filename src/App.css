@@ -44,6 +44,14 @@ body {
   width: 400px;
 }
 
+.boardform-hidden {
+  grid-area: boardform;
+  color: white;
+  background-color:#fdf5ee;
+  height: 300px;
+  width: 400px;
+}
+
 .cards {
   margin: 1em;
   padding: 0.5em;
@@ -139,7 +147,7 @@ input[type=text]:focus {
   user-select: none;
   -webkit-user-select: none;
   vertical-align: middle;
-  width: 40%;
+  width: 150px;
 }
 
 .startButton:after {

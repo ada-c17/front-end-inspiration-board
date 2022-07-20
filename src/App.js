@@ -140,6 +140,8 @@ function App() {
     setIsBoardFormVisible(!isBoardFormVisible);
   };
 
+  const hideBoard = isBoardFormVisible ? "boardform" : "boardform-hidden";
+
   return (
     <div className="container">
       <header className="header">
@@ -154,7 +156,7 @@ function App() {
           fetchCardsCallback={fetchCards}
         ></Board>
       </section>
-      <section className="boardform">
+      <section className={hideBoard}>
         {isBoardFormVisible ? (
           <NewBoardForm addBoardCallback={createNewBoard}></NewBoardForm>
         ) : (
