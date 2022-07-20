@@ -12,6 +12,7 @@ const defaultFormState = {
 export const CreateBoard = ({ onCreateCallBack }) => {
   const [title, setTitle] = useState(defaultFormState.title);
   const [owner, setOwner] = useState(defaultFormState.owner);
+  const [hideForm, setHideForm] = useState(false);
 
   const handleChange = (handler) => (event) => {
     handler(event.target.value);
@@ -37,15 +38,25 @@ export const CreateBoard = ({ onCreateCallBack }) => {
 
   return (
     <Container title="Create Board">
-      <form onSubmit={onSubmit} className="card">
+      {hideForm ? null: <form onSubmit={onSubmit} className="card">
         <label className="create-board-title">Title</label>
         <input value={title} onChange={handleChange(setTitle)} />
         <label className="create-board-owner">Owner</label>
         <input value={owner} onChange={handleChange(setOwner)} />
-        <button className="create-board-submit-btn" type="submit" disabled={!title || !owner}>
+        <button
+          className="create-board-submit-btn"
+          type="submit"
+          disabled={!title || !owner}
+        >
           Submit
         </button>
-      </form>
+      </form>}
+      <button
+        className="create-board-submit-btn"
+        onClick={() => setHideForm(!hideForm)}
+      >
+        {hideForm ? 'Show Form' : 'Hide Form'  }
+      </button>
     </Container>
   );
 };

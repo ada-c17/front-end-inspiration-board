@@ -25,7 +25,11 @@ export const CreateCard = ({ addCardCallback }) => {
       <form onSubmit={submitCreateCardData} className="d-flex flex-column">
         <Container className="new-message-box" title="New Message" />
         <input className="m-2" value={newMessage} onChange={handleChange} />
-        <button className="btn" type="submit">
+        <button
+          className="btn"
+          type="submit"
+          disabled={!newMessage || newMessage.length > 40}
+        >
           Submit
         </button>
       </form>
