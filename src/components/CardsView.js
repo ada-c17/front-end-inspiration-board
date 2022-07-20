@@ -17,26 +17,27 @@ const CardsView = ({
     setChosenBoard(null);
   };
 
-  const funcOnSortChange = (event) => {
-    console.log(event);
-    const sortOption = document.getElementById("sortOptionsDropDown");
-    console.log(sortOption);
-    sortOption.addEventListener("change", sortCards);
-  };
+  // const funcOnSortChange = (event) => {
+  //   console.log(event);
+  //   const sortOption = document.getElementById("sortOptionsDropDown").value;
+  //   console.log(sortOption);
+  //   sortOption.addEventListener("change", sortCards);
+  // };
 
   // have state for cards?   setCards()
 
   const sortCards = () => {
     let optionChosen = document.getElementById("sortOptionsDropDown").value;
     console.log(optionChosen);
+    const newCards = [...cards];
     if (optionChosen === "sort alphabetically") {
-      cards.sort((obj1, obj2) => (obj1.message > obj2.message ? 1 : -1));
+      newCards.sort((obj1, obj2) => (obj1.message > obj2.message ? 1 : -1));
     } else if (optionChosen === "sort by likes") {
-      cards.sort((obj1, obj2) => (obj1.like_count > obj2.like_count ? 1 : -1));
+      newCards.sort((obj1, obj2) => (obj1.like_count > obj2.like_count ? 1 : -1));
     } else if (optionChosen === "sort by ID") {
-      cards.sort((obj1, obj2) => (obj1.card_id > obj2.card_id ? 1 : -1));
+      newCards.sort((obj1, obj2) => (obj1.card_id > obj2.card_id ? 1 : -1));
     }
-    setCards(cards);
+    setCards(newCards);
   };
 
   return (
@@ -51,10 +52,10 @@ const CardsView = ({
         submitCard={submitCard}
         chosenBoard={chosenBoard}
       ></NewCardButton>
-      <select id="sortOptionsDropDown" onChange={funcOnSortChange}>
-        <option> sort alphabetically </option>
-        <option> sort by likes </option>
-        <option> sort by ID </option>
+      <select id="sortOptionsDropDown" onChange={sortCards}>
+        <option>sort alphabetically</option>
+        <option>sort by likes</option>
+        <option>sort by ID</option>
       </select>
     </div>
   );
