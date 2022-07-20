@@ -1,6 +1,6 @@
 .new-board__form {
     display: flex;
-    justify-content: left;
+    justify-content: center;
 }
 
 .new-board__fields {
@@ -8,13 +8,16 @@
     grid-template-columns: 1fr 1fr 1fr;
     width: 500x;
     row-gap: 10px;
+    font-family: Silkscreen;
 }
 
 .new-board__submit {
     grid-column: span 2;
+    font-family: Silkscreen;
 }
 
 .form-errors {
-    font-size: x-small;
-    color: red
+    font-size: small;
+    color: #4a394a;
+    background-color: #eebdf4;
 }
