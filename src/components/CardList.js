@@ -2,7 +2,7 @@ import React from "react";
 import PropTypes from "prop-types";
 import Card from "./Card";
 
-const CardList = ({ cards, onUpdateLikes, onDelete }) => {
+const CardList = ({ cards, onUpdateLikes, onDelete, boardNum }) => {
   const cardComponents = cards.map((card) => {
     return (
       <Card
@@ -12,6 +12,7 @@ const CardList = ({ cards, onUpdateLikes, onDelete }) => {
         likesCount={card.likesCount}
         onUpdate={onUpdateLikes}
         onDelete={onDelete}
+        boardNum={boardNum}
       />
     );
   });
@@ -29,6 +30,7 @@ CardList.propTypes = {
   ),
   onUpdateLikes: PropTypes.func.isRequired,
   onDelete: PropTypes.func.isRequired,
+  boardNum: PropTypes.number.isRequired,
 };
 
 export default CardList;

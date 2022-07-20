@@ -4,7 +4,6 @@ import axios from "axios";
 import BoardList from "./components/BoardList";
 import CardList from "./components/CardList";
 import BoardForm from "./components/BoardForm";
-import cardData from "./data/cards.json";
 
 const kBaseUrl = "https://ssh-back-end-inspiration-board.herokuapp.com";
 
@@ -40,12 +39,11 @@ const getCardData = (boardId) => {
     });
 };
 
-
 const App = () => {
   const [cardData, setCardData] = useState([]);
   const [boardData, setBoardData] = useState([]);
   const [btnText, setButtonText] = useState("Create New Dream");
-  const [boardId, setBoardId] = useState(0)
+  let [boardNum, setBoardNum] = useState(0);
   let newText = "";
 
   const showBoardForm =
@@ -56,11 +54,25 @@ const App = () => {
       setBoardData(boards);
     });
   };
-  const updateCardData = ( updatedCard, boardId) => {
+
+  const updateCardData = (updatedCard) => {
     return axios
-      .patch(`${kBaseUrl}/boards/${boardId}/cards?likes_count=${updatedCard.likesCount}`)
+      .patch(
+        `${kBaseUrl}/cards/${updatedCard.cardId}?likes_count=${updatedCard.likesCount}`
+      )
       .then((response) => {
-        return response.data.map(cardApiToJson);
+        return response;
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
+
+  const deleteCardData = (cardId) => {
+    return axios
+      .delete(`${kBaseUrl}/cards/${cardId}`)
+      .then((response) => {
+        return response;
       })
       .catch((err) => {
         console.log(err);
@@ -77,8 +89,8 @@ const App = () => {
     loadBoards();
   }, []);
 
-  const increaseLikeCount = (updatedCard, boardId) => {
-    updateCardData(updatedCard, boardId);
+  const increaseLikeCount = (updatedCard) => {
+    updateCardData(updatedCard);
     const updatedLikes = cardData.map((card) => {
       if (card.cardId === updatedCard.cardId) {
         return updatedCard;
@@ -90,12 +102,15 @@ const App = () => {
     setCardData(updatedLikes);
   };
 
-  const getBoardId = (boardId) => {
-    setBoardId(boardId);
+  const handleBoard = (boardId, title) => {
+    const newNum = boardId;
+
+    setBoardNum(newNum);
     loadCards(boardId);
   };
 
   const onCardDelete = (cardId) => {
+    deleteCardData(cardId);
     const currentCards = cardData.filter((card) => {
       return card.cardId !== cardId;
     });
@@ -141,12 +156,12 @@ const App = () => {
           onAddBoard={handleBoardDataReady}
           shouldHide={showBoardForm}
         ></BoardForm>
-        <BoardList boards={boardData} onSelectBoard={getBoardId} />
+        <BoardList boards={boardData} onSelectBoard={handleBoard} />
         <CardList
           cards={cardData}
           onUpdateLikes={increaseLikeCount}
           onDelete={onCardDelete}
-          boardId={boardId}
+          boardNum={boardNum}
         />
       </main>
     </div>
