@@ -8,7 +8,6 @@ const Card = (props) => {
     const changeLike = () => {
         props.changeLikes(props.id)
     };
-    //console.log("I am in the card component")
     return (
         <div id= "post-it-note">
             <ul id = "singleNote">
