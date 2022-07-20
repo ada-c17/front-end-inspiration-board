@@ -1,6 +1,7 @@
 .board{
     border: solid black 1px;
-    background-color: lightsalmon;
+    /* background-color: lightsalmon; */
+    background-color: #CEE5D0;
     width: 20vw;
     height: 20vw ;
     font-family: 'Courier New', Courier, monospace;
