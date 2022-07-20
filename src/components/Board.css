@@ -1,0 +1,28 @@
+.boardlist{
+    align-items: center;
+    justify-self: center;
+    align-self: center;
+    align-content: center;
+    justify-items: center;
+    height: 100px;
+    width: 100%;
+    overflow-y: scroll;
+    background-color: white;
+}
+
+.selected {
+    background-color: lightgreen;
+}
+
+::-webkit-scrollbar {
+    width: 10px;
+}
+::-webkit-scrollbar-track {
+    background: #f1f1f1;
+}
+::-webkit-scrollbar-thumb {
+    background: #888;
+}
+::-webkit-scrollbar-thumb:hover {
+    background: #31b090;
+}
