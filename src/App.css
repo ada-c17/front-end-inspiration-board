@@ -25,6 +25,7 @@ h2 {
   border: 2px solid #45BFDD;
   background-color: #C3EAF4;
   box-shadow: -15px 7px 1px #6D7375;
+  text-shadow: 2px 2px #5cdeff;
 }
 
 .boards__container {
@@ -125,6 +126,11 @@ h2 {
   justify-content: center;
   padding: 2rem;
   flex-direction: column;
+  width: 150px;
+  margin: 50px;
+  left: 50px;
+  position: relative;
+  bottom: 50px;
 }
 
 .card-item__controls {
