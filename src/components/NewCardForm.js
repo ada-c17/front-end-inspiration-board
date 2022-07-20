@@ -20,7 +20,7 @@ const NewCardForm = (props) => {
                 <label htmlFor="message">Message</label>
                 <input 
                 type="text" 
-                className={message.length === 0 || message.length > 40 ? "invalid-form-input" : ""}
+                className={message.length > 40 ? "invalid-form-input" : ""}
                 value={message} 
                 onChange={handleMessageChange}></input>
                 <p>Preview: {message}</p>
