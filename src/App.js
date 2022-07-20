@@ -5,12 +5,11 @@ import CardList from "./components/CardList";
 import { useState, useEffect } from "react";
 import axios from "axios";
 import Modal from "./components/Modal";
-import CardForm from "./components/CardForm";
 
 function App() {
   const [boards, setBoards] = useState([]);
   const [cards, setCards] = useState([]);
-  const [sortType, setSortType] = useState('card_id');
+  const [sortType, setSortType] = useState("card_id");
   const [openModal, setOpenModal] = useState(false);
 
   const BOARD_URL = "https://inspiration-board-eota.herokuapp.com/boards";
@@ -37,26 +36,28 @@ function App() {
   useEffect(fetchBoards, []);
 
   useEffect(() => {
-    const sortArray = type => {
+    const sortArray = (type) => {
       const types = {
         card_id: "card_id",
         likes_count: "likes_count",
         message: "message",
       };
       const sortProperty = types[type];
-      let sorted = []
+      let sorted = [];
       if (sortProperty === "message") {
-        sorted = [...cards].sort((a, b) => a[sortProperty].localeCompare(b[sortProperty]));
-        } else {
-      sorted = [...cards].sort((a, b) => b[sortProperty] - a[sortProperty])}
-      
+        sorted = [...cards].sort((a, b) =>
+          a[sortProperty].localeCompare(b[sortProperty])
+        );
+      } else {
+        sorted = [...cards].sort((a, b) => b[sortProperty] - a[sortProperty]);
+      }
+
       setCards(sorted);
     };
 
     sortArray(sortType);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [sortType]);
-
 
   const fetchCards = (id) => {
     axios
