@@ -64,45 +64,43 @@ function App() {
       });
   };
   // these seem kind of unecessary to me
-  const handleNewBoard = (formFields) => {
-    postBoard(formFields);
-  };
+  // const handleNewBoard = (formFields) => {
+  //   postBoard(formFields);
+  // };
 
   const handleNewCard = (formFields) => {
     postCard(formFields);
   };
 
   return (
-    <div className="App">
+    <main className="container">
       <header>
         <h1>in5piration board</h1>
       </header>
 
-      <main>
-        <section id="call-to-action">
-          <h2>
-            Need a little inspiration? Create a new board or select a board
-            below!
-          </h2>
-        </section>
+      <section id="call-to-action">
+        <h2>
+          Need a little inspiration? Create a new board or select a board below!
+        </h2>
+      </section>
 
-        <BoardList boards={boardData} selectBoard={selectBoard} />
-        {/* ternary to display board if there is board selected, otherwise display create board form */}
-        {selectedBoardData.boardId ? (
-          <Board
-            id={selectedBoardData.boardId}
-            title={selectedBoardData.title}
-            creator={selectedBoardData.creator}
-          ></Board>
-        ) : (
-          <NewBoardForm onBoardSubmit={handleNewBoard} />
-        )}
-      </main>
+      <BoardList boards={boardData} selectBoard={selectBoard} />
+      {/* ternary to display board if there is board selected, otherwise display create board form */}
+      {selectedBoardData.boardId ? (
+        <Board
+          id={selectedBoardData.boardId}
+          title={selectedBoardData.title}
+          creator={selectedBoardData.creator}
+        ></Board>
+      ) : (
+        <NewBoardForm onBoardSubmit={postBoard} />
+      )}
 
       {/* <NewBoardForm onBoardSubmit={handleNewBoard} /> */}
       {/* We probably only want to show when a board is selected */}
+      {/* NewCardForm may need to be moved to CardList component */}
       <NewCardForm onCardSubmit={handleNewCard} />
-    </div>
+    </main>
   );
 }
 
