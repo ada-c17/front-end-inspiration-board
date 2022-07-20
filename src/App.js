@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import "./App.css";
 import Board from "./components/Board";
 import BoardList from "./components/BoardList";
-import partyFlag from "./images/birthday-flag-png-transparent-birthday-flag-images-120898.png";
 
 function App() {
   const toggleDisplay = () => {
@@ -27,10 +26,7 @@ function App() {
       <header className="App-header">
         <h1>InspOtters</h1>
       </header>
-      <main>
-        <img src={partyFlag} alt="party flag" id="partyFlag" />
-        {toggleDisplay()}
-      </main>
+      <main>{toggleDisplay()}</main>
       <footer>
         ©2022 C17 Otters students: Jodi D., Elaine S., Tori S., Andrea G.Z.
       </footer>
