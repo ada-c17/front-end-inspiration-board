@@ -10,12 +10,16 @@ function Card(props) {
   };
   return (
     <li>
-      <div>{props.message}</div>
-      <button onClick={deleteCard}>Delete</button>{" "}
-      <button onClick={likeCard} className="like">
-        ♡
-      </button>{" "}
-      Likes: {props.likes}
+      <div className="card-message">{props.message}</div>
+      <div className="card-buttons">
+        <button onClick={deleteCard} className="delete-card">
+          Delete
+        </button>{" "}
+        <button onClick={likeCard} className="like">
+          ♡
+        </button>{" "}
+        Likes: {props.likes}
+      </div>
     </li>
   );
 }

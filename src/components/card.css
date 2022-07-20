@@ -6,7 +6,8 @@
 .cards-container li {
     list-style: None;
     background-color: #C2631A;
-    display: inline-block ;
+    display: inline-table ;
+    position: relative;
     width: 250px;
     height: 250px;
     margin: 7px;
@@ -16,6 +17,17 @@
 
 }
 
+.card-message {
+    padding-top: 25%;
+}
+
+.card-buttons {
+    position: absolute;
+    bottom: 0;
+    padding: 15px;
+    margin-left: 33px;
+}
+
 .like {
     background-color: rgb(129, 180, 129);
     color: white;
@@ -23,6 +35,10 @@
     padding: 7px;
     border-radius: 5px;
     margin: 1px;
+}
+
+.delete-card {
+    background-color: rgba(55, 55, 55, 0.53);
 }
 
 .like:hover {
