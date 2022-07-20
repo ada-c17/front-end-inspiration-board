@@ -46,7 +46,7 @@ const NewBoardForm = () => {
     event.preventDefault();
     // this allows a message to appear in the input button for title and owner in the board
     if (boardData.title === "" || boardData.owner === "") {
-      setMessage("Please enter both title and owner");
+      setMessage("Please enter the name for the space and the creator");
     } else {
       // the two below functions makes the first letter of the first word and the second word, be capitalized
       boardData.title = boardData.title
