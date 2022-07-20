@@ -61,6 +61,7 @@ a:hover {
   text-decoration: none;
   text-align:right; 
   text-align-last: right;
+  text-align: center;
   margin-right: 100px;
   margin-top: 20px; 
   background-image: url("./data/earth2.png");
