@@ -1,0 +1,14 @@
+.cards-wrapper {
+    background: url('../cards-background.jpeg');
+    border: 3mm ridge #536670;
+    grid-column-start: 2;
+    grid-row-start: 1;
+    display: flex;
+    flex-flow: row wrap;
+    height: 400px;
+    overflow: scroll;
+    padding: auto;
+    box-shadow: 14px 10px 20px #2134389f;
+}
+
+

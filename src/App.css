@@ -1,0 +1,85 @@
+.App {
+  text-align: center;
+}
+
+body {
+  background: url('../src/app-background.png') no-repeat center fixed;
+  background-size: cover;
+}
+
+*{
+  margin: 20px;
+}
+
+header {
+  padding: 10px;
+  margin: 20px;
+  font-family: 'Pacifico';
+  font-size: 40px;
+  
+}
+.container {
+  display: grid;
+  grid-template-columns: 40% auto;
+  grid-template-rows: 35em auto;
+}
+
+
+input:placeholder-shown {
+  border: 2px solid red;
+  border-radius: 2px;
+  font-size: 15px;
+}
+
+input {
+  font-size: 15px;
+}
+.button {
+  background-color: #a45e60;
+  font-size: 18px;
+  border-radius: 4px;
+}
+
+.button:hover {
+  cursor: pointer;
+  background-color: #03a3b4;
+}
+
+h2 {
+  border: thick double #536670 ;
+  box-shadow: 8px 7px 1px #03a3b4;
+  padding: 0 40px 0 5px;
+  font-family: 'Pacifico';
+  font-size: 30px;
+  width: fit-content;
+  background: rgba(255, 255, 255, 0.688);
+  color: #a45e60;
+  display: inline;
+}
+
+h3 {
+  margin: 0px;
+}
+
+.button-board-visibility {
+  border: 3px outset #536670 ;
+  font-size: 20px;
+  width: fit-content;
+  background: rgba(255, 255, 255, 0.688);
+  padding: 10px 25px;
+  color: #a45e60;
+}
+
+.button-board-visibility:hover {
+  border-style: inset;
+  background: rgba(255, 255, 255, 0.507);
+  cursor: pointer;
+}
+
+.sort-button {
+  display: inline;
+  background-color: #a45e60;
+  font-size: 18px;
+  border-radius: 4px;
+  margin: 0px;
+}
