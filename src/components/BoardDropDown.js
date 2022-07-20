@@ -21,8 +21,8 @@ export const BoardDropDown = ({ id, boards, setSelectedBoard, selectedBoard, onR
       <div style={{ padding: 10 }}>
         <ol className="board-list">
           {boards?.map((each) => (
-            <div>
-            <li
+            <div key={each.id} >
+            <li 
               onClick={() => {
                 setSelectedBoard(each);
               }}
