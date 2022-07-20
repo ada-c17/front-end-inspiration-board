@@ -108,6 +108,7 @@ function App() {
           ""
         )}
       </div>
+      <footer><span>Made by Sorida, Dana, Daria and Camila</span></footer>
     </div>
   );
 }

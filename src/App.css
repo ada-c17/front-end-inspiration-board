@@ -172,6 +172,9 @@ ol.boards__list > li:hover {
   cursor: pointer;
 }
 
+footer {
+  text-align: left;
+}
 
 
 
