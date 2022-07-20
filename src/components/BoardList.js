@@ -4,6 +4,7 @@ import NewBoardForm from "./NewBoardForm";
 import Button from "./Button";
 import PropTypes from "prop-types";
 import axios from "axios";
+import partyFlag from "../images/birthday-flag-png-transparent-birthday-flag-images-120898.png";
 
 const BoardList = ({ changeBoardCallback }) => {
   const [board, setBoard] = useState([]);
@@ -46,8 +47,11 @@ const BoardList = ({ changeBoardCallback }) => {
 
   return (
     <div>
+      <img src={partyFlag} alt="party flag" id="partyFlag" />
       <ul>{buttonComponents}</ul>
       <NewBoardForm handleSubmission={makeNewBoard} />
+      {/* <img src = "https://source.unsplash.com/GtgdYsl2TV0" alt="wood border" id="woodPattern" /> */}
+      <div id="woodPattern"></div>
     </div>
   );
 };
