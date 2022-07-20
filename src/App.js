@@ -154,7 +154,7 @@ const App = () => {
         <button onClick={boardToggle}>{btnText}</button>
         <BoardForm
           onAddBoard={handleBoardDataReady}
-          shouldHide={showBoardForm}
+          shouldHideBoard={showBoardForm}
         ></BoardForm>
         <BoardList boards={boardData} onSelectBoard={handleBoard} />
         <CardList

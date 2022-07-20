@@ -7,7 +7,7 @@ const kDefaultFormState = {
   owner: "",
 };
 
-const BoardForm = ({ onAddBoard, shouldHide }) => {
+const BoardForm = ({ onAddBoard, shouldHideBoard }) => {
   const [formData, setFormData] = useState(kDefaultFormState);
 
   const onInput = (event) => {
@@ -36,7 +36,7 @@ const BoardForm = ({ onAddBoard, shouldHide }) => {
   };
 
   return (
-    <form className={shouldHide} onSubmit={handleSubmit}>
+    <form className={shouldHideBoard} onSubmit={handleSubmit}>
       <h4>Add A Dream</h4>
       <h5> ~dream name~ </h5>
       <input
