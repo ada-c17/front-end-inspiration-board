@@ -34,38 +34,41 @@ const BoardForm = (props) => {
 
     props.addBoardCallback(formData);
   };
-
-  return (
-    <form onSubmit={handleSubmit}>
-      <div id="inputBox">
-        <label htmlFor="title"></label>
-        <input
-          type="text"
-          name="title"
-          value={formData.title}
-          onChange={onFormChange}
-        />
-        <span>Title</span>
+  if (props.shownBoard){
+    return (
+      <div>
+        <form onSubmit={handleSubmit}>
+          <div>
+            <label htmlFor="title">Title</label>
+            <input
+              type="text"
+              name="title"
+              value={formData.title}
+              onChange={onFormChange}
+            />
+          </div>
+          <label htmlFor="owner">Created by</label>
+          <input
+            type="text"
+            name="owner"
+            value={formData.owner}
+            onChange={onFormChange}
+          />
+          <input
+            type="submit"
+            value="Submit"
+            disabled={disableBoard}
+          />
+        </form>
+        <button onClick={props.hideFormCallback}>Hide Board Form</button>
       </div>
-      <div id="inputBox">
-        <label htmlFor="owner"></label>
-        <input
-          type="text"
-          name="owner"
-          value={formData.owner}
-          onChange={onFormChange}
-        />
-        <span>Owner</span>
-      </div>
-      <div id="inputBox"> 
-        <input
-          type="submit"
-          value="Submit"
-          disabled={disableBoard}
-        />
-      </div>
-    </form>
-  );
+    );
+  }
+  else{
+    return (
+      <button onClick={props.hideFormCallback}>Show Board Form</button>
+    )
+  }
 };
 
 export default BoardForm;
