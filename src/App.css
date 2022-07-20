@@ -15,12 +15,18 @@ header {
   font-family: 'Clicker Script', cursive;
   font-size: 2rem;
   color: #f2CC8F;
-  margin-left: 10vw;
+  text-align: right;
+  margin-right: 10vw;
 }
 
 main {
   font-family: 'M PLUS 1 Code', sans-serif;
   margin: 2vw;
+}
+
+.boardContainer {
+  display:flex;
+  flex-flow: row nowrap ;
 }
 
 h4 {

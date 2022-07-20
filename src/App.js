@@ -178,12 +178,14 @@ const App = () => {
         <h2>dream board</h2>
       </header>
       <main>
+        <div className="boardContainer">
         <button onClick={boardToggle}>{btnText}</button>
-        <BoardForm
-          onAddBoard={handleBoardDataReady}
-          shouldHideBoard={showBoardForm}
-        ></BoardForm>
-        <BoardList boards={boardData} onSelectBoard={handleBoard} />
+          <BoardForm
+            onAddBoard={handleBoardDataReady}
+            shouldHideBoard={showBoardForm}
+          ></BoardForm>
+          <BoardList boards={boardData} onSelectBoard={handleBoard} />
+        </div>
         <h4>{boardTitle}</h4>
         <CardList
           cards={cardData}
