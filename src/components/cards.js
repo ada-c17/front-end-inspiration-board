@@ -12,7 +12,8 @@ const Card = (props) => {
         key={index}
         card_id={card.card_id}
         message={card.message}
-        likesCount={card.likesCount}
+        likes_count={card.likes_count}
+        deleteCardCallBack={props.deleteCardCallBack}
       ></SingleCard>
     );
   });

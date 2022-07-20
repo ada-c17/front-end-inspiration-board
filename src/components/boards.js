@@ -37,7 +37,7 @@ Board.propTypes = {
         })
       ),
     })
-  ),
+  ).isRequired,
 };
 
 export default Board;
