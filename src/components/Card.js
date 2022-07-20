@@ -22,7 +22,6 @@ const Card = ({
     PosX = 0;
     PosY = 0;
   }
-  console.log(PosX, PosY);
 
   // rendered draggable components for cards
   return (

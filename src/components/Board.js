@@ -96,7 +96,6 @@ const Board = () => {
         targetCard = card;
       }
     }
-    console.log(data);
     axios
       .put(`https://inspiration-from-otterspace.herokuapp.com/cards/${id}`, {
         PosX: data.x,
