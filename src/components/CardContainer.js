@@ -13,7 +13,7 @@ const CardContainer = (props) => {
         <header>
           <h2>Card List</h2>
         </header>
-        <CardList cardData={props.cardData}></CardList>
+        <CardList selectedBoard={props.board}></CardList>
       </div>
       <div>
         <button onClick={() => setIsCardFormVisible(!isCardFormVisible)}>

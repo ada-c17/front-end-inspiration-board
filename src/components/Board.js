@@ -6,6 +6,7 @@ const Board = (props) => {
   const handleBoardSelect = () => {
     props.selectBoard(props);
     console.log('Working! Clicked!');
+    console.log(props);
   };
 
   const handleBoardDelete = () => {

@@ -1,7 +1,6 @@
 import axios from 'axios';
 import { useState, useEffect } from 'react';
 import Card from './Card';
-import NewCardForm from './NewCardForm';
 import './CardList.css';
 
 export const baseURL = process.env['REACT_APP_BACKEND_URL'];
@@ -9,21 +8,24 @@ export const baseURL = process.env['REACT_APP_BACKEND_URL'];
 const CardList = (props) => {
   //brains
   const [cardData, setCardData] = useState([]);
-
+  // const [selectedBoard, setSelectedBoard] = useState(props.selectedBoard.id);
   useEffect(() => {
+    console.log(props.selectedBoard);
     axios
-      .get(`${baseURL}/cards`)
+      .get(`${baseURL}/boards/${props.selectedBoard.id}/cards`)
       .then((response) => {
+        console.log(response.data);
         setCardData(response.data);
+        console.log(cardData);
       })
       .catch((error) => {
         console.log('Error in getting cards', error.response.data);
       });
-  }, [props.board]);
+  }, [props.selectedBoard]);
 
   const deleteCard = (card) => {
     axios
-      .delete(`${baseURL}/cards/${id}`)
+      .delete(`${baseURL}/cards/${card.id}`)
       .then((response) => {
         const newCardData = cardData.filter((existingCard) => {
           return existingCard.card_id !== card.card_id;
@@ -37,7 +39,7 @@ const CardList = (props) => {
 
   const addOneLike = (card) => {
     axios
-      .put(`${baseURL}/cards/${id}`)
+      .put(`${baseURL}/cards/${card.id}`)
       .then((response) => {
         const newCardData = cardData.map((existingCard) => {
           return existingCard.card_id !== card.card_id
@@ -51,9 +53,15 @@ const CardList = (props) => {
       });
   };
 
-  const cardElements = props.cardData.map((card) => {
+  const cardElements = cardData.map((card) => {
+    console.log(cardData);
     return (
-      <Card card={card} addOneLike={addOneLike} deleteCard={deleteCard}></Card>
+      <Card
+        message={card.message}
+        likes={card.likes}
+        addOneLike={addOneLike}
+        deleteCard={deleteCard}
+      ></Card>
     );
   });
 
@@ -73,10 +81,6 @@ const CardList = (props) => {
   //beauty
   return (
     <>
-      <div>{/* <h2>{props.board.title}</h2> */}</div>
-      {/* <div>
-        <NewCardForm postNewCard={postNewCard}></NewCardForm>
-      </div> */}
       <div>
         <section className="card-list">{cardElements}</section>
       </div>
