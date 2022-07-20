@@ -51,7 +51,6 @@ const NewCardForm = (props) => {
   //beauty
   return (
     <>
-      <h1>Create Your Card</h1>
       <form onSubmit={handleSubmitCard} className="new-card__form">
         <div className="new-card__fields">
           <label>Message: </label>

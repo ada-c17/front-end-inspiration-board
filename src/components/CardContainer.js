@@ -2,6 +2,7 @@ import NewCardForm from './NewCardForm';
 import CardList from './CardList';
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import './CardContainer.css';
 
 export const baseURL = process.env['REACT_APP_BACKEND_URL'];
 
@@ -79,19 +80,24 @@ const CardContainer = (props) => {
     <>
       <div>
         <header>
-          <h2>Card List</h2>
+          <h2 className="card-list_header">Card List</h2>
         </header>
+      </div>
+      <div className="board-form_container">
+        <button
+          className="button-toggle"
+          onClick={() => setIsCardFormVisible(!isCardFormVisible)}
+        >
+          {isCardFormVisible ? 'Hide Form' : 'Create Your Card'}
+        </button>
+        {isCardFormVisible ? <NewCardForm postNewCard={postNewCard} /> : null}
+      </div>
+      <div>
         <CardList
           cardData={cardData}
           deleteCard={deleteCard}
           addOneLike={addOneLike}
         ></CardList>
-      </div>
-      <div>
-        <button onClick={() => setIsCardFormVisible(!isCardFormVisible)}>
-          {isCardFormVisible ? 'Hide Form' : 'Create Your Card'}
-        </button>
-        {isCardFormVisible ? <NewCardForm postNewCard={postNewCard} /> : null}
       </div>
     </>
   );
