@@ -31,7 +31,6 @@
 .like {
     background-color: rgb(129, 180, 129);
     color: white;
-    border: none;
     padding: 7px;
     border-radius: 5px;
     margin: 1px;
@@ -39,6 +38,8 @@
 
 .delete-card {
     background-color: rgba(55, 55, 55, 0.53);
+    border: solid;
+    border-width: 1px;
 }
 
 .like:hover {
