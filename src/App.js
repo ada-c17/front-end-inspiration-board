@@ -14,7 +14,7 @@ function App() {
   const [boardColor, setBoardColor] = useState();
   const [selectedCards, setSelectedCards] = useState([]);
 
-  const URL = "https://inspo-board-server.herokuapp.com";
+  const URL = process.env.REACT_APP_BACKEND_URL;
 
   // GET all boards and set boards data
   useEffect(() => {
@@ -58,6 +58,7 @@ function App() {
         console.log(error);
       });
   }, [selectedBoardId, boardsData]);
+
 
   // GET selected Board ID
   const getBoardDataAndIndex = (selectedBoardId) => {
@@ -172,7 +173,7 @@ function App() {
     setSelectedCards(sorted);
   };
 
-  const sortAphabetically = (arr) => {
+  const sortAlphabetically = (arr) => {
     const sorted = [...arr].sort((a, b) => {
       let lowerA = a.message.toLowerCase(),
         lowerB = b.message.toLowerCase();
@@ -190,7 +191,7 @@ function App() {
 
   const sortByLikes = (arr) => {
     const sorted = [...arr].sort((a, b) => {
-      return a.likesCount - b.likesCount;
+      return b.likesCount - a.likesCount;
     });
     setSelectedCards(sorted);
   };
@@ -210,7 +211,7 @@ function App() {
         </Button>
         <Button
           variant="secondary"
-          onClick={() => sortAphabetically(selectedCards)}
+          onClick={() => sortAlphabetically(selectedCards)}
         >
           Alphabetically
         </Button>
@@ -231,7 +232,7 @@ function App() {
           deleteCard={deleteCard}
           addLike={addLike}
           sortById={sortById}
-          sortAphabetically={sortAphabetically}
+          sortAlphabetically={sortAlphabetically}
           sortByLikes={sortByLikes}
         />
       </section>
