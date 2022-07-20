@@ -31,3 +31,7 @@ ul {
     position:relative;
     z-index:5;
 }
+
+.hideBoard {
+    display: none;
+}

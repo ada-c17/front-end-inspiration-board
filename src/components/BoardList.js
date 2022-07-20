@@ -45,11 +45,19 @@ const BoardList = ({ changeBoardCallback }) => {
     />
   ));
 
+  const [showForm, setShowForm] = useState(true);
+  const buttonText = showForm ? "Hide New Board Form" : "Show New Board Form";
+  const formDisplay = showForm ? "hideBoard" : "showBoard";
+  const toggleForm = () => {
+    setShowForm(!showForm);
+  };
+
   return (
     <div id="boardList">
       <img src={partyFlag} alt="party flag" id="partyFlag" />
       <ul>{buttonComponents}</ul>
-      <NewBoardForm handleSubmission={makeNewBoard} />
+      <NewBoardForm handleSubmission={makeNewBoard} className={formDisplay} />
+      <button onClick={toggleForm}>{buttonText}</button>
     </div>
   );
 };
