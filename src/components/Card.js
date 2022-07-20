@@ -1,5 +1,5 @@
 import React from "react";
-//import PropTypes from "prop-types";
+import PropTypes from "prop-types";
 
 const Card = (props) => {
   const clickLikeButton = () => {
@@ -12,28 +12,33 @@ const Card = (props) => {
 
   return (
     <div className="card-item" key={props.cardInfo.id}>
-      <h3 className='card-item__message'>{props.cardInfo.message}</h3>
+      <h3 className="card-item__message">{props.cardInfo.message}</h3>
       <ul className="card-item__controls">
-        <li>{props.cardInfo.likes_count} 💕</li>
-        <button className="card-likes" onClick={clickLikeButton}>
-          +1
-        </button>
-        <button className="delete-card" onClick={clickDeleteButton}>
-          delete
-        </button>
+        <li>{props.cardInfo.likes_count} </li>
+        <li>💕</li>
+        <li>
+          <button className="card-likes" onClick={clickLikeButton}>
+            +1
+          </button>
+        </li>
+        <li>
+          <button className="delete-card" onClick={clickDeleteButton}>
+            delete
+          </button>
+        </li>
       </ul>
     </div>
   );
 };
 
 // create proptypes
-// Card.propTypes = {
-//   id: PropTypes.number.isRequired,
-//   message: PropTypes.string.isRequired,
-//   likes: PropTypes.number.isRequired,
-//   onLike: PropTypes.func.isRequired,
-//   onDelete: PropTypes.func.isRequired,
-//   board_id: PropTypes.number.isRequired,
-// };
+Card.propTypes = {
+  id: PropTypes.number,
+  message: PropTypes.string,
+  likes: PropTypes.number,
+  onLike: PropTypes.func,
+  onDelete: PropTypes.func,
+  board_id: PropTypes.number,
+};
 
 export default Card;

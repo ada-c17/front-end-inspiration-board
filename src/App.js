@@ -3,7 +3,6 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import NewBoardForm from "./components/NewBoardForm";
 import BoardsList from "./components/BoardsList";
-import HideForm from "./components/HideForm";
 import NewCardForm from "./components/NewCardForm";
 import CardsList from "./components/CardsList";
 
@@ -21,8 +20,9 @@ function App() {
   // keep tracking on selected board state
   const [boardSelected, setBoardSelected] = useState(selectedBoardData);
   const [cardsData, setCardsData] = useState([]);
+  // keeping tracking what type user want to sort card
+  const [sortType, setSortType] = useState("id");
   const URL = "https://get-inspired-c17.herokuapp.com/boards";
-
 
   // get all boards from DB
   const fetchBoards = () => {
@@ -79,13 +79,16 @@ function App() {
     }
   };
 
-  //sort card by id
-  const sort_card = (card_a, card_b) => {
-    console.log("we are in sort card")
-    if (card_a.id < card_b.id) {
+  //compare function for sort card
+  const sortCard = (sortOrder) => (a, b) => {
+    const cardA = a[sortOrder];
+    const cardB = b[sortOrder];
+    if (cardA < cardB) {
       return -1;
-    } else {
+    } else if (cardA > cardB) {
       return 1;
+    } else {
+      return 0;
     }
   };
 
@@ -103,17 +106,13 @@ function App() {
             board_id: id,
           };
         });
-        setCardsData(newCards.sort(sort_card));
-        
+        setCardsData(newCards.sort(sortCard(sortType)));
       })
       .catch((error) => {
         console.log(error);
         alert("Oops! Could not access the cards!");
       });
   };
-
-
-
 
   // creating a new card by specific board
   const postNewCard = (cardInfo) => {
@@ -139,7 +138,6 @@ function App() {
             newCardsList.push(card);
           }
         }
-        setCardsData(newCardsList);
         fetchCards(boardSelected.id);
       });
   };
@@ -165,8 +163,17 @@ function App() {
     }
   };
 
-  
-    
+  // sort cards data by sort type
+  const sortCardBySortType = (sortProperty) => {
+    const newCardsData = [...cardsData].sort(sortCard(sortProperty));
+    setCardsData(newCardsData);
+  };
+
+  // update sort Type state
+  const updateSortType = (type) => {
+    setSortType(type);
+    sortCardBySortType(type);
+  };
   return (
     <div className="App">
       <header className="App-header">
@@ -185,13 +192,13 @@ function App() {
           </div>
           <div className="selected-board">
             <h2>Selected Boards</h2>
-            <div>
+            <div className="selected-board-content">
               {boardSelected.id
                 ? `${boardSelected.title} - ${boardSelected.owner}`
                 : "Select a Board from the Board List!"}
             </div>
           </div>
-          <div className="New-board">
+          <div className="new-board">
             <h2>Create a New Board</h2>
             {displayForm ? (
               <NewBoardForm
@@ -199,21 +206,24 @@ function App() {
                 flipFormCallBack={flipDisplayForm}
               />
             ) : (
-              <HideForm flipFormCallBack={flipDisplayForm} />
+              ""
             )}
+            <span onClick={flipDisplayForm} className="hide-display-form">
+              {displayForm ? "Hide New Board Form" : "Show New Board Form"}
+            </span>
           </div>
-          <div>
+          <div className="card-list">
             {boardSelected.id && (
               <CardsList
                 cards={cardsData}
                 selectedBoard={boardSelected}
                 deleteCardCallback={deleteCard}
                 likeCardCallback={likeCard}
-                
+                updateSortTypeCallback={updateSortType}
               />
             )}
           </div>
-          <div>
+          <div className="new-card">
             {boardSelected.id && <NewCardForm postNewCard={postNewCard} />}
           </div>
         </section>
@@ -223,4 +233,3 @@ function App() {
 }
 
 export default App;
-
