@@ -126,9 +126,13 @@ const Board = ({ board_id, changeBoardCallback }) => {
   return (
     <>
       <div className="Board">
+        <button className="btn back" onClick={() => changeBoardCallback(0)}>
+          🔙 TO MENU
+        </button>
+
         <h1>{title}</h1>
         <h2>{owner}</h2>
-        {/* <NewCardForm submitFunction={makeNewCard}/> */}
+
         <CardList
           cardsDisplayedOnBoard={cardsDisplayedOnBoard}
           deleteCardCallback={deleteCard}
@@ -136,12 +140,6 @@ const Board = ({ board_id, changeBoardCallback }) => {
         />
         <button className="btn delete" onClick={() => deleteBoard(board_id)}>
           *DELETE THIS BOARD*
-        </button>
-        <br></br>
-        <br></br>
-        <button className="btn back" onClick={() => changeBoardCallback(0)}>
-          {" "}
-          🔙 TO MENU
         </button>
       </div>
       <div>
