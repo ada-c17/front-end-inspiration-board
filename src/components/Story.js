@@ -6,7 +6,7 @@ const Story = () => {
     <div className="story">
       <p id="first-line">
         Far out in the uncharted backwaters of the unfashionable end of the
-        western spiral arm of the Galaxy lies a small unregarded yellow sun .
+        western spiral arm of the Galaxy lies a small unregarded yellow sun.
       </p>
       <p id="second-line">
         Orbiting this at a distance of roughly ninety-two million miles is an
