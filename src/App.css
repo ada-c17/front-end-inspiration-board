@@ -31,30 +31,31 @@ h2 {
   grid-template-columns: 1fr 1fr 1fr;
 }
 
-.cards_dropdown_container {
-  display:grid
-}
 .cards__container {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
+  align-self: flex-start;
 }
 
 .boards__list {
-  max-height: 9rem;
-  min-height: 9rem;
+  font-family: "Permanent Marker", cursive;
+  font-size: larger;
+  font-weight: bolder;
+  max-height: 15rem;
+  /* min-height: 9rem; */
   overflow: scroll;
-  margin-right: 6rem;
+  margin-right: 5rem;
   border: black solid 1px;
   background-color: #ADC6CC;
   padding-left: 30px;
 }
 
 .boards__selected {
-  /* max-height: 2rem;*/
+  font-family: "Permanent Marker", cursive;
+  font-size: larger;
+  font-weight: bolder;
   min-height: 100px; 
   margin-right: 11rem;
-  max-width: 200px;
-  /* width: fit-content; */
   border: black solid 1px;
   background-color: #ADC6CC;
   padding: 15px;
@@ -95,7 +96,7 @@ h2 {
 
 .card-items__container {
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-columns: 1fr 1fr;
   grid-gap: 2rem;
   margin: 2rem;
 }
