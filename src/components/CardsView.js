@@ -41,7 +41,7 @@ const CardsView = ({
   };
 
   return (
-    <div>
+    <div className="container">
       <button onClick={exitBoard}>Return to boards</button>
       <CardList
         cards={cards}

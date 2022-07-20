@@ -18,7 +18,7 @@ const CardList = ({ cards, deleteCard, updateLikes }) => {
     );
   });
 
-  return <div className="cardlist">{cardComponents}</div>;
+  return <div className="cardList">{cardComponents}</div>;
 };
 
 CardList.propTypes = {

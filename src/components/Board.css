@@ -5,16 +5,17 @@
     height: 20vw ;
     font-family: 'Courier New', Courier, monospace;
     font-size: 0.5em;
-    margin-bottom: 10px;
     overflow: auto ;
     display: flex;
     padding: 10px;
     text-align: center;
-    /* position: relative; */
+    /* margin:auto; */
+    margin: 2vw;
+    position: relative;
 }
 
 .board button{
-    position: fixed;
+    position: absolute;
     /* top: 2px; */
     /* right: 2px; */
     /* align-items: flex-start; */
@@ -22,4 +23,14 @@
     /* align-self: flex-end; */
 
 }
+div {
+    display: flex;
+    flex-direction: column;
+}
+h1, h2 {
+    align-self: center;
+}
 
+.board :hover {
+    background-color: lightgray;
+}

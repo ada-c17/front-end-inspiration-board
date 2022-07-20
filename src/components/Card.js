@@ -16,10 +16,10 @@ const Card = ({
   // }
 
   return (
-    <div>
-      <button onClick={() => updateLikes(card_id)}>{like_count}</button>
-      <button onClick={() => deleteCard(card_id)}>Delete</button>
-      <p>{message}</p>
+    <div className="card">
+      <button  id="likeCount" onClick={() => updateLikes(card_id)}>{like_count} ❤️ </button>
+      <button id="deleteCard" onClick={() => deleteCard(card_id)}>X</button>
+      <h2>{message}</h2>
     </div>
   );
 };

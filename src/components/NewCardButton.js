@@ -13,7 +13,7 @@ const NewCardButton = ({submitCard, chosenBoard}) => {
 
   return (
     <div>
-      <button onClick={togglePopup}>+</button>
+      <button onClick={togglePopup}>Add a new Card</button>
       {isOpen && (
         <NewCardForm
           submitCard={submitCard}

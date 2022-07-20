@@ -1,0 +1,37 @@
+.card{
+    border: solid black 1px;
+    background-color: lightblue;
+    width: 20vw;
+    height: 20vw ;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 0.5em;
+    overflow: auto ;
+    display: flex;
+    padding: 10px;
+    text-align: center;
+    /* margin:auto; */
+    margin: 2vw;
+    position: relative;
+}
+
+#deleteCard{
+    position: absolute;
+    /* top: 2px; */
+    /* right: 2px; */
+    /* align-items: flex-start; */
+    justify-items: flex-end;
+    /* align-self: flex-end; */
+
+}
+#likeCount {
+    position:absolute;
+    bottom:20px;
+}
+div {
+    display: flex;
+    flex-direction: column;
+}
+h1, h2 {
+    align-self: center;
+}
+
