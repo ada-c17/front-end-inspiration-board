@@ -119,7 +119,22 @@ function App() {
       });
   };
 
-  const deleteCard = (card_id) => {};
+  const deleteCard = (card_id) => {
+    axios
+      .delete(`${URL}/cards/${card_id}`)
+      .then(() => {
+        const updatedCards = [];
+        for (const card of cards) {
+          if (card.card_id !== card_id) {
+            updatedCards.push(card);
+          }
+        }
+        setCards(updatedCards);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
 
   const toggleNewBoardForm = () => {
     setIsBoardFormVisible(!isBoardFormVisible);
