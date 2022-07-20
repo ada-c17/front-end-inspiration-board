@@ -4,6 +4,7 @@ import { useState, useEffect } from "react";
 import SingleBoard from "./components/SingleBoard.js";
 import axios from "axios";
 import NewBoardForm from "./components/NewBoardForm.js";
+import NewCardForm from "./components/NewCardForm.js";
 
 function App() {
   const [isOnHomepage, setIsOnHomepage] = useState(true);
@@ -35,6 +36,20 @@ function App() {
       });
   };
 
+  const addCardData = (newCard) => {
+    axios
+      .post("http://shiver-of-sharks.herokuapp.com/cards", {
+        message: newCard.messageData,
+        board_id: newCard.boardId,
+      })
+      .then((response) => {
+        console.log("success");
+      })
+      .catch((error) => {
+        console.log(<section>{error.response.data.message}</section>);
+      });
+  };
+
   if (isOnHomepage) {
     return (
       <div>
@@ -58,6 +73,10 @@ function App() {
           setActiveBoard={setActiveBoard}
           setIsOnHomepage={setIsOnHomepage}
         ></SingleBoard>
+        <NewCardForm
+          addCardCallback={addCardData}
+          boardId={activeBoard.board_id}
+        />
       </div>
     );
   }
