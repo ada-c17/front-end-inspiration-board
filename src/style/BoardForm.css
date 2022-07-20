@@ -14,3 +14,9 @@
 .hideBoard {
   display: none;
 }
+
+#BoardForm {
+    background-image: url("../assets/bigcloud1.png");
+    background-size: contain;
+    background-repeat: no-repeat;
+}

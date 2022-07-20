@@ -1,5 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
+import "../style/Card.css"
 
 const Card = ({
   cardId,
@@ -25,10 +26,12 @@ const Card = ({
   };
 
   return (
-    <section>
+    <section className="Card">
       <ul>
-        {message} {likesCount} <button onClick={onPlusOneClick}>+1</button>
-        <button onClick={onClickRemove}>Delete</button>
+        <p>{message}</p>
+        <p className="likesCount">{likesCount} likes</p>
+        <button onClick={onPlusOneClick} className="cardButton">+1</button>
+        <button onClick={onClickRemove} className="cardButton">Delete</button>
       </ul>
     </section>
   );

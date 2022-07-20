@@ -5,18 +5,18 @@ font-family: 'M PLUS 1 Code', sans-serif; */
 
 div {
   background-color: #3D405B;
+  background-image: url("./assets/space.png");
   color: #F4F1DE;
 }
-
-main {
-  font-family: 'M PLUS 1 Code', sans-serif;
-  margin: 2vw;
-}
-
 
 header {
   font-family: 'Clicker Script', cursive;
   font-size: 2rem;
   color: #f2CC8F;
   margin-left: 10vw;
+}
+
+main {
+  font-family: 'M PLUS 1 Code', sans-serif;
+  margin: 2vw;
 }

@@ -36,7 +36,7 @@ const BoardForm = ({ onAddBoard, shouldHideBoard }) => {
   };
 
   return (
-    <form className={shouldHideBoard} onSubmit={handleSubmit}>
+    <form className={shouldHideBoard} id="BoardForm" onSubmit={handleSubmit}>
       <h4>Add A Dream</h4>
       <h5> ~dream name~ </h5>
       <input

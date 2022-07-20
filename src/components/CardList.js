@@ -1,6 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 import Card from "./Card";
+import "../style/CardList.css";
 
 const CardList = ({ cards, onUpdateLikes, onDelete, boardNum }) => {
   const cardComponents = cards.map((card) => {
@@ -17,7 +18,7 @@ const CardList = ({ cards, onUpdateLikes, onDelete, boardNum }) => {
     );
   });
 
-  return <section>{cardComponents}</section>;
+  return <section className="CardList">{cardComponents}</section>;
 };
 
 CardList.propTypes = {

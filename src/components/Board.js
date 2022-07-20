@@ -1,5 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
+import '../style/Board.css'
 
 const Board = ({ boardId, owner, title, onSelectBoard }) => {
   const onTitleClick = () => {
@@ -7,7 +8,7 @@ const Board = ({ boardId, owner, title, onSelectBoard }) => {
   };
 
   return (
-    <section>
+    <section className="Board">
       <ul onClick={onTitleClick}>
         {title} by {owner}
       </ul>
