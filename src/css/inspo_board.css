@@ -1,5 +1,9 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;800&family=Zen+Tokyo+Zoo&display=swap');
 
+a {
+	text-decoration: none;
+}
+
 body{
 	font-family: 'Montserrat', sans-serif;
 	background-color: #F5F5F5; /* light gray */
