@@ -1,3 +1,19 @@
 h3 {
-    font-size: 1.5em;
+    font-size: 20px;
+    margin: 0px;
+}
+
+input[type=text] {
+    width: 200px;
+    height: 12px;
+    padding: 5px;
+    border: 2px solid white;
+    font-size: 20px;
+    color: black;
+    font-family: Patrick Hand;
+} 
+
+.boardform-container {
+    display: inline-block;
+    margin: 0px;
 }

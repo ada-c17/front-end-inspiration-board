@@ -1,7 +1,9 @@
+
 .cardFormContainer {
     display: flex;
     flex-direction: column;
     justify-content: center;
+    height: 100%;
 }
 
 .handwritten {
@@ -9,6 +11,16 @@
     color:black;
     font-size: 1.5rem;
 }
+
+textarea[type=text] {
+    width: 80%;
+    padding: 10px;
+    border: 2px solid grey;
+    font-size: 20px;
+    background-color: white;
+    color: black;
+    font-family: Patrick Hand;
+} 
 
 /* Buttons */
 .addCardButton {
@@ -61,19 +73,4 @@
 
 .addCardButton:disabled {
     cursor:not-allowed;
-}
-
-.addCardButton:after {
-    background-clip: padding-box;
-    background-color: #31b090;
-    border: solid transparent;
-    border-radius: 16px;
-    border-width: 0 0 4px;
-    bottom: -4px;
-    content: "";
-    left: 0;
-    position: absolute;
-    right: 0;
-    top: 0;
-    z-index: -1;
 }

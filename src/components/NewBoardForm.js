@@ -28,38 +28,41 @@ const NewBoardForm = (props) => {
   };
 
   return (
-    <section>
+    <section className="boardform-container">
       <h2>Make a New Board</h2>
       <form onSubmit={handleSubmit}>
-        <label htmlFor="title">
-          <h3>Title: </h3>
-        </label>
-        <input
-          type="text"
-          name="title"
-          value={boardForm.title}
-          onChange={onFormChange}
-        />
-        <label htmlFor="owner">
-          <h3>Owner: </h3>
-        </label>
-        <input
-          type="text"
-          name="owner"
-          value={boardForm.owner}
-          onChange={onFormChange}
-        />
-        <input
-          className="startButton"
-          type="submit"
-          value="Start a board"
-          disabled={
-            boardForm.title.length < 1 ||
-            boardForm.owner.length < 1 ||
-            boardForm.title.length > 40 ||
-            boardForm.owner.length > 40
-          }
-        ></input>
+        <div className="input-container">
+          <label htmlFor="title">Title: </label>
+          <input
+            type="text"
+            name="title"
+            value={boardForm.title}
+            onChange={onFormChange}
+            className="input-title"
+          />
+        </div>
+        <div>
+          <label htmlFor="owner">Owner: </label>
+          <input
+            type="text"
+            name="owner"
+            value={boardForm.owner}
+            onChange={onFormChange}
+          />
+        </div>
+        <div className="button-container">
+          <input
+            className="startButton"
+            type="submit"
+            value="Add Board"
+            disabled={
+              boardForm.title.length < 1 ||
+              boardForm.owner.length < 1 ||
+              boardForm.title.length > 40 ||
+              boardForm.owner.length > 40
+            }
+          ></input>
+        </div>
       </form>
     </section>
   );

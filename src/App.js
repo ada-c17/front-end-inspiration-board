@@ -119,11 +119,28 @@ function App() {
       });
   };
 
-  const deleteCard = (card_id) => {};
+  const deleteCard = (card_id) => {
+    axios
+      .delete(`${URL}/cards/${card_id}`)
+      .then(() => {
+        const updatedCards = [];
+        for (const card of cards) {
+          if (card.card_id !== card_id) {
+            updatedCards.push(card);
+          }
+        }
+        setCards(updatedCards);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
 
   const toggleNewBoardForm = () => {
     setIsBoardFormVisible(!isBoardFormVisible);
   };
+
+  const hideBoard = isBoardFormVisible ? "boardform" : "boardform-hidden";
 
   return (
     <div className="container">
@@ -139,14 +156,14 @@ function App() {
           fetchCardsCallback={fetchCards}
         ></Board>
       </section>
-      <section className="boardform">
+      <section className={hideBoard}>
         {isBoardFormVisible ? (
           <NewBoardForm addBoardCallback={createNewBoard}></NewBoardForm>
         ) : (
           ""
         )}
         <button onClick={toggleNewBoardForm} className="boardform-button">
-          {isBoardFormVisible ? "Hide New Board Form" : "Show New Board Form"}
+          {isBoardFormVisible ? "Hide Form" : "Show Form"}
         </button>
       </section>
 
