@@ -29,7 +29,7 @@ const NewBoardForm = (props) => {
 
   return (
     <section className="boardform-container">
-      <h2>Make a New Board</h2>
+      <h2>Start a New Board</h2>
       <form onSubmit={handleSubmit}>
         <div className="input-container">
           <label htmlFor="title">Title: </label>
