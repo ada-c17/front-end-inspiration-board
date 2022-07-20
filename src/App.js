@@ -17,7 +17,6 @@ function App() {
   // from false to true (the above)
 
   return (
-    <div> 
     <div className="App">
       {/* to use photo we import image from folder */}
       <img
