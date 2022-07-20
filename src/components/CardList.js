@@ -1,7 +1,7 @@
 import PropTypes from "prop-types";
 import { React } from "react";
 import Card from "./Card";
-// import NewCardForm from "./NewCardForm";
+import NewCardForm from "./NewCardForm";
 
 //props is an array of objects of card instances for a particular board
 //cardList gets rendered in a specific page
@@ -25,6 +25,7 @@ const CardList = ({ cards, boardId }) => {
 
   return (
     <section>
+      <NewCardForm />
       <h2>Cards List</h2>
       <ul>{cardListArray}</ul>
     </section>

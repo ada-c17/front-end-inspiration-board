@@ -1,34 +1,48 @@
 import "./App.css";
-import { React, useState } from "react";
-// import { Link, Outlet } from "react-router-dom";
+import { React, useState, useEffect } from "react";
 import { Routes, Route, Link, BrowserRouter as Router } from "react-router-dom";
 import NewBoard from "./routes/newBoard";
 import BoardDisplay from "./routes/ChosenBoard";
+import axios from "axios";
 
 //sample data if GET request made to endpoint /boards
 //get all cards will only render boardID, title, owner
-export const boards = [
-  {
-    boardId: 1,
-    title: "Let's go Whoodles!",
-    cards: [{ cardId: 1, message: "I love dogs!", likesCount: 1 }],
-  },
-  {
-    boardId: 2,
-    title: "Let's go Sheepydoodles!",
-
-    cards: [
-      { cardId: 1, message: "I love pups!", likesCount: 1 },
-      { cardId: 1, message: "I love pups!", likesCount: 1 },
-    ],
-  },
-];
 
 function App() {
-  const [boardData, setBoardData] = useState(boards);
+  // BoardData takes in a list of boards
+  const [boardData, setBoardData] = useState([]);
 
   //make initial value of selectedBoard null in future?
-  const [selectedBoard, setSelectedBoard] = useState(boards[0]);
+  const [selectedBoard, setSelectedBoard] = useState([]);
+
+  // Axios call to GET the board data in order to pass in to the drop down menu
+
+  useEffect(() => {
+    axios
+      .get(`${process.env.REACT_APP_BACKEND_URL}/boards`)
+      .then((response) => {
+        console.log(response.data);
+        const dbBoards = response.data.map((board) => {
+          const { boardId, title, owner } = board;
+          return { boardId, title, owner };
+        });
+        setBoardData(dbBoards);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }, []);
+
+  // POST axios call to create one board
+
+  // const newBoard = ({ title, owner }) => {
+  //   axios;
+  // .post(`${process.env.REACT_APP_BACKEND_URL}/boards`,{
+
+  // }
+  // )
+  // .then()
+  // };
 
   //will need to change this to Axios call for POST one board
   const addBoardData = (newBoardData) => {
@@ -46,7 +60,7 @@ function App() {
     setBoardData(newBoardList);
   };
 
-  //updates state for newly selected board from drop-down menu. I don't love that it comes from "title" and not "boardId"
+  //updates state for newly selected board from drop-down menu.
   const selectNewBoard = (e) => {
     const boardId = e.target.value;
     const newSelectedBoard = boardData.filter(
@@ -75,25 +89,22 @@ function App() {
             {" "}
             Create an Inspiration Board
           </Link>
-          <Link to="/"> Home </Link>
-          <Link to="/boards" className="choose-board">
+          <Link to="/allboards" className="choose-board">
             <section>Inspiration board</section>
             <select onChange={selectNewBoard}>
               <option>Choose an inspiration board</option>
-              {/* <option> {selectedBoard.title}</option> */}
               {boardOptions}
             </select>
           </Link>
         </nav>
       </header>
       <Routes>
-        {/* <Route path="/" element={<App />} /> */}
         <Route
           path="/create"
           element={<NewBoard addBoardCallback={addBoardData} />}
         />
         <Route
-          path="/boards"
+          path="/allboards"
           element={<BoardDisplay selectedBoard={selectedBoard} />}
         />
       </Routes>

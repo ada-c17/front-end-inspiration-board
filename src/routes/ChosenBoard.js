@@ -13,12 +13,11 @@ export default function BoardDisplay({ selectedBoard }) {
       <h3 className="board-header">{selectedBoard.title}</h3>
       <section>
         <div>
-          <CardList
+          {/* <CardList
             cards={selectedBoard.cards}
             boardId={selectedBoard.boardId}
-          />
+          /> */}
         </div>
-        <NewCardForm />
       </section>
     </main>
   );
