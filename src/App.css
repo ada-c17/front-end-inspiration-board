@@ -6,13 +6,12 @@
 
 header {
   background-image: url(https://source.unsplash.com/GtgdYsl2TV0);
-  box-shadow: 0px 10px 10px black;
+  box-shadow: 0px 5px 5px black;
   min-height: 5vh;
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
   font-size: calc(5px + 2vmin);
-  color: black;
   padding: 5px;
 }
 
@@ -22,11 +21,26 @@ header h1 {
 }
 
 main {
-  min-height: 85vh;
+  min-height: 100vh;
   background-image: url(https://source.unsplash.com/KsAo8ouBn8A);
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
+  position: relative;
+  padding: 50px;
+}
+
+#woodPattern {
+  background-image: url(https://source.unsplash.com/GtgdYsl2TV0);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  box-shadow: 0px -5px 5px black;
+  height: 5vh;
+  position:absolute;
+  width:100%;
+  bottom:-20px;
+  left: 0px;
 }
 
 footer {

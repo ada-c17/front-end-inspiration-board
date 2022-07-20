@@ -46,12 +46,10 @@ const BoardList = ({ changeBoardCallback }) => {
   ));
 
   return (
-    <div>
+    <div id="boardList">
       <img src={partyFlag} alt="party flag" id="partyFlag" />
       <ul>{buttonComponents}</ul>
       <NewBoardForm handleSubmission={makeNewBoard} />
-      {/* <img src = "https://source.unsplash.com/GtgdYsl2TV0" alt="wood border" id="woodPattern" /> */}
-      <div id="woodPattern"></div>
     </div>
   );
 };

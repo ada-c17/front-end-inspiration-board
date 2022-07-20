@@ -26,7 +26,10 @@ function App() {
       <header className="App-header">
         <h1>InspOtters</h1>
       </header>
-      <main>{toggleDisplay()}</main>
+      <main>
+        {toggleDisplay()}
+        <div id="woodPattern"></div>
+      </main>
       <footer>
         ©2022 C17 Otters students: Jodi D., Elaine S., Tori S., Andrea G.Z.
       </footer>
