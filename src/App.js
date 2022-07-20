@@ -8,7 +8,6 @@ import CardForm from "./components/CardForm";
 
 const kBaseUrl = "https://ssh-back-end-inspiration-board.herokuapp.com";
 
-
 const boardApiToJson = (board) => {
   const { title, owner, board_id: boardId } = board;
   return { title, owner, boardId };
@@ -125,7 +124,7 @@ const App = () => {
     const requestBody = { ...addedBoard };
 
     return axios
-      .post(`${kBaseUrl}`, requestBody)
+      .post(`${kBaseUrl}/boards`, requestBody)
       .then(() => loadBoards())
       .catch((err) => console.log(err));
   };
@@ -181,7 +180,7 @@ const App = () => {
           onAddBoard={handleBoardDataReady}
           shouldHideBoard={showBoardForm}
         ></BoardForm>
-        <BoardList boards={boardData} onSelectBoard={handleBoard}/>
+        <BoardList boards={boardData} onSelectBoard={handleBoard} />
         <CardList
           cards={cardData}
           onUpdateLikes={increaseLikeCount}
