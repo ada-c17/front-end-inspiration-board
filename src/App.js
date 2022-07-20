@@ -123,7 +123,7 @@ function App() {
             isOnHomepage={isOnHomepage}
             setIsOnHomepage={setIsOnHomepage}
           />
-          <Cards cards={cards} deleteCardCallBack={deleteCard} />
+          <Cards cards={cards} setCards={setCards} deleteCardCallBack={deleteCard} />
         </div>
         <NewCardForm
           addCardCallback={addCardData}
