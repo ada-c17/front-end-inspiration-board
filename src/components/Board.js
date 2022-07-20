@@ -65,7 +65,7 @@ const Board = ({ board_id, changeBoardCallback }) => {
       })
       .catch((error) => console.log(`Cannot delete board ${error}`));
     console.log("Board deleted now we are resetting display");
-    changeBoardCallback(null);
+    changeBoardCallback(0);
   };
 
   const [cardsDisplayedOnBoard, setCardsDisplayedOnBoard] = useState([]);
