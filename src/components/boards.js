@@ -12,6 +12,7 @@ const Board = (props) => {
         board={board}
         isOnHomepage={props.isOnHomepage}
         setActiveBoard={props.setActiveBoard}
+        setCards={props.setCards}
       ></SingleBoard>
     );
   });
@@ -23,6 +24,7 @@ Board.propTypes = {
   setIsOnHomepage: PropTypes.func.isRequired,
   isOnHomepage: PropTypes.bool.isRequired,
   setActiveBoard: PropTypes.func.isRequired,
+  setCards: PropTypes.func.isRequired,
   boards: PropTypes.arrayOf(
     PropTypes.shape({
       board_id: PropTypes.number,

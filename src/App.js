@@ -10,19 +10,19 @@ import NewCardForm from "./components/NewCardForm.js";
 function App() {
   const [isOnHomepage, setIsOnHomepage] = useState(true);
   const [activeBoard, setActiveBoard] = useState({});
-  const [numCards, setNumCards] = useState(0);
+  const [cards, setCards] = useState([]);
   const [boards, getBoards] = useState([]);
 
   const deleteCard = (id) => {
     /* Find and remove card with give id from list of cards */
-    const cards = activeBoard.cards;
+    // const cards = activeBoard.cards;
     for (let i = 0; i < cards.length; i++) {
-      if (cards[i].card_id == id) {
+      if (cards[i].card_id === id) {
         cards.splice(i, 1);
       }
     }
     /* Update number of cards so that React will see change */
-    setNumCards(numCards - 1);
+    setCards([...cards]);
   };
 
   useEffect(() => {
@@ -58,6 +58,7 @@ function App() {
       })
       .then((response) => {
         console.log("success");
+        setCards([...cards, response.data.card]);
       })
       .catch((error) => {
         console.log(<section>{error.response.data.message}</section>);
@@ -74,6 +75,7 @@ function App() {
             setActiveBoard={setActiveBoard}
             setIsOnHomepage={setIsOnHomepage}
             isOnHomepage={isOnHomepage}
+            setCards={setCards}
           ></Board>
         </div>
         <NewBoardForm addBoardCallback={addBoardData} />
@@ -87,7 +89,7 @@ function App() {
           isOnHomepage={isOnHomepage}
           setIsOnHomepage={setIsOnHomepage}
         />
-        <Card activeBoard={activeBoard} deleteCardCallBack={deleteCard} />
+        <Card cards={cards} deleteCardCallBack={deleteCard} />
         <NewCardForm
           addCardCallback={addCardData}
           boardId={activeBoard.board_id}

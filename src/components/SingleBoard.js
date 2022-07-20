@@ -6,6 +6,7 @@ const SingleBoard = (props) => {
     props.setIsOnHomepage(false);
     console.log(props.board);
     props.setActiveBoard(props.board);
+    props.setCards(props.board.cards);
   };
   return (
     <section onClick={clickMe}>
