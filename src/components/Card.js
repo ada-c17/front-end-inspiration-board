@@ -7,27 +7,16 @@ import PropTypes from "prop-types";
 //cardId and modifies
 
 const Card = ({ message, cardId, likesCount, boardId }) => {
-  const handleToggleLiked = () => {
-    //   const updatedEntry = {
-    //     message: message, cardId: cardId, likesCount: likesCount, boardId:boardId,
-    //   };
-    //   toggleLike(updatedEntry)
-
-    // }
-
-    return (
-      <div className="NewCard">
-        <section className="message">
-          <p>{message}</p>
-          <p>{likesCount}</p>
-          <button className="like" onClick={handleToggleLiked}>
-            +1
-          </button>
-          <button>Delete</button>
-        </section>
-      </div>
-    );
-  };
+  return (
+    <div className="NewCard">
+      <section className="message">
+        <p>{message}</p>
+        <p>{likesCount}</p>
+        <button className="like">+1</button>
+        <button>Delete</button>
+      </section>
+    </div>
+  );
 };
 
 Card.propTypes = {

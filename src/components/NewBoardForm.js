@@ -1,6 +1,5 @@
 import React from "react";
 import { useState } from "react";
-import "./Board.js";
 import PropTypes from "prop-types";
 import "./NewBoardForm.css";
 
