@@ -11,6 +11,7 @@ const defaultCard = {
 
 const CardForm = (props) => {
   const [cardData, setCardData] = useState(defaultCard);
+  const [message, setMessage] = useState("");
 
   const color = String(randomColor({ luminosity: "light" }));
 
@@ -26,13 +27,19 @@ const CardForm = (props) => {
 
   const handleFormSubmission = (event) => {
     event.preventDefault();
-    props.handleSubmission(cardData);
-    // reset card to default value
-    setCardData(defaultCard);
+    if (cardData.message === "") {
+      setMessage("Please enter the message");
+    } else {
+      props.handleSubmission(cardData);
+      // reset card to default value
+      setCardData(defaultCard);
+      setMessage("");
+    }
   };
 
   return (
     <div className="new-card">
+      <section>{message}</section>
       <form onSubmit={handleFormSubmission}>
         <input
           maxLength={40}

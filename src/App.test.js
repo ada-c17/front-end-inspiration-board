@@ -20,39 +20,3 @@ test("full app rendering/navigating'", async () => {
   await user.click(screen.getByText(/Create alternate world/i));
   expect(screen.getByText(/Arc of Infinity/i)).toBeInTheDocument();
 });
-
-test("landing on a board page", () => {
-  const history = createMemoryHistory();
-  history.push("/4");
-  render(
-    <Router location={history.location} navigator={history}>
-      <App />
-    </Router>
-  );
-  // expect(screen.getByText(/belongs/i)).toBeInTheDocument();
-});
-
-// test("landing on a board page testing", () => {
-//   let testHistory, testLocation;
-//   render(
-//     <MemoryRouter initialEntries={["/"]}>
-//       <App />
-//       <Route
-//         path="*"
-//         render={({ history, location }) => {
-//           testHistory = history;
-//           testLocation = location;
-//           return null;
-//         }}
-//       />
-//     </MemoryRouter>
-//   );
-
-//   userEvent.click(screen.getByRole("button", { name: /Save/ }));
-
-//   // assert about url
-//   expect(testLocation.pathname).toBe("/products");
-//   const searchParams = new URLSearchParams(testLocation.search);
-//   expect(searchParams.has("id")).toBe(true);
-//   expect(searchParams.get("id")).toEqual("1234");
-// });
