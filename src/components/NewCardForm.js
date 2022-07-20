@@ -8,7 +8,7 @@ const NewCardForm = (props) => {
         event.preventDefault();
         props.createNewCard(message);
         setMessage('');
-        if (message.length === 0 || message.length > 40) {
+        if (message.length > 40) {
             alert('Typo needs to be less than 40 characters!')
         }
     };
