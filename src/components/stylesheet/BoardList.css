@@ -1,0 +1,71 @@
+a {
+  text-decoration: none;
+}
+
+.boardName {
+  font-family: 'Indie Flower', cursive;
+  color: white;
+  line-height: 4rem;
+  font-size: 2.5rem;
+  margin-right: 5vw;
+  text-align: center;
+}
+
+.boardName:hover {
+  color: white;
+  font-size: 2.75rem;
+}
+
+.boardList {
+  text-align: center;
+  overflow: auto;
+}
+.mainBoardTitle {
+  font-family: 'Fredericka the Great', cursive;
+  color: white;
+  font-size: 5rem;
+}
+
+.trash-can {
+  color: white;
+  background: none;
+  border: none;
+}
+
+.trash-can:hover {
+  font-size: 1.2rem;
+}
+
+.list {
+  margin-top: 10vh;
+  width: 100%;
+  height: 300px;
+  overflow: scroll;
+  -ms-overflow-style: none;  
+  scrollbar-width: none;  
+}
+
+.list::-webkit-scrollbar {
+  display: none;
+}
+
+.trash-can {
+  color: white;
+  background: none;
+  border: none;
+}
+
+.trash-can:hover {
+  font-size: 1.2rem;
+}
+
+@media screen and (max-width: 768px) {
+  .boardName {
+    font-size: 1.5rem;
+  }
+
+  .boardName:hover {
+    color: white;
+    font-size: 1.75rem;
+  }
+}

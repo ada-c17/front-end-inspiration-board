@@ -1,0 +1,21 @@
+.card-btn {
+    color: white;
+    background: none;
+    border: none;
+    font-family: 'Fredericka the Great', cursive;
+    font-size: 1.7rem;
+    width: 100%;
+    text-align: left;
+}
+
+.card-btn:hover {
+    color: white;
+    background-color: none;
+    border: none;
+    font-size: 1.9rem;
+}
+
+.header {
+    background-image: url('../../images/chalkboard.png');
+    color: white;
+}
