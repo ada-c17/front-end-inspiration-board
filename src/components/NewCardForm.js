@@ -55,7 +55,7 @@ const NewCardForm = (props) => {
             }
           ></input>
         </div>
-        <div>{inputChar}/40</div>
+        <div className="handwritten">{inputChar}/40</div>
       </form>
     </section>
   );

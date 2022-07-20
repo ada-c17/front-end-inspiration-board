@@ -1,6 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 import { useState } from "react";
+import "./NewBoardForm.css";
 
 const defaultBoard = {
   title: "",
@@ -28,16 +29,20 @@ const NewBoardForm = (props) => {
 
   return (
     <section>
-      <h3>Make a New Board</h3>
+      <h2>Make a New Board</h2>
       <form onSubmit={handleSubmit}>
-        <label htmlFor="title">Board Title</label>
+        <label htmlFor="title">
+          <h3>Title: </h3>
+        </label>
         <input
           type="text"
           name="title"
           value={boardForm.title}
           onChange={onFormChange}
         />
-        <label htmlFor="owner">Owner's Name</label>
+        <label htmlFor="owner">
+          <h3>Owner: </h3>
+        </label>
         <input
           type="text"
           name="owner"
