@@ -1,19 +1,16 @@
-div {border:1px solid black;}
-section {border:1px solid blue;}
+/* .single-board {border:1px solid blue;} */
 
-section {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-  grid-gap: 1rem;
-}
-
-section {
-    
-    padding: 1rem;
-  }
+.boards-display {
+  display: flex;
+  flex-flow: row wrap;
   
-section ::before {
-    content: "";
-    padding-bottom: 100%;
-    display: block;
+  justify-content: center;
+  
 }
+
+.single-board {
+    width: 20vw;
+    margin: 1vw;
+    border: 1px solid blue
+}
+

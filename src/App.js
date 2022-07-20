@@ -1,4 +1,5 @@
 import "./App.css";
+import "./components/boards.css";
 import Board from "./components/boards.js";
 import { useState, useEffect } from "react";
 import Header from "./components/Header.js";
@@ -52,7 +53,6 @@ function App() {
   if (isOnHomepage) {
     return (
       <div className="container" id="App">
-        <h1>Inspiration Board</h1>
         <div>
           <Header title="Inspiration Board" isOnHomepage={isOnHomepage} />
           <Board
@@ -67,14 +67,17 @@ function App() {
     );
   } else {
     return (
-      <>
-        <Header
-          title={activeBoard.title}
-          isOnHomepage={isOnHomepage}
-          setIsOnHomepage={setIsOnHomepage}
-        />
-        <Card activeBoard={activeBoard} deleteCardCallBack={deleteCard} />
-      </>
+      <div className="container" id="App">
+        <div>
+          <Header
+            title={activeBoard.title}
+            isOnHomepage={isOnHomepage}
+            setIsOnHomepage={setIsOnHomepage}
+          />
+          <Card activeBoard={activeBoard} deleteCardCallBack={deleteCard} />
+        </div>
+      </div>
+
     );
   }
 }

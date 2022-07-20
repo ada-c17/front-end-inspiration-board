@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import PropTypes from "prop-types";
+import "./cards.css";
 
 const SingleCard = (props) => {
   const [likesCount, updateLikesCount] = useState(props.likes_count);
@@ -14,7 +15,7 @@ const SingleCard = (props) => {
   };
 
   return (
-    <section>
+    <section className="single-card">
       <h2>Card</h2>
       <ul>
         <li>{props.card_id}</li>
