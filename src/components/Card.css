@@ -1,8 +1,19 @@
 .card-item {
-    background-color: violet;
+    background-color: #bdd8f4;
     display: flex;
-    flex-wrap: wrap;
-    border: 2px solid;
+    align-items: center;
     justify-content: center;
-    gap: 10px;
+    flex-wrap: wrap;
+    border: 1px solid #4a394a;
+    margin: 2px;
+    
+}
+
+.card-item__list {
+    font-family: Silkscreen;
+    list-style: none;
+    display: flex;
+    padding: 0;
+    width: 100%;
+    justify-content: space-evenly;
 }

@@ -6,8 +6,8 @@ const Card = (props) => {
   // BEAUTY
   return (
     <div className="card-item">
-      <ul>
-        <li>{props.card.message}</li>
+      <p>{props.card.message}</p>
+      <ul className="card-item__list">
         <li>{props.card.like_count}💖</li>
         <li onClick={() => props.addOneLike(props.card)}>+1</li>
         <li onClick={() => props.deleteCard(props.card)}>Delete</li>
