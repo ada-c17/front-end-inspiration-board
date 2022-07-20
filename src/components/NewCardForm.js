@@ -46,6 +46,7 @@ const NewCardForm = (props) => {
           placeholder="Write your message here~ (max 40 char.)"
         ></textarea>
         <div>
+          <div>{inputChar}/40 char.</div>
           <input
             className="addCardButton"
             type="submit"
@@ -55,7 +56,6 @@ const NewCardForm = (props) => {
             }
           ></input>
         </div>
-        <div className="handwritten">{inputChar}/40</div>
       </form>
     </section>
   );

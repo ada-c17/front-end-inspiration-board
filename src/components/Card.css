@@ -1,9 +1,9 @@
 * {
     margin: 10px auto;
-    font-family:'Times New Roman', Times, serif;
+    font-family: Patrick Hand;
 }
 
-ul,li{
+ul, li{
     list-style:none;
 }
 
@@ -13,6 +13,11 @@ ul {
     flex-wrap: wrap;
     justify-content: center;
 }
+
+ul li{
+    margin:0.5em;
+}
+
 .card {
     text-decoration:none;
     color:#000;
@@ -27,14 +32,12 @@ ul {
     font-family: 'Reenie Beanie';
     font-size: 2rem;
 }
-ul li{
-    margin:0.5em;
-}
 
 /* .bottomicon {
     align-self: flex-end;
     align-content: flex-end;
 } */
+
 .bottomicon {
     display: flex;
     justify-content: center;

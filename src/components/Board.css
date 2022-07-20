@@ -1,5 +1,4 @@
 .boardlist{
-    border: solid 2px white;
     align-items: center;
     justify-self: center;
     align-self: center;
@@ -8,6 +7,7 @@
     height: 100px;
     width: 100%;
     overflow-y: scroll;
+    background-color: white;
 }
 
 ::-webkit-scrollbar {

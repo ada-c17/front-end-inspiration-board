@@ -161,7 +161,7 @@ function App() {
           ""
         )}
         <button onClick={toggleNewBoardForm} className="boardform-button">
-          {isBoardFormVisible ? "Hide New Board Form" : "Show New Board Form"}
+          {isBoardFormVisible ? "Hide Form" : "Show Form"}
         </button>
       </section>
 
