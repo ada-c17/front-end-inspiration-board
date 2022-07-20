@@ -13,6 +13,7 @@ import {
   getAllBoardsAsync,
   getAllCardsAsync,
 } from "./apiCalls";
+import "./App.css";
 
 function App() {
   const [boardData, setBoardData] = useState([]);

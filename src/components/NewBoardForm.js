@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import PropTypes from "prop-types";
+import "./NewBoardForm.css";
 
 const kDefaultFormState = {
   title: "",
@@ -26,11 +27,12 @@ const NewBoardForm = ({ onBoardSubmit }) => {
   };
 
   return (
-    <div className="NewBoardForm">
-      <form onSubmit={handleSubmit}>
-        <h2>Create a New Board</h2>
+    <div className="new-board-form">
+      <form className="form-content" onSubmit={handleSubmit}>
+        <h2>create new board</h2>
+
         <div>
-          <label htmlFor="title">Title</label>
+          <label htmlFor="title">title: </label>
           <input
             type="text"
             name="title"
@@ -38,8 +40,9 @@ const NewBoardForm = ({ onBoardSubmit }) => {
             onChange={handleChange}
           ></input>
         </div>
+
         <div>
-          <label htmlFor="creator"> Creator</label>
+          <label htmlFor="creator">creator: </label>
           <input
             type="text"
             name="creator"
@@ -47,8 +50,13 @@ const NewBoardForm = ({ onBoardSubmit }) => {
             onChange={handleChange}
           ></input>
         </div>
+
         <div>
-          <input type="submit" value="Add board!"></input>
+          <input
+            className="submit-button"
+            type="submit"
+            value="add board!"
+          ></input>
         </div>
       </form>
     </div>

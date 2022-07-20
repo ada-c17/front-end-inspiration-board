@@ -1,0 +1,21 @@
+.new-board-form {
+    grid-column-start: 2;
+    grid-column-end: 6;
+    grid-row-start: 4;
+    grid-row-end: 5;
+    justify-self: center;
+
+    border: 2pt solid teal;
+    border-radius: 5%;
+    width: 50vh;
+}
+
+.form-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    gap: 10px;
+
+    text-align: center;
+    padding: 2em;
+}
