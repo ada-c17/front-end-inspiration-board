@@ -9,7 +9,7 @@ const BoardName = (props) => {
   return (
     <div>
       <div>
-        <li onClick={passBoardId}> Title: {props.title}</li>
+        <li onClick={passBoardId}> {props.title}</li>
       </div>
     </div>
   );

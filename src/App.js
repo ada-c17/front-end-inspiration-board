@@ -46,12 +46,23 @@ function App() {
 
   const [boardID, setBoardsID] = useState(null);
   const [boardTitle, setboardTitle] = useState(null); 
+  const [shownBoard, setShownBoard] = useState(true)
 
   const boardSelected = (boardID, boardTitle) => {
     
     setBoardsID(boardID)
     setboardTitle(boardTitle)
   }
+
+  const flipBoardForm = () =>{
+    console.log("i am in flip board form")
+    if (shownBoard){
+      setShownBoard(false)
+    } else {
+      setShownBoard(true)
+    }
+  }
+
   return (
     <div class = "container"> 
       <div >
@@ -68,7 +79,7 @@ function App() {
         </div>
 
         <div>
-          <BoardForm addBoardCallback={addBoard} />
+          <BoardForm addBoardCallback={addBoard} hideFormCallback={flipBoardForm} shownBoard={shownBoard} setShownBoard={setShownBoard}/>
         </div>  
         
       </div>
