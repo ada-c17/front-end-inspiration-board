@@ -67,6 +67,7 @@ function App() {
       .post(`${kBaseUrl}/boards`, newBoard)
       .then(() => getBoardListDropdown())
       .then(() => setBoardOption(newBoard.title))
+      .then(() => setChosenBoardData({ cards: [] }))
       .catch((error) => {
         console.log(error);
         throw new Error("Couldn't create a new board.");
@@ -192,6 +193,9 @@ function App() {
       .delete(`${kBaseUrl}/boards/${boardId}`)
       .then((response) => console.log(response))
       // rerender here
+      .then(() => getBoardListDropdown())
+      .then(() => setBoardOption("Choose a Board"))
+      .then(() => setChosenBoardData({ cards: [] }))
       .catch((error) => {
         console.log(error);
         throw new Error("Couldn't delete board.");
