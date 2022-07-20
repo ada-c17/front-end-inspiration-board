@@ -130,7 +130,9 @@ const App = () => {
   };
 
   const addCardData = (addedCard) => {
-    const requestBody = { ...addedCard };
+    const message = addedCard.message;
+    const likes_count = addedCard.likesCount;
+    const requestBody = { message, likes_count };
 
     return axios
       .post(`${kBaseUrl}/boards/${boardNum}/cards`, requestBody)
@@ -157,11 +159,10 @@ const App = () => {
       });
   };
 
-  const handleCardDataReady = (addedCard) => {
-    console.log(`Card was added: ${addedCard}`);
-    addCardData(addedCard)
+  const handleCardDataReady = (cardName) => {
+    addCardData(cardName)
       .then((newCard) => {
-        loadCards((oldData) => [...oldData, newCard]);
+        loadCards(boardNum);
       })
       .catch((err) => {
         console.log(err);

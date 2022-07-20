@@ -33,7 +33,7 @@ const CardForm = ({ onAddCard, shouldHideCard }) => {
       setErrMsg(newMsg);
     }
 
-    if (formData.message.length === 0 && formData.message.length <= 40) {
+    if (errMsg.length === 0) {
       onAddCard(formData);
     }
     setFormData(kDefaultFormState);
