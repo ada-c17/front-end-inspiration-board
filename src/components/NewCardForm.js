@@ -17,6 +17,7 @@ const NewCardForm = (props) => {
   };
 
   const onUpdateCards = (event) => {
+    event.preventDefault();
     props.updateCards(cardField.message);
     setCardField({
       message: "",
@@ -24,26 +25,28 @@ const NewCardForm = (props) => {
   };
 
   return (
-    <section className="add-message">
-      <input
-        className="message-input"
-        type="text"
-        value={cardField.message}
-        placeholder="Add a message here!"
-        onChange={addMessage}
-      />
-      <button
-        disabled={messageButtonDisabled}
-        className={
-          messageButtonDisabled
-            ? "message-button message-button-grey"
-            : "message-button"
-        }
-        onClick={onUpdateCards}
-      >
-        Add
-      </button>
-    </section>
+    <form onSubmit={onUpdateCards}>
+      <section className="add-message">
+        <input
+          className="message-input"
+          type="text"
+          value={cardField.message}
+          placeholder="Add a message here!"
+          onChange={addMessage}
+        />
+        <button
+          disabled={messageButtonDisabled}
+          className={
+            messageButtonDisabled
+              ? "message-button message-button-grey"
+              : "message-button"
+          }
+          onClick={onUpdateCards}
+        >
+          Add
+        </button>
+      </section>
+    </form>
   );
 };
 

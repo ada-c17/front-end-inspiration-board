@@ -6,7 +6,8 @@ import NewBoardForm from "./components/NewBoardForm";
 import NewCardForm from "./components/NewCardForm";
 import "./css/inspo_board.css";
 
-const kBaseUrl = "https://mission-inspirational-2.herokuapp.com";
+// const kBaseUrl = "https://mission-inspirational-2.herokuapp.com";
+const kBaseUrl = "http://localhost:5000";
 
 const cardApiToJson = (card) => {
   const { id, likes, message, board_id: boardId } = card;
@@ -179,6 +180,24 @@ function App() {
       });
   };
 
+  // deletes board but need to rerender to initial "Choose a board"
+  const deleteBoard = () => {
+    let boardId;
+    for (const board of boards) {
+      if (board.title === boardOption) {
+        boardId = board.id;
+      }
+    }
+    axios
+      .delete(`${kBaseUrl}/boards/${boardId}`)
+      .then((response) => console.log(response))
+      // rerender here
+      .catch((error) => {
+        console.log(error);
+        throw new Error("Couldn't delete board.");
+      });
+  };
+
   return (
     <main>
       <section className="container">
@@ -194,6 +213,9 @@ function App() {
         </section>
         <section className="add-menu-button">
           <button onClick={toggleNewBoardForm}>Add Board</button>
+        </section>
+        <section className="delete-board-button">
+          <button onClick={deleteBoard}>Delete</button>
         </section>
         <section className="collapse">
           {isBoardFormVisible ? (
