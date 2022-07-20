@@ -1,8 +1,8 @@
 body {
   margin: 3rem;
   font-family: 'Open Sans', sans-serif;
-  font-size: medium;
   color: #263238;
+  font-size: medium;
   background-image: url('../src/pexels-fwstudio-129731.jpg'); 
   background-size: cover;
   /* overflow-x: hidden; */
@@ -63,6 +63,7 @@ h2 {
   font-weight: bolder;
   min-height: 60px; 
   margin-right: 11rem;
+  margin-top: 4rem;
   background-color:#adebbe;
   text-align: center;
   padding-top: 30px;
@@ -98,13 +99,25 @@ h2 {
 .new-card-form__form-submit-btn {
   padding: 0.5em;
   font-size: larger;
-  background-color: white;
-  border: 2px solid black;
+  border: 1px solid black;
   border-radius: 15px;
   cursor: pointer;
   
 }
 
+.new-board-form__form-submit-btn,
+.new-card-form__form-submit-btn {
+  background-color:#74bec1;
+}
+.new-board-form__toggle-btn {
+  background-color:#C3EAF4;
+}
+input {
+  height:25px;
+}
+button {
+  font-size: medium;
+}
 .card-items__container {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -117,6 +130,7 @@ h2 {
 .card-item {
   font-family: "Homemade Apple", cursive;
   font-family: 'Concert One', cursive;
+  font-size: large;
   background-color:#FFFF88;
   box-shadow: -10px 7px 7px #4F4F4F;
   min-height: 200px;
