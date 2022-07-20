@@ -60,9 +60,7 @@ function App() {
     axios
       .delete(`${url}/boards/${boardId}`)
       .then(() => {
-        const updatedBoards = boards.filter(
-          (board) => board.board_id !== boardId
-        );
+        const updatedBoards = boards.filter((board) => board.id !== boardId);
         setBoards(updatedBoards);
       })
       .catch((e) => {
