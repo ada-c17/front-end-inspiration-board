@@ -25,6 +25,7 @@ const NewBoardForm = (props) => {
         value={title} 
         onChange={handleTitleChange}
         className={((title.length === 0) || (title.length > 40)) ? 'invalid-form-input' : 'invalid'}></input>
+        <br></br>
         <label htmlFor="owner">Owner's Name</label>
         <input 
         type="text" 
