@@ -1,0 +1,37 @@
+.board{
+    border: solid black 1px;
+    /* background-color: lightsalmon; */
+    background-color: #CEE5D0;
+    width: 20vw;
+    height: 20vw ;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 0.5em;
+    overflow: auto ;
+    display: flex;
+    padding: 10px;
+    text-align: center;
+    /* margin:auto; */
+    margin: 2vw;
+    position: relative;
+}
+
+.board button{
+    position: absolute;
+    /* top: 2px; */
+    /* right: 2px; */
+    /* align-items: flex-start; */
+    justify-items: flex-end;
+    /* align-self: flex-end; */
+
+}
+div {
+    display: flex;
+    flex-direction: column;
+}
+h1, h2 {
+    align-self: center;
+}
+
+.board :hover {
+    background-color: lightgray;
+}

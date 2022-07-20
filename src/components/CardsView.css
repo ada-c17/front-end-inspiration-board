@@ -1,0 +1,11 @@
+.container {
+    display:flex;
+    width:90vw;
+    /* left:50%; */
+    margin: 0 auto;
+    border: solid black 2px;
+    padding:15px;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+}
