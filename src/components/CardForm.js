@@ -27,7 +27,7 @@ const CardForm = (props) => {
   const handleFormSubmission = (event) => {
     event.preventDefault();
     props.handleSubmission(cardData);
-    // reset card to default value 
+    // reset card to default value
     setCardData(defaultCard);
   };
 

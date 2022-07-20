@@ -2,3 +2,16 @@
     margin-bottom:50px;
 }
 
+.visible{
+    background-image:none;
+    float:left;
+    height:400px;
+    width:400px;
+}
+
+.not-visible{
+    background-image:none;
+    float:left;
+    height:0px;
+    width:0px;
+}

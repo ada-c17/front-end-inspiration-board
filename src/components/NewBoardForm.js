@@ -1,6 +1,8 @@
 import { Link } from "react-router-dom";
 import { useState } from "react";
 import axios from "axios";
+import galaxy from "../data/galaxy.jpg";
+import "./NewBoardForm.css";
 // import { attachClipboardStubToView } from "@testing-library/user-event/dist/types/utils";
 
 // sets default values as empty to get user input from board form
@@ -9,7 +11,10 @@ const NewBoardForm = () => {
   // setting up several states for functions that we will update such as the board form, message written, and quote received
   const [boardData, setBoardData] = useState(default_board);
   const [message, setMessage] = useState("");
+  const [idVisible, setId] = useState("not-visible");
+
   const [quote, setQuote] = useState("");
+
   // creates new 'post' board api call
   const makeNewBoard = (data) => {
     axios
@@ -58,6 +63,8 @@ const NewBoardForm = () => {
       setMessage(
         `Newly Formed Universe ${boardData.title} was created by ${boardData.owner}. `
       );
+      setId("visible");
+
       makeNewBoard(boardData);
 
       onGetQuote();
@@ -89,6 +96,7 @@ const NewBoardForm = () => {
         endless possibility, where a single choice can branch out into infinite
         realities, creating alternate worlds from the ones you know.
       </p>
+
       <form onSubmit={handleFormSubmission}>
         <input
           id="title"
@@ -110,8 +118,8 @@ const NewBoardForm = () => {
         />
         <input type="submit" value="Big Bang" />
       </form>
+      <img src={galaxy} alt="loading..." className={idVisible} />
       <p className="story">{message}</p>
-
       <p>{quote}</p>
     </>
   );
