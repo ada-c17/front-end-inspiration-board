@@ -3,6 +3,7 @@ import "./CardList.css";
 import Card from "./Card";
 import PropTypes from "prop-types";
 
+// destructuring for props and used below to make them useable to board
 const CardList = ({
   data,
   deleteCardCallBack,
@@ -28,6 +29,7 @@ const CardList = ({
   return <div>{cardComponents}</div>;
 };
 
+// props making each parameter a required for helping us to debug
 CardList.propTypes = {
   cardListData: PropTypes.arrayOf(
     PropTypes.shape({

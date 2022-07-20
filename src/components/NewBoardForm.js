@@ -1,13 +1,16 @@
 import { Link } from "react-router-dom";
 import { useState } from "react";
 import axios from "axios";
+// import { attachClipboardStubToView } from "@testing-library/user-event/dist/types/utils";
 
+// sets default values as empty to get user input from board form
 const default_board = { title: "", owner: "" };
 const NewBoardForm = () => {
+  // setting up several states for functions that we will update such as the board form, message written, and quote received
   const [boardData, setBoardData] = useState(default_board);
   const [message, setMessage] = useState("");
   const [quote, setQuote] = useState("");
-
+  // creates new 'post' board api call
   const makeNewBoard = (data) => {
     axios
       .post("/boards", data)
@@ -20,6 +23,8 @@ const NewBoardForm = () => {
       });
   };
 
+  // code to create an input form to be submitted by user
+  // this gets the user name value
   const handleFormInput = (event) => {
     const inputElement = event.target;
     const name = inputElement.name;
@@ -29,13 +34,15 @@ const NewBoardForm = () => {
     newBoardData[name] = value;
     setBoardData(newBoardData);
   };
-
+  // preventdefault allows the default dom behaviour to be cancelled,
+  // and actually use the code written in form submission
   const handleFormSubmission = (event) => {
     event.preventDefault();
-
+    // this allows a message to appear in the input button for title and owner in the board
     if (boardData.title === "" || boardData.owner === "") {
       setMessage("Please enter both title and owner");
     } else {
+      // the two below functions makes the first letter of the first word and the second word, be capitalized
       boardData.title = boardData.title
         .toLowerCase()
         .split(" ")
@@ -47,7 +54,7 @@ const NewBoardForm = () => {
         .split(" ")
         .map((s) => s.charAt(0).toUpperCase() + s.substring(1))
         .join(" ");
-
+      // a message appears below the form to let us know a board space was created succesfully
       setMessage(
         `Newly Formed Universe ${boardData.title} was created by ${boardData.owner}. `
       );
@@ -71,6 +78,7 @@ const NewBoardForm = () => {
       });
   };
 
+  // renders code from attachClipboardStubToView, the form submission, names and values for title and owner
   return (
     <>
       <Link to="/" className="HomeLink">

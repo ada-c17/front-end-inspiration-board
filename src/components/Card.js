@@ -3,6 +3,7 @@ import "./Card.css";
 import PropTypes from "prop-types";
 import Draggable from "react-draggable";
 
+// destructured props to available to use, these are the fields that we need values for or use state
 const Card = ({
   id,
   message,
@@ -22,6 +23,8 @@ const Card = ({
     PosY = 0;
   }
   console.log(PosX, PosY);
+
+  // rendered draggable components for cards
   return (
     <Draggable
       key={id}
@@ -33,6 +36,7 @@ const Card = ({
         }
       }}
     >
+      {/* functions to allow us to delete and add a like rendered below */}
       <div style={{ backgroundColor: color }} className="card">
         <p>{message}</p>
         <button id="delete" onClick={() => deleteCardCallBack(id)}>
