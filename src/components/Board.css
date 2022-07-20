@@ -1,7 +1,7 @@
 
 .board{
     text-align: center;
-    margin-left: 50px;
+    margin-left: 0px;
 }
 #board-owner{
     color:rgb(132, 213, 132);
@@ -16,7 +16,9 @@
 
 section {
     text-align: left;
+    margin-top: 2%;
     margin-left:21%;
+    font-size:larger;
     color:rgb(99, 247, 198);
     text-shadow:
     0 0 7px rgb(193, 241, 230),

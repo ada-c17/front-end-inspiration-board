@@ -122,9 +122,9 @@ const Board = () => {
       </Link>
       <div id="board_title">Space 💫 {boardData.title}</div>
       <div id="board-owner"> New Galaxy started by: {boardData.owner}</div>
+      <section>If it inspires you, then put it out into the universe!</section>
       {/* card form is rendered here in order to add a new card */}
       <CardForm handleSubmission={makeNewCard} />
-      <section>If it inspires you, then put it out into the universe!</section>
       <CardList
         data={boardData.cards}
         updatePos={updatePos}
