@@ -14,8 +14,8 @@ const NewBoardForm = (props) => {
         if (title.length > 40 || owner.length > 40) {
             alert('Typo needs to be less than 40 characters!');
         }
-        if (title.length === 0 && owner.length === 0) {
-
+        if (title.length === 0 || owner.length === 0) {
+            alert('Please enter your title and name!')
         }
     };
 

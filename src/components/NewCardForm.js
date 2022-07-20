@@ -11,6 +11,9 @@ const NewCardForm = (props) => {
         if (message.length > 40) {
             alert('Typo needs to be less than 40 characters!')
         }
+        if (message.length === 0) {
+            alert('Please enter your message!')
+        }
     };
 
     return (
