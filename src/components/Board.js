@@ -4,6 +4,7 @@ import PropTypes from "prop-types";
 import axios from "axios";
 import NewCardForm from "./NewCardForm";
 import CardList from "./CardList";
+
 const Board = ({ board_id, changeBoardCallback }) => {
   useEffect(() => {
     getBoardData(board_id);
@@ -23,7 +24,6 @@ const Board = ({ board_id, changeBoardCallback }) => {
   };
 
   const deleteBoard = (board_id) => {
-    console.log({ changeBoardCallback });
     axios
       .delete(`${process.env.REACT_APP_BACKEND_URL}/boards/${board_id}`)
       .then(() => {
@@ -70,11 +70,9 @@ const Board = ({ board_id, changeBoardCallback }) => {
   };
 
   const deleteCard = (card_id) => {
-    console.log(`Delete Card: ${card_id}`);
     axios
       .delete(`${process.env.REACT_APP_BACKEND_URL}/cards/${card_id}`)
       .then((response) => {
-        console.log(`Card ${card_id} Deleted`);
         const updatedCards = cardsDisplayedOnBoard.filter(
           (card) => card.id !== card_id
         );
@@ -86,7 +84,6 @@ const Board = ({ board_id, changeBoardCallback }) => {
   };
 
   const likeCard = (card_id) => {
-    console.log("+1 Like!");
     const likedCards = [...cardsDisplayedOnBoard];
     let targetCard;
     for (let card of likedCards) {
@@ -102,26 +99,12 @@ const Board = ({ board_id, changeBoardCallback }) => {
       )
       .then((response) => {
         targetCard.likes_count += 1;
-        console.log(`Card ${card_id} Liked`);
         setCardsDisplayedOnBoard(likedCards);
       })
       .catch((error) => {
         console.log(`New Card Could Not be Created Due to: ${error}`);
       });
   };
-
-  // const makeNewCard = (board_id, message) => {
-  //     console.log(message);
-  //     axios
-  //     .post(`${process.env.REACT_APP_BACKEND_URL}/${board_id}/cards`, message)
-  //     .then((response) => {
-  //         console.log("Card Successfully Created");
-  //         getCardData();
-  //     })
-  //     .catch((error) => {
-  //         console.log(`New Card Could Not be Created Due to: ${error}`);
-  //     });
-  // };
 
   return (
     <>
@@ -151,5 +134,6 @@ const Board = ({ board_id, changeBoardCallback }) => {
 export default Board;
 
 Board.propTypes = {
+  board_id: PropTypes.number.isRequired,
   changeBoardCallback: PropTypes.func.isRequired,
 };

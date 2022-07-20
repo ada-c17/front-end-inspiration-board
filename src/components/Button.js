@@ -4,7 +4,6 @@ import "./Button.css";
 
 const Button = ({ id, title, owner, changeBoardCallback }) => {
   const changeBoard = () => {
-    console.log("You clicked the button!", id);
     changeBoardCallback({ id });
   };
 

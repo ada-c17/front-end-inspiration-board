@@ -1,0 +1,17 @@
+.every2Buttons {
+    transform:rotate(4deg);
+}
+.every3Buttons {
+    transform:rotate(-3deg);
+}
+.every5Buttons {
+    transform:rotate(5deg);
+}
+.rotateDefault {
+    transform: rotate(-6deg);
+}
+    
+.button {
+    margin: 20px auto;
+    padding:1em;
+}

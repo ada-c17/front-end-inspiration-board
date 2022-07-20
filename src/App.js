@@ -4,8 +4,9 @@ import Board from "./components/Board";
 import BoardList from "./components/BoardList";
 
 function App() {
+  const [display, setDisplay] = useState(null);
+
   const toggleDisplay = () => {
-    console.log("If/Else func - Switch between BoardList & Board");
     if (display) {
       console.log("you have display of", display);
       console.log(typeof changeDisplay);
@@ -14,10 +15,8 @@ function App() {
       return <BoardList changeBoardCallback={changeDisplay} />;
     }
   };
-  const [display, setDisplay] = useState(null);
 
   const changeDisplay = ({ id }) => {
-    console.log("change display", id);
     setDisplay(id);
   };
 

@@ -9,13 +9,11 @@ const NewCardForm = (props) => {
 
   const createNewCard = (event) => {
     event.preventDefault();
-    // console.log(cardData);
     props.handleSubmission(cardData);
     setCardData(defaultCard);
   };
 
   const onInputChange = (event) => {
-    console.log("testing");
     setCardData(event.target.value);
   };
 
