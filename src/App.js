@@ -206,7 +206,7 @@ function App() {
         ></CardList>
       </section>
 
-      <footer className="footer">© 2022 gramtaschie</footer>
+      <footer className="footer">© 2022 gramtaschie 🐥</footer>
     </div>
   );
 }

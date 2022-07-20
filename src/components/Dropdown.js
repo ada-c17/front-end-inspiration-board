@@ -8,8 +8,6 @@ const Dropdown = (props) => {
   ];
 
   const sortCards = (input) => {
-    console.log("reaching sortCards");
-    console.log(props.sortType);
     props.sortingCardsCallback(input.target.value);
   };
 

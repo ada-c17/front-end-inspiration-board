@@ -84,9 +84,8 @@ body {
   text-align: center;
   margin: 1em;
   padding: 0.5em;
-  font-style: italic;
   font-weight:lighter;
-  font-size: small;
+  font-size: 1em;
 }
 
 h1, h2, h3, li {
@@ -171,7 +170,7 @@ input[type=text]:focus {
 }
 
 .startButton:disabled {
-  cursor: auto;
+  cursor:not-allowed;
 }
 
 .deleteButton:after {
