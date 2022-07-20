@@ -90,7 +90,7 @@ const NewBoardForm = () => {
     <>
       <Link to="/" className="HomeLink">
         <br />
-        Home is here
+        Return Home
       </Link>
       <h1>Quantum Realm</h1>
       <p className="story" id="first-line">
