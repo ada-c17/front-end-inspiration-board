@@ -1,0 +1,7 @@
+#addBoard {
+    width: 20vw;
+    height: 20vw;
+    border: solid black 1px;
+    padding: 1px;
+    margin: 0 auto;
+}
