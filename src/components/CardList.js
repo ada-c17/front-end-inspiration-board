@@ -76,7 +76,7 @@ const CardList = (props) => {
         <NewCardForm postNewCard={postNewCard}></NewCardForm>
       </div>
       <div>
-        <section className="Card">{cardElements}</section>
+        <section className="card-list">{cardElements}</section>
       </div>
     </>
   );
