@@ -1,10 +1,12 @@
 const Card = (props) => {
 
+    // likes button for each card
     const onLikeCallback = () => {
         console.log("Like button pressed!");
         props.onLikeCallback(props.card.card_id);
     };
 
+    // delete button for each card
     const deleteCallback = () => {
         console.log("Delete button pressed!");
         props.onDeleteCallback(props.card.card_id);

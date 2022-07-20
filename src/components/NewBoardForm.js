@@ -11,9 +11,12 @@ const NewBoardForm = (props) => {
         props.createNewBoard({ title, owner});
         setTitle('');
         setOwner('');
+        
+        // check th length of title and owner is greater than 40
         if (title.length > 40 || owner.length > 40) {
             alert('Typo needs to be less than 40 characters!');
         }
+        // check the length if it is empty
         if (title.length === 0 || owner.length === 0) {
             alert('Please enter your title and name!');
         }
