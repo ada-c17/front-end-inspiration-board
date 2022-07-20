@@ -10,6 +10,7 @@ const BoardList = (props) => {
         key={board.id}
         id={board.id}
         title={board.title}
+        owner={board.owner}
         selectBoard={props.selectBoard}
         deleteBoard={props.deleteBoard}
       />

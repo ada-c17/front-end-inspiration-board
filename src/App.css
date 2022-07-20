@@ -15,12 +15,42 @@ body {
 .header {
   color: #ffffff;
   background-color: #f4bdf4;
+  text-shadow: 7px 2px 1px #9f7b9f;
   font-family: 'Silkscreen';
   font-size: 1.5em;
 }
 
+.board-select_header {
+  display: flex;
+  justify-content: center;
+  font-family: 'Silkscreen';
+  font-size: 2.5em;
+  text-shadow: 7px 2px 1px #f4bdf4;
+  color: #ffffff;
+}
+
+
+.board-list_header {
+  display: flex;
+  justify-content: center;
+  color: #ffffff;
+  text-shadow: 7px 2px 1px #f4bdf4;
+  font-family: 'Silkscreen';
+  font-size: 3em;
+}
+
+.board-list_container {
+  display: flex;
+  justify-content: center;
+}
+
+.board-form_container {
+  display: flex;
+  justify-content: center;
+}
+
 .button-toggle {
-    background-color: #dcaadc; /* Green */
+    background-color: #dcaadc;
     border: none;
     color: #fdf2fd;
     padding: 1em;

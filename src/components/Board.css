@@ -1,15 +1,17 @@
 .board__container {
     display:flex;
     font-family: Silkscreen;
+    align-items: center;
 }
 
 .board__item {
     width: 100%;
     text-align: left;
-    /* padding: 0.85em 2.25em 0.85em 1em; */
+    font-size: 1em;
     border: 2px solid rgba(0, 0, 0, 0.1);
     background-color: #bdf4bd;
 }
 
 button.board__item__remove {
+    font-size: 1em;
 }

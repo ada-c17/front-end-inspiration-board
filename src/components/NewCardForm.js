@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import React from 'react';
 import PropTypes from 'prop-types';
-// import './NewCardForm.css';
+import './NewCardForm.css';
 
 const NewCardForm = (props) => {
   //brains
@@ -49,25 +49,20 @@ const NewCardForm = (props) => {
   return (
     <>
       <h1>Create Your Card</h1>
-      <form onSubmit={handleSubmitCard} className="new-board__form">
-        <label>
-          Message:
-          <input
+      <form onSubmit={handleSubmitCard} className="new-card__form">
+        <div className="new-card__fields">
+          <label>Message: </label>
+          <textarea
             type="text"
-            // value={formValues.message}
             value={message}
-            className={
-              message.length === 0 || message.length > 40
-                ? 'invalid-form-input'
-                : ''
-            }
+            className="new-card__input"
             onChange={handleMessage}
-          ></input>
-          <p>{formErrors.message}</p>
-        </label>
-        <button className="new-card__submit" type="submit">
-          Submit Card
-        </button>
+          />
+          <p className="form-errors"> {formErrors.message}</p>
+          <button className="new-card__submit" type="submit">
+            Submit Card
+          </button>
+        </div>
       </form>
     </>
   );
