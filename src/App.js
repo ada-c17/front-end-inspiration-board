@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 import React, { useState } from "react";
 import Otter from "./data/Otter.jpg";
 import BoardList from "./components/BoardList";
-import laugh from "./data/Laugh.mp3";
+import laugh from "./data/Laugh.wav";
 import Story from "./components/Story";
 
 function App() {
@@ -17,6 +17,7 @@ function App() {
   // from false to true (the above)
 
   return (
+    <div> 
     <div className="App">
       {/* to use photo we import image from folder */}
       <img
@@ -35,7 +36,7 @@ function App() {
       {/* Toggle to display boardlist when clicked, otherwise it will show the story */}
       {showBoardList ? <BoardList /> : <Story />}
       {/* if false will render story, if true will render board list */}
-
+      {/* Code that links to page where we create a new world(board) */}
       <Link to="/new">
         <div id="add-new-space">Create alternate world</div>
       </Link>

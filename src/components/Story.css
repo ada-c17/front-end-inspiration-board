@@ -3,6 +3,8 @@
     text-align: left;
     margin: auto;
     font-family: "Cairo";
+    color:rgb(137, 191, 237);
+    font-weight: 400;
 }
 
 #first-line::first-letter {
@@ -20,4 +22,8 @@
     float: left;
     line-height: 0.9;
     margin: 0.1em .1em 0 0;
+}
+
+#story-button {
+    color:rgb(155, 86, 219);
 }

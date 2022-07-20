@@ -1,7 +1,10 @@
 .card {
     position:absolute;
     cursor: move;
-    color: black;
+    color: rgb(12, 12, 104);
+    font-family: 'Press Start 2P', cursive;
+    font-size:70%;
+    font-stretch:narrower;
     width: 215px;
     overflow-wrap: break-word;
     border-radius: 5px;

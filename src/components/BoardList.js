@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import EditBoardForm from "./EditBoardForm";
 import axios from "axios";
 
+// use effect and data is coming from the api calls below
 let edit_board = {};
 const BoardList = () => {
   const [boards, setBoards] = useState([]);
@@ -45,7 +46,7 @@ const BoardList = () => {
         });
     }
   };
-
+  // function that calls a put api request to make a change in title field
   const editBoard = (boardID, new_title) => {
     axios
       .put(
@@ -61,7 +62,7 @@ const BoardList = () => {
       });
   };
 
-  // sorting boards by name
+  // sorting boards by name in alphabetical order or ascending order
   boards.sort((a, b) => a.title.localeCompare(b.title));
 
   // switcher between list of boards and editBoardForm
@@ -86,6 +87,7 @@ const BoardList = () => {
           {boards.map((item) => (
             <li key={item.id} className="list-item">
               <div>
+                {/* makes the cursor display as a pointer as part of styling */}
                 <Link to={`${item.id}`} style={{ cursor: "pointer" }}>
                   {item.title}
                   {/* pointer is the cursor (hand) */}

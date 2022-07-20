@@ -1,6 +1,8 @@
 import { useState } from "react";
 import "./BoardList.css";
 
+// code allowing us to edit the already existing title in the boardlist
+
 const EditBoardForm = (props) => {
   const [boardData, setBoardData] = useState(props.board);
   const [message, setMessage] = useState("");
@@ -31,7 +33,7 @@ const EditBoardForm = (props) => {
       props.onEditSubmission(boardData);
     }
   };
-
+  //   renders the edit form below
   return (
     <div className="edit-board">
       <form onSubmit={handleFormSubmission}>
