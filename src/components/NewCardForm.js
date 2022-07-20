@@ -19,8 +19,7 @@ const AddNewCardForm = ({ submitCard, boardId }) => {
   const [data, setData] = useState({
     message: "",
   });
-  const isValid =
-    data.title.length > 0 && data.owner.length > 0 && data.title.length < 40;
+  const isValid = data.message.length > 0 && data.message.length <= 40;
 
   //Form input stored in state
   const handleInput = (e) => {
