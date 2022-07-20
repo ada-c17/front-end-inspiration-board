@@ -11,6 +11,7 @@ const Board = (props) => {
     const board_object = board;
     return (
       <li
+        className={props.selectedBoardState.id === board.id ? "selected" : ""}
         key={board.id}
         onClick={() => props.selectBoardCallback(board_object)}
       >

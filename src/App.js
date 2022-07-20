@@ -175,6 +175,7 @@ function App() {
           selectBoardCallback={selectBoard}
           deleteBoardsCallback={deleteBoard}
           fetchCardsCallback={fetchCards}
+          selectedBoardState={selectedBoard}
         ></Board>
       </section>
       <section className={hideBoard}>
