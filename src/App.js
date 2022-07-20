@@ -6,8 +6,8 @@ import NewBoardForm from "./components/NewBoardForm";
 import NewCardForm from "./components/NewCardForm";
 import "./css/inspo_board.css";
 
-const kBaseUrl = "https://mission-inspirational-2.herokuapp.com";
-// const kBaseUrl = "http://localhost:5000";
+// const kBaseUrl = "https://mission-inspirational-2.herokuapp.com";
+const kBaseUrl = "http://localhost:5000";
 
 const cardApiToJson = (card) => {
   const { id, likes, message, board_id: boardId } = card;
@@ -65,11 +65,9 @@ function App() {
   const createNewBoard = (newBoard) => {
     axios
       .post(`${kBaseUrl}/boards`, newBoard)
-      .then((response) => {
-        const newBoards = [...boards];
-        newBoards.push(response.data.board);
-        setBoards(newBoards);
-      })
+      .then(() => getBoardListDropdown())
+      .then(() => setBoardOption(newBoard.title))
+      .then(() => setChosenBoardData({ cards: [] }))
       .catch((error) => {
         console.log(error);
         throw new Error("Couldn't create a new board.");
@@ -175,13 +173,32 @@ function App() {
     axios
       .post(`${kBaseUrl}/cards`, requestBody)
       .then((response) => {
-        console.log("response:", response.data);
         return cardApiToJson(response.data);
       })
       .then(() => getSelectedBoardData(boardId))
       .catch((err) => {
-        console.log(err);
         throw new Error("error adding card");
+      });
+  };
+
+  // deletes board but need to rerender to initial "Choose a board"
+  const deleteBoard = () => {
+    let boardId;
+    for (const board of boards) {
+      if (board.title === boardOption) {
+        boardId = board.id;
+      }
+    }
+    axios
+      .delete(`${kBaseUrl}/boards/${boardId}`)
+      .then((response) => console.log(response))
+      // rerender here
+      .then(() => getBoardListDropdown())
+      .then(() => setBoardOption("Choose a Board"))
+      .then(() => setChosenBoardData({ cards: [] }))
+      .catch((error) => {
+        console.log(error);
+        throw new Error("Couldn't delete board.");
       });
   };
 
@@ -205,12 +222,13 @@ function App() {
           <button onClick={toggleNewBoardForm}>
             {isBoardFormVisible ? "Hide Form" : "Add Board"}
           </button>
+        <section className="collapse">
+          {isBoardFormVisible ? (
+            <NewBoardForm createNewBoard={createNewBoard}></NewBoardForm>
+          ) : (
+            ""
+          )}
         </section>
-        {isBoardFormVisible ? (
-          <NewBoardForm createNewBoard={createNewBoard}></NewBoardForm>
-        ) : (
-          ""
-        )}
         <section className="board-content">
           <Board
             cardLike={increaseLike}
