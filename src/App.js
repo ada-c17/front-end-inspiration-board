@@ -81,6 +81,7 @@ function App() {
 
   //sort card by id
   const sort_card = (card_a, card_b) => {
+    console.log("we are in sort card")
     if (card_a.id < card_b.id) {
       return -1;
     } else {
@@ -164,13 +165,7 @@ function App() {
     }
   };
 
-  const sortCards = (e) => {
-    const feature = e.target.selectedIndex;
-    const cards = {1: "id", 2: "likes_count", 3: "message"};
-    const sortedCards = [...cardsData];
-    sortedCards.sort((a,b) => {return a[cards[feature]] - b[cards[feature]]})
-    setCardsData(sortedCards);   
-  };
+  
     
   return (
     <div className="App">
@@ -214,7 +209,7 @@ function App() {
                 selectedBoard={boardSelected}
                 deleteCardCallback={deleteCard}
                 likeCardCallback={likeCard}
-                sortCards = {sortCards}
+                
               />
             )}
           </div>

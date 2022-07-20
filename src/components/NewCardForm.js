@@ -45,7 +45,7 @@ const NewCardForm = (props) => {
             cardForm.message.length === 0 || cardForm.message.length > 40
           }
           className="form-submit-btn"
-          sortCards = {props.sortCards}
+          
         ></input>
       </form>
     </section>

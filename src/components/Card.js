@@ -1,5 +1,5 @@
 import React from "react";
-import PropTypes from "prop-types";
+//import PropTypes from "prop-types";
 
 const Card = (props) => {
   const clickLikeButton = () => {
@@ -27,13 +27,13 @@ const Card = (props) => {
 };
 
 // create proptypes
-Card.propTypes = {
-  id: PropTypes.number.isRequired,
-  message: PropTypes.string.isRequired,
-  likes: PropTypes.number.isRequired,
-  onLike: PropTypes.func.isRequired,
-  onDelete: PropTypes.func.isRequired,
-  board_id: PropTypes.number.isRequired,
-};
+// Card.propTypes = {
+//   id: PropTypes.number.isRequired,
+//   message: PropTypes.string.isRequired,
+//   likes: PropTypes.number.isRequired,
+//   onLike: PropTypes.func.isRequired,
+//   onDelete: PropTypes.func.isRequired,
+//   board_id: PropTypes.number.isRequired,
+// };
 
 export default Card;
