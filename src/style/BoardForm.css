@@ -7,3 +7,10 @@
     border: none;
 }
 
+.showBoard {
+    display: flexbox;
+  } 
+  
+  .hideBoard {
+    display: none;
+  }

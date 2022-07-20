@@ -26,6 +26,11 @@ const getBoardData = () => {
 const App = () => {
   const [newCards, setCardData] = useState(cardData);
   const [boardData, setBoardData] = useState([]);
+  const [btnText, setButtonText] = useState("Create New Dream");
+  let newText = "";
+
+  const showBoardForm =
+    btnText === "Create New Dream" ? "hideBoard" : "showBoard";
 
   const loadBoards = () => {
     getBoardData().then((boards) => {
@@ -77,21 +82,13 @@ const App = () => {
       .catch((err) => console.log(err));
   };
 
-  // let btnToggle = false;
-  let [btnText, setButtonText] = useState("Hide Dream Form");
-  let showBoard = "showBoard";
-
   const boardToggle = () => {
-    // console.log(btnToggle);
-    // btnToggle = !btnToggle;
     if (btnText === "Create New Dream") {
-      btnText = "Hide Dream Form";
-      showBoard = "showBoard";
+      newText = "Hide Dream Form";
     } else {
-      btnText = "Create New Dream";
-      showBoard = "hideBoard";
+      newText = "Create New Dream";
     }
-    setButtonText(btnText);
+    setButtonText(newText);
   };
 
   const handleBoardDataReady = (boardName) => {
@@ -114,7 +111,7 @@ const App = () => {
         {/* maybe change the button text to Hide Dream Form */}
         <BoardForm
           onAddBoard={handleBoardDataReady}
-          className={showBoard}
+          shouldHide={showBoardForm}
         ></BoardForm>
         <BoardList boards={boardData} onSelectBoard={getBoardId} />
         <CardList

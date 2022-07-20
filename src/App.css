@@ -2,10 +2,3 @@
   text-align: center;
 }
 
-.showBoard {
-  display: flexbox;
-} 
-
-.hideBoard {
-  display: none;
-}

@@ -7,7 +7,7 @@ const kDefaultFormState = {
   owner: "",
 };
 
-const BoardForm = ({ onAddBoard }) => {
+const BoardForm = ({ onAddBoard, shouldHide }) => {
   const [formData, setFormData] = useState(kDefaultFormState);
 
   const onInput = (event) => {
@@ -44,7 +44,7 @@ const BoardForm = ({ onAddBoard }) => {
   // remove error message
 
   return (
-    <form className="boardInput" onSubmit={handleSubmit}>
+    <form className={shouldHide} onSubmit={handleSubmit}>
       <h4>Add A Dream</h4>
       <h5> ~dream name~ </h5>
       <input
@@ -53,6 +53,7 @@ const BoardForm = ({ onAddBoard }) => {
         value={formData.title}
         onChange={onInput}
       ></input>
+      <p className={errTitleMsg}>{titleValErr}</p>
       <h5> ~name of dreamer~</h5>
       <input
         type="text"
@@ -60,7 +61,6 @@ const BoardForm = ({ onAddBoard }) => {
         value={formData.owner}
         onChange={onInput}
       ></input>
-      <p className={errTitleMsg}>{titleValErr}</p>
       <p className={errOwnerMsg}>{ownerValErr}</p>
       <input type="submit" value="Submit"></input>
     </form>
