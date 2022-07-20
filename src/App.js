@@ -23,8 +23,9 @@ const getBoardData = () => {
       console.log(err);
     });
 };
+
 const App = () => {
-  const [newCards, setCardData] = useState(cardData);
+  const [newCards, setCardData] = useState([]);
   const [boardData, setBoardData] = useState([]);
   const [btnText, setButtonText] = useState("Create New Dream");
   let newText = "";
