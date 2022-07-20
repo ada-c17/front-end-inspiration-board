@@ -9,7 +9,7 @@ const SingleBoard = (props) => {
     props.setCards(props.board.cards);
   };
   return (
-    <section onClick={clickMe}>
+    <section className= "single-board" onClick={clickMe}>
       <ul>
         <li>{props.board.owner}</li>
         <li>{props.board.title}</li>

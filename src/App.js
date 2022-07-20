@@ -1,8 +1,9 @@
 import "./App.css";
+import "./components/boards.css";
 import Board from "./components/boards.js";
 import { useState, useEffect } from "react";
 import Header from "./components/Header.js";
-import Card from "./components/cards.js";
+import Cards from "./components/cards.js";
 import axios from "axios";
 import NewBoardForm from "./components/NewBoardForm.js";
 import NewCardForm from "./components/NewCardForm.js";
@@ -23,6 +24,16 @@ function App() {
     }
     /* Update number of cards so that React will see change */
     setCards([...cards]);
+
+    /* Delete card in the back end */
+    axios
+      .delete(`http://shiver-of-sharks.herokuapp.com/cards/${id}`)
+      .then((response) => {
+        /* Don't need to do anything with response */
+      })
+      .catch((error) => {
+        console.log(<section>{error.response.data.message}</section>);
+      });
   };
 
   useEffect(() => {
@@ -67,7 +78,7 @@ function App() {
 
   if (isOnHomepage) {
     return (
-      <div>
+      <div className="container" id="App">
         <div>
           <Header title="Inspiration Board" isOnHomepage={isOnHomepage} />
           <Board
@@ -83,18 +94,16 @@ function App() {
     );
   } else {
     return (
-      <>
-        <Header
-          title={activeBoard.title}
-          isOnHomepage={isOnHomepage}
-          setIsOnHomepage={setIsOnHomepage}
-        />
-        <Card cards={cards} deleteCardCallBack={deleteCard} />
-        <NewCardForm
-          addCardCallback={addCardData}
-          boardId={activeBoard.board_id}
-        />
-      </>
+      <div className="container" id="App">
+        <div>
+          <Header
+            title={activeBoard.title}
+            isOnHomepage={isOnHomepage}
+            setIsOnHomepage={setIsOnHomepage}
+          />
+          <Cards activeBoard={activeBoard} deleteCardCallBack={deleteCard} />
+        </div>
+      </div>
     );
   }
 }

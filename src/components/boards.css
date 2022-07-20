@@ -1,2 +1,16 @@
-div {border:1px solid black;}
-section {border:1px solid blue;}
+/* .single-board {border:1px solid blue;} */
+
+.boards-display {
+  display: flex;
+  flex-flow: row wrap;
+  
+  justify-content: center;
+  
+}
+
+.single-board {
+    width: 20vw;
+    margin: 1vw;
+    border: 1px solid blue
+}
+

@@ -17,7 +17,7 @@ const Board = (props) => {
     );
   });
 
-  return <section>{boardComponents}</section>;
+  return <section className="boards-display">{boardComponents}</section>;
 };
 
 Board.propTypes = {

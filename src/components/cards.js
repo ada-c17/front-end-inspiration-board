@@ -1,8 +1,9 @@
 import React from "react";
 import PropTypes from "prop-types";
 import SingleCard from "./SingleCard.js";
+import "./cards.css";
 
-const Card = (props) => {
+const Cards = (props) => {
   if (props.cards === []) {
     return null;
   }
@@ -17,7 +18,7 @@ const Card = (props) => {
       ></SingleCard>
     );
   });
-  return <section>{cardComponents}</section>;
+  return <section className="cards-display">{cardComponents}</section>;
 };
 
 Card.propTypes = {
@@ -31,4 +32,4 @@ Card.propTypes = {
   ),
 };
 
-export default Card;
+export default Cards;
