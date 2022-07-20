@@ -41,12 +41,6 @@ const BoardWithCards = (props) => {
       });
   };
 
-  // const validateCardmessage = (response) => {
-  //   if (response.data.card.message.length < 40) {
-  //     //WE WANT RED TEXT BOX HERE
-  //     console.log("hi");
-  //   }
-  // }
   const deleteCard = (id) => {
     axios
       .delete(`${CARDS_URL}/${id}`)

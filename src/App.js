@@ -48,14 +48,14 @@ function App() {
   const [boardTitle, setboardTitle] = useState(null); 
 
   const boardSelected = (boardID, boardTitle) => {
-    // console.log(boardID)
+    
     setBoardsID(boardID)
     setboardTitle(boardTitle)
   }
   return (
-    <div class = "container">  Made 
+    <div class = "container"> 
       <div >
-        <div id="Boards">
+        <div id="boards">
           <h1>BOARDS</h1>
           <BoardsList
             boards={boards}

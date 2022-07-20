@@ -9,8 +9,9 @@ const Card = (props) => {
         props.changeLikes(props.id)
     };
     return (
-        <div id= "post-it-note">
-            <ul id = "singleNote">
+        <div class= "postItNoteContainer">
+            <i id ="pin"></i>
+            <ul class = "singleNote yellow">
                 <li> {props.message} </li>
                 <li>{props.likes} ❤️ </li>
                 <button onClick={changeLike}> +1</button>
