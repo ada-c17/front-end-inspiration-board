@@ -189,11 +189,17 @@ function App() {
       });
   };
 
+  useEffect(() => {
+    document.title = "INSPOBOARD";
+  }, []);
+
   return (
     <main>
       <section className="container">
         <section className="logo-area">
-          <p className="logo">INSPOBOARD</p>
+          <a href="https://inspoboard.herokuapp.com/" className="logo">
+            INSPOBOARD
+          </a>
         </section>
         <section className="dropdown-menu">
           <BoardDropdown
