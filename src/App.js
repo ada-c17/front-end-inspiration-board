@@ -19,6 +19,16 @@ function App() {
     }
   };
 
+  const onRemoveCallback = (id) => {
+    const newBoards = boards.filter((board) => {
+      return board.id !== id;
+    });
+    setBoards(newBoards);
+    if (newBoards) {
+      setSelectedBoard(newBoards[0]);
+    }
+  }
+
   const onCreateBoardCallBack = (board) => {
     console.log("board created:", board);
     setBoards((prv) => [...prv, board]);
@@ -55,6 +65,7 @@ function App() {
           id={selectedBoard.id}
           title={selectedBoard.title}
           owner={selectedBoard.owner}
+          onRemoveCallback = {onRemoveCallback}
         ></Board>
       ) : null}
       <footer className="footer"></footer>
