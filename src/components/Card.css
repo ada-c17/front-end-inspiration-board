@@ -1,7 +1,7 @@
 .card {
     position:absolute;
     cursor: move;
-    /* font-family: 'Press Start 2P', cursive; */
+    font-family: 'Press Start 2P', cursive;
     font-size:70%;
     font-stretch:narrower;
     width: 215px;
@@ -13,8 +13,7 @@
     color: black;
     text-shadow:
       0 0 7px #fff,
-      0 0 10px #fff,
-      0 0 21px #fff,
+      /* 0 0 10px #fff, */
       0 0 42px #13c7fe,
       0 0 82px #13c7fe;
       /* 0 0 92px #bc13fe; */
@@ -25,18 +24,12 @@
       border-radius: 1rem;
       padding: 0.4em; 
       box-shadow: 0 0 .2rem #fff,
-                0 0 .2rem #fff,
+                /* 0 0 .2rem #fff, */
                 0 0 2rem #13c7fe,
-                0 0 0.8rem #13c7fe,
-                /* 0 0 2.8rem #bc13fe, */
+                /* 0 0 0.8rem #13c7fe, */
                 inset 0 0 1.3rem #13c7fe; 
   }
 
-  .messageText {
-    /* animation: pulsate 1.5s infinite alternate;   */
-    
-  }
-  
   /* @keyframes pulsate {
       
     100% {

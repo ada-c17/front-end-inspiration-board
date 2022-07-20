@@ -14,6 +14,7 @@ const NewBoardForm = () => {
   const [idVisible, setId] = useState("not-visible");
 
   const [quote, setQuote] = useState("");
+  const [quoteAuthor, setQuoteAuthor] = useState("");
 
   // creates new 'post' board api call
   const makeNewBoard = (data) => {
@@ -61,7 +62,7 @@ const NewBoardForm = () => {
         .join(" ");
       // a message appears below the form to let us know a board space was created succesfully
       setMessage(
-        `Newly Formed Universe ${boardData.title} was created by ${boardData.owner}. `
+        `Newly Formed Universe ${boardData.title} was created by ${boardData.owner}. The cosmos had spoken and it sends you :`
       );
       setId("visible");
 
@@ -77,6 +78,7 @@ const NewBoardForm = () => {
       .then((response) => {
         console.log(response.data[0]);
         setQuote(response.data[0].q);
+        setQuoteAuthor(response.data[0].a);
       })
       .catch((error) => {
         console.log("Oh no!!!");
@@ -99,7 +101,6 @@ const NewBoardForm = () => {
 
       <form onSubmit={handleFormSubmission}>
         <input
-          id="title"
           name="title"
           type="text"
           className="title"
@@ -108,7 +109,6 @@ const NewBoardForm = () => {
           placeholder="Enter Space Name"
         />
         <input
-          id="owner"
           name="owner"
           type="text"
           className="owner"
@@ -118,9 +118,10 @@ const NewBoardForm = () => {
         />
         <input type="submit" value="Big Bang" />
       </form>
-      <img src={galaxy} alt="loading..." className={idVisible} />
       <p className="story">{message}</p>
-      <p>{quote}</p>
+      <p className="galaxy-text">"{quote}"</p>
+      <p className="galaxy-text">{quoteAuthor}</p>
+      <img src={galaxy} alt="loading..." className={idVisible} />
     </>
   );
 };

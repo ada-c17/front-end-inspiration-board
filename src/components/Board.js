@@ -18,6 +18,7 @@ const Board = () => {
     owner: "",
     title: "",
   });
+  //!!!for instructors: We recognize that we used one useState for nested object, but it could be placed in multiple useState due to the different object fields changing. However, due to time, we will keep the state like this.
   // getting api from backend for one board by ID
   const getBoardDatafromAPI = (id) => {
     axios
