@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 import SingleCard from "./SingleCard.js";
 import "./cards.css";
 
-const Card = (props) => {
+const Cards = (props) => {
   if (props.activeBoard === {}) {
     return null;
   }
@@ -21,7 +21,7 @@ const Card = (props) => {
   return <section className="cards-display">{cardComponents}</section>;
 };
 
-Card.propTypes = {
+Cards.propTypes = {
   activeBoard: PropTypes.shape({
     board_id: PropTypes.number,
     title: PropTypes.string,
@@ -37,4 +37,4 @@ Card.propTypes = {
   }),
 };
 
-export default Card;
+export default Cards;

@@ -3,7 +3,7 @@ import "./components/boards.css";
 import Board from "./components/boards.js";
 import { useState, useEffect } from "react";
 import Header from "./components/Header.js";
-import Card from "./components/cards.js";
+import Cards from "./components/cards.js";
 import axios from "axios";
 import NewBoardForm from "./components/NewBoardForm.js";
 
@@ -23,6 +23,16 @@ function App() {
     }
     /* Update number of cards so that React will see change */
     setNumCards(numCards - 1);
+
+    /* Delete card in the back end */
+    axios
+      .delete(`http://shiver-of-sharks.herokuapp.com/cards/${id}`)
+      .then((response) => {
+        /* Don't need to do anything with response */
+      })
+      .catch((error) => {
+        console.log(<section>{error.response.data.message}</section>);
+      });
   };
 
   useEffect(() => {
@@ -74,7 +84,7 @@ function App() {
             isOnHomepage={isOnHomepage}
             setIsOnHomepage={setIsOnHomepage}
           />
-          <Card activeBoard={activeBoard} deleteCardCallBack={deleteCard} />
+          <Cards activeBoard={activeBoard} deleteCardCallBack={deleteCard} />
         </div>
       </div>
 
