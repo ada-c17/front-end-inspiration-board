@@ -80,7 +80,7 @@ h2 {
 }
 
 .boards__list {
-  font-family: "Permanent Marker", cursive;
+  font-family: "Permanent Maker", cursive;
   padding: 15px;
   font-size: larger;
   font-weight: bolder;
@@ -146,6 +146,7 @@ h2 {
 .new-card-form__form-submit-btn {
   background-color:#74bec1;
 }
+
 .new-board-form__toggle-btn {
   background-color:#C3EAF4;
 }
@@ -218,7 +219,7 @@ input {
 }
 
 ol.boards__list > li:hover {
-  background-color:  #30859a;
+  background-color:  #61bfd7;
   cursor: pointer;
 }
 
@@ -255,3 +256,24 @@ h2:nth-of-type(1) {
   }
 }
 
+
+.boards__list {
+  position: absolute;
+  display: block;
+  z-index: 10;
+  display: block;
+  /* height: 50%; */
+  width: 20%;
+  background: linear-gradient(to right, #fff 20%, #fff 40%, #8cc7ec 50%, #8cc7ec 55%, #fff 70%, #fff 100%);
+  background-size: 200% auto;
+  max-height: 200px;
+  animation: shine 3s linear infinite;
+}
+
+/*Begin shimmer code*/
+
+@keyframes shine {
+    to {
+      background-position: 200% center;
+    }
+  }

@@ -75,13 +75,17 @@ function App() {
         <section className="boards__container">
           <section>
             <h2>Boards</h2>
-            <ol className="boards__list">{boardsElements}</ol>
+            <div className="wrapper__board">
+              <div className="border__board"></div>
+              <div className="main-element"></div>
+              <ol className="boards__list">{boardsElements}</ol>
+            </div>
           </section>
           <section>
             <h2>Selected Board</h2>
             <p className="boards__selected">
               {selectedBoard.board_id
-                ? `${selectedBoard.title} - ${selectedBoard.owner}`
+                ? `${selectedBoard.title}  - ${selectedBoard.owner}`
                 : "Select a Board from the Board List!"}
             </p>
           </section>
