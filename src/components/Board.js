@@ -32,7 +32,7 @@ const Board = ({ board_id, changeBoardCallback }) => {
       })
       .catch((error) => console.log(`Cannot delete board ${error}`));
     console.log("Board deleted now we are resetting display");
-    changeBoardCallback(null);
+    changeBoardCallback(0);
   };
 
   const [cardsDisplayedOnBoard, setCardsDisplayedOnBoard] = useState([]);
@@ -135,8 +135,15 @@ const Board = ({ board_id, changeBoardCallback }) => {
           deleteCardCallback={deleteCard}
           likeCardCallback={likeCard}
         />
-        <button onClick={() => deleteBoard(board_id)}>DELETE THIS BOARD</button>
-        <button onClick={() => changeBoardCallback(0)}> 🔙</button>
+        <button className="btn delete" onClick={() => deleteBoard(board_id)}>
+          *DELETE THIS BOARD*
+        </button>
+        <br></br>
+        <br></br>
+        <button className="btn back" onClick={() => changeBoardCallback(0)}>
+          {" "}
+          🔙 TO MENU
+        </button>
       </div>
       <div>
         <NewCardForm handleSubmission={makeNewCard} />
@@ -144,7 +151,6 @@ const Board = ({ board_id, changeBoardCallback }) => {
     </>
   );
 };
-
 export default Board;
 
 Board.propTypes = {
