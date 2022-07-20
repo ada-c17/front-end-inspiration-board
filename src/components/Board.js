@@ -18,6 +18,7 @@ const Board = (props) => {
           addCard={props.addCard}
           closeModal={setOpenCardModal}
           boardID={props.id}
+          fetchCards={props.fetchCards}
         />
       )}
       <button className="boards__item" onClick={fetchCards}>

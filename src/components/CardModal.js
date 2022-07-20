@@ -6,11 +6,23 @@ const CardModal = (props) => {
     <div className="modalBackground">
       <div className="modalContainer">
         <div className="titleCloseButton">
-          <button onClick={() => props.closeModal(false)}> X </button>
+          <button
+            onClick={() => {
+              props.closeModal(false);
+              props.fetchCards(props.boardID);
+            }}
+          >
+            {" "}
+            X{" "}
+          </button>
         </div>
         <div className="title">Create a new card</div>
         <div className="body">
-          <CardForm addCard={props.addCard} boardID={props.boardID} />
+          <CardForm
+            addCard={props.addCard}
+            fetchCards={props.fetchCards}
+            boardID={props.boardID}
+          />
         </div>
         <div className="footer"></div>
       </div>
