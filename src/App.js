@@ -27,6 +27,7 @@ function App() {
       <h1>Inspiration from the OtterSpace</h1>
       {/* a button for the story/mulitverse toggle */}
       <input
+        id="story-button"
         type="submit"
         value="Story / Multiverse"
         onClick={onClickShowBoardlist}
@@ -37,7 +38,7 @@ function App() {
       <Link to="/new">
         <div id="add-new-space">Create alternate world</div>
       </Link>
-      <footer>
+      <footer id="main-page-footer">
         &copy; 2022 Ada Developers Academy ✨ by Coders from the OtterSpace ✨
         Doina ✨ Fena ✨ Marlyn ✨ Nina ✨
       </footer>
