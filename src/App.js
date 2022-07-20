@@ -226,6 +226,7 @@ function App() {
             updateSortType={updateSortType}
             sortedData={sortedData}
             deleteCard={deleteCard}
+            getSelectedBoardData={getSelectedBoardData}
           />
         </section>
       </section>

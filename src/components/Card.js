@@ -2,7 +2,15 @@ import React, { useState } from "react";
 import PropTypes from "prop-types";
 import image from "../assets/thumbs-up.png";
 
-const Card = ({ id, boardId, message, likes, onLike, onDelete }) => {
+const Card = ({
+  id,
+  boardId,
+  message,
+  likes,
+  onLike,
+  onDelete,
+  getSelectedBoardData,
+}) => {
   const [cardData, setCardData] = useState({
     id: id,
     boardId: boardId,
@@ -13,6 +21,7 @@ const Card = ({ id, boardId, message, likes, onLike, onDelete }) => {
   const handleLike = async (event) => {
     let likeData = await onLike(id);
     setCardData(likeData);
+    getSelectedBoardData(boardId);
   };
 
   const handleDelete = () => {

@@ -15,6 +15,7 @@ const Board = ({
   updateSortOrder,
   sortedData,
   deleteCard,
+  getSelectedBoardData,
 }) => {
   const sortedCards = sortedData?.map((card) => {
     return (
@@ -26,6 +27,7 @@ const Board = ({
         message={card.message}
         onLike={cardLike}
         onDelete={deleteCard}
+        getSelectedBoardData={getSelectedBoardData}
       />
     );
   });
