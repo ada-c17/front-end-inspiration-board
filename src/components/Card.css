@@ -1,16 +1,17 @@
 .card {
     position:absolute;
     cursor: move;
-    font-family: 'Press Start 2P', cursive;
-    font-size:70%;
-    font-stretch:narrower;
+    /* font-family: 'Press Start 2P', cursive; */
+    font-family: IndieFlower;
+    font-size:80%;
+    font-stretch:expanded;
     width: 215px;
     overflow-wrap: break-word;
     padding: 1em;
     margin: 25px;
     user-select: none;
     font-weight: bolder;
-    color: black;
+    color: rgb(45, 72, 105);
     text-shadow:
       0 0 7px #fff,
       /* 0 0 10px #fff, */
@@ -29,6 +30,7 @@
                 /* 0 0 0.8rem #13c7fe, */
                 inset 0 0 1.3rem #13c7fe; 
   }
+
 
   /* @keyframes pulsate {
       
