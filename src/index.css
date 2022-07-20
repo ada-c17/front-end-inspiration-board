@@ -63,7 +63,8 @@ a:hover {
   text-align:center;
   margin-right: 100px;
   margin-top: 20px;
-  background-image: url("./data/Earth.jpeg");
+  background-image: url("./data/earth2.png");
+
   background-size: cover;
   color:rgb(171, 234, 134);
   text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
