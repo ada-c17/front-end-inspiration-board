@@ -85,6 +85,7 @@ function App() {
         }
         setBoards(updatedBoards);
         setSelectedBoard(defaultBoard);
+        setCards([]);
       })
       .catch((err) => {
         console.log(err);
