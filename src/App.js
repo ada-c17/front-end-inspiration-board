@@ -22,12 +22,13 @@ function App() {
   const [cardsData, setCardsData] = useState([]);
   // keeping tracking what type user want to sort card
   const [sortType, setSortType] = useState("id");
-  const URL = "https://get-inspired-c17.herokuapp.com/boards";
+  const BOARDS_URL = "https://get-inspired-c17.herokuapp.com/boards";
+  const CARDS_URL = "https://get-inspired-c17.herokuapp.com/cards";
 
   // get all boards from DB
   const fetchBoards = () => {
     axios
-      .get(URL)
+      .get(BOARDS_URL)
       .then((response) => {
         const responseBoard = [...response.data];
         const newBoards = responseBoard.map((board) => {
@@ -50,7 +51,7 @@ function App() {
   // adding board
   const addBoard = (boardInfo) => {
     axios
-      .post(URL, boardInfo)
+      .post(BOARDS_URL, boardInfo)
       .then((res) => {
         if (boardInfo.title && boardInfo.owner) {
           fetchBoards();
@@ -95,7 +96,7 @@ function App() {
   // get all cards
   const fetchCards = (id) => {
     axios
-      .get(`${URL}/${id}/cards`)
+      .get(`${BOARDS_URL}/${id}/cards`)
       .then((response) => {
         const cardsCopy = [...response.data];
         const newCards = cardsCopy.map((card) => {
@@ -117,7 +118,7 @@ function App() {
   // creating a new card by specific board
   const postNewCard = (cardInfo) => {
     axios
-      .post(`${URL}/${boardSelected.id}/cards`, cardInfo)
+      .post(`${BOARDS_URL}/${boardSelected.id}/cards`, cardInfo)
       .then((response) => {
         fetchCards(boardSelected.id);
       })
@@ -128,18 +129,16 @@ function App() {
 
   // deleting a card by id
   const deleteCard = (card_id) => {
-    axios
-      .delete(`https://get-inspired-c17.herokuapp.com/cards/${card_id}`)
-      .then((response) => {
-        const newCardItems = [...cardsData];
-        const newCardsList = [];
-        for (const card of newCardItems) {
-          if (card.card_id !== card_id) {
-            newCardsList.push(card);
-          }
+    axios.delete(`${CARDS_URL}/${card_id}`).then((response) => {
+      const newCardItems = [...cardsData];
+      const newCardsList = [];
+      for (const card of newCardItems) {
+        if (card.card_id !== card_id) {
+          newCardsList.push(card);
         }
-        fetchCards(boardSelected.id);
-      });
+      }
+      fetchCards(boardSelected.id);
+    });
   };
 
   //count like
@@ -149,10 +148,7 @@ function App() {
       if (card.id === newCard.id) {
         card.likes_count += 1;
         axios
-          .put(
-            `https://get-inspired-c17.herokuapp.com/cards/${card.id}/like`,
-            card
-          )
+          .put(`${CARDS_URL}/${card.id}/like`, card)
           .then((res) => {
             fetchCards(boardSelected.id);
           })
