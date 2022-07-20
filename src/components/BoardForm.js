@@ -7,8 +7,10 @@ const defaultBoard = {
 
 const BoardForm = (props) => {
   const [formData, setFormData] = useState(defaultBoard);
-
+  const [disableBoard, setDisableBoard] = useState(true)
+  
   const onFormChange = (event) => {
+
     const stateName = event.target.name;
     const inputValue = event.target.value;
 
@@ -16,6 +18,15 @@ const BoardForm = (props) => {
     newFormData[stateName] = inputValue;
 
     setFormData(newFormData);
+
+    if (
+      newFormData.title === "" ||
+      newFormData.owner === ""
+    ) {
+      setDisableBoard(true);
+    } else {
+      setDisableBoard(false);
+    }
   };
 
   const handleSubmit = (event) => {
@@ -40,7 +51,11 @@ const BoardForm = (props) => {
         value={formData.owner}
         onChange={onFormChange}
       />
-      <input type="submit" value="Submit" />
+      <input
+        type="submit"
+        value="Submit"
+        disabled={disableBoard}
+      />
     </form>
   );
 };

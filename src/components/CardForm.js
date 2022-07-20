@@ -7,6 +7,7 @@ const CardForm = (props) => {
   };
 
   const [formData, setFormData] = useState(defaultCard);
+  const [disableCard, setDisableCard] = useState(true)
 
   const onFormChange = (event) => {
     const stateName = event.target.name;
@@ -17,6 +18,15 @@ const CardForm = (props) => {
 
 
     setFormData(newFormData);
+    
+    if (
+      newFormData.message === "" ||
+      newFormData.message.length > 40 
+    ) {
+      setDisableCard(true);
+    } else {
+      setDisableCard(false);
+    }
   };
 
   const handleSubmit = (event) => {
@@ -33,6 +43,7 @@ const CardForm = (props) => {
         name="message"
         value={formData.message}
         onChange={onFormChange}
+        
       />
       {/* <label htmlFor="board_id">Board Id</label>
       <input
@@ -41,7 +52,11 @@ const CardForm = (props) => {
         value={formData.board_id}
         onChange={onFormChange}
       /> */}
-      <input type="submit" value="Submit new Card" />
+      <input 
+        type="submit" 
+        value="Submit new Card" 
+        disabled={disableCard}
+      />
     </form>
   );
 };

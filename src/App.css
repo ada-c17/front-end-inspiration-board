@@ -2,7 +2,7 @@
   width: 100vw;
   height: 100vh;
   display: grid;
-  grid-template-columns: 1000px auto auto auto auto;
+  grid-template-columns: auto auto auto auto;
   grid-template-rows: 15% auto auto auto auto;
   gap: 10px;
   justify-items: space-evenly;
@@ -65,9 +65,9 @@
   text-align: center;
 }
 
-#redTextBox {
+/* #redTextBox {
   
-}
+} */
 /* .App-logo {
   height: 40vmin;
   pointer-events: none;

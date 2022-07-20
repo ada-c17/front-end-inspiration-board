@@ -53,7 +53,7 @@ function App() {
     setboardTitle(boardTitle)
   }
   return (
-    <div class = "container">
+    <div class = "container">  Made 
       <div >
         <div id="Boards">
           <h1>BOARDS</h1>
