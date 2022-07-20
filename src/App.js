@@ -27,7 +27,7 @@ function App() {
     if (newBoards) {
       setSelectedBoard(newBoards[0]);
     }
-  }
+  };
 
   const onCreateBoardCallBack = (board) => {
     console.log("board created:", board);
@@ -55,6 +55,7 @@ function App() {
           boards={boards}
           selectedBoard={selectedBoard}
           setSelectedBoard={setSelectedBoard}
+          onRemoveCallback = {onRemoveCallback}
         />
         <CreateBoard onCreateCallBack={onCreateBoardCallBack} />
       </div>
@@ -65,7 +66,6 @@ function App() {
           id={selectedBoard.id}
           title={selectedBoard.title}
           owner={selectedBoard.owner}
-          onRemoveCallback = {onRemoveCallback}
         ></Board>
       ) : null}
       <footer className="footer"></footer>

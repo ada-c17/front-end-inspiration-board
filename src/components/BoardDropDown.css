@@ -10,3 +10,17 @@
 .board-list {
     cursor: pointer;
 }
+
+.delete-board-btn {
+    margin: 5%;
+    color: #000;
+    background-color: #fff;
+    border-color: #F9DCC4;
+    border-style: solid;
+    border-width: medium;
+}
+
+.delete-board-btn:hover {
+    background-color: #F9DCC4;
+    cursor: pointer;
+}
