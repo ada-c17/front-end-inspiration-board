@@ -62,7 +62,7 @@ const NewBoardForm = () => {
         .join(" ");
       // a message appears below the form to let us know a board space was created succesfully
       setMessage(
-        `Newly Formed Universe ${boardData.title} was created by ${boardData.owner}. The cosmos had spoken and it sends you :`
+        `Newly Formed Universe ${boardData.title} was created by ${boardData.owner}. The cosmos have spoken and it sends you :`
       );
       setId("visible");
 
