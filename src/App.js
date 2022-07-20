@@ -9,7 +9,7 @@ function App() {
   const [boardsData, setBoardsData] = useState([]);
 
   const URL = "https://insp-board-migrationmess.herokuapp.com/boards";
-  // when we first load
+
   const [selectedBoard, setSelectedBoard] = useState({
     title: "",
     owner: "",
@@ -37,10 +37,12 @@ function App() {
 
   useEffect(fetchBoards, []);
 
+  // select board function
   const selectBoard = (board) => {
     setSelectedBoard(board);
   };
 
+  // map the board lists to select board data
   const boardsElements = boardsData.map((board) => {
     return (
       <li>
@@ -49,6 +51,7 @@ function App() {
     );
   });
 
+  // create a new board
   const createNewBoard = (boardInfo) => {
     axios
       .post(URL, boardInfo)
@@ -63,6 +66,7 @@ function App() {
       });
   };
 
+  // hide the board form
   const [isBoardFormVisible, setIsBoardFormVisible] = useState(true);
   const toggleNewBoardForm = () => {
     setIsBoardFormVisible(!isBoardFormVisible);
@@ -75,11 +79,7 @@ function App() {
         <section className="boards__container">
           <section>
             <h2>Boards</h2>
-            <div className="wrapper__board">
-              <div className="border__board"></div>
-              <div className="main-element"></div>
               <ol className="boards__list">{boardsElements}</ol>
-            </div>
           </section>
           <section>
             <h2>Selected Board</h2>

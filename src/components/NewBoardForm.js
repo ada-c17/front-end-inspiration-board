@@ -15,7 +15,7 @@ const NewBoardForm = (props) => {
             alert('Typo needs to be less than 40 characters!');
         }
         if (title.length === 0 || owner.length === 0) {
-            alert('Please enter your title and name!')
+            alert('Please enter your title and name!');
         }
     };
 

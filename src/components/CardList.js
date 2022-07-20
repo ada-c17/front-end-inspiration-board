@@ -14,7 +14,6 @@ const CardList = (props) => {
     fetchCards();
   };
   const URL = "https://insp-board-migrationmess.herokuapp.com/boards";
-  //const URL = "http://127.0.0.1:5000/boards"
 
   const fetchCards = () => {
     axios
@@ -116,7 +115,6 @@ const CardList = (props) => {
   return (
     <section className="cards__container">
       {/* Display cards for specific Board */}
-      {/* <div className="cards_dropdown_container"> */}
       <h2>Cards for {props.board.title} 
         <div>
           <label className="dropdown__arrows"> Sort by </label>

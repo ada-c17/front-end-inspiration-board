@@ -5,7 +5,6 @@ body {
   font-size: medium;
   background-image: url('../src/pexels-fwstudio-129731.jpg'); 
   background-size: cover;
-  /* overflow-x: hidden; */
   min-height: 100vh;
   display: flex;
   flex-direction: column;
@@ -22,8 +21,6 @@ h2 {
 h1 {
   background-color: #C3EAF4;
   transform: rotate(-5deg) skew(-10deg);
-	/* border: $dash-size dashed $theme-color;
-	box-shadow: 0 0 0 ($dash-size / 2) darken($theme-color, 20%) */
 }
 
 h1 {
@@ -88,10 +85,8 @@ h2 {
   font-size: larger;
   font-weight: bolder;
   max-height: 15rem;
-  /* min-height: 9rem; */
   overflow: scroll;
   margin-right: 5rem;
-  /* background-color: #ADC6CC; */
   background-color:#74bec1;
   padding-left: 40px;
   box-shadow: -10px 7px 8px #4F4F4F;
@@ -227,7 +222,6 @@ ol.boards__list > li:hover {
 }
 
 footer {
-  /* text-align: right;  */
   position: fixed;
   left: 0;
   bottom: 0;
