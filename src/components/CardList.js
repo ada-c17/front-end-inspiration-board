@@ -23,7 +23,7 @@ const CardList = (props) => {
 
   const deleteCard = (card) => {
     axios
-      .delete(`${baseURL}/cards`)
+      .delete(`${baseURL}/cards/${id}`)
       .then((response) => {
         const newCardData = cardData.filter((existingCard) => {
           return existingCard.card_id !== card.card_id;
@@ -37,7 +37,7 @@ const CardList = (props) => {
 
   const addOneLike = (card) => {
     axios
-      .put(``)
+      .put(`${baseURL}/cards/${id}`)
       .then((response) => {
         const newCardData = cardData.map((existingCard) => {
           return existingCard.card_id !== card.card_id
@@ -59,7 +59,7 @@ const CardList = (props) => {
 
   const postNewCard = (message) => {
     axios
-      .post(``, { message })
+      .post(`${baseURL}/cards`, { message })
       .then((response) => {
         const cards = [...cardData];
         cards.push(response.data.card);
