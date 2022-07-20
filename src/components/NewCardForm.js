@@ -5,12 +5,17 @@ import PropTypes from "prop-types";
 import "./NewCardForm.css";
 
 //change CSS classes
-const NewCardForm = ({ addCardCallback }) => {
+const NewCardForm = ({ addCardCallback, boardId }) => {
+  console.log(boardId);
+  const boardNum = boardId;
   const [cardData, setCardData] = useState({
     message: "",
+    boardId: boardNum,
+    likesCount: 0,
   });
 
   const submitCardData = (e) => {
+    console.log(cardData);
     e.preventDefault();
 
     addCardCallback(cardData);

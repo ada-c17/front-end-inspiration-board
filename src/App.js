@@ -16,8 +16,7 @@ function App() {
   const [selectedBoard, setSelectedBoard] = useState([]);
 
   // Axios call to GET the board data in order to pass in to the drop down menu
-
-  useEffect(() => {
+  const getBoards = () => {
     axios
       .get(`${process.env.REACT_APP_BACKEND_URL}/boards`)
       .then((response) => {
@@ -31,33 +30,23 @@ function App() {
       .catch((err) => {
         console.log(err);
       });
+  };
+
+  useEffect(() => {
+    getBoards();
   }, []);
 
-  // POST axios call to create one board
-
-  // const newBoard = ({ title, owner }) => {
-  //   axios;
-  // .post(`${process.env.REACT_APP_BACKEND_URL}/boards`,{
-
-  // }
-  // )
-  // .then()
-  // };
-
-  //will need to change this to Axios call for POST one board
-  const addBoardData = (newBoardData) => {
-    const newBoardList = [...boardData];
-
-    // Logic to generate the next valid board ID- will delete once we make our Axios calls b/c db will generate this
-    const nextId = Math.max(...newBoardList.map((board) => board.boardId)) + 1;
-
-    newBoardList.push({
-      boardId: nextId,
-      owner: newBoardData.owner,
-      title: newBoardData.title,
-    });
-
-    setBoardData(newBoardList);
+  // POST request
+  const onAddBoard = ({ owner, title }) => {
+    console.log(owner, title);
+    axios
+      .post(`${process.env.REACT_APP_BACKEND_URL}/boards`, { owner, title })
+      .then(() => {
+        getBoards();
+      })
+      .catch((error) => {
+        console.log(error);
+      });
   };
 
   //updates state for newly selected board from drop-down menu.
@@ -101,7 +90,7 @@ function App() {
       <Routes>
         <Route
           path="/create"
-          element={<NewBoard addBoardCallback={addBoardData} />}
+          element={<NewBoard addBoardCallback={onAddBoard} />}
         />
         <Route
           path="/allboards"
