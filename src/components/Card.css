@@ -6,7 +6,9 @@
 ul,li{
     list-style:none;
 }
-ul{
+
+ul {
+    padding-left: 0;
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
@@ -16,7 +18,7 @@ ul{
     color:#000;
     background:#ffc;
     box-shadow: 5px 5px 7px rgba(33,33,33,.7);
-    display:block;
+    display:flex;
     height:15em;
     width:15em;
     padding:1em;
@@ -27,4 +29,15 @@ ul{
 }
 ul li{
     margin:0.5em;
+}
+
+/* .bottomicon {
+    align-self: flex-end;
+    align-content: flex-end;
+} */
+.bottomicon {
+    display: flex;
+    justify-content: center;
+    align-self:flex-end;
+    margin-top: auto;
 }

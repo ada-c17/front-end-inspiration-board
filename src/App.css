@@ -4,6 +4,7 @@
 body {
   height: 100vh;
   width: 100%;
+  background-color: #fdf5ee;
 }
 
 .container {
@@ -17,7 +18,7 @@ body {
   align-items: center;
   height: 100vh;
 }
-h1 {
+h1, h2, h3, li {
   font-family: Patrick Hand;
   color: #31b090;
 }
@@ -31,7 +32,7 @@ h1 {
   text-align: center;
 }
 
-.board, .boardform, .cards {
+.board, .boardform, .cards{
   margin: 1em;
   padding: 0.5em;
   border-radius: 15px;
@@ -57,6 +58,13 @@ h1 {
   text-align: center;
 }
 
+.cards h2 {
+  background-color: rgb(228, 132, 100);
+  padding: 7px;
+  width: 20%;
+  border: rgb(101, 80, 53) 4px solid;
+}
+
 .cardform {
   text-decoration:none;
   color:#000;
@@ -66,6 +74,7 @@ h1 {
   height:15em;
   width:15em;
   padding:1em;}
+
 
 .footer {
   grid-area: footer;
@@ -83,8 +92,7 @@ h1 {
 
 .boardlist {
     font-family: 'Lato', sans-serif;
-    color: white;
-    background-color: rgb(228, 132, 100);
+    background-color: white;
   }
   h1 {
     font-size: 60px;
@@ -103,8 +111,9 @@ h1 {
     padding: 10px;
     border: 2px solid white;
     font-size: 20px;
-    background-color: rgb(228, 132, 100);
+    background-color: white;
     color: white;
+    font-family: Patrick Hand;
   } 
   
   input[type=text]:focus {
@@ -129,8 +138,8 @@ h1 {
     padding: 10px;
     border: 2px solid white;
     font-size: 20px;
-    background-color: rgb(228, 132, 100);
-    color: white;
+    background-color: white;
+    color: #31b090;
   } 
   
   input[type=text]:focus {
