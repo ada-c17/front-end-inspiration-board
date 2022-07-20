@@ -1,6 +1,6 @@
 import React from "react";
 import SingleBoard from "./SingleBoard.js";
-import "./boards.css";
+import "./Boards.css";
 import PropTypes from "prop-types";
 
 const Board = (props) => {
@@ -12,6 +12,8 @@ const Board = (props) => {
         board={board}
         isOnHomepage={props.isOnHomepage}
         setActiveBoard={props.setActiveBoard}
+        setCards={props.setCards}
+        deleteBoardCallBack={props.deleteBoardCallBack}
       ></SingleBoard>
     );
   });
@@ -23,6 +25,7 @@ Board.propTypes = {
   setIsOnHomepage: PropTypes.func.isRequired,
   isOnHomepage: PropTypes.bool.isRequired,
   setActiveBoard: PropTypes.func.isRequired,
+  setCards: PropTypes.func.isRequired,
   boards: PropTypes.arrayOf(
     PropTypes.shape({
       board_id: PropTypes.number,

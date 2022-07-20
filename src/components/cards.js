@@ -1,16 +1,13 @@
 import React from "react";
 import PropTypes from "prop-types";
 import SingleCard from "./SingleCard.js";
-import "./cards.css";
+import "./Cards.css";
 
 const Cards = (props) => {
-  if (props.activeBoard === {}) {
+  if (props.cards === []) {
     return null;
   }
-  console.log(props.activeBoard.cards[0]["likes_count"])
-  console.log(props.activeBoard.cards)
-  
-  const cardComponents = props.activeBoard.cards.map((card, index) => {
+  const cardComponents = props.cards.map((card, index) => {
     return (
       <SingleCard
         key={index}
@@ -26,19 +23,14 @@ const Cards = (props) => {
 };
 
 Cards.propTypes = {
-  activeBoard: PropTypes.shape({
-    board_id: PropTypes.number,
-    title: PropTypes.string,
-    owner: PropTypes.string,
-    cards: PropTypes.arrayOf(
-      PropTypes.shape({
-        card_id: PropTypes.number,
-        message: PropTypes.string,
-        likes_count: PropTypes.number,
-        board_id: PropTypes.number,
-      })
-    ),
-  }),
+  cards: PropTypes.arrayOf(
+    PropTypes.shape({
+      card_id: PropTypes.number,
+      message: PropTypes.string,
+      likes_count: PropTypes.number,
+      board_id: PropTypes.number,
+    })
+  ),
 };
 
 export default Cards;

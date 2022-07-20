@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import PropTypes from "prop-types";
-import "./cards.css";
+import "./Cards.css";
 import axios from "axios";
 
 const SingleCard = (props) => {
