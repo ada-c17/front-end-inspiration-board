@@ -9,7 +9,20 @@ import NewBoardForm from "./components/NewBoardForm.js";
 function App() {
   const [isOnHomepage, setIsOnHomepage] = useState(true);
   const [activeBoard, setActiveBoard] = useState({});
+  const [numCards, setNumCards] = useState(0);
   const [boards, getBoards] = useState([]);
+
+  const deleteCard = (id) => {
+    /* Find and remove card with give id from list of cards */
+    const cards = activeBoard.cards;
+    for (let i = 0; i < cards.length; i++) {
+      if (cards[i].card_id == id) {
+        cards.splice(i, 1);
+      }
+    }
+    /* Update number of cards so that React will see change */
+    setNumCards(numCards - 1);
+  };
 
   useEffect(() => {
     axios
@@ -59,7 +72,7 @@ function App() {
           isOnHomepage={isOnHomepage}
           setIsOnHomepage={setIsOnHomepage}
         />
-        <Card activeBoard={activeBoard} />
+        <Card activeBoard={activeBoard} deleteCardCallBack={deleteCard} />
       </>
     );
   }
