@@ -9,8 +9,8 @@ const Card = (props) => {
       <p>{props.message}</p>
       <ul className="card-item__list">
         <li>{props.likes}💖</li>
-        <li onClick={() => props.addOneLike(props.card)}>+1</li>
-        <li onClick={() => props.deleteCard(props.card)}>Delete</li>
+        <li onClick={() => props.addOneLike(props)}>+1</li>
+        <li onClick={() => props.deleteCard(props)}>Delete</li>
       </ul>
     </div>
   );

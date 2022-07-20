@@ -3,21 +3,28 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import './NewCardForm.css';
 
+// Default values to set/reset state of the CardForm
+const initialMessageValues = {
+  message: '',
+};
+
 const NewCardForm = (props) => {
   //brains
-  const [message, setMessage] = useState('');
-  // const [formValues, setFormValues] =useState({InitialFormValues});
+  const [messageValues, setMessage] = useState(initialMessageValues);
   const [formErrors, setFormErrors] = useState({});
   const [isSubmit, setIsSubmit] = useState(false);
 
   const handleMessage = (event) => {
     // console.log(event.target.value);
-    setMessage(event.target.value);
+    const name = event.target.name;
+    const value = event.target.value;
+
+    setMessage({ ...messageValues, [name]: value });
   };
 
   const handleSubmitCard = (event) => {
     event.preventDefault();
-    setFormErrors(validate(message));
+    setFormErrors(validate(messageValues));
     // props.postNewCard(message);
     console.log(formErrors);
     // setMessage('');
@@ -26,22 +33,18 @@ const NewCardForm = (props) => {
 
   useEffect(() => {
     if (Object.keys(formErrors).length === 0 && isSubmit) {
-      console.log({ message });
-      props.postNewCard(message);
-      setMessage('');
-      // setFormValues(initialFormValues);
+      props.postNewCard(messageValues);
+      setMessage(initialMessageValues);
     }
   }, [formErrors]);
 
-  const validate = (message) => {
+  const validate = (messageValues) => {
     const errors = {};
-    if (!message) {
+    if (!messageValues.message) {
       errors.message = 'Message is required';
-    } else if (message.length > 40) {
+    } else if (messageValues.message.length > 40) {
       errors.message = 'Message cannot exceed 40 characters.';
     }
-    console.log(message);
-    console.log(errors);
     return errors;
   };
 
@@ -53,8 +56,8 @@ const NewCardForm = (props) => {
         <div className="new-card__fields">
           <label>Message: </label>
           <textarea
-            type="text"
-            value={message}
+            name="message"
+            value={messageValues.message}
             className="new-card__input"
             onChange={handleMessage}
           />

@@ -106,7 +106,7 @@ const App = () => {
         </div>
         <div>
           {selectedBoard.id ? (
-            <CardContainer board={selectedBoard}></CardContainer>
+            <CardContainer selectedBoard={selectedBoard}></CardContainer>
           ) : (
             ''
           )}
