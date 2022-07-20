@@ -45,7 +45,7 @@ function App() {
       });
   };
 
-  useEffect(() => fetchBoards, []);
+  useEffect(() => fetchBoards(), []);
   useEffect(() => {
     if (selectedBoard === null) {
       return;
