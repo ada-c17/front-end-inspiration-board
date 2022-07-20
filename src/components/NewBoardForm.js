@@ -66,7 +66,7 @@ const NewBoardForm = () => {
 
   const onGetQuote = () => {
     axios
-      .get(`http://127.0.0.1:5000/zen`)
+      .get(`https://inspiration-from-otterspace.herokuapp.com/zen`)
       .then((response) => {
         console.log(response.data[0]);
         setQuote(response.data[0].q);
