@@ -16,7 +16,12 @@ const BoardDropdown = (props) => {
   return (
     <form className="dropdown">
       <label htmlFor="boards"></label>
-      <select name="boards" id="board_dd_select" onChange={handleChange}>
+      <select
+        value={props.boardOption}
+        name="boards"
+        id="board_dd_select"
+        onChange={handleChange}
+      >
         <option defaultValue>{props.boardOption}</option>
         {optionsJsx}
       </select>
