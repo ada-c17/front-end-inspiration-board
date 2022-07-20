@@ -4,19 +4,43 @@
   text-align: center;
 }
 
-.App-header {
-  background-color: #282c34;
-  font-size: calc(10px + 2vmin);
-  color: white;
+header {
+  background-image: url(https://source.unsplash.com/GtgdYsl2TV0);
+  box-shadow: 0px 10px 10px black;
+  min-height: 5vh;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  font-size: calc(5px + 2vmin);
+  color: black;
+  padding: 5px;
+}
+
+header h1 {
+  color: rgb(30, 30, 30);
+  text-shadow: 0px 1px 0px rgba(255,255,255,.5);
+}
+
+#partyFlag {
+  max-width: 75%;
 }
 
 main {
   min-height: 85vh;
+  background-image: url(https://source.unsplash.com/KsAo8ouBn8A);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
 }
 
 footer {
-  background-color: #282c34;
-  color: white;
+  background-image: url(https://source.unsplash.com/GtgdYsl2TV0);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  box-shadow: 0px -5px 5px black;
+  color: rgb(30, 30, 30);
+  text-shadow: 0px 1px 0px rgba(255,255,255,.5);
   font-size: smaller;
   padding: 10px;
 }

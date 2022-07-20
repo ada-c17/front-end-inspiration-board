@@ -11,7 +11,7 @@ const Button = ({ id, title, owner, changeBoardCallback }) => {
   return (
     <li className="button-item">
       <button type="button" className="button" onClick={changeBoard}>
-        <p>Board #: {id}</p>
+        <p>#{id}</p>
         <p>Title: {title}</p>
         <p>Owner: {owner}</p>
       </button>
