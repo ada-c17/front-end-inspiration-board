@@ -4,7 +4,7 @@ h3 {
 }
 
 input[type=text] {
-    width: 150px;
+    width: 200px;
     height: 12px;
     padding: 5px;
     border: 2px solid white;
@@ -15,4 +15,5 @@ input[type=text] {
 
 .boardform-container {
     display: inline-block;
+    margin: 0px;
 }

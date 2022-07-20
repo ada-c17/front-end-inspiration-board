@@ -40,7 +40,9 @@ const NewBoardForm = (props) => {
             onChange={onFormChange}
             className="input-title"
           />
-          <label htmlFor="owner">Owner:</label>
+        </div>
+        <div>
+          <label htmlFor="owner">Owner: </label>
           <input
             type="text"
             name="owner"
