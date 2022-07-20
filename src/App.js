@@ -64,8 +64,8 @@ function App() {
   }
 
   return (
-    <div class = "container"> 
-      <div >
+    <div className="container"> 
+      <div className="boardContainer">
         <div id="boards">
           <h1>BOARDS</h1>
           <BoardsList
@@ -73,16 +73,13 @@ function App() {
             boardInfoCallback={boardSelected}
           />
         </div>
-
-        <div>
-          {boardID && <BoardWithCards boardID={boardID} boardTitle = {boardTitle}/>}
-        </div>
-
         <div>
           <BoardForm addBoardCallback={addBoard} hideFormCallback={flipBoardForm} shownBoard={shownBoard} setShownBoard={setShownBoard}/>
         </div>  
-        
       </div>
+      <div id="cards">
+          {boardID && <BoardWithCards boardID={boardID} boardTitle = {boardTitle}/>}
+        </div>
     </div>
   );
 }

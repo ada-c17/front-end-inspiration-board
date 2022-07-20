@@ -36,28 +36,30 @@ const CardForm = (props) => {
   };
 
   return (
-    <form onSubmit={handleSubmit}>
-      <label htmlFor="message">Message</label>
-      <input
-        type="text"
-        name="message"
-        value={formData.message}
-        onChange={onFormChange}
-        
-      />
-      {/* <label htmlFor="board_id">Board Id</label>
-      <input
-        type="text"
-        name="board_id"
-        value={formData.board_id}
-        onChange={onFormChange}
-      /> */}
-      <input 
-        type="submit" 
-        value="Submit new Card" 
-        disabled={disableCard}
-      />
-    </form>
+    <div class="cardFormContainer">
+      <form onSubmit={handleSubmit}>
+        <h1>Write your message</h1>
+        <div id="cardForm">
+          <div id="inputbox">
+          <label htmlFor="message"></label>
+          <input
+            type="text"
+            name="message"
+            value={formData.message}
+            onChange={onFormChange}
+          />
+          <span>Message</span>
+          </div>
+        </div>
+          <div id="inputbox">
+          <input 
+            type="submit" 
+            value="Submit new Card" 
+            disabled={disableCard}
+          />
+          </div>
+      </form>
+    </div>
   );
 };
 
