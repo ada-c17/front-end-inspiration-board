@@ -38,7 +38,7 @@ const Card = ({
     >
       {/* functions to allow us to delete and add a like rendered below */}
       <div style={{ backgroundColor: color }} className="card">
-        <p nameClass="messageText">{message}</p>
+        <p className="messageText">{message}</p>
         <button id="delete" onClick={() => deleteCardCallBack(id)}>
           x
         </button>

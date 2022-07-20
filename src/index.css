@@ -22,7 +22,7 @@ body {
   url("./data/Darkspace.jpg");
   background: cover;
   background-size: 150%;
-  backdrop-filter: blur(1px); 
+  backdrop-filter: blur(0.3px);  
 }
 
 @font-face {
