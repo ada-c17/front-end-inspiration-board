@@ -24,6 +24,11 @@ function App() {
     }
     /* Update number of cards so that React will see change */
     setCards([...cards]);
+    const updatedBoard = { ...activeBoard, cards: cards };
+    const newBoards = boards.map((board) => {
+      return activeBoard.board_id === board.board_id ? updatedBoard : board;
+    });
+    getBoards(newBoards);
 
     /* Delete card in the back end */
     axios
@@ -90,7 +95,13 @@ function App() {
       })
       .then((response) => {
         console.log("success");
-        setCards([...cards, response.data.card]);
+        const newCards = [...cards, response.data.card];
+        const updatedBoard = { ...activeBoard, cards: newCards };
+        setCards(newCards);
+        const newBoards = boards.map((board) => {
+          return activeBoard.board_id === board.board_id ? updatedBoard : board;
+        });
+        getBoards(newBoards);
       })
       .catch((error) => {
         console.log(<section>{error.response.data.message}</section>);
