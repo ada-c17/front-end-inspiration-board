@@ -9,12 +9,15 @@ import NewCardForm from "./components/NewCardForm";
 function App() {
   const URL = "https://gramtaschie.herokuapp.com";
 
+  const defaultBoard = {
+    id: 0,
+    title: "Select a board to get inspired!",
+    owner: "",
+  };
+
   const [boards, setBoards] = useState([]);
   const [cards, setCards] = useState([]);
-  const [selectedBoard, setSelectedBoard] = useState(null);
-  const [selectedBoardName, setSelectedBoardName] = useState(
-    "Select a board to get inspired!"
-  );
+  const [selectedBoard, setSelectedBoard] = useState(defaultBoard);
   const [isBoardFormVisible, setIsBoardFormVisible] = useState(true);
 
   const fetchBoards = () => {
@@ -33,7 +36,7 @@ function App() {
 
   const fetchCards = () => {
     axios
-      .get(`${URL}/boards/${selectedBoard}`)
+      .get(`${URL}/boards/${selectedBoard.id}`)
       .then((response) => {
         console.log("fetchCard request");
         const updatedCards = response.data;
@@ -45,13 +48,14 @@ function App() {
       });
   };
 
-  useEffect(() => fetchBoards, []);
+  useEffect(() => fetchBoards(), []);
   useEffect(() => {
-    if (selectedBoard === null) {
+    if (selectedBoard.id === 0) {
       return;
     } else {
       fetchCards();
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [selectedBoard]);
 
   const createNewBoard = (boardForm) => {
@@ -66,23 +70,21 @@ function App() {
   };
 
   const selectBoard = (board) => {
-    setSelectedBoard(board.id);
-    setSelectedBoardName(board.title);
-    // fetchCards();
+    setSelectedBoard(board);
   };
 
   const deleteBoard = () => {
     axios
-      .delete(`${URL}/boards/${selectedBoard}`)
+      .delete(`${URL}/boards/${selectedBoard.id}`)
       .then(() => {
         const updatedBoards = [];
         for (const board of boards) {
-          if (board.id !== selectedBoard) {
+          if (board.id !== selectedBoard.id) {
             updatedBoards.push(board);
           }
         }
         setBoards(updatedBoards);
-        setSelectedBoard(null);
+        setSelectedBoard(defaultBoard);
       })
       .catch((err) => {
         console.log(err);
@@ -90,7 +92,7 @@ function App() {
   };
 
   const createNewCard = (cardForm) => {
-    cardForm.board_id = selectedBoard;
+    cardForm.board_id = selectedBoard.id;
     axios
       .post(`${URL}/cards`, cardForm)
       .then((response) => {
@@ -168,9 +170,9 @@ function App() {
       </section>
 
       <section className="cards">
-        <h2>{selectedBoardName}</h2>
+        <h2>{selectedBoard.title}</h2>
         <div>
-          {selectedBoard != null ? (
+          {selectedBoard.id !== 0 ? (
             <div className="cardform">
               <NewCardForm addCardCallback={createNewCard}></NewCardForm>
             </div>
