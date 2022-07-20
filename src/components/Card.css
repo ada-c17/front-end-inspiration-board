@@ -1,0 +1,29 @@
+.card {
+    background-color: #F8EDEB;
+}
+
+.btn {
+    margin: 5%;
+    color: #fff;
+    background-color: #FCD5CE;
+    border-color: #fff;
+    border-style: dashed;
+    border-width: medium;
+}
+
+.btn:hover {
+    background-color: #F9DCC4;
+    cursor: pointer;
+}
+
+.card-text {
+    color: #fff;
+    background-color: #FCD5CE;
+    text-align: center;
+}
+
+.card-like {
+    color: #fff;
+    background-color: #FCD5CE;
+    text-align: center;
+}

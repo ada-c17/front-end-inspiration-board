@@ -35,9 +35,9 @@ function App() {
   }, []);
 
   return (
-    <div id="App">
+    <div className="app" id="App">
       <header>
-        <h1>Inspo Board</h1>
+        <h1 className="inspo-board-header">Inspo Board</h1>
       </header>
 
       <div style={{ display: "flex", gap: 20, justifyContent: "flex-start" }}>
@@ -57,6 +57,7 @@ function App() {
           owner={selectedBoard.owner}
         ></Board>
       ) : null}
+      <footer className="footer"></footer>
     </div>
   );
 }

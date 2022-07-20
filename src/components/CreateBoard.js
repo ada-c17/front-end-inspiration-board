@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import axios from "axios";
 import PropTypes from "prop-types";
 import { Container } from "./Container";
+import "./CreateBoard.css";
 
 const defaultFormState = {
   title: "",
@@ -37,11 +38,11 @@ export const CreateBoard = ({ onCreateCallBack }) => {
   return (
     <Container title="Create Board">
       <form onSubmit={onSubmit} className="card">
-        <label>Title</label>
+        <label className="create-board-title">Title</label>
         <input value={title} onChange={handleChange(setTitle)} />
-        <label>Owner</label>
+        <label className="create-board-owner">Owner</label>
         <input value={owner} onChange={handleChange(setOwner)} />
-        <button type="submit" disabled={!title || !owner}>
+        <button className="create-board-submit-btn" type="submit" disabled={!title || !owner}>
           Submit
         </button>
       </form>

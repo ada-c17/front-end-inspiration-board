@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import PropTypes from "prop-types";
 import { Container } from "./Container";
+import "./CreateCard.css";
 
 const defaultFormState = {
   message: "",
@@ -20,11 +21,11 @@ export const CreateCard = ({ addCardCallback }) => {
   };
 
   return (
-    <div className="card p-2 m-2" style={{ width: "18rem" }}>
+    <div className="card p-2 m-2" style={{ width: "25rem" }}>
       <form onSubmit={submitCreateCardData} className="d-flex flex-column">
-        <Container title="New Message" />
+        <Container className="new-message-box" title="New Message" />
         <input className="m-2" value={newMessage} onChange={handleChange} />
-        <button className="btn btn-primary m-2" type="submit">
+        <button className="btn" type="submit">
           Submit
         </button>
       </form>

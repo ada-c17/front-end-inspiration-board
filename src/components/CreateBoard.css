@@ -1,0 +1,30 @@
+.card {
+    padding: 10px;
+}
+
+.create-board-title{
+    color: #FFB5A7;
+    text-align: center;
+}
+
+.create-board-owner{
+    color: #FFB5A7;
+    text-align: center;
+}
+
+.create-board-submit-btn {
+    color: #fff;
+    background-color: #FCD5CE;
+    margin: 10px;
+    border-radius: 5px;
+    border: #fff;
+    border-style: dashed;
+    border-width: medium;
+    padding: 2px;
+    
+}
+
+.create-board-submit-btn:hover {
+    background-color: #F9DCC4;
+    cursor: pointer;
+}

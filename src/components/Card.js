@@ -1,6 +1,6 @@
 import axios from "axios";
 import { React, useState } from "react";
-// import "./Card.css";
+import "./Card.css";
 
 export const Card = ({ id, message, likes, onRemoveCallback }) => {
   const [like, setLike] = useState(likes);
@@ -29,16 +29,16 @@ export const Card = ({ id, message, likes, onRemoveCallback }) => {
     <div className="card m-2" style={{ width: "18rem" }}>
       <div className="card-body">
         <p className="card-text">{message}</p>
-        <p>{like}</p>
+        <p className="card-like">{like}</p>
         <button
           type="button"
-          className="btn btn-primary"
+          className="btn"
           onClick={handleOnClick}
         >
-          like
+          Like
         </button>
-        <button onClick={onRemove} type="button" className="btn btn-secondary">
-          delete
+        <button onClick={onRemove} type="button" className="btn">
+          Delete
         </button>
       </div>
     </div>

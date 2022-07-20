@@ -1,0 +1,9 @@
+.card-header {
+    padding: 10px;
+    width: 200px;
+    box-shadow: 10px 10px 5px #FCD5CE;
+    border-radius: 2%;
+    color: #FFB5A7;
+    justify-self: center;
+    align-self: center;
+}

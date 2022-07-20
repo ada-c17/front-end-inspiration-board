@@ -2,6 +2,7 @@ import { Card } from "./Card";
 import { CreateCard } from "./CreateCard";
 import axios from "axios";
 import { useState, useEffect } from "react";
+import "./Board.css";
 
 export const Board = ({ id, title, owner }) => {
   const [cardData, setCardData] = useState([]);
@@ -49,11 +50,11 @@ export const Board = ({ id, title, owner }) => {
   };
 
   return (
-    <div className="card">
-      <div className="card-body">
-        <h1 className="card-title">{title}</h1>
-        <p className="card-subtitle">{owner}</p>
-        <div className="d-flex flex-row">
+    <div className="board">
+      <div className="board-body">
+        <h1 className="board-title">{title}</h1>
+        <p className="board-subtitle">Owner: {owner}</p>
+        <div className="new-card d-flex flex-row">
           {cardData.map((data) => (
             <Card
               key={data.id}
