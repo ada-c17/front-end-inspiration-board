@@ -13,8 +13,8 @@ const Board = (props) => {
   return (
     <div className="board">
       <div onClick={() => props.selectBoardCallback(boardId)}>
-        <h1>{title}</h1>
-        <h2>{owner}</h2>
+        <h1>Title: {title}</h1>
+        <h2>Owner: {owner}</h2>
       </div>
       <button onClick={() => props.deleteBoardCallback(boardId)}>X</button>
     </div>

@@ -155,9 +155,18 @@ function App() {
   // render cardsview when user choose certain board
   // need to add logic to set chosenBoard state back to null when user clicked 'x' button in cardsview
   else {
+    let userChoice = null;
+    for (const board of boards) {
+      if (board.id === chosenBoard) {
+        userChoice = board;
+        break;
+      }
+    }
+
+    console.log(userChoice);
     return (
       <div>
-        <h1>Inspiration Board!</h1>
+        <h1>Board : {userChoice.title}</h1>
         <CardsView
           cards={cards}
           updateLikes={updateLikeCts}
