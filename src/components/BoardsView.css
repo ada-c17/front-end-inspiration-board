@@ -1,0 +1,7 @@
+.container {
+    display:flex;
+    border: solid red 2px;
+    padding:15px;
+    flex-direction: row;
+    flex-wrap: wrap;
+}

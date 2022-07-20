@@ -141,27 +141,33 @@ function App() {
   // default landing page
   if (chosenBoard === null) {
     return (
-      <BoardsView
-        boardData={boards}
-        selectBoardCallback={getCardsFromOneBoard}
-        deleteBoardCallback={deleteBoard}
-        makeBoardCallback={onFormSubmitBoard}
-      ></BoardsView>
+      <div>
+        <h1>Inspiration Board!</h1>
+        <BoardsView
+          boardData={boards}
+          selectBoardCallback={getCardsFromOneBoard}
+          deleteBoardCallback={deleteBoard}
+          makeBoardCallback={onFormSubmitBoard}
+        ></BoardsView>
+      </div>
     );
   }
   // render cardsview when user choose certain board
   // need to add logic to set chosenBoard state back to null when user clicked 'x' button in cardsview
   else {
     return (
-      <CardsView
-        cards={cards}
-        updateLikes={updateLikeCts}
-        deleteCard={deleteCard}
-        submitCard={onFormSubmitCard}
-        chosenBoard={chosenBoard}
-        setChosenBoard={setChosenBoard}
-        setCards={setCards}
-      ></CardsView>
+      <div>
+        <h1>Inspiration Board!</h1>
+        <CardsView
+          cards={cards}
+          updateLikes={updateLikeCts}
+          deleteCard={deleteCard}
+          submitCard={onFormSubmitCard}
+          chosenBoard={chosenBoard}
+          setChosenBoard={setChosenBoard}
+          setCards={setCards}
+        ></CardsView>
+      </div>
     );
   }
 }

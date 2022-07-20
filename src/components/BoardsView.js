@@ -1,12 +1,11 @@
 import BoardList from "./BoardList";
 import PropTypes from "prop-types";
-import "./BoardList.css";
+import "./BoardsView.css";
 import NewBoardButton from "./NewBoardButton";
 
 const BoardsView = (props) => {
   return (
-    <div>
-      <h1>Inspiration Board!</h1>
+    <div className="container">
       <BoardList
         boardData={props.boardData}
         selectBoardCallback={props.selectBoardCallback}
