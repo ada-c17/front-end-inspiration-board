@@ -3,8 +3,9 @@
 }
 
 h1 {
-  color: purple;
+  color: #9e5246;
   text-align: center;
+  padding: 20px;
 }
 
 
@@ -39,4 +40,11 @@ button {
 
 button:hover {
   cursor: pointer;
+}
+
+#selected-board {
+  background-color: #4b6f48;
+  padding: 15px;
+  color: #E9EAEC;
+  border-radius: 5px;
 }

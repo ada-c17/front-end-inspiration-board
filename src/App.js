@@ -24,7 +24,6 @@ function App() {
 
   const cardOrder = (order_by) => {
     setCardListOrder(order_by);
-    console.log(order_by);
   };
 
   const iDCardOrder = () => {
@@ -171,7 +170,7 @@ function App() {
 
         <section className="selected-board-container">
           <h2>Selected Board</h2>
-          <p>
+          <p id="selected-board">
             {selectedBoard.title} - {selectedBoard.owner}
           </p>
         </section>

@@ -14,7 +14,6 @@ function CardList({
     } else if (cardListOrder === "message") {
       cards = cards.sort((a, b) => a.message.localeCompare(b.message));
     }
-    console.log(cards);
   };
   sortCards(cardListOrder);
 
