@@ -33,7 +33,7 @@ const NewCardForm = (props) => {
   return (
     <section className="cardFormContainer">
       <h3>
-        <span className="handwritten">✨ Add a New Card ✨</span>
+        <div className="handwritten">✨ Add a New Card ✨</div>
       </h3>
       <form onSubmit={handleSubmit}>
         <label htmlFor="message"></label>

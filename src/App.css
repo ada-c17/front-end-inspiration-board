@@ -79,6 +79,13 @@ body {
   width:15em;
   padding:1em;}
 
+.dropdown {
+  background-color: rgb(228, 132, 100);
+  padding: 7px;
+  width: 20%;
+  border: rgb(101, 80, 53) 4px solid;
+  color: white;
+}
 .footer {
   grid-area: footer;
   text-align: center;
@@ -86,6 +93,11 @@ body {
   padding: 0.5em;
   font-weight:lighter;
   font-size: 1em;
+}
+
+.handwritten {
+  font-family: 'Reenie Beanie';
+  font-size: 2rem;
 }
 
 h1, h2, h3, li {

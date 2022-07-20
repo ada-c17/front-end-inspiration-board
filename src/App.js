@@ -196,7 +196,11 @@ function App() {
               <NewCardForm addCardCallback={createNewCard}></NewCardForm>
             </div>
           ) : null}
-          <Dropdown sortingCardsCallback={sortingCards}> </Dropdown>
+          {selectedBoard.id !== 0 ? (
+            <div className="dropdown">
+              <Dropdown sortingCardsCallback={sortingCards}> </Dropdown>
+            </div>
+          ) : null}
         </div>
         <CardList
           cards={cards}

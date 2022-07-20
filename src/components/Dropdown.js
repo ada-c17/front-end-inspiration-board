@@ -13,16 +13,14 @@ const Dropdown = (props) => {
 
   return (
     <div>
-      <label>
-        Sort
-        <select onChange={sortCards}>
-          {SortingOptions.map((option) => (
-            <option key={option.value} value={option.value}>
-              {option.label}
-            </option>
-          ))}
-        </select>
-      </label>
+      <label>Sort: </label>
+      <select onChange={sortCards}>
+        {SortingOptions.map((option) => (
+          <option key={option.value} value={option.value}>
+            {option.label}
+          </option>
+        ))}
+      </select>
     </div>
   );
 };
