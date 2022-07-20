@@ -1,5 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
+import "./BoardList.css";
 
 const BoardList = (props) => {
   const viewBoard = (id) => {
@@ -11,10 +12,14 @@ const BoardList = (props) => {
     const viewBoardById = () => {
       viewBoard(board.id);
     };
-    return <button onClick={viewBoardById}>{board.title}</button>;
+    return (
+      <button key={board.id} className="board-button" onClick={viewBoardById}>
+        {board.title}
+      </button>
+    );
   });
 
-  return <section>{boardTitles}</section>;
+  return <section className="board-list">{boardTitles}</section>;
 };
 
 BoardList.propTypes = {
