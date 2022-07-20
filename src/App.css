@@ -1,0 +1,54 @@
+body {
+  background-color: #E9EAEC;
+}
+
+h1 {
+  color: #9e5246;
+  text-align: center;
+  padding: 20px;
+}
+
+h2 {
+  color: rgba(33, 33, 33, 0.841);
+}
+
+main {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+}
+
+section {
+  margin: 5px;
+  width: 30%
+}
+
+section:nth-child(4n) {
+  margin: 50px;
+  width: 60%
+}
+
+section:nth-child(5n) {
+  margin: 5px;
+  width: 30%
+}
+button {
+  background-color: #9e5246;
+  color: white;
+  border: none;
+  padding: 7px;
+  border-radius: 5px;
+  margin: 1px;
+}
+
+button:hover {
+  cursor: pointer;
+}
+
+#selected-board {
+  background-color: #4b6f48;
+  padding: 15px;
+  color: #E9EAEC;
+  border-radius: 5px;
+}
+
