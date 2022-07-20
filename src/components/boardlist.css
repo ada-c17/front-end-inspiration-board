@@ -21,8 +21,7 @@ ol li {
 }
 
 
-li button {
-    /* float: right; */
+.delete-board {
     position: absolute;
     right: 0;
     margin-right: 10px;
