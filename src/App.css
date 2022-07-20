@@ -1,6 +1,9 @@
 .App {
   text-align: center;
+  backdrop-filter: blur(1px); 
+
 }
+
 
 h1{
   font-family: "SpaceFont";
@@ -20,6 +23,7 @@ img {
   height:300px;
   width:300px;
   z-index: 2;
+  
 
 }
 .Otter{
