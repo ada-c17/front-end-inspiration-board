@@ -35,8 +35,8 @@ const NewCardForm = (props) => {
   };
 
   return (
-    <form onSubmit={onUpdateCards}>
-      <section className="add-message">
+    <section className="add-message">
+      <form onSubmit={onUpdateCards}>
         <input
           className="message-input"
           type="text"
@@ -56,8 +56,8 @@ const NewCardForm = (props) => {
         >
           Add
         </button>
-      </section>
-    </form>
+      </form>
+    </section>
   );
 };
 

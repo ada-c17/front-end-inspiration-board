@@ -166,6 +166,8 @@ function App() {
       .catch((err) => {
         console.log(err);
         throw new Error("error adding card");
+      });
+  };
 
   const deleteBoard = () => {
     let boardId;
@@ -201,19 +203,18 @@ function App() {
           />
         </section>
         <section className="delete-button-container">
-          <button>Delete Board</button>
+          <button onClick={deleteBoard}>Delete Board</button>
         </section>
         <section className="add-menu-button">
           <button onClick={toggleNewBoardForm}>
             {isBoardFormVisible ? "Hide Form" : "Add Board"}
           </button>
-        <section className="collapse">
-          {isBoardFormVisible ? (
-            <NewBoardForm createNewBoard={createNewBoard}></NewBoardForm>
-          ) : (
-            ""
-          )}
         </section>
+        {isBoardFormVisible ? (
+          <NewBoardForm createNewBoard={createNewBoard}></NewBoardForm>
+        ) : (
+          ""
+        )}
         <section className="board-content">
           <Board
             cardLike={increaseLike}
