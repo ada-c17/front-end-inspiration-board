@@ -5,6 +5,7 @@ import Board from "./components/Board";
 import CardList from "./components/CardList";
 import NewBoardForm from "./components/NewBoardForm";
 import NewCardForm from "./components/NewCardForm";
+import Dropdown from "./components/Dropdown";
 
 function App() {
   const URL = "https://gramtaschie.herokuapp.com";
@@ -19,6 +20,7 @@ function App() {
   const [cards, setCards] = useState([]);
   const [selectedBoard, setSelectedBoard] = useState(defaultBoard);
   const [isBoardFormVisible, setIsBoardFormVisible] = useState(true);
+  const [sortType, setSortType] = useState("id");
 
   const fetchBoards = () => {
     axios
@@ -36,7 +38,7 @@ function App() {
 
   const fetchCards = () => {
     axios
-      .get(`${URL}/boards/${selectedBoard.id}`)
+      .get(`${URL}/boards/${selectedBoard.id}?sort=${sortType}`)
       .then((response) => {
         console.log("fetchCard request");
         const updatedCards = response.data;
@@ -49,6 +51,13 @@ function App() {
   };
 
   useEffect(() => fetchBoards(), []);
+  const sortingCards = (sortType) => {
+    console.log(sortType);
+    setSortType(sortType);
+    // fetchCards();
+  };
+
+  useEffect(() => fetchBoards, []);
   useEffect(() => {
     if (selectedBoard.id === 0) {
       return;
@@ -57,6 +66,15 @@ function App() {
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [selectedBoard]);
+
+  useEffect(() => {
+    if (selectedBoard.id === 0) {
+      return;
+    } else {
+      fetchCards();
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [sortType]);
 
   const createNewBoard = (boardForm) => {
     axios
@@ -178,6 +196,7 @@ function App() {
               <NewCardForm addCardCallback={createNewCard}></NewCardForm>
             </div>
           ) : null}
+          <Dropdown sortingCardsCallback={sortingCards}> </Dropdown>
         </div>
         <CardList
           cards={cards}
