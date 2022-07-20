@@ -1,5 +1,6 @@
 import React from 'react';
 import Card from './cards.js'
+import "./SingleBoard.css";
 
 const SingleBoard = (props) => {
     const clickMe = () =>{
@@ -10,7 +11,7 @@ const SingleBoard = (props) => {
     
     if (props.isOnHomepage){
         return (
-            <section onClick={clickMe}>
+            <section className="single-board" onClick={clickMe}>
                 <ul>
                 <li>{props.board.owner}</li>
                 <li>{props.board.title}</li>

@@ -5,7 +5,7 @@ import "./boards.css";
 const Board = (props) => {
   const boardComponents = props.boards.map((board, index) => {
     return (
-      <SingleBoard
+      <SingleBoard 
         setIsOnHomepage={props.setIsOnHomepage}
         // function={props.showCardsFunction}
         // board_id={board.board_id}

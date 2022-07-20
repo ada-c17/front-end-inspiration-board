@@ -37,9 +37,9 @@ function App() {
 
   if (isOnHomepage) {
     return (
-      <div>
+      <div className="container" id="App">
+        <h1>Inspiration Board</h1>
         <div>
-          <h1>Inspiration Board</h1>
           <Board
             boards={boards}
             setActiveBoard={setActiveBoard}

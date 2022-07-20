@@ -1,2 +1,19 @@
 div {border:1px solid black;}
 section {border:1px solid blue;}
+
+section {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  grid-gap: 1rem;
+}
+
+section {
+    
+    padding: 1rem;
+  }
+  
+section ::before {
+    content: "";
+    padding-bottom: 100%;
+    display: block;
+}
