@@ -32,16 +32,8 @@ const BoardForm = ({ onAddBoard, shouldHide }) => {
     if (titleValErr.length === 0 && ownerValErr.length === 0) {
       onAddBoard(formData);
     }
-    // add error handling for empty title/owner
-    // must be a visible display for user
-
     setFormData(kDefaultFormState);
   };
-
-  // create a function to handle errors
-  // error message is displayed until
-  //  length of title >= 1 or length of owner >= 1
-  // remove error message
 
   return (
     <form className={shouldHide} onSubmit={handleSubmit}>

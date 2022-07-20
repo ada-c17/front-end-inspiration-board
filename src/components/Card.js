@@ -1,12 +1,13 @@
 import React from "react";
 import PropTypes from "prop-types";
 
-const Card = ({ cardId, message, likesCount, onUpdate, onDelete }) => {
+const Card = ({ cardId, message, likesCount, onUpdate, onDelete, boardId}) => {
   const onPlusOneClick = () => {
     const updatedCard = {
       cardId: cardId,
       message: message,
       likesCount: (likesCount += 1),
+      boardId: boardId,
     };
 
     onUpdate(updatedCard);
@@ -32,6 +33,7 @@ Card.propTypes = {
   likesCount: PropTypes.number.isRequired,
   onUpdate: PropTypes.func.isRequired,
   onDelete: PropTypes.func.isRequired,
+  boardId: PropTypes.number.isRequired,
 };
 
 export default Card;
