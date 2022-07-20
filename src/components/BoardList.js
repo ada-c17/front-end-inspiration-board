@@ -15,7 +15,7 @@ const BoardList = () => {
 
   const getBoardsFromAPI = () => {
     axios
-      .get("/boards")
+      .get("https://inspiration-from-otterspace.herokuapp.com/boards")
       .then((response) => {
         setBoards(response.data);
       })
@@ -33,7 +33,9 @@ const BoardList = () => {
     );
     if (confirm) {
       axios
-        .delete(`/boards/${boardID}`)
+        .delete(
+          `https://inspiration-from-otterspace.herokuapp.com/boards/${boardID}`
+        )
         .then((response) => {
           console.log("Deleted board");
           getBoardsFromAPI();
@@ -47,7 +49,10 @@ const BoardList = () => {
   // function that calls a put api request to make a change in title field
   const editBoard = (boardID, new_title) => {
     axios
-      .put(`/boards/${boardID}`, { title: new_title })
+      .put(
+        `https://inspiration-from-otterspace.herokuapp.com/boards/${boardID}`,
+        { title: new_title }
+      )
       .then((response) => {
         console.log("Board successfully updated");
         getBoardsFromAPI();
@@ -85,6 +90,7 @@ const BoardList = () => {
                 {/* makes the cursor display as a pointer as part of styling */}
                 <Link to={`${item.id}`} style={{ cursor: "pointer" }}>
                   {item.title}
+                  {/* pointer is the cursor (hand) */}
                 </Link>
                 <button id="delete-board" onClick={() => deleteBoard(item.id)}>
                   X

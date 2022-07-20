@@ -13,7 +13,7 @@ const NewBoardForm = () => {
   // creates new 'post' board api call
   const makeNewBoard = (data) => {
     axios
-      .post("/boards", data)
+      .post("https://inspiration-from-otterspace.herokuapp.com/boards", data)
       .then((response) => {
         console.log("created board");
         setBoardData(default_board);
@@ -66,12 +66,10 @@ const NewBoardForm = () => {
 
   const onGetQuote = () => {
     axios
-      .get(
-        "https://zenquotes.io/api/random/9cb78bb6438d8736d47428af7d09b8dbd1906ea8",
-        {}
-      )
+      .get(`http://127.0.0.1:5000/zen`)
       .then((response) => {
-        setQuote(response.data.q);
+        console.log(response.data[0]);
+        setQuote(response.data[0].q);
       })
       .catch((error) => {
         console.log("Oh no!!!");
@@ -85,7 +83,6 @@ const NewBoardForm = () => {
         <br />
         Home is here
       </Link>
-
       <h1>Quantum Realm</h1>
       <p className="story" id="first-line">
         Time.Space.Reality. It's more then a linear path. It's a prism of
@@ -113,7 +110,7 @@ const NewBoardForm = () => {
         />
         <input type="submit" value="Big Bang" />
       </form>
-      <p>{message}</p>
+      <p className="story">{message}</p>
 
       <p>{quote}</p>
     </>

@@ -27,6 +27,8 @@ const CardForm = (props) => {
   const handleFormSubmission = (event) => {
     event.preventDefault();
     props.handleSubmission(cardData);
+    // reset card to default value 
+    setCardData(defaultCard);
   };
 
   return (
@@ -36,7 +38,7 @@ const CardForm = (props) => {
           maxLength={40}
           name="message"
           type="text"
-          placeholder="Enter New Message "
+          placeholder="Inspirational Words "
           value={cardData.message}
           onChange={handleFormInput}
         />

@@ -18,7 +18,7 @@ test("full app rendering/navigating'", async () => {
     screen.getByText(/Inspiration from the OtterSpace/i)
   ).toBeInTheDocument();
   await user.click(screen.getByText(/new/i));
-  expect(screen.getByText(/Add New Space/i)).toBeInTheDocument();
+  expect(screen.getByText(/Quantum Realm/i)).toBeInTheDocument();
 });
 
 test("landing on a board page", () => {
