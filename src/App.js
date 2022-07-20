@@ -6,8 +6,7 @@ import NewBoardForm from "./components/NewBoardForm";
 import NewCardForm from "./components/NewCardForm";
 import "./css/inspo_board.css";
 
-// const kBaseUrl = "https://mission-inspirational-2.herokuapp.com";
-const kBaseUrl = "http://localhost:5000";
+const kBaseUrl = "https://mission-inspirational-2.herokuapp.com";
 
 const cardApiToJson = (card) => {
   const { id, likes, message, board_id: boardId } = card;
@@ -15,10 +14,8 @@ const cardApiToJson = (card) => {
 };
 
 const increaseLike = async (id) => {
-  // needs to receive the ID of the card that was liked with button click
   try {
     const response = await axios.patch(`${kBaseUrl}/cards/${id}/like`);
-    console.log(response.data);
     return cardApiToJson(response.data);
   } catch (error) {
     console.log(error);
@@ -27,7 +24,6 @@ const increaseLike = async (id) => {
 };
 
 function App() {
-  // Functions and variables for the dropdown functionality
   const [boards, setBoards] = useState([]); // list of all the board dicts
   const [boardOption, setBoardOption] = useState("Choose a Board");
   const [chosenBoardData, setChosenBoardData] = useState({ cards: [] });
@@ -49,7 +45,6 @@ function App() {
     setSortType(type);
   };
 
-  // new helper
   const getBoardListDropdown = () => {
     axios
       .get(`${kBaseUrl}/boards`)
@@ -83,24 +78,7 @@ function App() {
     getBoardListDropdown();
   }, []);
 
-  const renderChosenBoard = () => {
-    if (boards) {
-      for (const board of boards) {
-        if (board.title === boardOption) {
-          console.log(
-            `This is the board being chosen: ${JSON.stringify(board)}`
-          );
-          setChosenBoardData(board);
-        }
-      }
-    }
-  };
-
   useEffect(() => {
-    console.log(chosenBoardData.cards);
-    console.log(
-      `This is cardOrder: ${cardOrder}. This is cardSort: ${cardSort}`
-    );
     if (cardOrder && cardSort) {
       let sortedCardData;
       if (cardOrder === "Ascending") {
@@ -138,20 +116,19 @@ function App() {
     }
   }, [cardOrder, cardSort, boardOption, chosenBoardData]);
 
-  console.log(
-    `This is sortedData after sort outside UseEffect: ${JSON.stringify(
-      sortedData
-    )}`
-  );
-
   useEffect(() => {
-    renderChosenBoard();
-  }, [boardOption]);
+    if (boards) {
+      for (const board of boards) {
+        if (board.title === boardOption) {
+          setChosenBoardData(board);
+        }
+      }
+    }
+  }, [boardOption, boards]);
 
   // Get updated board data for selected board and set board
   const getSelectedBoardData = (boardId) => {
     axios.get(`${kBaseUrl}/boards/${boardId}`).then((response) => {
-      console.log(response);
       setChosenBoardData({
         cards: response.data.cards,
       });
@@ -181,7 +158,15 @@ function App() {
       });
   };
 
-  // deletes board but need to rerender to initial "Choose a board"
+  const deleteCard = (cardId, boardId) => {
+    const oldBoardId = boardId;
+    axios
+      .delete(`${kBaseUrl}/cards/${cardId}`)
+      .then(() => getSelectedBoardData(oldBoardId))
+      .catch((err) => {
+        console.log(err);
+        throw new Error("error adding card");
+
   const deleteBoard = () => {
     let boardId;
     for (const board of boards) {
@@ -239,6 +224,7 @@ function App() {
             updateSortOrder={updateSortOrder}
             updateSortType={updateSortType}
             sortedData={sortedData}
+            deleteCard={deleteCard}
           />
         </section>
       </section>
