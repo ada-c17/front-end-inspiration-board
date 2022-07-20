@@ -11,12 +11,12 @@ const Board = (props) => {
   const boardId = props.id;
 
   return (
-    <div>
+    <div className="board">
       <div onClick={() => props.selectBoardCallback(boardId)}>
         <h1>{title}</h1>
         <h2>{owner}</h2>
       </div>
-      <button onClick={() => props.deleteBoardCallback(boardId)}>Delete</button>
+      <button onClick={() => props.deleteBoardCallback(boardId)}>X</button>
     </div>
   );
 };

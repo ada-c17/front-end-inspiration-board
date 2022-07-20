@@ -1,0 +1,25 @@
+.board{
+    border: solid black 1px;
+    background-color: lightsalmon;
+    width: 20vw;
+    height: 20vw ;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 0.5em;
+    margin-bottom: 10px;
+    overflow: auto ;
+    display: flex;
+    padding: 10px;
+    text-align: center;
+    /* position: relative; */
+}
+
+.board button{
+    position: fixed;
+    /* top: 2px; */
+    /* right: 2px; */
+    /* align-items: flex-start; */
+    justify-items: flex-end;
+    /* align-self: flex-end; */
+
+}
+

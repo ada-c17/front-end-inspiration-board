@@ -1,23 +1,26 @@
 body {
   margin: 0 auto;
-  max-width: 50em;
+  /* max-width: 50em; */
   font-family: "Helvetica", "Arial", sans-serif;
   line-height: 1.5;
-  padding: 4em 1em;
+  /* padding: 4em 1em; */
   color: #555;
 }
 
 
-h2 {
+h1 {
+  text-align: center;
   margin-top: 1em;
   padding-top: 1em;
 }
 
-h1,
-h2,
-strong {
-  color: #333;
+h2 {
+  text-align: center;
+  margin-top: 1em;
+  padding-top: 1em;
 }
+
+
 
 /* https://unsplash.com/photos/82TpEld0_e4?utm_source=unsplash&utm_medium=referral&utm_content=creditShareLink */
 

@@ -21,7 +21,7 @@ const BoardList = (props) => {
     );
   });
 
-  return <div>{boardComponents}</div>;
+  return <div className="boardList">{boardComponents}</div>;
 };
 
 BoardList.propTypes = {
