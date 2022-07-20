@@ -60,7 +60,6 @@ const Board = ({ board_id, changeBoardCallback }) => {
         message: newCard,
       })
       .then((response) => {
-        console.log(response.data, "here");
         getCardData();
       })
       .catch((error) => {
