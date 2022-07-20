@@ -52,18 +52,20 @@ a:hover {
 
 }
 
+
 .HomeLink {
   font-family: 'SpaceFont';
 
   float:right;
   line-height : 40px ;
-  padding: 20px;
   font-size: 2rem;
   text-decoration: none;
-  text-align:center;
+  text-align:right; 
+  text-align-last: right;
   margin-right: 100px;
-  margin-top: 20px;
+  margin-top: 20px; 
   background-image: url("./data/earth2.png");
+
 
   background-size: cover;
   color:rgb(171, 234, 134);
@@ -71,7 +73,7 @@ a:hover {
 
   font-weight: bold;
   height:170px;
-  width:170px;
+  width:179px;
   z-index: 2;
 
 }
