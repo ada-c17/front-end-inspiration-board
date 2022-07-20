@@ -11,7 +11,7 @@ const SortDropdown = (props) => {
 
   return (
     <>
-      <form className="dropdown">
+      <form className="dropdown-sort">
         <label htmlFor="cardOrder"></label>
         <select
           name="cardOrder"
@@ -27,7 +27,7 @@ const SortDropdown = (props) => {
           </option>
         </select>
       </form>
-      <form className="dropdown">
+      <form className="dropdown-sort">
         <label htmlFor="sortType"></label>
         <select
           name="sortType"

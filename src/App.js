@@ -215,12 +215,13 @@ function App() {
             onDropdownChange={showChosenBoard}
           />
         </section>
+        <section className="delete-button-container">
+          <button>Delete Board</button>
+        </section>
         <section className="add-menu-button">
-          <button onClick={toggleNewBoardForm}>Add Board</button>
-        </section>
-        <section className="delete-board-button">
-          <button onClick={deleteBoard}>Delete</button>
-        </section>
+          <button onClick={toggleNewBoardForm}>
+            {isBoardFormVisible ? "Hide Form" : "Add Board"}
+          </button>
         <section className="collapse">
           {isBoardFormVisible ? (
             <NewBoardForm createNewBoard={createNewBoard}></NewBoardForm>
@@ -228,7 +229,6 @@ function App() {
             ""
           )}
         </section>
-
         <section className="board-content">
           <Board
             cardLike={increaseLike}

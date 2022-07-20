@@ -36,16 +36,16 @@ const Board = ({
 
   return (
     <section className="board-content">
-      <h1>
-        Current Board: <br />
-        {boardTitle}
-      </h1>
-      <SortDropdown
-        cardOrder={cardOrder}
-        cardSort={cardSort}
-        updateSortType={updateSortType}
-        updateSortOrder={updateSortOrder}
-      />
+      <h1>Current Board:</h1>
+      <h1 className="board-title"> {boardTitle}</h1>
+      <section className="dropdown-sort-container">
+        <SortDropdown
+          cardOrder={cardOrder}
+          cardSort={cardSort}
+          updateSortType={updateSortType}
+          updateSortOrder={updateSortOrder}
+        />
+      </section>
       <section className="card-display">{sortedCards}</section>
     </section>
   );
