@@ -2,7 +2,7 @@ import "./NewCardForm.css";
 import PropTypes from "prop-types";
 import React, { useState } from "react";
 
-const defaultCard = "";
+const defaultCard = { message: "" };
 
 const NewCardForm = (props) => {
   const [cardData, setCardData] = useState(defaultCard);
@@ -11,11 +11,11 @@ const NewCardForm = (props) => {
     event.preventDefault();
     // console.log(cardData);
     props.handleSubmission(cardData);
-    console.log("testing");
     setCardData(defaultCard);
   };
 
   const onInputChange = (event) => {
+    console.log("testing");
     setCardData(event.target.value);
   };
 
