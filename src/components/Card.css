@@ -1,0 +1,69 @@
+
+.cards-list {
+  display: grid;
+  grid-template-columns: repeat(
+		auto-fill,
+		minmax(250px, 1fr));
+}
+.card {
+  background: #FDFC96;
+  min-height:10em;
+  width: 12em;
+  border-radius: 7px;
+  box-shadow: 0 2px 5px rgb(175, 175, 175);
+  padding:1em;
+  float: left;
+  margin-right: 2em;
+  margin-top: 2em;
+  display: flex;
+  flex-direction: column;
+}
+
+.card:nth-child(even) {
+  transform:rotate(4deg);
+  position:relative;
+  background:rgb(204, 255, 204);
+  top:5px;
+}
+
+.card:nth-child(3n) {
+  transform:rotate(-3deg);
+  position:relative;
+  background:rgb(204, 204, 255);
+  top:-5px;
+}
+
+.card:nth-child(5n) {
+  transform:rotate(5deg);
+  position:relative;
+  top:-10px;
+}
+
+.card:hover, .card:focus {
+  box-shadow:5px 5px 3px rgba(104, 104, 104, 0.7);
+  transform: scale(1.25);
+  position:relative;
+  z-index:1;
+}
+
+.card-message {
+  font-family: 'Reenie Beanie', cursive;
+  font-size: 2em;
+  overflow-y: scroll;
+  flex-grow: 1;
+  /* border-style: dotted; */
+  /* font-weight: bold; */
+
+}
+
+.card-footer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 2;
+}
+
+.card .action-button {
+  margin: 0 0.2em;
+}
+

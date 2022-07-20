@@ -1,0 +1,17 @@
+.app-sidebar-board {
+    /* border-style: dotted; */
+    margin-left: 2%;
+    margin-right: 2%;
+}
+
+.title-boards {
+    margin-left: 2%;
+    /* border-style: dotted; */
+}
+
+.delete-button {
+    margin-right: 7%;
+    font-size: 120%;
+    /* border-style: dotted; */
+}
+

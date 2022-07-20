@@ -1,0 +1,26 @@
+.popup-board-form {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(255,255,255,0.5);  
+    z-index: 1000;
+}
+
+.board-form {
+    position: relative;
+    padding: 30px;
+    width: 300px;
+    display: flex;
+    flex-direction: column;
+    background-color: pink;
+}
+
+.board-form .btn {
+    width: 50%;
+    align-self: center;
+}

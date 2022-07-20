@@ -1,5 +1,15 @@
 # Inspiration Board: Front-end Layer
 
-This scaffold only includes a `.gitignore` file.
+### Team members: 
+- Amy Nguyen
+- Lulu Sun
+- Taingleap Chheang
+- Vera Sazonova
 
-To get started, follow the setup directions described in the project.
+### Deployed link:
+https://thaimynguyen.github.io/front-end-inspiration-board/
+
+### Set-up instructions:
+- Clone this repository `$ git clone https://github.com/thaimynguyen/front-end-inspiration-board.git`
+- Install dependencies: `yarn install`
+- Run the app: `yarn start`

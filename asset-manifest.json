@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "thaimynguyen.github.io/front-end-inspiration-board/static/css/main.e6c13ad2.css",
+    "main.js": "thaimynguyen.github.io/front-end-inspiration-board/static/js/main.63f6ea01.js",
+    "index.html": "thaimynguyen.github.io/front-end-inspiration-board/index.html",
+    "main.e6c13ad2.css.map": "thaimynguyen.github.io/front-end-inspiration-board/static/css/main.e6c13ad2.css.map",
+    "main.63f6ea01.js.map": "thaimynguyen.github.io/front-end-inspiration-board/static/js/main.63f6ea01.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.e6c13ad2.css",
+    "static/js/main.63f6ea01.js"
+  ]
+}
