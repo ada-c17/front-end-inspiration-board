@@ -11,6 +11,8 @@
 .single-board {
     width: 20vw;
     margin: 1vw;
-    border: 1px solid blue
+    border: 3px solid white;
+    color: coral;
+    
 }
 

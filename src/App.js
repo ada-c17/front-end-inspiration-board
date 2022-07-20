@@ -87,7 +87,6 @@ function App() {
           <Cards activeBoard={activeBoard} deleteCardCallBack={deleteCard} />
         </div>
       </div>
-
     );
   }
 }

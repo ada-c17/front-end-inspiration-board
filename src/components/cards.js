@@ -7,6 +7,9 @@ const Cards = (props) => {
   if (props.activeBoard === {}) {
     return null;
   }
+  console.log(props.activeBoard.cards[0]["likes_count"])
+  console.log(props.activeBoard.cards)
+  
   const cardComponents = props.activeBoard.cards.map((card, index) => {
     return (
       <SingleCard
@@ -18,6 +21,7 @@ const Cards = (props) => {
       ></SingleCard>
     );
   });
+  
   return <section className="cards-display">{cardComponents}</section>;
 };
 
