@@ -85,6 +85,7 @@ function App() {
       </section>
 
       <BoardList boards={boardData} selectBoard={selectBoard} />
+
       {/* ternary to display board if there is board selected, otherwise display create board form */}
       {selectedBoardData.boardId ? (
         <Board
@@ -99,7 +100,7 @@ function App() {
       {/* <NewBoardForm onBoardSubmit={handleNewBoard} /> */}
       {/* We probably only want to show when a board is selected */}
       {/* NewCardForm may need to be moved to CardList component */}
-      <NewCardForm onCardSubmit={handleNewCard} />
+      {/* <NewCardForm onCardSubmit={handleNewCard} /> */}
     </main>
   );
 }

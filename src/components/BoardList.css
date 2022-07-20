@@ -10,5 +10,9 @@
     flex-wrap: wrap;
     justify-content: center;
     align-items: center;
-    align-content: space-around;
+    /* align-content: space-around; */
+}
+
+.board-button {
+    font-size: 1em;
 }
