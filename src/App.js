@@ -5,7 +5,7 @@ import BoardList from './components/BoardList';
 import NewBoardForm from './components/NewBoardForm';
 // import CardList from './components/CardList';
 import cardData from './data/cardData.json';
-import MainCard from './components/CardContainer';
+import CardContainer from './components/CardContainer';
 
 // read the base url from .env file
 // current base url connects to your local host
@@ -106,7 +106,7 @@ const App = () => {
           />
         </div>
         <div>
-          <MainCard cardData={cardData}></MainCard>
+          <CardContainer cardData={cardData}></CardContainer>
         </div>
         {/* <CardList cardData={cardData} /> */}
       </main>

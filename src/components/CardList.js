@@ -4,13 +4,15 @@ import Card from './Card';
 import NewCardForm from './NewCardForm';
 import './CardList.css';
 
+export const baseURL = process.env['REACT_APP_BACKEND_URL'];
+
 const CardList = (props) => {
   //brains
   const [cardData, setCardData] = useState([]);
 
   useEffect(() => {
     axios
-      .get(``)
+      .get(`${baseURL}/cards`)
       .then((response) => {
         setCardData(response.data);
       })
@@ -21,7 +23,7 @@ const CardList = (props) => {
 
   const deleteCard = (card) => {
     axios
-      .delete(``)
+      .delete(`${baseURL}/cards`)
       .then((response) => {
         const newCardData = cardData.filter((existingCard) => {
           return existingCard.card_id !== card.card_id;
@@ -72,9 +74,9 @@ const CardList = (props) => {
   return (
     <>
       <div>{/* <h2>{props.board.title}</h2> */}</div>
-      <div>
+      {/* <div>
         <NewCardForm postNewCard={postNewCard}></NewCardForm>
-      </div>
+      </div> */}
       <div>
         <section className="card-list">{cardElements}</section>
       </div>

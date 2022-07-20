@@ -3,7 +3,7 @@ import CardList from './CardList';
 // import Card from './Card';
 import React, { useState } from 'react';
 
-const MainCard = () => {
+const CardContainer = (props) => {
   //brains
   const [isCardFormVisible, setIsCardFormVisible] = useState(false);
   //Beauty
@@ -13,16 +13,16 @@ const MainCard = () => {
         <header>
           <h2>Card List</h2>
         </header>
-        <CardList cardData={cardData}></CardList>
+        <CardList cardData={props.cardData}></CardList>
       </div>
       <div>
         <button onClick={() => setIsCardFormVisible(!isCardFormVisible)}>
           {isCardFormVisible ? 'Hide Form' : 'Create Your Card'}
         </button>
-        {isCardFormVisible ? <NewCardForm></NewCardForm> : null}
+        {isCardFormVisible ? <NewCardForm /> : null}
       </div>
     </>
   );
 };
 
-export default MainCard;
+export default CardContainer;
