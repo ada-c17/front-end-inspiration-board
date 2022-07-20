@@ -1,3 +1,12 @@
 .board__selected {
     background-color: #FCD5CE;
+    cursor: pointer;
+}
+
+.board__selected:hover {
+    cursor: pointer;
+}
+
+.board-list {
+    cursor: pointer;
 }

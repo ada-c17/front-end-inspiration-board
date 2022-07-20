@@ -54,7 +54,11 @@ export const Board = ({ id, title, owner }) => {
       <div className="board-body">
         <h1 className="board-title">{title}</h1>
         <p className="board-subtitle">Owner: {owner}</p>
-        <div className="new-card d-flex flex-row">
+        <div className="new-card">
+          <div className="add-card">
+          <CreateCard addCardCallback={addCard}></CreateCard>
+          </div>
+          <div className="exisitng-card">
           {cardData.map((data) => (
             <Card
               key={data.id}
@@ -64,9 +68,10 @@ export const Board = ({ id, title, owner }) => {
               onRemoveCallback={removeCard}
             ></Card>
           ))}
-          <CreateCard addCardCallback={addCard}></CreateCard>
+          </div>
         </div>
       </div>
     </div>
   );
 };
+

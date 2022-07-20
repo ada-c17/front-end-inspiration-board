@@ -4,10 +4,43 @@
 
 .board-body {
     display: grid;
-    grid-template-columns: auto auto;
-    grid-template-rows: auto auto auto;
+    grid-template-columns: 1fr;
+    grid-template-rows: auto auto;
 }
 
+.new-card {
+    display: grid;    
+    grid-template-columns: auto;
+    grid-template-rows: auto;
+}
+
+.exisitng-card {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-template-rows: auto;
+}
+
+@media only screen and (max-width:1200px) {
+    .exisitng-card {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: auto;
+    }
+}
+
+@media only screen and (max-width:900px) {
+    .exisitng-card {
+        display: grid;
+        grid-template-columns: 1fr;
+        grid-template-rows: auto;
+    }
+}
+
+.add-card {
+    justify-self: center;
+    align-self: center;
+
+}
 
 .board-title {
     text-align: center;
@@ -23,3 +56,4 @@
     grid-column-start: 1;
     grid-column-end: span 2;
 }
+

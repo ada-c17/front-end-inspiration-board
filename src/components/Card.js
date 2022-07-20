@@ -44,4 +44,3 @@ export const Card = ({ id, message, likes, onRemoveCallback }) => {
     </div>
   );
 };
-

@@ -6,7 +6,7 @@ export const BoardDropDown = ({ boards, setSelectedBoard, selectedBoard }) => {
   return (
     <Container title="Boards">
       <div style={{ padding: 10 }}>
-        <ol>
+        <ol className="board-list">
           {boards?.map((each) => (
             <li
               onClick={() => {
