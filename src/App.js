@@ -52,8 +52,6 @@ function App() {
     if (id !== 0) {
       setCardListAndFormHidden(false);
     }
-
-    getCards();
   };
 
   const getBoards = () => {
