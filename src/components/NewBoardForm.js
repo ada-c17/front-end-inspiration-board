@@ -3,13 +3,13 @@ import PropTypes from "prop-types";
 import { useState } from "react";
 import "./NewBoardForm.css";
 
-const defaultBoard = {
+const defaultBoardForm = {
   title: "",
   owner: "",
 };
 
 const NewBoardForm = (props) => {
-  const [boardForm, setBoardForm] = useState(defaultBoard);
+  const [boardForm, setBoardForm] = useState(defaultBoardForm);
 
   const onFormChange = (event) => {
     const stateName = event.target.name;
@@ -24,7 +24,7 @@ const NewBoardForm = (props) => {
   const handleSubmit = (event) => {
     event.preventDefault();
     props.addBoardCallback(boardForm);
-    setBoardForm(defaultBoard);
+    setBoardForm(defaultBoardForm);
   };
 
   return (

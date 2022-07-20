@@ -14,7 +14,7 @@ const Board = (props) => {
         key={board.id}
         onClick={() => props.selectBoardCallback(board_object)}
       >
-        {board.title} by {board.owner} with id {board.id}
+        {board.title} by {board.owner}
       </li>
     );
   });
