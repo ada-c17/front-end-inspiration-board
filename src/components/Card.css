@@ -7,7 +7,7 @@
     font-stretch:expanded;
     width: 215px;
     overflow-wrap: break-word;
-    padding: 1em;
+    /* padding: 1em; */
     margin: 25px;
     user-select: none;
     font-weight: bolder;
@@ -64,13 +64,14 @@
   }
   
   #delete {
+    padding: 5px;
     font-size: 0.6em;
     position:absolute;
     top: 0;
     right: 0; 
     font-size: 1.2em;
     background-color: transparent;
-    color:black;
+    color:rgb(14, 2, 68);
     border: none;
   }
   

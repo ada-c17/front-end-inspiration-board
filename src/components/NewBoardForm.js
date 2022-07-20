@@ -92,7 +92,7 @@ const NewBoardForm = () => {
         <br />
         Return Home
       </Link>
-      <h1>Quantum Realm</h1>
+      <h1>Arc of Infinity</h1>
       <p className="story" id="first-line">
         Time.Space.Reality. It's more then a linear path. It's a prism of
         endless possibility, where a single choice can branch out into infinite
