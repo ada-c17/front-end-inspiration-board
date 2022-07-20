@@ -1,8 +1,11 @@
 .new-board{
     margin-bottom:50px;
 }
-
+.galaxy-text{
+    text-align: center;
+}
 .visible{
+    margin-left:500px;
     background-image:none;
     float:left;
     height:400px;
