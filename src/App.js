@@ -198,6 +198,9 @@ function App() {
             onDropdownChange={showChosenBoard}
           />
         </section>
+        <section className="delete-button-container">
+          <button>Delete Board</button>
+        </section>
         <section className="add-menu-button">
           <button onClick={toggleNewBoardForm}>
             {isBoardFormVisible ? "Hide Form" : "Add Board"}
