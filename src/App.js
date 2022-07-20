@@ -3,8 +3,9 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import BoardList from './components/BoardList';
 import NewBoardForm from './components/NewBoardForm';
-import CardList from './components/CardList';
+// import CardList from './components/CardList';
 import cardData from './data/cardData.json';
+import MainCard from './components/CardContainer';
 
 // read the base url from .env file
 // current base url connects to your local host
@@ -104,7 +105,10 @@ const App = () => {
             deleteBoard={deleteBoard}
           />
         </div>
-        <CardList cardData={cardData} />
+        <div>
+          <MainCard cardData={cardData}></MainCard>
+        </div>
+        {/* <CardList cardData={cardData} /> */}
       </main>
     </div>
   );
