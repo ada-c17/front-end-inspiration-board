@@ -135,6 +135,28 @@ function App() {
     }
   };
 
+  const toggleAppData = () => {
+    const appData = {
+      title: 'Choose a board!',
+      cardList: '',
+      newBoardForm: <NewBoardForm onBoardSubmit={handleNewBoard} />,
+      newCardForm: '',
+    }
+    if (selectedBoardId) {
+      appData.title = `${getSelectedBoard(selectedBoardId).title} by ${
+        getSelectedBoard(selectedBoardId).creator}`
+      appData.cardList = <CardList
+                          cardData={getSelectedBoard(selectedBoardId).cards}
+                          onDeleteCard={handleDelete}
+                          onAddLike={handleLike}
+                        />
+      appData.newBoardForm = ''
+      appData.newCardForm = <NewCardForm onCardSubmit={handleNewCard} />
+    }
+    return appData;
+  };
+  const appData = toggleAppData();
+
   return (
     <main className="grid-container">
       <header>
@@ -154,25 +176,15 @@ function App() {
         <h2>Selected Board</h2>
       </section> */}
 
-      {selectedBoardId ? (
-        <section id="display-cards">
-          <h2>{getSelectedBoard(selectedBoardId).title}</h2>
-          <CardList
-            cardData={getSelectedBoard(selectedBoardId).cards}
-            onDeleteCard={handleDelete}
-            onAddLike={handleLike}
-          />
-        </section>
-      ) : (
-        ""
-      )}
+      <section id="display-cards">
+        <h2>{appData.title}</h2>
+        {appData.cardList}
+      </section>
+  
       <div className="board-and-card-forms">
         {/* helper function for these ternarys */}
-        {selectedBoardId ? (
-          <NewCardForm onCardSubmit={handleNewCard} />
-        ) : (
-          <NewBoardForm onBoardSubmit={handleNewBoard} />
-        )}
+        {appData.newCardForm}
+        {appData.newBoardForm}
       </div>
     </main>
   );
