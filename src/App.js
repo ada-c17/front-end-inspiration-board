@@ -135,33 +135,41 @@ function App() {
     }
   };
 
+  const toggleAppData = () => {
+    const appData = {
+      title: 'Choose a board!',
+      cardList: '',
+      newBoardForm: <NewBoardForm onBoardSubmit={handleNewBoard} />,
+      newCardForm: '',
+    }
+    if (selectedBoardId) {
+      appData.title = `${getSelectedBoard(selectedBoardId).title} by ${
+        getSelectedBoard(selectedBoardId).creator}`
+      appData.cardList = <CardList
+                          cardData={getSelectedBoard(selectedBoardId).cards}
+                          onDeleteCard={handleDelete}
+                          onAddLike={handleLike}
+                        />
+      appData.newBoardForm = ''
+      appData.newCardForm = <NewCardForm onCardSubmit={handleNewCard} />
+    }
+    return appData;
+  };
+  const appData = toggleAppData();
+
   return (
     <main className="App">
       <h1>Inspiration Board</h1>
       <BoardList boardData={boardData} selectBoard={selectBoard} />
       <h2>Selected Board</h2>
-      {/* helper function for these ternarys */}
       <ul>
-        {selectedBoardId
-          ? `${getSelectedBoard(selectedBoardId).title} by ${
-              getSelectedBoard(selectedBoardId).creator
-            }`
-          : "choose a board!"}
+        {appData.title}
       </ul>
       <ul>
-        {selectedBoardId ? (
-          <CardList
-            cardData={getSelectedBoard(selectedBoardId).cards}
-            onDeleteCard={handleDelete}
-            onAddLike={handleLike}
-          />
-        ) : (
-          ""
-        )}
+        {appData.cardList}
       </ul>
-
-      <NewBoardForm onBoardSubmit={handleNewBoard} />
-      {selectedBoardId ? <NewCardForm onCardSubmit={handleNewCard} /> : ""}
+      {appData.newBoardForm}
+      {appData.newCardForm}
     </main>
   );
 }
