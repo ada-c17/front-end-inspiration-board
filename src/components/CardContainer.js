@@ -76,22 +76,27 @@ const CardContainer = (props) => {
   // toggle Card form
   const [isCardFormVisible, setIsCardFormVisible] = useState(false);
 
-  // Sort
-  // const [value, setValue] = useState('ID');
-
-  // const handleChange = (event) => {
-  //   setValue(event.target.value);
-  //   sortCards(value);
-  // };
+  // Sort Cards by either Most Recent, Likes, Alpha
+  const [value, setValue] = useState('');
 
   const sortCards = (event) => {
     console.log('yes');
+    setValue(event.target.value);
     if (event.target.value === 'alpha') {
-      const newCardsSorted = [...cardData].sort((a, b) =>
-        a.message > b.message ? -1 : 1
-      );
+      const newCardsSorted = [...cardData].sort((a, b) => {
+        let fa = a.message.toLowerCase(),
+          fb = b.message.toLowerCase();
+
+        if (fa < fb) {
+          return -1;
+        }
+        if (fa > fb) {
+          return 1;
+        }
+        return 0;
+      });
       setCardData(newCardsSorted);
-    } else if (event.target.value === 'ID') {
+    } else if (event.target.value === 'mostRecent') {
       const newCardsSorted = [...cardData].sort((a, b) => b.id - a.id);
       setCardData(newCardsSorted);
     } else if (event.target.value === 'likes') {
@@ -118,21 +123,21 @@ const CardContainer = (props) => {
         {isCardFormVisible ? <NewCardForm postNewCard={postNewCard} /> : null}
       </div>
       <div>
+        <label className="button-toggle">
+          Sort By:
+          <select value={value} onChange={sortCards}>
+            <option value="mostRecent">Most Recent</option>
+            <option value="alpha">Alphabetically</option>
+            <option value="likes">Likes</option>
+          </select>
+        </label>
+      </div>
+      <div>
         <CardList
           cardData={cardData}
           deleteCard={deleteCard}
           addOneLike={addOneLike}
         ></CardList>
-      </div>
-      <div>
-        <label>
-          Sort By:
-          <select value={''} onChange={sortCards}>
-            <option value="ID">ID</option>
-            <option value="alpha">Alphabetically</option>
-            <option value="likes">Likes</option>
-          </select>
-        </label>
       </div>
     </>
   );
