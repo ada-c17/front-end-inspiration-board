@@ -6,11 +6,7 @@ const Board = (props) => {
     props.selectBoard(props.boardId);
   };
 
-  return (
-    <li>
-      <button onClick={selectBoard}>{props.title}</button>
-    </li>
-  );
+  return <button onClick={selectBoard}>{props.title}</button>;
 };
 
 Board.propTypes = {
