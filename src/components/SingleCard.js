@@ -17,7 +17,7 @@ const SingleCard = (props) => {
   const increaseLikeCount = () => {
     console.log("increaseLikeCount called");
     axios
-      .patch(`http://shiver-of-sharks.herokuapp.com/cards/${props.card_id}`, {
+      .patch(`https://shiver-of-sharks.herokuapp.com/cards/${props.card_id}`, {
         likes_count: likesCount + 1,
       })
       .then((response) => {
