@@ -3,7 +3,7 @@ import NewBoardForm from "./components/NewBoardForm";
 import NewCardForm from "./components/NewCardForm";
 import BoardList from "./components/BoardList";
 import CardList from "./components/CardList";
-import Board from "./components/Board";
+import "./App.css";
 import {
   postBoardAsync,
   postCardAsync,
@@ -11,14 +11,11 @@ import {
   deleteCardAsync,
   selectBoardAsync,
   getAllBoardsAsync,
-  getAllCardsAsync,
 } from "./apiCalls";
-import "./App.css";
 
 function App() {
   const [boardData, setBoardData] = useState([]);
   const [selectedBoardId, setSelectedBoardId] = useState(null);
-  // const [cardData, setCardData] = useState([]);
 
   const displayAllBoards = () => {
     getAllBoardsAsync()
@@ -39,30 +36,12 @@ function App() {
     selectBoardAsync(id)
       .then((board) => {
         setSelectedBoardId(board.boardId);
-
-        // setCardData(board.cards);
-        console.log(board);
       })
       .catch((err) => {
         console.log(err);
         throw new Error("error displaying board");
       });
   };
-
-  // const displayAllCards = () => {
-  //   getAllCardsAsync()
-  //     .then((cards) => {
-  //       setCardData(cards);
-  //     })
-  //     .catch((err) => {
-  //       console.log(err);
-  //       throw new Error("error displaying boards");
-  //     });
-  // };
-
-  // useEffect(() => {
-  //   displayAllCards();
-  // }, [cardData]);
 
   const postBoard = (boardData) => {
     postBoardAsync(boardData)
@@ -108,7 +87,7 @@ function App() {
         });
       })
       .catch((err) => {
-        console.log(err.messge);
+        console.log(err.message);
       });
   };
 
@@ -127,7 +106,7 @@ function App() {
         });
       })
       .catch((err) => {
-        console.log(err.messge);
+        console.log(err.message);
       });
   };
 

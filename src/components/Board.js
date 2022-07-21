@@ -10,9 +10,6 @@ const Board = (props) => {
   return (
     <li>
       <button onClick={selectBoard}>{props.title}</button>
-      {/* <h2>
-        <CardList cards={props.cards} />
-      </h2> */}
     </li>
   );
 };
@@ -25,18 +22,3 @@ Board.propTypes = {
 };
 
 export default Board;
-
-//   return (
-//     (
-//       <h1>
-//         {" "}
-//         {props.title} by {props.creator}{" "}
-//       </h1>
-//     ),
-//     (
-//       <div>
-//         <CardList cards={props.cards} />
-//       </div>
-//     )
-//   );
-// };
