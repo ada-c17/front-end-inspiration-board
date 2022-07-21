@@ -37,6 +37,7 @@ header {
     grid-row-end: 5;
     justify-self: center;
     text-align: center;
+    align-self: start;
 }
 
 .board-and-card-forms {
