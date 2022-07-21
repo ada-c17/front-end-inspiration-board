@@ -37,30 +37,39 @@ const NewBoardForm = (props) => {
   };
 
   return (
-    <form onSubmit={onFormSubmit}>
-      <div>
-        <label htmlFor="boardTitle">Board Title:</label>
-        <input
-          name="boardTitle"
-          value={formFields.title}
-          onChange={onTitleChange}
-        />
-      </div>
-      <div>
-        <label htmlFor="boardOwner">Owner:</label>
-        <input
-          name="boardOwner"
-          value={formFields.owner}
-          onChange={onOwnerChange}
-        />
-      </div>
-      <input type="submit" value="Add Board" />
-    </form>
+    <section className={`${props.updating ? "active-form" : "hidden-form"}`}>
+      <section className="single-board-container">
+        <section className="single-board">
+          <form onSubmit={onFormSubmit}>
+            <div>
+              <label htmlFor="boardTitle">Board Title:</label>
+              <br />
+              <input
+                name="boardTitle"
+                value={formFields.title}
+                onChange={onTitleChange}
+              />
+            </div>
+            <div>
+              <label htmlFor="boardOwner">Owner:</label>
+              <br />
+              <input
+                name="boardOwner"
+                value={formFields.owner}
+                onChange={onOwnerChange}
+              />
+            </div>
+            <input type="submit" value="Add Board" />
+          </form>
+        </section>
+      </section>
+    </section>
   );
 };
 
 NewBoardForm.propTypes = {
   addBoardCallback: PropTypes.func.isRequired,
+  updating: PropTypes.bool.isRequired,
 };
 
 export default NewBoardForm;

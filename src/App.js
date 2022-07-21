@@ -5,14 +5,13 @@ import { useState, useEffect } from "react";
 import Header from "./components/Header.js";
 import Cards from "./components/Cards.js";
 import axios from "axios";
-import NewBoardForm from "./components/NewBoardForm.js";
-import NewCardForm from "./components/NewCardForm.js";
 
 function App() {
   const [isOnHomepage, setIsOnHomepage] = useState(true);
   const [activeBoard, setActiveBoard] = useState({});
   const [cards, setCards] = useState([]);
   const [boards, getBoards] = useState([]);
+  const [updating, setUpdating] = useState(false);
 
   const deleteCard = (id) => {
     /* Find and remove card with give id from list of cards */
@@ -24,7 +23,6 @@ function App() {
     }
     /* Update number of cards so that React will see change */
     setCards([...cards]);
-
     /* Delete card in the back end */
     axios
       .delete(`http://shiver-of-sharks.herokuapp.com/cards/${id}`)
@@ -66,9 +64,10 @@ function App() {
       .catch((error) => {
         console.log(<section>{error.response.data.message}</section>);
       });
-  }, []);
+  }, [cards]);
 
   const addBoardData = (newBoard) => {
+    setUpdating(false);
     axios
       .post("http://shiver-of-sharks.herokuapp.com/boards", {
         title: newBoard.titleData,
@@ -83,6 +82,7 @@ function App() {
   };
 
   const addCardData = (newCard) => {
+    setUpdating(false);
     axios
       .post("http://shiver-of-sharks.herokuapp.com/cards", {
         message: newCard.messageData,
@@ -109,9 +109,11 @@ function App() {
             isOnHomepage={isOnHomepage}
             setCards={setCards}
             deleteBoardCallBack={deleteBoard}
+            addBoardCallback={addBoardData}
+            updating={updating}
+            setUpdating={setUpdating}
           ></Board>
         </div>
-        <NewBoardForm addBoardCallback={addBoardData} />
       </div>
     );
   } else {
@@ -123,12 +125,16 @@ function App() {
             isOnHomepage={isOnHomepage}
             setIsOnHomepage={setIsOnHomepage}
           />
-          <Cards cards={cards} setCards={setCards} deleteCardCallBack={deleteCard} />
+          <Cards
+            cards={cards}
+            deleteCardCallBack={deleteCard}
+            addCardCallback={addCardData}
+            boardId={activeBoard.board_id}
+            updating={updating}
+            setUpdating={setUpdating}
+            setCards={setCards}
+          />
         </div>
-        <NewCardForm
-          addCardCallback={addCardData}
-          boardId={activeBoard.board_id}
-        />
       </div>
     );
   }

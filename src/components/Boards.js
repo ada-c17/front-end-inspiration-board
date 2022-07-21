@@ -2,6 +2,8 @@ import React from "react";
 import SingleBoard from "./SingleBoard.js";
 import "./Boards.css";
 import PropTypes from "prop-types";
+import NewBoardForm from "./NewBoardForm.js";
+import PlusBox from "./PlusBox.js";
 
 const Board = (props) => {
   const boardComponents = props.boards.map((board, index) => {
@@ -18,7 +20,16 @@ const Board = (props) => {
     );
   });
 
-  return <section className="boards-display">{boardComponents}</section>;
+  return (
+    <section className="boards-display">
+      <NewBoardForm
+        addBoardCallback={props.addBoardCallback}
+        updating={props.updating}
+      />
+      <PlusBox setUpdating={props.setUpdating} elementType="board" />
+      {boardComponents}
+    </section>
+  );
 };
 
 Board.propTypes = {
@@ -41,6 +52,10 @@ Board.propTypes = {
       ),
     })
   ).isRequired,
+  deleteBoardCallBack: PropTypes.func.isRequired,
+  addBoardCallback: PropTypes.func.isRequired,
+  updating: PropTypes.bool.isRequired,
+  setUpdating: PropTypes.func.isRequired,
 };
 
 export default Board;

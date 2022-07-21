@@ -3,7 +3,11 @@ import PropTypes from "prop-types";
 
 const BackButton = (props) => {
   const goBack = () => props.setIsOnHomepage(true);
-  return <button onClick={goBack}>⬅ Home</button>;
+  return (
+    <button onClick={goBack}>
+      <h1>⬅</h1>
+    </button>
+  );
 };
 
 BackButton.propTypes = {
