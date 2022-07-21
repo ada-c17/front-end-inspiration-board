@@ -137,21 +137,24 @@ function App() {
 
   const toggleAppData = () => {
     const appData = {
-      title: 'Choose a board!',
-      cardList: '',
+      title: "",
+      cardList: "",
       newBoardForm: <NewBoardForm onBoardSubmit={handleNewBoard} />,
-      newCardForm: '',
-    }
+      newCardForm: "",
+    };
     if (selectedBoardId) {
       appData.title = `${getSelectedBoard(selectedBoardId).title} by ${
-        getSelectedBoard(selectedBoardId).creator}`
-      appData.cardList = <CardList
-                          cardData={getSelectedBoard(selectedBoardId).cards}
-                          onDeleteCard={handleDelete}
-                          onAddLike={handleLike}
-                        />
-      appData.newBoardForm = ''
-      appData.newCardForm = <NewCardForm onCardSubmit={handleNewCard} />
+        getSelectedBoard(selectedBoardId).creator
+      }`;
+      appData.cardList = (
+        <CardList
+          cardData={getSelectedBoard(selectedBoardId).cards}
+          onDeleteCard={handleDelete}
+          onAddLike={handleLike}
+        />
+      );
+      appData.newBoardForm = "";
+      appData.newCardForm = <NewCardForm onCardSubmit={handleNewCard} />;
     }
     return appData;
   };
@@ -172,17 +175,12 @@ function App() {
 
       <BoardList boardData={boardData} selectBoard={selectBoard} />
 
-      {/* <section id="selected-board">
-        <h2>Selected Board</h2>
-      </section> */}
-
       <section id="display-cards">
         <h2>{appData.title}</h2>
         {appData.cardList}
       </section>
-  
+
       <div className="board-and-card-forms">
-        {/* helper function for these ternarys */}
         {appData.newCardForm}
         {appData.newBoardForm}
       </div>
