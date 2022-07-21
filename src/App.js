@@ -152,28 +152,22 @@ function App() {
 
       <section id="selected-board">
         <h2>Selected Board</h2>
-        {/* helper function for these ternarys */}
-        <div>
-          {selectedBoardId
-            ? `${getSelectedBoard(selectedBoardId).title} by ${
-                getSelectedBoard(selectedBoardId).creator
-              }`
-            : "choose a board!"}
-        </div>
       </section>
 
-      <div>
-        {selectedBoardId ? (
+      {selectedBoardId ? (
+        <section id="display-cards">
+          <h2>{getSelectedBoard(selectedBoardId).title}</h2>
           <CardList
             cardData={getSelectedBoard(selectedBoardId).cards}
             onDeleteCard={handleDelete}
             onAddLike={handleLike}
           />
-        ) : (
-          ""
-        )}
-      </div>
+        </section>
+      ) : (
+        ""
+      )}
 
+      {/* helper function for these ternarys */}
       <NewBoardForm onBoardSubmit={handleNewBoard} />
       {selectedBoardId ? <NewCardForm onCardSubmit={handleNewCard} /> : ""}
     </main>
