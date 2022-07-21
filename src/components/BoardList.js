@@ -15,6 +15,7 @@ const BoardList = (props) => {
     });
     return (
         <section>
+            <h2>All Boards</h2>
             {boardComponents}
             <Button text={props.showAdd ? "hide add board form": "add board"}
             onClick={props.onAddBoard}></Button></section>

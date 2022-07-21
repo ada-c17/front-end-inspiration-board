@@ -1,6 +1,5 @@
 import React from 'react';
 import { useState } from 'react';
-import Button from './components/Button';
 import BoardList from './components/BoardList'
 import CardList from './components/CardList';
 import NewCardForm from './components/NewCardForm';
@@ -47,15 +46,15 @@ function App() {
   };
 
   return (
-    <div>
+    <div id="background">
       <header>
       </header>
       <main>
-        <section id="intro">
+        <section>
           <h1>Inspiration Board</h1>
           <h2>What is an inspiration board?</h2>
-          <p><span className="source"><a href="https://www.dictionary.com/browse/inspiration-board">
-              Dictionary.com</a></span> defines an inspiration board as 'a collage of various items, as photographs, drawings, words, fabric swatches,
+          <p><a href="https://www.dictionary.com/browse/inspiration-board">
+              Dictionary.com</a> defines an inspiration board as 'a collage of various items, as photographs, drawings, words, fabric swatches,
             paint chips, and textures, used to visualize specifics in the design of a
             project or event.'
           </p>

@@ -28,7 +28,7 @@ const NewBoardForm = (props) => {
     return (
         <form onSubmit = {onSubmit}>
             <div>
-                <h1>Create a new board:</h1>
+                <h2>Create a new board:</h2>
                 <label>Title: </label>
                 <input type="text" placeholder="Dad Jokes"
                 value={title} onChange={(e) => setTitle(e.target.value)}></input><br></br>

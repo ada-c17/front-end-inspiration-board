@@ -21,7 +21,7 @@ const NewCardForm = (props) => {
     return (
         <form onSubmit = {onSubmit}>
             <div>
-                <h1>Create a new card:</h1>
+                <h2>Create a new card:</h2>
                 <label>Message: </label>
                 <input type="text" placeholder="I'm afraid for the calendar. Its days are numbered."
                 value={message} onChange={(e) => setMessage(e.target.value)}></input>
