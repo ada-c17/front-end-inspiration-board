@@ -76,6 +76,30 @@ const CardContainer = (props) => {
   // toggle Card form
   const [isCardFormVisible, setIsCardFormVisible] = useState(false);
 
+  // Sort
+  // const [value, setValue] = useState('ID');
+
+  // const handleChange = (event) => {
+  //   setValue(event.target.value);
+  //   sortCards(value);
+  // };
+
+  const sortCards = (event) => {
+    console.log('yes');
+    if (event.target.value === 'alpha') {
+      const newCardsSorted = [...cardData].sort((a, b) =>
+        a.message > b.message ? -1 : 1
+      );
+      setCardData(newCardsSorted);
+    } else if (event.target.value === 'ID') {
+      const newCardsSorted = [...cardData].sort((a, b) => b.id - a.id);
+      setCardData(newCardsSorted);
+    } else if (event.target.value === 'likes') {
+      const newCardsSorted = [...cardData].sort((a, b) => b.likes - a.likes);
+      setCardData(newCardsSorted);
+    }
+  };
+
   //Beauty
   return (
     <>
@@ -99,6 +123,16 @@ const CardContainer = (props) => {
           deleteCard={deleteCard}
           addOneLike={addOneLike}
         ></CardList>
+      </div>
+      <div>
+        <label>
+          Sort By:
+          <select value={''} onChange={sortCards}>
+            <option value="ID">ID</option>
+            <option value="alpha">Alphabetically</option>
+            <option value="likes">Likes</option>
+          </select>
+        </label>
       </div>
     </>
   );
