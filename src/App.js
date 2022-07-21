@@ -35,6 +35,7 @@ function App() {
 
   useEffect(fetchBoards, []);
 
+  // sorting instruction source: https://dev.to/ramonak/react-how-to-dynamically-sort-an-array-of-objects-using-the-dropdown-with-react-hooks-195p
   useEffect(() => {
     const sortArray = (type) => {
       const types = {
