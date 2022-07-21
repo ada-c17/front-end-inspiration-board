@@ -83,7 +83,7 @@ const CardContainer = (props) => {
           <h2 className="card-list_header">Card List</h2>
         </header>
       </div>
-      <div className="board-form_container">
+      <div className="card-form_container">
         <button
           className="button-toggle"
           onClick={() => setIsCardFormVisible(!isCardFormVisible)}

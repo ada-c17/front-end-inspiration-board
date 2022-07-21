@@ -15,19 +15,14 @@ const NewCardForm = (props) => {
   const [isSubmit, setIsSubmit] = useState(false);
 
   const handleMessage = (event) => {
-    // console.log(event.target.value);
     const name = event.target.name;
     const value = event.target.value;
-
     setMessage({ ...messageValues, [name]: value });
   };
 
   const handleSubmitCard = (event) => {
     event.preventDefault();
     setFormErrors(validate(messageValues));
-    // props.postNewCard(message);
-    console.log(formErrors);
-    // setMessage('');
     setIsSubmit(true);
   };
 
