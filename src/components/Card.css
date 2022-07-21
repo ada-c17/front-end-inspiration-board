@@ -1,0 +1,62 @@
+.delete {
+    width: 1.5em;
+    height: 1.5em;
+    margin-left: 0.3em;
+    margin-top: 0.3em;
+    opacity: 1;
+}
+
+.delete:hover {
+    opacity: 0.6;
+}
+
+.border-polaroid {
+    width: 18em;
+    height: 24em;
+    background-color: #f3f2edf8;
+    margin-bottom: 1.5em;
+    margin-right: 0.5em;
+    border: 3px solid black;
+}
+
+.message {
+    font-size: 1.3rem;
+    font-family: 'Barlow Semi Condensed', sans-serif;
+    background-color: #4E878C;
+    font-weight: bold;
+    width: 12em;
+    height: 13em;
+    margin: auto;
+    text-align: center;
+    border: 3px solid black;
+    line-height: 13em;
+}
+
+.message p {
+    display: inline-block;
+    line-height: 1.5em;
+    vertical-align: middle;
+}
+
+.like {
+    width: 2.5em;
+    height: 2.5em;
+    opacity: 1;
+}
+
+.like-container {
+    margin-top: 1.1em;
+    text-align: right;
+    margin-right: 10%;
+}
+
+.like:hover {
+    opacity: 0.6;
+}
+
+.count {
+    color: #4E878C;
+    font-family: 'Fjalla One', san-serif;
+    font-size: 2.5em;
+    margin-left: 0.1em;
+}

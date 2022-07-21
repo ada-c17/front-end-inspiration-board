@@ -1,0 +1,96 @@
+@import url('https://fonts.googleapis.com/css2?family=Barlow+Semi+Condensed:wght@100;200&family=Fjalla+One&family=Yeseva+One&display=swap');
+
+html {
+  background: url(./images/wood.jpg) no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  color: white;
+}
+
+nav {
+  font-family: 'Fjalla One', sans-serif;
+  font-size: 2em;
+  font-weight: 700;
+  text-align: right;
+  margin-right: 3%;
+  margin-top: 2%;
+  letter-spacing: 0.3em;
+}
+
+nav a {
+  text-decoration: none;
+  color: white;
+}
+
+nav a:hover {
+  color: #4E878C;
+}
+
+h1 {
+  font-size: 7em;
+  font-family: 'Yeseva One', cursive;
+  letter-spacing: 0.3em;
+  margin: auto;
+  text-align: center;
+}
+
+.content-container {
+  width: 75%;
+  margin: auto;
+}
+
+.selection-container {
+  display: flex;
+  justify-content: space-around;
+  margin-top: 3em;
+}
+
+.forms-container {
+  display: flex;
+  justify-content: space-around;
+  margin-top: 2em;
+}
+
+.btn {
+  width: 10em;
+  font-family: 'Fjalla One', sans-serif;
+  font-size: 1.4em;
+  background-color: #4E878C;
+  color: white;
+  border: none;
+  border-radius: 1em;
+}
+
+.btn:hover {
+  background: rgba(255, 255, 255, 0.7);
+  color: #4E878C;
+}
+
+h2 {
+  font-size: 3em;
+  font-family: 'Fjalla One', sans-serif;
+  margin: auto;
+  text-align: center;
+  margin-top: 1em;
+  margin-bottom: 1em;
+  letter-spacing: 0.3em;
+}
+
+footer {
+  padding-top: 20px;
+  padding-bottom: 20px;
+  background-color: rgba(250, 250, 250, 0.4);
+  margin-top: 8em;
+  margin-bottom: 3em;
+}
+
+#disclaimer {
+  font-family: 'Barlow Semi Condensed', sans-serif;
+  text-transform: uppercase;
+  font-size: 1.2em;
+  text-align: center;
+  color: black;
+  font-weight: bold;
+}

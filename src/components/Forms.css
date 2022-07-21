@@ -1,0 +1,47 @@
+.input--state-success {
+    width: 15em;
+    height: 2em;
+    margin-left: 0.3em;
+    font-size: 1em;
+    font-family: 'Barlow Semi Condensed', sans-serif;
+    font-weight: bold;
+}
+
+.input--state-danger {
+    border: red solid 0.1em;
+    box-shadow: 0 0 0.5em red;
+    width: 15em;
+    height: 2em;
+    margin-left: 0.7em;
+    font-size: 1em;
+    font-family: 'Barlow Semi Condensed', sans-serif;
+    font-weight: bold;
+}
+
+.form-label {
+    font-family: 'Fjalla One', sans-serif;
+    font-size: 2em;
+    letter-spacing: 0.1em;
+}
+
+form > div {
+    margin-bottom: 0.5em;
+}
+
+.submit-button {
+    width: 6em;
+    height: 2em;
+    font-size: 1.2em;
+    font-family: 'Barlow Semi Condensed', sans-serif;
+    font-weight: bold;
+    background-color: #4E878C;
+    color: white;
+    border: none;
+    border-radius: 0.5em;
+    margin-top: 0.5em;
+}
+
+.submit-button:hover {
+    background: rgba(255, 255, 255, 0.7);
+    color: #4E878C;
+  }

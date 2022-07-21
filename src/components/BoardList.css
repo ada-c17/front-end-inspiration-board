@@ -1,0 +1,11 @@
+.board-selection-dropdown {
+    font-family: 'Fjalla One', sans-serif;
+    width: 15em;
+    height: 3.5em;
+    font-size: 1.4em;
+    background-color: #4E878C;
+    color: white;
+    border-radius: 1em;
+    border: none;
+    text-align: center;
+}

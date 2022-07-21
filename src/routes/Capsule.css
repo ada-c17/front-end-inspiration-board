@@ -1,0 +1,19 @@
+.capsule-container {
+    display: flex;
+    justify-content: center;
+    margin: auto;
+    flex-wrap: wrap;
+}
+
+h1 {
+    font-family: 'Yeseva One', sans-serif;
+    font-size: 6em;
+    margin-top: 1em;
+    margin-bottom: 1em;
+}
+
+.capsule-container img {
+    width: 700px;
+    height: auto;
+    padding: 1em;
+}
