@@ -8,7 +8,7 @@ export const Board = ({ id, title, owner }) => {
   const [cardData, setCardData] = useState([]);
 
   useEffect(() => {
-    axios.get(`http://127.0.0.1:5000/boards/${id}`).then((response) => {
+    axios.get(`https://swifties-inspo-board-6.herokuapp.com/boards/${id}`).then((response) => {
       const cards = response.data.board.cards.map((card) => ({
         id: card.id,
         message: card.message,
@@ -33,7 +33,7 @@ export const Board = ({ id, title, owner }) => {
     };
 
     axios
-      .post("http://127.0.0.1:5000/cards", data)
+      .post("https://swifties-inspo-board-6.herokuapp.com/cards/", data)
       .then((response) => {
         console.log(response);
         const card = response.data.card;
