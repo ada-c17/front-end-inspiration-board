@@ -92,6 +92,45 @@ function App() {
         console.log(err.message);
       });
   };
+
+  const likeCard = (cardId) => {
+    likeCardAsync(cardId, selectedBoardId)
+      .then(() => {
+        setBoardData((oldBoardData) => {
+          const newBoardData = oldBoardData.map((board) => {
+            if (board.boardId === selectedBoardId) {
+              return getSelectedBoard(selectedBoardId);
+            } else {
+              return board;
+            }
+          });
+          return newBoardData;
+        });
+      })
+      .catch((err) => {
+        console.log(err.messge);
+      });
+  };
+
+  const deleteCard = (cardId) => {
+    deleteCardAsync(cardId, selectedBoardId)
+      .then(() => {
+        setBoardData((oldBoardData) => {
+          const newBoardData = oldBoardData.map((board) => {
+            if (board.boardId === selectedBoardId) {
+              return getSelectedBoard(selectedBoardId);
+            } else {
+              return board;
+            }
+          });
+          return newBoardData;
+        });
+      })
+      .catch((err) => {
+        console.log(err.messge);
+      });
+  };
+
   // not sure if we want/need these to be in a helper function
   const handleNewBoard = (formFields) => {
     postBoard(formFields);
@@ -99,6 +138,14 @@ function App() {
 
   const handleNewCard = (formFields) => {
     postCard(formFields);
+  };
+
+  const handleLike = (id) => {
+    likeCard(id);
+  };
+
+  const handleDelete = (id) => {
+    deleteCard(id);
   };
 
   const getSelectedBoard = (id) => {
@@ -124,7 +171,11 @@ function App() {
       </p>
       <p>
         {selectedBoardId ? (
-          <CardList cardData={getSelectedBoard(selectedBoardId).cards} />
+          <CardList
+            cardData={getSelectedBoard(selectedBoardId).cards}
+            onDeleteCard={handleDelete}
+            onAddLike={handleLike}
+          />
         ) : (
           ""
         )}

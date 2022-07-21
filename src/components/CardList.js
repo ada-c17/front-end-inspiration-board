@@ -6,12 +6,12 @@ const CardList = (props) => {
   const cardComponents = props.cardData.map((card) => {
     return (
       <Card
-        id={card.id}
+        id={card.cardId}
         message={card.message}
-        likeCount={card.likeCount}
-        boardId={card.boardId}
-        onAddLike={card.onAddLike}
-        onDeleteCard={card.onDeleteCard}
+        likeCount={card.likesCount}
+        // boardId={selectBoa}
+        onAddLike={props.onAddLike}
+        onDeleteCard={props.onDeleteCard}
       />
     );
   });

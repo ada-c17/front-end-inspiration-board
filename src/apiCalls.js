@@ -35,10 +35,27 @@ export const postCardAsync = (cardData, boardId) => {
 };
 
 // API call (patch) to update likeCount for a single card
-export const likeCardAsync = (cardId) => {};
+export const likeCardAsync = (cardId, boardId) => {
+  return axios
+    .patch(`${kBaseUrl}boards/${boardId}/cards/${cardId}/like`)
+    .then((response) => {
+      return response.data;
+    })
+    .catch((err) => {
+      console.log(err);
+      throw new Error("error liking card");
+    });
+};
 
 // API call (delete) to delete card by id
-export const deleteCardAsync = (cardId) => {};
+export const deleteCardAsync = (cardId, boardId) => {
+  return axios
+    .delete(`${kBaseUrl}/boards/${boardId}/cards/${cardId}`) // promise1
+    .catch((err) => {
+      console.log(err);
+      throw new Error(`error removing card ${cardId}`);
+    });
+};
 
 export const getAllBoardsAsync = () => {
   return axios
