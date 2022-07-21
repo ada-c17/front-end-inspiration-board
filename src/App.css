@@ -50,3 +50,10 @@ header {
 
     margin-top: 20pt;
 }
+
+#error-message {
+    color: red;
+    font-size: 1.5em;
+    font-weight: bold;
+    text-align: center;
+}
