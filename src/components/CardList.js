@@ -3,7 +3,10 @@ import PropTypes from "prop-types";
 import Card from "./Card";
 
 const CardList = (props) => {
-  const cardComponents = props.cardData.map((card) => {
+  const sortedCardData = props.cardData.sort((a, b) => {
+    return a.cardId - b.cardId;
+  });
+  const cardComponents = sortedCardData.map((card) => {
     return (
       <Card
         id={card.cardId}
