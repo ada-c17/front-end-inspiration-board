@@ -7,6 +7,6 @@
 }
 
 .board-button:hover {
-    background-color: peachpuff;
+    background-color: rgb(223, 156, 125);
     font-weight: bold;
 }

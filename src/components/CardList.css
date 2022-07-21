@@ -1,11 +1,11 @@
 .card-list {
-    grid-column-start: 3;
-    grid-column-end: 5;
+    grid-column-start: 2;
+    grid-column-end: 6;
     grid-row-start: 4;
     grid-row-end: 5;
     justify-self: center;
 
-    max-width: 60vw;
+    /* max-width: 60vw; */
 }
 
 .cards {
@@ -19,4 +19,5 @@
 
 .sort-by-label {
     text-align: center;
+    margin-bottom: 10pt;
 }

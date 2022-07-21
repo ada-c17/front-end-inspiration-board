@@ -1,5 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
+import "./Card.css";
 
 const Card = (props) => {
   const updateLikes = () => {
@@ -11,7 +12,7 @@ const Card = (props) => {
   };
 
   return (
-    <section>
+    <section className="card">
       <p>{props.message}</p>
       <button onClick={updateLikes}>{props.likeCount} 💛</button>
       <button onClick={removeCard}>🗑</button>

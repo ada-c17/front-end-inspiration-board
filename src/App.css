@@ -6,7 +6,7 @@
 .grid-container {
     display: grid;
     grid-template-columns: auto 1fr 1fr 1fr 1fr auto;
-    grid-template-rows: 1.5fr 1fr 3fr 2fr 3fr .5fr;
+    grid-template-rows: 15vh 15vh 45vh 2fr 1fr .5fr;
     align-items: center;
 }
 
