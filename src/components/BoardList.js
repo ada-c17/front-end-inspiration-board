@@ -5,6 +5,7 @@ import Button from "./Button";
 import PropTypes from "prop-types";
 import axios from "axios";
 import partyFlag from "../images/birthday-flag-png-transparent-birthday-flag-images-120898.png";
+import { backend_url } from "../env";
 
 const BoardList = ({ changeBoardCallback }) => {
   const [board, setBoard] = useState([]);
@@ -15,7 +16,7 @@ const BoardList = ({ changeBoardCallback }) => {
 
   const getBoardsFromAPI = () => {
     axios
-      .get(`${process.env.REACT_APP_BACKEND_URL}/boards`)
+      .get(`${backend_url}/boards`)
       .then((response) => {
         setBoard(response.data);
       })
