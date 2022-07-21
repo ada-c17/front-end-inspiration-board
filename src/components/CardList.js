@@ -2,6 +2,7 @@ import React from "react";
 import { useState, useEffect } from "react";
 import PropTypes from "prop-types";
 import Card from "./Card";
+import "./CardList.css";
 
 const CardList = (props) => {
   const [sortType, setSortType] = useState("id");
@@ -43,14 +44,14 @@ const CardList = (props) => {
   });
 
   return (
-    <section>
+    <section className="card-list">
       <label>Sort By: </label>
       <select onChange={(event) => setSortType(event.target.value)}>
         <option value="cardId">New</option>
         <option value="message">Alphabetical</option>
         <option value="likesCount">Most Liked</option>
       </select>
-      <ul>{cardComponents}</ul>
+      <div className="cards">{cardComponents}</div>
     </section>
   );
 };

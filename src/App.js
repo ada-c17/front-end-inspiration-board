@@ -136,7 +136,7 @@ function App() {
   };
 
   return (
-    <main className="container">
+    <main className="grid-container">
       <header>
         <h1>in5piration board</h1>
       </header>
