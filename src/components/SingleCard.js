@@ -21,7 +21,6 @@ const SingleCard = (props) => {
         likes_count: likesCount + 1,
       })
       .then((response) => {
-        updateLikesCount((prevCount) => prevCount + 1);
         props.refreshCards(props.card_id, likesCount + 1);
       })
       .catch((error) => {

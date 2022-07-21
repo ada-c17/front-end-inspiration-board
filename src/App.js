@@ -22,12 +22,12 @@ function App() {
       }
     }
     /* Update number of cards so that React will see change */
-    setCards([...cards]);
+
     /* Delete card in the back end */
     axios
       .delete(`https://shiver-of-sharks.herokuapp.com/cards/${id}`)
       .then((response) => {
-        /* Don't need to do anything with response */
+        setCards([...cards]);
       })
       .catch((error) => {
         console.log(<section>{error.response.data.message}</section>);
@@ -59,6 +59,7 @@ function App() {
     axios
       .get("https://shiver-of-sharks.herokuapp.com/boards")
       .then((response) => {
+        console.log("api call");
         getBoards(response.data.boards);
       })
       .catch((error) => {
