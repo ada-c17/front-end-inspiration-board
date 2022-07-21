@@ -97,6 +97,13 @@ function App() {
       });
   };
 
+  const refreshCards = (id, newCount) => {
+    const newCards = cards.map((card) => {
+      return card.card_id === id ? { ...card, likes_count: newCount } : card;
+    });
+    setCards(newCards);
+  };
+
   if (isOnHomepage) {
     return (
       <div className="container" id="App">
@@ -133,6 +140,7 @@ function App() {
             updating={updating}
             setUpdating={setUpdating}
             setCards={setCards}
+            refreshCards={refreshCards}
           />
         </div>
       </div>

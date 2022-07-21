@@ -11,29 +11,29 @@ const Cards = (props) => {
   }
 
   function compareObjectLetters(object1, object2, key) {
-    const obj1 = object1[key].toUpperCase()
-    const obj2 = object2[key].toUpperCase()
-  
+    const obj1 = object1[key].toUpperCase();
+    const obj2 = object2[key].toUpperCase();
+
     if (obj1 < obj2) {
-      return -1
+      return -1;
     }
     if (obj1 > obj2) {
-      return 1
+      return 1;
     }
-    return 0
+    return 0;
   }
 
   function compareObjectNums(object1, object2, key) {
-    const obj1 = object1[key]
-    const obj2 = object2[key]
-  
+    const obj1 = object1[key];
+    const obj2 = object2[key];
+
     if (obj1 < obj2) {
-      return -1
+      return -1;
     }
     if (obj1 > obj2) {
-      return 1
+      return 1;
     }
-    return 0
+    return 0;
   }
 
   // console.log((props.cards.sort((a, b) => {
@@ -42,33 +42,33 @@ const Cards = (props) => {
 
   const idSort = () => {
     let sorted = props.cards.sort((a, b) => {
-      return compareObjectNums(a, b, 'card_id')
-    })
-    let newArr = [...sorted]
-    props.setCards(newArr)
-    console.log("sorting by card_id")
-    console.log(newArr)
-  }
+      return compareObjectNums(a, b, "card_id");
+    });
+    let newArr = [...sorted];
+    props.setCards(newArr);
+    console.log("sorting by card_id");
+    console.log(newArr);
+  };
 
   const alphabetSort = () => {
-    let sorted = (props.cards.sort((a, b) => {
-      return compareObjectLetters(a, b, 'message')
-    }))
-    let newArr = [...sorted]
-    props.setCards(newArr)
-    console.log("sorting by message")
-    console.log(newArr)
-  }
+    let sorted = props.cards.sort((a, b) => {
+      return compareObjectLetters(a, b, "message");
+    });
+    let newArr = [...sorted];
+    props.setCards(newArr);
+    console.log("sorting by message");
+    console.log(newArr);
+  };
 
   const likesSort = () => {
-    let sorted = (props.cards.sort((a, b) => {
-    return compareObjectNums(a, b, 'likes_count')
-    }))
-    let newArr = [...sorted]
-    props.setCards(newArr)
-    console.log("sorting by likes_count")
-    console.log(newArr)
-  }
+    let sorted = props.cards.sort((a, b) => {
+      return compareObjectNums(a, b, "likes_count");
+    });
+    let newArr = [...sorted];
+    props.setCards(newArr);
+    console.log("sorting by likes_count");
+    console.log(newArr);
+  };
 
   const cardComponents = props.cards.map((card, index) => {
     return (
@@ -78,10 +78,11 @@ const Cards = (props) => {
         message={card.message}
         likes_count={card.likes_count}
         deleteCardCallBack={props.deleteCardCallBack}
+        refreshCards={props.refreshCards}
       ></SingleCard>
     );
   });
-  
+
   return (
     <section className="cards-display">
       <NewCardForm
@@ -118,15 +119,15 @@ Cards.propTypes = {
   boardId: PropTypes.number.isRequired,
   updating: PropTypes.bool.isRequired,
   setUpdating: PropTypes.func.isRequired,
+  refreshCards: PropTypes.func.isRequired,
 };
 
 export default Cards;
 
-
 // create three buttons or drop down menu to choose how to sort cards
 // by id, by alaphbet(in message), by likes count
 
-// need to create an empty array 
+// need to create an empty array
 // and add sorted original array using spread operator (...)
 // (do the sort on props.cards)
 // use props.setCards to update state with the new array
