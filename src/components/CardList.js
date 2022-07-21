@@ -15,17 +15,17 @@ const CardList = (props) => {
         likesCount: "likesCount",
       };
       const sortProperty = types[type];
+      let sorted;
       if (sortProperty === "message") {
-        const sorted = props.cardData.sort((a, b) =>
+        sorted = props.cardData.sort((a, b) =>
           a[sortProperty].localeCompare(b[sortProperty])
         );
-        setCardData(sorted);
       } else {
-        const sorted = props.cardData.sort(
+        sorted = props.cardData.sort(
           (a, b) => b[sortProperty] - a[sortProperty]
         );
-        setCardData(sorted);
       }
+      setCardData(sorted);
     };
     sortArray(sortType);
   }, [sortType, props.cardData]);
