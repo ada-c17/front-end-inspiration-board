@@ -29,7 +29,7 @@ header {
     text-align: center;
 }
 
-#selected-board {
+#display-cards {
     grid-column-start: 1;
     grid-column-end: 7;
     grid-row-start: 4;

@@ -150,9 +150,9 @@ function App() {
 
       <BoardList boardData={boardData} selectBoard={selectBoard} />
 
-      <section id="selected-board">
+      {/* <section id="selected-board">
         <h2>Selected Board</h2>
-      </section>
+      </section> */}
 
       {selectedBoardId ? (
         <section id="display-cards">
