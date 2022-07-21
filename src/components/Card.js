@@ -45,7 +45,13 @@ const Card = ({
 };
 
 Card.propTypes = {
-  onLike: PropTypes.func,
+  id: PropTypes.number.isRequired,
+  likes: PropTypes.number.isRequired,
+  boardId: PropTypes.number.isRequired,
+  message: PropTypes.string.isRequired,
+  onLike: PropTypes.func.isRequired,
+  onDelete: PropTypes.func.isRequired,
+  getSelectedBoardData: PropTypes.func.isRequired,
 };
 
 export default Card;
