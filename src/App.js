@@ -166,10 +166,14 @@ function App() {
       ) : (
         ""
       )}
-
-      {/* helper function for these ternarys */}
-      <NewBoardForm onBoardSubmit={handleNewBoard} />
-      {selectedBoardId ? <NewCardForm onCardSubmit={handleNewCard} /> : ""}
+      <div className="board-and-card-forms">
+        {/* helper function for these ternarys */}
+        {selectedBoardId ? (
+          <NewCardForm onCardSubmit={handleNewCard} />
+        ) : (
+          <NewBoardForm onBoardSubmit={handleNewBoard} />
+        )}
+      </div>
     </main>
   );
 }

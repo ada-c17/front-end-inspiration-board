@@ -36,3 +36,11 @@ header {
     grid-row-end: 5;
     justify-self: center;
 }
+
+.board-and-card-forms {
+    grid-column-start: 1;
+    grid-column-end: 7;
+    grid-row-start: 5;
+    grid-row-end: 6;
+    justify-self: center;
+}
