@@ -33,7 +33,7 @@ export const Board = ({ id, title, owner }) => {
     };
 
     axios
-      .post("https://swifties-inspo-board-6.herokuapp.com/cards/", data)
+      .post("https://swifties-inspo-board-6.herokuapp.com/cards", data)
       .then((response) => {
         console.log(response);
         const card = response.data.card;

@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect } from "react";
 import "./App.css";
 import axios from "axios";
@@ -12,7 +11,7 @@ function App() {
 
   const getBoards = async () => {
     try {
-      const response = await axios.get(`https://swifties-inspo-board-6.herokuapp.com/boards/`);
+      const response = await axios.get(`https://swifties-inspo-board-6.herokuapp.com/boards`);
       return response.data;
     } catch (err) {
       return [];
@@ -61,7 +60,7 @@ function App() {
       </div>
 
       {selectedBoard ? (
-        <Board 
+        <Board
           key={selectedBoard.id}
           id={selectedBoard.id}
           title={selectedBoard.title}

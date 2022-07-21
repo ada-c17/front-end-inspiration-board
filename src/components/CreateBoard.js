@@ -25,7 +25,7 @@ export const CreateBoard = ({ onCreateCallBack }) => {
     };
 
     axios
-      .post("https://swifties-inspo-board-6.herokuapp.com/boards/", data)
+      .post("https://swifties-inspo-board-6.herokuapp.com/boards", data)
       .then((response) => {
         console.log(response);
         const board = response.data.board;
