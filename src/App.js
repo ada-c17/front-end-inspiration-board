@@ -5,17 +5,10 @@ import NewBoard from "./routes/newBoard";
 import BoardDisplay from "./routes/ChosenBoard";
 import axios from "axios";
 
-//sample data if GET request made to endpoint /boards
-//get all cards will only render boardID, title, owner
-
 function App() {
-  // BoardData takes in a list of boards
   const [boardData, setBoardData] = useState([]);
-
-  //make initial value of selectedBoard null in future?
   const [selectedBoard, setSelectedBoard] = useState([]);
 
-  // Axios call to GET the board data in order to pass in to the drop down menu
   const getBoards = () => {
     axios
       .get(`${process.env.REACT_APP_BACKEND_URL}/boards`)
@@ -68,7 +61,6 @@ function App() {
   });
 
   return (
-    // <div className="App">
     <Router>
       <header>
         <h1 className="App-title">Inspiration Board</h1>
@@ -97,7 +89,6 @@ function App() {
         />
       </Routes>
     </Router>
-    // </div>
   );
 }
 

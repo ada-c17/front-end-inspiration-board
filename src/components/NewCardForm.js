@@ -48,6 +48,7 @@ const NewCardForm = ({ addCardCallback, boardId }) => {
 
 NewCardForm.propTypes = {
   addCardCallback: PropTypes.func.isRequired,
+  boardId: PropTypes.number.isRequired
 };
 
 export default NewCardForm;

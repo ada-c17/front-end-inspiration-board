@@ -3,23 +3,9 @@ import { React, useState, useEffect } from "react";
 import Card from "./Card";
 import axios from "axios";
 import NewCardForm from "./NewCardForm";
-// {
-//   "boardId": 1,
-//   "cardId": 2,
-//   "likesCount": 200,
-//   "message": "Hulloooo"
-// }
-// event handler in CardList-> onLiking(updatedCard), makes a PUT axios request (URL, {updatedCard}), then() getCards
-//event handler gets passed to Card, just like on Delete
-//
-//
 
-//props is an array of objects of card instances for a particular board
-//cardList gets rendered in a specific page
 const CardList = ({ boardId }) => {
-  //useEffect() -> when pages loads (boardId), makes an API call to boards/<boardId>/cards-> endpoint
   const [cardData, setCardData] = useState([]);
-  //const [isVisible, setVisibility] = useState(true);
 
   useEffect(() => {
     getCards(boardId);
@@ -107,7 +93,7 @@ const CardList = ({ boardId }) => {
 };
 
 CardList.propTypes = {
-  cards: PropTypes.array.isRequired,
+  boardId: PropTypes.number.isRequired
 };
 
 export default CardList;

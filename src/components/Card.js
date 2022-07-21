@@ -1,11 +1,6 @@
 import "./Card.css";
 import PropTypes from "prop-types";
 
-//props need to include -> function to delete card (button onClick handler)
-//function to update likesCount (onClick handler)
-//pass back information that include cardId and boardId-> function in App in that finds boardId
-//cardId and modifies
-
 const Card = ({
   message,
   cardId,
@@ -35,12 +30,12 @@ const Card = ({
 };
 
 Card.propTypes = {
-  //Fill with correct proptypes
   boardId: PropTypes.number.isRequired,
   message: PropTypes.string.isRequired,
   cardId: PropTypes.number.isRequired,
   likesCount: PropTypes.number.isRequired,
   onDeleteCallback: PropTypes.func.isRequired,
+  onLikeCallback: PropTypes.func.isRequired
 };
 
 export default Card;
