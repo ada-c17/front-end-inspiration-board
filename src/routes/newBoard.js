@@ -10,7 +10,6 @@ export default function NewBoard({ addBoardCallback }) {
     </main>
   );
 }
-
 NewBoard.propTypes = {
   addBoardCallback: PropTypes.func.isRequired,
 };
