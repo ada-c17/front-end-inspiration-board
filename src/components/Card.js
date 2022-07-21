@@ -7,7 +7,7 @@ export const Card = ({ id, message, likes, onRemoveCallback }) => {
 
   const handleOnClick = () => {
     axios
-      .patch(`http://127.0.0.1:5000/cards/add-like/${id}`)
+      .patch(`https://swifties-inspo-board-6.herokuapp.com/cards/add-like/${id}`)
       .then((response) => {
         console.log(response);
         setLike(response.data.card.likes_count);
@@ -17,7 +17,7 @@ export const Card = ({ id, message, likes, onRemoveCallback }) => {
 
   const onRemove = () => {
     axios
-      .delete(`http://127.0.0.1:5000/cards/${id}`)
+      .delete(`https://swifties-inspo-board-6.herokuapp.com/cards/${id}`)
       .then((response) => {
         console.log(response);
         onRemoveCallback(id);

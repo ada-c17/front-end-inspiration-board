@@ -7,7 +7,7 @@ export const BoardDropDown = ({ id, boards, setSelectedBoard, selectedBoard, onR
     
   const onRemove = (id) => {
       axios
-        .delete(`http://127.0.0.1:5000/boards/${id}`)
+        .delete(`https://swifties-inspo-board-6.herokuapp.com/boards/${id}`)
         .then((response) => {
           console.log(response);
           onRemoveCallback(id);
