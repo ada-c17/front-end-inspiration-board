@@ -23,7 +23,7 @@ const NewCardForm = (props) => {
             <div>
                 <h1>Create a new card:</h1>
                 <label>Message: </label>
-                <input type="text" placeholder="Live. Laugh. Love."
+                <input type="text" placeholder="I'm afraid for the calendar. Its days are numbered."
                 value={message} onChange={(e) => setMessage(e.target.value)}></input>
             </div>
             <input type="submit" value="add card" className="btn"></input>

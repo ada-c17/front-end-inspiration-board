@@ -4,25 +4,25 @@ import Card from './Card';
 import Button from './Button';
 
 const CardList = (props) => {
-    const cardComponents = props.entries.map((entry) => {
+    const cardComponents = props.cards.map((card) => {
         return (
             <Card
-                key = {entry.cardId}
-                cardId = {entry.cardId}
-                message = {entry.message}
+                key = {card.cardId}
+                cardId = {card.cardId}
+                message = {card.message}
                 onDelete = {props.onDeleteCard}></Card>
         );
     });
     return (
         <section>
-            <Button text={props.showAdd ? "close form": "add card"}
-            onClick={props.onAddCard}></Button>
-            {cardComponents}</section>
+            {cardComponents}
+            <Button text={props.showAdd ? "hide add card form": "add card"}
+            onClick={props.onAddCard}></Button></section>
     );
 };
 
 CardList.propTypes = {
-    entries: PropTypes.arrayOf(PropTypes.object).isRequired,
+    cards: PropTypes.arrayOf(PropTypes.object).isRequired,
     onDeleteCard: PropTypes.func,
     onAddCard: PropTypes.func,
     showAdd: PropTypes.bool
