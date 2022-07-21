@@ -26,7 +26,7 @@ const App = () => {
         setBoardData(newBoards);
       })
       .catch((err) => {
-        console.log('err');
+        console.log(err);
       });
   }, []);
 
