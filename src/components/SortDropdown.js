@@ -18,7 +18,7 @@ const SortDropdown = (props) => {
           id="card_order_dd_select"
           onChange={handleOrderChange}
         >
-          <option defaultValue key="1" value=""></option>
+          <option defaultValue key="1" value="">Sort Order</option>
           <option key="2" value="Ascending">
             Ascending
           </option>
@@ -34,7 +34,7 @@ const SortDropdown = (props) => {
           id="card_sort_dd_select"
           onChange={handleTypeChange}
         >
-          <option defaultValue key="1" value=""></option>
+          <option defaultValue key="1" value="">Sort Type</option>
           <option key="2" value="ID">
             ID
           </option>
