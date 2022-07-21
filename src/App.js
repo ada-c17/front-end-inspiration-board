@@ -16,6 +16,7 @@ import {
 function App() {
   const [boardData, setBoardData] = useState([]);
   const [selectedBoardId, setSelectedBoardId] = useState(null);
+  const [errorMessage, setErrorMessage] = useState(null);
 
   const displayAllBoards = () => {
     getAllBoardsAsync()
@@ -23,8 +24,9 @@ function App() {
         setBoardData(boards);
       })
       .catch((err) => {
-        console.log(err);
-        throw new Error("error displaying boards");
+        // console.log(err);
+        // throw new Error("error displaying boards");
+        setErrorMessage('error displaying all boards');
       });
   };
 
@@ -40,6 +42,7 @@ function App() {
       .catch((err) => {
         console.log(err);
         throw new Error("error displaying board");
+        setErrorMessage('error displaying board');
       });
   };
 
@@ -50,6 +53,7 @@ function App() {
       })
       .catch((err) => {
         console.log(err.message);
+        setErrorMessage(err.message)
       });
   };
 
@@ -69,6 +73,7 @@ function App() {
       })
       .catch((err) => {
         console.log(err.message);
+        setErrorMessage('err.message')
       });
   };
 
@@ -88,6 +93,7 @@ function App() {
       })
       .catch((err) => {
         console.log(err.message);
+        setErrorMessage(err.message);
       });
   };
 
@@ -107,6 +113,7 @@ function App() {
       })
       .catch((err) => {
         console.log(err.message);
+        setErrorMessage(err.message);
       });
   };
 
@@ -182,7 +189,6 @@ function App() {
       </section>
   
       <div className="board-and-card-forms">
-        {/* helper function for these ternarys */}
         {appData.newCardForm}
         {appData.newBoardForm}
       </div>
