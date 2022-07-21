@@ -5,8 +5,8 @@ import Board from "./Board";
 const BoardList = ({ boards, onSelectBoard, selectedBoardId }) => {
   const boardComponents = boards.map((board) => {
     return (
-      <ul key={board.boardId}>
         <Board
+          key={board.boardId}
           boardId={board.boardId}
           title={board.title}
           owner={board.owner}
@@ -16,7 +16,6 @@ const BoardList = ({ boards, onSelectBoard, selectedBoardId }) => {
           selectedBoardId={selectedBoardId}
           boards={boards}
         />
-      </ul>
     );
   });
 
