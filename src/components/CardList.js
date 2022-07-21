@@ -12,7 +12,7 @@ const CardList = (props) => {
         id={card.cardId}
         message={card.message}
         likeCount={card.likesCount}
-        // boardId={selectBoa}
+        // boardId={card.boardId}
         onAddLike={props.onAddLike}
         onDeleteCard={props.onDeleteCard}
       />

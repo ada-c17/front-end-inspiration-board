@@ -23,7 +23,6 @@ Card.propTypes = {
   id: PropTypes.number.isRequired,
   message: PropTypes.string.isRequired,
   likeCount: PropTypes.number.isRequired,
-  boardId: PropTypes.number.isRequired,
   onAddLike: PropTypes.func.isRequired,
   onDeleteCard: PropTypes.func.isRequired,
 };

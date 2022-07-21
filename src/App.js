@@ -141,14 +141,14 @@ function App() {
       <BoardList boardData={boardData} selectBoard={selectBoard} />
       <h2>Selected Board</h2>
       {/* helper function for these ternarys */}
-      <p>
+      <ul>
         {selectedBoardId
           ? `${getSelectedBoard(selectedBoardId).title} by ${
               getSelectedBoard(selectedBoardId).creator
             }`
           : "choose a board!"}
-      </p>
-      <p>
+      </ul>
+      <ul>
         {selectedBoardId ? (
           <CardList
             cardData={getSelectedBoard(selectedBoardId).cards}
@@ -158,7 +158,7 @@ function App() {
         ) : (
           ""
         )}
-      </p>
+      </ul>
 
       <NewBoardForm onBoardSubmit={handleNewBoard} />
       {selectedBoardId ? <NewCardForm onCardSubmit={handleNewCard} /> : ""}

@@ -1,8 +1,4 @@
-import NewBoardForm from "./components/NewBoardForm";
-import NewCardForm from "./components/NewCardForm";
-import BoardList from "./components/BoardList";
 import axios from "axios";
-import Board from "./components/Board";
 
 const kBaseUrl = "https://in5piration-board.herokuapp.com/";
 
@@ -50,7 +46,7 @@ export const likeCardAsync = (cardId, boardId) => {
 // API call (delete) to delete card by id
 export const deleteCardAsync = (cardId, boardId) => {
   return axios
-    .delete(`${kBaseUrl}/boards/${boardId}/cards/${cardId}`) // promise1
+    .delete(`${kBaseUrl}/boards/${boardId}/cards/${cardId}`)
     .catch((err) => {
       console.log(err);
       throw new Error(`error removing card ${cardId}`);
