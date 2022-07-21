@@ -1,11 +1,12 @@
 * {
     font-family: Avenir, Helvetica, sans-serif;
+    /* border: 2pt solid black; */
 }
 
-.container {
+.grid-container {
     display: grid;
     grid-template-columns: auto 1fr 1fr 1fr 1fr auto;
-    grid-template-rows: 1.5fr 1fr 3fr 3fr .5fr;
+    grid-template-rows: 1.5fr 1fr 3fr 2fr 3fr .5fr;
     align-items: center;
 }
 
@@ -27,4 +28,20 @@ header {
     justify-self: center;
 
     text-align: center;
+}
+
+#display-cards {
+    grid-column-start: 1;
+    grid-column-end: 7;
+    grid-row-start: 4;
+    grid-row-end: 5;
+    justify-self: center;
+}
+
+.board-and-card-forms {
+    grid-column-start: 1;
+    grid-column-end: 7;
+    grid-row-start: 5;
+    grid-row-end: 6;
+    justify-self: center;
 }

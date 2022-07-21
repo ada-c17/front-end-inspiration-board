@@ -158,18 +158,34 @@ function App() {
   const appData = toggleAppData();
 
   return (
-    <main className="App">
-      <h1>Inspiration Board</h1>
+    <main className="grid-container">
+      <header>
+        <h1>in5piration board</h1>
+      </header>
+
+      <section id="call-to-action">
+        <h2>
+          Need a little ✨inspiration✨? Create a new board or select a board
+          below!
+        </h2>
+      </section>
+
       <BoardList boardData={boardData} selectBoard={selectBoard} />
-      <h2>Selected Board</h2>
-      <ul>
-        {appData.title}
-      </ul>
-      <ul>
+
+      {/* <section id="selected-board">
+        <h2>Selected Board</h2>
+      </section> */}
+
+      <section id="display-cards">
+        <h2>{appData.title}</h2>
         {appData.cardList}
-      </ul>
-      {appData.newBoardForm}
-      {appData.newCardForm}
+      </section>
+  
+      <div className="board-and-card-forms">
+        {/* helper function for these ternarys */}
+        {appData.newCardForm}
+        {appData.newBoardForm}
+      </div>
     </main>
   );
 }

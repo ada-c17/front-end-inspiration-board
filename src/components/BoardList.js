@@ -1,6 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 import Board from "./Board";
+import "./BoardList.css";
 
 const BoardList = (props) => {
   // map function to return buttons with title of each board
@@ -16,12 +17,7 @@ const BoardList = (props) => {
     );
   });
 
-  return (
-    <section>
-      <h2>Need a little inspiration? Choose a board!</h2>
-      <section>{boardTitles}</section>
-    </section>
-  );
+  return <section className="board-list">{boardTitles}</section>;
 };
 
 BoardList.propTypes = {

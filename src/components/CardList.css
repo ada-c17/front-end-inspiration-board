@@ -1,10 +1,12 @@
-.board-list {
+.card-list {
     grid-column-start: 3;
     grid-column-end: 5;
-    grid-row-start: 3;
-    grid-row-end: 4;
+    grid-row-start: 4;
+    grid-row-end: 5;
     justify-self: center;
+}
 
+.cards {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;

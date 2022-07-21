@@ -1,5 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
+import "./Board.css";
 
 const Board = (props) => {
   const selectBoard = () => {
@@ -7,9 +8,9 @@ const Board = (props) => {
   };
 
   return (
-    <li>
-      <button onClick={selectBoard}>{props.title}</button>
-    </li>
+    <button key={props.id} className="board-button" onClick={selectBoard}>
+      {props.title}
+    </button>
   );
 };
 

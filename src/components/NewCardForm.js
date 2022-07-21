@@ -25,8 +25,8 @@ const NewCardForm = ({ onCardSubmit }) => {
   };
 
   return (
-    <div className="NewCardForm">
-      <form onSubmit={handleSubmit}>
+    <div className="new-card-form">
+      <form className="form-content" onSubmit={handleSubmit}>
         <h2>Create a New Card</h2>
         <div>
           <label htmlFor="message">Message</label>
@@ -52,8 +52,7 @@ NewCardForm.propTypes = {
 
 export default NewCardForm;
 
-{
-  /* <div>
+/* <div>
 <label htmlFor="creator"> Creator</label>
 <input
   type="text"
@@ -62,4 +61,3 @@ export default NewCardForm;
   onChange={handleChange}
 ></input>
 </div> */
-}
