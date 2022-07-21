@@ -1,4 +1,5 @@
 import { useState } from "react";
+import PropTypes from "prop-types";
 
 const NewBoardForm = (props) => {
   const [title, setTitle] = useState("");
@@ -55,6 +56,10 @@ const NewBoardForm = (props) => {
       </form>
     </section>
   );
+};
+
+NewBoardForm.propTypes = {
+  createNewBoard: PropTypes.func.isRequired,
 };
 
 export default NewBoardForm;
