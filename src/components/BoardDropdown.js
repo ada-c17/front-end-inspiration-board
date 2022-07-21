@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from "prop-types";
 
 const BoardDropdown = (props) => {
   const handleChange = (event) => {
@@ -27,6 +28,12 @@ const BoardDropdown = (props) => {
       </select>
     </form>
   );
+};
+
+BoardDropdown.propTypes = {
+  onDropdownChange: PropTypes.func.isRequired,
+  boards: PropTypes.array.isRequired,
+  boardOption: PropTypes.string.isRequired,
 };
 
 export default BoardDropdown;
