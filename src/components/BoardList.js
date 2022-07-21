@@ -5,16 +5,17 @@ import Board from "./Board";
 const BoardList = ({ boards, onSelectBoard, selectedBoardId }) => {
   const boardComponents = boards.map((board) => {
     return (
-      <ul key={board.boardId}> 
+      <ul key={board.boardId}>
+        <Board
           boardId={board.boardId}
           title={board.title}
           owner={board.owner}
           cards={board.cards}
           color={board.color}
-          onSelectBoard={onSelectBoard} 
+          onSelectBoard={onSelectBoard}
           selectedBoardId={selectedBoardId}
-          boards={boards} 
-        
+          boards={boards}
+        />
       </ul>
     );
   });
