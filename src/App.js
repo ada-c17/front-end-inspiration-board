@@ -92,7 +92,7 @@ function App() {
           );
         } else if (cardSort === "Alphabetically") {
           sortedCardData = chosenBoardData.cards.sort((a, b) =>
-            a.message > b.message ? 1 : -1
+            a.message.toLowerCase() > b.message.toLowerCase() ? 1 : -1
           );
         }
       } else if (cardOrder === "Descending") {
@@ -106,7 +106,7 @@ function App() {
           );
         } else if (cardSort === "Alphabetically") {
           sortedCardData = chosenBoardData.cards.sort((a, b) =>
-            a.message < b.message ? 1 : -1
+            a.message.toLowerCase() < b.message.toLowerCase() ? 1 : -1
           );
         }
       }
