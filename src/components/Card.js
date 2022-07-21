@@ -14,7 +14,6 @@ const Card = ({
   onDeleteCallback,
   onLikeCallback,
 }) => {
-  console.log(cardId);
   return (
     <div className="NewCard">
       <section className="message">

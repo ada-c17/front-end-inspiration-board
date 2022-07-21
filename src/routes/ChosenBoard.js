@@ -6,8 +6,6 @@ import PropTypes from "prop-types";
 export default function BoardDisplay({ selectedBoard }) {
   //useEffect-> takes props.boardId, axios call for boardId's cards
 
-  console.log(selectedBoard);
-  console.log(selectedBoard.boardId);
   return (
     <main style={{ padding: "1rem 0" }}>
       <h3 className="board-header">{selectedBoard.title}</h3>

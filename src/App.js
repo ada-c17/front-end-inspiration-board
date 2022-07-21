@@ -38,7 +38,6 @@ function App() {
 
   // POST request
   const onAddBoard = ({ owner, title }) => {
-    console.log(owner, title);
     axios
       .post(`${process.env.REACT_APP_BACKEND_URL}/boards`, { owner, title })
       .then(() => {

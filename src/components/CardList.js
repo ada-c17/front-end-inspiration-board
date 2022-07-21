@@ -18,7 +18,6 @@ import NewCardForm from "./NewCardForm";
 //cardList gets rendered in a specific page
 const CardList = ({ boardId }) => {
   //useEffect() -> when pages loads (boardId), makes an API call to boards/<boardId>/cards-> endpoint
-  console.log(boardId);
   const [cardData, setCardData] = useState([]);
   //const [isVisible, setVisibility] = useState(true);
 
@@ -30,7 +29,6 @@ const CardList = ({ boardId }) => {
     axios
       .get(`${process.env.REACT_APP_BACKEND_URL}/boards/${boardId}/cards`)
       .then((response) => {
-        console.log(response.data);
         const getCardSet = response.data.cards.map((card) => {
           const { cardId, message, boardId, likesCount } = card;
           return { cardId, message, boardId, likesCount };
@@ -41,7 +39,6 @@ const CardList = ({ boardId }) => {
 
   // DELETE axios call
   const onDeleteCard = (cardId) => {
-    console.log(cardId);
     axios
       .delete(`${process.env.REACT_APP_BACKEND_URL}/cards/${cardId}`)
       .then(() => {
@@ -54,7 +51,6 @@ const CardList = ({ boardId }) => {
 
   // PUT axios call
   const onLikeCard = ({ message, newLikesCount, boardId, cardId }) => {
-    console.log(message, boardId, cardId);
     axios
       .put(`${process.env.REACT_APP_BACKEND_URL}/cards/${cardId}/like`, {
         message,
@@ -70,14 +66,7 @@ const CardList = ({ boardId }) => {
       });
   };
 
-  // const addCard = (cardData) => {
-  //   axios.post(URL, cardData).then((response) => {
-  //     getCard();
-  //   });
-  // };
-
   const onAddcard = ({ message, likesCount, boardId }) => {
-    console.log(message, boardId);
     axios
       .post(`${process.env.REACT_APP_BACKEND_URL}/boards/${boardId}/cards`, {
         message,
@@ -92,11 +81,6 @@ const CardList = ({ boardId }) => {
       });
   };
 
-  // setCardData(cardData)
-  //   const totalLikes = cardData.reduce((total, entry) => {
-  //     return total + entry.liked;
-  // }, 0);
-  // console.log(boardId);
   const cardListArray = cardData.map((card) => {
     return (
       <div>
