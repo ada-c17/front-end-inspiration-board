@@ -123,7 +123,11 @@ function App() {
   };
 
   const handleNewCard = (formFields) => {
-    postCard(formFields);
+    if (formFields.message > 40) {
+      postCard(formFields);
+    } else {
+      setErrorMessage('message is too long');
+    }
   };
 
   const handleLike = (id) => {
