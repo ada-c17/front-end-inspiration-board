@@ -4,7 +4,7 @@ import Board from './Board';
 import './BoardList.css';
 
 const BoardList = (props) => {
-  const boardItems = props.boards.map((board) => {
+  const boardItems = props.boardData.map((board) => {
     return (
       <Board
         key={board.id}
@@ -21,3 +21,16 @@ const BoardList = (props) => {
 };
 
 export default BoardList;
+
+// proptypes
+BoardList.propTypes = {
+  boardData: PropTypes.arrayOf(
+    PropTypes.shape({
+      id: PropTypes.number.isRequired,
+      title: PropTypes.string.isRequired,
+      owner: PropTypes.string.isRequired,
+    })
+  ),
+  selectBoard: PropTypes.func.isRequired,
+  deleteBoard: PropTypes.func.isRequired,
+};

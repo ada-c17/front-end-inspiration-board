@@ -1,12 +1,10 @@
-import React, { useState } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import './Board.css';
 
 const Board = (props) => {
   const handleBoardSelect = () => {
     props.selectBoard(props);
-    console.log('Working! Clicked!');
-    console.log(props);
   };
 
   const handleBoardDelete = () => {
@@ -29,3 +27,12 @@ const Board = (props) => {
 };
 
 export default Board;
+
+// proptypes
+Board.propTypes = {
+  id: PropTypes.number.isRequired,
+  title: PropTypes.string.isRequired,
+  owner: PropTypes.string.isRequired,
+  selectBoard: PropTypes.func.isRequired,
+  deleteBoard: PropTypes.func.isRequired,
+};

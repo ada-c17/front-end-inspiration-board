@@ -3,23 +3,19 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import BoardList from './components/BoardList';
 import NewBoardForm from './components/NewBoardForm';
-
 import CardContainer from './components/CardContainer';
 
-// read the base url from .env file
-// current base url connects to your local host
 export const baseURL = process.env['REACT_APP_BACKEND_URL'];
 
 const App = () => {
   // state of the board db
-  const [boards, setBoards] = useState([]);
+  const [boardData, setBoardData] = useState([]);
 
-  // Get all boards when web app loads
+  // Get all boards when the web app loads
   useEffect(() => {
     axios
       .get(`${baseURL}/boards`)
       .then((response) => {
-        console.log('Boards Loaded!');
         const newBoards = response.data.map((board) => {
           return {
             title: board.title,
@@ -27,22 +23,19 @@ const App = () => {
             owner: board.owner,
           };
         });
-        setBoards(newBoards);
+        setBoardData(newBoards);
       })
       .catch((err) => {
         console.log('err');
       });
   }, []);
 
-  // state of the 'selected Board' title display
+  // state of the 'selected Board' and the title display
   const [selectedBoard, setSelectedBoard] = useState({});
   const [boardTitle, setBoardTitle] = useState('TBD');
 
   const selectBoard = (board) => {
-    console.log(`This is board info ${board}`, board);
-    console.log('Displaying Title!');
     setBoardTitle(board.title);
-    console.log('Print Display ID!');
     setSelectedBoard(board);
   };
 
@@ -52,9 +45,9 @@ const App = () => {
       .post(`${baseURL}/boards`, newBoardData)
       .then((response) => {
         console.log(response.data);
-        const newBoards = [...boards];
+        const newBoards = [...boardData];
         newBoards.push({ id: response.data.id, ...newBoardData });
-        setBoards(newBoards);
+        setBoardData(newBoards);
       })
       .catch((error) => console.log(error));
   };
@@ -65,7 +58,7 @@ const App = () => {
     axios
       .delete(`${baseURL}/boards/${id}`)
       .then(() => {
-        setBoards((oldBoards) => {
+        setBoardData((oldBoards) => {
           return oldBoards.filter((board) => board.id !== id);
         });
       })
@@ -74,7 +67,7 @@ const App = () => {
       });
   };
 
-  // toggle Board form
+  // toggle new Board form
   const [isBoardFormVisible, setIsBoardFormVisible] = useState(false);
 
   // BEAUTY
@@ -99,7 +92,7 @@ const App = () => {
         <h2 className="board-list_header">Board List</h2>
         <div className="board-list_container">
           <BoardList
-            boards={boards}
+            boardData={boardData}
             selectBoard={selectBoard}
             deleteBoard={deleteBoard}
           />

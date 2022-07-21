@@ -29,7 +29,6 @@ const NewBoardForm = (props) => {
   // whenever formErrors changes, below code triggers
   useEffect(() => {
     if (Object.keys(formErrors).length === 0 && isSubmit) {
-      console.log({ formValues });
       props.addNewBoard(formValues);
       setFormValues(initialFormValues);
     }
@@ -75,3 +74,8 @@ const NewBoardForm = (props) => {
 };
 
 export default NewBoardForm;
+
+// proptypes
+NewBoardForm.propTypes = {
+  addNewBoard: PropTypes.func.isRequired,
+};
