@@ -4,7 +4,7 @@
 
 .btn {
     margin: 5%;
-    color: #fff;
+    color: purple;
     background-color: #FCD5CE;
     border-color: #fff;
     border-style: dashed;
@@ -13,7 +13,7 @@
 
 .btn:disabled {
     margin: 5%;
-    color: #fff;
+    /* color: #fff; */
     background-color: lightgrey;
     border-color: #fff;
     border-style: dashed;
@@ -26,13 +26,13 @@
 }
 
 .card-text {
-    color: #fff;
+    color: purple;
     background-color: #FCD5CE;
     text-align: center;
 }
 
 .card-like {
-    color: #fff;
+    color: purple;
     background-color: #FCD5CE;
     text-align: center;
 }

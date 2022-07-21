@@ -4,7 +4,7 @@ import axios from "axios";
 import { useState, useEffect } from "react";
 import "./Board.css";
 
-export const Board = ({ id, title, owner}) => {
+export const Board = ({ id, title, owner }) => {
   const [cardData, setCardData] = useState([]);
 
   useEffect(() => {
@@ -49,29 +49,61 @@ export const Board = ({ id, title, owner}) => {
       .catch((error) => console.log(error));
   };
 
+  const [category, setCategory] = useState(0);
+
+  let sortedCards;
+  if (category === 1) {
+    sortedCards = [...cardData].sort((a, b) =>
+      a.message > b.message ? 1 : -1
+    );
+  } else if (category === 2) {
+    sortedCards = [...cardData].sort((a, b) => b.likes - a.likes);
+  } else {
+    sortedCards = [...cardData].sort((a, b) => a.id - b.id);
+  }
+
+  const handleCategoryChange = (category) => {
+    console.log(category);
+    setCategory(category);
+  };
+
   return (
     <div className="board">
       <div className="board-body">
         <h1 className="board-title">{title}</h1>
         <p className="board-subtitle">Owner: {owner}</p>
+        <div className="position-absolute">
+          <select
+            className="btn btn-secondary btn-sm dropdown-toggle"
+            name="category"
+            onChange={(event) =>
+              handleCategoryChange(event.target.selectedIndex)
+            }
+          >
+            <option id="0">Sort by ID</option>
+            <option id="1">Sort alphabetically</option>
+            <option id="2">Sort by number of likes</option>
+          </select>
+        </div>
+
         <div className="new-card">
-          <div className="add-card">
-          <CreateCard addCardCallback={addCard}></CreateCard>
-          </div>
           <div className="exisitng-card">
-          {cardData.map((data) => (
-            <Card
-              key={data.id}
-              id={data.id}
-              message={data.message}
-              likes={data.likes}
-              onRemoveCallback={removeCard}
-            ></Card>
-          ))}
+            {sortedCards.map((data) => (
+              <Card
+                key={data.id}
+                id={data.id}
+                message={data.message}
+                likes={data.likes}
+                onRemoveCallback={removeCard}
+              ></Card>
+            ))}
+          </div>
+
+          <div className="add-card">
+            <CreateCard addCardCallback={addCard}></CreateCard>
           </div>
         </div>
       </div>
     </div>
   );
 };
-
