@@ -5,18 +5,17 @@ import Board from "./Board";
 const BoardList = ({ boards, onSelectBoard, selectedBoardId }) => {
   const boardComponents = boards.map((board) => {
     return (
-      //<ul key={board.boardId}> {/* we don't really need this ul line here*/}
-        <Board
+      <ul key={board.boardId}> 
           boardId={board.boardId}
           title={board.title}
           owner={board.owner}
-          cards={board.cards} //is cards a props for board? id so why we don't have it in board.js?
+          cards={board.cards}
           color={board.color}
-          onSelectBoard={onSelectBoard} //why in board.js we need to pass a para after onselectBoard but here not?
+          onSelectBoard={onSelectBoard} 
           selectedBoardId={selectedBoardId}
-          boards={boards} //how can we put boards here when we map each board?
-        />
-      //</ul>
+          boards={boards} 
+        
+      </ul>
     );
   });
 
@@ -28,7 +27,7 @@ const BoardList = ({ boards, onSelectBoard, selectedBoardId }) => {
   );
 };
 
-BoardList.propTypes = {//props形态必须要在最后补充定义
+BoardList.propTypes = {
   boards: PropTypes.arrayOf(PropTypes.object).isRequired,
   onSelectBoard: PropTypes.func.isRequired,
   selectedBoardId: PropTypes.number,

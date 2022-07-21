@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 import "./Board.css";
 
 const Board = ({
-  boardId, //parameters passed in as props
+  boardId, 
   title,
   owner,
   onSelectBoard,
@@ -11,7 +11,7 @@ const Board = ({
   selectedBoardId,
 }) => {
   const onBoardClick = () => {
-    console.log(title); //where are these 3 console log shown up in board display?]
+    console.log(title); 
     console.log(boardId); //
     console.log(color); //
     onSelectBoard(boardId);
@@ -21,14 +21,13 @@ const Board = ({
     <>
       <section className="board-bubble">
         <button
-          onClick={onBoardClick}//这是触发button function的方式
+          onClick={onBoardClick}
           style={{
-            backgroundColor: color, //how does this work?
+            backgroundColor: color, 
             height: selectedBoardId === boardId ? "10rem" : "5rem",
           }}
         > 
-          <h1 className="boardId">{boardId}</h1>  {/*where there is no boardID shown up?*/}
-          <h2>{title}</h2>
+          <h1 className="boardId">{boardId}</h1>  
           <h3>By {owner} </h3>
         </button>
       </section>
@@ -43,7 +42,6 @@ Board.propTypes = {
   cards: PropTypes.array,
   color: PropTypes.string.isRequired,
   onSelectBoard: PropTypes.func,
-  isSelected: PropTypes.bool, //why do we need this one?
-};
-
+  isSelected: PropTypes.bool, 
+}
 export default Board;
