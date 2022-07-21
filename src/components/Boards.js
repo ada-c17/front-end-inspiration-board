@@ -1,9 +1,8 @@
-import React from "react";
-import SingleBoard from "./SingleBoard.js";
-import "./Boards.css";
 import PropTypes from "prop-types";
+import SingleBoard from "./SingleBoard.js";
 import NewBoardForm from "./NewBoardForm.js";
 import PlusBox from "./PlusBox.js";
+import "./Boards.css";
 
 const Board = (props) => {
   const boardComponents = props.boards.map((board, index) => {

@@ -1,9 +1,8 @@
-import React from "react";
 import PropTypes from "prop-types";
 import SingleCard from "./SingleCard.js";
-import "./Cards.css";
 import NewCardForm from "./NewCardForm.js";
 import PlusBox from "./PlusBox.js";
+import "./Cards.css";
 
 const Cards = (props) => {
   if (props.cards === []) {

@@ -1,6 +1,5 @@
-import React from "react";
-import "./Boards.css";
 import PropTypes from "prop-types";
+import "./Boards.css";
 
 const PlusBox = ({ setUpdating, elementType }) => {
   const showForm = () => setUpdating(true);

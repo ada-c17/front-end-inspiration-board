@@ -1,10 +1,10 @@
-import "./App.css";
-import "./components/Boards.css";
-import Board from "./components/Boards.js";
 import { useState, useEffect } from "react";
+import axios from "axios";
+import Board from "./components/Boards.js";
 import Header from "./components/Header.js";
 import Cards from "./components/Cards.js";
-import axios from "axios";
+import "./App.css";
+import "./components/Boards.css";
 
 function App() {
   const [isOnHomepage, setIsOnHomepage] = useState(true);
