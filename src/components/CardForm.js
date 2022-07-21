@@ -3,7 +3,7 @@ import { useState } from "react";
 const CardForm = (props) => {
   const defaultCard = {
     message:"",
-    board_id: props.boardID
+    // board_id: props.boardID
   };
 
   const [formData, setFormData] = useState(defaultCard);
@@ -32,7 +32,7 @@ const CardForm = (props) => {
   const handleSubmit = (event) => {
     event.preventDefault();
 
-    props.cardsCallback(formData);
+    props.cardsCallback({ message:formData.message, board_id: props.boardID });
   };
 
   return (

@@ -78,7 +78,7 @@ function App() {
         </div>  
       </div>
       <div id="cards">
-          {boardID && <BoardWithCards boardID={boardID} boardTitle = {boardTitle}/>}
+          {boardID && <BoardWithCards boardID={boardID} boardTitle = {boardTitle} />}
         </div>
     </div>
   );

@@ -34,7 +34,8 @@ const BoardWithCards = (props) => {
     axios
       .post(CARDS_URL, cardInfo)
       .then((response) => {
-        fetchCardsForBoard(cardInfo.board_id);
+        console.log(cardInfo)
+        fetchCardsForBoard(cardInfo.boardID);
       })
       .catch((error) => {
         console.log(error);
@@ -83,7 +84,7 @@ const BoardWithCards = (props) => {
         key={card.card_id}
         id={card.card_id}
         message={card.message}
-        board_id={card.board_id}
+        board_id={props.boardID}
         likes={card.likes_count}
         changeLikes={changeLikes}
         deleteCard={deleteCard}
