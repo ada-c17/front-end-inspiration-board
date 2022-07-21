@@ -10,21 +10,21 @@ const Card = ({
   onLikeCallback,
 }) => {
   return (
-    <div className="NewCard">
-      <section className="message">
-        <p>{message}</p>
-        <p>{likesCount}</p>
+    <div className="card-interior">
+        <p className="message">{message}</p>
+        <div className="buttons-box">
+        <p className="item-in-box">{likesCount} ❤️</p>
         <button
           onClick={() => {
             const newLikesCount = likesCount + 1;
             onLikeCallback({ message, newLikesCount, boardId, cardId });
           }}
-          className="like"
+          className="item-in-box"
         >
           +1
         </button>
-        <button onClick={() => onDeleteCallback(cardId)}>Delete</button>
-      </section>
+        <button className="item-in-box" onClick={() => onDeleteCallback(cardId)}>Delete</button>
+        </div>
     </div>
   );
 };

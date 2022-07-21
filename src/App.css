@@ -4,8 +4,7 @@ html{
   background-size: cover;
   background-repeat: no-repeat;
   background-attachment: scroll;
-  height: 100%
-
+  margin: 0 auto;
 }
 .app{
   font-family: 'Courier New';

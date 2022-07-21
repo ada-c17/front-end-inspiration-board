@@ -6,9 +6,9 @@ import PropTypes from "prop-types";
 export default function BoardDisplay({ selectedBoard }) {
 
   return (
-    <main>
+    <main className="main-container">
+      <section className="board-container">
       <h3 className="board-header">{selectedBoard.title}</h3>
-      <section>
         <div>
           <CardList boardId={selectedBoard.boardId} />
         </div>

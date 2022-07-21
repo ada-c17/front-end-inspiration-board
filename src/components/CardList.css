@@ -1,0 +1,19 @@
+.cards-container {
+    flex-direction: row;
+    flex-wrap: wrap;
+    /* border: 2px green solid; */
+    justify-content: space-evenly;
+}
+
+.board-container {
+    /* border: 2px red solid; */
+    display: flex;
+    flex-direction: column;
+    width: 70%;
+}
+
+.card-display {
+    /* border: 2px blue solid; */
+    display: flex;
+    flex-direction: column;
+}

@@ -8,3 +8,20 @@
     font-family: 'Courier New';
     width: 25%
 }
+
+.main-container{
+    /* border: 2px black solid; */
+    padding: 40px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+}
+ /* padding: "1rem 0" } */
+
+.board-container {
+    /* border: 2px red solid; */
+    display: flex;
+    flex-direction: column;
+    width: 70%
+}
+

@@ -3,6 +3,7 @@ import { React, useState, useEffect } from "react";
 import Card from "./Card";
 import axios from "axios";
 import NewCardForm from "./NewCardForm";
+import "./CardList.css"
 
 const CardList = ({ boardId }) => {
   const [cardData, setCardData] = useState([]);
@@ -84,10 +85,14 @@ const CardList = ({ boardId }) => {
   });
 
   return (
-    <section>
+    <section className="board-container">
+      <section className="">
       <NewCardForm addCardCallback={onAddcard} boardId={boardId} />
-      <h2>Cards List</h2>
-      <ul>{cardListArray}</ul>
+      </section>
+      <section className="card-display">
+        <h2>Cards List</h2>
+        <ul className="cards-container">{cardListArray}</ul>
+      </section>
     </section>
   );
 };

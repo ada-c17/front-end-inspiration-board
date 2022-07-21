@@ -1,0 +1,31 @@
+.card-interior {
+    box-shadow: -10px 0px 10px 1px #aaaaaa;
+    color: #000;
+    background: #f4eca4;
+    display: inline-flex;
+    flex-direction: column;
+    height: 12em;
+    width: 12em;
+    margin: 1em;
+    /* padding: 1em; */
+    text-decoration: none;
+    text-align: center;
+}
+
+.message {
+    font-family: 'Courier New';
+    font-weight: bolder;
+    padding: 10px;
+}
+
+.buttons-box {
+    align-self: stretch;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    margin-top: auto;
+}
+
+.item-in-box {
+    margin: 5px;
+}
