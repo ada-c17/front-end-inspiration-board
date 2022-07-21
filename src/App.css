@@ -5,7 +5,7 @@
 .container {
     display: grid;
     grid-template-columns: auto 1fr 1fr 1fr 1fr auto;
-    grid-template-rows: 1.5fr 1fr 3fr 3fr .5fr;
+    grid-template-rows: 1.5fr 1fr 3fr 1fr 3fr .5fr;
     align-items: center;
 }
 
@@ -27,4 +27,11 @@ header {
     justify-self: center;
 
     text-align: center;
+}
+
+#selected-board {
+    grid-column-start: 1;
+    grid-column-end: 7;
+    grid-row-start: 4;
+    grid-row-end: 5;
 }

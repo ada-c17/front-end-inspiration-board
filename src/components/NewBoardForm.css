@@ -1,8 +1,8 @@
 .new-board-form {
     grid-column-start: 2;
     grid-column-end: 6;
-    grid-row-start: 4;
-    grid-row-end: 5;
+    grid-row-start: 5;
+    grid-row-end: 6;
     justify-self: center;
 
     border: 2pt solid teal;

@@ -136,18 +136,32 @@ function App() {
   };
 
   return (
-    <main className="App">
-      <h1>Inspiration Board</h1>
+    <main className="container">
+      <header>
+        <h1>in5piration board</h1>
+      </header>
+
+      <section id="call-to-action">
+        <h2>
+          Need a little ✨inspiration✨? Create a new board or select a board
+          below!
+        </h2>
+      </section>
+
       <BoardList boardData={boardData} selectBoard={selectBoard} />
-      <h2>Selected Board</h2>
-      {/* helper function for these ternarys */}
-      <div>
-        {selectedBoardId
-          ? `${getSelectedBoard(selectedBoardId).title} by ${
-              getSelectedBoard(selectedBoardId).creator
-            }`
-          : "choose a board!"}
-      </div>
+
+      <section id="selected-board">
+        <h2>Selected Board</h2>
+        {/* helper function for these ternarys */}
+        <div>
+          {selectedBoardId
+            ? `${getSelectedBoard(selectedBoardId).title} by ${
+                getSelectedBoard(selectedBoardId).creator
+              }`
+            : "choose a board!"}
+        </div>
+      </section>
+
       <div>
         {selectedBoardId ? (
           <CardList

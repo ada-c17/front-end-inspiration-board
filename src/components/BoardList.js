@@ -16,12 +16,7 @@ const BoardList = (props) => {
     );
   });
 
-  return (
-    <section>
-      <h2>Need a little inspiration? Choose a board!</h2>
-      <section>{boardTitles}</section>
-    </section>
-  );
+  return <section>{boardTitles}</section>;
 };
 
 BoardList.propTypes = {
