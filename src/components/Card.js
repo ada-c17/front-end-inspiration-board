@@ -1,8 +1,8 @@
 import React from 'react';
 import './Card.css';
+import PropTypes from 'prop-types';
 
 const Card = (props) => {
-  // BEAUTY
   return (
     <div className="card-item">
       <p>{props.message}</p>
@@ -16,3 +16,11 @@ const Card = (props) => {
 };
 
 export default Card;
+
+// proptypes
+Card.propTypes = {
+  id: PropTypes.number.isRequired,
+  message: PropTypes.string.isRequired,
+  addOneLike: PropTypes.func.isRequired,
+  deleteCard: PropTypes.func.isRequired,
+};

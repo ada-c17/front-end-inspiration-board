@@ -1,5 +1,6 @@
 import Card from './Card';
 import './CardList.css';
+import PropTypes from 'prop-types';
 
 const CardList = (props) => {
   const cardElements = props.cardData.map((card) => {
@@ -26,3 +27,15 @@ const CardList = (props) => {
 };
 
 export default CardList;
+
+// proptypes
+CardList.propTypes = {
+  cardData: PropTypes.arrayOf(
+    PropTypes.shape({
+      id: PropTypes.number.isRequired,
+      message: PropTypes.string.isRequired,
+    })
+  ),
+  deleteCard: PropTypes.func.isRequired,
+  addOneLike: PropTypes.func.isRequired,
+};

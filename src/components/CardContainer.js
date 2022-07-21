@@ -3,6 +3,7 @@ import CardList from './CardList';
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import './CardContainer.css';
+import PropTypes from 'prop-types';
 
 export const baseURL = process.env['REACT_APP_BACKEND_URL'];
 
@@ -104,3 +105,8 @@ const CardContainer = (props) => {
 };
 
 export default CardContainer;
+
+// proptypes
+CardContainer.propTypes = {
+  selectedBoard: PropTypes.object.isRequired,
+};

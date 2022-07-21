@@ -66,3 +66,8 @@ const NewCardForm = (props) => {
 };
 
 export default NewCardForm;
+
+// proptypes
+NewCardForm.propTypes = {
+  postNewCard: PropTypes.func.isRequired,
+};
