@@ -1,0 +1,8 @@
+{
+  "short_name": "Inspotters App",
+  "name": "C17 Inspotters Full Stack Demo",
+  "start_url": ".",
+  "display": "standalone",
+  "theme_color": "#000000",
+  "background_color": "#ffffff"
+}

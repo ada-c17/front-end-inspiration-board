@@ -1,0 +1,50 @@
+.App {
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+  text-align: center;
+}
+
+header {
+  background-image: url(https://source.unsplash.com/GtgdYsl2TV0);
+  box-shadow: 0px 5px 5px black;
+  min-height: 5vh;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  font-size: calc(5px + 2vmin);
+  padding: 5px;
+}
+
+header h1 {
+  color: rgb(30, 30, 30);
+  text-shadow: 0px 1px 0px rgba(255,255,255,.5);
+}
+
+main {
+  min-height: 100vh;
+  background-image: url(https://source.unsplash.com/KsAo8ouBn8A);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  position: relative;
+  padding: 50px;
+}
+
+#woodPattern {
+  background-image: url(https://source.unsplash.com/GtgdYsl2TV0);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  box-shadow: 0px -5px 5px black;
+  height: 5vh;
+  position:absolute;
+  width:100%;
+  bottom:-20px;
+  left: 0px;
+}
+
+footer {
+  color: black;
+  font-size: smaller;
+  padding: 10px;
+}

@@ -1,0 +1,21 @@
+
+
+.btn {
+    border: 2px solid black;
+    border-radius: 5px;
+    background-color: rgb(233, 161, 161);
+    color: black;
+    padding: 8px 10px;
+    font-size: 10px;
+    font-weight: bold;
+    cursor: pointer;
+  }
+  
+
+.delete:hover {
+    background: #da190b;
+}
+
+.back:hover {
+    background: #2196F3;
+}
