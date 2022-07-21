@@ -2,6 +2,7 @@ import React from "react";
 import SingleBoard from "./SingleBoard.js";
 import "./Boards.css";
 import PropTypes from "prop-types";
+import NewBoardForm from "./NewBoardForm.js";
 
 const Board = (props) => {
   const boardComponents = props.boards.map((board, index) => {
@@ -18,7 +19,16 @@ const Board = (props) => {
     );
   });
 
-  return <section className="boards-display">{boardComponents}</section>;
+  return (
+    <section className="boards-display">
+      <section className="single-board-container">
+        <section className="single-board">
+          <NewBoardForm addBoardCallback={props.addBoardCallback} />
+        </section>
+      </section>
+      {boardComponents}
+    </section>
+  );
 };
 
 Board.propTypes = {

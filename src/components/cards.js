@@ -2,6 +2,7 @@ import React from "react";
 import PropTypes from "prop-types";
 import SingleCard from "./SingleCard.js";
 import "./Cards.css";
+import NewCardForm from "./NewCardForm.js";
 
 const Cards = (props) => {
   if (props.cards === []) {
@@ -18,7 +19,19 @@ const Cards = (props) => {
       ></SingleCard>
     );
   });
-  return <section className="cards-display">{cardComponents}</section>;
+  return (
+    <section className="cards-display">
+      <section className="single-card-container">
+        <section className="single-card">
+          <NewCardForm
+            addCardCallback={props.addCardCallback}
+            boardId={props.boardId}
+          />
+        </section>
+      </section>
+      {cardComponents}
+    </section>
+  );
 };
 
 Cards.propTypes = {

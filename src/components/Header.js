@@ -12,8 +12,9 @@ const Header = (props) => {
   } else {
     return (
       <header>
-        <BackButton setIsOnHomepage={props.setIsOnHomepage} />
-        <h1>{props.title}</h1>
+        <h1>
+          <BackButton setIsOnHomepage={props.setIsOnHomepage} /> {props.title}
+        </h1>
       </header>
     );
   }

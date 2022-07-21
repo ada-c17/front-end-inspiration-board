@@ -40,6 +40,7 @@ const NewBoardForm = (props) => {
     <form onSubmit={onFormSubmit}>
       <div>
         <label htmlFor="boardTitle">Board Title:</label>
+        <br />
         <input
           name="boardTitle"
           value={formFields.title}
@@ -48,6 +49,7 @@ const NewBoardForm = (props) => {
       </div>
       <div>
         <label htmlFor="boardOwner">Owner:</label>
+        <br />
         <input
           name="boardOwner"
           value={formFields.owner}

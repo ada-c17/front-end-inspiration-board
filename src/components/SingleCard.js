@@ -26,19 +26,12 @@ const SingleCard = (props) => {
   };
 
   return (
-    <section className="single-card">
-      <h2>Card</h2>
-      <ul>
-        <li>{props.card_id}</li>
-        <li>{props.message}</li>
-        <li>{likesCount}❤️</li>
-      </ul>
-      <p>
-        <button onClick={increaseLikeCount}>Like</button>
-      </p>
-      <p>
-        <button onClick={deleteSingleCard}>Delete</button>
-      </p>
+    <section className="single-card-container">
+      <section className="single-card">{props.message}</section>
+      <section className="box-footer">
+        <button onClick={deleteSingleCard}>🗑</button>{" "}
+        <button onClick={increaseLikeCount}>❤️</button> {likesCount}
+      </section>
     </section>
   );
 };

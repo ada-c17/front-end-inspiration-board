@@ -31,6 +31,7 @@ const NewCardForm = (props) => {
     <form onSubmit={onFormSubmit}>
       <div>
         <label htmlFor="cardMessage">Card Message:</label>
+        <br />
         <input
           name="cardMessage"
           value={formFields.title}

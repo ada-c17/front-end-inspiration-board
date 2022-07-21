@@ -109,9 +109,9 @@ function App() {
             isOnHomepage={isOnHomepage}
             setCards={setCards}
             deleteBoardCallBack={deleteBoard}
+            addBoardCallback={addBoardData}
           ></Board>
         </div>
-        <NewBoardForm addBoardCallback={addBoardData} />
       </div>
     );
   } else {
@@ -123,12 +123,13 @@ function App() {
             isOnHomepage={isOnHomepage}
             setIsOnHomepage={setIsOnHomepage}
           />
-          <Cards cards={cards} deleteCardCallBack={deleteCard} />
+          <Cards
+            cards={cards}
+            deleteCardCallBack={deleteCard}
+            addCardCallback={addCardData}
+            boardId={activeBoard.board_id}
+          />
         </div>
-        <NewCardForm
-          addCardCallback={addCardData}
-          boardId={activeBoard.board_id}
-        />
       </div>
     );
   }

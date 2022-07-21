@@ -1,15 +1,33 @@
+@import url('https://fonts.googleapis.com/css?family=Dancing+Script');
+
+:root {
+  --greypadding: #d9d9d9;
+  --headerbackground: #d9d9d9;
+  --headertext: black;
+  --boxbackground: white;
+  --bodybackground: white;
+  --boardtext: black;
+  --bodytext: black;
+
+
+}
+
 #App {
-  background-color: lightblue;
+  background-color: var(--bodybackground);
+  height: 100%;
+  min-height: 100vh;
+  padding: 5vh 10vw 0;
 } 
 
 #App h1 {
-  background-color: #f08080;
-  color: #fff;
+  color: var(--headertext);
   padding-bottom: 0.5rem;
-  width: 100%;
-  z-index: 100;
+
+
   text-align: center;
-  align-items: center;
+
+  font-family: Dancing Script;
+  font-size: 4em;
 }
 
 .container {
@@ -20,8 +38,8 @@
 }
 
 
-
-
-
-
-
+header button {
+  background-color: white;
+  border: none;
+  cursor: pointer;
+}
