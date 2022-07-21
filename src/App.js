@@ -40,8 +40,8 @@ function App() {
         setSelectedBoardId(board.boardId);
       })
       .catch((err) => {
-        console.log(err);
-        throw new Error("error displaying board");
+        console.log(err.message);
+        //throw new Error("error displaying board");
         setErrorMessage('error displaying board');
       });
   };
@@ -73,7 +73,7 @@ function App() {
       })
       .catch((err) => {
         console.log(err.message);
-        setErrorMessage('err.message')
+        setErrorMessage(err.message)
       });
   };
 
@@ -172,7 +172,7 @@ function App() {
       <header>
         <h1>in5piration board</h1>
       </header>
-
+      <section>{errorMessage}</section>
       <section id="call-to-action">
         <h2>
           Need a little ✨inspiration✨? Create a new board or select a board
