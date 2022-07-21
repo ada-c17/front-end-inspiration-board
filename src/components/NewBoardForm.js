@@ -36,6 +36,7 @@ const NewBoardForm = (props) => {
         ></input>
         <input
           type="Submit"
+          value="Add Board"
           disabled={
             title.length === 0 ||
             owner.length === 0 ||
