@@ -25,7 +25,7 @@ function App() {
     setCards([...cards]);
     /* Delete card in the back end */
     axios
-      .delete(`http://shiver-of-sharks.herokuapp.com/cards/${id}`)
+      .delete(`https://shiver-of-sharks.herokuapp.com/cards/${id}`)
       .then((response) => {
         /* Don't need to do anything with response */
       })
@@ -48,7 +48,7 @@ function App() {
 
     /* Delete board in the back end */
     axios
-      .delete(`http://shiver-of-sharks.herokuapp.com/boards/${id}`)
+      .delete(`https://shiver-of-sharks.herokuapp.com/boards/${id}`)
       .then((response) => {})
       .catch((error) => {
         console.log(<section>{error.response.data.message}</section>);
@@ -57,7 +57,7 @@ function App() {
 
   useEffect(() => {
     axios
-      .get("http://shiver-of-sharks.herokuapp.com/boards")
+      .get("https://shiver-of-sharks.herokuapp.com/boards")
       .then((response) => {
         getBoards(response.data.boards);
       })
@@ -84,7 +84,7 @@ function App() {
   const addCardData = (newCard) => {
     setUpdating(false);
     axios
-      .post("http://shiver-of-sharks.herokuapp.com/cards", {
+      .post("https://shiver-of-sharks.herokuapp.com/cards", {
         message: newCard.messageData,
         board_id: newCard.boardId,
       })
