@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import PropTypes from "prop-types";
+import "./NewCardForm.css";
 
 const kDefaultFormState = {
   message: "",
@@ -27,9 +28,9 @@ const NewCardForm = ({ onCardSubmit }) => {
   return (
     <div className="new-card-form">
       <form className="form-content" onSubmit={handleSubmit}>
-        <h2>Create a New Card</h2>
+        <h2>Create New Card</h2>
         <div>
-          <label htmlFor="message">Message</label>
+          <label htmlFor="message">Message: </label>
           <input
             type="text"
             name="message"

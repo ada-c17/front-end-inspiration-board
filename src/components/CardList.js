@@ -45,12 +45,14 @@ const CardList = (props) => {
 
   return (
     <section className="card-list">
-      <label>Sort By: </label>
-      <select onChange={(event) => setSortType(event.target.value)}>
-        <option value="cardId">New</option>
-        <option value="message">Alphabetical</option>
-        <option value="likesCount">Most Liked</option>
-      </select>
+      <div className="sort-by-label">
+        <label>Sort By: </label>
+        <select onChange={(event) => setSortType(event.target.value)}>
+          <option value="cardId">New</option>
+          <option value="message">Alphabetical</option>
+          <option value="likesCount">Most Liked</option>
+        </select>
+      </div>
       <div className="cards">{cardComponents}</div>
     </section>
   );

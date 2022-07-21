@@ -29,10 +29,10 @@ const NewBoardForm = ({ onBoardSubmit }) => {
   return (
     <div className="new-board-form">
       <form className="form-content" onSubmit={handleSubmit}>
-        <h2>create new board</h2>
+        <h2>Create New Board</h2>
 
         <div>
-          <label htmlFor="title">title: </label>
+          <label htmlFor="title">Title: </label>
           <input
             type="text"
             name="title"
@@ -42,7 +42,7 @@ const NewBoardForm = ({ onBoardSubmit }) => {
         </div>
 
         <div>
-          <label htmlFor="creator">creator: </label>
+          <label htmlFor="creator">Creator: </label>
           <input
             type="text"
             name="creator"
@@ -55,7 +55,7 @@ const NewBoardForm = ({ onBoardSubmit }) => {
           <input
             className="submit-button"
             type="submit"
-            value="add board!"
+            value="Add board!"
           ></input>
         </div>
       </form>

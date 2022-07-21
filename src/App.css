@@ -1,12 +1,11 @@
 * {
     font-family: Avenir, Helvetica, sans-serif;
-    /* border: 2pt solid black; */
 }
 
 .grid-container {
     display: grid;
     grid-template-columns: auto 1fr 1fr 1fr 1fr auto;
-    grid-template-rows: 1.5fr 1fr 3fr 2fr 3fr .5fr;
+    grid-template-rows: 15vh 10vh fit-content(45vh) fit-content(45vh) 1fr .5fr;
     align-items: center;
 }
 
@@ -36,6 +35,10 @@ header {
     grid-row-start: 4;
     grid-row-end: 5;
     justify-self: center;
+    text-align: center;
+    align-self: start;
+
+    margin-top: 20pt;
 }
 
 .board-and-card-forms {
@@ -44,4 +47,6 @@ header {
     grid-row-start: 5;
     grid-row-end: 6;
     justify-self: center;
+
+    margin-top: 20pt;
 }
