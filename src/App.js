@@ -67,7 +67,7 @@ function App() {
   const addBoardData = (newBoard) => {
     setUpdating(false);
     axios
-      .post("http://shiver-of-sharks.herokuapp.com/boards", {
+      .post("https://shiver-of-sharks.herokuapp.com/boards", {
         title: newBoard.titleData,
         owner: newBoard.ownerData,
       })
