@@ -41,7 +41,6 @@ const CardList = ({ boardId }) => {
 
   // DELETE axios call
   const onDeleteCard = (cardId) => {
-    console.log(cardId);
     axios
       .delete(`${process.env.REACT_APP_BACKEND_URL}/cards/${cardId}`)
       .then(() => {
