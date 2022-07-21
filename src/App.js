@@ -10,7 +10,7 @@ function App() {
   const [isOnHomepage, setIsOnHomepage] = useState(true);
   const [activeBoard, setActiveBoard] = useState({});
   const [cards, setCards] = useState([]);
-  const [boards, getBoards] = useState([]);
+  const [boards, setBoards] = useState([]);
   const [updating, setUpdating] = useState(false);
 
   const deleteCard = (id) => {
@@ -44,7 +44,7 @@ function App() {
       }
     }
     /* Update number of boards so that React will see change */
-    getBoards([...boards]);
+    setBoards([...boards]);
 
     /* Delete board in the back end */
     axios
@@ -60,7 +60,7 @@ function App() {
       .get("https://shiver-of-sharks.herokuapp.com/boards")
       .then((response) => {
         console.log("api call");
-        getBoards(response.data.boards);
+        setBoards(response.data.boards);
       })
       .catch((error) => {
         console.log(<section>{error.response.data.message}</section>);
@@ -75,7 +75,7 @@ function App() {
         owner: newBoard.ownerData,
       })
       .then((response) => {
-        getBoards([...boards, response.data.board]);
+        setBoards([...boards, response.data.board]);
       })
       .catch((error) => {
         console.log(<section>{error.response.data.message}</section>);
