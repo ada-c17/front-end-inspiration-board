@@ -21,12 +21,11 @@ function App() {
         cards.splice(i, 1);
       }
     }
-    /* Update number of cards so that React will see change */
-
     /* Delete card in the back end */
     axios
       .delete(`https://shiver-of-sharks.herokuapp.com/cards/${id}`)
       .then((response) => {
+        /* Update number of cards so that React will see change */
         setCards([...cards]);
       })
       .catch((error) => {
@@ -37,7 +36,6 @@ function App() {
   const deleteBoard = (id) => {
     console.log(`deleteBoard: Deleting Board ${id}`);
     /* Find and remove board with give id from list of boards */
-
     for (let i = 0; i < boards.length; i++) {
       if (boards[i].board_id === id) {
         boards.splice(i, 1);
@@ -59,7 +57,6 @@ function App() {
     axios
       .get("https://shiver-of-sharks.herokuapp.com/boards")
       .then((response) => {
-        console.log("api call");
         setBoards(response.data.boards);
       })
       .catch((error) => {
@@ -120,7 +117,7 @@ function App() {
             addBoardCallback={addBoardData}
             updating={updating}
             setUpdating={setUpdating}
-          ></Board>
+          />
         </div>
       </div>
     );

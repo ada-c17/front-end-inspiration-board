@@ -78,7 +78,7 @@ const Cards = (props) => {
         likes_count={card.likes_count}
         deleteCardCallBack={props.deleteCardCallBack}
         refreshCards={props.refreshCards}
-      ></SingleCard>
+      />
     );
   });
 

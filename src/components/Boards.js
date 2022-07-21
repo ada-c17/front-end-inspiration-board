@@ -15,7 +15,7 @@ const Board = (props) => {
         setActiveBoard={props.setActiveBoard}
         setCards={props.setCards}
         deleteBoardCallBack={props.deleteBoardCallBack}
-      ></SingleBoard>
+      />
     );
   });
 
