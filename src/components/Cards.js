@@ -46,6 +46,8 @@ const Cards = (props) => {
     })
     let newArr = [...sorted]
     props.setCards(newArr)
+    console.log("sorting by card_id")
+    console.log(newArr)
   }
 
   const alphabetSort = () => {
@@ -54,6 +56,8 @@ const Cards = (props) => {
     }))
     let newArr = [...sorted]
     props.setCards(newArr)
+    console.log("sorting by message")
+    console.log(newArr)
   }
 
   const likesSort = () => {
@@ -62,6 +66,8 @@ const Cards = (props) => {
     }))
     let newArr = [...sorted]
     props.setCards(newArr)
+    console.log("sorting by likes_count")
+    console.log(newArr)
   }
 
   const cardComponents = props.cards.map((card, index) => {
