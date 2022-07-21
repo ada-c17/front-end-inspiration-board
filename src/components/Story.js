@@ -21,7 +21,7 @@ const Story = () => {
       <p id="fourth-line">
         Everyday they were met with rude remarks and ridicule that was just too
         much to bear. Until one day, all of the otters finally teamed up and
-        built a rockets that launched them into space!
+        built a rocketship that launched them into space!
       </p>
       <p id="fifth-line">
         Once in space, they built an otter colony and vowed to always be kind to
