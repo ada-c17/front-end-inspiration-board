@@ -51,3 +51,8 @@
     cursor: pointer;
 }
 
+.active-form > .single-card-container {
+    position: relative;
+    top: 20vh;
+    left: calc(50vw - 173px);
+}

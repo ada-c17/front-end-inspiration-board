@@ -28,19 +28,25 @@ const NewCardForm = (props) => {
   };
 
   return (
-    <form onSubmit={onFormSubmit}>
-      <div>
-        <label htmlFor="cardMessage">Card Message:</label>
-        <br />
-        <input
-          name="cardMessage"
-          value={formFields.title}
-          onChange={onMessageChange}
-        />
-      </div>
+    <section className={`${props.updating ? "active-form" : "hidden-form"}`}>
+      <section className="single-card-container">
+        <section className="single-card">
+          <form onSubmit={onFormSubmit}>
+            <div>
+              <label htmlFor="cardMessage">Card Message:</label>
+              <br />
+              <input
+                name="cardMessage"
+                value={formFields.title}
+                onChange={onMessageChange}
+              />
+            </div>
 
-      <input type="submit" value="Add Card" />
-    </form>
+            <input type="submit" value="Add Card" />
+          </form>
+        </section>
+      </section>
+    </section>
   );
 };
 

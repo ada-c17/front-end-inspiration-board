@@ -52,3 +52,21 @@
   cursor: pointer;
 }
 
+.active-form {
+  display: block;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: rgba(255,255,255,50%);
+  backdrop-filter: blur(1px);
+}
+
+.active-form > .single-board-container {
+  position: relative;
+  top: 20vh;
+  left: calc(50vw - 172px);
+}
+
+.hidden-form {
+  display: none;
+}

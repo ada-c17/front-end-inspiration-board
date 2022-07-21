@@ -5,14 +5,13 @@ import { useState, useEffect } from "react";
 import Header from "./components/Header.js";
 import Cards from "./components/Cards.js";
 import axios from "axios";
-import NewBoardForm from "./components/NewBoardForm.js";
-import NewCardForm from "./components/NewCardForm.js";
 
 function App() {
   const [isOnHomepage, setIsOnHomepage] = useState(true);
   const [activeBoard, setActiveBoard] = useState({});
   const [cards, setCards] = useState([]);
   const [boards, getBoards] = useState([]);
+  const [updating, setUpdating] = useState(false);
 
   const deleteCard = (id) => {
     /* Find and remove card with give id from list of cards */
@@ -68,6 +67,7 @@ function App() {
   }, [cards]);
 
   const addBoardData = (newBoard) => {
+    setUpdating(false);
     axios
       .post("http://shiver-of-sharks.herokuapp.com/boards", {
         title: newBoard.titleData,
@@ -82,6 +82,7 @@ function App() {
   };
 
   const addCardData = (newCard) => {
+    setUpdating(false);
     axios
       .post("http://shiver-of-sharks.herokuapp.com/cards", {
         message: newCard.messageData,
@@ -109,6 +110,8 @@ function App() {
             setCards={setCards}
             deleteBoardCallBack={deleteBoard}
             addBoardCallback={addBoardData}
+            updating={updating}
+            setUpdating={setUpdating}
           ></Board>
         </div>
       </div>
@@ -127,6 +130,8 @@ function App() {
             deleteCardCallBack={deleteCard}
             addCardCallback={addCardData}
             boardId={activeBoard.board_id}
+            updating={updating}
+            setUpdating={setUpdating}
           />
         </div>
       </div>

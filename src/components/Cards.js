@@ -3,6 +3,7 @@ import PropTypes from "prop-types";
 import SingleCard from "./SingleCard.js";
 import "./Cards.css";
 import NewCardForm from "./NewCardForm.js";
+import PlusBox from "./PlusBox.js";
 
 const Cards = (props) => {
   if (props.cards === []) {
@@ -21,14 +22,12 @@ const Cards = (props) => {
   });
   return (
     <section className="cards-display">
-      <section className="single-card-container">
-        <section className="single-card">
-          <NewCardForm
-            addCardCallback={props.addCardCallback}
-            boardId={props.boardId}
-          />
-        </section>
-      </section>
+      <NewCardForm
+        addCardCallback={props.addCardCallback}
+        boardId={props.boardId}
+        updating={props.updating}
+      />
+      <PlusBox setUpdating={props.setUpdating} elementType="card" />
       {cardComponents}
     </section>
   );
@@ -43,6 +42,11 @@ Cards.propTypes = {
       board_id: PropTypes.number,
     })
   ),
+  deleteCardCallBack: PropTypes.func.isRequired,
+  addCardCallback: PropTypes.func.isRequired,
+  boardId: PropTypes.number.isRequired,
+  updating: PropTypes.bool.isRequired,
+  setUpdating: PropTypes.func.isRequired,
 };
 
 export default Cards;
