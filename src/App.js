@@ -61,7 +61,7 @@ function App() {
       </div>
 
       {selectedBoard ? (
-        <Board
+        <Board 
           key={selectedBoard.id}
           id={selectedBoard.id}
           title={selectedBoard.title}

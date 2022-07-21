@@ -1,11 +1,15 @@
 .app {
-  background-color: #fff;
+  background-color: rgb(157, 251, 247);
 }
 
 .inspo-board-header {
   text-align: center;
   font-size: 72px;
-  background: -webkit-linear-gradient(#fff, #FCD5CE);
+  background: -webkit-linear-gradient(#fff, rgb(225, 80, 157));
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
+}
+
+.board-create {
+  background-color: lightyellow;
 }
