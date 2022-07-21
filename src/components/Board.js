@@ -5,7 +5,7 @@ import "../css/inspo_board.css";
 import SortDropdown from "./SortDropdown";
 
 const Board = ({
-  board,
+  // board,
   cardLike,
   boardTitle,
   cardOrder,
