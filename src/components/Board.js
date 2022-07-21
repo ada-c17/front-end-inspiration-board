@@ -1,12 +1,17 @@
 import React from "react";
 import PropTypes from "prop-types";
+import "./Board.css";
 
 const Board = (props) => {
   const selectBoard = () => {
     props.selectBoard(props.boardId);
   };
 
-  return <button onClick={selectBoard}>{props.title}</button>;
+  return (
+    <button key={props.id} className="board-button" onClick={selectBoard}>
+      {props.title}
+    </button>
+  );
 };
 
 Board.propTypes = {

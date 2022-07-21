@@ -12,16 +12,3 @@
     align-items: center;
     gap: 20px;
 }
-
-.board-button {
-    font-size: 1em;
-    width: 20vh;
-    height: 10vh;
-    border-radius: 5%;
-    border: 0px
-}
-
-.board-button:hover {
-    background-color: peachpuff;
-    font-weight: bold;
-}
