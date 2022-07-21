@@ -6,14 +6,29 @@ import PropTypes from "prop-types";
 //pass back information that include cardId and boardId-> function in App in that finds boardId
 //cardId and modifies
 
-const Card = ({ message, cardId, likesCount, boardId, onDeleteCallback }) => {
+const Card = ({
+  message,
+  cardId,
+  likesCount,
+  boardId,
+  onDeleteCallback,
+  onLikeCallback,
+}) => {
   console.log(cardId);
   return (
     <div className="NewCard">
       <section className="message">
         <p>{message}</p>
         <p>{likesCount}</p>
-        <button className="like">+1</button>
+        <button
+          onClick={() => {
+            const newLikesCount = likesCount + 1;
+            onLikeCallback({ message, newLikesCount, boardId, cardId });
+          }}
+          className="like"
+        >
+          +1
+        </button>
         <button onClick={() => onDeleteCallback(cardId)}>Delete</button>
       </section>
     </div>

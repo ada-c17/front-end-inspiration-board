@@ -3,6 +3,16 @@ import { React, useState, useEffect } from "react";
 import Card from "./Card";
 import axios from "axios";
 import NewCardForm from "./NewCardForm";
+// {
+//   "boardId": 1,
+//   "cardId": 2,
+//   "likesCount": 200,
+//   "message": "Hulloooo"
+// }
+// event handler in CardList-> onLiking(updatedCard), makes a PUT axios request (URL, {updatedCard}), then() getCards
+//event handler gets passed to Card, just like on Delete
+//
+//
 
 //props is an array of objects of card instances for a particular board
 //cardList gets rendered in a specific page
@@ -34,6 +44,24 @@ const CardList = ({ boardId }) => {
     console.log(cardId);
     axios
       .delete(`${process.env.REACT_APP_BACKEND_URL}/cards/${cardId}`)
+      .then(() => {
+        getCards(boardId);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
+
+  // PUT axios call
+  const onLikeCard = ({ message, newLikesCount, boardId, cardId }) => {
+    console.log(message, boardId, cardId);
+    axios
+      .put(`${process.env.REACT_APP_BACKEND_URL}/cards/${cardId}/like`, {
+        message,
+        likesCount: newLikesCount,
+        boardId,
+        cardId,
+      })
       .then(() => {
         getCards(boardId);
       })
@@ -76,9 +104,10 @@ const CardList = ({ boardId }) => {
           message={card.message}
           cardId={card.cardId}
           key={card.cardId}
-          liked={card.likesCount}
+          likesCount={card.likesCount}
           boardId={card.boardId}
           onDeleteCallback={onDeleteCard}
+          onLikeCallback={onLikeCard}
         />
       </div>
     );
