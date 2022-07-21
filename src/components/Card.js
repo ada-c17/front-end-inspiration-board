@@ -6,14 +6,15 @@ import PropTypes from "prop-types";
 //pass back information that include cardId and boardId-> function in App in that finds boardId
 //cardId and modifies
 
-const Card = ({ message, cardId, likesCount, boardId }) => {
+const Card = ({ message, cardId, likesCount, boardId, onDeleteCallback }) => {
+  console.log(cardId);
   return (
     <div className="NewCard">
       <section className="message">
         <p>{message}</p>
         <p>{likesCount}</p>
         <button className="like">+1</button>
-        <button>Delete</button>
+        <button onClick={() => onDeleteCallback(cardId)}>Delete</button>
       </section>
     </div>
   );
@@ -25,6 +26,7 @@ Card.propTypes = {
   message: PropTypes.string.isRequired,
   cardId: PropTypes.number.isRequired,
   likesCount: PropTypes.number.isRequired,
+  onDeleteCallback: PropTypes.func.isRequired,
 };
 
 export default Card;

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useState } from "react";
 import "./Card.js";
 import PropTypes from "prop-types";
@@ -10,15 +10,18 @@ const NewCardForm = ({ addCardCallback, boardId }) => {
   const boardNum = boardId;
   const [cardData, setCardData] = useState({
     message: "",
-    boardId: boardNum,
-    likesCount: 0,
   });
 
   const submitCardData = (e) => {
     console.log(cardData);
     e.preventDefault();
-
-    addCardCallback(cardData);
+    const completeCardData = {
+      message: cardData.message,
+      likesCount: 0,
+      boardId: boardId,
+    };
+    console.log(completeCardData);
+    addCardCallback(completeCardData);
     setCardData({ message: "" });
   };
 

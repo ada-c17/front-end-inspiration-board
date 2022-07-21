@@ -29,16 +29,18 @@ const CardList = ({ boardId }) => {
       });
   };
 
-  // const onDelete = (id) => {
-  //   axios
-  //     .delete(`${URL}/${id}`)
-  //     .then(() => {
-  //       getCard();
-  //     })
-  //     .catch((error) => {
-  //       console.log(error);
-  //     });
-  // };
+  // DELETE axios call
+  const onDeleteCard = (cardId) => {
+    console.log(cardId);
+    axios
+      .delete(`${process.env.REACT_APP_BACKEND_URL}/cards/${cardId}`)
+      .then(() => {
+        getCards(boardId);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
 
   // const addCard = (cardData) => {
   //   axios.post(URL, cardData).then((response) => {
@@ -55,7 +57,7 @@ const CardList = ({ boardId }) => {
         boardId,
       })
       .then(() => {
-        getCards();
+        getCards(boardId);
       })
       .catch((error) => {
         console.log(error);
@@ -76,6 +78,7 @@ const CardList = ({ boardId }) => {
           key={card.cardId}
           liked={card.likesCount}
           boardId={card.boardId}
+          onDeleteCallback={onDeleteCard}
         />
       </div>
     );
