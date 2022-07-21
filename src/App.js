@@ -152,7 +152,6 @@ function App() {
     axios
       .put(URL + "/cards/" + cardId + "/like")
       .then((response) => {
-        console.log("response >", response.data);
         const newCardList = selectedCards.map((cardInList) => {
           return cardInList.cardId === cardId
             ? { ...cardInList, likesCount: cardInList.likesCount + 1 }

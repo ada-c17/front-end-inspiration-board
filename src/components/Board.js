@@ -11,9 +11,6 @@ const Board = ({
   selectedBoardId,
 }) => {
   const onBoardClick = () => {
-    console.log(title); 
-    console.log(boardId); //
-    console.log(color); //
     onSelectBoard(boardId);
   };
 
@@ -27,7 +24,8 @@ const Board = ({
             height: selectedBoardId === boardId ? "10rem" : "5rem",
           }}
         > 
-          <h1 className="boardId">{boardId}</h1>  
+          <h1 className="boardId">{boardId}</h1>
+          <h2>{title}</h2>  
           <h3>By {owner} </h3>
         </button>
       </section>
