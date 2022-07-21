@@ -5,7 +5,6 @@ import "../css/inspo_board.css";
 import SortDropdown from "./SortDropdown";
 
 const Board = ({
-  // board,
   cardLike,
   boardTitle,
   cardOrder,
@@ -49,8 +48,15 @@ const Board = ({
 };
 
 Board.propTypes = {
-  board: PropTypes.object.isRequired,
-  onLike: PropTypes.func,
+  cardLike: PropTypes.func.isRequired,
+  boardTitle: PropTypes.string,
+  cardOrder: PropTypes.string,
+  cardSort: PropTypes.string,
+  updateSortType: PropTypes.func.isRequired,
+  updateSortOrder: PropTypes.func.isRequired,
+  sortedData: PropTypes.array,
+  deleteCard: PropTypes.func.isRequired,
+  getSelectedBoardData: PropTypes.func.isRequired,
 };
 
 export default Board;

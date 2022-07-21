@@ -224,7 +224,6 @@ function App() {
           <Board
             cardLike={increaseLike}
             boardTitle={boardOption}
-            board={chosenBoardData}
             cardOrder={cardOrder}
             cardSort={cardSort}
             updateSortOrder={updateSortOrder}
