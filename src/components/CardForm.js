@@ -42,7 +42,7 @@ const CardForm = (props) => {
       <section>{message}</section>
       <form onSubmit={handleFormSubmission}>
         <input
-          maxLength={40}
+          maxLength={100}
           name="message"
           type="text"
           placeholder="Inspirational Words "
