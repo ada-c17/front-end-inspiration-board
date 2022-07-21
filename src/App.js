@@ -176,7 +176,6 @@ function App() {
       <header>
         <h1>in5piration board</h1>
       </header>
-      <section>{errorMessage}</section>
       <section id="call-to-action">
         <h2>
           Need a little ✨inspiration✨? Create a new board or select a board
@@ -190,8 +189,8 @@ function App() {
         <h2>{appData.title}</h2>
         {appData.cardList}
       </section>
-
       <div className="board-and-card-forms">
+        <p id="error-message">{errorMessage}</p>
         {appData.newCardForm}
         {appData.newBoardForm}
       </div>
