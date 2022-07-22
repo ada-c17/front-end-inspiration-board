@@ -10,7 +10,7 @@
 }
 
 .cardsTitle{
-	color: white;
+	color: #f1ecca;
 	font-size: 2em;
 	margin: .5em;
 	width: 100%;
@@ -19,5 +19,4 @@
 
 span {
 	font-weight: bolder;
-	text-decoration: underline;
 }

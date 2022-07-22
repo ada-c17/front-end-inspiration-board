@@ -198,12 +198,12 @@ function App() {
   // Pass down Props
   return (
     <main className="App">
-      <nav>
-        <h1>Inspiration Boards</h1>
+      <nav className="main-nav">
+        <h1 className="title">Inspiration Boards</h1>
         <NewBoardForm onAddBoard={addBoard} />
         <NewCardForm onAddCard={addCard} />
       </nav>
-      <nav>
+      <nav className= {`sort ${selectedBoardId ? "" : "hide"}`}>
         <h2>Sort Cards</h2>
         <Button variant="secondary" onClick={() => sortById(selectedCards)}>
           by Oldest to Newest

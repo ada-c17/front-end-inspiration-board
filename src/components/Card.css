@@ -22,6 +22,7 @@
 	border-radius:10px;
 }
 .message {
+	font-family: "Bungee", cursive;
 	font-weight: bolder;
 	font-style: italic;
 }
