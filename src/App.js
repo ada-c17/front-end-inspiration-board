@@ -65,7 +65,7 @@ function App() {
   }, [cards]);
 
   const addBoardData = (newBoard) => {
-    setUpdating(false);
+    hideForm();
     axios
       .post("https://shiver-of-sharks.herokuapp.com/boards", {
         title: newBoard.titleData,
@@ -79,8 +79,12 @@ function App() {
       });
   };
 
-  const addCardData = (newCard) => {
+  const hideForm = () => {
     setUpdating(false);
+  };
+
+  const addCardData = (newCard) => {
+    hideForm();
     axios
       .post("https://shiver-of-sharks.herokuapp.com/cards", {
         message: newCard.messageData,
@@ -117,6 +121,7 @@ function App() {
             addBoardCallback={addBoardData}
             updating={updating}
             setUpdating={setUpdating}
+            hideForm={hideForm}
           />
         </div>
       </div>
@@ -139,6 +144,7 @@ function App() {
             setUpdating={setUpdating}
             setCards={setCards}
             refreshCards={refreshCards}
+            hideForm={hideForm}
           />
         </div>
       </div>

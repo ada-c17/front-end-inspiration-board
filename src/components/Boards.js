@@ -24,8 +24,9 @@ const Board = (props) => {
       <NewBoardForm
         addBoardCallback={props.addBoardCallback}
         updating={props.updating}
+        hideForm={props.hideForm}
       />
-      <PlusBox setUpdating={props.setUpdating} elementType="board" />
+      <PlusBox setUpdating={props.setUpdating} />
       {boardComponents}
     </section>
   );

@@ -83,11 +83,12 @@ const Cards = (props) => {
   });
 
   return (
-    <section className="cards-display">
+    <section className="box-display">
       <NewCardForm
         addCardCallback={props.addCardCallback}
         boardId={props.boardId}
         updating={props.updating}
+        hideForm={props.hideForm}
       />
       <PlusBox setUpdating={props.setUpdating} elementType="card" />
       {cardComponents}

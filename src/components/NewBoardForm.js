@@ -37,8 +37,11 @@ const NewBoardForm = (props) => {
 
   return (
     <section className={`${props.updating ? "active-form" : "hidden-form"}`}>
-      <section className="single-board-container">
-        <section className="single-board">
+      <section className="single-box-container">
+        <section className="single-box">
+          <button className="close pointer" onClick={props.hideForm}>
+            ✖
+          </button>
           <form onSubmit={onFormSubmit}>
             <div>
               <label htmlFor="boardTitle">Board Title:</label>

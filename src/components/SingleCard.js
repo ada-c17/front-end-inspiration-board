@@ -29,8 +29,8 @@ const SingleCard = (props) => {
   };
 
   return (
-    <section className="single-card-container">
-      <section className="single-card">{props.message}</section>
+    <section className="single-box-container">
+      <section className="single-box">{props.message}</section>
       <section className="box-footer">
         <button onClick={deleteSingleCard}>🗑</button>{" "}
         <button onClick={increaseLikeCount}>❤️</button> {likesCount}

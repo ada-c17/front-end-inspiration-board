@@ -1,4 +1,12 @@
 @import url('https://fonts.googleapis.com/css?family=Dancing+Script');
+.box-display {
+  display: flex;
+  flex-flow: row wrap;
+  
+  justify-content: center;
+  
+}
+
 
 :root {
   --greypadding: #d9d9d9;
@@ -42,4 +50,84 @@ header button {
   background-color: white;
   border: none;
   cursor: pointer;
+}
+
+
+.single-box {
+  width: 230px;
+  height: 230px;
+  margin: 20px;
+  border: 1px solid black;
+  grid-row-start: 1;
+  grid-row-end: 2;
+  padding: 10px;
+  background-color: var(--boxbackground);
+  overflow: auto;
+  font-size: 1.5em;
+  text-align: center;
+  display: flex;
+  flex-direction: column; 
+  justify-content: center;
+  align-items: center; 
+}
+
+.pointer {
+  cursor: pointer;
+}
+
+.single-box-container {
+  background-color: var(--greypadding);
+  width: 293px;
+  height: 316px;
+  display: grid;
+  grid-template-rows: 290px 25px;
+  margin: 25px;
+  border: 1px solid black;
+}
+
+.box-footer {
+  background-color: var(--boxbackground);
+  height: 25px;
+  border-top: 1px solid black;
+  border-right: 10px solid white;
+  grid-row-start: 2;
+  grid-row-end: 3;
+  text-align: right;
+  font-size: 16px;
+}
+
+.box-footer button {
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+.active-form {
+  position: fixed;
+  top: 0px;
+  left: 0px;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(255,255,255,50%);
+}
+
+.active-form > .single-box-container {
+  position: fixed;
+  margin-top: -158px;
+  top: 50vh;
+  left: calc(50vw - 172px);
+}
+
+.hidden-form {
+  display: none;
+}
+
+.close {
+  top: 20px;
+  right: 20px;
+  position: absolute;
+  padding: 10px;
+  border: none;
+  background: none;
+  font-size: 1em;
 }

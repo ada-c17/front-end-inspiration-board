@@ -1,3 +1,4 @@
+import React from "react";
 import { useState } from "react";
 import PropTypes from "prop-types";
 
@@ -28,8 +29,11 @@ const NewCardForm = (props) => {
 
   return (
     <section className={`${props.updating ? "active-form" : "hidden-form"}`}>
-      <section className="single-card-container">
-        <section className="single-card">
+      <section className="single-box-container">
+        <button className="close pointer" onClick={props.hideForm}>
+          ✖
+        </button>
+        <section className="single-box">
           <form onSubmit={onFormSubmit}>
             <div>
               <label htmlFor="cardMessage">Card Message:</label>
