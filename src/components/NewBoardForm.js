@@ -24,10 +24,10 @@ const NewBoardForm = ({ addBoardCallback }) => {
 
   return (
     <form onSubmit={submitBoardData} className="new-board__form">
-      <section>
+      <section className="container">
         <h2>Add a Board</h2>
         <div className="new-board__fields">
-          <label htmlFor="name">Title</label>
+          <label htmlFor="name">Title </label>
           <input
             name="title"
             id="title"
@@ -39,7 +39,7 @@ const NewBoardForm = ({ addBoardCallback }) => {
                 : ""
             }
           />
-          <label htmlFor="name">Owner</label>
+          <label htmlFor="name"> Owner </label>
           <input
             name="owner"
             id="owner"

@@ -1,6 +1,11 @@
-
 .form{
-    font-family: 'Courier New';
-  }
-
-  
+  font-family: 'Courier New';
+  /* border: 2px rgb(144, 100, 219) solid; */
+  /* display: flex;
+  flex-direction: column; */
+  width: 40%;
+  font-family: 'Courier New';
+  margin-left: 100px;
+  margin: 30px;
+  padding: 20px;
+}

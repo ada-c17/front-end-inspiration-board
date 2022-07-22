@@ -27,9 +27,9 @@ const NewCardForm = ({ addCardCallback, boardId }) => {
   return (
     <form onSubmit={submitCardData} className="new-card__form">
       <section>
-        <h2>Add a Card</h2>
+        <h2> Add a Card </h2>
         <div className="new-card__fields">
-          <label htmlFor="name">Message</label>
+          <label htmlFor="name"> Message </label>
           <input
             name="message"
             id="message"

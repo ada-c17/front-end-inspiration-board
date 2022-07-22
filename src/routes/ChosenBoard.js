@@ -8,7 +8,7 @@ export default function BoardDisplay({ selectedBoard }) {
   return (
     <main className="main-container">
       <section className="board-container">
-      <h3 className="board-header">{selectedBoard.title}</h3>
+      <h3 className="board-header">{selectedBoard.title} </h3>
         <div>
           <CardList boardId={selectedBoard.boardId} />
         </div>
