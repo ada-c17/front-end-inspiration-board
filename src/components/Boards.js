@@ -2,7 +2,6 @@ import PropTypes from "prop-types";
 import SingleBoard from "./SingleBoard.js";
 import NewBoardForm from "./NewBoardForm.js";
 import PlusBox from "./PlusBox.js";
-import "./Boards.css";
 
 const Board = (props) => {
   const boardComponents = props.boards.map((board, index) => {
@@ -20,7 +19,7 @@ const Board = (props) => {
   });
 
   return (
-    <section className="boards-display">
+    <section className="box-display">
       <NewBoardForm
         addBoardCallback={props.addBoardCallback}
         updating={props.updating}

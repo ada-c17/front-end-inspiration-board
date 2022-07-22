@@ -1,7 +1,6 @@
 import { useEffect, useState } from "react";
 import PropTypes from "prop-types";
 import axios from "axios";
-import "./Cards.css";
 
 const SingleCard = (props) => {
   const [likesCount, updateLikesCount] = useState(props.likes_count);

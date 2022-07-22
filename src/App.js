@@ -4,7 +4,6 @@ import Board from "./components/Boards.js";
 import Header from "./components/Header.js";
 import Cards from "./components/Cards.js";
 import "./App.css";
-import "./components/Boards.css";
 
 function App() {
   const [isOnHomepage, setIsOnHomepage] = useState(true);

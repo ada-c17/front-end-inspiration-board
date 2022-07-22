@@ -13,12 +13,14 @@ const SingleBoard = (props) => {
     props.setCards(props.board.cards);
   };
   return (
-    <section className="single-board-container">
-      <section className="single-board" onClick={clickMe}>
+    <section className="single-box-container">
+      <section className="single-box pointer" onClick={clickMe}>
         <h2>{props.board.title}</h2>
         {props.board.owner}
       </section>
-      <button onClick={deleteSingleBoard}>Delete</button>
+      <section className="box-footer pointer" onClick={deleteSingleBoard}>
+        Delete
+      </section>
     </section>
   );
 };

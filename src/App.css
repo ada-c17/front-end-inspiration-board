@@ -2,7 +2,6 @@
 .box-display {
   display: flex;
   flex-flow: row wrap;
-  
   justify-content: center;
   
 }
@@ -131,3 +130,6 @@ header button {
   background: none;
   font-size: 1em;
 }
+
+
+

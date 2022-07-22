@@ -2,7 +2,6 @@ import PropTypes from "prop-types";
 import SingleCard from "./SingleCard.js";
 import NewCardForm from "./NewCardForm.js";
 import PlusBox from "./PlusBox.js";
-import "./Cards.css";
 
 const Cards = (props) => {
   if (props.cards === []) {
@@ -83,24 +82,24 @@ const Cards = (props) => {
   });
 
   return (
-    <section className="box-display">
-      <NewCardForm
-        addCardCallback={props.addCardCallback}
-        boardId={props.boardId}
-        updating={props.updating}
-        hideForm={props.hideForm}
-      />
-      <PlusBox setUpdating={props.setUpdating} elementType="card" />
-      {cardComponents}
-      <p>
+    <section>
+      <center>
         <button onClick={idSort}>Sort By ID</button>
-      </p>
-      <p>
+
         <button onClick={alphabetSort}>Sort by Alphabetical</button>
-      </p>
-      <p>
+
         <button onClick={likesSort}>Sort by Number of Likes</button>
-      </p>
+      </center>
+      <section className="box-display">
+        <NewCardForm
+          addCardCallback={props.addCardCallback}
+          boardId={props.boardId}
+          updating={props.updating}
+          hideForm={props.hideForm}
+        />
+        <PlusBox setUpdating={props.setUpdating} elementType="card" />
+        {cardComponents}
+      </section>
     </section>
   );
 };

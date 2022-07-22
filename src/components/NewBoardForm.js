@@ -5,6 +5,7 @@ const NewBoardForm = (props) => {
   const [formFields, setFormFields] = useState({
     title: "",
     owner: "",
+    theme: "",
   });
 
   const onTitleChange = (event) => {
