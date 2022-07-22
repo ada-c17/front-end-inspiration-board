@@ -31,14 +31,14 @@ export const Card = ({ id, message, likes, onRemoveCallback }) => {
         <p className="card-text">{message}</p>
         <p className="card-like">{like}</p>
         <button
-          type="button"
-          className="btn"
+          
           onClick={handleOnClick}
+          className="likeCount"
         >
-          Like
+          ❤️
         </button>
-        <button onClick={onRemove} type="button" className="btn">
-          Delete
+        <button className = "deleteCard" onClick={onRemove} >
+          X
         </button>
       </div>
     </div>

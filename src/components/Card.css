@@ -22,6 +22,7 @@
 
 .btn:hover:enabled {
     background-color: skyblue;
+    border-color: transparent;
     cursor: pointer;
 }
 
@@ -35,4 +36,31 @@
     color: purple;
     background-color: skyblue;
     text-align: center;
+}
+
+.likeCount {
+    /* bottom:15px; */
+    size:50px;
+    background-color: transparent;
+    border-color: transparent;
+    left:125px;
+    position:absolute;
+}
+
+.likeCount:hover:enabled {
+    background-color: transparent;
+    border-color: transparent;
+}
+
+.deleteCard{
+    position:absolute;
+    top: 2px;
+    right: 2px;
+    /* align-items: flex-start; */
+    justify-items: flex-end;
+    background-color: transparent;
+    border-color: transparent;
+    color: rgb(225, 80, 157) ;
+    /* align-self: flex-end; */
+
 }
