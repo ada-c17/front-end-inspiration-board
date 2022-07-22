@@ -121,10 +121,7 @@ function App() {
             addBoardCallback={addBoardData}
             updating={updating}
             setUpdating={setUpdating}
-<<<<<<< HEAD
-=======
             hideForm={hideForm}
->>>>>>> 68006e93ab5c767213b2c24829d2d460e59a3695
           />
         </div>
       </div>
@@ -147,10 +144,7 @@ function App() {
             setUpdating={setUpdating}
             setCards={setCards}
             refreshCards={refreshCards}
-<<<<<<< HEAD
-=======
             hideForm={hideForm}
->>>>>>> 68006e93ab5c767213b2c24829d2d460e59a3695
           />
         </div>
       </div>
