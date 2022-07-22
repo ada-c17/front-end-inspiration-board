@@ -8,19 +8,20 @@ const NewCardForm = ({onAddCard}) => {
   const [newCardData, setNewCardData] = useState({message: ''});
 
   const [isInvalidInput, setIsInvalidInput] = useState(
-    {message: false});
+    {message: false, length: false});
 
   const handleChange = (event) => {setNewCardData({message: event.target.value})};
 
   const handleClick = (e) => {
     setIsInvalidInput({
-      message: newCardData.message !== '' ? false : true
+      message: newCardData.message !== '' ? false : true,
+      length: (newCardData.message.length === 0 || newCardData.message.length > 40) ? true : false
     })
   }
 
   const addNewCard = (e) => {
     e.preventDefault();
-    if (!isInvalidInput.message) {
+    if (!isInvalidInput.message && !isInvalidInput.length) {
       onAddCard(newCardData)
       setNewCardData({message: ''})
     } else{

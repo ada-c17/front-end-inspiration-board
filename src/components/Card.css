@@ -9,6 +9,7 @@
 	border-radius: 10px;
 	text-align: center;
 	padding: .2em;
+	word-wrap: break-word;
 }
 
 .liked{
@@ -22,6 +23,7 @@
 	border-radius:10px;
 }
 .message {
+	font-family: "Bungee", cursive;
 	font-weight: bolder;
 	font-style: italic;
 }
