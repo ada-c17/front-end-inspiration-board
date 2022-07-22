@@ -1,0 +1,266 @@
+
+
+html {
+  background-color: #d6e4d9;
+  
+
+
+
+}
+
+main {
+  padding: 10%;
+
+}
+
+.footer-image{
+  height: 20px;
+  background-image: url(/src/components/styles/beetles.png);
+  background-size: 90%;
+  background-position: bottom-right;
+  background-repeat: no-repeat;
+}
+
+
+
+.display-component {
+  padding-top: 50px;
+}
+
+.App {
+  text-align: center;
+  display:flex;
+}
+
+
+.cards {
+  justify-content:center;
+  align-content: stretch;
+  color:#000;
+  border-radius: 16px;
+  background: #83ae8cef;
+  display:inline-block;
+  height:12em;
+  width:12em;
+  padding:1em;
+  margin:2em;
+  box-shadow: 5px 5px 3px #0b471785;
+}
+
+.board-general {
+  /* background-image: url(./styles/tumblr_p8uy1tHGy41uupzkho6_500.png); */
+  margin-top: 20px;
+  margin-left: 20px;
+  margin-right: 20px;
+  margin-bottom: 20px;
+  justify-content: space-evenly;
+  align-content: center;
+  
+  grid-row: 5/7;
+  grid-column: 1/7;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: 1fr 1fr 1fr;
+
+  text-decoration:none;
+  color:#000;
+  background:#b2d4b9;
+  background-image: url(/src/components/styles/butterflies.png);
+  background-size: 10em;
+  display:flex;
+  
+}
+
+.form {
+  /* background-color: rgba(32, 153, 123, 0.918); */
+  background-color: rgba(98, 127, 214, 0.527);
+  /* color: #6ae470; */
+  background-image: url(/src/components/styles/mosquito_PNG18173\ \(1\).png);
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: right;
+  grid-column: 3;
+  grid-row: 3;
+  /* background-image: url(./components/styles/42b0291ed69512f6ada62504fc22e2bf.png);
+  background-size: 10em; */
+  /* background-image: url(/src/components/styles/tumblr_p8uy1tHGy41uupzkho6_500.png); */
+  /* background-size: contain; */
+  /* background-position: right; */
+  /* background-repeat: no-repeat; */
+  border-radius: 16px;
+  box-shadow: 0 0 15px rgba(0,0,0,0.24);
+  /* margin: 10%; */
+  /* display: flex; */
+  flex-direction: column;
+  margin-left: 30%;
+  margin-right: 30%;
+
+  
+  /* position: relative; */
+  padding: 2%; 
+  font-size: small;
+  color: #303753;
+}
+
+button {
+  background-color: rgba(28, 43, 75, 0.644);
+  /* margin: 10px; */
+  /* margin; */
+  /* padding: 10px; */
+  border-radius: 8px;
+  border-color: #4a754c;
+  border: 1em;
+  height: 25px;
+  color: white; 
+  text-align: center;
+  
+}
+
+
+#errorDisplay {
+  border-style: dotted;
+  border-color: rgb(194, 50, 50);
+  border-width: 4px;
+  
+}
+
+.board-select {
+  grid-column: 1/2;
+  grid-row: 2;
+  margin-top: 10px;
+  margin-bottom: 20px;
+  padding: 1%; 
+  display: flexbox;
+  
+}
+
+.dropdown{
+
+  justify-items: center;
+  margin-top: .5em;
+  margin-bottom: .5em;
+  margin-left: 5em;
+  margin-right: 5em;
+  padding-right: 30%;
+  padding-left: 30%;
+  
+  /* opacity: 0.9; */
+}
+
+.header {
+
+  /* background-image: url(./components/styles/ant_PNG19357-3473398488.png); */
+  /* background-size: 10em; */
+  padding-right: 0% ;
+  padding-left: 0%;
+  padding-bottom: 1%;
+  /* padding-bottom: 1%; */
+  border: 1px royalblue;
+  /* background-image: url(./components/styles/42b0291ed69512f6ada62504fc22e2bf.png); */
+  background-size: 8em;
+  /* padding: 2em; */
+  border-radius: 16px;
+  border: 4px royalblue; 
+  text-align: center;
+  font-family: Georgia, serif;
+  margin: 1%;
+  background-color: #537a5b59;
+}
+
+.header-main{
+  /* font-family: 'Goldman', cursive; */
+  font-family: 'Rampart One', cursive;
+  /* padding: 5%; */
+  /* background-color: rgba(131, 160, 245, 0.904); */
+  border-radius: 10px;
+
+  /* text-shadow: 4px .5px #2d7268; */
+  
+  /* font-family: 'Roboto Condensed', sans-serif; */
+  color:rgb(12, 36, 36);
+}
+
+.header-board{
+  color:rgb(19, 53, 53);
+  /* padding: 1%; */
+  font-family: 'Rampart One', cursive;
+  font-size: large;
+  position: relative;
+  font-size: large;
+  text-align: center;
+  /* text-shadow: 3px .5px #35a191; */
+  /* background-color: rgba(135, 207, 235, 0.945); */
+  border-radius: 16px;
+}
+
+
+/* .App-header {
+  background-color: #282c34;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+} */
+
+/* .App-link {
+  color: #61dafb;
+} */
+
+ul{
+  justify-content: space-between;
+  align-content: flex-start;
+}
+.card_message{
+  text-align: center;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  color: #19360b;
+  font-size: 1rem;
+  padding-top: 20%;
+  overflow-wrap: break-word;
+}
+
+<<<<<<< HEAD
+
+/* .likes_button:hover{
+  text-align: center;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  background-color: #599365;
+  color: white;
+  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+  border: 1px #2c0c44;
+  width: 50%;
+} */
+
+/* .delete_button:hover{
+  text-align: center;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  background-color: #303753;
+  color: white;
+  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+  border: 2px #2c0c44;
+  width:50%;
+} */
+
+=======
+.dropdown{
+>>>>>>> 5773f2d961d38cc221557762ba804ca1ffdc5dc7
+
+
+.like{
+  color: #2c0c44;
+  text-align: center;
+  size: 2em;
+}
+
+.likes_button{
+  margin: 5%;
+
+}
+
+button:hover{
+  background-color: #4a754c; /* Green */
+  color: white;
+  cursor: pointer;
+}
