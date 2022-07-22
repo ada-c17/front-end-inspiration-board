@@ -69,6 +69,7 @@ function App() {
             {" "}
             Create an Inspiration Board
           </Link>
+          <Link to="/">Home</Link>
           <Link to="/allboards" className="choose-board">
             <section>Inspiration board</section>
             <select onChange={selectNewBoard}>

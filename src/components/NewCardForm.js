@@ -35,9 +35,19 @@ const NewCardForm = ({ addCardCallback, boardId }) => {
             id="message"
             value={cardData.message}
             onChange={handleChange}
-            required
+            className={
+              cardData.message.length === 0 || cardData.message.length > 40
+                ? "invalid-input"
+                : ""
+            }
           />
-          <button className="button new-card__submit" type="submit">
+          <button
+            className="button new-card__submit"
+            type="submit"
+            disabled={
+              cardData.message.length === 0 || cardData.message.length > 40
+            }
+          >
             Add Card
           </button>
         </div>
@@ -48,7 +58,7 @@ const NewCardForm = ({ addCardCallback, boardId }) => {
 
 NewCardForm.propTypes = {
   addCardCallback: PropTypes.func.isRequired,
-  boardId: PropTypes.number.isRequired
+  boardId: PropTypes.number.isRequired,
 };
 
 export default NewCardForm;
