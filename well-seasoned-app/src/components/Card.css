@@ -1,0 +1,52 @@
+#message {
+    font-family: 'Grape Nuts', cursive;
+    font-size: calc(10px + 1.2vw);
+}   
+
+li {
+    padding: 10%;
+    list-style-type: none;
+    box-shadow: rgb(133, 133, 133) -2px 2px 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+#below-message {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    justify-items: last baseline;
+}
+
+#likes-and-heart {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: flex-end;
+}
+
+#heart {
+    padding-bottom: 17px;
+}
+
+#likes-count {
+    align-self: baseline;
+}
+
+li.one-card:nth-child(3n) {
+    background-color: #FFABE5;
+}
+
+li.one-card:nth-child(3n-1) {
+    background-color: #C7F5FF;
+}
+
+li.one-card:nth-child(3n-5) {
+    background-color: #F6FCAE;
+}
+
+
+img {
+    height: 2vh;
+}
+

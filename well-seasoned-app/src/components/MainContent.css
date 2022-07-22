@@ -1,0 +1,18 @@
+#all-MainContent {
+    display: grid;
+    grid-template-columns: 1fr 3fr 1fr;
+    justify-items: center;
+}
+
+#error-message-board {
+    color: red;
+}
+
+.delete-board {
+    font-size: calc(10px + .5vw);
+    margin-top: 3vw;
+    margin-right: 4vw;
+    background-color: rgb(255, 255, 255);
+    color: black;
+    border-radius: 10px;
+}
