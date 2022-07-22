@@ -7,6 +7,9 @@
 }
 
 .board-button:hover {
-    background-color: rgb(223, 156, 125);
+    background-color: rgb(62, 144, 144);
     font-weight: bold;
+    color: white;
 }
+
+/* rgb(223, 156, 125) */

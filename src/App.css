@@ -1,5 +1,6 @@
 * {
     font-family: Avenir, Helvetica, sans-serif;
+    /* border: 2pt solid black; */
 }
 
 .grid-container {
@@ -7,6 +8,8 @@
     grid-template-columns: auto 1fr 1fr 1fr 1fr auto;
     grid-template-rows: 15vh 10vh fit-content(45vh) fit-content(45vh) 1fr .5fr;
     align-items: center;
+
+    background: linear-gradient(rgb(223, 156, 125), rgb(226, 153, 26));
 }
 
 header {
