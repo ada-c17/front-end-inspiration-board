@@ -1,5 +1,5 @@
 html{  
-  background-color: #FFD6FF; 
+  background-color: #CBB6FF; 
   background-image: linear-gradient( #FFD6FF,#C8B6FF);
   background-size: cover;
   background-repeat: no-repeat;
@@ -21,6 +21,8 @@ html{
 .routes{
   display:flex;
   justify-content: space-evenly;
+  font-family: 'Courier New', Courier, monospace;
+  font-size: 20px;
 }
 
 .create-board{
