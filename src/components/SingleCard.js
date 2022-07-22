@@ -1,10 +1,14 @@
-import React, { useState } from "react";
+import { useEffect, useState } from "react";
 import PropTypes from "prop-types";
-import "./Cards.css";
 import axios from "axios";
+import "./Cards.css";
 
 const SingleCard = (props) => {
   const [likesCount, updateLikesCount] = useState(props.likes_count);
+
+  useEffect(() => {
+    updateLikesCount(props.likes_count);
+  }, [props.likes_count]);
 
   const deleteSingleCard = () => {
     props.deleteCardCallBack(props.card_id);
@@ -13,21 +17,20 @@ const SingleCard = (props) => {
   const increaseLikeCount = () => {
     console.log("increaseLikeCount called");
     axios
-      .patch(`http://shiver-of-sharks.herokuapp.com/cards/${props.card_id}`, {
+      .patch(`https://shiver-of-sharks.herokuapp.com/cards/${props.card_id}`, {
         likes_count: likesCount + 1,
       })
       .then((response) => {
-        /* Don't need to do anything with response */
+        props.refreshCards(props.card_id, likesCount + 1);
       })
       .catch((error) => {
         console.log(<section>{error.response.data.message}</section>);
       });
-    updateLikesCount(likesCount + 1);
   };
 
   return (
-    <section className="single-card-container">
-      <section className="single-card">{props.message}</section>
+    <section className="single-box-container">
+      <section className="single-box">{props.message}</section>
       <section className="box-footer">
         <button onClick={deleteSingleCard}>🗑</button>{" "}
         <button onClick={increaseLikeCount}>❤️</button> {likesCount}
@@ -37,10 +40,11 @@ const SingleCard = (props) => {
 };
 
 SingleCard.propTypes = {
-  card_id: PropTypes.number,
-  message: PropTypes.string,
-  likes_count: PropTypes.number,
-  deleteCardCallBack: PropTypes.func,
+  card_id: PropTypes.number.isRequired,
+  message: PropTypes.string.isRequired,
+  likes_count: PropTypes.number.isRequired,
+  deleteCardCallBack: PropTypes.func.isRequired,
+  refreshCards: PropTypes.func.isRequired,
 };
 
 export default SingleCard;

@@ -1,9 +1,8 @@
-import React from "react";
-import SingleBoard from "./SingleBoard.js";
-import "./Boards.css";
 import PropTypes from "prop-types";
+import SingleBoard from "./SingleBoard.js";
 import NewBoardForm from "./NewBoardForm.js";
 import PlusBox from "./PlusBox.js";
+import "./Boards.css";
 
 const Board = (props) => {
   const boardComponents = props.boards.map((board, index) => {
@@ -16,7 +15,7 @@ const Board = (props) => {
         setActiveBoard={props.setActiveBoard}
         setCards={props.setCards}
         deleteBoardCallBack={props.deleteBoardCallBack}
-      ></SingleBoard>
+      />
     );
   });
 
@@ -25,8 +24,9 @@ const Board = (props) => {
       <NewBoardForm
         addBoardCallback={props.addBoardCallback}
         updating={props.updating}
+        hideForm={props.hideForm}
       />
-      <PlusBox setUpdating={props.setUpdating} elementType="board" />
+      <PlusBox setUpdating={props.setUpdating} />
       {boardComponents}
     </section>
   );

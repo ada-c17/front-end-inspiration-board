@@ -1,12 +1,11 @@
-import React from "react";
-import "./Boards.css";
 import PropTypes from "prop-types";
+import "./Boards.css";
 
 const PlusBox = ({ setUpdating, elementType }) => {
   const showForm = () => setUpdating(true);
   return (
-    <section className={`single-${elementType}-container`}>
-      <section className={`single-${elementType}`} onClick={showForm}>
+    <section className="single-box-container">
+      <section className="single-box pointer" onClick={showForm}>
         <h2>➕</h2>
       </section>
     </section>
