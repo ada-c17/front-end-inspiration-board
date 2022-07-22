@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import PropTypes from "prop-types";
-import "./NewCardForm.css";
+import "../styles/NewCardForm.css";
 
 const kDefaultFormState = {
   message: "",
@@ -40,7 +40,11 @@ const NewCardForm = ({ onCardSubmit }) => {
         </div>
 
         <div>
-          <input type="submit" value="Add card!"></input>
+          <input
+            className="submit-button"
+            type="submit"
+            value="Add card!"
+          ></input>
         </div>
       </form>
     </div>

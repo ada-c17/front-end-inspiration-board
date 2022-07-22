@@ -1,6 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
-import "./Card.css";
+import "../styles/Card.css";
 
 const Card = (props) => {
   const updateLikes = () => {

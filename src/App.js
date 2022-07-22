@@ -3,7 +3,7 @@ import NewBoardForm from "./components/NewBoardForm";
 import NewCardForm from "./components/NewCardForm";
 import BoardList from "./components/BoardList";
 import CardList from "./components/CardList";
-import "./App.css";
+import "./styles/App.css";
 import {
   postBoardAsync,
   postCardAsync,
@@ -24,8 +24,7 @@ function App() {
         setBoardData(boards);
       })
       .catch((err) => {
-        // console.log(err);
-        // throw new Error("error displaying boards");
+        console.log(err);
         setErrorMessage("error displaying all boards");
       });
   };
@@ -41,7 +40,6 @@ function App() {
       })
       .catch((err) => {
         console.log(err.message);
-        //throw new Error("error displaying board");
         setErrorMessage("error displaying board");
       });
   };
@@ -117,7 +115,6 @@ function App() {
       });
   };
 
-  // not sure if we want/need these to be in a helper function
   const handleNewBoard = (formFields) => {
     postBoard(formFields);
   };

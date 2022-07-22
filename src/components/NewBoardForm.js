@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import PropTypes from "prop-types";
-import "./NewBoardForm.css";
+import "../styles/NewBoardForm.css";
 
 const kDefaultFormState = {
   title: "",

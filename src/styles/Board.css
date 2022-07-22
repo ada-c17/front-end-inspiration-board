@@ -3,11 +3,12 @@
     width: 20vh;
     height: 10vh;
     border-radius: 5%;
-    border: 0px
+    border: 0px;
+    background: whitesmoke;
 }
 
 .board-button:hover {
-    background-color: rgb(62, 144, 144);
+    background: linear-gradient(rgb(181, 217, 251),rgb(179, 233, 233));
     font-weight: bold;
     color: white;
 }

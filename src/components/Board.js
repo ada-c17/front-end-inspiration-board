@@ -1,6 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
-import "./Board.css";
+import "../styles/Board.css";
 
 const Board = (props) => {
   const selectBoard = () => {

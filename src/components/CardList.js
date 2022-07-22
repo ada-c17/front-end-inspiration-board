@@ -2,7 +2,7 @@ import React from "react";
 import { useState, useEffect } from "react";
 import PropTypes from "prop-types";
 import Card from "./Card";
-import "./CardList.css";
+import "../styles/CardList.css";
 
 const CardList = (props) => {
   const [sortType, setSortType] = useState("id");

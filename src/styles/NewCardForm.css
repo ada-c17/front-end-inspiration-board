@@ -1,8 +1,8 @@
 .new-card-form {
-    border: 2pt solid rgb(223, 156, 125);
+    /* border: 2pt solid rgb(223, 156, 125); */
     border-radius: 5%;
     width: 50vh;
-    background-color: rgb(239, 237, 237);
+    background: whitesmoke
 }
 
 .form-content {
