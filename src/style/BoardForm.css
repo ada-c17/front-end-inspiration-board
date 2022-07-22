@@ -1,0 +1,48 @@
+@import url('https://fonts.googleapis.com/css2?family=Clicker+Script&family=M+PLUS+1+Code:wght@200&display=swap');
+
+.errorMessages {
+    border: solid 1px #e07a5f;
+    color: #e07a5f;
+    background-color: #F4F1DE;
+    font-weight: bold;
+    width: 210px;
+}
+form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: black;
+}
+
+form h3 {
+    font-family: 'Clicker Script', cursive;
+    font-size: 2rem;
+    color: #3D405B;
+    margin-top: 4.5vh;
+    margin-bottom: -3vh;
+}
+form h4 {
+    margin-bottom: .25vh;
+}
+.noError {
+    border: none;
+}
+
+#BoardForm {
+    background-image: url("../assets/bigcloud1.png");
+    background-size: contain;
+    background-repeat: no-repeat;
+    width: 600px;
+    height: 420px;
+    text-align: center;
+}
+
+
+
+.showBoard {
+    display: flexbox;
+} 
+  
+.hideBoard {
+  display: none;
+}

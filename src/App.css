@@ -1,0 +1,38 @@
+@import url('https://fonts.googleapis.com/css2?family=Clicker+Script&family=M+PLUS+1+Code:wght@200&display=swap');
+
+/* font-family: 'Clicker Script', cursive;
+font-family: 'M PLUS 1 Code', sans-serif; */
+
+div {
+  background-color: #3D405B;
+  background-image: url("./assets/space.png");
+  background-size: cover;
+  background-position: center center;
+  color: #F4F1DE;
+}
+
+header {
+  font-family: 'Clicker Script', cursive;
+  font-size: 2rem;
+  color: #f2CC8F;
+  text-align: right;
+  margin-right: 10vw;
+}
+
+main {
+  font-family: 'M PLUS 1 Code', sans-serif;
+  margin: 2vw;
+}
+
+.boardContainer {
+  display:flex;
+  flex-flow: row nowrap ;
+}
+
+h4 {
+  background-color: #F2CC8F;
+  color: #3D405B;
+  text-align: center;
+  border-radius: 5px;
+  padding: 5px;
+}

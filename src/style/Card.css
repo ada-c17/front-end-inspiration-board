@@ -1,0 +1,31 @@
+
+.Card {
+    display: flex;
+    background-image: url("../assets/smallcloud1.png");
+    background-size: contain;
+    background-repeat: no-repeat;
+    width: 250px;
+    height: 200px;
+    align-content: center;
+    align-self: center;
+    color: black;
+    margin-top: 1vh;
+    text-align: center;
+    justify-content: center;
+}
+
+ul {
+    margin-top: 4vh;
+    margin-right: 3vw;
+}
+.likesCount {
+    display:flex;
+    color: #F2CC8F;
+    background-color: #3D405B;
+    width: 60px;
+    margin-left: 7vw;
+}
+
+.cardButton {
+    margin-top: 5vh;
+}

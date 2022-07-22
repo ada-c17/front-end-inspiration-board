@@ -1,0 +1,20 @@
+.errorMessages {
+    border: solid 1px #e07a5f;
+    color: #e07a5f;
+}
+
+.noError {
+    border: none;
+}
+
+.showCard {
+    display: flexbox;
+} 
+  
+.hideCard {
+  display: none;
+}
+
+form h4 {
+    background-color: #F2CC8F;
+}
