@@ -1,0 +1,80 @@
+.board {
+    background-color: rgb(225, 80, 157);
+}
+.board-create {
+    background-color: lightyellow;
+}
+
+.board-body {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: auto auto;
+    
+}
+
+.new-card {
+    display: grid;    
+    grid-template-columns: auto;
+    grid-template-rows: auto;
+}
+
+.exisitng-card {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-template-rows: auto;
+}
+
+@media only screen and (max-width:1200px) {
+    .exisitng-card {
+        display: grid;
+        grid-template-columns: auto auto auto;
+        grid-template-rows: auto;
+        height:60vh;
+        overflow-y: scroll;
+    }
+}
+
+@media only screen and (max-width:900px) {
+    .exisitng-card {
+        display: grid;
+        grid-template-columns: 1fr;
+        grid-template-rows: auto;
+    }
+}
+
+.add-card {
+    justify-self: center;
+    align-self: center;
+
+}
+
+.board-title {
+    text-align: center;
+    grid-column-start: 1;
+    grid-column-end: span 2;
+    background: -webkit-linear-gradient(lightblue, #fff);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.board-subtitle {
+    text-align: center;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: skyblue;
+    grid-column-start: 1;
+    grid-column-end: span 2;
+}
+
+.delete-btn {
+    margin: 5%;
+    color: #fff;
+    background-color: rgb(69, 145, 175);
+    border-color: #fff;
+    border-style: dashed;
+    border-width: medium;
+}
+
+.delete-btn:hover {
+    background-color: #84d2ea;
+    cursor: pointer;
+}

@@ -1,0 +1,66 @@
+.card {
+    background-color: rgba(253, 217, 231, 0.941);
+}
+
+.btn {
+    margin: 5%;
+    color: purple;
+    background-color: lightyellow;
+    border-color: #fff;
+    border-style: dashed;
+    border-width: medium;
+}
+
+.btn:disabled {
+    margin: 5%;
+    /* color: #fff; */
+    background-color: lightgrey;
+    border-color: #fff;
+    border-style: dashed;
+    border-width: medium;
+}
+
+.btn:hover:enabled {
+    background-color: skyblue;
+    border-color: transparent;
+    cursor: pointer;
+}
+
+.card-text {
+    color: purple;
+    background-color: skyblue;
+    text-align: center;
+}
+
+.card-like {
+    color: purple;
+    background-color: skyblue;
+    text-align: center;
+}
+
+.likeCount {
+    /* bottom:15px; */
+    size:50px;
+    background-color: transparent;
+    border-color: transparent;
+    left:125px;
+    position:absolute;
+}
+
+.likeCount:hover:enabled {
+    background-color: transparent;
+    border-color: transparent;
+}
+
+.deleteCard{
+    position:absolute;
+    top: 2px;
+    right: 2px;
+    /* align-items: flex-start; */
+    justify-items: flex-end;
+    background-color: transparent;
+    border-color: transparent;
+    color: rgb(225, 80, 157) ;
+    /* align-self: flex-end; */
+
+}

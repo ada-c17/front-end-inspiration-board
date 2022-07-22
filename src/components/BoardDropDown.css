@@ -1,0 +1,31 @@
+.board__selected {
+    background-color: lightyellow;
+    cursor: pointer;
+}
+
+.board__selected:hover {
+    cursor: pointer;
+}
+
+.board-list {
+    cursor: pointer;
+    height:40vh;
+    overflow-y:scroll;
+}
+
+.delete-board-btn {
+    margin: 5%;
+    color: #000;
+    background-color: #53bccc;;
+    border-color: #53bccc;
+    border-style: solid;
+    border-width: medium;
+}
+
+.delete-board-btn:hover {
+    background-color: #53bccc;
+    border-color: #53bccc;
+    border-style: solid;
+    border-width: medium;
+    cursor: pointer;
+}
