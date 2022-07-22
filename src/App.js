@@ -26,7 +26,7 @@ function App() {
       .catch((err) => {
         // console.log(err);
         // throw new Error("error displaying boards");
-        setErrorMessage('error displaying all boards');
+        setErrorMessage("error displaying all boards");
       });
   };
 
@@ -42,7 +42,7 @@ function App() {
       .catch((err) => {
         console.log(err.message);
         //throw new Error("error displaying board");
-        setErrorMessage('error displaying board');
+        setErrorMessage("error displaying board");
       });
   };
 
@@ -53,7 +53,7 @@ function App() {
       })
       .catch((err) => {
         console.log(err.message);
-        setErrorMessage(err.message)
+        setErrorMessage(err.message);
       });
   };
 
@@ -73,7 +73,7 @@ function App() {
       })
       .catch((err) => {
         console.log(err.message);
-        setErrorMessage(err.message)
+        setErrorMessage(err.message);
       });
   };
 
@@ -123,10 +123,10 @@ function App() {
   };
 
   const handleNewCard = (formFields) => {
-    if (formFields.message > 40) {
+    if (formFields.message.length <= 40) {
       postCard(formFields);
     } else {
-      setErrorMessage('message is too long');
+      setErrorMessage("message is too long");
     }
   };
 
