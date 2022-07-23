@@ -11,6 +11,9 @@ const NewCardForm = (props) => {
         if(!message) {
             alert("Please add a message")
             return
+        }
+        else if (message.length > 40) {
+            alert("Please enter a message that is 40 characters or less")
         };
 
         props.onAdd({ message });
@@ -23,7 +26,7 @@ const NewCardForm = (props) => {
             <div>
                 <h2>Create a new card:</h2>
                 <label>Message: </label>
-                <input type="text" placeholder="I'm afraid for the calendar. Its days are numbered."
+                <input type="text" placeholder="Where do fruits go on vacation? Pear-is!"
                 value={message} onChange={(e) => setMessage(e.target.value)}></input>
             </div>
             <input type="submit" value="add card" className="btn"></input>

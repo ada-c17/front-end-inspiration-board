@@ -1,15 +1,24 @@
 body {
-  background: #a8ad97;
+  background: #d7cec7;
   margin: 100px 200px;
+  color: #565656;
 }
 
 h2 {
-  color: #6d1919;
+  color: #76323f;
+}
+
+a {
+text-decoration: none;
+}
+
+.italics {
+  font-style: italic;
+  font-size: small;
 }
 
 .btn {
   display: inline-block;
-  background: #d0c9b5;
   border: none;
   padding: 10px 20px;
   margin: 5px;
@@ -17,11 +26,14 @@ h2 {
   cursor: pointer;
   text-decoration: none;
   font-size: 15px;
-  font-family: inherit;
+}
+
+.selected {
+  border-left: 5px solid #7f423d;
 }
 
 .card {
-  background: #eadad0;
+  background: #c09f80;
   margin: 5px;
   padding: 10px 20px;
   max-width: 200px;

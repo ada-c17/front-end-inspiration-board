@@ -7,10 +7,12 @@ const CardList = (props) => {
     const cardComponents = props.cards.map((card) => {
         return (
             <Card
-                key = {card.cardId}
-                cardId = {card.cardId}
+                key = {card.id}
+                cardId = {card.id}
                 message = {card.message}
-                onDelete = {props.onDeleteCard}></Card>
+                likes_count = {card.likes_count}
+                onDelete = {props.onDeleteCard}
+                onLike = {props.onLikeCard}></Card>
         );
     });
     return (
@@ -25,6 +27,7 @@ CardList.propTypes = {
     cards: PropTypes.arrayOf(PropTypes.object).isRequired,
     onDeleteCard: PropTypes.func,
     onAddCard: PropTypes.func,
+    onLikeCard: PropTypes.func,
     showAdd: PropTypes.bool
 };
 

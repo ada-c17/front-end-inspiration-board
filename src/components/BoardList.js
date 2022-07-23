@@ -7,10 +7,12 @@ const BoardList = (props) => {
     const boardComponents = props.boards.map((board) => {
         return (
             <Board
-                key = {board.boardId}
-                boardId = {board.boardId}
+                key = {board.id}
+                boardId = {board.id}
                 title = {board.title}
-                owner = {board.owner}></Board>
+                owner = {board.owner}
+                onToggle = {props.onToggle}>
+                </Board>
         );
     });
     return (
@@ -25,7 +27,8 @@ const BoardList = (props) => {
 BoardList.propTypes = {
     boards: PropTypes.arrayOf(PropTypes.object).isRequired,
     showAdd: PropTypes.bool,
-    onAddBoard: PropTypes.func
+    onAddBoard: PropTypes.func,
+    onToggle: PropTypes.func
 };
 
 export default BoardList;
