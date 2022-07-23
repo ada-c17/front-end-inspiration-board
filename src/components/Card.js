@@ -6,9 +6,9 @@ const Card = (props) => {
   return (
     <div>
       <section className="card">
-        <p>{props.message}</p>
-        <Button text="❤️" onClick={() => props.onLike(props.cardId)}></Button> {props.likes_count}
-        <Button text="✘" onClick={() => props.onDelete(props.cardId)}></Button>
+        <p className="card-header">{props.message}
+        <Button text="✘" onClick={() => props.onDelete(props.cardId)}></Button></p>
+        <p className="like-btn"><Button text={`${props.likes_count} ❤️`} onClick={() => props.onLike(props.cardId)}></Button></p>
       </section>
     </div>
   );

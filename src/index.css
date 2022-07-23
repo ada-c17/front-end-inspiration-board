@@ -1,11 +1,26 @@
 body {
-  background: #d7cec7;
+  background-image: url(./img/background.jpg);
+  background-size: cover;
   margin: 100px 200px;
-  color: #565656;
+  color: #2a2f2a;
+}
+
+main {
+  max-width: 500px;
+  margin: 30px auto;
+  overflow: auto;
+  min-height: 300px;
+  padding: 30px;
+  background-color: #c9d2c2;
+  border-radius: 5px;
+}
+
+h1 {
+  color: #6f806b;
 }
 
 h2 {
-  color: #76323f;
+  color: #556253;
 }
 
 a {
@@ -26,15 +41,56 @@ text-decoration: none;
   cursor: pointer;
   text-decoration: none;
   font-size: 15px;
+  background: none;
+  font-family: inherit;
 }
 
-.selected {
-  border-left: 5px solid #7f423d;
+.board {
+  background: #6f806b;
+  margin: 5px;
+  padding: 10px 20px;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+.white {
+  color: white;
+}
+
+li {
+  list-style: none;
+}
+
+.card-container {
+  display: grid;
+  grid-template-rows: auto;
+  grid-template-columns: 50% 50%;
+  grid-template-areas:
+    "card card"
 }
 
 .card {
-  background: #c09f80;
-  margin: 5px;
-  padding: 10px 20px;
-  max-width: 200px;
+  background: #97a790;
+  margin-bottom: 10px;
+  padding-left: 20px;
+  width: 200px;
+  height: 125px;
+  border-radius: 5px;
+}
+
+.card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.like-btn {
+  display: flex;
+  justify-content: flex-end;
+}
+
+footer {
+  margin-top: 30px;
+  text-align: center;
+  color: #565656;
 }

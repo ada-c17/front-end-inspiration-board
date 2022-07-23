@@ -28,7 +28,7 @@ const NewBoardForm = (props) => {
     return (
         <form onSubmit = {onSubmit}>
             <div>
-                <h2>Create a new board:</h2>
+                <h2>Create a new topic:</h2>
                 <label>Title: </label>
                 <input type="text" placeholder="Dad Jokes"
                 value={title} onChange={(e) => setTitle(e.target.value)}></input><br></br>
@@ -36,7 +36,7 @@ const NewBoardForm = (props) => {
                 <input type="owner" placeholder="Dad"
                 value={owner} onChange={(e) => setOwner(e.target.value)}></input>
             </div>
-            <input type="submit" value="add board" className="btn"></input>
+            <input type="submit" value="submit topic" className="btn" style={{ backgroundColor: "#b9af63" }}></input>
         </form>
     );
 };

@@ -24,12 +24,12 @@ const NewCardForm = (props) => {
     return (
         <form onSubmit = {onSubmit}>
             <div>
-                <h2>Create a new card:</h2>
+                <h2>Create a new note:</h2>
                 <label>Message: </label>
                 <input type="text" placeholder="Where do fruits go on vacation? Pear-is!"
                 value={message} onChange={(e) => setMessage(e.target.value)}></input>
             </div>
-            <input type="submit" value="add card" className="btn"></input>
+            <input type="submit" value="submit note" className="btn" style={{ backgroundColor: "#b9af63" }}></input>
         </form>
     );
 };

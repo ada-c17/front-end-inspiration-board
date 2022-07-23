@@ -16,9 +16,9 @@ const CardList = (props) => {
         );
     });
     return (
-        <section>
+        <section className="card-container">
             {cardComponents}
-            <Button text={props.showAdd ? "hide add card form": "add card"}
+            <Button text={props.showAdd ? "hide add note form": "add a note"} color={props.showAdd ? "#a3905c": "#b9af63"}
             onClick={props.onAddCard}></Button></section>
     );
 };

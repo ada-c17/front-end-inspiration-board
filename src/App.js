@@ -10,12 +10,11 @@ const backEndUrl = process.env.REACT_APP_BACKEND_URL;
 
 function App() {
 
+  const [boards, setBoards] = useState([]);
+  const [selectedBoard, setSelectedBoard] = useState("");
+  const [cards, setCards] = useState([]);
   const [showAddBoard, setShowAddBoard] = useState(false);
   const [showAddCard, setShowAddCard] = useState(false);
-  const [selectedBoard, setSelectedBoard] = useState("");
-
-  const [boards, setBoards] = useState([]);
-  const [cards, setCards] = useState([]);
 
   useEffect(() => {
     getBoards();
@@ -101,32 +100,32 @@ function App() {
 
   return (
     <div>
-      <header>
-      </header>
       <main>
         <section>
-          <h1>Anything and Everything All of the Time</h1>
-          <h2>What is an inspiration board?</h2>
-          <p><a href="https://www.dictionary.com/browse/inspiration-board">
-              Dictionary.com</a> defines an inspiration board as <span className="italics">'a collage of
-              various items, as photographs, drawings, words, fabric swatches, paint chips, and textures,
-              used to visualize specifics in the design of a project or event.'</span>
-          </p>
-          <p>But on this site, you can create boards to collect your favorite quotes,
-            to send positive notes, to share jokes, or whatever you want. Have a look around,
-            the world is your oyster <span className="italics">(as long as the message is 40
-            characters or less)</span>.</p>
+          <h1>Welcome to the Inspiration Board!</h1>
+          <p>Have a look around. Anything that brain of yours can think of can be added.
+            You can create boards to collect your favorite quotes, to send positive notes,
+            to share jokes, or whatever you want. This site is your oyster <span className="italics">
+              (as long as the message is 40 characters or less)</span>.</p>
         </section>
         <section>
           <BoardList boards={boards} onAddBoard={() =>
           setShowAddBoard(!showAddBoard)} showAdd={showAddBoard} onToggle={selectBoard}></BoardList>
-          {showAddBoard && <NewBoardForm onAdd={addBoard}></NewBoardForm>}
-          <CardList cards={cards} onDeleteCard={deleteCard} onLikeCard={likeCard}
-          onAddCard={() => setShowAddCard(!showAddCard)} showAdd={showAddCard}>
-          </CardList>
-         {showAddCard && <NewCardForm onAdd={addCard}></NewCardForm>}
+          { showAddBoard && <NewBoardForm onAdd={addBoard}></NewBoardForm> }
+
+          { selectedBoard ? (<h3>Chosen topic: <span className="white">{selectedBoard.title}</span></h3>): "" }
+          { selectedBoard ? (<CardList cards={cards} onDeleteCard={deleteCard} onLikeCard={likeCard}
+          onAddCard={() => setShowAddCard(!showAddCard)} showAdd={showAddCard}></CardList>): "" }
+
+          { showAddCard && <NewCardForm onAdd={addCard}></NewCardForm> }
         </section>
       </main>
+      <footer>
+        <p>© Anacapamu 2022</p>
+        <li className="italics">credit to <a href="https://www.youtube.com/watch?v=k1BneeJTDcU">Bo Burnham</a> for
+        inspiration of website verbiage</li>
+        <li className="italics">credit to <a href="https://unsplash.com/photos/Ow-joAY8NyY">Alfred Aloushy</a> for background
+        image</li></footer>
     </div>
   );
 };

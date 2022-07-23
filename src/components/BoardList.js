@@ -11,15 +11,16 @@ const BoardList = (props) => {
                 boardId = {board.id}
                 title = {board.title}
                 owner = {board.owner}
-                onToggle = {props.onToggle}>
+                onToggle = {props.onToggle}
+                selected = {props.selected}>
                 </Board>
         );
     });
     return (
         <section>
-            <h2>All Boards</h2>
+            <h2>Mountains of Topics</h2>
             {boardComponents}
-            <Button text={props.showAdd ? "hide add board form": "add board"}
+            <Button text={props.showAdd ? "hide add topic form": "add a topic"} color={props.showAdd ? "#a3905c": "#b9af63"}
             onClick={props.onAddBoard}></Button></section>
     );
 };
@@ -28,7 +29,8 @@ BoardList.propTypes = {
     boards: PropTypes.arrayOf(PropTypes.object).isRequired,
     showAdd: PropTypes.bool,
     onAddBoard: PropTypes.func,
-    onToggle: PropTypes.func
+    onToggle: PropTypes.func,
+    selected: PropTypes.bool
 };
 
 export default BoardList;

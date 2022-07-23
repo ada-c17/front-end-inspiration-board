@@ -3,9 +3,9 @@ import PropTypes from 'prop-types';
 
 const Board = (props) => {
   return (
-    <li className={`${props.selected ? 'selected': ''}`}
+    <li className="board"
     onDoubleClick={() => props.onToggle(props.boardId, props.title, props.owner)}>
-    {props.title} by {props.owner}</li>
+    <span className="white">{props.title}</span> by <span className="white">{props.owner}</span></li>
   );
 };
 
