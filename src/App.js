@@ -28,6 +28,7 @@ function App() {
         title: res.data.board.title,
         owner: res.data.board.owner
       };
+      setSelectedBoard()
       setBoards((otherBoards) => {
         return [...otherBoards, newBoard];
       });
