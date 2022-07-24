@@ -98,6 +98,16 @@ function App() {
     });
   };
 
+  const sortCards = (category) => {
+    if (category === "id") {
+      setCards([...cards.sort(function(a,b){return a.id - b.id})]);
+    } else if (category === "abc") {
+      setCards([...cards.sort(function(a,b){return a.message > b.message ? 1: -1})]);
+    } else if (category === "likes") {
+      setCards([...cards.sort(function(a,b){return b.likes_count - a.likes_count})]);
+    };
+  };
+
   return (
     <div>
       <main>
@@ -114,6 +124,16 @@ function App() {
           { showAddBoard && <NewBoardForm onAdd={addBoard}></NewBoardForm> }
 
           { selectedBoard ? (<h3>Chosen topic: <span className="white">{selectedBoard.title}</span></h3>): "" }
+          { selectedBoard ? (
+            <section>
+              <label>Sort notes by: </label>
+                <select onChange={ ((e) => sortCards(e.target.value)) }>
+                  <option value="id">id</option>
+                  <option value="abc">alphabetically</option>
+                  <option value="likes">likes</option>
+                </select>
+            </section>
+          ): "" }
           { selectedBoard ? (<CardList cards={cards} onDeleteCard={deleteCard} onLikeCard={likeCard}
           onAddCard={() => setShowAddCard(!showAddCard)} showAdd={showAddCard}></CardList>): "" }
 
