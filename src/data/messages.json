@@ -1,0 +1,21 @@
+[
+    {
+      "id": 1,
+      "image":"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQu9qa2FKzekjelSQz910jeTLoXAbZj6Fat1g&usqp=CAU",
+      "text":"Do What Makes You Happy",
+      "liked": false
+    },
+    {
+      "id": 2,
+      "image":"src/images/70s_image_4.png",
+      "text":"Think Positive",
+      "liked": false
+    },
+    {
+      "id": 3,
+      "image":"https://www.shutterstock.com/image-vector/hippie-icons-signs-peace-love-music-1920101408",
+     "text":"Words To Live By",
+      "liked": false
+    }
+   
+]

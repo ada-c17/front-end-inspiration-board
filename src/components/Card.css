@@ -1,0 +1,42 @@
+ /* .card{
+    display: grid;
+    margin: .6em;
+    margin-left: 1em;
+    grid-template-columns:  150px 150px ; 
+    grid-template-rows:  200px 200px;  
+    grid-column-gap: 20px;
+    grid-row-gap: 10px;
+    grid-auto-flow: row;
+    outline: 2px indigo; 
+    height:80vh;
+    width: 52vw;
+ } */
+  
+ 
+  #card_1{
+  background-image: url("../images/70s_yin_yang.jpg") ; 
+  background-size: contain;
+  background-repeat: no-repeat;;
+  }
+
+  #card_2{
+    background-image: url("../images/disco_image-3.jpeg") 
+     ;
+     background-size: contain;
+     background-repeat: no-repeat;
+     
+    }
+
+ .card .card_btn{
+    background-color: lightgrey;
+    padding:.2em;
+    margin-left: 1em;
+    width:20%;
+  }
+
+
+
+
+
+
+  

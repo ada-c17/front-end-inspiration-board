@@ -1,0 +1,36 @@
+ .board_70s{
+    align-items:center;
+    justify-content: center;
+    margin: 4px;
+    height: 10em;
+    width: 18em;
+    display:block;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-image: url("../images/70_record_player.jpeg");
+}
+
+.board_80s{
+    display: block;
+    align-items:center;
+    justify-content: center;
+    margin: 4px;
+    height: 10em;
+    width: 18em;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-image: url("../images/80s_cover_image.jpg");
+}
+
+.board_90s{
+
+    align-items:center;
+    justify-content: center;
+    margin: 4px;
+    height: 10em;
+    width: 18em;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-image: url("../images/70s_image_1.jpg");
+}
+
