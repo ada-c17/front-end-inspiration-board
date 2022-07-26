@@ -1,0 +1,64 @@
+html{  
+  background-color: #CBB6FF; 
+  background-image: linear-gradient( #FFD6FF,#C8B6FF);
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-attachment: scroll;
+  margin: 0 auto;
+}
+.app{
+  font-family: 'Courier New';
+}
+.App-title {
+  display: flex;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  font-family: 'Courier New';
+  color: black;
+  padding-top: 50px;
+}
+
+.routes{
+  display:flex;
+  justify-content: space-evenly;
+  font-family: 'Courier New', Courier, monospace;
+  font-size: 20px;
+}
+
+.create-board{
+  background-color: #f3f3f3;
+  padding: .9em;
+  border-radius: 15px;
+  font-family: 'Courier New';
+}
+
+.choose-board{
+  background-color: #f3f3f3;
+  padding: .9em;
+  border-radius: 15px;
+  font-family: 'Courier New';
+  width: 25%
+
+}
+
+.InspoContainers{
+  display: flex;
+  justify-content: space-evenly;
+}
+
+
+.newBoardForm{
+  background-color: #f3f3f3;
+  padding: .75em;
+  border-radius: 10px;
+  width: 300px;
+  height: 450px;
+
+}
+.inspoList{
+  background-color: #f3f3f3;
+  padding: .75em;
+  border-radius: 10px;
+  width: 300px;
+  height: 450px;
+}
