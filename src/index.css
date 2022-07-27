@@ -1,0 +1,86 @@
+
+body {
+  margin: 0;
+  /* font-family: -apple-system, BlinkMacSystemFont, 'SpaceFont', */
+    /* sans-serif; */
+  font-family: 'Cairo', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background-color: black;
+  color:rgb(72, 222, 222);
+  /* height: 100vh; */
+  font-size: 1.4em;
+  /* position: relative; */
+  display: grid;
+  grid-gap: 1em 0;
+  grid: auto auto ;
+  margin: 0;
+  min-height: calc(100vh - 40px);
+  height:100%;
+  width: 100%;
+  background-image: 
+  url("./data/Darkspace.jpg");
+  background: cover;
+  background-size: 150%;
+  backdrop-filter: blur(0.3px);  
+}
+
+@font-face {
+  font-family: 'SpaceFont';
+  src: local('SpaceFont'), url(./fonts/spacefont.woff2) format('woff2');
+}
+
+  @font-face {
+    font-family: 'IndieFlower';
+    src: local('IndieFlower'), url(./fonts/IndieFlower.woff2) format('woff2');
+  }
+
+a {
+color:rgb(243, 179, 83);
+text-decoration: none;
+padding: 14px 25px;
+}
+
+#add-new-space{
+  color:chocolate;
+  font-size: 1.6em;
+}
+
+a:hover {
+  color:rgb(247, 173, 159);
+  text-decoration: underline;
+
+}
+
+
+.HomeLink {
+  font-family: 'SpaceFont';
+  float:right;
+  line-height : 40px ;
+  font-size: 1.8rem;
+  text-decoration: none;
+  text-align: center;
+  margin-right: 100px;
+  margin-top: 20px; 
+  background-image: url("./data/earth3.png");
+  background-size: cover;
+  color:rgb(171, 234, 134);
+  text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
+  font-weight: bold;
+  height:150px;
+  width:130px;
+  z-index: 2;
+
+}
+
+footer {
+  align-self: end;
+  grid-column: 2;
+  padding: 20px;
+  bottom: 0px;
+  height: 40px;
+  font-size: 0.9em;
+  margin-top: 200px;
+  padding: 2rem 4rem;
+  padding-left: 100px;
+}

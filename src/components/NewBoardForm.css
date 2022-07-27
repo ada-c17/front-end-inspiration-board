@@ -1,0 +1,20 @@
+.new-board{
+    margin-bottom:50px;
+}
+.galaxy-text{
+    text-align: center;
+}
+.visible{
+    margin-left:450px;
+    background-image:none;
+    float:left;
+    height:250px;
+    width:500px;
+}
+
+.not-visible{
+    background-image:none;
+    float:left;
+    height:0px;
+    width:0px;
+}

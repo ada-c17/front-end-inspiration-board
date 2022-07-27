@@ -1,0 +1,83 @@
+.card {
+    position:absolute;
+    cursor: move;
+    font-family: IndieFlower;
+    font-size:80%;
+    font-stretch:expanded;
+    width: 215px;
+    overflow-wrap: break-word;
+    margin: 25px;
+    user-select: none;
+    font-weight: bolder;
+    color: rgb(45, 72, 105);
+    border-radius: 1rem;
+    padding: 0.4em; 
+    box-shadow: 0 0 0.2rem #fff,
+                0 0 1rem #13c7fe,
+                inset 0 0 0.5rem #13c7fe; 
+  }
+
+
+  
+  #new-item {
+    user-select: none;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+  input {
+    border-radius: 5px 0px 0px 5px;
+    color:cornflowerblue;
+    font-size: 1.3em;
+    background-color: transparent;
+    overflow: visible;
+    padding: 0.2em;
+    margin: 1.5em;
+  }
+  
+  input:focus {
+    outline: none;
+  }
+  
+  button {
+    cursor: pointer;
+    background-color: rgb(128, 128, 128);
+    font-size: 1em;
+    padding: 0.7em;
+    border-radius: 0px 5px 5px 0px;
+  }
+  
+  button:hover {
+    background-color: rgb(164, 162, 173);
+  }
+  
+  #delete {
+    padding: 5px;
+    font-size: 0.6em;
+    position:absolute;
+    top: 0;
+    right: 0; 
+    font-size: 1.2em;
+    background-color: transparent;
+    color:rgb(14, 2, 68);
+    border: none;
+  }
+  
+  #delete:hover {
+    color: rgb(255, 55, 55);
+  }
+  #stars{
+    background-color: transparent;
+    border: none;
+    font-size: 1.4em;
+    padding: 0;
+  }
+
+#likes {
+    position:relative;
+    padding: 4px;
+    color:rgb(26, 13, 205);
+}
+
+

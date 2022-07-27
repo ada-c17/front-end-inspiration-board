@@ -1,0 +1,29 @@
+.story {font-size: 1em;
+    width: 90%;
+    text-align: left;
+    margin: auto;
+    font-family: "Cairo";
+    color:rgb(137, 191, 237);
+    font-weight: 400;
+}
+
+#first-line::first-letter {
+    font-size: 70px;
+    display: block;
+    float: left;
+    line-height: 0.1;
+    margin: 0.2em .1em 0 0;
+}
+
+
+#second-line:first-letter, #third-line:first-letter, #fourth-line:first-letter, #fifth-line:first-letter, #sixth-line:first-letter {
+    font-size: 30px;
+    display: block;
+    float: left;
+    line-height: 0.9;
+    margin: 0.1em .1em 0 0;
+}
+
+#story-button {
+    color:rgb(155, 86, 219);
+}
