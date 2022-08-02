@@ -1,0 +1,17 @@
+.cards-dropdown{
+    background-color: transparent;
+    display: flex;
+    flex-direction: column;
+    border: 1px solid lavender;
+}
+
+.dropdown-row{
+    cursor: pointer;
+    text-align: start;
+    margin: 2px 0;
+}
+
+form > label > h4 {
+    color: blue;
+    font-weight: 5;
+}

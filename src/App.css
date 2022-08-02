@@ -1,0 +1,81 @@
+.App {
+    background-color: #d8d5e8;
+    min-height: 70vh;
+    display: flex;
+    flex-direction: row;
+    flex-flow: row;
+    align-items: left;
+    justify-content: space-evenly;
+    font-size: calc(10px + 2vmin);
+    color: white;
+    font-family: 'Fira Sans', sans-serif;
+    font-family: 'Luckiest Guy';
+}
+
+.board-label {
+    margin-left: 20px;
+}
+
+
+
+/*BoardForm*/
+.form-inputs{
+    margin: 50px;
+}
+
+.form{
+    border-radius: 10px;
+    padding: 10px;
+    margin: 10px;
+    width: 300px;
+    background: repeating-radial-gradient(#f6d5f7, #d4f2f0 ,#b69efe );
+    box-shadow: 0px 6px 10px rgba(0, 0, 0, 0.25);
+}
+
+.selected-value{
+    border: solid .5px lavender;
+    padding: 10px;
+    margin: 10px;
+}
+
+.input {
+    box-shadow: 0px 6px 10px rgba(0, 0, 0, 0.25);
+    font-family: 'Fira Sans', sans-serif;
+    font-family: 'Luckiest Guy';
+    padding: 5px;
+    margin: 10px;
+    color: rgb(73, 18, 125);
+
+}
+
+
+.form-button {
+    margin-left: 150px;
+    margin-bottom: 30px;
+    margin-top: 30px; 
+    color: rgba(201, 118, 216, 0.777);
+    border:0;
+    padding: 8px;
+    border-radius: 8px;
+    cursor: pointer;
+    box-shadow: 0px 6px 10px rgba(0, 0, 0, 0.25);
+    font-family: 'Fira Sans', sans-serif;
+    font-family: 'Luckiest Guy';
+}
+
+.form-contents{
+    display: grid;
+    margin: 10px;
+    padding: 20px;
+}
+
+.label {
+    margin: 10px;
+}
+
+
+.displayBoards {
+    border: solid .5px lavender;
+    margin-top: 10px;
+    padding: 30px;
+}

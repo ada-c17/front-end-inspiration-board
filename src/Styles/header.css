@@ -1,0 +1,41 @@
+.Header{
+    display: flex;
+    background-color: #d8d5e8;
+    min-height: 20vh;
+    color: white;
+    border-bottom: solid .5px lavender;
+    font-family: 'Fira Sans', sans-serif;
+    font-family: 'Luckiest Guy';
+}
+div > h1 {
+    min-width: fit-content;
+    /* flex-wrap: nowrap; */
+
+}
+.Header > h1 {
+    padding: 10px;
+    min-width: fit-content;
+
+}
+
+.Header > img {
+    margin-right: 50px;
+}
+Header > nav {
+    margin: 10px;
+    padding: 10px;
+    width: 200px;
+    justify-content: space-evenly;
+    
+}
+
+.links{
+    list-style-type: none;
+    width: 500px;
+    display: flex;
+    margin-left: 400px;
+    justify-content: space-evenly;
+    text-decoration: none;
+}
+
+

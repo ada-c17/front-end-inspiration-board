@@ -1,0 +1,155 @@
+/* Cards in Selected Board*/
+
+.likes:hover .heart {
+    animation: focuscard 1s ease-in-out both;
+    transform: scale(1.1)
+}
+
+@keyframes focuscard {
+    0% {
+        transform: scale(1.1)
+    }
+
+    100% {
+        transform: scale(1.1)
+    }
+}
+
+.exit:hover .exit-class {
+    animation: focuscard 1s ease-in-out both;
+    transform: scale(1.1)
+}
+
+@keyframes focuscard {
+    0% {
+        transform: scale(1.1)
+    }
+
+    100% {
+        transform: scale(1.1)
+    }
+}
+
+
+/* InspoBoard Header Leftside Text*/
+
+
+.Header:hover .animate {
+    color: rgb(177, 181, 184);
+    animation: blowup .2s ease-out forwards 2 alternate;
+    transform:scale(1.1);
+}
+
+
+@keyframes blowup {
+    0% {
+        transform: scale(1);
+        color: whitesmoke;
+    }
+    100% {
+        transform: scale(1.1);
+    }
+} 
+/* Board Form*/
+
+.form-animate:hover .form {
+    animation: grow 1s ease-in-out both;
+    transform: scale(1.1)
+}
+
+@keyframes grow {
+    0% {
+        transform: scale(1.1)
+    }
+
+    100% {
+        transform: scale(1.1)
+    }
+}
+
+/*Footer*/
+
+.footer-image{
+    animation: back-and-forth 40s ease-in forwards infinite;
+}
+
+@keyframes back-and-forth {
+    0% {
+        transform: rotateY(360deg) translateZ(0)
+    }
+
+    33% {
+        transform: rotateY(270deg) translateZ(0)
+    }
+
+
+    100% {
+        transform: rotateY(0deg);
+    }
+}
+/*Boards Page Title Pointing arrow*/
+
+.board-class:hover .board-label{
+    transform: translateX(10%)
+}
+
+.board-class .board-label{
+    transition: transform .5s; 
+}
+
+/*Home Page Text*/
+
+.home-text{
+    letter-spacing: 2px;
+    cursor: pointer;
+    color: rgb(255, 255, 255);
+}
+
+.home-text:hover span:nth-child(1){
+    margin-right: 5px;
+}
+
+.home-text:hover span:nth-child(1):after{
+    content:'✧*･ﾟ';
+    color: rgb(226, 200, 217);
+}
+
+.home-text:hover span:nth-child(2){
+    margin-left: 30px;
+}
+
+.home-text:hover span {
+    color: hsl(297, 41%, 83%);
+    text-shadow: 0 0 10px hsl(60, 11%, 95%), 0 0 20px hsl(60, 11%, 95%), 0 0 40px hsl(60, 11%, 95%);
+}
+
+.home-text:hover span:nth-child(2):after{
+    content:'＊✿';
+    color: rgb(79, 224, 106);
+}
+
+.home-text:hover span:nth-child(3){
+    margin-left: 30px;
+}
+
+.home-text:hover span:nth-child(3):after{
+    content:'｡･:*:･ﾟ★';
+    color: rgb(132, 78, 218);
+}
+
+.home-text:hover span:nth-child(4){
+    margin-left: 30px;
+}
+
+.home-text:hover span:nth-child(4):after{
+    content:'⋆｡˚☽˚｡⋆';
+    color: rgb(60, 138, 216);
+}
+
+.home-text:hover span:nth-child(5){
+    margin-left: 30px;
+}
+
+.home-text span {
+    transition: 1s ease-out;
+}

@@ -1,0 +1,68 @@
+.modal-container {
+    width: 200px;
+    height: 200px;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border-radius: 10px;
+    padding: 10px;
+    margin: 10px;
+    width: 300px;
+    background: repeating-radial-gradient(#f6d5f7, #d4f2f0 ,#b69efe );
+    box-shadow: 0px 6px 10px rgba(0, 0, 0, 0.25);
+    z-index: 1000;
+    display: grid;
+
+}
+
+.modal-body {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    max-width: 5px;
+    padding: 5px;
+
+}
+
+.modal-header {
+    margin: 10px;
+}
+
+.next-button {
+    box-shadow: 0px 6px 10px rgba(0, 0, 0, 0.25);
+    color: purple;
+    background: repeating-radial-gradient(#ffffc7, #f1eab9 ,#ff8c8c );
+    font-family: 'Fira Sans', sans-serif;
+    font-family: 'Luckiest Guy';
+    border:0;
+    padding: 8px;
+    border-radius: 8px;
+    cursor: pointer;
+    margin-left: 20px;
+}
+
+.view-button {
+    box-shadow: 0px 6px 10px rgba(0, 0, 0, 0.25);
+    color: purple;
+    background: repeating-radial-gradient(#c666b3, #e7d972 ,#3ac368 );
+    font-family: 'Fira Sans', sans-serif;
+    font-family: 'Luckiest Guy';
+    border:0;
+    padding: 8px;
+    border-radius: 8px;
+    cursor: pointer;
+    margin-left: 20px;
+}
+
+.delete-button {
+    box-shadow: 0px 6px 10px rgba(0, 0, 0, 0.25);
+    color: purple;
+    background: repeating-radial-gradient(#c666b3, #e89adb ,#efa525 );
+    font-family: 'Fira Sans', sans-serif;
+    font-family: 'Luckiest Guy';
+    border:0;
+    padding: 8px;
+    border-radius: 8px;
+    cursor: pointer;
+    margin-left: 20px;
+}
