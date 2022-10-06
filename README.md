@@ -7,7 +7,7 @@ The goal of the project is to create a digital inspiration board where users can
 
 ## [Front-end deployment](https://migrationmess-front-end.herokuapp.com/)
 ## [Back-end deployment](https://insp-board-migrationmess.herokuapp.com/boards)
-
+## [Back-end Github Repo](https://github.com/mctagle/back-end-inspiration-board)
 
 ## Getting Started with Create React App
 
