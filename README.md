@@ -1,6 +1,8 @@
 # Getting Started with Create React App
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app) and deployed with [Heroku](https://migrationmess-front-end.herokuapp.com/).
+
+## Front-end deployment: https://migrationmess-front-end.herokuapp.com/
 
 ## Available Scripts
 
