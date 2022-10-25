@@ -14,7 +14,7 @@ function App() {
   const [boardColor, setBoardColor] = useState();
   const [selectedCards, setSelectedCards] = useState([]);
 
-  const URL = process.env.REACT_APP_BACKEND_URL;
+  const URL = "https://web-production-916c.up.railway.app";
 
   // GET all boards and set boards data
   useEffect(() => {
