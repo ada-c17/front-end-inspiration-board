@@ -1,0 +1,55 @@
+#sort-board-menu {
+  border: 1px solid white;
+  margin: 1rem;
+  padding: .5rem;
+  text-align: left;
+  /* width: fit-content; */
+  color: white;
+}
+
+.sort-board-menu--container {
+  grid-column: 1;
+}
+.sort-board-menu--label {
+  font-weight: bold;
+  /* margin: 0; */
+  /* text-decoration: underline; */
+}
+
+.board-menu-item {
+  font-family: "Dosis";
+  font-size: 1.2rem; 
+  /* // adjust the font size to scale the whole board */
+  letter-spacing: .15em;
+  text-transform: uppercase;
+  text-align: center;
+  line-height: 1.5;
+  text-shadow: 1px 1px #666, 3px 3px #000;
+  color: #fff;
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  display: block;
+  font: 1rem 'Segoe UI', 'Roboto', sans-serif;
+  margin-top: .25rem;
+}
+
+.board-menu-item__selected {
+  color: #80EFD3;
+}
+
+#page-title {
+  font-size: 3.5rem;
+  margin: 1rem;
+  padding: 0;
+}
+
+#board-menu--check-mark {
+  vertical-align: text-bottom;
+}
+
+h4.sort-board-menu--label {
+  margin-block-start: 0;
+  margin-block-end: 0.5em;
+  text-align: center;
+}

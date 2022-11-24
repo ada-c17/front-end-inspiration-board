@@ -1,0 +1,87 @@
+.App {
+  text-align: center;
+}
+
+body{
+  background-image: url("/images/josephine-bredehoft-KsAo8ouBn8A-unsplash.jpeg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-attachment: fixed;
+  /* cursor: pointer; */
+}
+
+.App-header {
+  background-color: #282c34;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+ul {
+  list-style-type: none;
+  line-height: 2.5;
+  padding: 0;
+  cursor: pointer;
+}
+
+.board-container {
+  display: grid;
+  grid-template-columns: 25vw 75vw;
+  grid-template-rows: 100vh;
+  margin: 0;
+}
+
+.board-containter--cork {
+  width: 100%;
+  grid-column: 2;
+  grid-row: 1;
+  overflow: scroll;
+}
+
+.board-containter--letter {
+  grid-row: 1;
+  grid-column: 1;
+  font-family: "Dosis";
+  font-size: 1.2rem; 
+  /* // adjust the font size to scale the whole board */
+  letter-spacing: .15em;
+  text-transform: uppercase;
+  text-align: center;
+  text-shadow: 1px 1px #666, 3px 3px #000;
+  color: #fff;
+  /* width: 100%; */
+  /* height: 100%; */
+  padding: 20px 0 0 0;
+  overflow: scroll;
+  border: 10px solid #eee;
+  background: linear-gradient( #0e0e0e 65%, #030303 66%) top .3em center / 100% .80em repeat-y;
+}
+
+.board-list--icons {
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.hidden {
+  display: none;
+}
+
+.shown {
+  display: block;
+}
+
+form {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  justify-self: center;
+  padding: .25rem;
+} 
+
+input {
+  margin: .5rem;
+}

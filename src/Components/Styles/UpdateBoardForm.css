@@ -1,0 +1,29 @@
+.update-board {
+    background-color: rgba(255,255,255,0.7);
+    border: 1px dotted black;
+    border-radius: 5px;
+    /* font: bold black 1rem 'Dosis'; */
+    padding: .5rem;
+    display: grid;
+    grid-template-rows: auto;
+    text-align: left;
+    align-content: center;
+    margin: 1rem;
+}
+
+.update-board-form {
+    display: grid;
+    grid-template-rows: auto;
+    text-align: center;
+    align-content: center;
+    font-weight: bold;
+}
+
+h3, .update-board-form_button {
+    margin-top: 5%;
+    text-align: center;
+}
+
+update-board-form_button{
+    width: 10px;
+}

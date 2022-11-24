@@ -1,0 +1,12 @@
+.verify-delete-board {
+  background-color: rgba(255,255,255,0.7);
+  border: 1px dotted black;
+  border-radius: 5px;
+  font: bold black 1rem 'Dosis';
+  padding: .5rem;
+  margin: 1rem;
+}
+
+.verify-delete-board__button {
+ margin: .5rem; 
+}
