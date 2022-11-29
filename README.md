@@ -1,3 +1,46 @@
+# Full-Stack Inspiration Board
+
+## Skills Assessed
+* Following directions and reading comprehension
+* Using git as part of the development workflow
+* Demonstrating interaction between front-end layer and back-end layer
+* Applying deployment practices
+* Practice independent research
+
+Working with the Flask framework:
+
+* Creating models
+* Creating conventional RESTful CRUD routes for a model
+* Create unconventional routes for custom behavior
+* Apply knowledge about environment variables
+* Creating a one-to-many relationship between two models
+
+Working with the React JS library:
+
+* Sending data to nested components through props
+* Receiving and using props within a component
+* Initializing and using state within a component
+* Passing callback functions to child components and use them to update state
+
+## Goal
+Once upon a time, there existed an Ada Developers Academy office with an inspiration board...
+
+It was a delightful board, where people could anonymously post short messages of encouragement to each other. It was filled with the kindest words and the nerdiest programming jokes.
+
+![board](https://user-images.githubusercontent.com/60857422/204662440-852c9fa2-f0a5-4382-8d1e-2b22b1075afc.jpeg)
+
+_Fig. A corkboard full of pinned sticky notes, where each sticky note has a short, inspirational message._
+
+Our goal is to create a digital inspiration board.
+
+Users should be able to create one or more boards.
+
+Then, a user can select a single board. When a user selects a board, they can see all the cards associated with that board.
+
+Users can even "+1" the cards that they agree with!
+
+We will use this project as a chance to see how the front-end layer and back-end layer interact. This is also an opportunity to bring some creativity to the UI.
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
