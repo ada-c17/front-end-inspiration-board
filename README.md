@@ -1,5 +1,7 @@
 # Full-Stack Inspiration Board
 
+![InspoBoard](https://user-images.githubusercontent.com/60857422/204663350-276ae44d-6db5-4272-bede-41b95cadc021.png)
+
 ## Skills Assessed
 * Following directions and reading comprehension
 * Using git as part of the development workflow
