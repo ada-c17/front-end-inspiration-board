@@ -1,0 +1,10 @@
+.card-section{
+    display: flex;
+    flex-direction: row;  
+    flex-wrap: wrap;
+    width: 100%;
+    justify-content: space-around;
+    margin-left: 0px;
+    
+    margin-top: 1vh;
+    }

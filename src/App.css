@@ -1,0 +1,113 @@
+@import url('https://fonts.googleapis.com/css2?family=Edu+VIC+WA+NT+Beginner:wght@400;600&family=Grape+Nuts&family=Source+Code+Pro:wght@300&display=swap');
+
+
+
+.container {
+  background-color: rgb(146, 203, 146);
+  font-family: 'Edu VIC WA NT Beginner', cursive;
+  color: #6c584c;
+  display: flex;
+  flex-direction: column;
+  background-image: url('../resource/green-8.jpg');
+  background-size:cover;
+  background-attachment: fixed;
+
+}
+
+main {
+  display: flex;
+  flex-direction: column;
+  margin: 0 10%;
+  flex-wrap: wrap;
+  text-align: center;
+}
+
+h1 {
+  text-align: center;
+  font-weight: 800;
+  font-size: 3rem;
+}
+
+h2 {
+  font-size: 1.6rem;
+}
+
+.board-section{
+  display: inline-block;
+  width: 50%;
+}
+
+.board-form-section {
+  display: inline-block;
+  width: 50%;
+  text-align: left;
+}
+
+.top-section{
+  display: flex;
+  flex-direction: row;
+  align-items:center;
+  justify-content: space-around;
+  margin: 0;
+}
+
+.bottom-section{
+  margin: 0;
+  display: inline-block;
+}
+
+.form{
+  margin: 20px;
+}
+
+.hide-button{
+  display: block;
+  margin: 0 30%;
+  text-align: center;
+  background-color: rgb(110, 88, 78);
+  border: aliceblue 3px solid;
+  border-radius: 1rem;
+  color:aliceblue;
+  padding: .6vw;
+  font-size: 1vw;
+  font-weight: bold;
+}
+
+.hide-button:hover {
+  cursor: pointer;
+}
+
+
+.board-titles {
+  list-style: none;
+  padding: 0;
+  height: 16vw;
+  overflow-y: auto;
+}
+
+.card-form-section {
+  width: 30%;
+}
+
+button:hover {
+  cursor: pointer;
+}
+
+input[type="submit"]:hover {
+  cursor: pointer;
+}
+
+input[type="submit"] {
+  padding: 5px 10px;
+  border-radius: 5px;
+}
+
+footer {
+  text-align: center;
+}
+
+input[type="text"] {
+  line-height: 1.5em;
+  font-size: 1em;
+}
+

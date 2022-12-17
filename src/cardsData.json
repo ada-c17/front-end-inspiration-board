@@ -1,0 +1,22 @@
+
+    [{
+        "card_id": 1,
+        "board_id": 1,
+        "message": "Anything I am No.1",
+        "likes_count":0
+
+    },
+    {
+        "card_id": 2,
+        "board_id": 1,
+        "message": "Anything I am No.2",
+        "likes_count":5
+
+    },
+    {
+        "card_id": 3,
+        "board_id": 1,
+        "message": "Anything I am No.3",
+        "likes_count":3
+    }]
+

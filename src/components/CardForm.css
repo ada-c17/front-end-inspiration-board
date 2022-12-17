@@ -1,0 +1,11 @@
+.card-form {
+    margin-bottom: 2vh;
+    text-align: left;
+    padding: 2vw;
+    
+}
+
+.card-form input {
+    display: block;
+    margin-bottom: 1vh;
+}

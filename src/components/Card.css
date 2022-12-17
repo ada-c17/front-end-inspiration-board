@@ -1,0 +1,22 @@
+.one-card {
+    display: inline;
+    font-weight: bold;
+    background-color: rgb(146, 203, 146);
+    color: #6c584c;
+    border: 3px solid #6c584c;
+    border-radius: 1rem;
+    width: 20vw;
+    height: fit-content;
+    min-width: 150px;
+    margin-bottom: 2vh;
+}
+
+.card-button {
+    padding: 5px 10px;
+    margin: 10px 10px;
+    border-radius: 5px;
+}
+
+#tree {
+    font-size: 2em;
+}
