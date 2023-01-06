@@ -1,0 +1,54 @@
+
+
+h1.boardId{
+  display: none;
+}
+
+h2{
+  font-size: 1.5em;
+}
+
+h3{
+  font-size: 1em;
+}
+
+.boardsTitle{
+	color: #f1ecca;
+  font-size: 2em;
+  margin: .5em;
+  margin-left: 3em;
+
+}
+
+.board-bubble button {
+  border-radius: 20px;
+  width: 30rem;
+  height: 5rem;
+  margin: 2px;
+  display: flex;
+  flex-direction: column;
+  justify-content:center;
+  align-items:center;
+}
+
+.board-bubble button:hover{
+  border-width: 5px;
+}
+
+.no-highlight {
+  border-width: 1px;
+}
+
+.highlight {
+  border-width: 10px;
+}
+
+.selected {
+  border: 7px solid rgb(160, 172, 85) !important;
+}
+
+.deselected {
+  background-color: #f8f9fa;
+}
+
+

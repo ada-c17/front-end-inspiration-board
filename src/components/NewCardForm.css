@@ -1,0 +1,10 @@
+.input_more_40 {
+    border: 3px solid red !important;
+    color: red !important;
+}
+
+.btn#dropdown-menu-align-end{
+	width: 12rem !important;
+	background-color: #f1ecca !important;
+	color: black !important;
+}

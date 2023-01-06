@@ -1,0 +1,70 @@
+html{
+  background-color: black;
+}
+
+main{background-color: black;}
+
+h1{
+  font-size: 3em;
+}
+
+h2{
+  font-family: 'Bungee', cursive;
+}
+nav{
+  padding: 2em;
+  align-items: center;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  background-image: url("../public/pink_sky.jpg");
+  background-position:center 50%;
+}
+
+
+.sort{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  padding-top: 0;
+  padding-bottom: 1em;
+  height: fit-content;
+  align-items: center;
+  justify-items: center;
+  background-image: url("../public/pink_sky.jpg");
+  background-position:center 65%;
+}
+
+.hide{
+  display: none;
+}
+
+.title{
+  color:rgb(190, 102, 143);
+  font-family: 'Bungee Shade', cursive;
+}
+
+.boards__cards{
+  display: flex;
+  flex-direction: row;
+  justify-content:flex-start;
+}
+
+nav button{ 
+   width:fit-content;
+   height:fit-content;
+   background-color: #cf77b2 !important;
+   color: black !important;
+   box-shadow: 10px 10px rgba(0,0,0,0.2);
+   border-radius:100px;
+
+}
+button::after, button::before{
+    content:"";
+    position:relative;
+    display:inline-block;
+    background:inherit;
+    border-radius:inherit;
+}
+
+
