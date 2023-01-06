@@ -1,0 +1,18 @@
+.boards__item {
+    list-style: none;
+    margin-left: 10px;
+    line-height: 1.5em;
+}
+
+#boardItem {
+    display: flex;
+    justify-content: space-between;
+}
+
+.deleteButton {
+    margin: 1px 4px;
+    color: maroon;
+    border: 0px #C1C1C1 solid;
+    background-color: white;
+    cursor: pointer;
+}
