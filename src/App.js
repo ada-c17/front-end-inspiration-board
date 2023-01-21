@@ -6,7 +6,7 @@ import NewBoardForm from "./components/NewBoardForm";
 import NewCardForm from "./components/NewCardForm";
 import "./css/inspo_board.css";
 
-const kBaseUrl = "https://mission-inspirational-2.herokuapp.com";
+const kBaseUrl = "https://inspoboard-backend.herokuapp.com";
 
 const cardApiToJson = (card) => {
   const { id, likes, message, board_id: boardId } = card;
