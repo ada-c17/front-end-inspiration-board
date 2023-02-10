@@ -70,7 +70,7 @@ const App = () => {
   // toggle new Board form
   const [isBoardFormVisible, setIsBoardFormVisible] = useState(false);
 
-  // BEAUTY
+  // VISUAL
   return (
     <div>
       <header className="header">
