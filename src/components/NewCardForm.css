@@ -1,0 +1,31 @@
+.new-card__form {
+    display: flex;
+    justify-content: left;
+}
+
+.new-card__fields {
+    display: grid;
+    grid-template-columns: .75fr 1fr;
+    width: 500x;
+    font-family: Silkscreen;
+}
+
+.new-card__input {
+    text-align: left;
+    margin: 1px;
+    padding: 1px;
+    width: 150px;
+    height: 80px;
+    vertical-align: top;
+}
+
+.new-card__submit {
+    grid-column: span 2;
+    font-family: Silkscreen;
+}
+
+.form-errors {
+    font-size: small;
+    color: #4a394a;
+    background-color: #eebdf4;
+}

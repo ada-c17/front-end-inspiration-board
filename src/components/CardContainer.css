@@ -1,0 +1,13 @@
+.card-list_header {
+    display: flex;
+    justify-content: center;
+    color: #ffffff;
+    text-shadow: 7px 2px 1px #f4bdf4;
+    font-family: 'Silkscreen';
+    font-size: 3em;
+}
+
+.card-form_container {
+    display: flex;
+    justify-content: center;
+}
